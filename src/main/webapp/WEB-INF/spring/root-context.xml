@@ -25,7 +25,8 @@
         <property name="dataSource" ref="dataSource" />
         <property name="mapperLocations">
         	<list>
-        		<value>classpath:com/cafe24/phoenixooo/나중에 작성</value>
+<!--         		<value>classpath:com/cafe24/phoenixooo/나중에 작성</value> -->
+        		<value>classpath:com/cafe24/phoenixooo/HomeCommentMapper.xml</value>
         	</list>
         </property>
     </bean>
