@@ -16,170 +16,170 @@ public class HomeController {
 		return "home";
 	}
 	
-	// phoenix ¸ÞÀÎ
+	// phoenix
 		@RequestMapping(value = "/phoenix", method = RequestMethod.GET)
 		public String phoenix() {
 		return "phoenix";
 		}
 		
-		// CRM·Î±×ÀÎ
+		// CRM
 		@RequestMapping(value = "/crm/form/login", method = RequestMethod.GET)
 		public String crmFormLogin() {
 		return "/crm/login";
 		}
 		
 		
-		// CRM±¸¸Å
+		// CRM
 		@RequestMapping(value = "/crm/form/productList", method = RequestMethod.GET)
 		public String crmFormProductList() {
 		return "/crm/productList";
 		}
 		
-		// È¸¿ø°¡ÀÔ
+		// È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		@RequestMapping(value = "/com/form/terms", method = RequestMethod.GET)
 		public String comFormTerms() {
 		return "/com/terms";
 		}
 		
-		// Ä¿¹Â´ÏÆ¼·Î±×ÀÎ
+		// Ä¿ï¿½Â´ï¿½Æ¼ï¿½Î±ï¿½ï¿½ï¿½
 		@RequestMapping(value = "/com/form/login", method = RequestMethod.GET)
 		public String comFormLogin() {
 		return "/com/login";
 		}
 		
-		// ÀÚÀ¯°Ô½ÃÆÇ
+		// ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½
 		@RequestMapping(value = "/com/form/freeBoard", method = RequestMethod.GET)
 		public String comFormFreeBoard() {
 		return "/com/freeBoard";
 		}
 		
-		// µðÀÚÀÌ³Ê°Ô½ÃÆÇ
+		// ï¿½ï¿½ï¿½ï¿½ï¿½Ì³Ê°Ô½ï¿½ï¿½ï¿½
 		@RequestMapping(value = "/com/form/designerBoard", method = RequestMethod.GET)
 		public String comFormDesignerBoard() {
 		return "/com/designerBoard";
 		}
 		
-		// »ó´ã°Ô½ÃÆÇ
+		// ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½
 		@RequestMapping(value = "/com/form/consultationBoard", method = RequestMethod.GET)
 		public String comFormConsultationBoard() {
 		return "/com/consultationBoard";
 		}
 		
-		// °øÁö»çÇ×
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		@RequestMapping(value = "/com/form/noticeBoard", method = RequestMethod.GET)
 		public String comFormNoticeBoard() {
 		return "/com/noticeBoard";
 		}
 		
-		// µðÀÚÀÌ³Ê°Ô½ÃÆÇÀÇ ÀÏºÎ ±Û ¼±ÅÃ
+		// ï¿½ï¿½ï¿½ï¿½ï¿½Ì³Ê°Ô½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ïºï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		@RequestMapping(value = "/com/form/designerBoardContent", method = RequestMethod.GET)
 		public String comFormDesignerBoardContent() {
 		return "/com/designerBoardContent";
 		}
 		
-		// È¸¿ø°¡ÀÔ-ÀÏ¹Ý°í°´
+		// È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½Ï¹Ý°ï¿½
 		@RequestMapping(value = "/com/form/joiningAsCustomer", method = RequestMethod.GET)
 		public String comFormJoiningAsCustomer() {
 		return "/com/joiningAsCustomer";
 		}
 		
-		// È¸¿ø°¡ÀÔ-µðÀÚÀÌ³Ê
+		// È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½
 		@RequestMapping(value = "/com/form/joiningAsDesigner", method = RequestMethod.GET)
 		public String comFormJoiningAsDesigner() {
 		return "/com/joiningAsDesigner";
 		}
 		
-		// È¸¿ø°¡ÀÔ-¿øÀå´Ô
+		// È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ï¿½
 		@RequestMapping(value = "/com/form/joiningAsDirector", method = RequestMethod.GET)
 		public String comFormJoiningAsDirector() {
 		return "/com/joiningAsDirector";
 		}
 		
-		// È¸¿ø°¡ÀÔ-ÀÏ¹Ý°í°´-È®ÀÎ
+		// È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½Ï¹Ý°ï¿½-È®ï¿½ï¿½
 		@RequestMapping(value = "/com/process/joiningAsCustomer", method = RequestMethod.GET)
 		public String comProcessJoiningAsCustomer() {
 		return "/phoenix";
 		}
 		
-		// ·Î±×ÀÎ
+		// ï¿½Î±ï¿½ï¿½ï¿½
 		@RequestMapping(value = "/com/process/login", method = RequestMethod.GET)
 		public String comProcessLogin() {
 		return "/phoenix";
 		}
 
-		// ·Î±×ÀÎÈ­¸é-¾ÆÀÌµðÃ£±â
+		// ï¿½Î±ï¿½ï¿½ï¿½È­ï¿½ï¿½-ï¿½ï¿½ï¿½Ìµï¿½Ã£ï¿½ï¿½
 		@RequestMapping(value = "/com/form/findingId", method = RequestMethod.GET)
 		public String comFormFindingId() {
 		return "/com/findingId";
 		}
 		
-		// ·Î±×ÀÎÈ­¸é-ºñ¹Ð¹øÈ£Ã£±â
+		// ï¿½Î±ï¿½ï¿½ï¿½È­ï¿½ï¿½-ï¿½ï¿½Ð¹ï¿½È£Ã£ï¿½ï¿½
 		@RequestMapping(value = "/com/form/findingPw", method = RequestMethod.GET)
 		public String comFormFindingPw() {
 		return "/com/findingPw";
 		}
 		
-		// ¾ÆÀÌµðÃ£±â-¸ÞÀÏº¸³»±â
+		// ï¿½ï¿½ï¿½Ìµï¿½Ã£ï¿½ï¿½-ï¿½ï¿½ï¿½Ïºï¿½ï¿½ï¿½ï¿½ï¿½
 		@RequestMapping(value = "/com/process/findingId", method = RequestMethod.GET)
 		public String comProcessFindingId() {
 		return "/com/login";
 		}
 		
-		// ºñ¹Ð¹øÈ£Ã£±â-¸ÞÀÏº¸³»±â
+		// ï¿½ï¿½Ð¹ï¿½È£Ã£ï¿½ï¿½-ï¿½ï¿½ï¿½Ïºï¿½ï¿½ï¿½ï¿½ï¿½
 		@RequestMapping(value = "/com/process/findingPw", method = RequestMethod.GET)
 		public String comProcessFindingPw() {
 		return "/com/login";
 		}
 		
-		// ¸¶ÀÌÆäÀÌÁö-°³ÀÎÁ¤º¸¼öÁ¤
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		@RequestMapping(value = "/com/form/userModification", method = RequestMethod.GET)
 		public String comFormUserModification() {
 		return "/com/userModification";
 		}
 		
-		// ¸¶ÀÌÆäÀÌÁö-È¸¿øÅ»Åð
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-È¸ï¿½ï¿½Å»ï¿½ï¿½
 		@RequestMapping(value = "/com/form/userWithdrawal", method = RequestMethod.GET)
 		public String comFormUserWithdrawal() {
 		return "/com/userWithdrawal";
 		}
 		
-		// ¸¶ÀÌÆäÀÌÁö-ÁÖ¹®°áÁ¦³»¿ª
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		@RequestMapping(value = "/com/form/paymentList", method = RequestMethod.GET)
 		public String comFormPaymentList() {
 		return "/com/paymentList";
 		}
 		
-		// ¸¶ÀÌÆäÀÌÁö-È¯ºÒ³»¿ª
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-È¯ï¿½Ò³ï¿½ï¿½ï¿½
 		@RequestMapping(value = "/com/form/refundList", method = RequestMethod.GET)
 		public String comFormRefundList() {
 		return "/com/refundList";
 		}
 		
-		// °³ÀÎÁ¤º¸¼öÁ¤-¼öÁ¤Ã³¸®
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½
 		@RequestMapping(value = "/com/process/modifyUser", method = RequestMethod.GET)
 		public String comProcessModifyUser() {
 		return "/phoenix";
 		}
 		
-		// È¸¿øÅ»Åð-Ã³¸®
+		// È¸ï¿½ï¿½Å»ï¿½ï¿½-Ã³ï¿½ï¿½
 		@RequestMapping(value = "/com/process/withdraw", method = RequestMethod.GET)
 		public String comProcessWithdraw() {
 		return "/phoenix";
 		}
 		
-		// ÁÖ¹®°áÁ¦³»¿ª-È¯ºÒ
+		// ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-È¯ï¿½ï¿½
 		@RequestMapping(value = "/com/form/refund", method = RequestMethod.GET)
 		public String comFormRefund() {
 		return "/com/refund";
 		}
 		
-		// ÁÖ¹®°áÁ¦³»¿ª-ÁÖ¹®Ãë¼Ò
+		// ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½
 		@RequestMapping(value = "/com/form/cancelingOrder", method = RequestMethod.GET)
 		public String comFormCancelingOrder() {
 		return "/com/cancelingOrder";
 		}
 		
-		// È¯ºÒ½ÅÃ»-È®ÀÎ
+		// È¯ï¿½Ò½ï¿½Ã»-È®ï¿½ï¿½
 		@RequestMapping(value = "/com/process/requestToRepayment", method = RequestMethod.GET)
 		public String comProcessRequestToRepayment() {
 		return "/com/refundList";
