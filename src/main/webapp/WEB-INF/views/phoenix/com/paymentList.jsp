@@ -27,7 +27,7 @@
 			<td>1개월패키지</td>
 			<td>9900</td>
 			<td>결제완료</td>
-			<td><a href="/com/form/refund">환불</a></td>
+			<td><a href="/phoenix/com/form/requestingRepayment">환불</a></td>
 		</tr>
 		<tr>
 			<td>161066283</td>
@@ -35,7 +35,7 @@
 			<td>3개월패키지</td>
 			<td>29900</td>
 			<td>주문완료</td>
-			<td><a href="/com/form/cancelingOrder">주문취소</a></td>
+			<td><a href="/phoenix/com/form/requestingRepayment">환불</a></td>
 		</tr>
 		<tr>
 			<td>201066284</td>
@@ -43,7 +43,7 @@
 			<td>3개월패키지</td>
 			<td>29900</td>
 			<td>결제완료</td>
-			<td><a href="/com/form/refund">환불</a></td>
+			<td><a href="/phoenix/com/form/requestingRepayment">환불</a></td>
 		</tr>
 	</table>
 </div>

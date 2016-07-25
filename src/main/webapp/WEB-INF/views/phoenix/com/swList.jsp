@@ -5,13 +5,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 </head>
 <body>
-	<!-- 게시글 내용 -->
-<h1>
-	Hello world!  
-</h1>
+	<h1>상품 내역</h1>
+	<form action="/phoenix/com/form/swPayment" method="post">
+		<button>구매</button>
+	</form>
+	
+	
 </body>
 </html>
