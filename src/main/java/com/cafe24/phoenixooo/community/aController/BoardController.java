@@ -29,9 +29,27 @@ public class BoardController
 		return "/phoenix/com/form/noticeBoard";
 		}
 		
-		// �����̳ʰԽ����� �Ϻ� �� ����
-		@RequestMapping(value = "/com/form/designerBoardContent", method = RequestMethod.GET)
-		public String selectDesignerBoardContent() {
-		return "/com/designerBoardContent";
+		//게시판 글쓰기 화면으로 이동
+		@RequestMapping(value = "/phoenix/com/form/insertingBasicArticle", method = RequestMethod.GET)
+		public String moveToInsertingBasicArticle() {
+		return "/phoenix/com/form/insertingBasicArticle";
+		}
+		
+		//글 내용으로
+		@RequestMapping(value = "/phoenix/com/form/basicArticle", method = RequestMethod.GET)
+		public String selectBasicArticle() {
+		return "/phoenix/com/form/basicArticle";
+		}
+
+		//글 수정 화면으로
+		@RequestMapping(value = "/phoenix/com/form/modifyingBasicArticle", method = RequestMethod.GET)
+		public String moveToModifyingBasicArticle() {
+		return "/phoenix/com/form/modifyingBasicArticle";
+		}		
+		
+		//글 삭제 화면으로
+		@RequestMapping(value = "/phoenix/com/form/deletingBasicArticle", method = RequestMethod.GET)
+		public String moveToDeletingBasicArticle() {
+		return "/phoenix/com/form/deletingBasicArticle";
 		}
 }
