@@ -7,14 +7,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class HomeController {
+public class HomeControllerBok {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(HomeControllerBok.class);
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
 		return "home";
 	}
+	
+	// 주석 꼭 달아주세요. 엑셀에 있는 설명부분 갖다 붙이면 됨
 	
 	// phoenix
 		@RequestMapping(value = "/phoenix", method = RequestMethod.GET)
