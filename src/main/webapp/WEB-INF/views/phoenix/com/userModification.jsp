@@ -15,29 +15,147 @@
 
 <div>
 	<table>
-		<th>Filed</th>
-		<th>Input</th>
 		<tr>
-			<td>이름</td>
-			<td><input type="text"/></td>
+			<th>Filed</th>
+			<th>Input</th>
+		</tr>
+		<tr>
+			<td>아이디</td>
+			<td><input type="text" size="12" readonly="readonly"/></td>
 		</tr>
 		<tr>
 			<td>비밀번호</td>
-			<td><input type="password"/></td>
+			<td><input type="password" size="12"/></td>
 		</tr>
 		<tr>
 			<td>비밀번호확인</td>
-			<td><input type="password"/></td>
+			<td><input type="password" size="12"/></td>
 		</tr>
 		<tr>
-			<td>등등...</td>
-			<td>추가예정</td>
+			<td>이름</td>
+			<td><input type="text" size="12" readonly="readonly"/></td>
+		</tr>
+		<tr>
+			<td>닉네임</td>
+			<td><input type="text" size="12"/></td>
+		</tr>
+		<tr>
+			<td>성별</td>
+			<td><input type="radio" value="male"/>남
+				<input type="radio" value="female"/>여
+			</td>
+		</tr>
+		
+		<!-- 디자이너 분기 -->
+		
+		<tr>
+			<td>-----------------------</td>
+			<td>디자이너분기</td>
+		</tr>
+		<tr>
+			<td>미용실코드
+				디자이너가입시</td>
+			<td><input type="text" size="12"/></td>
+		</tr>
+		<tr>
+			<td>미용실 명</td>
+			<td><input type="text" size="12" readonly="readonly"/></td>
+		</tr>
+		<tr>
+			<td>우편번호</td>
+			<td><input type="text" size="7" readonly="readonly"/></td>
+		</tr>
+		<tr>
+			<td>상세주소</td>
+			<td><input type="text" readonly="readonly"/></td>
+		</tr>
+		<tr>
+			<td>-----------------------</td>
+			<td>-----------------------</td>
+		</tr>
+		
+		<!-- 미용실 분기 -->
+		<tr>
+			<td>-----------------------</td>
+			<td>미용실분기</td>
+		</tr>
+		<tr>
+			<td>미용실 명</td>
+			<td><input type="text" size="12"/></td>
+		</tr>
+		<tr>
+			<td>우편번호</td>
+			<td><input type="text" size="7"/></td>
+		</tr>
+		<tr>
+			<td>상세주소</td>
+			<td><input type="text"/></td>
+		</tr>
+		<tr>
+			<td>사업자번호</td>
+			<td><input type="text" size="5"/>-<input type="text" size="5"/>-<input type="text" size="5"/></td>
+		</tr>
+		<tr>
+			<td>미용실소개</td>
+			<td><textarea cols="70" rows="5">입력해라...귀찮아도...</textarea></td>
+		</tr>
+		<tr>
+			<td>-----------------------</td>
+			<td>-----------------------</td>
+		</tr>
+					
+		<tr>
+			<td>우편번호</td>
+			<td><input type="text" size="7"/></td>
+		</tr>
+		<tr>
+			<td>상세주소</td>
+			<td><input type="text"/></td>
+		</tr>
+		<tr>
+			<td>집전화번호</td>
+			<td><input type="text" size="5"/>-<input type="text" size="5"/>-<input type="text" size="5"/></td>
+		</tr>
+		<tr>
+			<td>핸드폰번호</td>
+			<td><input type="text" size="5"/>-<input type="text" size="5"/>-<input type="text" size="5"/></td>
+		</tr>
+		<tr>
+			<td>이메일</td>
+			<td><input type="text" size="12"/>@<input type="text" size="12"/>
+			<select>
+				<option>::선 택::</option>
+				<option>gmail.com</option>
+				<option>naver.com</option>
+				<option>daum.net</option>
+				<option>yahoo.co.kr</option>
+				<option>nate.com</option>
+				<option>cafe24.com</option>
+				<option>ksmart.org</option>
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td>생년월일</td>
+			<td><input type="text" size="4"/>년<input type="text" size="4"/>월<input type="text" size="4"/>일
+				<input type="radio" name="asdf" value="sun"/>양력
+				<input type="radio" name="asdf" value="moon"/>음력
+			</td>
+		</tr>
+		<tr>
+			<td>기념일</td>
+			<td><input type="text" size="4"/>년<input type="text" size="4"/>월<input type="text" size="4"/>일
+			</td>
+		</tr>
+		<tr>
+			<td>자기소개</td>
+			<td><textarea cols="70" rows="5">입력해라...귀찮아도...</textarea></td>
 		</tr>
 	</table>
 </div>
 
 <div>
-	<a href="/com/process/modifyUser"><input type="button" value="확인"/></a>
+	<a href="/phoenix/com/process/modifyUser"><input type="button" value="수정"/></a>
 	<a href="/phoenix"><input type="button" value="취소"/></a>
 </div>
 

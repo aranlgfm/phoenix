@@ -20,7 +20,7 @@ public class HomeController {
 	// phoenix
 	@RequestMapping(value = "/phoenix", method = RequestMethod.GET)
 	public String phoenix() {
-	return "phoenix";
+		return "phoenix";
 	}
 		
 	

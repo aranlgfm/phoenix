@@ -11,8 +11,8 @@
 <body>
 
 <div>
-	<a href="/phoenix/crm/form/login">CRM로그인</a>
-	<a href="/phoenix/com/form/swList">CRM구매</a>
+	<a href="/crm/form/login">CRM로그인</a>
+	<a href="/crm/form/productList">CRM구매</a>
 </div>
 
 <hr>
@@ -36,25 +36,9 @@
 			<option value="/phoenix/com/form/userModification">회원정보수정</option>
 			<option value="/phoenix/com/form/userWithdrawal">회원탈퇴</option>
 			<option value="/phoenix/com/form/paymentList">주문결제내역</option>
-			<option value="/phoenix/com/form/repaymentList">환불내역</option>
+			<option value="/phoenix/com/form/refundList">환불내역</option>
 		</select>
 	</form>	
-</div>
-
-<hr>
-
-<div>
-	<a href="/phoenix/com/form/freeBoard">자유게시판</a>
-	<a href="/phoenix/com/form/designerBoard">디자이너게시판</a>
-	<a href="/phoenix/com/form/counselBoard">상담게시판</a>
-	<a href="/phoenix/com/form/noticeBoard">공지사항</a>
-</div>
-
-<hr>
-<div>
-	<a href="/phoenix/com/form/designerBoardContent">게시글1</a>
-	<a href="/phoenix/com/form/designerBoardContent">게시글2</a>
-	<a href="/phoenix/com/form/designerBoardContent">게시글3</a>
 </div>
 
 </body>
