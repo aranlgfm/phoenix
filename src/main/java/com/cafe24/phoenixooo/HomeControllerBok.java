@@ -18,11 +18,7 @@ public class HomeControllerBok {
 	
 	// 주석 꼭 달아주세요. 엑셀에 있는 설명부분 갖다 붙이면 됨
 	
-	// phoenix
-		@RequestMapping(value = "/phoenix", method = RequestMethod.GET)
-		public String phoenix() {
-		return "phoenix";
-		}
+	
 		
 		// CRM
 		@RequestMapping(value = "/crm/form/login", method = RequestMethod.GET)
@@ -31,11 +27,7 @@ public class HomeControllerBok {
 		}
 		
 		
-		// CRM
-		@RequestMapping(value = "/crm/form/productList", method = RequestMethod.GET)
-		public String crmFormProductList() {
-		return "/crm/productList";
-		}
+		
 		
 		// ȸ������
 		@RequestMapping(value = "/com/form/terms", method = RequestMethod.GET)
@@ -49,35 +41,7 @@ public class HomeControllerBok {
 		return "/com/login";
 		}
 		
-		// �����Խ���
-		@RequestMapping(value = "/com/form/freeBoard", method = RequestMethod.GET)
-		public String comFormFreeBoard() {
-		return "/com/freeBoard";
-		}
 		
-		// �����̳ʰԽ���
-		@RequestMapping(value = "/com/form/designerBoard", method = RequestMethod.GET)
-		public String comFormDesignerBoard() {
-		return "/com/designerBoard";
-		}
-		
-		// ���Խ���
-		@RequestMapping(value = "/com/form/consultationBoard", method = RequestMethod.GET)
-		public String comFormConsultationBoard() {
-		return "/com/consultationBoard";
-		}
-		
-		// ��������
-		@RequestMapping(value = "/com/form/noticeBoard", method = RequestMethod.GET)
-		public String comFormNoticeBoard() {
-		return "/com/noticeBoard";
-		}
-		
-		// �����̳ʰԽ����� �Ϻ� �� ����
-		@RequestMapping(value = "/com/form/designerBoardContent", method = RequestMethod.GET)
-		public String comFormDesignerBoardContent() {
-		return "/com/designerBoardContent";
-		}
 		
 		// ȸ������-�Ϲݰ�
 		@RequestMapping(value = "/com/form/joiningAsCustomer", method = RequestMethod.GET)
@@ -145,17 +109,7 @@ public class HomeControllerBok {
 		return "/com/userWithdrawal";
 		}
 		
-		// ����������-�ֹ���������
-		@RequestMapping(value = "/com/form/paymentList", method = RequestMethod.GET)
-		public String comFormPaymentList() {
-		return "/com/paymentList";
-		}
 		
-		// ����������-ȯ�ҳ���
-		@RequestMapping(value = "/com/form/refundList", method = RequestMethod.GET)
-		public String comFormRefundList() {
-		return "/com/refundList";
-		}
 		
 		// ������������-����ó��
 		@RequestMapping(value = "/com/process/modifyUser", method = RequestMethod.GET)
@@ -169,22 +123,6 @@ public class HomeControllerBok {
 		return "/phoenix";
 		}
 		
-		// �ֹ���������-ȯ��
-		@RequestMapping(value = "/com/form/refund", method = RequestMethod.GET)
-		public String comFormRefund() {
-		return "/com/refund";
-		}
 		
-		// �ֹ���������-�ֹ����
-		@RequestMapping(value = "/com/form/cancelingOrder", method = RequestMethod.GET)
-		public String comFormCancelingOrder() {
-		return "/com/cancelingOrder";
-		}
-		
-		// ȯ�ҽ�û-Ȯ��
-		@RequestMapping(value = "/com/process/requestToRepayment", method = RequestMethod.GET)
-		public String comProcessRequestToRepayment() {
-		return "/com/refundList";
-		}
 	
 }
