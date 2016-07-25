@@ -25,32 +25,32 @@
 
 <div>
 	<input type="text" value="검색창"/>
-	<a href="/com/form/terms"><input type="button" value="회원가입"/></a>
-	<a href="/com/form/login"><input type="button" value="로그인"/></a>
+	<a href="/phoenix/com/form/terms"><input type="button" value="회원가입"/></a>
+	<a href="/phoenix/com/form/login"><input type="button" value="로그인"/></a>
 	로그인성공시 :
 		<select onchange="window.open(value, '_self');">
 			<option>MyPage</option>
-			<option value="/com/form/userModification">회원정보수정</option>
-			<option value="/com/form/userWithdrawal">회원탈퇴</option>
-			<option value="/com/form/paymentList">주문결제내역</option>
-			<option value="/com/form/refundList">환불내역</option>
+			<option value="/phoenix/com/form/userModification">회원정보수정</option>
+			<option value="/phoenix/com/form/userWithdrawal">회원탈퇴</option>
+			<option value="/phoenix/com/form/paymentList">주문결제내역</option>
+			<option value="/phoenix/com/form/refundList">환불내역</option>
 		</select>
 </div>
 
 <hr>
 
 <div>
-	<a href="/com/form/freeBoard">자유게시판</a>
-	<a href="/com/form/designerBoard">디자이너게시판</a>
-	<a href="/com/form/consultationBoard">상담게시판</a>
-	<a href="/com/form/noticeBoard">공지사항</a>
+	<a href="/phoenix/com/form/freeBoard">자유게시판</a>
+	<a href="/phoenix/com/form/designerBoard">디자이너게시판</a>
+	<a href="/phoenix/com/form/consultationBoard">상담게시판</a>
+	<a href="/phoenix/com/form/noticeBoard">공지사항</a>
 </div>
 
 <hr>
 <div>
-	<a href="/com/form/designerBoardContent">게시글1</a>
-	<a href="/com/form/designerBoardContent">게시글2</a>
-	<a href="/com/form/designerBoardContent">게시글3</a>
+	<a href="/phoenix/com/form/designerBoardContent">게시글1</a>
+	<a href="/phoenix/com/form/designerBoardContent">게시글2</a>
+	<a href="/phoenix/com/form/designerBoardContent">게시글3</a>
 </div>
 
 </body>
