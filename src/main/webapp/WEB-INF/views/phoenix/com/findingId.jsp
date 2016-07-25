@@ -14,16 +14,21 @@
 </h1>
 
 <div>
-	<p>가입시 입력한 이메일 주소를 적어주세요.</p>
+	<p>가입시 입력한 이름과 이메일 주소를 적어주세요.</p>
 </div>
 
 <div>
-	<input type="text" value="Text input"/>
+	<label>이 름 :</label>
+	<input type="text" value=""/>
+</div>
+<div>
+	<label>이메일 :</label>
+	<input type="text" value=""/>
 </div>
 
 <div>
 	
-	<a href="/com/process/findingId"><input type="button" value="메일보내기"/></a>
+	<a href="/com/process/findingId"><input type="button" value="보내기"/></a>
 	<a href="/phoenix"><input type="button" value="취소"/></a>
 </div>
 

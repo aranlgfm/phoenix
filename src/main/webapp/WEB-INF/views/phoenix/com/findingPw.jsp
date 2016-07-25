@@ -24,7 +24,7 @@
 </div>
 
 <div>
-	<a href="/com/process/findingPw"><input type="button" value="메일보내기"/></a>
+	<a href="/phoenix/com/process/findingPw"><input type="button" value="메일보내기"/></a>
 	<a href="/phoenix"><input type="button" value="취소"/></a>
 </div>
 

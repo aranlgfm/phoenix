@@ -24,13 +24,13 @@
 </div>
 
 <div>
-	<a href="/com/process/login"><input type="button" value="로그인"/></a>
+	<a href="/phoenix/com/process/login"><input type="button" value="로그인"/></a>
 	<a href="/phoenix"><input type="button" value="취소"/></a>
 </div>
 
 <div>
-	<a href="/com/form/findingId">아이디 찾기</a>
-	<a href="/com/form/findingPw">비밀번호 찾기</a>
+	<a href="/phoenix/com/form/findingId">아이디 찾기</a>
+	<a href="/phoenix/com/form/findingPw">비밀번호 찾기</a>
 </div>
 
 </body>

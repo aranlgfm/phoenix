@@ -22,9 +22,9 @@
 </div>
 
 <div>
-	<a href="/com/form/joiningAsCustomer">일반고객</a>
-	<a href="/com/form/joiningAsDesigner">디자이너</a>
-	<a href="/com/form/joiningAsDirector">원장님</a>
+	<a href="/phoenix/com/form/joiningAsCustomer">일반고객</a>
+	<a href="/phoenix/com/form/joiningAsDesigner">디자이너</a>
+	<a href="/phoenix/com/form/joiningAsDirector">원장님</a>
 </div>
 
 </body>

@@ -23,7 +23,7 @@
 </div>
 
 <div>
-	<a href="/com/process/withdraw"><input type="button" value="확인"/></a>
+	<a href="/phoenix/com/process/withdraw"><input type="button" value="확인"/></a>
 	<a href="/phoenix"><input type="button" value="취소"/></a>
 </div>
 

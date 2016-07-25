@@ -41,21 +41,5 @@
 	</form>	
 </div>
 
-<hr>
-
-<div>
-	<a href="/phoenix/com/form/freeBoard">자유게시판</a>
-	<a href="/phoenix/com/form/designerBoard">디자이너게시판</a>
-	<a href="/phoenix/com/form/consultationBoard">상담게시판</a>
-	<a href="/phoenix/com/form/noticeBoard">공지사항</a>
-</div>
-
-<hr>
-<div>
-	<a href="/phoenix/com/form/designerBoardContent">게시글1</a>
-	<a href="/phoenix/com/form/designerBoardContent">게시글2</a>
-	<a href="/phoenix/com/form/designerBoardContent">게시글3</a>
-</div>
-
 </body>
 </html>
