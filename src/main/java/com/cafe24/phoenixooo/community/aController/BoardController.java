@@ -5,33 +5,33 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 public class BoardController 
 {
-	// �����Խ���
+		//자유게시판으로 이동
 		@RequestMapping(value = "/phoenix/com/form/freeBoard", method = RequestMethod.GET)
-		public String comFormFreeBoard() {
-		return "/com/form/freeBoard";
+		public String moveToBoard() {
+		return "/phoenix/com/form/freeBoard";
 		}
 		
-		// �����̳ʰԽ���
+		//디자이너 게시판으로 이동
 		@RequestMapping(value = "/phoenix/com/form/designerBoard", method = RequestMethod.GET)
-		public String comFormDesignerBoard() {
-		return "/com/designerBoard";
+		public String moveToDesignerBoard() {
+		return "/phoenix/com/form/designerBoard";
 		}
 		
-		// ���Խ���
-		@RequestMapping(value = "/com/form/consultationBoard", method = RequestMethod.GET)
-		public String comFormConsultationBoard() {
-		return "/com/consultationBoard";
+		//상담게시판으로 이동
+		@RequestMapping(value = "/phoenix/com/form/counselBoard", method = RequestMethod.GET)
+		public String moveToCounselBoard() {
+		return "/phoenix/com/form/counselBoard";
 		}
 		
-		// ��������
-		@RequestMapping(value = "/com/form/noticeBoard", method = RequestMethod.GET)
-		public String comFormNoticeBoard() {
-		return "/com/noticeBoard";
+		//공지사항 게시판으로 이동
+		@RequestMapping(value = "/phoenix/com/form/noticeBoard", method = RequestMethod.GET)
+		public String moveToNoticeBoard() {
+		return "/phoenix/com/form/noticeBoard";
 		}
 		
 		// �����̳ʰԽ����� �Ϻ� �� ����
 		@RequestMapping(value = "/com/form/designerBoardContent", method = RequestMethod.GET)
-		public String comFormDesignerBoardContent() {
+		public String selectDesignerBoardContent() {
 		return "/com/designerBoardContent";
 		}
 }
