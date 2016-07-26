@@ -33,6 +33,16 @@
 <div>
 	<c:if test="${cate eq free}">를르리리리</c:if>
 </div>
+
+<div>
+	<c:forEach var="test" items="${test}">
+	${test.a}
+	${test.b}
+	${test.c}
+	${test.d}
+	</c:forEach>
+</div>
+
 	<hr/>
 		<div>
 			<a href="/phoenix/com/form/searchResult?searchWord=">통합검색</a>

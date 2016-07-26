@@ -1,15 +1,23 @@
 package com.cafe24.phoenixooo.community.aController;
 
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.cafe24.phoenixooo.community.cRepository.SwDao;
+import com.cafe24.phoenixooo.community.dModel.Test;
+
 @Controller
 public class TotalSearchController {
 
+	@Autowired
+	private SwDao swDao;
 	/**
 	 * 검색결과 화면 페이지
 	 * 통합검색 검색결과
@@ -18,6 +26,8 @@ public class TotalSearchController {
 	 */
 	@RequestMapping(value="/phoenix/com/form/searchResult",method = RequestMethod.POST)
 	public String comProcessSearch(String word, Model model){
+		List<Test> test = swDao.selectSw();
+		model.addAttribute("test", test);
 		return "/phoenix/com/searchResult";
 	}
 	
@@ -32,6 +42,7 @@ public class TotalSearchController {
 		System.out.println(word);
 		return "/phoenix/com/searchResult";
 	}
+	
 	
 	
 }
