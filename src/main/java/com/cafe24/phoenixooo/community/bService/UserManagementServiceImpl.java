@@ -16,9 +16,10 @@ public class UserManagementServiceImpl implements UserManagementService {
 	 */
 	@Override
 	public int insertUser(UserCustomer user) {
+		System.out.println("안녕 서비스야");
 		//유저코드 세팅
 		user.setUserCode(userDao.getUserCode());
-		
+		System.out.println("겟유저 했어!");
 		if(user.getUserGroupName().equals("director")){
 			user.setUserGroupName("미용실원장");
 		}else if(user.getUserGroupName().equals("designer")){

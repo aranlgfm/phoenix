@@ -8,6 +8,7 @@ package com.cafe24.phoenixooo.community.dModel;
 
 public class UserCustomer {
 	
+	
 	/*회원가입 Userjoin
 	회원정보수정 Usermodify
 	아이디찾기 UserfindId
@@ -31,9 +32,6 @@ public class UserCustomer {
 	private String userCellphoneNumber;
 	private String userIntroduceContent;
 	
-	UserCustomer(){
-		this.userCode = "COM_USER_";
-	}
 	
 	public String getUserCode() {
 		return userCode;

@@ -12,6 +12,7 @@ public class UserManagementDaoImpl implements UserManagementDao {
 	
 	@Autowired
 	private DaoHelper helper;
+	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
@@ -25,7 +26,11 @@ public class UserManagementDaoImpl implements UserManagementDao {
 	 */
 	@Override
 	public String getUserCode() {
+		System.out.println("겟유저코드야!");
 		String result = sqlSession.selectOne(NS+".getUserCode");
+		System.out.println("겟유저코드"+result);
+		System.out.println(result.length());
+		System.out.println(helper.getUSERCODE().length());
 		int rs = (int)Integer.parseInt(result.substring(helper.getUSERCODE().length()));
 		rs++;
 		result = helper.getUSERCODE()+rs;

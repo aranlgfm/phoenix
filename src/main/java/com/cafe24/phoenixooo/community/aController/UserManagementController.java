@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cafe24.phoenixooo.community.bService.UserManagementService;
 import com.cafe24.phoenixooo.community.dModel.UserCustomer;
+import com.cafe24.phoenixooo.community.dModel.UserDirector;
 
 /**
  * 1.회원가입약관  
@@ -61,6 +62,8 @@ public class UserManagementController {
 	@RequestMapping(value = "/phoenix/com/form/joiningAsCustomer", method = RequestMethod.GET)
 	public String comFormJoiningAsCustomer(@RequestParam(value="group") String word, Model model) {
 		model.addAttribute("group", word);
+		System.out.println(word);
+		System.out.println("안녕 가입화면이야");
 		return "/phoenix/com/joiningAsCustomer";
 	}
 	
@@ -71,27 +74,42 @@ public class UserManagementController {
 	 */
 	@RequestMapping(value = "/phoenix/com/process/joiningAsCustomer", method = RequestMethod.POST)
 	public String comProcessJoiningAsCustomer(UserCustomer user) {
-		System.out.println("1111111111111111111111111111111");
+		System.out.println("안녕...처리화면이야");
+		System.out.println(user);
 		userService.insertUser(user);
+		String url = null;
+		System.out.println("가입처리 이 ㅅ.");
+		System.out.println(user.getUserGroupName());
+		if(user.getUserGroupName().equals("미용실원장")){
+			url = "/phoenix/com/joiningAsDirector";
+		}else if(user.getUserGroupName().equals("디자이너")){
+			url = "/phoenix/com/joiningAsDesigner";
+		}else{
+			url = "/phoenix";
+		}
+		return url;
+	}
+	
+	/**
+	 * 4.커뮤니티 디자이너 가입처리
+	 * @return
+	 */
+	@RequestMapping(value = "/phoenix/com/process/joiningAsDesigner", method = RequestMethod.POST)
+	public String comProcessJoiningAsDesigner() {
+		
 		return "/phoenix";
 	}
 	
 	/**
-	 * 4.커뮤니티 디자이너 가입화면
+	 * 5.커뮤니티 미용실원장 가입처리
 	 * @return
 	 */
-	@RequestMapping(value = "/phoenix/com/form/joiningAsDesigner", method = RequestMethod.GET)
-	public String comFormJoiningAsDesigner() {
-		return "/phoenix/com/joiningAsDesigner";
-	}
-	
-	/**
-	 * 5.커뮤니티 미용실원장 가입화면
-	 * @return
-	 */
-	@RequestMapping(value = "/phoenix/com/form/joiningAsDirector", method = RequestMethod.GET)
+	@RequestMapping(value = "/phoenix/com/process/joiningAsDirector", method = RequestMethod.POST)
 	public String comFormJoiningAsDirector() {
+		//System.out.println(user.getShopName());
+		//System.out.println(user.getBusinessNumber());
 		return "/phoenix/com/joiningAsDirector";
+		//return "/phoenix";
 	}
 	
 	/**

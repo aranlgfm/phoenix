@@ -44,10 +44,34 @@
 		)
 	</insert>
 	
+	<insert id="insertDirector" parameterType="com.cafe24.phoenixooo.community.dModel.UserDirector">
+		INSERT INTO 
+		CRM_SHOP_TB
+		(
+			SHOP_CD
+			,USER_CD
+			,SHOP_NM
+			,SHOP_POST_NO
+			,SHOP_ADDR
+			,BUSINESS_NO
+			,SHOP_MEMO
+		) 
+		VALUES
+		(
+			#{shopCode}
+			,#{userCustomer.userCode}
+			,#{shopName}
+			,#{shopPostNumber}
+			,#{shopAddress}
+			,#{businessNumber}
+			,#{shopMemo}
+		)
+	</insert>
+	
 	<select id="getUserCode" resultType="String">
 		SELECT USER_CD 
 		FROM COM_USER_TB
-		order by USER_CD desc
+		order by USER_JOIN_DT desc
 		LIMIT 0,1
 	</select>
 </mapper>

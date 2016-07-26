@@ -12,7 +12,8 @@
 <h1>
 	회원가입
 </h1>
-<div>
+<div> 
+		<input type="text" name="userGroupName" value="${group}"/>
 	<form action="/phoenix/com/process/joiningAsCustomer" method="POST">
 		<input type="hidden" name="userGroupName" value="${group}"/>
 		<table>
@@ -122,34 +123,6 @@
 						<td><input type="text" readonly="readonly"/></td>
 					</tr>
 				</c:if>
-				
-				<c:if test="${group eq 'director'}">
-							<!-- 미용실 분기 -->
-					<tr>
-						<td><hr/></td>
-						<td><hr/></td>
-					</tr>
-					<tr>
-						<td>* 미용실 명</td>
-						<td><input type="text" size="12"/></td>
-					</tr>
-					<tr>
-						<td>* 우편번호</td>
-						<td><input type="text" size="7"/></td>
-					</tr>
-					<tr>
-						<td>* 상세주소</td>
-						<td><input type="text"/></td>
-					</tr>
-					<tr>
-						<td>* 사업자번호</td>
-						<td><input type="text" size="5"/>-<input type="text" size="5"/>-<input type="text" size="5"/></td>
-					</tr>
-					<tr>
-						<td>미용실소개</td>
-						<td><textarea cols="70" rows="5">입력해라...귀찮아도...</textarea></td>
-					</tr>
-				</c:if>	
 		</table>
 	<input type="submit" value="확인"/>
 	<a href="/phoenix/com/form/terms"><input type="button" value="취소"/></a>

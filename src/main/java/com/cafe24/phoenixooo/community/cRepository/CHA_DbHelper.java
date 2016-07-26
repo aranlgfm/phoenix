@@ -2,6 +2,8 @@ package com.cafe24.phoenixooo.community.cRepository;
 
 import java.lang.reflect.Field;
 
+import com.cafe24.phoenixooo.community.dModel.UserDirector;
+
 public class CHA_DbHelper {
 	//#{}
 	public void insert(Object obj){
@@ -17,7 +19,8 @@ public class CHA_DbHelper {
 	
 	public static void main(String[] args) {
 		CHA_DbHelper h = new CHA_DbHelper();
-		//h.insert();
+		//UserDirector d = new UserDirector();
+		//h.insert(d);
 	}
 }
 
