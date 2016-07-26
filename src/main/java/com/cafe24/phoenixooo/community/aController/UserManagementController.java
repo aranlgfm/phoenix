@@ -1,27 +1,31 @@
 package com.cafe24.phoenixooo.community.aController;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.cafe24.phoenixooo.community.bService.UserManagementService;
+import com.cafe24.phoenixooo.community.dModel.UserCustomer;
 
+/**
+ * 1.회원가입약관  
+ * 2.커뮤니티 로그인 
+ * 3.일반고객 가입화면 - 분기함.
+ * 4.디자이너 가입화면
+ * 5.미용실원장 가입화면
+ * 6.아이디 찾기 
+ * 7.비번 찾기 
+ * 8.회원수정
+ * 9.회원탈퇴
+ */
 
 @Controller
 public class UserManagementController {
-
-	/**
-	 * 1.회원가입약관  
-	 * 2.커뮤니티 로그인 
-	 * 3.일반고객 가입화면 - 분기함.
-	 * 4.디자이너 가입화면
-	 * 5.미용실원장 가입화면
-	 * 6.아이디 찾기 
-	 * 7.비번 찾기 
-	 * 8.회원수정
-	 * 9.회원탈퇴
-	 */
-	
+	@Autowired
+	private UserManagementService userService;
 	
 	/**
 	 * 1. 회원가입약관 화면
@@ -55,7 +59,8 @@ public class UserManagementController {
 	 * @return
 	 */
 	@RequestMapping(value = "/phoenix/com/form/joiningAsCustomer", method = RequestMethod.GET)
-	public String comFormJoiningAsCustomer(String a) {
+	public String comFormJoiningAsCustomer(@RequestParam(value="group") String word, Model model) {
+		model.addAttribute("group", word);
 		return "/phoenix/com/joiningAsCustomer";
 	}
 	
@@ -64,9 +69,10 @@ public class UserManagementController {
 	 * 3. 커뮤니티 일반고객 가입처리
 	 * @return
 	 */
-	@RequestMapping(value = "/phoenix/com/process/joiningAsCustomer", method = RequestMethod.GET)
-	public String comProcessJoiningAsCustomer() {
-		
+	@RequestMapping(value = "/phoenix/com/process/joiningAsCustomer", method = RequestMethod.POST)
+	public String comProcessJoiningAsCustomer(UserCustomer user) {
+		System.out.println("1111111111111111111111111111111");
+		userService.insertUser(user);
 		return "/phoenix";
 	}
 	

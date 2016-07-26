@@ -11,6 +11,7 @@
 <body>
 
 <div>
+	<a href="/phoenix">HOME</a>
 	<a href="/crm/form/login">CRM로그인</a>
 	<a href="/crm/form/productList">CRM구매</a>
 </div>
