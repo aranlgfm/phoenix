@@ -44,10 +44,10 @@
 <hr>
 
 <div>
-	<a href="/phoenix/com/form/freeBoard">자유게시판</a>
-	<a href="/phoenix/com/form/designerBoard">디자이너게시판</a>
-	<a href="/phoenix/com/form/counselBoard">상담게시판</a>
-	<a href="/phoenix/com/form/noticeBoard">공지사항</a>
+	<a href="/phoenix/com/form/basicBoard?boardGroupCode=COM_BOARDGROUP_3">자유게시판</a>
+	<a href="/phoenix/com/form/designerBoard?boardGroupCode=COM_BOARDGROUP_1">디자이너게시판</a>
+	<a href="/phoenix/com/form/basicBoard?boardGroupCode=COM_BOARDGROUP_2">상담게시판</a>
+	<a href="/phoenix/com/form/basicBoard?boardGroupCode=COM_BOARDGROUP_4">공지사항</a>
 </div>
 
 <hr>

@@ -1,17 +1,37 @@
 package com.cafe24.phoenixooo.community.aController;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.cafe24.phoenixooo.community.bService.BoardService;
+import com.cafe24.phoenixooo.community.dModel.Article;
+
 
 @Controller
 public class BoardController 
 {
+	@Autowired
+	private BoardService boardService;
+	
 		//기본게시판으로 이동
 		@RequestMapping(value = "/phoenix/com/form/basicBoard", method = RequestMethod.GET)
-		public String moveToBasicBoard() {
+		public String moveToBasicBoard(Model model
+				,@RequestParam("boardGroupCode") String boardGroupCode
+	    		) {
+			//System.out.println(boardGroupCode);
+			List<Article> articleList = boardService.getArticleList(boardGroupCode);
+			model.addAttribute("articleList", articleList);
+	        
 		return "/phoenix/com/basicBoard";
 		}
+		
+		
 		
 		//디자이너 게시판으로 이동
 		@RequestMapping(value = "/phoenix/com/form/designerBoard", method = RequestMethod.GET)

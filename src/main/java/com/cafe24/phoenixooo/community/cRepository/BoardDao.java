@@ -8,16 +8,18 @@ import com.cafe24.phoenixooo.community.dModel.Comment;
 
 public interface BoardDao 
 {
-	//°Ô½ÃÆÇ È­¸é. °Ô½Ã±ÛµéÀÇ ¸®½ºÆ®.
+	//ï¿½Ô½ï¿½ï¿½ï¿½ È­ï¿½ï¿½. ï¿½Ô½Ã±Ûµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®.
 	List<Article> selectArticleList(Map<String,Object> map);
-	//1°³ ±ÛÀ» Å¬¸¯ÇßÀ» ¶§, 1°³ ±Û¿¡ ´ëÇÑ µ¥ÀÌÅÍ °¡Á®¿À±â
+	
+	/*int selectTotalCount(Map<String, Object> map);*/
+/*	//1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½, 1ï¿½ï¿½ ï¿½Û¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	Article selectArticle(Article article);
-	//1°³ ±Û ¼öÁ¤ Ã³¸®
+	//1ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 	int updateArticle(Article article);
-	//1°³ ±Û »èÁ¦ Ã³¸®
+	//1ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 	int deleteArticle(Article article);
-	//´ñ±Û µî·Ï Ã³¸®
+	//ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 	int insertComment(Comment comment);
-	//´ñ±Û »èÁ¦ Ã³¸®
-	int deleteComment(Comment comment);
+	//ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
+	int deleteComment(Comment comment);*/
 }

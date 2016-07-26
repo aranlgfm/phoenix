@@ -5,12 +5,13 @@
 	
 	<select id="selectArticleList" parameterType="java.util.Map" resultType="com.cafe24.phoenixooo.community.dModel.Article">
 		SELECT
-			ARTICLE_NM as articleName
+			ARTICLE_CD as articleCode
+			,ARTICLE_NM as articleName
 			,ARTICLE_CTT as articleContent
 		FROM
 			COM_ARTICLE_TB
 		WHERE
-			ARTICLE_CD=#{articleCode}
+			BOARDGROUP_CD=#{boardGroupCode}
 		ORDER BY ARTICLE_CD ASC
 		LIMIT 0, 3
 	</select>
