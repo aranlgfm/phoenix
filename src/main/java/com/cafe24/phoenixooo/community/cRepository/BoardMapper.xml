@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cafe24.phoenixooo.community.cRepository.BoardMapper">
+
+	
+	<select id="selectArticleList" parameterType="java.util.Map" resultType="com.cafe24.phoenixooo.community.dModel.Article">
+		SELECT
+			ARTICLE_NM as articleName
+			,ARTICLE_CTT as articleContent
+		FROM
+			COM_ARTICLE_TB
+		WHERE
+			ARTICLE_CD=#{articleCode}
+		ORDER BY ARTICLE_CD ASC
+		LIMIT 0, 3
+	</select>
+</mapper>
