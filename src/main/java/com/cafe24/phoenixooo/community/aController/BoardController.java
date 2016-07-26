@@ -2,6 +2,7 @@ package com.cafe24.phoenixooo.community.aController;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,8 @@ public class BoardController
 	@Autowired
 	private BoardService boardService;
 	
+	private Logger log=Logger.getLogger(this.getClass());
+	
 		//기본게시판으로 이동
 		@RequestMapping(value = "/phoenix/com/form/basicBoard", method = RequestMethod.GET)
 		public String moveToBasicBoard(Model model
@@ -29,6 +32,33 @@ public class BoardController
 			model.addAttribute("articleList", articleList);
 	        
 		return "/phoenix/com/basicBoard";
+		}
+		
+		//글 내용으로
+		@RequestMapping(value = "/phoenix/com/form/basicArticle", method = RequestMethod.GET)
+		public String selectBasicArticle(Model model
+				,@RequestParam("articleCode") String articleCode) {
+			log.debug("---------------------Method name : selectBasicArticle");
+			
+			System.out.println(articleCode+"<========아티클 코드");
+			Article article=boardService.getArticle(articleCode);
+			//System.out.println(article.getArticleCode()+"<--------아티클 코드");
+			model.addAttribute("article", article);		
+		return "/phoenix/com/article";
+		}
+		
+		//게시판 글쓰기 화면으로 이동
+		@RequestMapping(value = "/phoenix/com/form/insertingBasicArticle", method = RequestMethod.GET)
+		public String moveToInsertingBasicArticle() {
+		return "/phoenix/com/insertingBasicArticle";
+		}
+				
+		//글쓰기 등록
+		@RequestMapping(value = "/phoenix/com/form/insertBasicArticle", method = RequestMethod.POST)
+		public String insertBasicArticle(Model model,Article article) {
+			String articleCode=boardService.insertArticle(article);
+			model.addAttribute("articleCode", articleCode);
+		return "/phoenix/com/article";
 		}
 		
 		
@@ -42,17 +72,9 @@ public class BoardController
 		//이거 다시 짜야함
 		
 	
-		//게시판 글쓰기 화면으로 이동
-		@RequestMapping(value = "/phoenix/com/form/insertingBasicArticle", method = RequestMethod.GET)
-		public String moveToInsertingBasicArticle() {
-		return "/phoenix/com/insertingBasicArticle";
-		}
+		
 
-		//글 내용으로
-		@RequestMapping(value = "/phoenix/com/form/basicArticle", method = RequestMethod.GET)
-		public String selectBasicArticle() {
-		return "/phoenix/com/basicArticle";
-		}
+		
 
 		//글 수정 화면으로
 		@RequestMapping(value = "/phoenix/com/form/modifyingBasicArticle", method = RequestMethod.GET)

@@ -15,4 +15,47 @@
 		ORDER BY ARTICLE_CD ASC
 		LIMIT 0, 3
 	</select>
+	
+	<select id="selectArticle" parameterType="com.cafe24.phoenixooo.community.dModel.Article" resultType="com.cafe24.phoenixooo.community.dModel.Article">
+		SELECT
+			ARTICLE_CD as articleCode
+			,USER_CD as userCode
+			,BOARDGROUP_CD as boardGroupCode
+			,ARTICLE_NM as articleName
+			,ARTICLE_CTT as articleContent
+			,ARTICLE_DT as articleDate
+			,ARTICLE_IP as articleIp
+		FROM
+			COM_ARTICLE_TB
+		WHERE
+			ARTICLE_CD=#{articleCode}
+	</select>
+	
+	<insert id="insertArticle" parameterType="com.cafe24.phoenixooo.community.dModel.Article">	
+		INSERT INTO 
+			COM_ARTICLE_TB
+			(
+				ARTICLE_CD
+				,USER_CD
+				,BOARDGROUP_CD
+				,ARTICLE_NM
+				,ARTICLE_CTT
+				,ARTICLE_DT
+				,ARTICLE_IP
+			)
+		VALUES 
+			(
+				'COM_ARTICLE_6'
+				, 'COM_USER_3'
+				, 'COM_BOARDGROUP_3'
+				, #{articleName}
+				, #{articleContent}
+				, NOW()
+				, '테스트때문에'
+			)
+			
+		<selectKey resultType="String" keyProperty="articleCode" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+	</insert>
 </mapper>

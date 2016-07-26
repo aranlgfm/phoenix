@@ -13,6 +13,7 @@
 		기본 게시판
 	</h1>
 
+	<a href="/phoenix/com/form/insertingBasicArticle">글쓰기</a>
 	<table>
 		<tr>
 			<th>글번호</th>
@@ -23,8 +24,7 @@
 		<c:forEach var="list" items="${articleList}">
 			<tr>
 				<td>${list.articleCode}</td>
-				<td>${list.articleName}</td>
-				<td>${list.articleContent}</td>
+				<td><a href="/phoenix/com/form/basicArticle?articleCode=${list.articleCode}">${list.articleName}</a></td>
 			</tr>
 		</c:forEach>
 	</table>

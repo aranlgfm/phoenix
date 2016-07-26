@@ -22,5 +22,18 @@ public class BoardDaoImpl implements BoardDao
 	public List<Article> selectArticleList(Map<String, Object> map) {
 			return sqlSession.selectList(NS + ".selectArticleList", map);
 	}
+	
+	@Override
+	public Article selectArticle(Article article) {
+	
+		return sqlSession.selectOne(NS+".selectArticle", article);
+	}
+	
+	@Override
+	public String insertArticle(Article article) {
+		// TODO Auto-generated method stub
+		sqlSession.insert(NS+".insertArticle", article);
+		return article.getArticleCode();
+	}
 
 }

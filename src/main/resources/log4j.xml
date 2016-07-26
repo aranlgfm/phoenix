@@ -11,6 +11,9 @@
 	</appender>
 	
 	<!-- Application Loggers -->
+	<logger name="com.cafe24.phoenixooo.repository">
+		<level value="debug" />
+	</logger>
 	<logger name="com.cafe24.phoenixooo">
 		<level value="info" />
 	</logger>

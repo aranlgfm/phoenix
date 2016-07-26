@@ -8,12 +8,14 @@ import com.cafe24.phoenixooo.community.dModel.Comment;
 
 public interface BoardDao 
 {
-	//�Խ��� ȭ��. �Խñ۵��� ����Ʈ.
+	//글 목록 가져오기
 	List<Article> selectArticleList(Map<String,Object> map);
-	
-	/*int selectTotalCount(Map<String, Object> map);*/
-/*	//1�� ���� Ŭ������ ��, 1�� �ۿ� ���� ������ ��������
+	//글 1개 가져오기
 	Article selectArticle(Article article);
+	//글 1개 등록하기
+	String insertArticle(Article article);
+	/*int selectTotalCount(Map<String, Object> map);*/
+/*	
 	//1�� �� ���� ó��
 	int updateArticle(Article article);
 	//1�� �� ���� ó��

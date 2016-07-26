@@ -27,4 +27,17 @@ public class BoardServiceImpl implements BoardService
         map.put("boardGroupCode", boardGroupCode);
         return boardDao.selectArticleList(	map);
 	}
+	
+	@Override
+	public Article getArticle(String articleCode) {
+		Article article=new Article();
+		article.setArticleCode(articleCode);
+		return boardDao.selectArticle(article);
+	}
+	
+	@Override
+	public String insertArticle(Article article) {
+		// TODO Auto-generated method stub
+		return boardDao.insertArticle(article);
+	}
 }
