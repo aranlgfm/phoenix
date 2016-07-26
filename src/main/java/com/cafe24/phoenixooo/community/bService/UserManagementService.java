@@ -1,5 +1,7 @@
 package com.cafe24.phoenixooo.community.bService;
 
-public interface UserManagementService {
+import com.cafe24.phoenixooo.community.dModel.UserCustomer;
 
+public interface UserManagementService {
+	int insertUser(UserCustomer user);
 }

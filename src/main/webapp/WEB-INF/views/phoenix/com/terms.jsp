@@ -14,7 +14,10 @@
 </h1>
 
 <div>
-	<textarea>약관입니다.</textarea>
+	<textarea cols="80" rows="20">
+	제 1 조 (목적)
+이 약관은 네이버 주식회사 ("회사" 또는 "네이버")가 제공하는 네이버 및 네이버 관련 제반 서비스의 이용과 관련하여 회사와 회원과의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.
+	</textarea>
 </div>
 
 <div>
@@ -22,9 +25,9 @@
 </div>
 
 <div>
-	<a href="/phoenix/com/form/joiningAsCustomer">일반고객</a>
-	<a href="/phoenix/com/form/joiningAsDesigner">디자이너</a>
-	<a href="/phoenix/com/form/joiningAsDirector">원장님</a>
+	<a href="/phoenix/com/form/joiningAsCustomer?group=basic">일반고객</a>
+	<a href="/phoenix/com/form/joiningAsCustomer?group=designer">디자이너</a>
+	<a href="/phoenix/com/form/joiningAsCustomer?group=director">미용실</a>
 </div>
 
 </body>

@@ -1,4 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cafe24.phoenixooo.community.cRepository.TotalSearchMapper">
+<mapper namespace="com.cafe24.phoenixooo.community.cRepository.UserManagementMapper">
+
+	<insert id="insertUser" parameterType="com.cafe24.phoenixooo.community.dModel.UserCustomer">
+		INSERT INTO 
+		COM_USER_TB
+		(
+			USER_CD
+			,USER_GROUP_NM
+			,USER_NM
+			,USER_NICK_NM
+			,USER_ID
+			,USER_PW
+			,USER_SEX_FL
+			,USER_ANNIVERSARY_DT
+			,USER_BIRTH_DT
+			,USER_ADDR
+			,USER_POST_NO
+			,USER_EMAIL_ADDR
+			,USER_JOIN_DT
+			,USER_PHONE_NO
+			,USER_CELLPHONE_NO
+			,USER_INTRODUCE_CTT
+		) 
+		VALUES
+		(
+			#{userCode}
+			,#{userGroupName}
+			,#{userName}
+			,#{userNickName}
+			,#{userId}
+			,#{userPw}
+			,#{userSexFlag}
+			,#{userAnniversaryDate}
+			,#{userBirthdayDate}
+			,#{userAddress}
+			,#{userPostNumber}
+			,#{userEmailAddress}
+			,NOW()
+			,#{userPhoneNumber}
+			,#{userCellphoneNumber}
+			,#{userIntroduceContent}
+		)
+	</insert>
+	
+	<select id="getUserCode" resultType="String">
+		SELECT USER_CD 
+		FROM COM_USER_TB
+		order by USER_CD desc
+		LIMIT 0,1
+	</select>
 </mapper>
