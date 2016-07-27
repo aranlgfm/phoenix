@@ -33,6 +33,7 @@
 	</div>
 	<form>
 		<input class="recommendBtn" type="button" value="추천">
+		<a href="modifyingBasicArticle?articleCode=${article.articleCode }">수정</a>
 	</form>
 </body>
 </html>

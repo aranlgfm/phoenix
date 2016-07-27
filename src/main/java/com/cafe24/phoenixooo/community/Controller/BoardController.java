@@ -69,18 +69,26 @@ public class BoardController
 		return "/phoenix/com/designerBoard";
 		}
 		
-		//이거 다시 짜야함
-		
-	
 		
 
 		
-
 		//글 수정 화면으로
 		@RequestMapping(value = "/phoenix/com/form/modifyingBasicArticle", method = RequestMethod.GET)
+		public String moveToModifyingBasicArticle(Model model
+				,@RequestParam("articleCode") String articleCode) {
+			Article article=boardService.getArticle(articleCode);
+			model.addAttribute("article", article);	
+		return "/phoenix/com/modifyingBasicArticle";
+		}		
+		
+		// 글 수정 처리
+	/*	@RequestMapping(value = "/phoenix/com/form/modifyingBasicArticle", method = RequestMethod.GET)
 		public String moveToModifyingBasicArticle() {
 		return "/phoenix/com/modifyingBasicArticle";
 		}		
+		*/
+		
+		
 		
 		//글 삭제 화면으로
 		@RequestMapping(value = "/phoenix/com/form/deletingBasicArticle", method = RequestMethod.GET)

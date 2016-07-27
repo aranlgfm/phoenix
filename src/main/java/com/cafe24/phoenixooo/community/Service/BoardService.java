@@ -12,4 +12,6 @@ public interface BoardService
 	Article getArticle(String articleCode);
 	
 	String insertArticle(Article article);
+	
+	
 }
