@@ -25,10 +25,33 @@
         <property name="dataSource" ref="dataSource" />
         <property name="mapperLocations">
         	<list>
-				<value>classpath:com/cafe24/phoenixooo/community/cRepository/BoardMapper.xml</value>
-				<value>classpath:com/cafe24/phoenixooo/community/cRepository/SwMapper.xml</value>
-				<value>classpath:com/cafe24/phoenixooo/community/cRepository/TotalSearchMapper.xml</value>
-				<value>classpath:com/cafe24/phoenixooo/community/cRepository/UserManagementMapper.xml</value>
+				<value>classpath:com/cafe24/phoenixooo/community/Repository/BoardMapper.xml</value>
+				<value>classpath:com/cafe24/phoenixooo/community/Repository/SwMapper.xml</value>
+				<value>classpath:com/cafe24/phoenixooo/community/Repository/TotalSearchMapper.xml</value>
+				<value>classpath:com/cafe24/phoenixooo/community/Repository/UserManagementMapper.xml</value>
+				
+				<value>classpath:com/cafe24/phoenixooo/crm/businessManagement/Repository/BusinessManagementSettingMapper.xml</value>
+				<value>classpath:com/cafe24/phoenixooo/crm/businessManagement/Repository/GoodsMapper.xml</value>
+				<value>classpath:com/cafe24/phoenixooo/crm/businessManagement/Repository/ProcedureMapper.xml</value>
+				<value>classpath:com/cafe24/phoenixooo/crm/businessManagement/Repository/ReservationMapper.xml</value>
+				
+				<value>classpath:com/cafe24/phoenixooo/crm/CustomerManagement/Repository/CustomerManagementSettingMapper.xml</value>
+				<value>classpath:com/cafe24/phoenixooo/crm/CustomerManagement/Repository/CustomerMapper.xml</value>
+				
+				<value>classpath:com/cafe24/phoenixooo/crm/employeeManagement/Repository/CustomerMapper.xml</value>
+				<value>classpath:com/cafe24/phoenixooo/crm/employeeManagement/Repository/EmployeeManagementSettingMapper.xml</value>
+				<value>classpath:com/cafe24/phoenixooo/crm/employeeManagement/Repository/EmployeeSalaryMapper.xml</value>
+				
+				<value>classpath:com/cafe24/phoenixooo/crm/salesManagement/Repository/EmployeeSalesMapper.xml</value>
+				<value>classpath:com/cafe24/phoenixooo/crm/salesManagement/Repository/PeriodMapper.xml</value>
+				<value>classpath:com/cafe24/phoenixooo/crm/salesManagement/Repository/TotalSalesMapper.xml</value>
+				
+				<value>classpath:com/cafe24/phoenixooo/crm/stockManagement/Repository/EtcCostMapper.xml</value>
+				<value>classpath:com/cafe24/phoenixooo/crm/stockManagement/Repository/GoodsPaymentMapper.xml</value>
+				<value>classpath:com/cafe24/phoenixooo/crm/stockManagement/Repository/GoodsStockMapper.xml</value>
+				<value>classpath:com/cafe24/phoenixooo/crm/stockManagement/Repository/GoodsUseMapper.xml</value>
+				<value>classpath:com/cafe24/phoenixooo/crm/stockManagement/Repository/StockManagementSettingMapper.xml</value>
+				
         	</list>
         </property>
     </bean>

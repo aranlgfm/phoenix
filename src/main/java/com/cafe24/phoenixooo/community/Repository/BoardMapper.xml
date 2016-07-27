@@ -16,7 +16,7 @@
 		LIMIT 0, 3
 	</select>
 	
-	<select id="selectArticle" parameterType="com.cafe24.phoenixooo.community.dModel.Article" resultType="com.cafe24.phoenixooo.community.Model.Article">
+	<select id="selectArticle" parameterType="com.cafe24.phoenixooo.community.Model.Article" resultType="com.cafe24.phoenixooo.community.Model.Article">
 		SELECT
 			ARTICLE_CD as articleCode
 			,USER_CD as userCode
