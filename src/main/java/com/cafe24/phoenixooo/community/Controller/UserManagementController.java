@@ -74,12 +74,10 @@ public class UserManagementController {
 	 */
 	@RequestMapping(value = "/phoenix/com/process/joiningAsCustomer", method = RequestMethod.POST)
 	public String comProcessJoiningAsCustomer(UserCustomer user) {
-		System.out.println("안녕...처리화면이야");
-		System.out.println(user);
 		userService.insertUser(user);
+		
 		String url = null;
-		System.out.println("가입처리 이 ㅅ.");
-		System.out.println(user.getUserGroupName());
+		
 		if(user.getUserGroupName().equals("미용실원장")){
 			url = "/phoenix/com/joiningAsDirector";
 		}else if(user.getUserGroupName().equals("디자이너")){
@@ -105,11 +103,11 @@ public class UserManagementController {
 	 * @return
 	 */
 	@RequestMapping(value = "/phoenix/com/process/joiningAsDirector", method = RequestMethod.POST)
-	public String comFormJoiningAsDirector() {
-		//System.out.println(user.getShopName());
-		//System.out.println(user.getBusinessNumber());
-		return "/phoenix/com/joiningAsDirector";
-		//return "/phoenix";
+	public String comFormJoiningAsDirector(UserDirector user) {
+		System.out.println("123");
+		userService.insertDirector(user);
+		
+		return "/phoenix";
 	}
 	
 	/**

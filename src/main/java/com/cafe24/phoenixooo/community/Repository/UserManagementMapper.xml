@@ -59,7 +59,7 @@
 		VALUES
 		(
 			#{shopCode}
-			,#{userCustomer.userCode}
+			,'user_test'
 			,#{shopName}
 			,#{shopPostNumber}
 			,#{shopAddress}

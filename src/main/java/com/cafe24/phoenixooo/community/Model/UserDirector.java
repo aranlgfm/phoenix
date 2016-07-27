@@ -16,6 +16,15 @@ public class UserDirector {
 	private int businessNumber;
 	private String shopMemo;
 	
+	
+	public String getShopPostNumber() {
+		return shopPostNumber;
+	}
+	public void setShopPostNumber(String shopPostNumber) {
+		this.shopPostNumber = shopPostNumber;
+	}
+
+	
 	public String getShopCode() {
 		return shopCode;
 	}
@@ -56,9 +65,11 @@ public class UserDirector {
 	@Override
 	public String toString() {
 		return "UserDirector [shopCode=" + shopCode + ", userCustomer=" + userCustomer + ", shopName=" + shopName
-				+ ", shopAddress=" + shopAddress + ", businessNumber=" + businessNumber + ", shopMemo=" + shopMemo
-				+ "]";
+				+ ", shopAddress=" + shopAddress + ", shopPostNumber=" + shopPostNumber + ", businessNumber="
+				+ businessNumber + ", shopMemo=" + shopMemo + "]";
 	}
+	
+
 	
 	
 	

@@ -8,7 +8,6 @@ package com.cafe24.phoenixooo.community.Model;
 
 public class UserCustomer {
 	
-	
 	/*회원가입 Userjoin
 	회원정보수정 Usermodify
 	아이디찾기 UserfindId
