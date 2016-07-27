@@ -145,7 +145,7 @@ public class UserManagementController {
 	@RequestMapping(value = "/phoenix/com/process/findingPw", method = RequestMethod.POST)
 	public String comProcessFindingPw(UserCustomer user) {
 		userService.findingPw(user);
-		return "/phoenix/com/login";
+		return "/phoenix/com/test";
 	}
 
 	/**

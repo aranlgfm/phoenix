@@ -67,13 +67,22 @@ public class UserManagementServiceImpl implements UserManagementService {
 		}
 		return 0;
 	}
-
+	
+	/**
+	 * (서비스구현)비번찾기 and 인증번호보내기
+	 */
 	@Override
 	public int findingPw(UserCustomer user) {
 		String result = userDao.finding(user);
 		if(null != result && "" != result){
+			
+			
+			
 			System.out.println("인증번호를 메일로 보냈습니다.");
 		}else{
+			
+			
+			
 			System.out.println("없다.");
 		}
 		return 0;
