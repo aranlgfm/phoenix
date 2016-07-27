@@ -125,7 +125,6 @@ public class UserManagementController {
 	 */
 	@RequestMapping(value = "/phoenix/com/process/findingId", method = RequestMethod.POST)
 	public String comProcessFindingId(UserCustomer user) {
-		System.out.println("어쩔 수 없다.");
 		userService.findingId(user);
 		return "/phoenix/com/login";
 	}
@@ -136,16 +135,17 @@ public class UserManagementController {
 	 */
 	@RequestMapping(value = "/phoenix/com/form/findingPw", method = RequestMethod.GET)
 	public String comFormFindingPw() {
-	return "/phoenix/com/findingPw";
+		return "/phoenix/com/findingPw";
 	}
 	
 	/**
 	 * 7.커뮤니티 비번찾기 처리
 	 * @return
 	 */
-	@RequestMapping(value = "/phoenix/com/process/findingPw", method = RequestMethod.GET)
-	public String comProcessFindingPw() {
-	return "/phoenix/com/login";
+	@RequestMapping(value = "/phoenix/com/process/findingPw", method = RequestMethod.POST)
+	public String comProcessFindingPw(UserCustomer user) {
+		userService.findingPw(user);
+		return "/phoenix/com/login";
 	}
 
 	/**

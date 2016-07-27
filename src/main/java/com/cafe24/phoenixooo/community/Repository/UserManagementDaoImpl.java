@@ -18,7 +18,7 @@ public class UserManagementDaoImpl implements UserManagementDao {
 	private SqlSessionTemplate sqlSession;
 	
 	/**
-	 * 기본회원가입
+	 * (DAO구현)기본회원가입
 	 */
 	@Override
 	public int insertUser(UserCustomer user) {
@@ -26,7 +26,7 @@ public class UserManagementDaoImpl implements UserManagementDao {
 	}
 	
 	/**
-	 * 미용실 추가입력
+	 * (DAO구현)미용실 추가입력
 	 */
 	@Override
 	public int insertDirector(UserDirector user){
@@ -34,7 +34,7 @@ public class UserManagementDaoImpl implements UserManagementDao {
 	}
 	
 	/**
-	 * 디자이너 추가입력
+	 * (DAO구현)디자이너 추가입력
 	 */
 	@Override
 	public int insertDesigner(UserDesigner user){
@@ -42,7 +42,7 @@ public class UserManagementDaoImpl implements UserManagementDao {
 	}
 	
 	/**
-	 * USERCODE 증가 메서드
+	 * (DAO구현)USERCODE 증가 메서드
 	 */
 
 	@Override
@@ -55,7 +55,7 @@ public class UserManagementDaoImpl implements UserManagementDao {
 	}
 	
 	/**
-	 * SHOPCODE 증가 메서드
+	 * (DAO구현)SHOPCODE 증가 메서드
 	 */
 	@Override
 	public String getShopCode() {
@@ -67,10 +67,18 @@ public class UserManagementDaoImpl implements UserManagementDao {
 	}
 	
 	/**
-	 * 아이디찾기 메서드
+	 * (DAO구현)아이디찾기 메서드
 	 */
 	@Override
-	public String findingId(UserCustomer user) {
+	public String finding(UserCustomer user) {
+		return sqlSession.selectOne(NS+".finding",user);
+	}
+	
+	/**
+	 * (DAO구현)비번찾기 메서드
+	 */
+	@Override
+	public String findingPw(UserCustomer user) {
 		return sqlSession.selectOne(NS+".findingId",user);
 	}
 

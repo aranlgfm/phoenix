@@ -59,11 +59,22 @@ public class UserManagementServiceImpl implements UserManagementService {
 	 */
 	@Override
 	public int findingId(UserCustomer user) {
-		String result = userDao.findingId(user);
+		String result = userDao.finding(user);
 		if(null != result && "" != result){
-			System.out.println("메일을 보냈습니다.");
+			System.out.println("아이디는 : '"+result+"' 입니다.");
 		}else{
 			System.out.println("일치하는 회원이 없습니다.");
+		}
+		return 0;
+	}
+
+	@Override
+	public int findingPw(UserCustomer user) {
+		String result = userDao.finding(user);
+		if(null != result && "" != result){
+			System.out.println("인증번호를 메일로 보냈습니다.");
+		}else{
+			System.out.println("없다.");
 		}
 		return 0;
 	}

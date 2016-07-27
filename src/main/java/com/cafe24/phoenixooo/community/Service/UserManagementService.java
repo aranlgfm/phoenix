@@ -31,4 +31,11 @@ public interface UserManagementService {
 	 * @return
 	 */
 	int findingId(UserCustomer user);
+	
+	/**
+	 * (서비스) 비번찾기
+	 * @param user
+	 * @return
+	 */
+	int findingPw(UserCustomer user);
 }

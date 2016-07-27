@@ -7,7 +7,8 @@
 		2.디자이너회원가입(UserDesigner : 기존에 있는 미용실코드 업데이트)
 		3.미용실회원가입(UserDirector : 추가입력)미용실 코드 추가 및 미용실 상세정보 입력)
 		4.유저코드셀렉(미용실 추가입력(4번) 등록시 필요한 메서드)
-	
+		5. 아이디/비번찾기 셀렉 
+		
 	
 	
 	-->
@@ -113,13 +114,26 @@
 		WHERE USER_ID = #{userId}
 	</select>
 	
-	
 	<!-- 5. 아이디찾기 셀렉  -->
-	<select id="findingId" parameterType="com.cafe24.phoenixooo.community.Model.UserCustomer" resultType="String">
-		SELECT USER_EMAIL_ADDR
-		FROM COM_USER_TB
-		WHERE 
-			USER_EMAIL_ADDR = #{userEmailAddress} AND 
-			USER_NM = #{userName} 
+	<select id="finding" parameterType="com.cafe24.phoenixooo.community.Model.UserCustomer" resultType="String">
+		<choose>
+			<!-- 아이디찾기 -->
+			<when test="userName != null and userName !='' ">
+				SELECT USER_ID
+				FROM COM_USER_TB
+				WHERE 
+				USER_EMAIL_ADDR = #{userEmailAddress} AND 
+				USER_NM = #{userName} 
+			</when>
+			
+			<!-- 비밀번호찾기 -->
+			<when test="userId  != null and userId !='' ">
+				SELECT USER_EMAIL_ADDR
+				FROM COM_USER_TB
+				WHERE 
+				USER_EMAIL_ADDR = #{userEmailAddress} AND 
+				USER_ID = #{userId} 
+			</when>
+		</choose>
 	</select>
 </mapper>
