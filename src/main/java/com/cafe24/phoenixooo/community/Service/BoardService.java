@@ -14,4 +14,7 @@ public interface BoardService
 	String insertArticle(Article article);
 	
 	Article modifyArticle(Article article);
+	
+	//글 1개 삭제
+	int deleteArticle(Article article);
 }

@@ -52,4 +52,12 @@ public class BoardServiceImpl implements BoardService
 		}
 		return article2;
 	}
+	
+	//글 1개 삭제
+	@Override
+	public int deleteArticle(Article article) {
+		return boardDao.deleteArticle(article);
+	}
+	
+	
 }

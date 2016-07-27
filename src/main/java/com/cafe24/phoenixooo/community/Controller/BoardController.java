@@ -93,11 +93,46 @@ public class BoardController
 		}		
 		
 		
+		//글 삭제 처리
+		@RequestMapping(value = "/phoenix/com/process/deleteBasicArticle", method = RequestMethod.GET)
+		public String deleteBasicArticle(Article article, Model model) {
+			System.out.println(article.getBoardGroupCode()+"<-----머냐");
+			boardService.deleteArticle(article);
+			model.addAttribute("boardGroupCode", article.getBoardGroupCode());
+			return "redirect:/phoenix/com/form/basicBoard";
+			}
 		
-		
-		//글 삭제 화면으로
-		@RequestMapping(value = "/phoenix/com/form/deletingBasicArticle", method = RequestMethod.GET)
-		public String moveToDeletingBasicArticle() {
-		return "/phoenix/com/deletingBasicArticle";
-		}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

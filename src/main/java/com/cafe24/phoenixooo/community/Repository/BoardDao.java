@@ -18,10 +18,14 @@ public interface BoardDao
 	
 	//글 수정하기
 	int updateArticle(Article article);
-	/*//1�� �� ���� ó��
+	
+	
+	//글 삭제하기
 	int deleteArticle(Article article);
+
+	
 	//��� ��� ó��
-	int insertComment(Comment comment);
+	//int insertComment(Comment comment);
 	//��� ���� ó��
-	int deleteComment(Comment comment);*/
+	//int deleteComment(Comment comment);*/
 }

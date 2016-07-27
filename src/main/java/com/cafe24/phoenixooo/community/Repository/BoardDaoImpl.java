@@ -42,4 +42,11 @@ public class BoardDaoImpl implements BoardDao
 		// TODO Auto-generated method stub
 		return sqlSession.update(NS+".updateArticle", article);
 	}
+	
+	//글 1개 삭제
+	@Override
+	public int deleteArticle(Article article) {
+		return sqlSession.delete(NS+".deleteArticle", article);
+	}
+	
 }

@@ -33,7 +33,9 @@
 	</div>
 	<form>
 		<input class="recommendBtn" type="button" value="추천">
-		<a href="modifyingBasicArticle?articleCode=${article.articleCode }">수정</a>
 	</form>
+	
+	<a href="/phoenix/com/form/modifyingBasicArticle?articleCode=${article.articleCode }">수정</a>
+	<a href="/phoenix/com/process/deleteBasicArticle?articleCode=${article.articleCode }&boardGroupCode=${article.boardGroupCode}">삭제</a>
 </body>
 </html>
