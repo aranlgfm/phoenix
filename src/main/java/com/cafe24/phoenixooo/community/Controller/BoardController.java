@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cafe24.phoenixooo.community.Model.Article;
+import com.cafe24.phoenixooo.community.Model.Comment;
 import com.cafe24.phoenixooo.community.Service.BoardService;
 
 
@@ -37,13 +38,13 @@ public class BoardController
 		//글 내용으로
 		@RequestMapping(value = "/phoenix/com/form/basicArticle", method = RequestMethod.GET)
 		public String selectBasicArticle(Model model
-				,@RequestParam("articleCode") String articleCode) {
+				,Article article) {
 			log.debug("---------------------Method name : selectBasicArticle");
 			
-			System.out.println(articleCode+"<========아티클 코드");
-			Article article=boardService.getArticle(articleCode);
+			//System.out.println(articleCode+"<========아티클 코드");
+			Article article2=boardService.getArticle(article);
 			//System.out.println(article.getArticleCode()+"<--------아티클 코드");
-			model.addAttribute("article", article);		
+			model.addAttribute("article", article2);		
 		return "/phoenix/com/article";
 		}
 		
@@ -75,9 +76,9 @@ public class BoardController
 		//글 수정 화면으로
 		@RequestMapping(value = "/phoenix/com/form/modifyingBasicArticle", method = RequestMethod.GET)
 		public String moveToModifyingBasicArticle(Model model
-				,@RequestParam("articleCode") String articleCode) {
-			Article article=boardService.getArticle(articleCode);
-			model.addAttribute("article", article);	
+				,Article article) {
+			Article article2=boardService.getArticle(article);
+			model.addAttribute("article", article2);	
 		return "/phoenix/com/modifyingBasicArticle";
 		}		
 		
@@ -100,12 +101,17 @@ public class BoardController
 			boardService.deleteArticle(article);
 			model.addAttribute("boardGroupCode", article.getBoardGroupCode());
 			return "redirect:/phoenix/com/form/basicBoard";
-			}
+		}
+		
+		//댓글 등록
+		@RequestMapping(value = "/phoenix/com/process/insertComment", method = RequestMethod.POST)
+		public String insertComment(Comment comment, Model model) {
+			boardService.insertComment(comment);
+			model.addAttribute("articleCode", comment.getArticleCode());
+			return "redirect:/phoenix/com/form/basicArticle";
+		}
 		
 }
-
-
-
 
 
 

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cafe24.phoenixooo.community.Model.Article;
+import com.cafe24.phoenixooo.community.Model.Comment;
 import com.cafe24.phoenixooo.community.Repository.BoardDao;
 
 
@@ -28,11 +29,18 @@ public class BoardServiceImpl implements BoardService
         return boardDao.selectArticleList(	map);
 	}
 	
+	//글 1개  가져오기
 	@Override
-	public Article getArticle(String articleCode) {
-		Article article=new Article();
-		article.setArticleCode(articleCode);
-		return boardDao.selectArticle(article);
+	public Article getArticle(Article article) {
+		Article article2=boardDao.selectArticle(article);
+	//	System.out.println(article.getArticleCode()+"<------------------article code");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("articleCode", article.getArticleCode());
+		
+		article2.setCommentList(boardDao.selectCommentList(map));
+		System.out.println(article2.getCommentList()+"<--------------commentlist의 참조값");
+		return article2;
 	}
 	
 	@Override
@@ -59,5 +67,9 @@ public class BoardServiceImpl implements BoardService
 		return boardDao.deleteArticle(article);
 	}
 	
-	
+	//댓글 등록
+	@Override
+	public int insertComment(Comment comment) {
+		return boardDao.insertComment(comment);
+	}
 }

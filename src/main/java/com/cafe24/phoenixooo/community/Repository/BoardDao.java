@@ -10,22 +10,27 @@ public interface BoardDao
 {
 	//글 목록 가져오기
 	List<Article> selectArticleList(Map<String,Object> map);
+	
 	//글 1개 가져오기
 	Article selectArticle(Article article);
+	
 	//글 1개 등록하기
 	String insertArticle(Article article);
+	
 	/*int selectTotalCount(Map<String, Object> map);*/
 	
 	//글 수정하기
 	int updateArticle(Article article);
 	
-	
 	//글 삭제하기
 	int deleteArticle(Article article);
 
+	//댓글 리스트 가져오기
+	List<Comment> selectCommentList(Map<String,Object> map);
 	
-	//��� ��� ó��
-	//int insertComment(Comment comment);
+	//댓글등록
+	int insertComment(Comment comment);
+	
 	//��� ���� ó��
 	//int deleteComment(Comment comment);*/
 }

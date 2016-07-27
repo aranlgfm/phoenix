@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.cafe24.phoenixooo.community.Model.Article;
+import com.cafe24.phoenixooo.community.Model.Comment;
 
 @Repository
 public class BoardDaoImpl implements BoardDao
@@ -23,6 +24,7 @@ public class BoardDaoImpl implements BoardDao
 			return sqlSession.selectList(NS + ".selectArticleList", map);
 	}
 	
+	//글 1개 가져오기
 	@Override
 	public Article selectArticle(Article article) {
 	
@@ -49,4 +51,17 @@ public class BoardDaoImpl implements BoardDao
 		return sqlSession.delete(NS+".deleteArticle", article);
 	}
 	
+	//댓글등록
+	@Override
+	public int insertComment(Comment comment) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(NS+".insertComment", comment);
+	}
+	
+	//댓글목록 가져오기
+	@Override
+	public List<Comment> selectCommentList(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NS+".selectCommentList", map);
+	}
 }
