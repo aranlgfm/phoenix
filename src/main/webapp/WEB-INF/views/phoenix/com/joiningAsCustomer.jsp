@@ -99,30 +99,6 @@
 				<td>자기소개</td><!-- userBirthdayDate -->
 				<td><textarea cols="70" rows="5">입력해라...귀찮아도...</textarea></td>
 			</tr>
-			
-			<!-- 디자이너 분기 -->
-				<c:if test="${group eq 'designer'}">
-					<tr>
-						<td><hr/></td>
-						<td><hr/></td>
-					</tr>
-					<tr>
-						<td>미용실코드</td>
-						<td><input type="text" size="12"/></td>
-					</tr>
-					<tr>
-						<td>미용실 명</td>
-						<td><input type="text" size="12" readonly="readonly"/></td>
-					</tr>
-					<tr>
-						<td>우편번호</td>
-						<td><input type="text" size="7" readonly="readonly"/></td>
-					</tr>
-					<tr>
-						<td>상세주소</td>
-						<td><input type="text" readonly="readonly"/></td>
-					</tr>
-				</c:if>
 		</table>
 	<input type="submit" value="확인"/>
 	<a href="/phoenix/com/form/terms"><input type="button" value="취소"/></a>

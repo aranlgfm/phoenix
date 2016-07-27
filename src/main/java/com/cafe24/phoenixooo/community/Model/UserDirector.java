@@ -6,36 +6,22 @@ package com.cafe24.phoenixooo.community.Model;
  * @author 201-24
  *
  */
-public class UserDirector {
+public class UserDirector extends UserCustomer {
 
 	private String shopCode;
-	private UserCustomer userCustomer;
 	private String shopName;
 	private String shopAddress;
 	private String shopPostNumber;
 	private int businessNumber;
 	private String shopMemo;
+	private String shopJoinDate;
 	
-	
-	public String getShopPostNumber() {
-		return shopPostNumber;
-	}
-	public void setShopPostNumber(String shopPostNumber) {
-		this.shopPostNumber = shopPostNumber;
-	}
-
 	
 	public String getShopCode() {
 		return shopCode;
 	}
 	public void setShopCode(String shopCode) {
 		this.shopCode = shopCode;
-	}
-	public UserCustomer getUserCustomer() {
-		return userCustomer;
-	}
-	public void setUserCustomer(UserCustomer userCustomer) {
-		this.userCustomer = userCustomer;
 	}
 	public String getShopName() {
 		return shopName;
@@ -49,6 +35,12 @@ public class UserDirector {
 	public void setShopAddress(String shopAddress) {
 		this.shopAddress = shopAddress;
 	}
+	public String getShopPostNumber() {
+		return shopPostNumber;
+	}
+	public void setShopPostNumber(String shopPostNumber) {
+		this.shopPostNumber = shopPostNumber;
+	}
 	public int getBusinessNumber() {
 		return businessNumber;
 	}
@@ -61,14 +53,20 @@ public class UserDirector {
 	public void setShopMemo(String shopMemo) {
 		this.shopMemo = shopMemo;
 	}
+	public String getShopJoinDate() {
+		return shopJoinDate;
+	}
+	public void setShopJoinDate(String shopJoinDate) {
+		this.shopJoinDate = shopJoinDate;
+	}
+	
 	
 	@Override
 	public String toString() {
-		return "UserDirector [shopCode=" + shopCode + ", userCustomer=" + userCustomer + ", shopName=" + shopName
-				+ ", shopAddress=" + shopAddress + ", shopPostNumber=" + shopPostNumber + ", businessNumber="
-				+ businessNumber + ", shopMemo=" + shopMemo + "]";
+		return "UserDirector [shopCode=" + shopCode + ", shopName=" + shopName + ", shopAddress=" + shopAddress
+				+ ", shopPostNumber=" + shopPostNumber + ", businessNumber=" + businessNumber + ", shopMemo=" + shopMemo
+				+ ", shopJoinDate=" + shopJoinDate + "]";
 	}
-	
 
 	
 	

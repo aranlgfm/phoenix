@@ -8,15 +8,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cafe24.phoenixooo.community.Model.UserCustomer;
+import com.cafe24.phoenixooo.community.Model.UserDesigner;
 import com.cafe24.phoenixooo.community.Model.UserDirector;
 import com.cafe24.phoenixooo.community.Service.UserManagementService;
 
 /**
  * 1.회원가입약관  
  * 2.커뮤니티 로그인 
- * 3.일반고객 가입화면 - 분기함.
- * 4.디자이너 가입화면
- * 5.미용실원장 가입화면
+ * 3.일반고객 가입화면 - 분기(디자이너,원장).
+ * 4.디자이너 가입
+ * 5.미용실원장 가입
+ 
  * 6.아이디 찾기 
  * 7.비번 찾기 
  * 8.회원수정
@@ -62,8 +64,6 @@ public class UserManagementController {
 	@RequestMapping(value = "/phoenix/com/form/joiningAsCustomer", method = RequestMethod.GET)
 	public String comFormJoiningAsCustomer(@RequestParam(value="group") String word, Model model) {
 		model.addAttribute("group", word);
-		System.out.println(word);
-		System.out.println("안녕 가입화면이야");
 		return "/phoenix/com/joiningAsCustomer";
 	}
 	
@@ -73,14 +73,16 @@ public class UserManagementController {
 	 * @return
 	 */
 	@RequestMapping(value = "/phoenix/com/process/joiningAsCustomer", method = RequestMethod.POST)
-	public String comProcessJoiningAsCustomer(UserCustomer user) {
-		userService.insertUser(user);
-		
+	public String comProcessJoiningAsCustomer(UserCustomer user,Model model) {
+		String result = null; 
 		String url = null;
+		result = userService.insertUser(user);
 		
 		if(user.getUserGroupName().equals("미용실원장")){
+			model.addAttribute("userCode",result);
 			url = "/phoenix/com/joiningAsDirector";
 		}else if(user.getUserGroupName().equals("디자이너")){
+			model.addAttribute("userCode",result);
 			url = "/phoenix/com/joiningAsDesigner";
 		}else{
 			url = "/phoenix";
@@ -93,8 +95,8 @@ public class UserManagementController {
 	 * @return
 	 */
 	@RequestMapping(value = "/phoenix/com/process/joiningAsDesigner", method = RequestMethod.POST)
-	public String comProcessJoiningAsDesigner() {
-		
+	public String comProcessJoiningAsDesigner(UserDesigner user) {
+		userService.insertDesigner(user);
 		return "/phoenix";
 	}
 	
@@ -104,9 +106,7 @@ public class UserManagementController {
 	 */
 	@RequestMapping(value = "/phoenix/com/process/joiningAsDirector", method = RequestMethod.POST)
 	public String comFormJoiningAsDirector(UserDirector user) {
-		System.out.println("123");
 		userService.insertDirector(user);
-		
 		return "/phoenix";
 	}
 	
@@ -123,8 +123,10 @@ public class UserManagementController {
 	 * 6.커뮤니티 아이디찾기 처리
 	 * @return
 	 */
-	@RequestMapping(value = "/phoenix/com/process/findingId", method = RequestMethod.GET)
-	public String comProcessFindingId() {
+	@RequestMapping(value = "/phoenix/com/process/findingId", method = RequestMethod.POST)
+	public String comProcessFindingId(UserCustomer user) {
+		System.out.println("어쩔 수 없다.");
+		userService.findingId(user);
 		return "/phoenix/com/login";
 	}
 	

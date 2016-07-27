@@ -11,7 +11,7 @@
 <body>
 <h1>추가정보 입력</h1>
 	<form action="/phoenix/com/process/joiningAsDirector" method="POST">
-		<input type="hidden" name="shopCode" value="123">	
+		<input type="hidden" name="userCode" value="${userCode}">	
 		<table>	
 			<tr>
 				<td>* 미용실 명</td>

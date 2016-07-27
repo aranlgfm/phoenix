@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cafe24.phoenixooo.community.Model.UserCustomer;
+import com.cafe24.phoenixooo.community.Model.UserDesigner;
 import com.cafe24.phoenixooo.community.Model.UserDirector;
 import com.cafe24.phoenixooo.community.Repository.UserManagementDao;
 
@@ -13,12 +14,15 @@ public class UserManagementServiceImpl implements UserManagementService {
 	private UserManagementDao userDao;
 	
 	/**
-	 * 기본회원가입
+	 * (서비스구현)기본회원가입
 	 */
 	@Override
-	public int insertUser(UserCustomer user) {
+	public String insertUser(UserCustomer user) {
+		//유저코드 겟
+		String userCode = userDao.getUserCode(); 
 		//유저코드 세팅
-		user.setUserCode(userDao.getUserCode());
+		user.setUserCode(userCode);
+		
 		if(user.getUserGroupName().equals("director")){
 			user.setUserGroupName("미용실원장");
 		}else if(user.getUserGroupName().equals("designer")){
@@ -26,12 +30,43 @@ public class UserManagementServiceImpl implements UserManagementService {
 		}else {
 			user.setUserGroupName("회원");	
 		}
-		return userDao.insertUser(user);
+		
+		userDao.insertUser(user);
+		return userCode;
 	}
 	
+	/**
+	 * (서비스구현)원장가입
+	 */
 	@Override
 	public int insertDirector(UserDirector user) {
+		user.setShopCode(userDao.getShopCode());
 		return userDao.insertDirector(user);
 	}
+
+	/**
+	 * (서비스구현)디자이너가입
+	 */
+	@Override
+	public int insertDesigner(UserDesigner user) {
+		userDao.insertDesigner(user);
+		return 0;
+	}
+	
+	/**
+	 * (서비스구현)아이디찾기
+	 * 수정중
+	 */
+	@Override
+	public int findingId(UserCustomer user) {
+		String result = userDao.findingId(user);
+		if(null != result && "" != result){
+			System.out.println("메일을 보냈습니다.");
+		}else{
+			System.out.println("일치하는 회원이 없습니다.");
+		}
+		return 0;
+	}
+	
 	
 }
