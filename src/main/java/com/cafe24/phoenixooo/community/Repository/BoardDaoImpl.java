@@ -36,4 +36,10 @@ public class BoardDaoImpl implements BoardDao
 		return article.getArticleCode();
 	}
 
+	//글 1개 수정
+	@Override
+	public int updateArticle(Article article) {
+		// TODO Auto-generated method stub
+		return sqlSession.update(NS+".updateArticle", article);
+	}
 }

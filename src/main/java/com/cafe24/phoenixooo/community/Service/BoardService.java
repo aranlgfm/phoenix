@@ -13,5 +13,5 @@ public interface BoardService
 	
 	String insertArticle(Article article);
 	
-	
+	Article modifyArticle(Article article);
 }

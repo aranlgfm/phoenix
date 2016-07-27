@@ -40,4 +40,16 @@ public class BoardServiceImpl implements BoardService
 		// TODO Auto-generated method stub
 		return boardDao.insertArticle(article);
 	}
+	
+	//글 1개 수정
+	@Override
+	public Article modifyArticle(Article article) {
+		int result= boardDao.updateArticle(article);
+		Article article2=null;
+		if(result==1)
+		{
+			article2=boardDao.selectArticle(article);
+		}
+		return article2;
+	}
 }

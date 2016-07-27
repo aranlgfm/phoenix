@@ -58,4 +58,15 @@
             SELECT LAST_INSERT_ID()
         </selectKey>
 	</insert>
+	
+	<update id="updateArticle" parameterType="com.cafe24.phoenixooo.community.Model.Article">
+		UPDATE 
+			COM_ARTICLE_TB
+		SET
+			ARTICLE_NM = #{articleName},
+			ARTICLE_CTT = #{articleContent}
+		WHERE 
+			ARTICLE_CD= #{articleCode}
+	
+	</update>
 </mapper>

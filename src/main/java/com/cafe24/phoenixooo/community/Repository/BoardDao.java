@@ -15,10 +15,10 @@ public interface BoardDao
 	//글 1개 등록하기
 	String insertArticle(Article article);
 	/*int selectTotalCount(Map<String, Object> map);*/
-/*	
-	//1�� �� ���� ó��
+	
+	//글 수정하기
 	int updateArticle(Article article);
-	//1�� �� ���� ó��
+	/*//1�� �� ���� ó��
 	int deleteArticle(Article article);
 	//��� ��� ó��
 	int insertComment(Comment comment);

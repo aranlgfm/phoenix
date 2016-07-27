@@ -82,11 +82,16 @@ public class BoardController
 		}		
 		
 		// 글 수정 처리
-	/*	@RequestMapping(value = "/phoenix/com/form/modifyingBasicArticle", method = RequestMethod.GET)
-		public String moveToModifyingBasicArticle() {
-		return "/phoenix/com/modifyingBasicArticle";
+		@RequestMapping(value = "/phoenix/com/form/modifyBasicArticle", method = RequestMethod.POST)
+		public String modifyBasicArticle(Model model, Article article) {
+			System.out.println(article.getArticleCode()+"<--------------------article code");
+			System.out.println(article.getArticleName()+"<--------------------getArticleName");
+			System.out.println(article.getArticleContent()+"<--------------------getArticleContent");
+			Article article2=boardService.modifyArticle(article);
+			model.addAttribute("article", article2);	
+		return "/phoenix/com/article";
 		}		
-		*/
+		
 		
 		
 		
