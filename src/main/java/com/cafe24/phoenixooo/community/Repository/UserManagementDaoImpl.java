@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.cafe24.phoenixooo.community.Model.UserCustomer;
+import com.cafe24.phoenixooo.community.Model.UserDirector;
 
 @Repository
 public class UserManagementDaoImpl implements UserManagementDao {
@@ -19,6 +20,12 @@ public class UserManagementDaoImpl implements UserManagementDao {
 	public int insertUser(UserCustomer user) {
 		System.out.println("DAO여");
 		return sqlSession.insert(NS+".insertUser",user);
+	}
+	
+	@Override
+	public int insertDirector(UserDirector user){
+		System.out.println("Director");
+		return sqlSession.insert(NS+".insertDirector",user); 
 	}
 	
 	/**
@@ -36,6 +43,7 @@ public class UserManagementDaoImpl implements UserManagementDao {
 		result = helper.getUSERCODE()+rs;
 		return result;
 	}
+	
 	
 	
 }
