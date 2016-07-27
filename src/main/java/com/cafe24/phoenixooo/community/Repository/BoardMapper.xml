@@ -58,4 +58,96 @@
             SELECT LAST_INSERT_ID()
         </selectKey>
 	</insert>
+	
+	<update id="updateArticle" parameterType="com.cafe24.phoenixooo.community.Model.Article">
+		UPDATE 
+			COM_ARTICLE_TB
+		SET
+			ARTICLE_NM = #{articleName},
+			ARTICLE_CTT = #{articleContent}
+		WHERE 
+			ARTICLE_CD = #{articleCode}
+	</update>
+	
+	<delete id="deleteArticle" parameterType="com.cafe24.phoenixooo.community.Model.Article">	
+		DELETE FROM 
+			COM_ARTICLE_TB 
+		WHERE 
+			ARTICLE_CD = #{articleCode}	
+	
+	</delete>
+	
+	<insert id="insertComment" parameterType="com.cafe24.phoenixooo.community.Model.Comment">
+		INSERT INTO 
+			COM_COMMENT_TB
+			(
+				COMMENT_CD
+				, ARTICLE_CD
+				, USER_CD
+				, COMMENT_CTT
+				, COMMENT_DT
+				, COMMENT_IP
+			)
+		VALUES 
+			(
+				'COM_COMMENT_7'
+				, #{articleCode}
+				, 'COM_USER_123'
+				, #{commentContent}
+				, NOW()
+				, '123.456.789.456'
+			)
+	</insert>
+	
+	<select id="selectCommentList" parameterType="java.util.Map"  resultType="com.cafe24.phoenixooo.community.Model.Comment">
+		select
+			COMMENT_CD as commentCode
+			,ARTICLE_CD as articleCode
+			,USER_CD as userCode
+			,COMMENT_CTT as commentContent
+			,COMMENT_DT as commentDate
+			,COMMENT_IP as commentIp
+		from
+			COM_COMMENT_TB
+			
+		where 
+			ARTICLE_CD=#{articleCode}
+		ORDER BY 
+			COMMENT_CD ASC
+	</select>
+	
+	<delete id="deleteComment" parameterType="com.cafe24.phoenixooo.community.Model.Comment">
+		DELETE FROM 
+			COM_COMMENT_TB 
+		WHERE 
+			COMMENT_CD=#{commentCode}
+	</delete>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </mapper>

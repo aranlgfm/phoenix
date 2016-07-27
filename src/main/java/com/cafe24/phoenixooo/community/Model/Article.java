@@ -1,5 +1,7 @@
 package com.cafe24.phoenixooo.community.Model;
 
+import java.util.List;
+
 public class Article 
 {
 	private String articleCode;
@@ -10,6 +12,7 @@ public class Article
 	private String articleDate;
 	private String articleIp;
 	private String articleWriter;
+	private List<Comment> commentList;
 	
 	public String getArticleCode() {
 		return articleCode;
@@ -59,13 +62,10 @@ public class Article
 	public void setArticleWriter(String articleWriter) {
 		this.articleWriter = articleWriter;
 	}
-	
-	@Override
-	public String toString() {
-		return "Article [articleCode=" + articleCode + ", userCode=" + userCode + ", boardGroupCode=" + boardGroupCode
-				+ ", articleName=" + articleName + ", articleContent=" + articleContent + ", articleDate=" + articleDate
-				+ ", articleIp=" + articleIp + ", articleWriter=" + articleWriter + "]";
+	public List<Comment> getCommentList() {
+		return commentList;
 	}
-	
-	
+	public void setCommentList(List<Comment> commentList) {
+		this.commentList = commentList;
+	}
 }
