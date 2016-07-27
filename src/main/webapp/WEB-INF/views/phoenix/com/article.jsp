@@ -41,6 +41,7 @@
 		<c:forEach var="list" items="${article.commentList}">
 			<tr>
 				<td>${list.commentContent}</td>
+				<td><a href="/phoenix/com/process/deleteComment?commentCode=${list.commentCode }&articleCode=${list.articleCode}">댓글 삭제</a></td>
 			</tr>
 		</c:forEach>
 	</table>

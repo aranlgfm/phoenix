@@ -64,4 +64,11 @@ public class BoardDaoImpl implements BoardDao
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(NS+".selectCommentList", map);
 	}
+	
+	//댓글 삭제
+	@Override
+	public int deleteComment(Comment comment) {
+		// TODO Auto-generated method stub
+		return sqlSession.delete(NS+".deleteComment", comment);
+	}
 }

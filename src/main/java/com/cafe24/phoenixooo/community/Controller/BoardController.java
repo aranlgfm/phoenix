@@ -111,6 +111,14 @@ public class BoardController
 			return "redirect:/phoenix/com/form/basicArticle";
 		}
 		
+		//댓글 삭제 처리
+		@RequestMapping(value = "/phoenix/com/process/deleteComment", method = RequestMethod.GET)
+		public String deleteComment(Comment comment, Model model) {
+			String articleCode=boardService.deleteComment(comment);
+			model.addAttribute("articleCode", articleCode);
+			return "redirect:/phoenix/com/form/basicArticle";
+		}
+		
 }
 
 

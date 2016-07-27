@@ -116,7 +116,12 @@
 			COMMENT_CD ASC
 	</select>
 	
-	
+	<delete id="deleteComment" parameterType="com.cafe24.phoenixooo.community.Model.Comment">
+		DELETE FROM 
+			COM_COMMENT_TB 
+		WHERE 
+			COMMENT_CD=#{commentCode}
+	</delete>
 	
 	
 	

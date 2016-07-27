@@ -72,4 +72,13 @@ public class BoardServiceImpl implements BoardService
 	public int insertComment(Comment comment) {
 		return boardDao.insertComment(comment);
 	}
+	
+	//댓글 삭제
+	@Override
+	public String deleteComment(Comment comment) {
+		// TODO Auto-generated method stub
+		int result=boardDao.deleteComment(comment);
+		
+		return comment.getArticleCode();
+	}
 }

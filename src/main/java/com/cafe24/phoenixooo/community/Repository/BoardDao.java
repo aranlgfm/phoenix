@@ -31,6 +31,6 @@ public interface BoardDao
 	//댓글등록
 	int insertComment(Comment comment);
 	
-	//��� ���� ó��
-	//int deleteComment(Comment comment);*/
+	//댓글 삭제
+	int deleteComment(Comment comment);
 }

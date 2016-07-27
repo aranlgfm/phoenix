@@ -19,4 +19,6 @@ public interface BoardService
 	int deleteArticle(Article article);
 	//댓글 등록
 	int insertComment(Comment comment);
+	//댓글 삭제
+	String deleteComment(Comment comment);
 }
