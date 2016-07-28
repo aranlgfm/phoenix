@@ -43,6 +43,7 @@ public class BoardServiceImpl implements BoardService
 		return article2;
 	}
 	
+	//글 1개 등록
 	@Override
 	public String insertArticle(Article article) {
 		// TODO Auto-generated method stub

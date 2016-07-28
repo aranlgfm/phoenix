@@ -19,6 +19,7 @@ public class BoardDaoImpl implements BoardDao
 	private SqlSessionTemplate sqlSession;
 	
 	
+	//게시글 리스트 가져오기.게시판 화면.
 	@Override
 	public List<Article> selectArticleList(Map<String, Object> map) {
 			return sqlSession.selectList(NS + ".selectArticleList", map);
@@ -31,6 +32,7 @@ public class BoardDaoImpl implements BoardDao
 		return sqlSession.selectOne(NS+".selectArticle", article);
 	}
 	
+	//글 1개 등록
 	@Override
 	public String insertArticle(Article article) {
 		// TODO Auto-generated method stub

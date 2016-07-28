@@ -17,8 +17,6 @@ public interface BoardDao
 	//글 1개 등록하기
 	String insertArticle(Article article);
 	
-	/*int selectTotalCount(Map<String, Object> map);*/
-	
 	//글 수정하기
 	int updateArticle(Article article);
 	
