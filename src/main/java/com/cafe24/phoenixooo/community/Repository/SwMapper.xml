@@ -19,7 +19,7 @@
 	
 	
 	
- 	<!-- sw 주문내역 가져오기 -->
+<!--
  	<select id="selectOrderList" parameterType="java.util.map" resultType="com.cafe24.phoenixooo.community.Model.Order">
 		select
 			SW_ORDER_CD as orderCode
@@ -32,7 +32,7 @@
 		 	COM_ORDER_TB
 		 where
 		 	USER_CD=${userCode}
-	</select>
+	</select> -->
  	
  	
  	
