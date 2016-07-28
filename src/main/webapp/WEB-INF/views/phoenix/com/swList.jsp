@@ -9,11 +9,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>상품 내역</h1>
+	<h1>CRM 상품</h1>
 	<form action="/phoenix/com/form/swPayment" method="post">
 		<button>구매</button>
 	</form>
 	
-	
+	<table>
+		<c:forEach var="list" items="${swList }">
+			<tr>
+				<td>${list.swName} </td>
+				<td>${list.swTerm}일 </td>
+				<td><a href="/phoenix/com/form/paymentList?swCode=${list.swCode}">구매</a></td>
+			</tr>
+		</c:forEach>
+	</table>
 </body>
 </html>
