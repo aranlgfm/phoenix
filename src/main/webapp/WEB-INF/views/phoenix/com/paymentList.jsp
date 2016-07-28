@@ -31,10 +31,10 @@
 					<td>1개월패키지</td>
 					<td>9900</td>
 				</c:forEach>
-				<c:forEach>
+				<%-- <c:forEach>
 					<td>결제완료</td>
 					<td><a href="/phoenix/com/form/requestingRepayment">환불</a></td>
-				</c:forEach>
+				</c:forEach> --%>
 			</tr>
 
 	</table>
