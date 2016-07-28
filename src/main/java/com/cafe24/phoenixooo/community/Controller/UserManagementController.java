@@ -1,5 +1,8 @@
 package com.cafe24.phoenixooo.community.Controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,10 +55,32 @@ public class UserManagementController {
 	 * 2. 커뮤니티 로그인 처리
 	 * @return
 	 */
-	@RequestMapping(value = "/phoenix/com/process/login", method = RequestMethod.GET)
-	public String comProcessLogin() {
-	return "/phoenix";
+	@RequestMapping(value = "/phoenix/com/process/login", method = RequestMethod.POST)
+	public String comProcessLogin(HttpSession session, UserCustomer user) {
+		String pageUrl;
+		
+		//로그인 취소시에도 세션에 false값 저장되어있어서 힘듭니다.
+		
+		if(userService.login(user) != null){
+			session.setAttribute("user", userService.login(user));
+			pageUrl = "/phoenix";
+		}else{
+			session.setAttribute("user", "false");
+			pageUrl = "/phoenix/com/login";
+		}
+		return pageUrl;
 	}
+	
+	/**
+	 * 2. 커뮤니티 로그아웃 처리
+	 * @return
+	 */
+	@RequestMapping(value = "/phoenix/com/process/logout", method = RequestMethod.GET)
+	public String comProcessLogout(HttpSession session) {
+		session.invalidate();
+		return "/phoenix";
+	}
+	
 	
 	/**
 	 * 3. 커뮤니티 일반고객 가입화면
@@ -153,8 +178,11 @@ public class UserManagementController {
 	 * @return
 	 */
 	@RequestMapping(value = "/phoenix/com/form/userModification", method = RequestMethod.GET)
-	public String comFormUserModification() {
-	return "/phoenix/com/userModification";
+	public String comFormUserModification(HttpSession session,Model model) {
+		UserCustomer user = (UserCustomer)session.getAttribute("user");
+		user = userService.modifySelect(user);
+		model.addAttribute("user",user);
+		return "/phoenix/com/userModification";
 	}
 	
 	/**
@@ -163,7 +191,8 @@ public class UserManagementController {
 	 */
 	@RequestMapping(value = "/phoenix/com/process/modifyUser", method = RequestMethod.GET)
 	public String comProcessModifyUser() {
-	return "/phoenix";
+		
+		return "/phoenix";
 	}
 	
 	

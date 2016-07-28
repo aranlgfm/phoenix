@@ -97,7 +97,7 @@
 			</tr>
 			<tr>
 				<td>자기소개</td><!-- userBirthdayDate -->
-				<td><textarea cols="70" rows="5">입력해라...귀찮아도...</textarea></td>
+				<td><textarea cols="70" rows="5" name="userIntroduceContent"></textarea></td>
 			</tr>
 		</table>
 	<input type="submit" value="확인"/>

@@ -15,7 +15,7 @@ import com.cafe24.phoenixooo.community.Repository.SwDao;
 
 @Controller
 public class TotalSearchController {
-
+	//개망....우리 키워드 해야되네;;; ㅡㅡ;
 	@Autowired
 	private SwDao swDao;
 	/**

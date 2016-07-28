@@ -81,6 +81,22 @@ public class UserManagementDaoImpl implements UserManagementDao {
 	public String findingPw(UserCustomer user) {
 		return sqlSession.selectOne(NS+".findingId",user);
 	}
+	
+	/**
+	 * (DAO구현)로그인 메서드
+	 */
+	@Override
+	public UserCustomer login(UserCustomer user) {
+		return sqlSession.selectOne(NS+".login",user);
+	}
+	
+	/**
+	 * (DAO구현)회원정보 셀렉(회원정보 수정용)
+	 */
+	@Override
+	public UserCustomer modifySelect(UserCustomer user) {
+		return sqlSession.selectOne(NS+".modifyInfoSelect",user);
+	}
 
 	
 	

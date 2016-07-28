@@ -8,8 +8,8 @@
 		3.미용실회원가입(UserDirector : 추가입력)미용실 코드 추가 및 미용실 상세정보 입력)
 		4.유저코드셀렉(미용실 추가입력(4번) 등록시 필요한 메서드)
 		5. 아이디/비번찾기 셀렉 
-		
-	
+		6. 로그인 셀렉
+		7. 회원정보 셀렉 (회원정보수정을 위한 셀렉트)
 	
 	-->
 
@@ -136,4 +136,46 @@
 			</when>
 		</choose>
 	</select>
+
+	<!-- 6. 로그인  -->
+	<select id="login" parameterType="com.cafe24.phoenixooo.community.Model.UserCustomer" resultType="com.cafe24.phoenixooo.community.Model.UserCustomer">
+				SELECT 
+					USER_ID as userId <!-- 디지자... 강사마가 알려줌. -->
+					,USER_CD as userCode
+					,USER_NICK_NM as userNickName
+					,USER_GROUP_NM as userGroupName
+				FROM 
+					COM_USER_TB
+				WHERE 
+					USER_ID = #{userId}
+				AND	  
+					USER_PW = #{userPw} 
+	</select>	
+	
+	<!-- 7.회원정보 셀렉(수정용)-->
+	<select id="modifyInfoSelect" parameterType="com.cafe24.phoenixooo.community.Model.UserCustomer" resultType="com.cafe24.phoenixooo.community.Model.UserCustomer">
+				SELECT 
+				
+					<!-- USER_CD	as userCode   -->
+					<!-- USER_GROUP_NM as userGroupName -->
+					USER_NM as userName
+					,USER_NICK_NM as userNickName 
+					,USER_ID as userId
+					<!-- ,USER_PW as userPw  -->
+					,USER_SEX_FL as userSexFlag
+					,USER_ANNIVERSARY_DT as userAnniversaryDate
+					,USER_BIRTH_DT as userBirthdayDate
+					,USER_ADDR as userAddress
+					,USER_POST_NO as userPostNumber
+					,USER_EMAIL_ADDR as userEmailAddress
+					,USER_JOIN_DT as userJoinDate
+					,USER_PHONE_NO as userPhoneNumber
+					,USER_CELLPHONE_NO as userCellphoneNumber
+					,USER_INTRODUCE_CTT as userIntroduceContent
+				FROM
+					COM_USER_TB
+				WHERE 
+					USER_CD = #{userCode} 
+	</select>	
+	
 </mapper>

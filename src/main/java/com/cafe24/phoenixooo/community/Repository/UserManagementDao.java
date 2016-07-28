@@ -51,4 +51,18 @@ public interface UserManagementDao {
 	 * @return
 	 */
 	String findingPw(UserCustomer user);
+	
+	/**
+	 * (DAO)로그인
+	 * @param user(rf)
+	 * @return
+	 */
+	UserCustomer login(UserCustomer user);
+	
+	/**
+	 * (DAO)회원정보 불러오기
+	 * @param user(rf)
+	 * @return
+	 */
+	UserCustomer modifySelect(UserCustomer user);
 }

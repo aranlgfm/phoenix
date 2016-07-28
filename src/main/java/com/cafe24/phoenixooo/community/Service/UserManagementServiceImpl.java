@@ -31,6 +31,11 @@ public class UserManagementServiceImpl implements UserManagementService {
 			user.setUserGroupName("회원");	
 		}
 		
+		//유저 개인정보 입력하지 않으면 공백으로 해줌.
+		if(user.getUserIntroduceContent() == null){
+			user.setUserIntroduceContent("");
+		}
+		
 		userDao.insertUser(user);
 		return userCode;
 	}
@@ -86,6 +91,23 @@ public class UserManagementServiceImpl implements UserManagementService {
 			System.out.println("없다.");
 		}
 		return 0;
+	}
+	
+	/**
+	 * (서비스구현) 로그인
+	 */
+	@Override
+	public UserCustomer login(UserCustomer user) {
+		return userDao.login(user);
+	}
+	
+	
+	/**
+	 * (서비스구현) 회원정보셀렉(수정용)
+	 */
+	@Override
+	public UserCustomer modifySelect(UserCustomer user) {
+		return userDao.modifySelect(user);
 	}
 	
 	

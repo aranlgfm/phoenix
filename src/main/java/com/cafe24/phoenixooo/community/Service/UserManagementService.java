@@ -38,4 +38,20 @@ public interface UserManagementService {
 	 * @return
 	 */
 	int findingPw(UserCustomer user);
+	
+	/**
+	 * (서비스) 로그인
+	 * @param user(rf)
+	 * @return
+	 */
+	UserCustomer login(UserCustomer user);
+	
+	
+	/**
+	 * (서비스) 회원정보 셀렉
+	 * @param user(rf)
+	 * @return
+	 */
+	UserCustomer modifySelect(UserCustomer user);
+	
 }
