@@ -1,6 +1,7 @@
 package com.cafe24.phoenixooo.community.Controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,7 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.cafe24.phoenixooo.community.Model.Payment;
 import com.cafe24.phoenixooo.community.Model.Sw;
+import com.cafe24.phoenixooo.community.Model.UserCustomer;
 import com.cafe24.phoenixooo.community.Service.SwService;
 
 @Controller
@@ -27,7 +30,9 @@ public class SwController
 		
 	//주문결제리스트 화면으로 //
 	@RequestMapping(value = "/phoenix/com/form/paymentList", method = RequestMethod.GET)
-	public String moveToPaymentList() {
+	public String moveToPaymentList(UserCustomer userCustomer,Model model) {
+		Map<String,Object> map=swService.getPaymentList(userCustomer);
+		model.addAttribute("orderAndPaymentMap", map);
 	return "/phoenix/com/paymentList";
 	}
 	

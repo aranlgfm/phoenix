@@ -16,4 +16,43 @@
 		 from
 		 	COM_SW_TB
 	</select>
+	
+	
+	
+ 	<!-- sw 주문내역 가져오기 -->
+ 	<select id="selectOrderList" parameterType="java.util.map" resultType="com.cafe24.phoenixooo.community.Model.Order">
+		select
+			SW_ORDER_CD as orderCode
+			,RECEIVE_USER_CD as receiveUserCode
+			,ORDER_USER_CD as orderUserCode
+			,SHOP_CD as shopCode
+			,SW_CD as swCode
+			,ORDER_DT as orderDate
+		 from
+		 	COM_ORDER_TB
+		 where
+		 	USER_CD=${userCode}
+	</select>
+ 	
+ 	
+ 	
+	<!-- 
+	<select id="selectPaymentList" parameterType="java.util.map" resultType="com.cafe24.phoenixooo.community.Model.Payment">
+		select
+			 PAYMENT_CD as paymentCode
+			 ,ORDER_CD as orderCode
+			 ,USER_CD as userCode
+			 ,SHOP_CD as shopCode
+			 ,SW_CD as swCode
+			 ,SW_WON as swWon
+			 ,SW_PAYMENT_OPTION_NM as swPaymentOptionName
+			 ,SW_PAYMENT_DT as swPaymentDate
+			 ,SW_STARTING_SERVICE_DT as swStartingServiceDate
+			 ,SW_ENDING_SERVICE_DT as swEndingServiceDate
+			 ,SW_SERVICE_ST swServiceStatus
+		 from
+		 	COM_PAYMENT_TB
+		 where
+		 	USER_CD=${userCode}
+	</select> -->
 </mapper>
