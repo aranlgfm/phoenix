@@ -189,12 +189,12 @@ public class UserManagementController {
 	 * 8.커뮤니티 회원정보수정 처리
 	 * @return
 	 */
-	@RequestMapping(value = "/phoenix/com/process/modifyUser", method = RequestMethod.GET)
-	public String comProcessModifyUser() {
-		
-		return "/phoenix";
+	@RequestMapping(value = "/phoenix/com/process/modifyUser", method = RequestMethod.POST)
+	public String comProcessModifyUser(HttpSession session,UserCustomer user) {
+		user = userService.modifyUpdate(user);
+		session.setAttribute("user", user);
+		return "/phoenix/com/userModification";
 	}
-	
 	
 	/**
 	 * 9.커뮤니티 회원탈퇴신청 화면
@@ -209,8 +209,9 @@ public class UserManagementController {
 	 * 9.커뮤니티 회원탈퇴 처리
 	 * @return
 	 */
-	@RequestMapping(value = "/phoenix/com/process/withdraw", method = RequestMethod.GET)
-	public String comProcessWithdraw() {
+	@RequestMapping(value = "/phoenix/com/process/withdraw", method = RequestMethod.POST)
+	public String comProcessWithdraw(UserCustomer user) {
+		userService.deleteUser(user);
 	return "/phoenix/com/userWithdrawalGoodbye";
 	}
 	

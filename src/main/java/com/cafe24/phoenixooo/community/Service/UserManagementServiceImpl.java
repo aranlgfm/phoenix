@@ -74,20 +74,14 @@ public class UserManagementServiceImpl implements UserManagementService {
 	}
 	
 	/**
-	 * (서비스구현)비번찾기 and 인증번호보내기
+	 * (서비스구현)비번찾기 and 인증번호보내기 수정중..
 	 */
 	@Override
 	public int findingPw(UserCustomer user) {
 		String result = userDao.finding(user);
 		if(null != result && "" != result){
-			
-			
-			
 			System.out.println("인증번호를 메일로 보냈습니다.");
 		}else{
-			
-			
-			
 			System.out.println("없다.");
 		}
 		return 0;
@@ -108,6 +102,25 @@ public class UserManagementServiceImpl implements UserManagementService {
 	@Override
 	public UserCustomer modifySelect(UserCustomer user) {
 		return userDao.modifySelect(user);
+	}
+	
+	/**
+	 * (서비스구현) 회원정보수정
+	 */
+	@Override
+	public UserCustomer modifyUpdate(UserCustomer user) {
+		userDao.modifyUpdate(user);
+		UserCustomer result = userDao.modifySelect(user);
+		return result; 
+	}
+	
+	/**
+	 * (서비스구현) 회원탈퇴
+	 */
+	@Override
+	public int deleteUser(UserCustomer user) {
+		userDao.userDrawalForShop(user);
+		return userDao.userDrawal(user);
 	}
 	
 	

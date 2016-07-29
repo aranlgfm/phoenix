@@ -48,10 +48,23 @@ public interface UserManagementService {
 	
 	
 	/**
-	 * (서비스) 회원정보 셀렉
+	 * (서비스) 회원정보 셀렉(수정용)
 	 * @param user(rf)
 	 * @return
 	 */
 	UserCustomer modifySelect(UserCustomer user);
 	
+	/**
+	 * (서비스) 회원정보 수정
+	 * @param user
+	 * @return
+	 */
+	UserCustomer modifyUpdate(UserCustomer user);
+	
+	/**
+	 * (서비스) 회원탈퇴
+	 * @param user
+	 * @return
+	 */
+	int deleteUser(UserCustomer user);
 }

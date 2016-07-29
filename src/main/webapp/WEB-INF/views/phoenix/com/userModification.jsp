@@ -14,6 +14,8 @@
 </h1>
 
 <div>
+	<form action="/phoenix/com/process/modifyUser" method="POST">
+	<input type="text" name="userCode" size="12"  value="${sessionScope.user.userCode}"/>
 	<table>
 		<tr>
 			<th>Filed</th>
@@ -21,31 +23,31 @@
 		</tr>
 		<tr>
 			<td>아이디</td>
-			<td><input type="text" size="12" readonly="readonly" value="${user.userId}"/></td>
+			<td><input type="text" name="userId" size="12" readonly="readonly" value="${user.userId}"/></td>
 		</tr>
 		<tr>
 			<td>비밀번호</td>
-			<td><input type="password" size="12"/></td>
+			<td><input type="password" name="userPw" size="12"/></td>
 		</tr>
 		<tr>
 			<td>이름</td>
-			<td><input type="text" size="12" readonly="readonly" value="${user.userName}"/></td>
+			<td><input type="text" name="userName" size="12" readonly="readonly" value="${user.userName}"/></td>
 		</tr>
 		<tr>
 			<td>닉네임</td>
-			<td><input type="text" size="12" value="${user.userNickName}"/></td>
+			<td><input type="text" name="userNickName" size="12" value="${user.userNickName}"/></td>
 		</tr>
 		<tr>
 			<td>성별</td>
 			<td>
 				<c:choose>
 					<c:when test="${user.userSexFlag == 0}">
-						<input type="radio" value="male" disabled="disabled"/>남	
-						<input type="radio" value="female" disabled="disabled" checked="checked"/>여	
+						<input type="radio" name="userSexFlag" value="male" disabled="disabled"/>남	
+						<input type="radio" name="userSexFlag" value="female" disabled="disabled" checked="checked"/>여	
 					</c:when>
 					<c:otherwise>
-						<input type="radio" value="male" disabled="disabled" checked="checked"/>남
-						<input type="radio" value="female" disabled="disabled"/>여	
+						<input type="radio" name="userSexFlag" value="male" disabled="disabled" checked="checked"/>남
+						<input type="radio" name="userSexFlag" value="female" disabled="disabled"/>여	
 					</c:otherwise>
 				</c:choose>
 			</td>
@@ -105,12 +107,14 @@
 				</td>
 			</tr>
 	</table>
+	<div>
+		<input type="submit" value="수정"/>
+		<a href="/phoenix"><input type="button" value="취소"/></a>
+	</div>
+	</form>
+
 </div>
 
-<div>
-	<a href="/phoenix/com/process/modifyUser"><input type="button" value="수정"/></a>
-	<a href="/phoenix"><input type="button" value="취소"/></a>
-</div>
 
 </body>
 </html>

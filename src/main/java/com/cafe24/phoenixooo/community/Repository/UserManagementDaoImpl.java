@@ -98,7 +98,32 @@ public class UserManagementDaoImpl implements UserManagementDao {
 		return sqlSession.selectOne(NS+".modifyInfoSelect",user);
 	}
 
+	/**
+	 * (DAO구현)회원정보 수정
+	 */
+	@Override
+	public int modifyUpdate(UserCustomer user) {
+		return sqlSession.update(NS+".modifyInfoUpdate",user);
+	}
 	
+	/**
+	 * (DAO구현)미용실 삭제
+	 */
+	@Override
+	public int userDrawalForShop(UserCustomer user) {
+		System.out.println("(DAO구현)미용실 삭제");
+		sqlSession.delete(NS+".userDrawalForShop",user);
+		return 0;
+	}
 	
+	/**
+	 * (DAO구현)회원 삭제
+	 */
+	@Override
+	public int userDrawal(UserCustomer user) {
+		System.out.println("(DAO구현)미용실 삭제");
+		sqlSession.delete(NS+".userDrawal",user);
+		return 0;
+	}
 	
 }

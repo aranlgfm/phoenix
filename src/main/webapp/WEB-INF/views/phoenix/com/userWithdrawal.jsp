@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,20 +12,17 @@
 <h1>
 	회원탈퇴
 </h1>
-
-<div>
-	<input type="checkbox"/>정말 탈퇴하시겠습니까?
-</div>
-
-<div>
-	<label>비밀번호 : </label>
-	<input type="text"/>
-</div>
-
-<div>
-	<a href="/phoenix/com/process/withdraw"><input type="button" value="확인"/></a>
-	<a href="/phoenix"><input type="button" value="취소"/></a>
-</div>
-
+	<form action="/phoenix/com/process/withdraw" method="POST">
+	<div>
+		<input type="checkbox"/>정말 탈퇴하시겠습니까?
+	</div>
+		<input name="userCode" type="text" value="${sessionScope.user.userCode}"/>
+	<div>
+		<label>비밀번호 : </label>
+		<input name="userPw" type="password"/>
+	</div>
+		<input type="submit" value="확인"/>
+		<a href="/phoenix"><input type="button" value="취소"/></a>
+	</form>
 </body>
 </html>

@@ -10,7 +10,7 @@
 		5. 아이디/비번찾기 셀렉 
 		6. 로그인 셀렉
 		7. 회원정보 셀렉 (회원정보수정을 위한 셀렉트)
-	
+		8. 회원정보 수정(업데이트)
 	-->
 
 	<!-- 0.유저코드증가 -->
@@ -156,9 +156,9 @@
 	<select id="modifyInfoSelect" parameterType="com.cafe24.phoenixooo.community.Model.UserCustomer" resultType="com.cafe24.phoenixooo.community.Model.UserCustomer">
 				SELECT 
 				
-					<!-- USER_CD	as userCode   -->
+					USER_CD	as userCode
 					<!-- USER_GROUP_NM as userGroupName -->
-					USER_NM as userName
+					,USER_NM as userName
 					,USER_NICK_NM as userNickName 
 					,USER_ID as userId
 					<!-- ,USER_PW as userPw  -->
@@ -177,5 +177,45 @@
 				WHERE 
 					USER_CD = #{userCode} 
 	</select>	
+	
+	<!-- 8.회원정보 수정(업데이트)  -->
+	<update id="modifyInfoUpdate" parameterType="com.cafe24.phoenixooo.community.Model.UserCustomer">
+		UPDATE
+			COM_USER_TB
+		SET
+			USER_NICK_NM = #{userNickName} 
+			,USER_ANNIVERSARY_DT = #{userAnniversaryDate}
+			,USER_BIRTH_DT = #{userBirthdayDate}
+			,USER_ADDR = #{userAddress}
+			,USER_POST_NO = #{userPostNumber}
+			,USER_EMAIL_ADDR = #{userEmailAddress}
+			,USER_PHONE_NO = #{userPhoneNumber}
+			,USER_CELLPHONE_NO = #{userCellphoneNumber}
+			,USER_INTRODUCE_CTT = #{userIntroduceContent}
+		WHERE
+			USER_Id = #{userId} 
+		AND
+			USER_Pw = #{userPw}	
+	</update>
+	
+	<!-- 9.회원탈퇴(1번) -->
+	<delete id="userDrawalForShop" parameterType="com.cafe24.phoenixooo.community.Model.UserCustomer">
+		DELETE 
+		FROM
+			CRM_SHOP_TB
+		WHERE
+			USER_CD = #{userCode}		
+	</delete>
+	
+	<!-- 9.회원탈퇴(2번) -->
+	<delete id="userDrawal" parameterType="com.cafe24.phoenixooo.community.Model.UserCustomer">
+		DELETE 
+		FROM
+			COM_USER_TB
+		WHERE
+			USER_CD = #{userCode}		
+		AND	  
+			USER_PW = #{userPw}	
+	</delete>
 	
 </mapper>

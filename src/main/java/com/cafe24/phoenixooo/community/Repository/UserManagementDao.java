@@ -65,4 +65,26 @@ public interface UserManagementDao {
 	 * @return
 	 */
 	UserCustomer modifySelect(UserCustomer user);
+	
+	/**
+	 * (DAO)회원정보 수정
+	 * @param user(rf)
+	 * @return
+	 */
+	int modifyUpdate(UserCustomer user);
+	
+	//userDrawalForShop,userDrawal
+	/**
+	 * (DAO)미용실()삭제
+	 * @param user
+	 * @return
+	 */
+	int userDrawalForShop(UserCustomer user);
+	
+	/**
+	 * (DAO)회원()삭제
+	 * @param user
+	 * @return
+	 */
+	int userDrawal(UserCustomer user);
 }
