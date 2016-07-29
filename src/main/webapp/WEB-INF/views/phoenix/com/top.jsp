@@ -26,7 +26,7 @@
 
 <div>
 	<form action="/phoenix/com/form/searchResult" method="post">
-		<input type="text" value="검색창"/>
+		<input type="text" value="${word}"/>
 		<input type="submit" value="검색"/>
 	
 	<a href="/phoenix/com/form/terms"><input type="button" value="회원가입"/></a>

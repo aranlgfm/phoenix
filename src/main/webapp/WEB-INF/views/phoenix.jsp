@@ -24,8 +24,8 @@
 <hr>
 
 <div>
-	<form action="/phoenix/com/form/searchResult" method="post">
-		<input type="text" value="검색창"/>
+	<form action="/phoenix/com/form/searchResult" method="POST">
+		<input type="text" name="word" value="${word}"/>
 		<input type="submit" value="검색"/>
 	
 	<c:choose>

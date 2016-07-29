@@ -210,8 +210,9 @@ public class UserManagementController {
 	 * @return
 	 */
 	@RequestMapping(value = "/phoenix/com/process/withdraw", method = RequestMethod.POST)
-	public String comProcessWithdraw(UserCustomer user) {
+	public String comProcessWithdraw(HttpSession session,UserCustomer user) {
 		userService.deleteUser(user);
+		session.invalidate();
 	return "/phoenix/com/userWithdrawalGoodbye";
 	}
 	
