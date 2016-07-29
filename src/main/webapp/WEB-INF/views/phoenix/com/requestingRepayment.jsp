@@ -15,33 +15,49 @@
 
 <div>
 	<table>
-		<th>원 주문번호</th>
-		<th>환불상품</th>
-		<th>가격</th>
-		<th>환불예정금액</th>
 		<tr>
-			<td>161066283</td>
-			<td>3개월패키지</td>
-			<td>29000</td>
-			<td>20000</td>
+			<td>
+				주문번호
+			</td>
+			<td>
+				환불상품
+			</td>
+			<td>
+				가격
+			</td>
+			<td>
+				환불예정금액
+			</td>
+		</tr>
+		<tr>
+			<td>${orderListCommand.swOrderCode}</td>
+			<td>${orderListCommand.swName}</td>
+			<td>${orderListCommand.swWon}</td>
+			<td>에쩡금액계산해야함</td>
 		</tr>
 	</table>
 </div>
 
-<div>
-	<label>환불은행</label>
-	<input type="text"/>
-</div>
+<form action="/phoenix/com/form/requestRepayment" method="post">
+	<input type="hidden" value="${swOrderCode}" name="swOrderCode">
+	<input type="hidden" value="${orderDate}" name="orderDate">
+	<input type="hidden" value="${swName}" name="swName">
+	<input type="hidden" value="${swWon}" name="swWon">
+	<input type="hidden" value="${orderStatus}" name="orderStatus">
 
-<div>
-	<label>환불계좌번호</label>
-	<input type="text"/>
-</div>
-
-<div>
-	<a href="/com/process/requestToRepayment"><input type="button" value="확인"/></a>
-	<a href="/com/form/paymentList"><input type="button" value="취소"/></a>
-</div>
-
+	<div>
+		<label>환불은행</label>
+		<input type="text" name="bankName"/>
+	</div>
+	
+	<div>
+		<label>환불계좌번호</label>
+		<input type="text" name="accountNumber"/>
+	</div>
+	
+	<div>
+		<input type="submit" value="확인"/>
+	</div>
+</form>
 </body>
 </html>

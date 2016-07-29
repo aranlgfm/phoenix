@@ -31,14 +31,17 @@
 				<td>${list.swName}</td>
 				<td>${list.swWon}</td>
 				<td>${list.orderStatus}</td>
-			<form action="/phoenix/com/form/requestingRepayment" method="post"> 
-				<input type="hidden" value="${list.swOrderCode}" name="swOrderCode">
-				<input type="hidden" value="${list.orderDate}" name="orderDate">
-				<input type="hidden" value="${list.swName}" name="swName">
-				<input type="hidden" value="${list.swWon}" name="swWon">
-				<input type="hidden" value="${list.orderStatus}" name="orderStatus">
-				<td><input type="submit" value="${list.requestingRepayment}" name="requestingRepayment"/></td>
-			</form>
+				
+				<form action="/phoenix/com/form/requestingRepayment" method="post"> 
+					<input type="hidden" value="${list.swOrderCode}" name="swOrderCode">
+					<input type="hidden" value="${list.orderDate}" name="orderDate">
+					<input type="hidden" value="${list.swName}" name="swName">
+					<input type="hidden" value="${list.swWon}" name="swWon">
+					<input type="hidden" value="${list.orderStatus}" name="orderStatus">
+					<td>
+						<input type="submit" value="${list.requestingRepayment}" name="requestingRepayment"/>
+					</td>
+				</form>
 			</tr>
 		</c:forEach>
 	</table>

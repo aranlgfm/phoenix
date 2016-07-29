@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cafe24.phoenixooo.community.Model.OrderListCommand;
+import com.cafe24.phoenixooo.community.Model.RepaymentRequestCommand;
 import com.cafe24.phoenixooo.community.Model.Sw;
 import com.cafe24.phoenixooo.community.Model.UserCustomer;
 import com.cafe24.phoenixooo.community.Service.SwService;
@@ -46,12 +47,24 @@ public class SwController
 	
 	//환불신청화면으로 //
 	@RequestMapping(value = "/phoenix/com/form/requestingRepayment", method = RequestMethod.POST)
-	public String moveToRequestingRepayment(OrderListCommand orderListCommand) {
-		swService.insertRequestingRepayment(orderListCommand);
-		
-		
-	return "/phoenix/com/repaymentList";
+	public String moveToRequestingRepayment(OrderListCommand orderListCommand,Model model) {
+	model.addAttribute("orderListCommand", orderListCommand);
+	//System.out.println(orderListCommand.getSwOrderCode()+"<-----------swOrderCode");
+	return "/phoenix/com/requestingRepayment";
 	}
+	
+	
+	
+	
+	//환불신청 처리
+	@RequestMapping(value = "/phoenix/com/form/requestRepayment", method = RequestMethod.POST)
+	public String requestRepayment(OrderListCommand orderListCommand,RepaymentRequestCommand repaymentRequestCommand) {
+		swService.insertRequestingRepayment(orderListCommand);
+		return "/phoenix/com/repaymentList";
+	}
+	
+	
+	
 	
 	//환불(신청)내역 화면 //
 	@RequestMapping(value = "/phoenix/com/form/repaymentList", method = RequestMethod.GET)

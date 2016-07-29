@@ -67,6 +67,8 @@
 			, REPAYMENT_REQUEST_WON
 			, REPAYMENT_REQUEST_DT
 			, REPAYMENT_PERMISSION_DT
+			,REPAYMENT_BANK_NM
+			,REPAYMENT_ACCOUNT_NO
 			)
 		VALUES 
 			(
@@ -79,23 +81,27 @@
 			, 20000
 			, NOW()
 			, NULL
+			,#{bankName}
+			,#{accountNumber}
 			)		
 	</insert>
-		<!-- 환신청을 위한 서브 쿼리  (paymentCode, userCode, shopCode, swCode, swWon)-->
-		<select id="selectPartOfRePaymentRequest" parameterType="com.cafe24.phoenixooo.community.Model.Payment" resultType="com.cafe24.phoenixooo.community.Model.Payment">
-		
-			SELECT 
-				PAYMENT_CD as paymentCode
-				,USER_CD as userCode
-				,SHOP_CD as shopCode
-				,SW_CD as swCode
-				,SW_WON as swWon
-			FROM
-				COM_PAYMENT_TB
-			WHERE ORDER_CD = #{orderCode}
-
-		</select>
 	
+	
+	<!-- 환신청을 위한 서브 쿼리  (paymentCode, userCode, shopCode, swCode, swWon)-->
+	<select id="selectPartOfRePaymentRequest" parameterType="com.cafe24.phoenixooo.community.Model.Payment" resultType="com.cafe24.phoenixooo.community.Model.Payment">
+	
+		SELECT 
+			PAYMENT_CD as paymentCode
+			,USER_CD as userCode
+			,SHOP_CD as shopCode
+			,SW_CD as swCode
+			,SW_WON as swWon
+		FROM
+			COM_PAYMENT_TB
+		WHERE ORDER_CD = #{orderCode}
+
+	</select>
+
 	
 	
 	

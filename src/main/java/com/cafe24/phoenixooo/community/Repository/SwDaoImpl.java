@@ -54,13 +54,11 @@ public class SwDaoImpl implements SwDao {
 		return sqlSession.insert(NS+".insertRequestingRepayment", repaymentRequestCommand);
 	}
 
-		// 환불 신청하기 위한 서브 메서드 (paymentCode, userCode, shopCode, swCode, swWon)
-		@Override
-		public Payment selectPartOfRePaymentRequest(Payment payment) {
-			return sqlSession.selectOne(NS+".selectPartOfRePaymentRequest", payment);
-		}
-	
-	
+	// 환불 신청 처리
+	@Override
+	public Payment selectPartOfRePaymentRequest(Payment payment) {
+		return sqlSession.selectOne(NS+".selectPartOfRePaymentRequest", payment);
+	}
 	
 	
 	

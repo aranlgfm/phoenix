@@ -11,7 +11,8 @@ public class RepaymentRequestCommand {
 	private int repaymentRequestWon;
 	private String repaymentRequestDate; //now
 	private String repaymentPermissionDate; //null
-	
+	private String bankName;
+	private String accountNumber;
 	public String getRepaymentRequestCode() {
 		return repaymentRequestCode;
 	}
@@ -66,15 +67,27 @@ public class RepaymentRequestCommand {
 	public void setRepaymentPermissionDate(String repaymentPermissionDate) {
 		this.repaymentPermissionDate = repaymentPermissionDate;
 	}
+	public String getBankName() {
+		return bankName;
+	}
+	public void setBankName(String bankName) {
+		this.bankName = bankName;
+	}
+	public String getAccountNumber() {
+		return accountNumber;
+	}
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
+	}
 	
 	@Override
 	public String toString() {
 		return "RepaymentRequestCommand [repaymentRequestCode=" + repaymentRequestCode + ", paymentCode=" + paymentCode
 				+ ", userSystemCode=" + userSystemCode + ", userCode=" + userCode + ", shopCode=" + shopCode
 				+ ", swCode=" + swCode + ", repaymentRequestWon=" + repaymentRequestWon + ", repaymentRequestDate="
-				+ repaymentRequestDate + ", repaymentPermissionDate=" + repaymentPermissionDate + "]";
+				+ repaymentRequestDate + ", repaymentPermissionDate=" + repaymentPermissionDate + ", bankName="
+				+ bankName + ", accountNumber=" + accountNumber + "]";
 	}
-		
 	
 	
 }
