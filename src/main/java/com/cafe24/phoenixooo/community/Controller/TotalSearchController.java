@@ -47,10 +47,11 @@ public class TotalSearchController {
 	 */
 	@RequestMapping(value="/phoenix/com/process/searchResult",method = RequestMethod.GET)
 	public String comProcessSearchResult(@RequestParam(value="cate") String cate, String word, Model model){
-//		model.addAttribute("cate", cate);
-//		model.addAttribute("word", word);
-//		List<List<Article>> rs = service.selectArticleList(word);
-//		model.addAttribute("list", rs);
+		Map<String,Object> map = new HashMap<String,Object>();
+		model.addAttribute("cate", cate);
+		model.addAttribute("word", word);
+		map = service.selectArticleList(word);
+		model.addAttribute("list", map);
 		return "/phoenix/com/searchResult";
 	}
 	
