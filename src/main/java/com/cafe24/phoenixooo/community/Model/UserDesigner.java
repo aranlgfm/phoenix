@@ -6,7 +6,7 @@ package com.cafe24.phoenixooo.community.Model;
  * @author 201-24
  *
  */
-public class UserDesigner extends UserCustomer {
+public class UserDesigner extends UserDirector {
 	
 	private String shopCode;
 	

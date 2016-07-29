@@ -13,5 +13,5 @@ public interface TotalSearchService {
 	 * @return
 	 */
 	//List<Article> selectArticleList(Map<String, Object> map);
-	List<List<Article>> selectArticleList(String word);
+	Map<String, Object> selectArticleList(String word);
 }

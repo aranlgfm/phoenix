@@ -21,29 +21,35 @@ public class TotalSearchServiceImpl implements TotalSearchService{
 	 * 헤어게시판이랑 자유게시판의 리스트를 뽑는다.
 	 * 리미트는 5로 되어있다.(나중에 바꿀것)
 	 */
+	
 	@Override
-	public List<List<Article>> selectArticleList(String word) {
+	public Map<String, Object> selectArticleList(String word) {
 		System.out.println("service");
 		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		
 		map.put("word", word);
 		
 		String boardGroupCode = "";
-		List<List<Article>> rs = new ArrayList<List<Article>>();
+		List<Article> rs = new ArrayList<Article>();
 		
-			/* 1.헤어게시판
-			 * 3.자유게시판
+			/* 1.헤어게시판 hair
+			 * 3.자유게시판 free
 			 */
 		boardGroupCode = "COM_BOARDGROUP_3";
 		map.put("boardGroupCode", boardGroupCode);
-		rs.add(dao.selectArticleList(map));
+		resultMap.put("freeArticle", dao.selectArticleList(map));
 		
 		boardGroupCode = "COM_BOARDGROUP_1";
 		map.put("boardGroupCode", boardGroupCode);
-		rs.add(dao.selectArticleList(map));
+		resultMap.put("hairArticle", dao.selectArticleList(map));
 		
+		//미용실,디자이너 리스트 받아오기.;;
+		resultMap.put("shopList", dao.selectUserDirectorList(map));
+		resultMap.put("designerList", dao.selectUserDesignerList(map));
 		
 
-		return rs;
+		return resultMap;
 	}
 
 }

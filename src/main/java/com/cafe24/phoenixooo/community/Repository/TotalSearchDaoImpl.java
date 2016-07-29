@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.cafe24.phoenixooo.community.Model.Article;
+import com.cafe24.phoenixooo.community.Model.UserCustomer;
 
 @Repository
 public class TotalSearchDaoImpl implements TotalSearchDao {
@@ -20,13 +21,31 @@ public class TotalSearchDaoImpl implements TotalSearchDao {
 	
 	
 	/**
-	 * (DAO구현,TotalSearch) 리스트
+	 * (DAO구현,TotalSearch) 게시판 리스트
 	 */
 	@Override
 	public List<Article> selectArticleList(Map<String, Object> map) {
 		map.put("searchResultLimitNumber", helper.getSEACHRESULTLIMITNUMBER());
 		System.out.println("DAO 리스트");
 		return sqlSession.selectList(NS+".selectArticleList", map);
+	}
+
+	/**
+	 * (DAO구현,TotalSearch) 미용실 리스트
+	 */
+	@Override
+	public List<UserCustomer> selectUserDirectorList(Map<String, Object> map) {
+		map.put("searchResultLimitNumber", helper.getSEACHRESULTLIMITNUMBER());
+		return sqlSession.selectList(NS+".selectUserDirectorList", map);
+	}
+
+	/**
+	 * (DAO구현,TotalSearch) 디자이너 리스트
+	 */
+	@Override
+	public List<UserCustomer> selectUserDesignerList(Map<String, Object> map) {
+		map.put("searchResultLimitNumber", helper.getSEACHRESULTLIMITNUMBER());
+		return sqlSession.selectList(NS+".selectUserDesignerList", map);
 	}
 	
 	

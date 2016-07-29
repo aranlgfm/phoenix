@@ -1,7 +1,9 @@
 package com.cafe24.phoenixooo.community.Controller;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,11 +30,12 @@ public class TotalSearchController {
 	 */
 	@RequestMapping(value="/phoenix/com/form/searchResult",method = RequestMethod.POST)
 	public String comFormSearchResult(String word, Model model){
+		Map<String,Object> map = new HashMap<String,Object>();
 		System.out.println("controller");
 		model.addAttribute("word", word);
 		System.out.println(word);
-		List<List<Article>> rs = service.selectArticleList(word);
-		model.addAttribute("list", rs);
+		map.put("list", service.selectArticleList(word)) ;
+		model.addAttribute("map", map);
 		
 		return "/phoenix/com/searchResult";
 	}
@@ -44,10 +47,10 @@ public class TotalSearchController {
 	 */
 	@RequestMapping(value="/phoenix/com/process/searchResult",method = RequestMethod.GET)
 	public String comProcessSearchResult(@RequestParam(value="cate") String cate, String word, Model model){
-		model.addAttribute("cate", cate);
-		model.addAttribute("word", word);
-		List<List<Article>> rs = service.selectArticleList(word);
-		model.addAttribute("list", rs);
+//		model.addAttribute("cate", cate);
+//		model.addAttribute("word", word);
+//		List<List<Article>> rs = service.selectArticleList(word);
+//		model.addAttribute("list", rs);
 		return "/phoenix/com/searchResult";
 	}
 	
