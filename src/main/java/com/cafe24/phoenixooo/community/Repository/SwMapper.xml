@@ -19,10 +19,10 @@
 	
 	
 	
-<!--
- 	<select id="selectOrderList" parameterType="java.util.map" resultType="com.cafe24.phoenixooo.community.Model.Order">
+
+ 	<select id="selectOrderList" parameterType="java.util.Map" resultType="com.cafe24.phoenixooo.community.Model.Order">
 		select
-			SW_ORDER_CD as orderCode
+			SW_ORDER_CD as swOrderCode
 			,RECEIVE_USER_CD as receiveUserCode
 			,ORDER_USER_CD as orderUserCode
 			,SHOP_CD as shopCode
@@ -31,13 +31,10 @@
 		 from
 		 	COM_ORDER_TB
 		 where
-		 	USER_CD=${userCode}
-	</select> -->
- 	
- 	
- 	
-	<!-- 
-	<select id="selectPaymentList" parameterType="java.util.map" resultType="com.cafe24.phoenixooo.community.Model.Payment">
+		 	ORDER_USER_CD=#{userCode}
+	</select>
+
+	<select id="selectPaymentList" parameterType="java.util.Map" resultType="com.cafe24.phoenixooo.community.Model.Payment">
 		select
 			 PAYMENT_CD as paymentCode
 			 ,ORDER_CD as orderCode
@@ -53,6 +50,6 @@
 		 from
 		 	COM_PAYMENT_TB
 		 where
-		 	USER_CD=${userCode}
-	</select> -->
+		 	USER_CD=#{userCode}
+	</select>
 </mapper>

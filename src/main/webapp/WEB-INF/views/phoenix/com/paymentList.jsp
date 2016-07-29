@@ -15,28 +15,24 @@
 
 <div>
 	<table>
-		<th>주문번호</th>
-		<th>주문일자</th>
-		<th>결제일자</th>
-		<th>주문내역</th>
-		<th>주문금액</th>
-		<th>주문상태</th>
-		<th>환불신청</th>
-		
-		
+		<tr>
+			<td>주문번호</td>
+			<td>주문일자</td>
+			<td>주문내역</td>
+			<td>주문금액</td>
+			<td>주문상태</td>
+			<td>환불신청</td>
+		<tr>
+		<c:forEach var="list" items="${orderListCommandList}">
 			<tr>
-				<c:forEach var="list" items="orderAndPaymentMap.orderList">
-					<td>${list.orderCode }</td>
-					<td>2016.07.05</td>
-					<td>1개월패키지</td>
-					<td>9900</td>
-				</c:forEach>
-				<%-- <c:forEach>
-					<td>결제완료</td>
-					<td><a href="/phoenix/com/form/requestingRepayment">환불</a></td>
-				</c:forEach> --%>
+				<td>${list.swOrderCode}</td>
+				<td>${list.orderDate}</td>
+				<td>${list.swName}</td>
+				<td>${list.swWon}</td>
+				<td>${list.orderStatus}</td>
+				<td>${list.requestingRepayment}</td>
 			</tr>
-
+		</c:forEach>
 	</table>
 </div>
 
