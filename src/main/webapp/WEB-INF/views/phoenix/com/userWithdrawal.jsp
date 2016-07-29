@@ -16,7 +16,7 @@
 	<div>
 		<input type="checkbox"/>정말 탈퇴하시겠습니까?
 	</div>
-		<input name="userCode" type="text" value="${sessionScope.user.userCode}"/>
+		<input name="userCode" type="hidden" value="${sessionScope.user.userCode}"/>
 	<div>
 		<label>비밀번호 : </label>
 		<input name="userPw" type="password"/>
