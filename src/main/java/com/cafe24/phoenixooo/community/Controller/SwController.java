@@ -46,8 +46,9 @@ public class SwController
 	}
 	
 	//환불신청화면으로 //
-	@RequestMapping(value = "/phoenix/com/form/requestingRepayment", method = RequestMethod.GET)
-	public String moveToRequestingRepayment() {
+	@RequestMapping(value = "/phoenix/com/form/requestingRepayment", method = RequestMethod.POST)
+	public String moveToRequestingRepayment(OrderListCommand orderListCommand) {
+		swService.insertRequestingRepayment(orderListCommand);
 	return "/phoenix/com/requestingRepayment";
 	}
 	

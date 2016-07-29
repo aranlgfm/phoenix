@@ -23,6 +23,7 @@
 			<td>주문상태</td>
 			<td>환불신청</td>
 		<tr>
+		
 		<c:forEach var="list" items="${orderListCommandList}">
 			<tr>
 				<td>${list.swOrderCode}</td>
@@ -30,7 +31,14 @@
 				<td>${list.swName}</td>
 				<td>${list.swWon}</td>
 				<td>${list.orderStatus}</td>
-				<td>${list.requestingRepayment}</td>
+			<form action="/phoenix/com/form/requestingRepayment" method="post"> 
+				<input type="hidden" value="${list.swOrderCode}" name="swOrderCode">
+				<input type="hidden" value="${list.orderDate}" name="orderDate">
+				<input type="hidden" value="${list.swName}" name="swName">
+				<input type="hidden" value="${list.swWon}" name="swWon">
+				<input type="hidden" value="${list.orderStatus}" name="orderStatus">
+				<td><input type="submit" value="${list.requestingRepayment}" name="requestingRepayment"/></td>
+			</form>
 			</tr>
 		</c:forEach>
 	</table>

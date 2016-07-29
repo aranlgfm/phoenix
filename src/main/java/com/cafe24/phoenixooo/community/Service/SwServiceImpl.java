@@ -131,4 +131,13 @@ public class SwServiceImpl implements SwService{
 
 		return orderListCommandList;
 	}
+
+	
+	//환불 신청 하기
+	@Override
+	public int insertRequestingRepayment(OrderListCommand orderListCommand) {
+		return swDao.insertRequestingRepayment(orderListCommand); 
+	}
+
+
 }

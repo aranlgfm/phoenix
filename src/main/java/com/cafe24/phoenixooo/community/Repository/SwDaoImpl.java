@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.cafe24.phoenixooo.community.Model.Order;
+import com.cafe24.phoenixooo.community.Model.OrderListCommand;
 import com.cafe24.phoenixooo.community.Model.Payment;
 import com.cafe24.phoenixooo.community.Model.Sw;
 import com.cafe24.phoenixooo.community.Model.Test;
@@ -44,4 +45,12 @@ public class SwDaoImpl implements SwDao {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(NS+".selectPaymentList", map);
 	}
+
+	//환불 신청 하기
+	@Override
+	public int insertRequestingRepayment(OrderListCommand orderListCommand) {
+		return sqlSession.insert(NS+".insertRequestingRepayment", orderListCommand);
+		
+	}
+
 }

@@ -52,4 +52,37 @@
 		 where
 		 	USER_CD=#{userCode}
 	</select>
+	
+	<!-- 환불신청하기 -->
+	
+	<insert id="insertRequestingRepayment" parameterType="com.cafe24.phoenixooo.community.Model.OrderListCommand">
+		
+	
+	</insert>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </mapper>
