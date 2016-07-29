@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.cafe24.phoenixooo.community.Model.Order;
-import com.cafe24.phoenixooo.community.Model.OrderListCommand;
 import com.cafe24.phoenixooo.community.Model.Payment;
+import com.cafe24.phoenixooo.community.Model.RepaymentRequestCommand;
 import com.cafe24.phoenixooo.community.Model.Sw;
 import com.cafe24.phoenixooo.community.Model.Test;
 
@@ -20,6 +20,8 @@ public interface SwDao {
 	List<Payment> selectPaymentList(Map map);
 	
 	//환불 신청 하기
-	int insertRequestingRepayment(OrderListCommand orderListCommand);
+	int insertRequestingRepayment(RepaymentRequestCommand repaymentRequestCommand);
+
+	Payment selectPartOfRePaymentRequest(Payment payment);
 	
 }

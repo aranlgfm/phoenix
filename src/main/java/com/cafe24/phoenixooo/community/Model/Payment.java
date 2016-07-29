@@ -13,6 +13,7 @@ public class Payment {
 	private String startingServiceDate;
 	private String swEndingServiceDate;
 	private String swServiceStatus;
+	
 	public String getPaymentCode() {
 		return paymentCode;
 	}

@@ -1,7 +1,6 @@
 package com.cafe24.phoenixooo.community.Controller;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -49,7 +48,9 @@ public class SwController
 	@RequestMapping(value = "/phoenix/com/form/requestingRepayment", method = RequestMethod.POST)
 	public String moveToRequestingRepayment(OrderListCommand orderListCommand) {
 		swService.insertRequestingRepayment(orderListCommand);
-	return "/phoenix/com/requestingRepayment";
+		
+		
+	return "/phoenix/com/repaymentList";
 	}
 	
 	//환불(신청)내역 화면 //

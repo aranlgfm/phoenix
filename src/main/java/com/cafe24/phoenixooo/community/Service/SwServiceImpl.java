@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.cafe24.phoenixooo.community.Model.Order;
 import com.cafe24.phoenixooo.community.Model.OrderListCommand;
 import com.cafe24.phoenixooo.community.Model.Payment;
+import com.cafe24.phoenixooo.community.Model.RepaymentRequestCommand;
 import com.cafe24.phoenixooo.community.Model.Sw;
 import com.cafe24.phoenixooo.community.Model.UserCustomer;
 import com.cafe24.phoenixooo.community.Repository.SwDao;
@@ -133,10 +133,27 @@ public class SwServiceImpl implements SwService{
 	}
 
 	
-	//환불 신청 하기
+	//환불 신청 하기 (paymentCode, userCode, shopCode, swCode)
 	@Override
 	public int insertRequestingRepayment(OrderListCommand orderListCommand) {
-		return swDao.insertRequestingRepayment(orderListCommand); 
+		RepaymentRequestCommand repaymentRequestCommand = new RepaymentRequestCommand();
+		
+		Payment payment = new Payment();
+		payment.setOrderCode(orderListCommand.getSwOrderCode()); 
+		
+		Payment partOfRepaymentRequest = swDao.selectPartOfRePaymentRequest(payment);
+		
+		//paymentCode값 1개 셋팅
+		repaymentRequestCommand.setPaymentCode(partOfRepaymentRequest.getPaymentCode());
+		//userCode값 1개 셋팅
+		repaymentRequestCommand.setUserCode(partOfRepaymentRequest.getUserCode());
+		//shopCode값 1개 셋팅
+		repaymentRequestCommand.setShopCode(partOfRepaymentRequest.getShopCode());
+		//swCode값 1개 셋팅
+		repaymentRequestCommand.setSwCode(partOfRepaymentRequest.getSwCode());
+		
+		// 서브가져온 값 매개변수로 넣고 환불신청 쿼리로 넘어가기
+		return swDao.insertRequestingRepayment(repaymentRequestCommand); 
 	}
 
 

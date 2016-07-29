@@ -54,14 +54,47 @@
 	</select>
 	
 	<!-- 환불신청하기 -->
-	
-	<insert id="insertRequestingRepayment" parameterType="com.cafe24.phoenixooo.community.Model.OrderListCommand">
-		
-	
+	<insert id="insertRequestingRepayment" parameterType="com.cafe24.phoenixooo.community.Model.RepaymentRequestCommand">
+		INSERT INTO 
+			COM_REPAYMENT_REQUEST_TB
+			(
+			REPAYMENT_REQUEST_CD
+			, PAYMENT_CD
+			, USER_SYSTEM_CD
+			, USER_CD
+			, SHOP_CD
+			, SW_CD
+			, REPAYMENT_REQUEST_WON
+			, REPAYMENT_REQUEST_DT
+			, REPAYMENT_PERMISSION_DT
+			)
+		VALUES 
+			(
+			'COM_REPAYMENT_REQUEST_4'
+			, #{paymentCode}
+			, 'COM_USER_1'
+			, #{userCode}
+			, #{shopCode}
+			, #{swCode}
+			, 20000
+			, NOW()
+			, NULL
+			)		
 	</insert>
-	
-	
-	
+		<!-- 환신청을 위한 서브 쿼리  (paymentCode, userCode, shopCode, swCode, swWon)-->
+		<select id="selectPartOfRePaymentRequest" parameterType="com.cafe24.phoenixooo.community.Model.Payment" resultType="com.cafe24.phoenixooo.community.Model.Payment">
+		
+			SELECT 
+				PAYMENT_CD as paymentCode
+				,USER_CD as userCode
+				,SHOP_CD as shopCode
+				,SW_CD as swCode
+				,SW_WON as swWon
+			FROM
+				COM_PAYMENT_TB
+			WHERE ORDER_CD = #{orderCode}
+
+		</select>
 	
 	
 	

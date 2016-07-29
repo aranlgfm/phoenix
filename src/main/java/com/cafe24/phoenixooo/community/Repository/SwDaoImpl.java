@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.cafe24.phoenixooo.community.Model.Order;
 import com.cafe24.phoenixooo.community.Model.OrderListCommand;
 import com.cafe24.phoenixooo.community.Model.Payment;
+import com.cafe24.phoenixooo.community.Model.RepaymentRequestCommand;
 import com.cafe24.phoenixooo.community.Model.Sw;
 import com.cafe24.phoenixooo.community.Model.Test;
 
@@ -48,9 +49,30 @@ public class SwDaoImpl implements SwDao {
 
 	//환불 신청 하기
 	@Override
-	public int insertRequestingRepayment(OrderListCommand orderListCommand) {
-		return sqlSession.insert(NS+".insertRequestingRepayment", orderListCommand);
-		
+	public int insertRequestingRepayment(RepaymentRequestCommand repaymentRequestCommand) {
+
+		return sqlSession.insert(NS+".insertRequestingRepayment", repaymentRequestCommand);
 	}
 
+		// 환불 신청하기 위한 서브 메서드 (paymentCode, userCode, shopCode, swCode, swWon)
+		@Override
+		public Payment selectPartOfRePaymentRequest(Payment payment) {
+			return sqlSession.selectOne(NS+".selectPartOfRePaymentRequest", payment);
+		}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
