@@ -111,7 +111,8 @@ public class SwServiceImpl implements SwService{
 			orderListCommandList.get(i).setSwWon(swList.get(i).getSwWon());
 			if((orderLinkdedList.size()-removedList.size())==0)
 			{
-				
+				orderListCommandList.get(i).setOrderStatus("결제완료");
+				orderListCommandList.get(i).setRequestingRepayment("환불신청");
 			}
 			else
 			{
