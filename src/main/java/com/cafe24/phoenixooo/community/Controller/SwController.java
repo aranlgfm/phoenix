@@ -3,12 +3,15 @@ package com.cafe24.phoenixooo.community.Controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.cafe24.phoenixooo.community.Model.OrderListCommand;
 import com.cafe24.phoenixooo.community.Model.Sw;
 import com.cafe24.phoenixooo.community.Model.UserCustomer;
 import com.cafe24.phoenixooo.community.Service.SwService;
@@ -29,9 +32,10 @@ public class SwController
 		
 	//주문결제리스트 화면으로 //
 	@RequestMapping(value = "/phoenix/com/form/paymentList", method = RequestMethod.GET)
-	public String moveToPaymentList(UserCustomer userCustomer,Model model) {
-		Map<String,Object> map=swService.getPaymentList(userCustomer);
-		model.addAttribute("orderAndPaymentMap", map);
+	public String moveToPaymentList(HttpSession session,UserCustomer userCustomer,Model model) {
+		userCustomer=(UserCustomer)session.getAttribute("user");
+		List<OrderListCommand> orderListCommandList=swService.getPaymentList(userCustomer);
+		model.addAttribute("orderListCommandList", orderListCommandList);
 	return "/phoenix/com/paymentList";
 	}
 	
@@ -42,8 +46,9 @@ public class SwController
 	}
 	
 	//환불신청화면으로 //
-	@RequestMapping(value = "/phoenix/com/form/requestingRepayment", method = RequestMethod.GET)
-	public String moveToRequestingRepayment() {
+	@RequestMapping(value = "/phoenix/com/form/requestingRepayment", method = RequestMethod.POST)
+	public String moveToRequestingRepayment(OrderListCommand orderListCommand) {
+		swService.insertRequestingRepayment(orderListCommand);
 	return "/phoenix/com/requestingRepayment";
 	}
 	
