@@ -7,6 +7,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class CustomerController {
 	
+//	/phoenix/crm/customerManagement
+	@RequestMapping(value = "/phoenix/crm/customerManagement", method = RequestMethod.GET)
+	public String CrmCustomerManagement(){
+		return "/phoenix/crm/customerManagement";
+	}
+	
+	
 	/**
 	 * CRM-Controller 회원등록화면
 	 * @return

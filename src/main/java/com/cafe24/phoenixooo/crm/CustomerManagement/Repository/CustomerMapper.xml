@@ -3,7 +3,7 @@
 <mapper namespace="com.cafe24.phoenixooo.crm.customerManagement.Repository.CustomerMapper">
 
 	<!-- 1. 고객등록 -->
-	<insert id="insertCustomer" parameterType="com.cafe24.phoenixooo.crm.businessManagement.Model.CrmCustomer">
+	<insert id="insertCustomer" parameterType="com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer">
 		INSERT INTO
 			CRM_CUSTOMER_TB
 				(
