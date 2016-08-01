@@ -8,6 +8,7 @@ public class CrmCustomer {
 	private String customerCellphoneNumber;
 	private int customerSexFlag;
 	private String customerFirstVisitDate;
+	private String customerJoinDate;
 	private String employeeCode;
 	private String employeeName;
 	private String customerBirthDate;
@@ -51,7 +52,17 @@ public class CrmCustomer {
 		return customerFirstVisitDate;
 	}
 	public void setCustomerFirstVisitDate(String customerFirstVisitDate) {
-		this.customerFirstVisitDate = customerFirstVisitDate;
+		if(customerFirstVisitDate == ""){
+			customerFirstVisitDate = null;
+		}else{
+			this.customerFirstVisitDate = customerFirstVisitDate;
+		}
+	}
+	public String getCustomerJoinDate() {
+		return customerJoinDate;
+	}
+	public void setCustomerJoinDate(String customerJoinDate) {
+		this.customerJoinDate = customerJoinDate;
 	}
 	public String getEmployeeCode() {
 		return employeeCode;
@@ -69,13 +80,21 @@ public class CrmCustomer {
 		return customerBirthDate;
 	}
 	public void setCustomerBirthDate(String customerBirthDate) {
-		this.customerBirthDate = customerBirthDate;
+		if(customerBirthDate == ""){
+			customerBirthDate = null;
+		}else{
+			this.customerBirthDate = customerBirthDate;
+		}
 	}
 	public String getCustomerPostNumber() {
 		return customerPostNumber;
 	}
 	public void setCustomerPostNumber(String customerPostNumber) {
-		this.customerPostNumber = customerPostNumber;
+		if(customerPostNumber==""){
+			customerPostNumber = null;
+		}else{
+			this.customerPostNumber = customerPostNumber;
+		}
 	}
 	public String getCustomerAddress() {
 		return customerAddress;
@@ -93,7 +112,11 @@ public class CrmCustomer {
 		return customerAnniversaryDate;
 	}
 	public void setCustomerAnniversaryDate(String customerAnniversaryDate) {
-		this.customerAnniversaryDate = customerAnniversaryDate;
+		if(customerAnniversaryDate == ""){
+			customerAnniversaryDate = null;
+		}else{
+			this.customerAnniversaryDate = customerAnniversaryDate;
+		}
 	}
 	public String getCustomerMemo() {
 		return customerMemo;
@@ -106,10 +129,10 @@ public class CrmCustomer {
 	public String toString() {
 		return "CrmCustomer [customerCode=" + customerCode + ", userCode=" + userCode + ", customerName=" + customerName
 				+ ", customerCellphoneNumber=" + customerCellphoneNumber + ", customerSexFlag=" + customerSexFlag
-				+ ", customerFirstVisitDate=" + customerFirstVisitDate + ", employeeCode=" + employeeCode
-				+ ", employeeName=" + employeeName + ", customerBirthDate=" + customerBirthDate
-				+ ", customerPostNumber=" + customerPostNumber + ", customerAddress=" + customerAddress
-				+ ", customerEmailAddress=" + customerEmailAddress + ", customerAnniversaryDate="
+				+ ", customerFirstVisitDate=" + customerFirstVisitDate + ", customerJoinDate=" + customerJoinDate
+				+ ", employeeCode=" + employeeCode + ", employeeName=" + employeeName + ", customerBirthDate="
+				+ customerBirthDate + ", customerPostNumber=" + customerPostNumber + ", customerAddress="
+				+ customerAddress + ", customerEmailAddress=" + customerEmailAddress + ", customerAnniversaryDate="
 				+ customerAnniversaryDate + ", customerMemo=" + customerMemo + "]";
 	}
 	

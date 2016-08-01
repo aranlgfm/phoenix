@@ -13,6 +13,7 @@
 				,CUSTOMER_CELLPHONE_NO
 				,CUSTOMER_SEX_FL
 				,CUSTOMER_FIRST_VISIT_DT
+				,CUSTOMER_JOIN_DT
 				,EMPLOYEE_CD
 				,EMPLOYEE_NM
 				,CUSTOMER_BIRTH_DT
@@ -30,6 +31,7 @@
 				,#{customerCellphoneNumber}
 				,#{customerSexFlag}
 				,#{customerFirstVisitDate}
+				,NOW()
 				,#{employeeCode}
 				,#{employeeName}
 				,#{customerBirthDate}
@@ -40,5 +42,16 @@
 				,#{customerMemo}
 				)
 	</insert>
+	
+	<select id="getCustomerCode" resultType="String">
+		SELECT
+			CUSTOMER_CD 
+		FROM
+			CRM_CUSTOMER_TB
+		ORDER BY 
+			CUSTOMER_JOIN_DT DESC
+		LIMIT 
+			0,1
+	</select>
 
 </mapper>
