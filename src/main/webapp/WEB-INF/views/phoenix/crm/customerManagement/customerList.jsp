@@ -31,6 +31,7 @@
 				<th>시술등록</th>
 				<th>예약등록</th>
 				<th>정보수정</th>
+				<th>고객삭제</th>
 			</tr>
 	<c:forEach var="list" items="${list}">
 			<tr>
@@ -46,6 +47,7 @@
 				<td><a href="">시술등록</a></td>
 				<td><a href="">예약등록</a></td>
 				<td><a href="/phoenix/crm/customerManagement/form/modifyCustomer?customerCode=${list.customerCode}">정보수정</a></td>
+				<td><a href="/phoenix/crm/customerManagement/process/deleteCustomer?customerCode=${list.customerCode}">고객삭제</a></td>
 			</tr>
 		</c:forEach>
 </table>

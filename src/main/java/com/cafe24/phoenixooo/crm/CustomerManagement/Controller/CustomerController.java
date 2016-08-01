@@ -77,5 +77,13 @@ public class CustomerController {
 		customerService.updateCustomer(customer);
 		return "redirect:/phoenix/crm/customerManagement/form/customerList";
 	}
-
+	
+	/**
+	 * CRM-Controller 회원삭제
+	 */
+	@RequestMapping(value = "/phoenix/crm/customerManagement/process/deleteCustomer", method = RequestMethod.GET)
+	public String crmCustomerManagementProcessDeleteCustomer(CrmCustomer customer){
+		customerService.deleteCustomer(customer);
+		return "redirect:/phoenix/crm/customerManagement/form/customerList";
+	}
 }

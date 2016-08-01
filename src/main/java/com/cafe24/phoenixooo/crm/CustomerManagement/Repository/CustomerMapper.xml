@@ -7,6 +7,7 @@
 		2. 고객목록
 		3. 고객정보수정
 		3. 고객검색(수정용)
+		4. 고객삭제
 	 -->
 	<!-- 1. 고객등록 -->
 	<insert id="insertCustomer" parameterType="com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer">
@@ -100,7 +101,8 @@
 	<!-- 3. 고객검색(수정용) -->
 	<select id="selectForUpdateCustomer" parameterType="com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer" resultType="com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer">
 		SELECT
-			USER_CD as userCode
+			CUSTOMER_CD as customerCode
+			,USER_CD as userCode
 			,CUSTOMER_NM as customerName
 			,CUSTOMER_CELLPHONE_NO as customerCellphoneNumber
 			,CUSTOMER_SEX_FL as customerSexFlag
@@ -120,4 +122,11 @@
 			CUSTOMER_CD=#{customerCode}
 	</select>
 
+	<!-- 4. 고객삭제 -->
+	<delete id="deleteCustomer" parameterType="com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer">
+		DELETE FROM 
+			CRM_CUSTOMER_TB
+		WHERE 
+			CUSTOMER_CD = #{customerCode}
+	</delete>
 </mapper>

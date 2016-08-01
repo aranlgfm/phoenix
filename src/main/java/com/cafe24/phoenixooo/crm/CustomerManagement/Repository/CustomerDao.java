@@ -36,4 +36,11 @@ public interface CustomerDao {
 	 * @return
 	 */
 	CrmCustomer selectForUpdateCustomer(CrmCustomer customer);
+	
+	/**
+	 * (Repository) crm고객삭제
+	 * @param customer
+	 * @return
+	 */
+	int deleteCustomer(CrmCustomer customer);
 }

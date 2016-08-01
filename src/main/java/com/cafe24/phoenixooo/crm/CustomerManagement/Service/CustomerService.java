@@ -26,5 +26,15 @@ public interface CustomerService {
 	 */
 	int updateCustomer(CrmCustomer customer);
 	
+	/**
+	 * (Service) crm고객검색(수정용)
+	 * @param customer
+	 * @return
+	 */
 	CrmCustomer selectForUpdateCustomer(CrmCustomer customer);
+	
+	/**
+	 * (Service) crm고객삭제
+	 */
+	int deleteCustomer(CrmCustomer customer);
 }

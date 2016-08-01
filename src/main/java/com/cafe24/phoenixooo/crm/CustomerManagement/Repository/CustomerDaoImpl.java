@@ -63,6 +63,14 @@ public class CustomerDaoImpl implements CustomerDao {
 	public CrmCustomer selectForUpdateCustomer(CrmCustomer customer) {
 		return sqlSession.selectOne(NS+"selectForUpdateCustomer", customer);
 	}
+
+	/**
+	 * (Repository구현) crm고객삭제
+	 */
+	@Override
+	public int deleteCustomer(CrmCustomer customer) {
+		return sqlSession.delete(NS+"deleteCustomer", customer);
+	}
 	
 	
 

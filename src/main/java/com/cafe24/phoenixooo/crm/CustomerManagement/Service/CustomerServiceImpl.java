@@ -48,10 +48,15 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public CrmCustomer selectForUpdateCustomer(CrmCustomer customer) {
 		customer = customerDao.selectForUpdateCustomer(customer);
-		if(customer.getUserCode() != "미용실회원"){
-			customer.setUserCode("커뮤니티회원");
-		}
 		return customer;
+	}
+
+	/**
+	 * (Service구현) crm고객삭제
+	 */
+	@Override
+	public int deleteCustomer(CrmCustomer customer) {
+		return customerDao.deleteCustomer(customer);
 	}
 	
 }

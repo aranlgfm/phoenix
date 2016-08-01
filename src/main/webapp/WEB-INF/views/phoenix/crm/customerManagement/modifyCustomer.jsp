@@ -15,6 +15,8 @@
 </h1>
 
 <form action="/phoenix/crm/customerManagement/process/modifyCustomer" method="POST">
+	<input name="customerCode" type="hidden" value="${customer.customerCode}"/>
+	<input name="userCode" type="hidden" value="${customer.userCode}"/>
 	<table>
 		<tr>
 			<th>Filed</th>
@@ -22,11 +24,18 @@
 		</tr>
 		<tr>
 			<td>커뮤니티회원여부</td>
-			<td>${customer.userCode}</td>
+			<c:choose>
+				<c:when test="${customer.userCode eq '미용실회원'}">
+					<td>${customer.userCode}</td>
+				</c:when>
+				<c:otherwise>
+					<td>커뮤니티회원</td>
+				</c:otherwise>
+			</c:choose>
 		</tr>
 		<tr>
 			<td>고객명</td>
-			<td>${customer.customerName}</td>
+			<td><input name="customerName" type="text" value="${customer.customerName}" readonly="readonly"/></td>
 		</tr>
 		<tr>
 			<td>연락처</td>
