@@ -14,7 +14,7 @@
 	고객등록화면  
 </h1>
 
-	<form action="/phoenix/crm/process/insertCustomer" method="POST">
+	<form action="/phoenix/crm/customerManagement/process/insertCustomer" method="POST">
 		<table>
 			<tr>
 				<th>Filed</th>
@@ -88,7 +88,7 @@
 			</tr>
 		</table>
 	<input type="submit" value="확인"/>
-	<a href="/phoenix/crm/customerManagement"><input type="button" value="취소"/></a>
+	<a href="/phoenix/crm/customerManagement/form/customerManagement"><input type="button" value="취소"/></a>
 	</form>
 
 </body>

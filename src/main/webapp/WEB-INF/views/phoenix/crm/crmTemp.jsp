@@ -10,7 +10,7 @@
 	<h1>임시메인</h1>
 	
 	<a href="/phoenix/crm/businessManagement">영업관리</a>
-	<a href="/phoenix/crm/customerManagement">회원관리</a>
+	<a href="/phoenix/crm/customerManagement/form/customerManagement">회원관리</a>
 	<a href="/phoenix/crm/employeeManagement">직원관리</a>
 	<a href="/phoenix/crm/stockManagement">매입/지출</a>
 </body>

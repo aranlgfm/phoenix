@@ -17,9 +17,9 @@ public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
 	
-	@RequestMapping(value = "/phoenix/crm/customerManagement", method = RequestMethod.GET)
+	@RequestMapping(value = "/phoenix/crm/customerManagement/form/customerManagement", method = RequestMethod.GET)
 	public String crmCustomerManagement(){
-		return "/phoenix/crm/customerManagement";
+		return "/phoenix/crm/customerManagement/customerManagement";
 	}
 	
 	
@@ -27,9 +27,9 @@ public class CustomerController {
 	 * CRM-Controller 회원등록화면
 	 * @return
 	 */
-	@RequestMapping(value = "/phoenix/crm/form/insertingCustomer", method = RequestMethod.GET)
+	@RequestMapping(value = "/phoenix/crm/customerManagement/form/insertingCustomer", method = RequestMethod.GET)
 	public String crmFormInsertingCustomer(){
-		return "/phoenix/crm/insertingCustomer";
+		return "/phoenix/crm/customerManagement/insertingCustomer";
 	}
 	
 	/**
@@ -37,33 +37,45 @@ public class CustomerController {
 	 * @param customer
 	 * @return
 	 */
-	@RequestMapping(value = "/phoenix/crm/process/insertCustomer", method = RequestMethod.POST)
+	@RequestMapping(value = "/phoenix/crm/customerManagement/process/insertCustomer", method = RequestMethod.POST)
 	public String crmProcessInsertCustomer(CrmCustomer customer){
 		customerService.insertCustomer(customer);
-		return "/phoenix/crm/customerManagement";
+		return "/phoenix/crm/customerManagement/customerManagement";
 	}
 	
 	/**
 	 * CRM-Controller 회원리스트
 	 * @return
 	 */
-	@RequestMapping(value = "/phoenix/crm/form/customerList", method = RequestMethod.GET)
+	@RequestMapping(value = "/phoenix/crm/customerManagement/form/customerList", method = RequestMethod.GET)
 	public String crmFormCustomerList(Model model){
 		List<CrmCustomer> list = customerService.getCustomerList();
 		model.addAttribute("list", list);
-		return "/phoenix/crm/customerList";
+		return "/phoenix/crm/customerManagement/customerList";
 	}
 	
 	/**
-	 * CRM-Controller 회원정보수정
+	 * CRM-Controller 회원정보수정화면
 	 * @param customer
 	 * @return
 	 */
-	@RequestMapping(value = "/phoenix/crm/form/modifyCustomer", method = RequestMethod.GET)
-	public String crmFormModifyCustomer(CrmCustomer customer){
-		customerService.selectForUpdateCustomer(customer);
-		return "/phoenix/crm/modifyCustomer";
+	@RequestMapping(value = "/phoenix/crm/customerManagement/form/modifyCustomer", method = RequestMethod.GET)
+	public String crmFormModifyCustomer(CrmCustomer customer, Model model){
+		customer = customerService.selectForUpdateCustomer(customer);
+		model.addAttribute("customer", customer);
+		return "/phoenix/crm/customerManagement/modifyCustomer";
+	}
+	
+	/**
+	 * CRM-Controller 회원정보수정처리
+	 * @param customer
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/phoenix/crm/customerManagement/process/modifyCustomer", method = RequestMethod.POST)
+	public String crmProcessModifyCustomer(CrmCustomer customer){
+		customerService.updateCustomer(customer);
+		return "redirect:/phoenix/crm/customerManagement/form/customerList";
 	}
 
-//	customerService.updateCustomer(customer);
 }

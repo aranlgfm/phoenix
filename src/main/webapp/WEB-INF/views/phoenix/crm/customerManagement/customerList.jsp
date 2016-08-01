@@ -45,7 +45,7 @@
 				<td>${list.employeeName}</td>
 				<td><a href="">시술등록</a></td>
 				<td><a href="">예약등록</a></td>
-				<td><a href="/phoenix/crm/form/modifyCustomer?customerCode=${customerCode}">정보수정</a></td>
+				<td><a href="/phoenix/crm/customerManagement/form/modifyCustomer?customerCode=${list.customerCode}">정보수정</a></td>
 			</tr>
 		</c:forEach>
 </table>

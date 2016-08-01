@@ -84,6 +84,7 @@
 		SET
 			USER_CD = #{userCode}
 			,CUSTOMER_CELLPHONE_NO = #{customerCellphoneNumber}
+			,CUSTOMER_NM = #{customerName}
 			,EMPLOYEE_CD = #{employeeCode}
 			,EMPLOYEE_NM = #{employeeName}
 			,CUSTOMER_BIRTH_DT = #{customerBirthDate}
@@ -99,7 +100,7 @@
 	<!-- 3. 고객검색(수정용) -->
 	<select id="selectForUpdateCustomer" parameterType="com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer" resultType="com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer">
 		SELECT
-			USER_CD
+			USER_CD as userCode
 			,CUSTOMER_NM as customerName
 			,CUSTOMER_CELLPHONE_NO as customerCellphoneNumber
 			,CUSTOMER_SEX_FL as customerSexFlag
@@ -116,7 +117,7 @@
 		FROM 
 			CRM_CUSTOMER_TB
 		WHERE 
-			CUSTOMER_CD=#{}
+			CUSTOMER_CD=#{customerCode}
 	</select>
 
 </mapper>
