@@ -1,4 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cafe24.phoenixooo.crm.stockManagement.Repository.GoodsStockMapper">
+	<!-- 미용용품 입고 등록 처리 -->
+	<insert id="insertGoodsStock" parameterType="com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsStock">
+		INSERT INTO 
+			CRM_GOODS_STOCK_TB
+			(
+				STOCK_CD
+				,ACCOUNT_CD
+				, PAYMENT_CD
+				, SHOP_CD
+				, EMPLOYEE_CD
+				, GOODS_CD
+				, STOCK_DT
+				, GOODS_QUANTITY_NO
+			)
+			VALUES 
+			(
+				'테스트'
+				,'테스팅'
+				, '테스트'
+				, '테스트'
+				, '테스트'
+				, #{stockDate}
+				, NOW()
+				, #{goodsQuantityNumber}
+			)		
+	</insert>
+	
+	<select id="selectGoodsStockList" parameterType="com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsStock" resultType="com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsStock">
+		SELECT 
+			STOCK_DT as stockDate
+			,ACCOUNT_NM as accountName
+			,GOODS_NM as goodsName
+			,EMPLOYEE_NM as employeeName
+			,BUYING_GOODS_UNIT_WON as buyingGoodsUnitWon
+			,GOODS_QUANTITY_NO as goodsQuantityNumber
+		FROM 
+			CRM_GOODS_STOCK_TB as goodsStock
+		inner JOIN 
+			CRM_ACCOUNT_TB as account
+		ON 
+			goodsStock.ACCOUNT_CD=account.ACCOUNT_CD
+		inner join
+			CRM_GOODS_TB as goods
+		on
+			goodsStock.GOODS_CD=goods.GOODS_CD
+		inner join
+			CRM_EMPLOYEE_TB as employee
+		on
+			goodsStock.EMPLOYEE_CD=employee.EMPLOYEE_CD
+		where 
+			goodsStock.SHOP_CD=(select USER_SHOP_CD from COM_USER_TB as user where user.USER_CD=#{userCode})		
+	</select>
 </mapper>

@@ -23,5 +23,6 @@
 
 	<context:component-scan base-package="com.cafe24.phoenixooo" />
 	<bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></bean>
-	<bean id="daoHelper" class="com.cafe24.phoenixooo.community.Repository.DaoHelper"/>	
+	<bean id="daoHelper" class="com.cafe24.phoenixooo.community.Repository.DaoHelper"/>
+	<bean id="crmCustomerDaoHelper" class="com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomerDaoHelper"/>
 </beans>
