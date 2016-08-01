@@ -18,7 +18,6 @@ public class BoardDaoImpl implements BoardDao
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	
 	//게시글 리스트 가져오기.게시판 화면.
 	@Override
 	public List<Article> selectArticleList(Map<String, Object> map) {

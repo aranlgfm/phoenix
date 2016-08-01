@@ -1,4 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cafe24.phoenixooo.crm.businessManagement.Repository.BusinessManagementSettingMapper">
+	
+	<!-- 
+	0. 코드값들 증가..;; 
+	1. 시술품목(아이템) 등록
+	2. 시술디자인(아이템세부) 등록
+	3. 아이템 리스트 셀렉
+	
+	 -->
+	
+	
+	<!-- 0. 아이템코드증가 -->
+	<select id="getItemCode" resultType="String">
+		SELECT 
+			ITEM_CD 
+		FROM 
+			CRM_ITEM_TB
+		order by ITEM_REGISTE_DT desc
+		LIMIT 0,1
+	</select>
+	
+	<!-- 0. 디자인코드증가 -->
+	<select id="getItemDesignCode" resultType="String">
+		SELECT 
+			ITEMDESIGN_CD 
+		FROM 
+			CRM_ITEMDESIGN_TB
+		order by ITEMDESIGN_REGISTE_DT desc
+		LIMIT 0,1
+	</select>
+	
+	<!-- 1. 시술품목 등록 -->
+	<insert id="insertProcedureItem" parameterType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItem">
+		INSERT 
+		INTO 
+		CRM_ITEM_TB
+		(
+			ITEM_CD
+			,SHOP_CD
+			,ITEM_NM
+			,ITEM_REGISTE_DT
+		)
+		VALUES
+		(
+			#{itemCode}
+			,#{shopCode}
+			,#{itemName}
+			,NOW()
+		)
+	</insert>
+	
+	<!-- 2. 시술디자인 등록 -->
+	<insert id="insertProcedureItemDesign" parameterType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItemDesign">
+		INSERT 
+		INTO 
+		CRM_ITEMDESIGN_TB
+		(
+			ITEMDESIGN_CD
+			,SHOP_CD
+			,ITEM_CD
+			,ITEMDESIGN_NM
+			,ITEMDESIGN_REGISTE_DT
+		)
+		VALUES
+		(
+			#{itemDesignCode}
+			,#{shopCode}
+			,#{itemCode}
+			,#{itemDesignName}
+			,NOW()
+		)
+	</insert>
+	
+	<!-- 3.아이템 리스트 뽑아오기 -->
+	<select id="selectItemList" parameterType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItem" resultType="java.util.List">
+		SELECT
+			ITEM_CD as itemCode
+			,ITEM_NM as itemName
+		FROM
+			CRM_ITEM_TB
+		WHERE
+			SHOP_CD = #{shopCode}
+		ORDER BY 
+			ITEM_NM ASC				
+	</select>
 </mapper>

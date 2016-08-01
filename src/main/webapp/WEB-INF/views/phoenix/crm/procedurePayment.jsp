@@ -9,8 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
+	<h3>
+		시술내역등록 
+	</h3>
 </body>
 </html>

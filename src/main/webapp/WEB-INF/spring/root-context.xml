@@ -28,7 +28,7 @@
 				<value>classpath:com/cafe24/phoenixooo/community/Repository/SwMapper.xml</value>
 				<value>classpath:com/cafe24/phoenixooo/community/Repository/TotalSearchMapper.xml</value>
 				<value>classpath:com/cafe24/phoenixooo/community/Repository/UserManagementMapper.xml</value>
-				
+																						
 				<value>classpath:com/cafe24/phoenixooo/crm/businessManagement/Repository/BusinessManagementSettingMapper.xml</value>
 				<value>classpath:com/cafe24/phoenixooo/crm/businessManagement/Repository/GoodsMapper.xml</value>
 				<value>classpath:com/cafe24/phoenixooo/crm/businessManagement/Repository/ProcedureMapper.xml</value>
