@@ -13,7 +13,6 @@
 <!-- test -->
 	<c:set var="shopCode" value="CRM_SHOP_1" scope="session"/>
 <!-- test -->
-<input type="text" name="shopCode" value="${sessionScope.shopCode}">
 	<h1>시술품목설정</h1>
 	<c:import url="businessManagementTemp.jsp"></c:import>
 	<h4>
