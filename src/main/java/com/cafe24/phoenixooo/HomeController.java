@@ -22,6 +22,5 @@ public class HomeController {
 	public String phoenix() {
 		return "phoenix";
 	}
-		
 	
 }
