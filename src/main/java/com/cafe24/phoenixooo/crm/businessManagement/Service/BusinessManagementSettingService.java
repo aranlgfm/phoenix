@@ -14,5 +14,5 @@ public interface BusinessManagementSettingService {
 	void insertProcedureItemDesign(ProcedureItemDesign item);	
 	
 	//시술품목(아이템)리스트
-	List<ProcedureItem> selectItemList(ProcedureItem item);
+	List<ProcedureItem> selectItemList(String shopCode);
 }

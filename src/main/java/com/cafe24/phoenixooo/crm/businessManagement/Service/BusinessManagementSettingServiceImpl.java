@@ -36,8 +36,8 @@ public class BusinessManagementSettingServiceImpl implements BusinessManagementS
 	 * 시술품목(아이템) 리스트
 	 */
 	@Override
-	public List<ProcedureItem> selectItemList(ProcedureItem item) {
-		return dao.selectItemList(item);
+	public List<ProcedureItem> selectItemList(String shopCode) {
+		return dao.selectItemList(shopCode);
 	}
 	
 	

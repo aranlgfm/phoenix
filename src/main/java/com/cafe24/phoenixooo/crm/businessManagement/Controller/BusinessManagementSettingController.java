@@ -2,11 +2,14 @@ package com.cafe24.phoenixooo.crm.businessManagement.Controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItem;
 import com.cafe24.phoenixooo.crm.businessManagement.Service.BusinessManagementSettingService;
@@ -68,23 +71,14 @@ public class BusinessManagementSettingController {
 	/**
 	 * 2. 기본값 말고 시술품목의 세부 아이템(디자인)등록에 대한 컨트롤러
 	 * 요청받을시 바로 해당샾의 아이템 리스트를 뿌려줘야함.
+	 * 아...겟이라서 받기가 그지같네...;;
+	 * 세션으로 받고 ProcedureItem item 
 	 * @return
 	 */
 	@RequestMapping(value = "/phoenix/crm/form/procedureItemDesignSetting", method = RequestMethod.GET)
-	public String procedureDesignSetting(ProcedureItem item,Model model) {
-		
-		System.out.println(item.getShopCode());
-		System.out.println(item.getShopCode());
-		System.out.println(item.getShopCode());
-		System.out.println(item.getShopCode());
-		System.out.println(item.getShopCode());
-		List<ProcedureItem> list = service.selectItemList(item);
-		System.out.println(list.get(0).getItemName());
-		System.out.println(list.get(0).getItemName());
-		System.out.println(list.get(0).getItemName());
-		System.out.println(list.get(0).getItemName());
-		System.out.println(list.get(0).getItemName());
-		System.out.println(list.get(0).getItemName());
+	public String procedureDesignSetting(HttpSession session,Model model) {
+		String shopCode = (String)session.getAttribute("shopCode");
+		List<ProcedureItem> list = service.selectItemList(shopCode);
 		model.addAttribute("item", list);
 		return "/phoenix/crm/businessManagement/procedureItemDesignSetting";
 	}

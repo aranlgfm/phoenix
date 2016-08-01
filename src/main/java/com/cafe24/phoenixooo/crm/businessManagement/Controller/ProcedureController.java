@@ -15,7 +15,7 @@ public class ProcedureController {
 	//임시메인
 	@RequestMapping(value = "/phoenix/crm/businessManagement/businessManagement", method = RequestMethod.GET)
 	public String businessManagement() {
-		return "/phoenix/crm/businessManagementTemp";
+		return "/phoenix/crm/businessManagement/businessManagementTemp";
 	}
 	
 	

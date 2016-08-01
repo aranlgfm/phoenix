@@ -11,7 +11,6 @@
 
 
 <body>
-<input type="text" name="shopCode" value="${sessionScope.shopCode}">
 
 	<h1>시술품목설정</h1>
 	<c:import url="businessManagementTemp.jsp"></c:import>
@@ -29,6 +28,7 @@
 		<!-- S시술품목별 시술디자인설정 -->
 		<div>
 			<form action="/phoenix/crm/process/insertProcedureItemDesign" method="POST">
+			<input type="text" name="shopCode" value="${sessionScope.shopCode}">
 				<div>
 					<div style="background-color: gray;">
 						시술품목별 시술디자인설정

@@ -74,14 +74,14 @@
 	</insert>
 	
 	<!-- 3.아이템 리스트 뽑아오기 -->
-	<select id="selectItemList" parameterType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItem" resultType="java.util.List">
+	<select id="selectItemList" parameterType="java.lang.String" resultType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItem">
 		SELECT
 			ITEM_CD as itemCode
 			,ITEM_NM as itemName
 		FROM
 			CRM_ITEM_TB
 		WHERE
-			SHOP_CD = #{shopCode}
+			SHOP_CD = #{value}
 		ORDER BY 
 			ITEM_NM ASC				
 	</select>
