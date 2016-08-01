@@ -1,4 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cafe24.phoenixooo.crm.customerManagement.cRepository.CustomerMapper">
+<mapper namespace="com.cafe24.phoenixooo.crm.customerManagement.Repository.CustomerMapper">
+
+	<!-- 1. 고객등록 -->
+	<insert id="insertCustomer" parameterType="com.cafe24.phoenixooo.crm.businessManagement.Model.CrmCustomer">
+		INSERT INTO
+			CRM_CUSTOMER_TB
+				(
+				CUSTOMER_CD
+				,USER_CD
+				,CUSTOMER_NM
+				,CUSTOMER_CELLPHONE_NO
+				,CUSTOMER_SEX_FL
+				,CUSTOMER_FIRST_VISIT_DT
+				,EMPLOYEE_CD
+				,EMPLOYEE_NM
+				,CUSTOMER_BIRTH_DT
+				,CUSTOMER_POST_NO
+				,CUSTOMER_ADDR
+				,CUSTOMER_EMAIL_ADDR
+				,CUSTOMER_ANNIVERSARY_DT
+				,CUSTOMER_MEMO
+				)
+		VALUES 
+				(
+				#{customerCode}
+				,#{userCode}
+				,#{customerName}
+				,#{customerCellphoneNumber}
+				,#{customerSexFlag}
+				,#{customerFirstVisitDate}
+				,#{employeeCode}
+				,#{employeeName}
+				,#{customerBirthDate}
+				,#{customerPostNumber}
+				,#{customerAddress}
+				,#{customerEmailAddress}
+				,#{customerAnniversaryDate}
+				,#{customerMemo}
+				)
+	</insert>
+
 </mapper>
