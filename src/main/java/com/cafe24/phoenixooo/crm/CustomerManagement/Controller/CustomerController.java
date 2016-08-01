@@ -1,7 +1,10 @@
 package com.cafe24.phoenixooo.crm.CustomerManagement.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -45,7 +48,22 @@ public class CustomerController {
 	 * @return
 	 */
 	@RequestMapping(value = "/phoenix/crm/form/customerList", method = RequestMethod.GET)
-	public String crmFormCustomerList(){
+	public String crmFormCustomerList(Model model){
+		List<CrmCustomer> list = customerService.getCustomerList();
+		model.addAttribute("list", list);
 		return "/phoenix/crm/customerList";
 	}
+	
+	/**
+	 * CRM-Controller 회원정보수정
+	 * @param customer
+	 * @return
+	 */
+	@RequestMapping(value = "/phoenix/crm/form/modifyCustomer", method = RequestMethod.GET)
+	public String crmFormModifyCustomer(CrmCustomer customer){
+		customerService.selectForUpdateCustomer(customer);
+		return "/phoenix/crm/modifyCustomer";
+	}
+
+//	customerService.updateCustomer(customer);
 }
