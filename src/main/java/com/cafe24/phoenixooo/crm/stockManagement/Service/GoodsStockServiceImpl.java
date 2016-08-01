@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsStock;
-import com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsStockCommand;
+import com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsStock;
 import com.cafe24.phoenixooo.crm.stockManagement.Repository.GoodsStockDao;
 
 @Service
@@ -16,19 +16,19 @@ public class GoodsStockServiceImpl implements GoodsStockService{
 	
 	//미용용품 입고 등록 처리
 	@Override
-	public int insertGoodsStock(GoodsStockCommand goodsStockCommand) {
+	public int insertGoodsStock(GoodsStock goodsStock) {
 		// TODO Auto-generated method stub
 		
-		return goodsStockDao.insertGoodsStock(goodsStockCommand);
+		return goodsStockDao.insertGoodsStock(goodsStock);
 	}
 	
 	//미용용품 입고 내역 가져오기
 	@Override
-	public List<GoodsStockCommand> selectGoodsStockList(GoodsStockCommand goodsStockCommand) {
-		List<GoodsStockCommand> list=goodsStockDao.selectGoodsStockList(goodsStockCommand);
-		for(GoodsStockCommand goodsStockCommand2:list)
+	public List<GoodsStock> selectGoodsStockList(GoodsStock goodsStock) {
+		List<GoodsStock> list=goodsStockDao.selectGoodsStockList(goodsStock);
+		for(GoodsStock goodsStock2:list)
 		{
-			goodsStockCommand2.setPurchaseForOneOrder(goodsStockCommand2.getBuyingGoodsUnitWon()*goodsStockCommand2.getGoodsQuantityNumber());
+			goodsStock2.setPurchaseForOneOrder(goodsStock2.getBuyingGoodsUnitWon()*goodsStock2.getGoodsQuantityNumber());
 		}
 		return list;
 	}

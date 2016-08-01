@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsStockCommand;
+import com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsStock;
 import com.cafe24.phoenixooo.crm.stockManagement.Service.GoodsStockService;
 
 @Controller
@@ -20,10 +20,10 @@ public class GoodsStockController
 	
 	//미용용품 입고등록과 내역 첫 화면
 	@RequestMapping(value = "/phoenix/crm/form/goodsStock", method = RequestMethod.GET)
-	public String moveTogoodsStock(GoodsStockCommand goodsStockCommand,Model model) 
+	public String moveTogoodsStock(GoodsStock goodsStock,Model model) 
 	{ 
-		goodsStockCommand.setUserCode("COM_USER_6");
-		List<GoodsStockCommand> goodsStockList=goodsStocdkService.selectGoodsStockList(goodsStockCommand);
+		goodsStock.setUserCode("COM_USER_6");
+		List<GoodsStock> goodsStockList=goodsStocdkService.selectGoodsStockList(goodsStock);
 		model.addAttribute("goodsStockList", goodsStockList);
 		return "/phoenix/crm/goodsStock";
 	}
@@ -37,7 +37,7 @@ public class GoodsStockController
 	
 	//입고 등록 처리
 	@RequestMapping(value = "/phoenix/crm/process/insertGoodsStock", method = RequestMethod.GET)
-	public String insertGoodsStock(GoodsStockCommand goodsStockCommand,Model model) 
+	public String insertGoodsStock(GoodsStock goodsStock,Model model) 
 	{ 
 		/*System.out.println(goodsStockCommand.getStockDate()+"<----------getStockDate");
 		System.out.println(goodsStockCommand.getEmployeeName()+"<----------getEmployeeName");
@@ -46,8 +46,8 @@ public class GoodsStockController
 		System.out.println(goodsStockCommand.getBuyingGoodsUnitWon()+"<----------getBuyingGoodsUnitWon");
 		System.out.println(goodsStockCommand.getGoodsQuantityNumber()+"<----------getGoodsQuantityNumber");*/
 		
-		goodsStocdkService.insertGoodsStock(goodsStockCommand);
-		return "/phoenix/crm/goodsStock";
+		goodsStocdkService.insertGoodsStock(goodsStock);
+		return "redirect:/phoenix/crm/form/goodsStock";
 	}
 	
 	
