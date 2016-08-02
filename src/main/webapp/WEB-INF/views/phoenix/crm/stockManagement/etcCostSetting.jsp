@@ -19,15 +19,56 @@
 
 <c:import url="stockManagement.jsp"></c:import>
 
-<hr>
+<h1>기타지출설정</h1>
+<form action="/phoenix/crm/process/stockManagement/insertEtcCostItem" method="POST">
+	
+	<input type="submit" value="기타지출항목등록"/>
+	
+</form>
 
-<div>
-	<a href="#">제품매입등록/내역</a>
-	<a href="#">제품결제내역</a>
-	<a href="#">제품사용내역/등록</a>
-	<a href="#">지출등록/내역</a>
-	<a href="#">매입/지출관리설정</a>
-</div>
+		<table>
+			<tr>
+				<td>지출일</td>
+				<!-- 달력 date type -->
+				<td><input class="" type="date" name=""></td>
+			</tr>
+			<tr>
+				<td>지출항목</td>
+				<td>
+					<SELECT NAME= SIZE=1>
+				        <OPTION VALUE=1>1번 보기입니다.</OPTION>
+				        <OPTION VALUE=2>2번 보기입니다.</OPTION>
+				        <OPTION VALUE=3>3번 보기입니다.</OPTION>
+				        <OPTION VALUE=4>4번 보기입니다.</OPTION>
+				    </SELECT>
+				</td>
+			</tr>
+			<tr>
+				<td>세부항목</td>
+				<td>
+					<SELECT NAME= SIZE=1>
+				        <OPTION VALUE=1>1번 보기입니다.</OPTION>
+				        <OPTION VALUE=2>2번 보기입니다.</OPTION>
+				        <OPTION VALUE=3>3번 보기입니다.</OPTION>
+				        <OPTION VALUE=4>4번 보기입니다.</OPTION>
+				    </SELECT>
+				</td>
+			</tr>
+			<tr>
+				<td>지출금액</td>
+				<td><input class="" type="text" name=""></td>
+			</tr>
+			<tr>
+				<td>담당자</td>
+				<td><input class="" type="text" name=""></td>
+			</tr>
+				<tr>
+					<td>메모</td>
+					<td><textarea class="" cols="30" rows="10" name=""></textarea></td>
+				</tr>
+			</table>
+
+
 
 </body>
 </html>

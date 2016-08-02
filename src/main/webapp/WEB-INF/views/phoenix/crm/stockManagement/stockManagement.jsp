@@ -22,11 +22,12 @@
 <hr>
 
 <div>
-	<a href="#">제품매입등록/내역</a>
-	<a href="#">제품결제내역</a>
-	<a href="#">제품사용내역/등록</a>
-	<a href="#">지출등록/내역</a>
-	<a href="#">매입/지출관리설정</a>
+	<a href="#">미용용품입고내역</a>
+	<a href="#">미용용품결제내역</a>
+	<a href="#">미용용품사용내역</a>
+	<a href="#">미용용품설정</a>
+	<a href="#">매입지출관리/설정</a>
+	<a href="/phoenix/crm/form/stockManagement/etcCostSetting">기타지출설정</a>
 </div>
 
 </body>

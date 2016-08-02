@@ -16,8 +16,18 @@ public class EtcCostController {
 	 * CRM-Controller 기타지출설정
 	 * @return
 	 */
-	@RequestMapping(value = "/phoenix/crm/form/etcCostSetting", method = RequestMethod.GET)
+	@RequestMapping(value = "/phoenix/crm/form/stockManagement/etcCostSetting", method = RequestMethod.GET)
 	public String crmFormEtcCostSetting(){
-		return "/phoenix/crm/etcCostSetting";
+		return "/phoenix/crm/stockManagement/etcCostSetting";
 	}
+	
+	/**
+	 * CRM-Controller 기타지출항목등록
+	 * @return
+	 */
+	@RequestMapping(value = "/phoenix/crm/process/stockManagement/insertEtcCostItem", method = RequestMethod.POST)
+	public String crmProcessInsertEtcCostItem(){
+		return "/phoenix/crm/stockManagement/etcCostSetting";
+	}
+	
 }
