@@ -26,4 +26,14 @@ public class GoodsUseController {
 		model.addAttribute("goodsUseList", goodsUseList);
 		return "/phoenix/crm/stockManagement/goodsUseList";
 	}
+	
+	//미용용품 사용을 등록하는 화면으로 이동
+	@RequestMapping(value = "/phoenix/crm/form/insertingGoodsUse", method = RequestMethod.GET)
+	public String moveToInsertingGoodsUse(GoodsUse goodsUse,Model model) 
+	{ 
+		return "/phoenix/crm/stockManagement/insertingGoodsUse";
+	}
+	
+	//미용용품 사용을 등록하는 처리
+	
 }
