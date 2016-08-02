@@ -9,9 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.support.SessionStatus;
 
 import com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItem;
+import com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItemDesign;
 import com.cafe24.phoenixooo.crm.businessManagement.Service.BusinessManagementSettingService;
 
 /** 영업관리
@@ -30,7 +30,7 @@ public class BusinessManagementSettingController {
 	BusinessManagementSettingService service;
 	
 	//CRM 전체메인. 나중에 바꿀것.
-	@RequestMapping(value = "/phoenix/crm/form/login", method = RequestMethod.GET)
+	@RequestMapping(value="/phoenix/crm/form/login", method = RequestMethod.GET)
 	public String crmFormBusiness(){
 		return "/phoenix/crm/crmTemp";
 	}
@@ -40,7 +40,7 @@ public class BusinessManagementSettingController {
 	 *    기본값으로 불러오는 페이지가 시술품목에 대한 값임.
 	 * @return
 	 */
-	@RequestMapping(value = "/phoenix/crm/form/businessManagementSetting", method = RequestMethod.GET)
+	@RequestMapping(value="/phoenix/crm/form/businessManagementSetting", method = RequestMethod.GET)
 	public String businessManagementSetting() {
 		return "/phoenix/crm/businessManagement/procedureItemSetting";
 	}
@@ -50,7 +50,7 @@ public class BusinessManagementSettingController {
 	 * 같은페이지 호출임.;
 	 * @return
 	 */
-	@RequestMapping(value = "/phoenix/crm/form/procedureItemSetting", method = RequestMethod.GET)
+	@RequestMapping(value="/phoenix/crm/form/procedureItemSetting", method = RequestMethod.GET)
 	public String procedureItemSetting() {
 		return "/phoenix/crm/businessManagement/procedureItemSetting";
 	}
@@ -75,12 +75,26 @@ public class BusinessManagementSettingController {
 	 * 세션으로 받고 ProcedureItem item 
 	 * @return
 	 */
-	@RequestMapping(value = "/phoenix/crm/form/procedureItemDesignSetting", method = RequestMethod.GET)
+	@RequestMapping(value="/phoenix/crm/form/procedureItemDesignSetting", method = RequestMethod.GET)
 	public String procedureDesignSetting(HttpSession session,Model model) {
 		String shopCode = (String)session.getAttribute("shopCode");
 		List<ProcedureItem> list = service.selectItemList(shopCode);
 		model.addAttribute("item", list);
 		return "/phoenix/crm/businessManagement/procedureItemDesignSetting";
+	}
+	
+	/**
+	 * 시술품목디자인(아이템의세부) 등록에 대한 컨트롤러
+	 * @param item
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="/phoenix/crm/process/insertProcedureItemDesign", method = RequestMethod.POST)
+	public String procedureDesignSetting(ProcedureItemDesign item,Model model) {
+		System.out.println("11111111111111111111111111");
+		System.out.println("11111111111111111111111111");
+		service.insertProcedureItemDesign(item);
+		return "/phoenix/crm/procedureItemDesignSetting";
 	}
 	
 }

@@ -7,7 +7,6 @@
 	1. 시술품목(아이템) 등록
 	2. 시술디자인(아이템세부) 등록
 	3. 아이템 리스트 셀렉
-	
 	 -->
 	
 	
@@ -26,7 +25,7 @@
 		SELECT 
 			ITEMDESIGN_CD 
 		FROM 
-			CRM_ITEMDESIGN_TB
+			CRM_ITEM_DESIGN_TB
 		order by ITEMDESIGN_REGISTE_DT desc
 		LIMIT 0,1
 	</select>
@@ -55,12 +54,13 @@
 	<insert id="insertProcedureItemDesign" parameterType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItemDesign">
 		INSERT 
 		INTO 
-		CRM_ITEMDESIGN_TB
+		CRM_ITEM_DESIGN_TB
 		(
 			ITEMDESIGN_CD
 			,SHOP_CD
 			,ITEM_CD
 			,ITEMDESIGN_NM
+			,ITEMDESIGN_WON
 			,ITEMDESIGN_REGISTE_DT
 		)
 		VALUES
@@ -69,6 +69,7 @@
 			,#{shopCode}
 			,#{itemCode}
 			,#{itemDesignName}
+			,#{itemDesignPrice}
 			,NOW()
 		)
 	</insert>
@@ -85,4 +86,6 @@
 		ORDER BY 
 			ITEM_NM ASC				
 	</select>
+	
+	
 </mapper>

@@ -47,7 +47,6 @@ public class BusinessManagementSettingDaoImpl implements BusinessManagementSetti
 		String result = sqlSession.selectOne(NS+".getItemCode",item);
 		System.out.println("getItemCode");
 		System.out.println(result);
-		System.out.println(helper);
 		int rs = (int)Integer.parseInt(result.substring(helper.getITEMCODE().length()));
 		rs++;
 		result = helper.getITEMCODE()+rs;
@@ -60,6 +59,8 @@ public class BusinessManagementSettingDaoImpl implements BusinessManagementSetti
 	@Override
 	public String getItemDesignCode(ProcedureItemDesign item) {
 		String result = sqlSession.selectOne(NS+".getItemDesignCode",item);
+		System.out.println("getItemDesignCode");
+		System.out.println(result);
 		int rs = (int)Integer.parseInt(result.substring(helper.getITEMDESIGNCODE().length()));
 		rs++;
 		result = helper.getITEMDESIGNCODE()+rs;

@@ -12,7 +12,7 @@
 
 <body>
 
-	<h1>시술품목설정</h1>
+	<h1>시술품목디자인 설정</h1>
 	<c:import url="businessManagementTemp.jsp"></c:import>
 	<h4>
 		<a href="/phoenix/crm/form/procedureItemSetting">시술품목설정</a>
@@ -26,7 +26,7 @@
 	<div style="border: 1px double;">	
 		
 		<!-- S시술품목별 시술디자인설정 -->
-		<div>
+		<div>			
 			<form action="/phoenix/crm/process/insertProcedureItemDesign" method="POST">
 			<input type="text" name="shopCode" value="${sessionScope.shopCode}">
 				<div>
@@ -46,12 +46,12 @@
 					<!-- 시술디자인 -->
 					<div>
 						<label>시술디자인명</label>
-						<input type="text" name="itemDesingName" size="10"/>
+						<input type="text" name="itemDesignName" size="10"/>
 					</div>
 					<!-- 시술가격 -->
 					<div>
 						<label>시술가격</label>
-						<input type="text" name="itemDesingPrice" size="10"/>
+						<input type="text" name="itemDesignPrice" size="10"/>
 					</div>
 					<input type="submit" value="등록하기"/>
 				</div>

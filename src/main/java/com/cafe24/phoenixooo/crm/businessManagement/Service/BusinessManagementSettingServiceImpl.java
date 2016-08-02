@@ -32,6 +32,7 @@ public class BusinessManagementSettingServiceImpl implements BusinessManagementS
 		item.setItemDesignCode(dao.getItemDesignCode(item));
 		dao.insertProcedureItemDesign(item);
 	}
+	
 	/**
 	 * 시술품목(아이템) 리스트
 	 */

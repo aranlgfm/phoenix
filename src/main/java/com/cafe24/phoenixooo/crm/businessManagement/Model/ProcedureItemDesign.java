@@ -6,6 +6,7 @@ public class ProcedureItemDesign extends ProcedureItem{
 	private String itemDesignName;
 	private int itemDesignPrice;
 	private String itemDesignRegisteDate;
+	
 	public String getItemDesignCode() {
 		return itemDesignCode;
 	}

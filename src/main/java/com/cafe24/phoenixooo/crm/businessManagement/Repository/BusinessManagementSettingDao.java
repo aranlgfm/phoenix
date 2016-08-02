@@ -9,7 +9,7 @@ import com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItemDesign;
 public interface BusinessManagementSettingDao {
 	//시술품목(아이템)등록
 	void insertProcedureItem(ProcedureItem item);
-	
+	//시술품목디자인(아이템세부) 등록
 	void insertProcedureItemDesign(ProcedureItemDesign item);
 	
 	//시술품목(아이템)코드
