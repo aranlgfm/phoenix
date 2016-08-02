@@ -25,14 +25,14 @@ public class GoodsStockController
 		goodsStock.setUserCode("COM_USER_6");
 		List<GoodsStock> goodsStockList=goodsStocdkService.selectGoodsStockList(goodsStock);
 		model.addAttribute("goodsStockList", goodsStockList);
-		return "/phoenix/crm/goodsStock";
+		return "/phoenix/crm/stockManagement/goodsStock";
 	}
 			
 	//입고 등록 화면으로 이동
 	@RequestMapping(value = "/phoenix/crm/form/insertingGoodsStock", method = RequestMethod.POST)
 	public String moveToinsertingGoodsStock(Model model) 
 	{ 
-		return "/phoenix/crm/insertingGoodsStock";
+		return "/phoenix/crm/stockManagement/insertingGoodsStock";
 	}
 	
 	//입고 등록 처리
@@ -47,8 +47,6 @@ public class GoodsStockController
 		System.out.println(goodsStockCommand.getGoodsQuantityNumber()+"<----------getGoodsQuantityNumber");*/
 		
 		goodsStocdkService.insertGoodsStock(goodsStock);
-		return "redirect:/phoenix/crm/form/goodsStock";
+		return "redirect:/phoenix/crm/stockManagement/form/goodsStock";
 	}
-	
-	
 }

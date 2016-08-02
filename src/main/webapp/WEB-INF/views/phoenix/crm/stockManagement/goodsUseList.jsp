@@ -30,26 +30,28 @@
 				관리
 			</td>
 		</tr>
-		<tr>
-			<td>
-				
-			</td>
-			<td>
-				
-			</td>
-			<td>
-				
-			</td>
-			<td>
-				
-			</td>
-			<td>
-				
-			</td>
-			<td>
-				
-			</td>
-		</tr>
+		<c:forEach var="list" items="${goodsUseList}">
+			<tr>
+				<td>
+					${list.useDate}
+				</td>
+				<td>
+					${list.accountName}
+				</td>
+				<td>
+					${list.goodsName}
+				</td>
+				<td>
+					${list.useQuantityNumber}
+				</td>
+				<td>
+					${list.employeeName}
+				</td>
+				<td>
+					버튼 들어가야
+				</td>
+			</tr>
+		</c:forEach>
 	</table>
 </body>
 </html>

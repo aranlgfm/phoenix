@@ -1,4 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cafe24.phoenixooo.crm.stockManagement.Repository.GoodsUseMapper">
+	<select id="selectGoodsUseList" parameterType="com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsUse" resultType="com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsUse">
+		select
+			GOODS_USE_DT as useDate
+			,ACCOUNT_NM as accountName
+			,GOODS_NM as goodsName
+			,GOODS_USE_QUANTITY_NO as useQuantityNumber
+			,EMPLOYEE_NM as employeeName
+		from
+			CRM_GOODS_USE_TB as goodsUse
+		inner join
+			CRM_ACCOUNT_TB as account
+		on
+			goodsUse.ACCOUNT_CD=account.ACCOUNT_CD
+		inner join
+			CRM_GOODS_TB as goods
+		on
+			goodsUse.GOODS_CD=goods.GOODS_CD
+		inner join
+			CRM_EMPLOYEE_TB as employee
+		on
+			goodsUse.EMPLOYEE_CD=employee.EMPLOYEE_CD
+		where
+			goodsUse.SHOP_CD=(select USER_SHOP_CD from COM_USER_TB as user where user.USER_CD=#{userCode})
+	</select>
 </mapper>
