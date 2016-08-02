@@ -20,55 +20,19 @@
 <c:import url="stockManagement.jsp"></c:import>
 
 <h1>기타지출설정</h1>
+
 <form action="/phoenix/crm/process/stockManagement/insertEtcCostItem" method="POST">
-	
-	<input type="submit" value="기타지출항목등록"/>
-	
+	<div><input name="etcCostName" type="text"/><input type="submit" value="기타지출항목등록"/></div>
 </form>
 
-		<table>
-			<tr>
-				<td>지출일</td>
-				<!-- 달력 date type -->
-				<td><input class="" type="date" name=""></td>
-			</tr>
-			<tr>
-				<td>지출항목</td>
-				<td>
-					<SELECT NAME= SIZE=1>
-				        <OPTION VALUE=1>1번 보기입니다.</OPTION>
-				        <OPTION VALUE=2>2번 보기입니다.</OPTION>
-				        <OPTION VALUE=3>3번 보기입니다.</OPTION>
-				        <OPTION VALUE=4>4번 보기입니다.</OPTION>
-				    </SELECT>
-				</td>
-			</tr>
-			<tr>
-				<td>세부항목</td>
-				<td>
-					<SELECT NAME= SIZE=1>
-				        <OPTION VALUE=1>1번 보기입니다.</OPTION>
-				        <OPTION VALUE=2>2번 보기입니다.</OPTION>
-				        <OPTION VALUE=3>3번 보기입니다.</OPTION>
-				        <OPTION VALUE=4>4번 보기입니다.</OPTION>
-				    </SELECT>
-				</td>
-			</tr>
-			<tr>
-				<td>지출금액</td>
-				<td><input class="" type="text" name=""></td>
-			</tr>
-			<tr>
-				<td>담당자</td>
-				<td><input class="" type="text" name=""></td>
-			</tr>
-				<tr>
-					<td>메모</td>
-					<td><textarea class="" cols="30" rows="10" name=""></textarea></td>
-				</tr>
-			</table>
-
-
+<h3>현재 지출항목</h3>
+<c:forEach var="list" items="${list}">
+	<input name="etcCostCode" type="hidden" value="${list.etcCostCode}"/>
+	<input name="shopCode" type="hidden" value="${list.shopCode}"/>
+	<div>
+		${list.etcCostName}
+	</div>
+</c:forEach>
 
 </body>
 </html>
