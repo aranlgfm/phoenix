@@ -20,4 +20,8 @@ public interface BusinessManagementSettingDao {
 	
 	//시술품목(아이템) 리스트
 	List<ProcedureItem> selectItemList(String shopCode);
+	
+	//시술품목디자인(아이템세부) 리스트
+	List<ProcedureItemDesign> selectItemDesignList(String shopCode);
+	
 }

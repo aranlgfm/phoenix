@@ -13,12 +13,15 @@
 <!-- test -->
 	<c:set var="shopCode" value="CRM_SHOP_1" scope="session"/>
 <!-- test -->
+
+
 	<h1>시술품목설정</h1>
 	<c:import url="businessManagementTemp.jsp"></c:import>
 	<h4>
 		<a href="/phoenix/crm/form/procedureItemSetting">시술품목설정</a>
 		<a href="/phoenix/crm/form/procedureItemDesignSetting">시술디자인설정</a>
 	</h4>
+	
 	<font color="red">시술 품목을 등록하는 페이지 입니다.</font>
 	
 	<div style="border: 1px double;">	
@@ -51,13 +54,16 @@
 							<th>시술품목</th>
 							<th>관리</th>
 						</tr>
-						<tr>
-							<td>컷트</td>	
-							<td>
-								<a href="">수정</a>
-								<a href="">삭제</a>
-							</td>	
-						</tr>
+						<c:forEach var="item" items="${item}">
+							<input type="hidden" value="${item.itemCode}">	
+							<tr>
+								<td>${item.itemName}</td>	
+								<td>
+									<a href="">수정</a>
+									<a href="">삭제</a>
+								</td>	
+							</tr>
+						</c:forEach>
 					</table>
 				</div>
 			</form>
