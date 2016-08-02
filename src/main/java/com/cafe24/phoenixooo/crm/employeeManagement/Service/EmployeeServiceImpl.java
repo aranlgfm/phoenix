@@ -45,4 +45,28 @@ public class EmployeeServiceImpl implements EmployeeService{
 		map.put("word", word);
 		return employeeDao.selectEmployeeList(map);
 	}
+
+	/**
+	 * (Service) 직원 상세보기
+	 */
+	@Override
+	public Employee employeeDetail(Employee employee) {
+		return employeeDao.employeeDetail(employee);
+	}
+
+	/**
+	 * (Service) 직원 수정
+	 */
+	@Override
+	public int updateEmployee(Employee employee) {
+		return employeeDao.updateEmployee(employee);
+	}
+
+	/**
+	 * (Service) 직원 삭제
+	 */
+	@Override
+	public int deleteEmployee(Employee employee) {
+		return employeeDao.deleteEmployee(employee);
+	}
 }

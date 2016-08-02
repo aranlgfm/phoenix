@@ -15,4 +15,7 @@ public interface BusinessManagementSettingService {
 	
 	//시술품목(아이템)리스트
 	List<ProcedureItem> selectItemList(String shopCode);
+	
+	//시술디자인(아이템상세)리스트
+	List<ProcedureItemDesign> selectItemDesignList(String shopCode);
 }

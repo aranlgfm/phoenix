@@ -23,4 +23,25 @@ public interface EmployeeDao {
 	 * @return
 	 */
 	List<Employee> selectEmployeeList(Map<String, Object> map);
+	
+	/**
+	 * (Dao) 직원 상세보기
+	 * @param employee
+	 * @return
+	 */
+	Employee employeeDetail(Employee employee);
+	
+	/**
+	 * (Dao) 직원 수정
+	 * @param employee
+	 * @return
+	 */
+	int updateEmployee(Employee employee);
+	
+	/**
+	 * (Dao) 직원 삭제
+	 * @param employee
+	 * @return
+	 */
+	int deleteEmployee(Employee employee);
 }

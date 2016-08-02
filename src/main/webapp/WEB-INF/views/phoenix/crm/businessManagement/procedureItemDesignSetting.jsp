@@ -75,16 +75,18 @@
 								<th>시술가격</th>
 								<th>관리</th>
 							</tr>
-							<tr>
-								<td>컷트</td>	
-								<td>어른컷트</td>	
-								<td>10,000원</td>	
-								<td>
-									수정, 삭제는 자바스크립트로 구현해야 할것 같은데???
-									<a href="">수정</a>
-									<a href="">삭제</a>
-								</td>	
-							</tr>
+							<c:forEach var="item" items="${itemDesign}">
+								<input type="hidden" value="${item.itemDesignCode}">
+								<tr>
+									<td>${item.itemName}</td>	
+									<td>${item.itemDesignName}</td>	
+									<td>${item.itemDesignPrice}</td>	
+									<td>
+										<a href="">수정</a>
+										<a href="">삭제</a>
+									</td>	
+								</tr>
+							</c:forEach>
 						</table>
 					</div>
 				</div>

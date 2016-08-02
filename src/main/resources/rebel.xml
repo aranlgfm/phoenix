@@ -4,6 +4,8 @@
 	<classpath>
 		<dir name="D:/git/phoenix/phoenix/phoenix/target/classes">
 		</dir>
+		<dir name="D:/git/phoenix/phoenix/phoenix/target/test-classes">
+		</dir>
 	</classpath>
 
 	<web>

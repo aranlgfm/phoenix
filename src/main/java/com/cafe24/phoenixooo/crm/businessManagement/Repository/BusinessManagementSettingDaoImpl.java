@@ -74,6 +74,14 @@ public class BusinessManagementSettingDaoImpl implements BusinessManagementSetti
 	public List<ProcedureItem> selectItemList(String shopCode) {
 		return sqlSession.selectList(NS+".selectItemList", shopCode);
 	}
+	
+	/**
+	 * 시술디자인(아이템세부) 리스트
+	 */
+	@Override
+	public List<ProcedureItemDesign> selectItemDesignList(String shopCode) {
+		return sqlSession.selectList(NS+".selectItemDesignList", shopCode);
+	}
 
 	
 	

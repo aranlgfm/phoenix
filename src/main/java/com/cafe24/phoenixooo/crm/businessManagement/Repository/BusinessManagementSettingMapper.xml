@@ -6,7 +6,8 @@
 	0. 코드값들 증가..;; 
 	1. 시술품목(아이템) 등록
 	2. 시술디자인(아이템세부) 등록
-	3. 아이템 리스트 셀렉
+	3-1. 아이템 리스트 셀렉
+	3-2. 아이템디자인 리스트 셀렉
 	 -->
 	
 	
@@ -74,7 +75,7 @@
 		)
 	</insert>
 	
-	<!-- 3.아이템 리스트 뽑아오기 -->
+	<!-- 3-1.아이템 리스트 뽑아오기 -->
 	<select id="selectItemList" parameterType="java.lang.String" resultType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItem">
 		SELECT
 			ITEM_CD as itemCode
@@ -85,6 +86,21 @@
 			SHOP_CD = #{value}
 		ORDER BY 
 			ITEM_NM ASC				
+	</select>
+
+	<!-- 3-2.아이템디자인 리스트 뽑아오기 -->
+	<select id="selectItemDesignList" parameterType="java.lang.String" resultType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItemDesign">
+		SELECT	
+			i.item_nm as itemName
+			,d.ITEMDESIGN_CD as itemDesignCode
+			,d.ITEMDESIGN_NM as itemDesignName
+			,d.ITEMDESIGN_WON as itemDesignPrice
+		FROM
+			CRM_ITEM_TB i INNER JOIN CRM_ITEM_DESIGN_TB d
+		ON
+			i.item_cd = d.item_cd
+		WHERE
+			i.SHOP_CD = #{value}				
 	</select>
 	
 	

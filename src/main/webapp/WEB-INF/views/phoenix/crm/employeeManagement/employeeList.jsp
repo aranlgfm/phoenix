@@ -17,7 +17,6 @@
 			<td>직원명</td>
 			<td>핸드폰번호</td>
 			<!-- <td>입사일</td> -->
-			<td>관리</td>
 		</tr>
 		<c:forEach var="list" items="${employeeList}">
 			<tr>
@@ -25,7 +24,6 @@
 				<td><a href="/phoenix/crm/employeeManagement/employeeDetail?level=${list.levelName}">${list.employeeName}</a></td>
 				<td>${list.employeeCellPhoneNo}</td>
 				<%-- <td>${list.employeeJoinDate}</td> --%>
-				<td><input type="button" name="employeeDetail" value="상세보기" /></td>
 			</tr>
 		</c:forEach>
 	</table>

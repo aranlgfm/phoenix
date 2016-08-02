@@ -53,4 +53,54 @@ public class EmployeeController {
 		employeeService.insertEmployee(employee);
 		return "/phoenix/crm/employeeManagement/employeeList";
 	}
+	
+	/**
+	 * 직원 상세보기
+	 * @param employee
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="/phoenix/crm/employeeManagement/employeeDetail", method=RequestMethod.GET)
+	public String employeeDetail(String employee, Model model) {
+		Employee employeep = new Employee();
+		employeep.setEmployeeCode(employee);
+		Employee employeeo = employeeService.employeeDetail(employeep);
+		model.addAttribute("employeeo", employeeo);
+		return "/phoenix/crm/employeeManagement/employeeDetail";
+	}
+	
+	/**
+	 * 직원 수정 화면
+	 * @param model
+	 * @param employee
+	 * @return
+	 */
+	@RequestMapping(value="/phoenix/crm/employeeManagement/updateEmployee", method=RequestMethod.GET)
+	public String updateEmployee(Model model, Employee employee) {
+		model.addAttribute("employeeCode", employee.getEmployeeCode());
+		return "/phoenix/crm/employeeManagement/updateEmployee";
+	}
+	
+	/**
+	 * 직원 수정
+	 * @param model
+	 * @param employee
+	 * @return
+	 */
+	@RequestMapping(value="/phoenix/crm/employeeManagement/updateEmployee", method=RequestMethod.POST)
+	public String updateEmployee(Employee employee) {
+		employeeService.updateEmployee(employee);
+		return "/phoenix/crm/employeeManagement/updateEmployee";
+	}
+	
+	/**
+	 * 직원 삭제
+	 * @param employee
+	 * @return
+	 */
+	@RequestMapping(value="/phoenix/crm/employeeManagement/deleteEmployee", method=RequestMethod.GET)
+	public String deleteEmployee(Employee employee) {
+		employeeService.deleteEmployee(employee);
+		return "/phoenix/crm/employeeManagement/employeeList";
+	}
 }
