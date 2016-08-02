@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +8,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
+<c:import url="../crmTemp.jsp"></c:import>
+
+<hr>
+
+<div>
+	<a href="/phoenix/crm/customerManagement/form/customerList">회원목록</a>
+	<a href="/phoenix/crm/customerManagement/form/insertingCustomer">회원등록</a>
+	<a href="#">회원관리설정</a>
+</div>
+
 </body>
 </html>

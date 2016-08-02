@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cafe24.phoenixooo.crm.employeeManagement.Repository.EmployeeMapper">
+	<insert id="insertEmployee" parameterType="com.cafe24.phoenixooo.crm.employeeManagement.Model.Employee">
+		INSERT INTO
+			CRM_EMPLOYEE_TB
+		(
+			EMPLOYEE_CD
+			,SHOP_CD
+			,EMPLOYEE_PW
+			,EMPLOYEE_NM
+			,EMPLOYEE_BIRTH_DT
+			,EMPLOYEE_ADDR
+			,EMPLOYEE_PHONE_NO
+			,EMPLOYEE_CELLPHONE_NO
+			,EMPLOYEE_JOIN_DT
+			,EMPLOYEE_MEMO
+			,EMPLOYEE_LEVEL_NM
+		)
+		VALUES
+		(
+			<!-- #{employeeCode} -->
+			'CRM_EMPLOYEE_5'
+			<!-- ,#{shopCode} -->
+			,'CRM_SHOP_3'
+			<!-- ,#{employeePw} -->
+			,'2222'
+			,#{employeeName}
+			,#{employeeBirthDate}
+			,#{employeeAddr}
+			,#{employeePhoneNo}
+			,#{employeeCellPhoneNo}
+			,NOW()
+			,#{employeeMemo}
+			,#{levelName}
+		)
+	</insert>
+	
+	<select id="selectTotalCount" resultType="Integer">
+		SELECT COUNT(*) FROM CRM_EMPLOYEE_TB
+	</select>
+	
+	<select id="selectEmployeeList" parameterType="java.util.Map" resultType="com.cafe24.phoenixooo.crm.employeeManagement.Model.Employee">
+		SELECT	
+			EMPLOYEE_CD as employeeCode
+			,SHOP_CD as shopCode
+			,EMPLOYEE_PW as employeePw
+			,EMPLOYEE_NM as employeeName
+			<!-- ,EMPLOYEE_BIRTH_DT as employeeBirthDate -->
+			,EMPLOYEE_ADDR as employeeAddr
+			,EMPLOYEE_PHONE_NO as employeePhoneNo
+			,EMPLOYEE_CELLPHONE_NO as employeeCellPhoneNo
+			<!-- ,EMPLOYEE_JOIN_DT as employeeJoinDate -->
+			,EMPLOYEE_MEMO as employeeMemo
+			,EMPLOYEE_LEVEL_NM as levelName
+		FROM
+			CRM_EMPLOYEE_TB
+		<where>
+			<if test="word != null">
+				EMPLOYEE_NM like CONCAT('%',#{word},'%')
+			</if>
+		</where>
+		ORDER BY EMPLOYEE_CD DESC
+		LIMIT #{pageHelper.startRow}, #{pageHelper.linePerPage}
+	</select>
+	
+	<select id="employeeDetail" parameterType="com.cafe24.phoenixooo.crm.employeeManagement.Model.Employee"
+								resultType="com.cafe24.phoenixooo.crm.employeeManagement.Model.Employee">
+		SELECT	
+			EMPLOYEE_CD as employeeCode
+			,SHOP_CD as shopCode
+			,EMPLOYEE_PW as employeePw
+			,EMPLOYEE_NM as employeeName
+			<!-- ,EMPLOYEE_BIRTH_DT as employeeBirthDate -->
+			,EMPLOYEE_ADDR as employeeAddr
+			,EMPLOYEE_PHONE_NO as employeePhoneNo
+			,EMPLOYEE_CELLPHONE_NO as employeeCellPhoneNo
+			<!-- ,EMPLOYEE_JOIN_DT as employeeJoinDate -->
+			,EMPLOYEE_MEMO as employeeMemo
+			,EMPLOYEE_LEVEL_NM as levelName
+		FROM
+			CRM_EMPLOYEE_TB
+		WHERE
+			EMPLOYEE_CD=#{employeeCode}
+	</select>
+	
+	<update id="updateDetail" parameterType="com.cafe24.phoenixooo.crm.employeeManagement.Model.Employee">
+		UPDATE
+			CRM_EMPLOYEE_TB
+		SET
+			EMPLOYEE_PW=#{employeePw}
+			,EMPLOYEE_NM=#{employeeName}
+			<!-- ,EMPLOYEE_BIRTH_DT=NOW() -->
+			,EMPLOYEE_ADDR=#{employeeAddr}
+			,EMPLOYEE_PHONE_NO=#{employeePhoneNo}
+			,EMPLOYEE_CELLPHONE_NO=#{employeeCellPhoneNo}
+			<!-- ,EMPLOYEE_JOIN_DT=NOW() -->
+			,EMPLOYEE_MEMO=#{employeeMemo}
+			,EMPLOYEE_LEVEL_NM=#{levelName}
+		WHERE
+			EMPLOYEE_CD=#{employeeCode}
+	</update>
+	
+	<delete id="deleteEmployee" parameterType="com.cafe24.phoenixooo.crm.employeeManagement.Model.Employee">
+		DELETE FROM
+			CRM_EMPLOYEE_TB
+		WHERE
+			EMPLOYEE_CD=#{employeeCode}
+	</delete>
+	
+</mapper>

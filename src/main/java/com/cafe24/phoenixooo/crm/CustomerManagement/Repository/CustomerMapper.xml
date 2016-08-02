@@ -1,4 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cafe24.phoenixooo.crm.customerManagement.cRepository.CustomerMapper">
+<mapper namespace="com.cafe24.phoenixooo.crm.customerManagement.Repository.CustomerMapper">
+	<!-- 
+		1. 고객등록
+		1. 고객코드가져오기(가입시)
+		2. 고객목록
+		3. 고객정보수정
+		3. 고객검색(수정용)
+		4. 고객삭제
+	 -->
+	<!-- 1. 고객등록 -->
+	<insert id="insertCustomer" parameterType="com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer">
+		INSERT INTO
+			CRM_CUSTOMER_TB
+				(
+				CUSTOMER_CD
+				,USER_CD
+				,CUSTOMER_NM
+				,CUSTOMER_CELLPHONE_NO
+				,CUSTOMER_SEX_FL
+				,CUSTOMER_FIRST_VISIT_DT
+				,CUSTOMER_JOIN_DT
+				,EMPLOYEE_CD
+				,EMPLOYEE_NM
+				,CUSTOMER_BIRTH_DT
+				,CUSTOMER_POST_NO
+				,CUSTOMER_ADDR
+				,CUSTOMER_EMAIL_ADDR
+				,CUSTOMER_ANNIVERSARY_DT
+				,CUSTOMER_MEMO
+				)
+		VALUES 
+				(
+				#{customerCode}
+				,#{userCode}
+				,#{customerName}
+				,#{customerCellphoneNumber}
+				,#{customerSexFlag}
+				,#{customerFirstVisitDate}
+				,NOW()
+				,#{employeeCode}
+				,#{employeeName}
+				,#{customerBirthDate}
+				,#{customerPostNumber}
+				,#{customerAddress}
+				,#{customerEmailAddress}
+				,#{customerAnniversaryDate}
+				,#{customerMemo}
+				)
+	</insert>
+	
+	<!-- 1. 고객코드가져오기(가입시) -->
+	<select id="getCustomerCode" resultType="String">
+		SELECT
+			CUSTOMER_CD 
+		FROM
+			CRM_CUSTOMER_TB
+		ORDER BY 
+			CUSTOMER_JOIN_DT DESC
+		LIMIT 
+			0,1
+	</select>
+	
+	<!-- 2. 고객목록 -->
+	<select id="getCustomerList" resultType="com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer">
+		SELECT 
+			CUSTOMER_CD as customerCode
+			,USER_CD as userCode
+			,CUSTOMER_NM as customerName
+			,CUSTOMER_CELLPHONE_NO as customerCellphoneNumber
+			,CUSTOMER_SEX_FL as customerSexFlag
+			,EMPLOYEE_CD as employeeCode
+			,EMPLOYEE_NM as employeeName
+		FROM 
+			CRM_CUSTOMER_TB 
+		ORDER BY 
+			CUSTOMER_JOIN_DT DESC
+	</select>
+	
+	<!-- 3. 고객정보수정 -->
+	<update id="updateCustomer">
+		UPDATE 
+			CRM_CUSTOMER_TB
+		SET
+			USER_CD = #{userCode}
+			,CUSTOMER_CELLPHONE_NO = #{customerCellphoneNumber}
+			,CUSTOMER_NM = #{customerName}
+			,EMPLOYEE_CD = #{employeeCode}
+			,EMPLOYEE_NM = #{employeeName}
+			,CUSTOMER_BIRTH_DT = #{customerBirthDate}
+			,CUSTOMER_POST_NO = #{customerPostNumber}
+			,CUSTOMER_ADDR = #{customerAddress}
+			,CUSTOMER_EMAIL_ADDR = #{customerEmailAddress}
+			,CUSTOMER_ANNIVERSARY_DT = #{customerAnniversaryDate}
+			,CUSTOMER_MEMO = #{customerMemo}
+		WHERE 
+			CUSTOMER_CD = #{customerCode}
+	</update>
+	
+	<!-- 3. 고객검색(수정용) -->
+	<select id="selectForUpdateCustomer" parameterType="com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer" resultType="com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer">
+		SELECT
+			CUSTOMER_CD as customerCode
+			,USER_CD as userCode
+			,CUSTOMER_NM as customerName
+			,CUSTOMER_CELLPHONE_NO as customerCellphoneNumber
+			,CUSTOMER_SEX_FL as customerSexFlag
+			,CUSTOMER_FIRST_VISIT_DT as customerFirstVisitDate
+			,CUSTOMER_JOIN_DT as customerJoinDate
+			,EMPLOYEE_CD as employeeCode
+			,EMPLOYEE_NM as employeeName
+			,CUSTOMER_BIRTH_DT as customerBirthDate
+			,CUSTOMER_POST_NO as customerPostNumber
+			,CUSTOMER_ADDR as customerAddress
+			,CUSTOMER_EMAIL_ADDR as customerEmailAddress
+			,CUSTOMER_ANNIVERSARY_DT as customerAnniversaryDate
+			,CUSTOMER_MEMO as customerMemo
+		FROM 
+			CRM_CUSTOMER_TB
+		WHERE 
+			CUSTOMER_CD=#{customerCode}
+	</select>
+
+	<!-- 4. 고객삭제 -->
+	<delete id="deleteCustomer" parameterType="com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer">
+		DELETE FROM 
+			CRM_CUSTOMER_TB
+		WHERE 
+			CUSTOMER_CD = #{customerCode}
+	</delete>
 </mapper>
