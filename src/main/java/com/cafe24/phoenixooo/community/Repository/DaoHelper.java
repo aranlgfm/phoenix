@@ -1,6 +1,7 @@
 package com.cafe24.phoenixooo.community.Repository;
 
 public class DaoHelper {
+	protected final String FILECODE = "COM_FILE_";
 	protected final String USERCODE = "COM_USER_";
 	protected final String SHOPCODE = "CRM_SHOP_";
 	protected final int SEACHRESULTLIMITNUMBER = 5;
@@ -15,6 +16,9 @@ public class DaoHelper {
 
 	public String getUSERCODE() {
 		return USERCODE;
+	}
+	public String getFILECODE() {
+		return FILECODE;
 	}
 	
 }

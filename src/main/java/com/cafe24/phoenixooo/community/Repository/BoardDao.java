@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.cafe24.phoenixooo.community.Model.Article;
 import com.cafe24.phoenixooo.community.Model.Comment;
+import com.cafe24.phoenixooo.community.Model.ImgFile;
 
 public interface BoardDao 
 {
@@ -12,7 +13,7 @@ public interface BoardDao
 	List<Article> selectArticleList(Map<String,Object> map);
 	
 	//글 1개 가져오기
-	Article selectArticle(Article article);
+	Article selectArticle(String articleCode);
 	
 	//글 1개 등록하기
 	String insertArticle(Article article);
@@ -31,4 +32,26 @@ public interface BoardDao
 	
 	//댓글 삭제
 	int deleteComment(Comment comment);
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	//파일업로드 관련
+	
+	//랜덤네임 중복확인
+	ImgFile selectImgFileByRandomName(String randomName);	
+	
+	//이미지 등록하기
+	void subAddImgFile(ImgFile imgFile);
+	
+	
+	//파일이름 가져오기
+	List<ImgFile> selectImgFileName(String articleCode);
+	
 }

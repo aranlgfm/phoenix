@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.cafe24.phoenixooo.community.Model.Article;
 import com.cafe24.phoenixooo.community.Model.Comment;
+import com.cafe24.phoenixooo.community.Model.ImgFile;
 
 @Repository
 public class BoardDaoImpl implements BoardDao
@@ -27,9 +28,9 @@ public class BoardDaoImpl implements BoardDao
 	
 	//글 1개 가져오기
 	@Override
-	public Article selectArticle(Article article) {
+	public Article selectArticle(String articleCode) {
 	
-		return sqlSession.selectOne(NS+".selectArticle", article);
+		return sqlSession.selectOne(NS+".selectArticle", articleCode);
 	}
 	
 	//글 1개 등록
@@ -73,4 +74,28 @@ public class BoardDaoImpl implements BoardDao
 		// TODO Auto-generated method stub
 		return sqlSession.delete(NS+".deleteComment", comment);
 	}
+	
+	//파일 업로드 -> 랜덤네임 중복확인
+	@Override
+	public ImgFile selectImgFileByRandomName(String randomName) {
+		System.out.println("랜덤 네임 중복확인 메서드 selectImgFileByRandomName 실행");
+		return sqlSession.selectOne(NS+".selectImgFileByRandomName", randomName);
+	}
+	
+	
+	//파일 등록
+	@Override
+	public void subAddImgFile(ImgFile imgFile) {
+		System.out.println("파일 등록 메서드 subAddImgFile 실행");
+		sqlSession.insert(NS+".subAddImgFile", imgFile);
+	}
+	
+	
+	//파일 이름 가져오기
+	@Override
+	public List<ImgFile> selectImgFileName(String articleCode) {
+		System.out.println("여긴 되냐");
+		return sqlSession.selectList(NS+".selectImgFileName", articleCode);
+	}
+	
 }

@@ -12,11 +12,12 @@
 			COM_ARTICLE_TB
 		WHERE
 			BOARDGROUP_CD=#{boardGroupCode}
-		ORDER BY ARTICLE_CD ASC
-		LIMIT 0, 3
+		ORDER BY ARTICLE_CD DESC
+		LIMIT 0, 20
 	</select>
 	
-	<select id="selectArticle" parameterType="com.cafe24.phoenixooo.community.Model.Article" resultType="com.cafe24.phoenixooo.community.Model.Article">
+	<!-- 먼저 글 1개 가져오는 쿼리 -->
+	<select id="selectArticle" parameterType="String" resultType="com.cafe24.phoenixooo.community.Model.Article">
 		SELECT
 			ARTICLE_CD as articleCode
 			,USER_CD as userCode
@@ -28,10 +29,11 @@
 		FROM
 			COM_ARTICLE_TB
 		WHERE
-			ARTICLE_CD=#{articleCode}
+			ARTICLE_CD = #{articleCode}
 	</select>
 	
-	<insert id="insertArticle" parameterType="com.cafe24.phoenixooo.community.Model.Article">	
+	
+	<!-- <insert id="insertArticle1" parameterType="com.cafe24.phoenixooo.community.Model.Article">	
 		INSERT INTO 
 			COM_ARTICLE_TB
 			(
@@ -53,11 +55,75 @@
 				, NOW()
 				, '테스트때문에'
 			)
+		
+	</insert> -->
+	
+	
+	<!-- 게시글 입력 / 파일 업로드 -->
+	<insert id="insertArticle" parameterType="com.cafe24.phoenixooo.community.Model.Article">
+		<selectKey resultType="hashmap" keyProperty="articleCode" order="BEFORE">
+			select if(isnull(ARTICLE_CD),'COM_ARTICLE_1', concat('COM_ARTICLE_', MAX(CONVERT(SUBSTRING(ARTICLE_CD,13), UNSIGNED))+1))
 			
-		<selectKey resultType="String" keyProperty="articleCode" order="AFTER">
+			
+			
+			as articleCode
+			from COM_ARTICLE_TB
+		</selectKey>	
+			INSERT INTO 
+			COM_ARTICLE_TB
+			(
+				ARTICLE_CD
+				,USER_CD
+				,BOARDGROUP_CD
+				,ARTICLE_NM
+				,ARTICLE_CTT
+				,ARTICLE_DT
+				,ARTICLE_IP
+			)
+		VALUES 
+			(
+				#{articleCode}
+				, 'COM_USER_4'
+				, 'COM_BOARDGROUP_3'
+				, #{articleName}
+				, #{articleContent}
+				, NOW()
+				, '안되는건가?'
+			)
+	<!-- 	<selectKey resultType="String" keyProperty="articleCode" order="AFTER">
             SELECT LAST_INSERT_ID()
-        </selectKey>
+        </selectKey> -->
 	</insert>
+	
+	<!-- 가맹이 계약파일정보 신청 -->
+	<insert id="subAddImgFile"	parameterType="com.cafe24.phoenixooo.community.Model.ImgFile">
+		<selectKey resultType="hashmap" keyProperty="fileCode" order="BEFORE">
+			select if(isnull(FILE_CD),'COM_FILE_1', concat('COM_FILE_', MAX(CONVERT(SUBSTRING(FILE_CD,10), UNSIGNED))+1))
+			as fileCode
+			from COM_FILE_TB
+		</selectKey>
+		INSERT INTO COM_FILE_TB
+		(
+			FILE_CD
+			,ARTICLE_CD
+			,FILE_PATH
+			,FILE_NAME
+			,RANDOM_NAME
+		)
+		VALUES
+		(
+			#{fileCode}
+			,#{articleCode}
+			,#{filePath}
+			,#{fileName}
+			,#{randomName}
+		)
+		
+	</insert>
+	
+	
+	
+	
 	
 	<update id="updateArticle" parameterType="com.cafe24.phoenixooo.community.Model.Article">
 		UPDATE 
@@ -124,30 +190,33 @@
 	</delete>
 	
 	
+	<!-- 랜덤네임이 존재하는지 여부를확인 (중복되지 않은것만 저장해야함) -->
+	<select id="selectImgFileByRandomName" parameterType="String" resultType="com.cafe24.phoenixooo.community.Model.Article">
+		SELECT
+			ARTICLE_CD as articleCode
+			,FILE_NAME as fileName
+		FROM
+			COM_FILE_TB
+		WHERE
+			RANDOM_NAME = #{randomName}
+	
+	</select>
 	
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	<select id="selectImgFileName" parameterType="String" resultType="com.cafe24.phoenixooo.community.Model.ImgFile">
+		SELECT
+			
+			File_CD as fileCode
+			,ARTICLE_CD as articleCode
+			,FILE_PATH as filePath
+			,FILE_NAME as fileName
+			,RANDOM_NAME as randomName
+		FROM
+			COM_FILE_TB
+		WHERE
+			ARTICLE_CD = #{articleCode}
+	</select>
+		
 </mapper>

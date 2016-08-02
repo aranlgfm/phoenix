@@ -13,7 +13,7 @@
 		기본 게시판
 	</h1>
 
-	<a href="/phoenix/com/form/insertingBasicArticle">글쓰기</a>
+	<a href="/phoenix/com/form/insertingBasicArticle?boardGroupCode=COM_BOARDGROUP_3">글쓰기</a>
 	<table>
 		<tr>
 			<th>글번호</th>

@@ -2,6 +2,8 @@ package com.cafe24.phoenixooo.community.Model;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Article 
 {
 	private String articleCode;
@@ -13,6 +15,7 @@ public class Article
 	private String articleIp;
 	private String articleWriter;
 	private List<Comment> commentList;
+	private List<MultipartFile> imgFile; // 파일 업로드
 	
 	public String getArticleCode() {
 		return articleCode;
@@ -68,4 +71,18 @@ public class Article
 	public void setCommentList(List<Comment> commentList) {
 		this.commentList = commentList;
 	}
+	public List<MultipartFile> getImgFile() {
+		return imgFile;
+	}
+	public void setImgFile(List<MultipartFile> imgFile) {
+		this.imgFile = imgFile;
+	}
+	@Override
+	public String toString() {
+		return "Article [articleCode=" + articleCode + ", userCode=" + userCode + ", boardGroupCode=" + boardGroupCode
+				+ ", articleName=" + articleName + ", articleContent=" + articleContent + ", articleDate=" + articleDate
+				+ ", articleIp=" + articleIp + ", articleWriter=" + articleWriter + ", commentList=" + commentList
+				+ ", imgFile=" + imgFile + "]";
+	}
+	
 }

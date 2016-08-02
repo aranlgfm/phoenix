@@ -1,6 +1,9 @@
 package com.cafe24.phoenixooo.community.Controller;
 
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,43 +26,55 @@ public class BoardController
 	
 	private Logger log=Logger.getLogger(this.getClass());
 	
-		//기본게시판으로 이동
+		//phoenix-> 자유게시판 클릭 = 기본게시판으로 이동
 		@RequestMapping(value = "/phoenix/com/form/basicBoard", method = RequestMethod.GET)
-		public String moveToBasicBoard(Model model
-				,@RequestParam("boardGroupCode") String boardGroupCode
-	    		) {
+		public String moveToBasicBoard(@RequestParam("boardGroupCode") String boardGroupCode, Model model) {
 			//System.out.println(boardGroupCode);
+			
 			List<Article> articleList = boardService.getArticleList(boardGroupCode);
 			model.addAttribute("articleList", articleList);
 	        
 		return "/phoenix/com/basicBoard";
 		}
 		
-		//글 내용으로
+		
+		// 해당 게시글중 1개 클릭하면 basicArticle로 이동
 		@RequestMapping(value = "/phoenix/com/form/basicArticle", method = RequestMethod.GET)
-		public String selectBasicArticle(Model model
-				,Article article) {
+		public String selectBasicArticle(Article article, Model model) {
 			log.debug("---------------------Method name : selectBasicArticle");
 			
-			//System.out.println(articleCode+"<========아티클 코드");
-			Article article2=boardService.getArticle(article);
-			//System.out.println(article.getArticleCode()+"<--------아티클 코드");
-			model.addAttribute("article", article2);		
+			System.out.println(article.getArticleCode()+"<========아티클 코드");
+			//articleCode객체 속의 코드를 가져와서 String타입의 articleCode변수에 집어넣엇음
+			String articleCode = article.getArticleCode();
+			
+			System.out.println("getArticleCode메서드 실행");
+			Map<String, Object> map =  boardService.getArticle(articleCode);
+		//		System.out.println("map : "+ map);
+			
+			model.addAttribute("map", map);
+			System.out.println("여기가 글 한개 뿌리기 리턴되는 마지막이다.");
+			System.out.println(map);
+			
 		return "/phoenix/com/article";
 		}
 		
-		//게시판 글쓰기 화면으로 이동
+		// 글쓰기 버튼클릭 시 =  글쓰기
 		@RequestMapping(value = "/phoenix/com/form/insertingBasicArticle", method = RequestMethod.GET)
-		public String moveToInsertingBasicArticle() {
-		return "/phoenix/com/insertingBasicArticle";
+		public String moveToInsertingBasicArticle(String boardGroupCode, Model model) {
+			//글쓰기 누르면 articleCode주기
+			model.addAttribute("boardGroupCode", boardGroupCode);
+			return "/phoenix/com/insertingBasicArticle";
 		}
 				
-		//글쓰기 등록
+		// article에서 글쓰고 난 후 보여지는 게시글 1개의 화면
 		@RequestMapping(value = "/phoenix/com/form/insertBasicArticle", method = RequestMethod.POST)
-		public String insertBasicArticle(Model model,Article article) {
-			String articleCode=boardService.insertArticle(article);
-			model.addAttribute("articleCode", articleCode);
-		return "/phoenix/com/article";
+		public String insertBasicArticle(Article article, HttpServletRequest request, Model model) {
+			System.out.println("insertBasicArticle 글쓰기 실행됨!");
+			//request 같이 보냄
+			boardService.insertArticle(article, request);
+			model.addAttribute("articleCode", article.getArticleCode());
+ 	 		
+ 	 		return "redirect:/phoenix/com/article";
 		}
 		
 		
@@ -75,10 +90,10 @@ public class BoardController
 		
 		//글 수정 화면으로
 		@RequestMapping(value = "/phoenix/com/form/modifyingBasicArticle", method = RequestMethod.GET)
-		public String moveToModifyingBasicArticle(Model model
-				,Article article) {
-			Article article2=boardService.getArticle(article);
-			model.addAttribute("article", article2);	
+		public String moveToModifyingBasicArticle(String articleCode, Model model) {
+			Map<String, Object> map = boardService.getArticle(articleCode); 
+			
+			model.addAttribute("article", map);	
 		return "/phoenix/com/modifyingBasicArticle";
 		}		
 		
