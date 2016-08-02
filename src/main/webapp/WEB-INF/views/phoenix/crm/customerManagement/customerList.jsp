@@ -17,6 +17,7 @@
 </head>
 <body>
 <c:import url="customerManagement.jsp"></c:import>
+<c:import url="searchingForCustomerByDetail.jsp"></c:import>
 
 <h1>
 	고객리스트

@@ -13,7 +13,7 @@
 <hr>
 
 <div>
-	<a href="/phoenix/crm/customerManagement/form/customerList">회원검색</a>
+	<a href="/phoenix/crm/customerManagement/form/customerList">회원목록</a>
 	<a href="/phoenix/crm/customerManagement/form/insertingCustomer">회원등록</a>
 	<a href="#">회원관리설정</a>
 </div>

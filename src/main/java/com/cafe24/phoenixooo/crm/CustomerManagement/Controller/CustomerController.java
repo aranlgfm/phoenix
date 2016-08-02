@@ -86,4 +86,24 @@ public class CustomerController {
 		customerService.deleteCustomer(customer);
 		return "redirect:/phoenix/crm/customerManagement/form/customerList";
 	}
+	
+	/**
+	 * CRM-Controller 회원상세검색화면
+	 * @param customer
+	 * @return
+	 */
+	@RequestMapping(value = "/phoenix/crm/form/searchingForCustomerByDetail", method = RequestMethod.GET)
+	public String crmFormSearchingForCustomerByDetail(){
+		return "/phoenix/crm/searchingForCustomerByDetail";
+	}
+	
+	/**
+	 * CRM-Controller 회원상세검색처리
+	 * @param customer
+	 * @return
+	 */
+	@RequestMapping(value = "/phoenix/crm/process/searchForCustomerByDetail", method = RequestMethod.POST)
+	public String crmProcesSearchForCustomerByDetail(CrmCustomer customer){
+		return "/phoenix/crm/searchingForCustomerByDetail";
+	}
 }
