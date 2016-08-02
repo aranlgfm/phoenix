@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cafe24.phoenixooo.crm.employeeManagement.Repository.EmployeeMapper">
+	<insert id="insertEmployee" parameterType="com.cafe24.phoenixooo.crm.employeeManagement.Model.Employee">
+		INSERT INTO
+			CRM_EMPLOYEE_TB
+		(
+			EMPLOYEE_CD
+			,SHOP_CD
+			,EMPLOYEE_PW
+			,EMPLOYEE_NM
+			,EMPLOYEE_BIRTH_DT
+			,EMPLOYEE_ADDR
+			,EMPLOYEE_PHONE_NO
+			,EMPLOYEE_CELLPHONE_NO
+			,EMPLOYEE_JOIN_DT
+			,EMPLOYEE_MEMO
+			,EMPLOYEE_LEVEL_NM
+		)
+		VALUES
+		(
+			<!-- #{employeeCode} -->
+			'CRM_EMPLOYEE_5'
+			<!-- ,#{shopCode} -->
+			,'CRM_SHOP_3'
+			<!-- ,#{employeePw} -->
+			,'2222'
+			,#{employeeName}
+			,#{employeeBirthDate}
+			,#{employeeAddr}
+			,#{employeePhoneNo}
+			,#{employeeCellPhoneNo}
+			,NOW()
+			,#{employeeMemo}
+			,#{levelName}
+		)
+	</insert>
+</mapper>

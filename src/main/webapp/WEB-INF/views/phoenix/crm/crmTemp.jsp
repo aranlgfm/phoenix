@@ -11,7 +11,7 @@
 	
 	<a href="/phoenix/crm/businessManagement/businessManagement">康诀包府</a>
 	<a href="/phoenix/crm/customerManagement/form/customerManagement">雀盔包府</a>
-	<a href="/phoenix/crm/employeeManagement/employeeManagement">流盔包府</a>
+	<a href="/phoenix/crm/employeeManagement/employeeList">流盔包府</a>
 	<a href="/phoenix/crm/stockManagement/stockManagement">概涝/瘤免</a>
 </body>
 </html>
