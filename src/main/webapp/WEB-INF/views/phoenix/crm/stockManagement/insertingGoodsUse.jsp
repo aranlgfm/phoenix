@@ -1,23 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
-<!-- select ÅÂ±× ºÎºÐ µ¿Àû Äõ¸®·Î Ã³¸®ÇØ¾ß ÇÏ´Âµ¥... -->
-	<form action="/phoenix/crm/form/insertGoodsUse" method="post">
+<!-- select íƒœê·¸ ë¶€ë¶„ ë™ì  ì¿¼ë¦¬ë¡œ ì²˜ë¦¬í•´ì•¼ í•˜ëŠ”ë°... -->
+	<form action="/phoenix/crm/process/insertGoodsUse" method="post">
 		<table>
 			<tr>
 				<td>
-					°Å·¡Ã³
+					ê±°ëž˜ì²˜
 				</td>
 				<td>
-					<select>
-						<option value="»ï¼º">»ï¼º</option>
+					<select name="accountName">
+						<option value="ì‚¼ì„±">ì‚¼ì„±</option>
 						<option value="LG">LG</option>
 						<option value="SK">SK</option>
 					</select>
@@ -25,27 +27,27 @@
 			</tr>
 			<tr>
 				<td>
-					¹Ì¿ë¿ëÇ°¼±ÅÃ
+					ë¯¸ìš©ìš©í’ˆì„ íƒ
 				</td>
 				<td>
-					<select>
-						<option value="¼¤Çª">¼¤Çª</option>
-						<option value="¸°½º">¸°½º</option>
-						<option value="¿¡¼¾½º">¿¡¼¾½º</option>
+					<select name="goodsName">
+						<option value="ëŒ•ê¸°ë¨¸ë¦¬ë¦°ìŠ¤">ëŒ•ê¸°ë¨¸ë¦¬ë¦°ìŠ¤</option>
+						<option value="ë¦°ìŠ¤">ë¦°ìŠ¤</option>
+						<option value="ì—ì„¼ìŠ¤">ì—ì„¼ìŠ¤</option>
 					</select>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					ÃÑÀç°í·®
+					ì´ìž¬ê³ ëŸ‰
 				</td>
 				<td>
-					¾ÆÁ÷
+					ì•„ì§
 				</td>
 			</tr>
 			<tr>
 				<td>
-					»ç¿ë¼ö·®
+					ì‚¬ìš©ìˆ˜ëŸ‰
 				</td>
 				<td>
 					<input type="text" name="useQuantityNumber">
@@ -53,7 +55,7 @@
 			</tr>
 			<tr>
 				<td>
-					»ç¿ëÀÏ
+					ì‚¬ìš©ì¼
 				</td>
 				<td>
 					<input type="text" name="useDate">
@@ -61,19 +63,27 @@
 			</tr>
 			<tr>
 				<td>
-					»ç¿ëÁ÷¿ø
+					ì‚¬ìš©ì§ì›
 				</td>
 				<td>
-					<select>
-						<option value="Á¶¿¤">Á¶¿¤</option>
-						<option value="¾Øµð">¾Øµð</option>
-						<option value="Åä¸¶½º">Åä¸¶½º</option>
+					<select name="employeeName">
+						<option value="ì¡´">ì¡´</option>
+						<option value="ì•¤ë””">ì•¤ë””</option>
+						<option value="í† ë§ˆìŠ¤">í† ë§ˆìŠ¤</option>
 					</select>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<input type="submit" value="µî·Ï">
+					ë©”ëª¨
+				</td>
+				<td>
+					<textarea name="useMemo" cols="150" rows="5" ></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="submit" value="ë“±ë¡">
 				</td>
 			</tr>
 		</table>

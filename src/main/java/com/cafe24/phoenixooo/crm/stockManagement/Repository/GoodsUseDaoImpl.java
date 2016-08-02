@@ -21,4 +21,11 @@ public class GoodsUseDaoImpl implements GoodsUseDao{
 	public List<GoodsUse> selectGoodsUseList(GoodsUse goodsUse) {
 		return sqlSession.selectList(NS+".selectGoodsUseList", goodsUse);
 	}
+	
+	//미용용품 사용을 등록하는 처리
+	@Override
+	public int insertGoodsUse(GoodsUse goodsUse) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(NS+".insertGoodsUse", goodsUse);
+	}
 }

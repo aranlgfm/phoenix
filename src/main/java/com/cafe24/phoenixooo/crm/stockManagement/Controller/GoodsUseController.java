@@ -31,9 +31,22 @@ public class GoodsUseController {
 	@RequestMapping(value = "/phoenix/crm/form/insertingGoodsUse", method = RequestMethod.GET)
 	public String moveToInsertingGoodsUse(GoodsUse goodsUse,Model model) 
 	{ 
+
 		return "/phoenix/crm/stockManagement/insertingGoodsUse";
 	}
 	
 	//미용용품 사용을 등록하는 처리
-	
+	@RequestMapping(value = "/phoenix/crm/process/insertGoodsUse", method = RequestMethod.POST)
+	public String insertingGoodsUse(GoodsUse goodsUse,Model model) 
+	{ 
+		goodsUse.setShopCode("CRM_SHOP_1");
+		
+		System.out.println(goodsUse.getEmployeeName()+"이거 직원 이름");
+
+		
+		goodsUseService.insertGoodsUse(goodsUse);
+		
+		
+		return "redirect:/phoenix/crm/form/goodsUseList";
+	}
 }

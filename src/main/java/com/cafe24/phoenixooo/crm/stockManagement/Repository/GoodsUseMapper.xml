@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cafe24.phoenixooo.crm.stockManagement.Repository.GoodsUseMapper">
+	<!-- 미용용품 사용 리스트 가져오기 -->
 	<select id="selectGoodsUseList" parameterType="com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsUse" resultType="com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsUse">
 		select
 			GOODS_USE_DT as useDate
@@ -25,4 +26,31 @@
 		where
 			goodsUse.SHOP_CD=(select USER_SHOP_CD from COM_USER_TB as user where user.USER_CD=#{userCode})
 	</select>
+	
+	<!-- //미용용품 사용을 등록하는 처리 -->
+	<insert id="insertGoodsUse" parameterType="com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsUse">
+		INSERT INTO
+			CRM_GOODS_USE_TB
+			(
+				GOODS_USE_CD
+				, SHOP_CD
+				, EMPLOYEE_CD
+				, ACCOUNT_CD
+				, GOODS_CD
+				, GOODS_USE_QUANTITY_NO
+				, GOODS_USE_DT
+				, GOODS_USE_MEMO
+			)
+		VALUES 
+			(
+				'CRM_GOODS_USE_4'
+				, #{shopCode}
+				, (select EMPLOYEE_CD from CRM_EMPLOYEE_TB where SHOP_CD=#{shopCode} and EMPLOYEE_NM=#{employeeName})
+				, (select ACCOUNT_CD from CRM_ACCOUNT_TB where SHOP_CD=#{shopCode} and ACCOUNT_NM=#{accountName})
+				, (select GOODS_CD from CRM_GOODS_TB where SHOP_CD=#{shopCode} and GOODS_NM=#{goodsName})
+				, #{useQuantityNumber}
+				, NOW()
+				, #{useMemo}
+			)		
+	</insert>
 </mapper>

@@ -19,4 +19,10 @@ public class GoodsUseServiceImpl implements GoodsUseService{
 	public List<GoodsUse> selectGoodsUseList(GoodsUse goodsUse) {
 		return goodsUseDao.selectGoodsUseList(goodsUse);
 	}
+	
+	//미용용품 사용을 등록하는 처리
+	@Override
+	public int insertGoodsUse(GoodsUse goodsUse) {
+		return goodsUseDao.insertGoodsUse(goodsUse);
+	}
 }
