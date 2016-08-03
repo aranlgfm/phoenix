@@ -63,9 +63,6 @@
 	<insert id="insertArticle" parameterType="com.cafe24.phoenixooo.community.Model.Article">
 		<selectKey resultType="hashmap" keyProperty="articleCode" order="BEFORE">
 			select if(isnull(ARTICLE_CD),'COM_ARTICLE_1', concat('COM_ARTICLE_', MAX(CONVERT(SUBSTRING(ARTICLE_CD,13), UNSIGNED))+1))
-			
-			
-			
 			as articleCode
 			from COM_ARTICLE_TB
 		</selectKey>	
