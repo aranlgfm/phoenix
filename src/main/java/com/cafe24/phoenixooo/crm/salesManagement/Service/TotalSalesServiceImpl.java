@@ -1,7 +1,6 @@
 package com.cafe24.phoenixooo.crm.salesManagement.Service;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +17,7 @@ public class TotalSalesServiceImpl implements TotalSalesService {
 
 	//일간총매출 처리중
 	@Override
-	public SalesInfo SelectDailySales(String paymentDate) {
+	public List<SalesInfo> SelectDailySales(String paymentDate) {
 		
 		return totalSalesDao.SelectDailySales(paymentDate);
 	}

@@ -4,11 +4,24 @@
 
 	<select id="SelectDailySales" parameterType="String" resultType="com.cafe24.phoenixooo.crm.salesManagement.Model.SalesInfo">
 		SELECT
-		
+			PAYMENT_CD as paymentCode
+			,EMPLOYEE_CD as employeeCode 
+			,SHOP_CD	as shopCode
+			,USER_CD as userCode
+			,POINT_CD as pointCode
+			,ITEMDESIGN_CD as itemDesignCode
+			,USER_NM as userName
+			,EMPLOYEE_NM as employeeName
+			,ITEMDESIGN_NM as itemDesignName
+			,PAYMENT_TYPE_GB as paymentTypeGb
+			,PAYMENT_TOTAL_WON as paymentTotalWon
+			,PAYMENT_DT as paymentDate
+		        
 		FROM
-			
+			CRM_PAYMENT_TB	
 		WHERE
-		
+			PAYMENT_DT = #{paymentDate}
+				
 	</select>
 
 

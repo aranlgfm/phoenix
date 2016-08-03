@@ -16,32 +16,23 @@
 <body>
 	<h1>기간별 매출 내역</h1>
 	<div id="confines">
-		<div>[el : 해당날짜] 시술 매출 내역</div>
+		<div>${SalesInfo.paymentDate} 시술 매출 내역</div>
 		<table id="procsl">
 			<tr>
 				<th>품목</th>
-				<th>카드</th>
-				<th>현금</th>
-				<th>영수증</th>
-				<th>미수금</th>
+				<th>계산구분</th>
 				<th>합계</th>
-				<th>신규</th>
-				<th>재방문</th>
-				<th>비회원</th>
+				
 			</tr>
+			<c:forEach var="pc" items="${list}">
 			<tr>
-				<td>1</td>
-				<td>1</td>
-				<td>1</td>
-				<td>1</td>
-				<td>1</td>
-				<td>1</td>
-				<td>1</td>
-				<td>1</td>
-				<td>1</td>
+				<td>${pc.itemDesignName} </td>
+				<td>${pc.paymentTypeGb}</td>
+				<td>${pc.paymentTotalWon}</td>
 			</tr>
+			</c:forEach>
 		</table>
-		<div>[el : 해당날짜] 시술 매출 내역</div>
+		<div>${SalesInfo.paymentDate} 제품 판매 내역</div>
 		<table id="prodsl">
 			<tr>
 				<th>제품명</th>

@@ -13,7 +13,7 @@
 </head>
 <body>
 	<h1>매출관리</h1>
-	
+	<a href="/phoenix/crm/salesManagement/periodSearch">기간검색</a>
 	<div>
 		<a href="/phoenix/crm/salesManagement/dailySales"><input type="button" value="일간총매출"></a>
 		<a href="/phoenix/crm/salesManagement/monthlySales"><input type="button" value="월간총매출"></a>
@@ -34,7 +34,7 @@
 	
 	<div>
 		<c:import url="/phoenix/crm/salesManagement/periodSalesList"></c:import>
-	</div>
+	</div> 
 	
 </body>
 </html>

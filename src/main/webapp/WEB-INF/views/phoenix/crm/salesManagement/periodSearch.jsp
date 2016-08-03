@@ -28,12 +28,12 @@
 </head>
 <body>
 	<div id="confines">
-		<form action="" method="post">
+		<form action="/phoenix/crm/salesManagement/periodSearch" method="post">
 			<div>기간검색</div>
 			<div>
 				검색일자
 				<input id="realDay" type="text" value="" name="paymentDate">
-				<input type="button" value="검색">
+				<input type="submit" value="검색">
 			</div>
 		</form>
 	</div>

@@ -1,5 +1,7 @@
 package com.cafe24.phoenixooo.crm.salesManagement.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,10 +33,11 @@ public class TotalSalesController {
 	//기간검색 -> 일간매출내역 처리
 	@RequestMapping(value = "/phoenix/crm/salesManagement/periodSearch", method = RequestMethod.POST)
 	public String periodSearch(String paymentDate, Model model) {
-		SalesInfo salesInfo = totalSalesService.SelectDailySales(paymentDate);
-		
-		
-		return "/phoenix/crm/salesManagement/periodSearch";
+		System.out.println("periodSearch에서 넘긴 현재날짜 : "+paymentDate);
+		List<SalesInfo> list = totalSalesService.SelectDailySales(paymentDate);
+		model.addAttribute("list", list);
+		System.out.println("model : "+model);
+		return "/phoenix/crm/salesManagement/periodSalesList";
 	}
 	
 	
