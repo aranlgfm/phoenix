@@ -10,7 +10,8 @@
 </head>
 
 <body>
-	<h1>영업관리 임시 INDEX</h1>
+	<c:import url="../crmTemp.jsp"></c:import>
+	<hr>
 	<a href="">시술내역등록</a>
 	<a href="">시술내역</a>
 	<a href="">제품판매등록</a>

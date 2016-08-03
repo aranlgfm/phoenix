@@ -24,4 +24,18 @@ public interface BusinessManagementSettingDao {
 	//시술품목디자인(아이템세부) 리스트
 	List<ProcedureItemDesign> selectItemDesignList(String shopCode);
 	
+	
+	//시술품목(아이템) 셀렉 (수정용)
+	ProcedureItem selectItem(String ItemCode);
+		
+	//시술품목(아이템) 수정
+	void modifyItem(ProcedureItem item);
+	
+	//시술품목디자인셀렉 (수정용)
+	ProcedureItemDesign selectItemDesign(String ItemDesignCode);
+	
+	//시술품목디자인 수정
+	void modifyItemDesign(ProcedureItemDesign item);
+	
+	
 }

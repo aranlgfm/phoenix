@@ -8,6 +8,10 @@
 	2. 시술디자인(아이템세부) 등록
 	3-1. 아이템 리스트 셀렉
 	3-2. 아이템디자인 리스트 셀렉
+	4-1. 시술품목(아이템) 셀렉
+	4-2  시술품목(아이템) 수정
+	5-1. 시술디자인(아이템세부) 셀렉
+	5-2. 시술디자인(아이템세부) 수정
 	 -->
 	
 	
@@ -31,7 +35,7 @@
 		LIMIT 0,1
 	</select>
 	
-	<!-- 1. 시술품목 등록 -->
+	<!-- 1. 시술품목 INSERT -->
 	<insert id="insertProcedureItem" parameterType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItem">
 		INSERT 
 		INTO 
@@ -51,7 +55,7 @@
 		)
 	</insert>
 	
-	<!-- 2. 시술디자인 등록 -->
+	<!-- 2. 시술디자인 INSERT -->
 	<insert id="insertProcedureItemDesign" parameterType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItemDesign">
 		INSERT 
 		INTO 
@@ -75,7 +79,7 @@
 		)
 	</insert>
 	
-	<!-- 3-1.아이템 리스트 뽑아오기 -->
+	<!-- 3-1.아이템 SELECT LIST -->
 	<select id="selectItemList" parameterType="java.lang.String" resultType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItem">
 		SELECT
 			ITEM_CD as itemCode
@@ -88,7 +92,7 @@
 			ITEM_NM ASC				
 	</select>
 
-	<!-- 3-2.아이템디자인 리스트 뽑아오기 -->
+	<!-- 3-2.아이템디자인 SELECT LIST -->
 	<select id="selectItemDesignList" parameterType="java.lang.String" resultType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItemDesign">
 		SELECT	
 			i.item_nm as itemName
@@ -104,4 +108,48 @@
 	</select>
 	
 	
+	<!-- 4-1 시술품목(아이템) SELECT -->
+	<select id="selectItem" parameterType="java.lang.String" resultType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItem">
+		SELECT	
+			ITEM_CD as itemCode
+			,ITEM_NM as itemName
+		FROM
+			CRM_ITEM_TB
+		WHERE
+			ITEM_CD = #{value}			
+	</select>
+
+	<!-- 4-2 시술품목(아이템) UPDATE -->
+	<update id="modifyItem" parameterType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItem">
+		UPDATE 
+			CRM_ITEM_TB
+		SET
+			ITEM_NM = #{itemName}
+		WHERE 
+			ITEM_CD = #{itemCode}	
+	</update>
+
+	
+	<!-- 5-1 시술디자인(아이템세부) SELECT -->
+	<select id="selectItemDesign" parameterType="java.lang.String" resultType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItemDesign">
+		SELECT	
+			ITEMDESIGN_CD as itemDesignCode
+			,ITEMDESIGN_NM as itemDesignName
+			,ITEMDESIGN_WON as itemDesignPrice
+		FROM
+			CRM_ITEM_DESIGN_TB
+		WHERE
+			ITEMDESIGN_CD = #{value}				
+	</select>
+	
+	<!-- 5-2 시술디자인(아이템세부) UPDATE -->
+	<update id="modifyItemDesign" parameterType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItemDesign">
+		UPDATE 
+			CRM_ITEM_DESIGN_TB
+		SET
+			ITEMDESIGN_NM = #{itemDesignName}
+			,ITEMDESIGN_WON = #{itemDesignPrice}
+		WHERE 
+			ITEMDESIGN_CD = #{itemDesignCode}	
+	</update>
 </mapper>
