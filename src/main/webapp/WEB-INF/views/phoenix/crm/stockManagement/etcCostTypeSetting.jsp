@@ -10,7 +10,7 @@
 	table, tr, th, td {
 		border : 1px solid #000000;
 	}
-	td {
+	table {
 		border-collapse: collapse;
 	}
 </style>
@@ -19,56 +19,36 @@
 
 <c:import url="stockManagement.jsp"></c:import>
 
-<h1>기타지출설정</h1>
-<form action="/phoenix/crm/process/stockManagement/insertEtcCostItem" method="POST">
-	
-	<input type="submit" value="기타지출항목등록"/>
-	
+<hr>
+
+<a href="/phoenix/crm/form/stockManagement/etcCostSetting?shopCode=${shopCode}">기타지출항목설정</a>
+<a href="/phoenix/crm/form/stockManagement/etcCostTypeSetting?shopCode=${shopCode}">[기타지출세부항목설정]</a>
+
+<form action="/phoenix/crm/process/stockManagement/insertEtcCostType" method="POST">
+	<div>
+		<input name="shopCode" type="hidden" value="${shopCode}"/>
+	</div>
+	<select name="etcCostCode">
+		<option>||기타지출항목||</option>
+	<c:forEach var="list" items="${list}">
+		<option value="${list.etcCostCode}">${list.etcCostName}</option>
+	</c:forEach>
+	</select>
+	<div>
+		<input name="etcCostTypeName" type="text"/>
+		<input type="submit" value="기타지출세부항목등록"/>
+	</div>
 </form>
 
-		<table>
-			<tr>
-				<td>지출일</td>
-				<!-- 달력 date type -->
-				<td><input class="" type="date" name=""></td>
-			</tr>
-			<tr>
-				<td>지출항목</td>
-				<td>
-					<SELECT NAME= SIZE=1>
-				        <OPTION VALUE=1>1번 보기입니다.</OPTION>
-				        <OPTION VALUE=2>2번 보기입니다.</OPTION>
-				        <OPTION VALUE=3>3번 보기입니다.</OPTION>
-				        <OPTION VALUE=4>4번 보기입니다.</OPTION>
-				    </SELECT>
-				</td>
-			</tr>
-			<tr>
-				<td>세부항목</td>
-				<td>
-					<SELECT NAME= SIZE=1>
-				        <OPTION VALUE=1>1번 보기입니다.</OPTION>
-				        <OPTION VALUE=2>2번 보기입니다.</OPTION>
-				        <OPTION VALUE=3>3번 보기입니다.</OPTION>
-				        <OPTION VALUE=4>4번 보기입니다.</OPTION>
-				    </SELECT>
-				</td>
-			</tr>
-			<tr>
-				<td>지출금액</td>
-				<td><input class="" type="text" name=""></td>
-			</tr>
-			<tr>
-				<td>담당자</td>
-				<td><input class="" type="text" name=""></td>
-			</tr>
-				<tr>
-					<td>메모</td>
-					<td><textarea class="" cols="30" rows="10" name=""></textarea></td>
-				</tr>
-			</table>
-
-
+<h3>현재기타지출세부항목</h3>
+	<table>
+		<c:forEach var="cost" items="${cost}">
+		<tr>
+			<td>${cost.etcCostName}</td>
+			<td>${cost.etcCostTypeName}</td>
+		</tr>
+		</c:forEach>
+	</table>
 
 </body>
 </html>

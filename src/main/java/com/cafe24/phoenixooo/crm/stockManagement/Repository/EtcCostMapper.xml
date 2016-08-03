@@ -4,21 +4,97 @@
 
 <!-- 
 	1. 기타지출항목리스트
-
+	2. 기타지출항목등록
+	3. 기타지출항목삭제
+	4. 기타지출항목 하나 가져오기
+	5. 기타지출세부항목리스트
+	6. 기타지출세부항목등록
  -->
 
 <!-- 1. 기타지출항목리스트 -->
-<select id="selectEtcCostList" resultType="com.cafe24.phoenixooo.crm.stockManagement.Model.EtcCost">
+<select id="selectEtcCostList" parameterType="com.cafe24.phoenixooo.crm.stockManagement.Model.EtcCost" resultType="com.cafe24.phoenixooo.crm.stockManagement.Model.EtcCost">
 	SELECT 
 		ETC_COST_CD as etcCostCode
 		,SHOP_CD as shopCode
 		,ETC_COST_NM as etcCostName
 	FROM 
 		CRM_ETC_COST_TB
+	WHERE 
+		SHOP_CD=#{shopCode}
 </select>
 
+<!-- 2. 기타지출항목등록 -->
 <insert id="insertEtcCost" parameterType="com.cafe24.phoenixooo.crm.stockManagement.Model.EtcCost">
-	
+	<selectKey resultType="hashmap" keyProperty="etcCostCode" order="BEFORE">
+		select if(isnull(ETC_COST_CD),'CRM_ETC_COST_1',concat('CRM_ETC_COST_',MAX(CONVERT(SUBSTRING(ETC_COST_CD,14),UNSIGNED))+1)) as etcCostCode from CRM_ETC_COST_TB
+	</selectKey>	
+	INSERT INTO 
+		CRM_ETC_COST_TB
+		(
+			ETC_COST_CD
+			,SHOP_CD
+			,ETC_COST_NM
+		)
+	VALUES 
+		(
+			#{etcCostCode}
+			,#{shopCode}
+			,#{etcCostName}
+		)
 </insert>
 
+<!-- 3. 기타지출항목삭제 -->
+<delete id="deleteEtcCost" parameterType="com.cafe24.phoenixooo.crm.stockManagement.Model.EtcCost">
+	DELETE FROM 
+		CRM_ETC_COST_TB 
+	WHERE 
+		ETC_COST_CD=#{etcCostCode}
+</delete>
+
+<!-- 4. 기타지출항목 하나 가져오기 -->
+<select id="selectEtcCostOne" parameterType="com.cafe24.phoenixooo.crm.stockManagement.Model.EtcCost" resultType="com.cafe24.phoenixooo.crm.stockManagement.Model.EtcCost">
+	SELECT 
+		ETC_COST_NM as etcCostName 
+	FROM 
+		CRM_ETC_COST_TB 
+	WHERE 
+		ETC_COST_CD=#{etcCostCode}
+</select>
+
+<!-- 5. 기타지출세부항목리스트 -->
+<select id="selectEtcCostTypeList" parameterType="com.cafe24.phoenixooo.crm.stockManagement.Model.EtcCostType" resultType="com.cafe24.phoenixooo.crm.stockManagement.Model.EtcCostType">
+	SELECT 
+		ETC_COSTTYPE_CD as etcCostTypeCode
+		,ETC_COST_CD as etcCostCode
+		,ETC_COST_TYPE_NM as etcCostTypeName
+	FROM 
+		CRM_ETC_COSTTYPE_TB 
+	WHERE 
+		SHOP_CD=#{shopCode}
+</select>
+
+<!-- 6. 기타지출세부항목등록 -->
+<insert id="insertEtcCostType">
+	<selectKey resultType="hashmap" keyProperty="etcCostTypeCode" order="BEFORE">
+		select if(isnull(ETC_COSTTYPE_CD),'CRM_ETC_COSTTYPE_1',concat('CRM_ETC_COSTTYPE_',MAX(CONVERT(SUBSTRING(ETC_COSTTYPE_CD,18),UNSIGNED))+1)) as etcCostTypeCode from CRM_ETC_COSTTYPE_TB
+	</selectKey>	
+	INSERT INTO 
+		CRM_ETC_COSTTYPE_TB
+		(
+			ETC_COSTTYPE_CD
+			,SHOP_CD
+			,ETC_COST_CD
+			,ETC_COST_NM
+			,ETC_COST_TYPE_NM
+		)
+	VALUES 
+		(
+			#{etcCostTypeCode}
+			,#{shopCode}
+			,#{etcCostCode}
+			,#{etcCostName}
+			,#{etcCostTypeName}
+		)
+</insert>
+	
 </mapper>

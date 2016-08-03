@@ -10,7 +10,7 @@
 	table, tr, th, td {
 		border : 1px solid #000000;
 	}
-	td {
+	table {
 		border-collapse: collapse;
 	}
 </style>
@@ -19,20 +19,30 @@
 
 <c:import url="stockManagement.jsp"></c:import>
 
-<h1>기타지출설정</h1>
+<hr>
+
+<a href="/phoenix/crm/form/stockManagement/etcCostSetting?shopCode=${shopCode}">[기타지출항목설정]</a>
+<a href="/phoenix/crm/form/stockManagement/etcCostTypeSetting?shopCode=${shopCode}">기타지출세부항목설정</a>
 
 <form action="/phoenix/crm/process/stockManagement/insertEtcCostItem" method="POST">
-	<div><input name="etcCostName" type="text"/><input type="submit" value="기타지출항목등록"/></div>
+	<input name="shopCode" type="text" value="${shopCode}"/>
+
+	<div>
+		<input name="etcCostName" type="text"/>
+		<input type="submit" value="기타지출항목등록"/>
+	</div>
 </form>
 
 <h3>현재 지출항목</h3>
+
+<table>
 <c:forEach var="list" items="${list}">
-	<input name="etcCostCode" type="hidden" value="${list.etcCostCode}"/>
-	<input name="shopCode" type="hidden" value="${list.shopCode}"/>
-	<div>
-		${list.etcCostName}
-	</div>
+	<tr>
+		<td>${list.etcCostName}</td>
+		<td><a href="/phoenix/crm/process/stockManagement/deleteEtcCostItem?etcCostCode=${list.etcCostCode}"><input type="button" value="삭제"/></a></td>
+	</tr>
 </c:forEach>
+</table>
 
 </body>
 </html>

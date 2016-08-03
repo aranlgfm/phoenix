@@ -7,7 +7,6 @@ public class EtcCostType {
 	private String etcCostCode;
 	private String etcCostName;
 	private String etcCostTypeName;
-	private String etcCostStatus;
 	
 	public String getEtcCostTypeCode() {
 		return etcCostTypeCode;
@@ -39,18 +38,11 @@ public class EtcCostType {
 	public void setEtcCostTypeName(String etcCostTypeName) {
 		this.etcCostTypeName = etcCostTypeName;
 	}
-	public String getEtcCostStatus() {
-		return etcCostStatus;
-	}
-	public void setEtcCostStatus(String etcCostStatus) {
-		this.etcCostStatus = etcCostStatus;
-	}
 	
 	@Override
 	public String toString() {
 		return "EtcCostType [etcCostTypeCode=" + etcCostTypeCode + ", shopCode=" + shopCode + ", etcCostCode="
-				+ etcCostCode + ", etcCostName=" + etcCostName + ", etcCostTypeName=" + etcCostTypeName
-				+ ", etcCostStatus=" + etcCostStatus + "]";
+				+ etcCostCode + ", etcCostName=" + etcCostName + ", etcCostTypeName=" + etcCostTypeName + "]";
 	}
 	
 }

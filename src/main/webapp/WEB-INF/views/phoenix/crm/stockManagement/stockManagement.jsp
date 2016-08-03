@@ -16,8 +16,9 @@
 </style>
 </head>
 <body>
-
 <c:import url="../crmTemp.jsp"></c:import>
+
+<c:set var="shopCode" value="CRM_SHOP_1" scope="session"></c:set>
 
 <hr>
 
@@ -27,7 +28,7 @@
 	<a href="#">미용용품사용내역</a>
 	<a href="#">미용용품설정</a>
 	<a href="#">매입지출관리/설정</a>
-	<a href="/phoenix/crm/form/stockManagement/etcCostSetting">기타지출설정</a>
+	<a href="/phoenix/crm/form/stockManagement/etcCostSetting?shopCode=${shopCode}">기타지출설정</a>
 </div>
 
 </body>
