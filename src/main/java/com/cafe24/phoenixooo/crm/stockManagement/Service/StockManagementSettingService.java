@@ -1,5 +1,7 @@
 package com.cafe24.phoenixooo.crm.stockManagement.Service;
 
-public interface StockManagementSettingService {
+import com.cafe24.phoenixooo.crm.stockManagement.Model.Account;
 
+public interface StockManagementSettingService {
+	int insertAccount(Account account);
 }

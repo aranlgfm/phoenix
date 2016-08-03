@@ -1,4 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cafe24.phoenixooo.crm.stockManagement.Repository.StockManagementSettingMapper">
+
+	<!-- 거래처 등록 -->
+	<insert id="insertAccount" parameterType="com.cafe24.phoenixooo.crm.stockManagement.Model.Account">
+		<selectKey resultType="hashmap" keyProperty="accountCode" order="BEFORE">
+			select if(isnull(ACCOUNT_CD),'CRM_ACCOUNT_1', concat('CRM_ACCOUNT_', MAX(CONVERT(SUBSTRING(ACCOUNT_CD,13), UNSIGNED))+1))
+			as accountCode
+			from CRM_ACCOUNT_TB
+		</selectKey>
+		INSERT INTO 
+			CRM_ACCOUNT_TB
+			(
+				ACCOUNT_CD
+				, SHOP_CD
+				, ACCOUNT_NM
+				, CHARGER_NM
+				, CHARGER_CELLPHONE_NO
+				, CHARGER_PHONE_NO
+				, CHARGER_FAX_NO
+				, CHARGER_MEMO
+			)
+		VALUES 
+			(
+				#{accountCode}
+				, #{shopCode}
+				, #{accountName}
+				, #{chargerName}
+				, #{cellPhoneNumber}
+				, #{phoneNumber}
+				, #{faxNumber}
+				, #{chargerMemo}
+			)		
+	</insert>
 </mapper>
