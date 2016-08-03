@@ -7,15 +7,27 @@ import com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItemDesign;
 
 public interface BusinessManagementSettingService {
 	
-	//시술품목(아이템)등록
+		//시술품목(아이템) INSERT
 	void insertProcedureItem(ProcedureItem item);	
 	
-	//시술디자인(아이템상세)등록
+		//시술디자인(아이템상세) INSERT
 	void insertProcedureItemDesign(ProcedureItemDesign item);	
 	
-	//시술품목(아이템)리스트
+		//시술품목(아이템) SELECT LIST
 	List<ProcedureItem> selectItemList(String shopCode);
 	
-	//시술디자인(아이템상세)리스트
+		//시술디자인(아이템상세) SELECT LIST
 	List<ProcedureItemDesign> selectItemDesignList(String shopCode);
+	
+		//시술품목(아이템) SELECT ONE 
+	ProcedureItem selectItem(String ItemCode);
+	
+		//시술품목(아이템) UPDATE
+	void modifyItem(ProcedureItem item);
+	
+		//시술품목디자인 SELECT ONE 
+	ProcedureItemDesign selectItemDesign(String ItemDesignCode);
+	
+		//시술품목디자인 UPDATE
+	void modifyItemDesign(ProcedureItemDesign item);
 }
