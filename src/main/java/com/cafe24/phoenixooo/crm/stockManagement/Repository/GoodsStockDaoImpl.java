@@ -11,7 +11,7 @@ import com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsStock;
 @Repository
 public class GoodsStockDaoImpl implements GoodsStockDao{
 	
-	private final String NS = "com.cafe24.phoenixooo.crm.stockManagement.Repository.GoodsUseMapper";
+	private final String NS = "com.cafe24.phoenixooo.crm.stockManagement.Repository.GoodsStockMapper";
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;

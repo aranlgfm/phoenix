@@ -14,7 +14,7 @@
 		<input type="submit" value="미용용품입고등록">
 	</form>
 	
-	<form action="" method="post">
+	
 		<table>
 			<tr>
 				<td>
@@ -38,28 +38,30 @@
 			</tr>
 			<c:forEach var="list" items="${goodsStockList}">
 				<tr>
-					<td>
-						${list.stockDate}
-					</td>
-					<td>
-						${list.accountName}
-					</td>
-					<td>
-						${list.goodsName}
-					</td>
-					<td>
-						${list.purchaseForOneOrder}
-					</td>
-					<td>
-						${list.employeeName}
-					</td>
-					<td>
-						<input type="submit" value="상세">
-						<input type="submit" value="결제">
-					</td>
+					<form action="/phoenix/crm/form/goodsStockDetail" method="post">
+						<td>
+							${list.stockDate}
+						</td>
+						<td>
+							${list.accountName}
+						</td>
+						<td>
+							${list.goodsName}
+						</td>
+						<td>
+							${list.purchaseForOneOrder}
+						</td>
+						<td>
+							${list.employeeName}
+						</td>
+						<td>
+							<input type="submit" value="상세">
+							<input type="submit" value="결제">
+						</td>
+					</form>
 				</tr>
 			</c:forEach>
 		</table>
-	</form>
+	
 </body>
 </html>

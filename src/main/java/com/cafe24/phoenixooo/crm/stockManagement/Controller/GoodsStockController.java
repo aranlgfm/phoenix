@@ -23,6 +23,7 @@ public class GoodsStockController
 	public String moveTogoodsStock(GoodsStock goodsStock,Model model) 
 	{ 
 		goodsStock.setUserCode("COM_USER_6");
+		goodsStock.setShopCode("CRM_SHOP_1");
 		List<GoodsStock> goodsStockList=goodsStocdkService.selectGoodsStockList(goodsStock);
 		model.addAttribute("goodsStockList", goodsStockList);
 		return "/phoenix/crm/stockManagement/goodsStock";
@@ -46,7 +47,9 @@ public class GoodsStockController
 		System.out.println(goodsStockCommand.getBuyingGoodsUnitWon()+"<----------getBuyingGoodsUnitWon");
 		System.out.println(goodsStockCommand.getGoodsQuantityNumber()+"<----------getGoodsQuantityNumber");*/
 		
+		goodsStock.setUserCode("COM_USER_6");
+		goodsStock.setShopCode("CRM_SHOP_1");
 		goodsStocdkService.insertGoodsStock(goodsStock);
-		return "redirect:/phoenix/crm/stockManagement/form/goodsStock";
+		return "redirect:/phoenix/crm/form/goodsStock";
 	}
 }
