@@ -11,14 +11,11 @@
 
 
 <body>
-
-	<h1>시술품목디자인 설정</h1>
 	<c:import url="businessManagementTemp.jsp"></c:import>
-	<h4>
+	<hr>
 		<a href="/phoenix/crm/form/procedureItemSetting">시술품목설정</a>
 		<a href="/phoenix/crm/form/procedureItemDesignSetting">시술디자인설정</a>
-	</h4>
-	
+	<hr>
 	<font color="red">시술 품목의
 						디자인을 등록하는 페이지 입니다.
 	</font>
@@ -82,7 +79,7 @@
 									<td>${item.itemDesignName}</td>	
 									<td>${item.itemDesignPrice}</td>	
 									<td>
-										<a href="">수정</a>
+										<a href="/phoenix/crm/form/modifyProcedureItemDesign?itemDesignCode=${item.itemDesignCode}">수정</a>
 										<a href="">삭제</a>
 									</td>	
 								</tr>

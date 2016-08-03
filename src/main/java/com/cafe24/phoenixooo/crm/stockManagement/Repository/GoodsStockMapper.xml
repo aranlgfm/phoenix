@@ -3,12 +3,19 @@
 <mapper namespace="com.cafe24.phoenixooo.crm.stockManagement.Repository.GoodsStockMapper">
 	<!-- 미용용품 입고 등록 처리 -->
 	<insert id="insertGoodsStock" parameterType="com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsStock">
+		<selectKey resultType="hashmap" keyProperty="stockCode" order="BEFORE">
+			select 
+				if(isnull(STOCK_CD)
+				,'CRM_GOODS_STOCK_1'
+				, concat('CRM_GOODS_STOCK_', MAX(CONVERT(SUBSTRING(STOCK_CD,17), UNSIGNED))+1)) as stockCode
+			from 
+				CRM_GOODS_STOCK_TB
+		</selectKey>
 		INSERT INTO 
 			CRM_GOODS_STOCK_TB
 			(
 				STOCK_CD
 				,ACCOUNT_CD
-				, PAYMENT_CD
 				, SHOP_CD
 				, EMPLOYEE_CD
 				, GOODS_CD
@@ -17,12 +24,11 @@
 			)
 			VALUES 
 			(
-				'테스트'
-				,'테스팅'
-				, '테스트'
-				, '테스트'
-				, '테스트'
-				, #{stockDate}
+				#{stockCode}
+				, (select ACCOUNT_CD from CRM_ACCOUNT_TB where SHOP_CD=#{shopCode} and ACCOUNT_NM=#{accountName})
+				, #{shopCode}
+				, (select EMPLOYEE_CD from CRM_EMPLOYEE_TB where SHOP_CD=#{shopCode} and EMPLOYEE_NM=#{employeeName})
+				, (select GOODS_CD from CRM_GOODS_TB where SHOP_CD=#{shopCode} and GOODS_NM=#{goodsName})
 				, NOW()
 				, #{goodsQuantityNumber}
 			)		

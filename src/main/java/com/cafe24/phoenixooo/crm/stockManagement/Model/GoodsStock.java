@@ -3,6 +3,8 @@ package com.cafe24.phoenixooo.crm.stockManagement.Model;
 public class GoodsStock 
 {
 	private String userCode;
+	private String shopCode;
+	private String stockCode;
 	private String stockDate;
 	private String employeeName;
 	private String accountName;
@@ -16,6 +18,18 @@ public class GoodsStock
 	}
 	public void setUserCode(String userCode) {
 		this.userCode = userCode;
+	}
+	public String getShopCode() {
+		return shopCode;
+	}
+	public void setShopCode(String shopCode) {
+		this.shopCode = shopCode;
+	}
+	public String getStockCode() {
+		return stockCode;
+	}
+	public void setStockCode(String stockCode) {
+		this.stockCode = stockCode;
 	}
 	public String getStockDate() {
 		return stockDate;
@@ -58,13 +72,6 @@ public class GoodsStock
 	}
 	public void setPurchaseForOneOrder(int purchaseForOneOrder) {
 		this.purchaseForOneOrder = purchaseForOneOrder;
-	}
-	@Override
-	public String toString() {
-		return "GoodsStockCommand [userCode=" + userCode + ", stockDate=" + stockDate + ", employeeName=" + employeeName
-				+ ", accountName=" + accountName + ", goodsName=" + goodsName + ", buyingGoodsUnitWon="
-				+ buyingGoodsUnitWon + ", goodsQuantityNumber=" + goodsQuantityNumber + ", purchaseForOneOrder="
-				+ purchaseForOneOrder + "]";
 	}
 	
 	

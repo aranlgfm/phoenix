@@ -21,7 +21,7 @@ public class BusinessManagementSettingDaoImpl implements BusinessManagementSetti
 	private DaoHelper helper; 
 	
 	/**
-	 * 시술품목등록 
+	 * 시술품목등록
 	 * 전에 아이템코드 등록해야함
 	 */
 	@Override
@@ -36,8 +36,6 @@ public class BusinessManagementSettingDaoImpl implements BusinessManagementSetti
 	public void insertProcedureItemDesign(ProcedureItemDesign item) {
 		sqlSession.insert(NS+".insertProcedureItemDesign",item);
 	}
-	
-	
 
 	/**
 	 * 시술품목(아이템)코드 증가
@@ -74,12 +72,47 @@ public class BusinessManagementSettingDaoImpl implements BusinessManagementSetti
 	public List<ProcedureItem> selectItemList(String shopCode) {
 		return sqlSession.selectList(NS+".selectItemList", shopCode);
 	}
-	
+
 	/**
 	 * 시술디자인(아이템세부) 리스트
 	 */
 	@Override
 	public List<ProcedureItemDesign> selectItemDesignList(String shopCode) {
 		return sqlSession.selectList(NS+".selectItemDesignList", shopCode);
+	}
+	
+	
+	/**
+	 * 시술품목(아이템) 셀렉
+	 */
+	@Override
+	public ProcedureItem selectItem(String ItemCode) {
+		return sqlSession.selectOne(NS+".selectItem", ItemCode);
+	}
+
+	/**
+	 * 시술품목(아이템) 수정
+	 */
+	@Override
+	public void modifyItem(ProcedureItem item) {
+		sqlSession.update(NS+".modifyItem", item);
+	}
+	
+	
+	
+	/**
+	 * //시술디자인(아이템세부)셀렉 (수정용)
+	 */
+	@Override
+	public ProcedureItemDesign selectItemDesign(String ItemDesignCode) {
+		return sqlSession.selectOne(NS+".selectItemDesign", ItemDesignCode);
+	}
+
+	/**
+	 * 시술디자인(아이템세부) 수정
+	 */
+	@Override
+	public void modifyItemDesign(ProcedureItemDesign item) {
+		sqlSession.selectOne(NS+".modifyItemDesign", item);
 	}
 }
