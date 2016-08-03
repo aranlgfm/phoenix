@@ -13,5 +13,6 @@
 	<a href="/phoenix/crm/customerManagement/form/customerManagement">회원관리</a>
 	<a href="/phoenix/crm/employeeManagement/employeeList">직원관리</a>
 	<a href="/phoenix/crm/stockManagement/stockManagement">매입/지출</a>
+	<a href="/phoenix/crm/salesManagement/salesManagementHome">매출관리</a>
 </body>
 </html>
