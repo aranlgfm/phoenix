@@ -21,7 +21,7 @@ public class BusinessManagementSettingDaoImpl implements BusinessManagementSetti
 	private DaoHelper helper; 
 	
 	/**
-	 * 시술품목등록 
+	 * 시술품목등록
 	 * 전에 아이템코드 등록해야함
 	 */
 	@Override
