@@ -25,9 +25,8 @@
 <a href="/phoenix/crm/form/stockManagement/etcCostTypeSetting?shopCode=${shopCode}">기타지출세부항목설정</a>
 
 <form action="/phoenix/crm/process/stockManagement/insertEtcCostItem" method="POST">
-	<input name="shopCode" type="text" value="${shopCode}"/>
-
 	<div>
+		<input name="shopCode" type="hidden" value="${shopCode}"/>
 		<input name="etcCostName" type="text"/>
 		<input type="submit" value="기타지출항목등록"/>
 	</div>

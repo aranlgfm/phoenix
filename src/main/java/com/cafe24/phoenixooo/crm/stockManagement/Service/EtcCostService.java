@@ -47,4 +47,11 @@ public interface EtcCostService {
 	 * @return
 	 */
 	int insertEtcCostType(EtcCostType costType);
+	
+	/**
+	 * (Service) crm기타지출세부항목삭제
+	 * @param costType
+	 * @return
+	 */
+	int deleteEtcCostType(EtcCostType costType);
 }

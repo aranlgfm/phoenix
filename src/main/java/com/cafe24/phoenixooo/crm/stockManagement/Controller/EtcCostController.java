@@ -91,4 +91,16 @@ public class EtcCostController {
 		costService.insertEtcCostType(costType);
 		return "redirect:/phoenix/crm/form/stockManagement/etcCostTypeSetting";
 	}
+	
+	/**
+	 * CRM-Controller 기타지출세부항목삭제
+	 * @param costType
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/phoenix/crm/process/stockManagement/deleteEtcCostType", method = RequestMethod.GET)
+	public String crmProcessStockManagementDeleteEtcCostType(EtcCostType costType, Model model){
+		costService.deleteEtcCostType(costType);
+		return "redirect:/phoenix/crm/form/stockManagement/etcCostTypeSetting";
+	}
 }

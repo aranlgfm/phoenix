@@ -65,4 +65,12 @@ public class EtcCostDaoImpl implements EtcCostDao {
 		return sqlSession.insert(NS+"insertEtcCostType", costType);
 	}
 
+	/**
+	 * (Repository구현) crm기타지출세부항목삭제
+	 */
+	@Override
+	public int deleteEtcCostType(EtcCostType costType) {
+		return sqlSession.update(NS+"deleteEtcCostType", costType);
+	}
+
 }

@@ -35,6 +35,9 @@ public class EtcCostServiceImpl implements EtcCostService {
 	 */
 	@Override
 	public int deleteEtcCost(EtcCost etcCost) {
+		EtcCostType costType = new EtcCostType();
+		costType.setEtcCostCode(etcCost.getEtcCostCode());
+		costDao.deleteEtcCostType(costType);
 		return costDao.deleteEtcCost(etcCost);
 	}
 
@@ -63,6 +66,14 @@ public class EtcCostServiceImpl implements EtcCostService {
 		cost.setEtcCostCode(costType.getEtcCostCode());
 		costType.setEtcCostName((costDao.selectEtcCostOne(cost)).getEtcCostName()); 
 		return costDao.insertEtcCostType(costType);
+	}
+
+	/**
+	 * (Service구현) crm기타지출세부항목삭제
+	 */
+	@Override
+	public int deleteEtcCostType(EtcCostType costType) {
+		return costDao.deleteEtcCostType(costType);
 	}
 
 

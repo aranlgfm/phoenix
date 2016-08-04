@@ -28,13 +28,13 @@
 	<div>
 		<input name="shopCode" type="hidden" value="${shopCode}"/>
 	</div>
+	<div>
 	<select name="etcCostCode">
 		<option>||기타지출항목||</option>
-	<c:forEach var="list" items="${list}">
+	<c:forEach var="list" items="${cost.list}">
 		<option value="${list.etcCostCode}">${list.etcCostName}</option>
 	</c:forEach>
 	</select>
-	<div>
 		<input name="etcCostTypeName" type="text"/>
 		<input type="submit" value="기타지출세부항목등록"/>
 	</div>
@@ -42,10 +42,11 @@
 
 <h3>현재기타지출세부항목</h3>
 	<table>
-		<c:forEach var="cost" items="${cost}">
+		<c:forEach var="cost" items="${cost.typeList}">
 		<tr>
 			<td>${cost.etcCostName}</td>
 			<td>${cost.etcCostTypeName}</td>
+			<td><a href="/phoenix/crm/process/stockManagement/deleteEtcCostType?etcCostTypeCode=${cost.etcCostTypeCode}"><input type="button" value="삭제"/></a></td>
 		</tr>
 		</c:forEach>
 	</table>

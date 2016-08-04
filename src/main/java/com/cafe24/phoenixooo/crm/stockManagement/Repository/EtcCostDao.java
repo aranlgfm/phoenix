@@ -41,4 +41,11 @@ public interface EtcCostDao {
 	 * @return
 	 */
 	int insertEtcCostType(EtcCostType costType);
+	
+	/**
+	 * (Repository) crm기타지출세부항목삭제
+	 * @param costType
+	 * @return
+	 */
+	int deleteEtcCostType(EtcCostType costType);
 }

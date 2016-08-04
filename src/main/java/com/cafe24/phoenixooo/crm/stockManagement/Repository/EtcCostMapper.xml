@@ -66,6 +66,7 @@
 	SELECT 
 		ETC_COSTTYPE_CD as etcCostTypeCode
 		,ETC_COST_CD as etcCostCode
+		,ETC_COST_NM as etcCostName
 		,ETC_COST_TYPE_NM as etcCostTypeName
 	FROM 
 		CRM_ETC_COSTTYPE_TB 
@@ -96,5 +97,20 @@
 			,#{etcCostTypeName}
 		)
 </insert>
+
+<!-- 7. 기타지출세부항목삭제 -->
+<delete id="deleteEtcCostType" parameterType="com.cafe24.phoenixooo.crm.stockManagement.Model.EtcCostType">
+	DELETE FROM 
+		CRM_ETC_COSTTYPE_TB 
+		<choose>
+			<when test='etcCostCode != null and etcCostCode != ""'>
+			WHERE ETC_COST_CD=#{etcCostCode}
+			</when>
+			<otherwise>
+			WHERE 
+				ETC_COSTTYPE_CD=#{etcCostTypeCode}
+			</otherwise>
+		</choose>
+</delete>
 	
 </mapper>
