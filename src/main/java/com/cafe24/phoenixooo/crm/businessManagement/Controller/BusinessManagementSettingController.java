@@ -136,28 +136,8 @@ public class BusinessManagementSettingController {
 	 */
 	@RequestMapping(value="/phoenix/crm/form/modifyProcedureItem", method = RequestMethod.GET)
 	public String modifyProcedureItem(@RequestParam("itemCode") String itemCode,Model model) {
-		System.out.println(itemCode);
-		System.out.println(itemCode);
-		System.out.println(itemCode);
-		System.out.println(itemCode);
-		System.out.println(itemCode);
-		System.out.println(itemCode);
-		System.out.println(itemCode);
-		System.out.println(itemCode);
-		System.out.println(itemCode);
-		System.out.println(itemCode);
-		System.out.println(itemCode);
-		System.out.println(itemCode);
-		ProcedureItem item = service.selectItem(itemCode);
-		System.out.println(item.getItemCode());
-		System.out.println(item.getItemCode());
-		System.out.println(item.getItemName());
-		System.out.println(item.getItemName());
-		System.out.println(item.getItemName());
-		System.out.println(item.getItemName());
-		System.out.println(item.getItemName());
 		model.addAttribute("item", service.selectItem(itemCode));
-		return "/phoenix/crm/businessManagement/modifyProcedureItem";
+		return "/phoenix/crm/businessManagement/procedureItemModify";
 	}
 	
 	@RequestMapping(value="/phoenix/crm/process/modifyProcedureItem", method = RequestMethod.POST)
@@ -176,7 +156,7 @@ public class BusinessManagementSettingController {
 	@RequestMapping(value="/phoenix/crm/form/modifyProcedureItemDesign", method = RequestMethod.GET)
 	public String modifyProcedureDesign(@RequestParam("itemDesignCode") String itemDesignCode,Model model) {
 		model.addAttribute("item", service.selectItemDesign(itemDesignCode));
-		return "/phoenix/crm/businessManagement/modifyProcedureItemDesign";
+		return "/phoenix/crm/businessManagement/procedureItemDesignModify";
 	}
 
 	/**
