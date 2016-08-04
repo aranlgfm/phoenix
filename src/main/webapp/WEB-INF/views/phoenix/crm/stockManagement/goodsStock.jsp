@@ -38,27 +38,30 @@
 			</tr>
 			<c:forEach var="list" items="${goodsStockList}">
 				<tr>
-					<form action="/phoenix/crm/form/goodsStockDetail" method="post">
-						<td>
-							${list.stockDate}
-						</td>
-						<td>
-							${list.accountName}
-						</td>
-						<td>
-							${list.goodsName}
-						</td>
-						<td>
-							${list.purchaseForOneOrder}
-						</td>
-						<td>
-							${list.employeeName}
-						</td>
-						<td>
-							<input type="submit" value="상세">
+					<td>
+						${list.stockDate}
+					</td>
+					<td>
+						${list.accountName}
+					</td>
+					<td>
+						${list.goodsName}
+					</td>
+					<td>
+						${list.purchaseForOneOrder}
+					</td>
+					<td>
+						${list.employeeName}
+					</td>
+					<td>
+						<form action="/phoenix/crm/form/goodsPayment" method="post">
+							<input type="hidden" name="stockCode" value="${list.stockCode}">
+							<input type="hidden" name="goodsName" value="${list.goodsName}">
+							<input type="hidden" name="accountName" value="${list.accountName}">
+							<input type="hidden" name="purchaseForOneOrder" value="${list.purchaseForOneOrder}">
 							<input type="submit" value="결제">
-						</td>
-					</form>
+						</form>
+					</td>
 				</tr>
 			</c:forEach>
 		</table>

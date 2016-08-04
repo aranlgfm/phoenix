@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsPayment;
 import com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsStock;
 import com.cafe24.phoenixooo.crm.stockManagement.Service.GoodsStockService;
 
@@ -52,4 +53,12 @@ public class GoodsStockController
 		goodsStocdkService.insertGoodsStock(goodsStock);
 		return "redirect:/phoenix/crm/form/goodsStock";
 	}
+	
+	//입고된 걸 결제하는 화면으로 이동
+		@RequestMapping(value = "/phoenix/crm/form/goodsPayment", method = RequestMethod.POST)
+		public String moveToGoodsPayment(GoodsStock goodsStock,Model model) 
+		{ 
+			model.addAttribute("goodsStock", goodsStock);
+			return "/phoenix/crm/stockManagement/goodsPayment";
+		}
 }
