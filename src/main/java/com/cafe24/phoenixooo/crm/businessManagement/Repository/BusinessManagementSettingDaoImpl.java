@@ -115,4 +115,24 @@ public class BusinessManagementSettingDaoImpl implements BusinessManagementSetti
 	public void modifyItemDesign(ProcedureItemDesign item) {
 		sqlSession.selectOne(NS+".modifyItemDesign", item);
 	}
+	
+	
+	
+	
+	/**
+	 * 시술품목(아이템)DELETE
+	 */
+	@Override
+	public void deleteItem(ProcedureItem item) {
+		sqlSession.delete(NS+".deleteItem", item);
+	}
+	
+	
+	/**
+	 * 시술디자인(아이템세부)DELETE
+	 */
+	@Override
+	public void deleteItemDesign(ProcedureItemDesign item) {
+		sqlSession.delete(NS+".deleteItemDesign", item);
+	}
 }

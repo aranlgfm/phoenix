@@ -30,4 +30,15 @@ public interface BusinessManagementSettingService {
 	
 		//시술품목디자인 UPDATE
 	void modifyItemDesign(ProcedureItemDesign item);
+	
+	
+	//시술품목디자인 DELETE
+	void deleteItem(ProcedureItemDesign item);
+		
+	
+	//시술품목디자인 DELETE
+	void deleteItemDesign(ProcedureItemDesign item);
+	
+	
+	
 }

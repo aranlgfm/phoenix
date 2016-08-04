@@ -16,16 +16,11 @@
 		<a href="/phoenix/crm/form/procedureItemSetting">시술품목설정</a>
 		<a href="/phoenix/crm/form/procedureItemDesignSetting">시술디자인설정</a>
 	<hr>
-	<font color="red">시술 품목의
-						디자인을 등록하는 페이지 입니다.
-	</font>
-	
 	<div style="border: 1px double;">	
-		
 		<!-- S시술품목별 시술디자인설정 -->
 		<div>			
 			<form action="/phoenix/crm/process/insertProcedureItemDesign" method="POST">
-			<input type="text" name="shopCode" value="${sessionScope.shopCode}">
+			<input type="hidden" name="shopCode" value="${sessionScope.shopCode}">
 				<div>
 					<div style="background-color: gray;">
 						시술품목별 시술디자인설정
@@ -80,7 +75,7 @@
 									<td>${item.itemDesignPrice}</td>	
 									<td>
 										<a href="/phoenix/crm/form/modifyProcedureItemDesign?itemDesignCode=${item.itemDesignCode}">수정</a>
-										<a href="">삭제</a>
+										<a href="/phoenix/crm/process/deleteProcedureItemDesign?itemDesignCode=${item.itemDesignCode}">삭제</a>
 									</td>	
 								</tr>
 							</c:forEach>

@@ -152,4 +152,39 @@
 		WHERE 
 			ITEMDESIGN_CD = #{itemDesignCode}	
 	</update>
+	
+	
+	<!-- 6-1 시술품목(아이템) DELETE -->
+	<delete id="deleteItem" parameterType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItem">
+		DELETE 
+		FROM
+			CRM_ITEM_TB
+		WHERE
+			ITEM_CD = #{itemCode}
+	</delete>
+	
+	
+	<!-- 6-2 시술디자인(아이템세부) DELETE -->
+	<!-- 파라미터 타입을 Procedure모델로 바꾸어 주면 값을 받아올수 있지 않을까?? 
+		 그렇게 해서 하기는 했다.
+		 그리고 mybatis when의 test에서 null값 스트링으로 안먹는듯. 	
+	-->
+	<delete id="deleteItemDesign" parameterType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItemDesign">
+		<choose>
+			<when test="itemDesignCode == null or itemDesignCode == 'null'">
+				DELETE 
+				FROM
+					CRM_ITEM_DESIGN_TB
+				WHERE
+					ITEM_CD = #{itemCode}
+			</when>
+			<otherwise>
+				DELETE 
+				FROM
+					CRM_ITEM_DESIGN_TB
+				WHERE
+					ITEMDESIGN_CD = #{itemDesignCode}
+			</otherwise>
+		</choose>
+	</delete>
 </mapper>

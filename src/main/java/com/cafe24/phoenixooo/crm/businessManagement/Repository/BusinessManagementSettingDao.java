@@ -38,4 +38,12 @@ public interface BusinessManagementSettingDao {
 	void modifyItemDesign(ProcedureItemDesign item);
 	
 	
+	
+	
+	
+	//시술품목 DELTE
+		void deleteItem(ProcedureItem item);
+
+	//시술품목디자인 DELTE
+	void deleteItemDesign(ProcedureItemDesign item);
 }

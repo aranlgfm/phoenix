@@ -106,4 +106,22 @@ public class BusinessManagementSettingServiceImpl implements BusinessManagementS
 	}
 	
 	
+	/**
+	 * 5-1시술디자인 DELETE
+	 * 
+	 */
+	@Override
+	public void deleteItem(ProcedureItemDesign item) {
+		dao.deleteItemDesign(item);
+		dao.deleteItem((ProcedureItem)item);
+	}
+	
+	
+	/**
+	 * 5-2시술디자인(아이템세부) DELETE
+	 */
+	@Override
+	public void deleteItemDesign(ProcedureItemDesign item) {
+		dao.deleteItemDesign(item);
+	}
 }

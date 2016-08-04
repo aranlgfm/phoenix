@@ -191,5 +191,33 @@ public class BusinessManagementSettingController {
 		return "redirect:/phoenix/crm/form/procedureItemDesignSetting";
 	}
 	
+	/**
+	 * 5-1 시술품목 삭제.
+	 * 받는 리퀘스트객체가 ProcedureItem이 아니라 ProcedureItemDesign입니다.
+	 * 맵퍼에 너무 하나셀렉할때마다 쓰는것 같아서
+	 * 이런 쓰레기같은 방법으로도 할수 있구나 해서 해놓은것입니다.
+	 * Design으로 객체를 받아서
+	 * 서비스에서 시술품목디자인(아이템상세)를 삭제하고
+	 * 받은 매개변수값을 다시 시술품목(아이템)삭제합니다.
+	 * 나중에 정사적인 방법으로 바꿀께용~~~
+	 * @param item
+	 * @return
+	 */
+	@RequestMapping(value="/phoenix/crm/process/deleteProcedureItem", method = RequestMethod.GET)
+	public String deleteProcedure(ProcedureItemDesign item){
+		service.deleteItem(item);
+		return "redirect:/phoenix/crm/form/procedureItemSetting";
+	}
 	
+	
+	/**
+	 * 5-2시술품목디자인 삭제.
+	 * @param itemDesignCode
+	 * @return
+	 */
+	@RequestMapping(value="/phoenix/crm/process/deleteProcedureItemDesign", method = RequestMethod.GET)
+	public String deleteProcedureDesign(ProcedureItemDesign item){
+		service.deleteItemDesign(item);
+		return "redirect:/phoenix/crm/form/procedureItemDesignSetting";
+	}
 }
