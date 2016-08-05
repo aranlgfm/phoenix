@@ -219,4 +219,22 @@
 			USER_PW = #{userPw}	
 	</delete>
 	
+	<!-- 6. 로그인  -->
+	<select id="loginToCrm" parameterType="com.cafe24.phoenixooo.community.Model.UserCustomer" resultType="com.cafe24.phoenixooo.community.Model.UserCustomer">
+				SELECT 
+					USER_ID as userId <!-- 디지자... 강사마가 알려줌. -->
+					,USER_CD as userCode
+					,USER_NICK_NM as userNickName
+					,USER_GROUP_NM as userGroupName
+					,USER_SHOP_CD as shopCode
+				FROM 
+					COM_USER_TB
+				WHERE 
+					USER_ID = #{userId}
+				AND	  
+					USER_PW = #{userPw} 
+				AND
+					USER_SHOP_CD=#{shopCode}
+	</select>
+	
 </mapper>

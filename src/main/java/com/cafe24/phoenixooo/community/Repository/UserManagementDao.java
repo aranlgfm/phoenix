@@ -87,4 +87,6 @@ public interface UserManagementDao {
 	 * @return
 	 */
 	int userDrawal(UserCustomer user);
+	
+	UserCustomer loginToCrm(UserCustomer user);
 }
