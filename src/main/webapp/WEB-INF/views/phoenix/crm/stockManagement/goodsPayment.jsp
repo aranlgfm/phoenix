@@ -11,6 +11,7 @@
 	여기서 결제 등록할겁니다!
 	<br><br>
 	<form action="/phoenix/crm/process/insertGoodsPayment" method="post">
+		<input type="hidden" name="stockCode" value="${goodsStock.stockCode}">
 		<table>
 			<tr>
 				<td>
@@ -50,9 +51,9 @@
 				</td>
 				<td>
 					<select name="employeeName">
-						<option></option>
-						<option></option>
-						<option></option>
+						<option value="존">존</option>
+						<option value="비와이">비와이</option>
+						<option value="토마스">토마스</option>
 					</select>
 				</td>
 			</tr>
@@ -76,6 +77,9 @@
 				<td>
 					<input type="submit" value="결제하기">
 				</td>
+				<%-- <td>
+					${goodsStock.stockCode}
+				</td> --%>
 			</tr>
 		</table>
 	</form>

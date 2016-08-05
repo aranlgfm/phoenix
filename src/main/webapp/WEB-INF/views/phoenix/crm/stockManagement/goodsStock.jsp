@@ -61,10 +61,16 @@
 							<input type="hidden" name="purchaseForOneOrder" value="${list.purchaseForOneOrder}">
 							<input type="submit" value="결제">
 						</form>
+
 					</td>
+					<%-- 				
+					<td>
+						${list.stockCode} 왼쪽에 stockCode
+					</td> 
+					--%>
 				</tr>
 			</c:forEach>
 		</table>
-	
+
 </body>
 </html>

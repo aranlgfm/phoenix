@@ -34,9 +34,11 @@
 			)		
 	</insert>
 	
+	<!-- 입고내역 가져오기 -->
 	<select id="selectGoodsStockList" parameterType="com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsStock" resultType="com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsStock">
-		SELECT 
-			STOCK_DT as stockDate
+		SELECT
+			STOCK_CD as stockCode 
+			,STOCK_DT as stockDate
 			,ACCOUNT_NM as accountName
 			,GOODS_NM as goodsName
 			,EMPLOYEE_NM as employeeName
@@ -59,4 +61,34 @@
 		where 
 			goodsStock.SHOP_CD=(select USER_SHOP_CD from COM_USER_TB as user where user.USER_CD=#{userCode})		
 	</select>
+	
+	<!-- 입고된 것 결제 등록 처리 -->
+	<insert id="insertGoodsPayment" parameterType="com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsPayment">
+		<selectKey resultType="hashmap" keyProperty="paymentCode" order="BEFORE">
+			select 
+				if(isnull(PAYMENT_CD)
+				,'CRM_GOODS_PAYMENT_1'
+				, concat('CRM_GOODS_PAYMENT_', MAX(CONVERT(SUBSTRING(PAYMENT_CD,19), UNSIGNED))+1)) as paymentCode
+			from 
+				CRM_GOODS_PAYMENT_TB
+		</selectKey>	
+		
+		INSERT INTO 
+			CRM_GOODS_PAYMENT_TB
+			(
+				PAYMENT_CD
+				, STOCK_CD
+				, PAYMENT_DT
+				, EMPLOYEE_NM
+				, PAYMENT_MEMO
+			)
+		VALUES 
+			(
+				#{paymentCode}
+				, #{stockCode}
+				, NOW()
+				, #{employeeName}
+				, #{paymentMemo}
+			)		
+	</insert>
 </mapper>

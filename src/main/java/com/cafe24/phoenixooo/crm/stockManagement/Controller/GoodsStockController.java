@@ -55,10 +55,19 @@ public class GoodsStockController
 	}
 	
 	//입고된 걸 결제하는 화면으로 이동
-		@RequestMapping(value = "/phoenix/crm/form/goodsPayment", method = RequestMethod.POST)
-		public String moveToGoodsPayment(GoodsStock goodsStock,Model model) 
-		{ 
-			model.addAttribute("goodsStock", goodsStock);
-			return "/phoenix/crm/stockManagement/goodsPayment";
-		}
+	@RequestMapping(value = "/phoenix/crm/form/goodsPayment", method = RequestMethod.POST)
+	public String moveToGoodsPayment(GoodsStock goodsStock,Model model) 
+	{ 
+		model.addAttribute("goodsStock", goodsStock);
+		System.out.println(goodsStock.getStockCode()+"                        stockCode");
+		return "/phoenix/crm/stockManagement/goodsPayment";
+	}
+	
+	//입고된 거 결제 처리
+	@RequestMapping(value = "/phoenix/crm/process/insertGoodsPayment", method = RequestMethod.POST)
+	public String insertGoodsPayment(GoodsPayment goodsPayment,Model model) 
+	{ 
+		goodsStocdkService.insertGoodsPayment(goodsPayment);
+		return "redirect:/phoenix/crm/form/goodsStock";
+	}
 }

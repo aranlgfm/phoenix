@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsPayment;
 import com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsStock;
 
 @Repository
@@ -28,5 +29,11 @@ public class GoodsStockDaoImpl implements GoodsStockDao{
 	public List<GoodsStock> selectGoodsStockList(GoodsStock goodsStock) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(NS+".selectGoodsStockList", goodsStock);
+	}
+	
+	@Override
+	public int insertGoodsPayment(GoodsPayment goodsPayment) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(NS+".insertGoodsPayment", goodsPayment);
 	}
 }
