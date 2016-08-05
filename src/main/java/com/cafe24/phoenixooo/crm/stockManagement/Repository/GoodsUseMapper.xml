@@ -29,6 +29,14 @@
 	
 	<!-- //미용용품 사용을 등록하는 처리 -->
 	<insert id="insertGoodsUse" parameterType="com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsUse">
+		<selectKey resultType="hashmap" keyProperty="useCode" order="BEFORE">
+			select 
+				if(isnull(GOODS_USE_CD)
+				,'CRM_GOODS_USE_1'
+				, concat('CRM_GOODS_USE_', MAX(CONVERT(SUBSTRING(GOODS_USE_CD,15), UNSIGNED))+1)) as useCode
+			from 
+				CRM_GOODS_USE_TB
+		</selectKey>
 		INSERT INTO
 			CRM_GOODS_USE_TB
 			(
@@ -43,11 +51,11 @@
 			)
 		VALUES 
 			(
-				'CRM_GOODS_USE_4'
+				#{useCode}
 				, #{shopCode}
 				, (select EMPLOYEE_CD from CRM_EMPLOYEE_TB where SHOP_CD=#{shopCode} and EMPLOYEE_NM=#{employeeName})
 				, (select ACCOUNT_CD from CRM_ACCOUNT_TB where SHOP_CD=#{shopCode} and ACCOUNT_NM=#{accountName})
-				, (select GOODS_CD from CRM_GOODS_TB where SHOP_CD=#{shopCode} and GOODS_NM=#{goodsName})
+				, (select GOODS_CD from CRM_GOODS_TB where SHOP_CD=#{shopCode})
 				, #{useQuantityNumber}
 				, NOW()
 				, #{useMemo}

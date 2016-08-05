@@ -1,6 +1,7 @@
 package com.cafe24.phoenixooo.crm.stockManagement.Model;
 
 public class GoodsUse {
+	private String useCode;
 	private String userCode;
 	private String shopCode;
 	private String accountName;
@@ -10,6 +11,12 @@ public class GoodsUse {
 	private String useDate;
 	private String useMemo;
 	
+	public String getUseCode() {
+		return useCode;
+	}
+	public void setUseCode(String useCode) {
+		this.useCode = useCode;
+	}
 	public String getUserCode() {
 		return userCode;
 	}
@@ -61,8 +68,8 @@ public class GoodsUse {
 	
 	@Override
 	public String toString() {
-		return "GoodsUse [userCode=" + userCode + ", shopCode=" + shopCode + ", accountName=" + accountName
-				+ ", goodsName=" + goodsName + ", useQuantityNumber=" + useQuantityNumber + ", employeeName="
-				+ employeeName + ", useDate=" + useDate + ", useMemo=" + useMemo + "]";
+		return "GoodsUse [useCode=" + useCode + ", userCode=" + userCode + ", shopCode=" + shopCode + ", accountName="
+				+ accountName + ", goodsName=" + goodsName + ", useQuantityNumber=" + useQuantityNumber
+				+ ", employeeName=" + employeeName + ", useDate=" + useDate + ", useMemo=" + useMemo + "]";
 	}
 }
