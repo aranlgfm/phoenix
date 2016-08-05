@@ -1,6 +1,10 @@
 package com.cafe24.phoenixooo.crm.salesManagement.Controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,7 +30,15 @@ public class TotalSalesController {
 	
 	//기간검색
 	@RequestMapping(value = "/phoenix/crm/salesManagement/periodSearch", method = RequestMethod.GET)
-	public String periodSearch() {
+	public String periodSearch(Model model) {
+		Date today = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		String realToday = format.format(today);
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>"+realToday); // 
+		
+		model.addAttribute("serverTime", realToday );
+		
+		
 		return "/phoenix/crm/salesManagement/periodSearch";
 	}
 	
