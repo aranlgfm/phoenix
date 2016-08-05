@@ -32,6 +32,6 @@
 		</c:if>
 	</table>
 	<button><a href="/phoenix/crm/employeeManagement/updateEmployee?employeeCode=${employee.employeeCode}">수정</a></button>
-	<button><a href="/phoenix/crm/employeeManagement/deleteEmployee">삭제</a></button>
+	<button><a href="/phoenix/crm/employeeManagement/deleteEmployee?employeeCode=${employee.employeeCode}">삭제</a></button>
 </body>
 </html>

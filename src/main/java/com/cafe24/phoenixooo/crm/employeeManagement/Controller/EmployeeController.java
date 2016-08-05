@@ -1,6 +1,7 @@
 package com.cafe24.phoenixooo.crm.employeeManagement.Controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -78,8 +79,11 @@ public class EmployeeController {
 	 * @return
 	 */
 	@RequestMapping(value="/phoenix/crm/employeeManagement/updateEmployee", method=RequestMethod.GET)
-	public String updateEmployee(Model model, Employee employee) {
-		model.addAttribute("employeeCode", employee.getEmployeeCode());
+	public String updateEmployee(Employee employee, Model model) {
+		System.out.println("수정화면");
+		String employeeCode = employee.getEmployeeCode();
+		model.addAttribute("employeeCode", employeeCode);
+		/*model.addAttribute("employee", employee);*/
 		return "/phoenix/crm/employeeManagement/updateEmployee";
 	}
 	
@@ -92,7 +96,7 @@ public class EmployeeController {
 	@RequestMapping(value="/phoenix/crm/employeeManagement/updateEmployee", method=RequestMethod.POST)
 	public String updateEmployee(Employee employee) {
 		employeeService.updateEmployee(employee);
-		return "/phoenix/crm/employeeManagement/updateEmployee";
+		return "/phoenix/crm/employeeManagement/employeeList";
 	}
 	
 	/**
@@ -101,8 +105,11 @@ public class EmployeeController {
 	 * @return
 	 */
 	@RequestMapping(value="/phoenix/crm/employeeManagement/deleteEmployee", method=RequestMethod.GET)
-	public String deleteEmployee(Employee employee) {
+	public String deleteEmployee(Employee employee, Model model) {
+		System.out.println("삭제");
+		String employeeCode = employee.getEmployeeCode();
+		model.addAttribute("employeeCode", employeeCode);
 		employeeService.deleteEmployee(employee);
-		return "/phoenix/crm/employeeManagement/employeeList";
+		return "redirect:/phoenix/crm/employeeManagement/employeeList";
 	}
 }

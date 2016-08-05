@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cafe24.phoenixooo.crm.employeeManagement.Repository.EmployeeMapper">
+	
+	<!-- 1. 직원 등록 -->
 	<insert id="insertEmployee" parameterType="com.cafe24.phoenixooo.crm.employeeManagement.Model.Employee">
 		INSERT INTO
 			CRM_EMPLOYEE_TB
@@ -36,10 +38,12 @@
 		)
 	</insert>
 	
+	<!-- 2. 전체 컬럼수 구하기 -->
 	<select id="selectTotalCount" resultType="Integer">
 		SELECT COUNT(*) FROM CRM_EMPLOYEE_TB
 	</select>
 	
+	<!-- 3. 직원 리스트 -->
 	<select id="selectEmployeeList" parameterType="java.util.Map" resultType="com.cafe24.phoenixooo.crm.employeeManagement.Model.Employee">
 		SELECT	
 			EMPLOYEE_CD as employeeCode
@@ -64,6 +68,7 @@
 		LIMIT #{pageHelper.startRow}, #{pageHelper.linePerPage}
 	</select>
 	
+	<!-- 4. 직원 상세보기 -->
 	<select id="employeeDetail" parameterType="com.cafe24.phoenixooo.crm.employeeManagement.Model.Employee"
 								resultType="com.cafe24.phoenixooo.crm.employeeManagement.Model.Employee">
 		SELECT	
@@ -84,6 +89,7 @@
 			EMPLOYEE_CD=#{employeeCode}
 	</select>
 	
+	<!-- 5. 직원 수정 -->
 	<update id="updateEmployee" parameterType="com.cafe24.phoenixooo.crm.employeeManagement.Model.Employee">
 		UPDATE
 			CRM_EMPLOYEE_TB
@@ -101,6 +107,7 @@
 			EMPLOYEE_CD=#{employeeCode}
 	</update>
 	
+	<!-- 6. 직원삭제 -->
 	<delete id="deleteEmployee" parameterType="com.cafe24.phoenixooo.crm.employeeManagement.Model.Employee">
 		DELETE FROM
 			CRM_EMPLOYEE_TB
