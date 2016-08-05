@@ -61,11 +61,13 @@ public class EmployeeController {
 	 * @return
 	 */
 	@RequestMapping(value="/phoenix/crm/employeeManagement/employeeDetail", method=RequestMethod.GET)
-	public String employeeDetail(String employee, Model model) {
-		Employee employeep = new Employee();
-		employeep.setEmployeeCode(employee);
-		Employee employeeo = employeeService.employeeDetail(employeep);
-		model.addAttribute("employeeo", employeeo);
+	public String employeeDetail(Employee employee, Model model) {
+		System.out.println("직원 상세보기");
+		/*Employee employeep = new Employee();
+		employeep.setEmployeeCode(employe);*/
+		Employee employeeo = employeeService.employeeDetail(employee);
+		model.addAttribute("employee", employeeo);
+		/*model.addAttribute("employee", employee);*/
 		return "/phoenix/crm/employeeManagement/employeeDetail";
 	}
 	

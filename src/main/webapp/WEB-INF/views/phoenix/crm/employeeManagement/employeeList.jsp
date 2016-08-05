@@ -20,8 +20,8 @@
 		</tr>
 		<c:forEach var="list" items="${employeeList}">
 			<tr>
-				<td>${list.levelName}</td>
-				<td><a href="/phoenix/crm/employeeManagement/employeeDetail?level=${list.levelName}">${list.employeeName}</a></td>
+				<td>${list.employeeLevelName}</td>
+				<td><a href="/phoenix/crm/employeeManagement/employeeDetail?employeeCode=${list.employeeCode}">${list.employeeName}</a></td>
 				<td>${list.employeeCellPhoneNo}</td>
 				<%-- <td>${list.employeeJoinDate}</td> --%>
 			</tr>

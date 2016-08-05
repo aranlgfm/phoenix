@@ -32,7 +32,7 @@
 			,#{employeeCellPhoneNo}
 			,NOW()
 			,#{employeeMemo}
-			,#{levelName}
+			,#{employeeLevelName}
 		)
 	</insert>
 	
@@ -52,7 +52,7 @@
 			,EMPLOYEE_CELLPHONE_NO as employeeCellPhoneNo
 			<!-- ,EMPLOYEE_JOIN_DT as employeeJoinDate -->
 			,EMPLOYEE_MEMO as employeeMemo
-			,EMPLOYEE_LEVEL_NM as levelName
+			,EMPLOYEE_LEVEL_NM as employeeLevelName
 		FROM
 			CRM_EMPLOYEE_TB
 		<where>
@@ -77,14 +77,14 @@
 			,EMPLOYEE_CELLPHONE_NO as employeeCellPhoneNo
 			<!-- ,EMPLOYEE_JOIN_DT as employeeJoinDate -->
 			,EMPLOYEE_MEMO as employeeMemo
-			,EMPLOYEE_LEVEL_NM as levelName
+			,EMPLOYEE_LEVEL_NM as employeeLevelName
 		FROM
 			CRM_EMPLOYEE_TB
 		WHERE
 			EMPLOYEE_CD=#{employeeCode}
 	</select>
 	
-	<update id="updateDetail" parameterType="com.cafe24.phoenixooo.crm.employeeManagement.Model.Employee">
+	<update id="updateEmployee" parameterType="com.cafe24.phoenixooo.crm.employeeManagement.Model.Employee">
 		UPDATE
 			CRM_EMPLOYEE_TB
 		SET
@@ -96,7 +96,7 @@
 			,EMPLOYEE_CELLPHONE_NO=#{employeeCellPhoneNo}
 			<!-- ,EMPLOYEE_JOIN_DT=NOW() -->
 			,EMPLOYEE_MEMO=#{employeeMemo}
-			,EMPLOYEE_LEVEL_NM=#{levelName}
+			,EMPLOYEE_LEVEL_NM=#{employeeLevelName}
 		WHERE
 			EMPLOYEE_CD=#{employeeCode}
 	</update>

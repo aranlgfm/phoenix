@@ -13,7 +13,7 @@
 		<table border="1">
 			<tr>
 				<td>* 직급선택</td>
-				<td><input type="text" name="LevelName" /></td>
+				<td><input type="text" name="EmployeeLevelName" /></td>
 			</tr>
 			<tr>
 				<td>* 직원명</td>
