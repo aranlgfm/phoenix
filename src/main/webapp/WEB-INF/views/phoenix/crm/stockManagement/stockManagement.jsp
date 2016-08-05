@@ -27,7 +27,7 @@
 	<a href="#">미용용품결제내역</a>
 	<a href="#">미용용품사용내역</a>
 	<a href="#">미용용품설정</a>
-	<a href="#">매입지출관리/설정</a>
+	<a href="/phoenix/crm/form/stockManagement/etcCostList">매입지출등록</a>
 	<a href="/phoenix/crm/form/stockManagement/etcCostSetting?shopCode=${shopCode}">기타지출설정</a>
 </div>
 

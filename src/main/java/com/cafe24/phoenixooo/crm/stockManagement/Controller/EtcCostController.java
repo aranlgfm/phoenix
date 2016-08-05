@@ -103,4 +103,14 @@ public class EtcCostController {
 		costService.deleteEtcCostType(costType);
 		return "redirect:/phoenix/crm/form/stockManagement/etcCostTypeSetting";
 	}
+	
+	/**
+	 * CRM-Controller 기타지출내역화면
+	 * @return
+	 */
+	@RequestMapping(value = "/phoenix/crm/form/stockManagement/etcCostList", method = RequestMethod.GET)
+	public String crmFormStockManagementEtcCostList(){
+		return "/phoenix/crm/stockManagement/etcCostList";
+	}
+	
 }
