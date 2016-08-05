@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer;
 import com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItemDesign;
 import com.cafe24.phoenixooo.crm.businessManagement.Model.RequestProcedurePayment;
 import com.cafe24.phoenixooo.crm.businessManagement.Repository.ProcedureDao;
@@ -26,6 +27,11 @@ public class ProcedureServiceImpl implements ProcedureService{
 	@Override
 	public void insertProcedurePayment(RequestProcedurePayment payment) {
 		dao.insertProcedurePayment(payment);
+	}
+
+	@Override
+	public List<CrmCustomer> getCustomerList(String shopCode) {
+		return dao.getCustomerList(shopCode);
 	}
 	
 	

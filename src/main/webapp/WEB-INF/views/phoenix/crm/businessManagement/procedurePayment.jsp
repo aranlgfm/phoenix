@@ -65,7 +65,7 @@
 			<form action="/phoenix/crm/process/insertProcedurePayment" method="POST">
 			<!-- 임시값 샾코드,유저코드 세션-->
 				<input type="hidden" name="shopCode" value="${sessionScope.shopCode}"> 
-				<input type="hidden" name="userCode" value="${sessionScope.userCode}"> 
+				<input type="hidden" name="customerCode" value="${sessionScope.customerCode}"> 
 				
 			<!-- 임시값 -->
 				<div>

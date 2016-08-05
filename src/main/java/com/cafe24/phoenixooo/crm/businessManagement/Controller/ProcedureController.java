@@ -3,6 +3,7 @@ package com.cafe24.phoenixooo.crm.businessManagement.Controller;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter.DEFAULT;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,8 +29,6 @@ import com.cafe24.phoenixooo.crm.businessManagement.Service.ProcedureService;
 @Controller
 public class ProcedureController {
 	@Autowired
-	private CustomerService customerService;
-	@Autowired
 	private BusinessManagementSettingService businessManagementSettingService;
 	@Autowired
 	private ProcedureService procedureService;
@@ -37,8 +36,9 @@ public class ProcedureController {
 	
 	//임시메인
 	@RequestMapping(value = "/phoenix/crm/businessManagement/businessManagement", method = RequestMethod.GET)
-	public String businessManagement(CrmCustomer customer,Model model) {
-		List<CrmCustomer> list = customerService.getCustomerList(customer);
+	public String businessManagement(HttpSession session,Model model) {
+		//그냥 내꺼 리스트를 만들자!
+		List<CrmCustomer> list = procedureService.getCustomerList((String)session.getAttribute("shopCode"));
 		model.addAttribute("list", list);
 		return "/phoenix/crm/businessManagement/procedurePaymentCustomerList";
 	}
@@ -46,22 +46,35 @@ public class ProcedureController {
 	
 	//시술내역	
 	@RequestMapping(value = "/phoenix/crm/form/procedurePaymentCustomerList", method = RequestMethod.GET)
-	public String procedurePayment(CrmCustomer customer,Model model) {
-		List<CrmCustomer> list = customerService.getCustomerList(customer);
+	public String procedurePayment(HttpSession session,Model model) {
+		List<CrmCustomer> list = procedureService.getCustomerList((String)session.getAttribute("shopCode"));
 		model.addAttribute("list", list);
 		return "/phoenix/crm/businessManagement/procedurePaymentCustomerList";
 	}
 	
 	
-	
-	//시술내역등록	
-	@RequestMapping(value = "/phoenix/crm/form/procedurePayment", method = RequestMethod.GET)
-	public String procedurePayment(HttpSession session,Model model) {
+	//시술내역등록화면
+	@RequestMapping(value = "/phoenix/crm/form/insertProcedurePayment", method = RequestMethod.GET)
+	public String insertProcedurePayment(HttpSession session,Model model) {
 		List<ProcedureItem> itemList = businessManagementSettingService.selectItemList((String)session.getAttribute("shopCode"));
 		model.addAttribute("itemList", itemList);
 		return "/phoenix/crm/businessManagement/procedurePayment";
 	}
 	
+	
+	// 아 ㅡㅡ..;;리스트 ㅈㄱㄴ...
+	//시술등록처리
+	@RequestMapping(value ="/phoenix/crm/process/insertProcedurePayment", method = RequestMethod.POST)
+	public String insertProcedurePayment(RequestProcedurePayment payment,@RequestParam(value="again", defaultValue="turn") String again) {
+		String url ="redirect:/phoenix/crm/form/procedurePayment";
+		if(again.equals("turn")){
+			url ="redirect:/phoenix/crm/form/procedurePaymentCustomerList";
+		}
+		procedureService.insertProcedurePayment(payment);
+		return url;
+	}
+		
+		
 	
 	//아이템셀렉박스 클릭시...디자인목록 보여주기..
 	//샾코드 있어서 여기서부터 그냥 POST
@@ -98,16 +111,7 @@ public class ProcedureController {
 	
 	
 	
-	//시술등록
-	@RequestMapping(value = "/phoenix/crm/process/insertProcedurePayment", method = RequestMethod.POST)
-	public String insertProcedurePayment(RequestProcedurePayment payment,@RequestParam("again") String again) {
-		String url ="redirect:/phoenix/crm/form/procedurePaymentCustomerList";
-		if(again != null ){
-			url = "redirect:/phoenix/crm/form/procedurePayment";
-		}
-		procedureService.insertProcedurePayment(payment);
-		return url;
-	}
+	
 	
 	
 	

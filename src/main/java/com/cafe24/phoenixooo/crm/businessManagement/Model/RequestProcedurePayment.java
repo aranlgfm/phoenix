@@ -5,7 +5,7 @@ public class RequestProcedurePayment {
 	private String paymentCode;
 	private String shopCode;
 	private String employeeCode;
-	private String userCode;
+	private String customerCode;
 	private String itemDesignCode;
 	private int paymentTotalPrice; //최종가격
 	private String paymentDate; // 시술일
@@ -69,11 +69,11 @@ public class RequestProcedurePayment {
 	public void setEmployeeCode(String employeeCode) {
 		this.employeeCode = employeeCode;
 	}
-	public String getUserCode() {
-		return userCode;
+	public String getCustomerCode() {
+		return customerCode;
 	}
-	public void setUserCode(String userCode) {
-		this.userCode = userCode;
+	public void setCustomerCode(String customerCode) {
+		this.customerCode = customerCode;
 	}
 	
 	
@@ -82,7 +82,7 @@ public class RequestProcedurePayment {
 		return "RequestProcedurePayment [paymentCode=" + paymentCode + ", paymentTotalPrice=" + paymentTotalPrice
 				+ ", paymentDate=" + paymentDate + ", paymentMemo=" + paymentMemo + ", paymentTypeCode="
 				+ paymentTypeCode + ", shopCode=" + shopCode + ", itemDesignCode=" + itemDesignCode + ", itemCode="
-				+ itemCode + ", employeeCode=" + employeeCode + ", userCode=" + userCode + "]";
+				+ itemCode + ", employeeCode=" + employeeCode + ", customerCode=" + customerCode + "]";
 	}
 	
 }

@@ -2,6 +2,7 @@ package com.cafe24.phoenixooo.crm.businessManagement.Service;
 
 import java.util.List;
 
+import com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer;
 import com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItemDesign;
 import com.cafe24.phoenixooo.crm.businessManagement.Model.RequestProcedurePayment;
 
@@ -11,4 +12,9 @@ public interface ProcedureService {
 	
 	//시술등록
 	void insertProcedurePayment(RequestProcedurePayment payment);
+	
+	//회원리스트
+	List<CrmCustomer> getCustomerList(String shopCode);
+	
+	
 }

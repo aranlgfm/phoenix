@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer;
 import com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItemDesign;
 import com.cafe24.phoenixooo.crm.businessManagement.Model.RequestProcedurePayment;
 
@@ -27,6 +28,12 @@ public class ProcedureDaoImpl implements ProcedureDao{
 	public void insertProcedurePayment(RequestProcedurePayment payment) {
 		sqlSession.insert(NS+".insertProcedurePayment", payment);
 		
+	}
+	
+	//회원리스트
+	@Override
+	public List<CrmCustomer> getCustomerList(String shopCode) {
+		return sqlSession.selectList(NS+".getCustomerList", shopCode);
 	}
 	
 	

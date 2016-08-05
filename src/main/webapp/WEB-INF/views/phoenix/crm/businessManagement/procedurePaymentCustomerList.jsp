@@ -9,7 +9,7 @@
 	<title>Insert title here</title>
 	<style>
 		table {
-			border: 1px solid;
+			border: 1px solid;	
 		}
 		
 		tr{
@@ -26,7 +26,7 @@
 <body>
 <!-- test -->
 	<c:set var="shopCode" value="CRM_SHOP_1" scope="session"/>
-	<c:set var="userCode" value="COM_USER_22" scope="session"/>
+	<c:set var="customerCode" value="CRM_CUSTOMER_1" scope="session"/>
 <!-- test -->
 
 	<c:import url="businessManagementTemp.jsp"></c:import>
@@ -39,7 +39,6 @@
 					<!-- 시술품목 -->
 					<div>
 						<label>전체</label>
-						<input type="hidden" name="shopCode" value="${sessionScope.shopCode}" size="10"/>
 						<input type="text" name="itemName" size="10"/>
 						<input type="submit" value="검색"/>
 					</div>
@@ -51,6 +50,7 @@
 		<div style="border: 1px double;">
 			<div style="background-color: gray;">회원검색결과</div>
 			<form action="" method="POST">
+			<input type="hidden" name="shopCode" value="${sessionScope.shopCode}" size="10"/>
 				<div>
 					<table>
 						<tr>
@@ -73,7 +73,7 @@
 								<td>${list.customerCellphoneNumber}</td>
 								<td>1회</td>	
 								<td>${list.customerMemo}</td>	
-								<td><a href="/phoenix/crm/form/procedurePayment">등록</a></td>	
+								<td><a href="/phoenix/crm/form/insertProcedurePayment">등록</a></td>	
 							</tr>
 						</c:forEach>
 					</table>

@@ -2,6 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cafe24.phoenixooo.crm.businessManagement.Repository.ProcedureMapper">
 	
+	
+	<select id="getCustomerList" parameterType="java.lang.String" resultType="com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer">
+		SELECT 
+			CUSTOMER_CD as customerCode
+			,USER_CD as userCode
+			,CUSTOMER_NM as customerName
+			,CUSTOMER_CELLPHONE_NO as customerCellphoneNumber
+			,EMPLOYEE_CD as employeeCode
+			,EMPLOYEE_NM as employeeName
+		FROM 
+			CRM_CUSTOMER_TB 
+		WHERE SHOP_CD=#{value}
+		ORDER BY 
+			CUSTOMER_JOIN_DT DESC
+	</select>
+	
+	
+	
 	<!-- 넘어온 시술에 대한 세부디자인 리스트 -->
 	<select id="selectItemDesignList" parameterType="java.lang.String" resultType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItemDesign">
 		SELECT	
@@ -41,9 +59,9 @@
 				PAYMENT_CD
 				,SHOP_CD
 				,EMPLOYEE_CD
-				,USER_CD
+				,CUSTOMER_CD
 				,ITEMDESIGN_CD
-				,USER_NM
+				,CUSTOMER_NM
 				,EMPLOYEE_NM
 				,ITEMDESIGN_NM
 				,PAYMENT_TYPE_GB
@@ -56,9 +74,9 @@
 				#{paymentCode}
 				,(SELECT SHOP_CD FROM CRM_ITEM_TB WHERE ITEM_CD = #{itemCode})
 				,#{employeeCode}
-				,#{userCode}
+				,#{customerCode}
 				,#{itemDesignCode}
-				,(SELECT USER_NM FROM COM_USER_TB WHERE USER_CD = #{userCode})
+				,(SELECT CUSTOMER_NM FROM CRM_CUSTOMER_TB WHERE CUSTOMER_CD = #{customerCode})
 				,(SELECT EMPLOYEE_NM FROM CRM_EMPLOYEE_TB WHERE EMPLOYEE_CD = #{employeeCode})
 				,(SELECT ITEMDESIGN_NM FROM CRM_ITEM_DESIGN_TB WHERE ITEMDESIGN_CD = #{itemDesignCode})
 				,(SELECT PAYMENT_TYPE_GB FROM CRM_PAYMENT_TYPE_TB WHERE PAYMENT_TYPE_CD = #{paymentTypeCode})
