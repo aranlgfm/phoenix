@@ -1,6 +1,10 @@
 package com.cafe24.phoenixooo.crm.CustomerManagement.Controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,8 +12,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.cafe24.phoenixooo.community.Model.UserCustomer;
 import com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer;
 import com.cafe24.phoenixooo.crm.CustomerManagement.Service.CustomerService;
+
+/**
+ * CRM-Controller 회원등록화면
+ * CRM-Controller 회원등록처리
+ * CRM-Controller 회원리스트
+ * CRM-Controller 회원정보수정화면
+ * CRM-Controller 회원정보수정처리
+ * CRM-Controller 회원삭제
+ * CRM-Controller 회원상세검색화면
+ * CRM-Controller 회원상세검색처리
+ */
 
 @Controller
 public class CustomerController {
@@ -28,7 +44,11 @@ public class CustomerController {
 	 * @return
 	 */
 	@RequestMapping(value = "/phoenix/crm/customerManagement/form/insertingCustomer", method = RequestMethod.GET)
-	public String crmFormInsertingCustomer(){
+	public String crmFormInsertingCustomer(Model model){
+		Date today = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		String realToday = format.format(today);
+		model.addAttribute("today", realToday);
 		return "/phoenix/crm/customerManagement/insertingCustomer";
 	}
 	
@@ -38,7 +58,9 @@ public class CustomerController {
 	 * @return
 	 */
 	@RequestMapping(value = "/phoenix/crm/customerManagement/process/insertCustomer", method = RequestMethod.POST)
-	public String crmProcessInsertCustomer(CrmCustomer customer){
+	public String crmProcessInsertCustomer(HttpSession session, CrmCustomer customer){
+		UserCustomer user = (UserCustomer)session.getAttribute("user");
+		customer.setShopCode(user.getShopCode());
 		customerService.insertCustomer(customer);
 		return "/phoenix/crm/customerManagement/customerManagement";
 	}
@@ -48,8 +70,12 @@ public class CustomerController {
 	 * @return
 	 */
 	@RequestMapping(value = "/phoenix/crm/customerManagement/form/customerList", method = RequestMethod.GET)
-	public String crmFormCustomerList(Model model){
-		List<CrmCustomer> list = customerService.getCustomerList();
+	public String crmFormCustomerList(HttpSession session, Model model){
+		UserCustomer userCus = new UserCustomer();
+		CrmCustomer user = new CrmCustomer();
+		userCus = (UserCustomer)session.getAttribute("user");
+		user.setShopCode(userCus.getShopCode());
+		List<CrmCustomer> list = customerService.getCustomerList(user);
 		model.addAttribute("list", list);
 		return "/phoenix/crm/customerManagement/customerList";
 	}

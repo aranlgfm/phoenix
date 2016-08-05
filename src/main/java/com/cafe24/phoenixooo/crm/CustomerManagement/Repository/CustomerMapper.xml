@@ -11,11 +11,18 @@
 	 -->
 	<!-- 1. 고객등록 -->
 	<insert id="insertCustomer" parameterType="com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer">
+	<selectKey resultType="hashmap" keyProperty="customerCode" order="BEFORE">
+		SELECT 
+			IF(isnull(CUSTOMER_CD),'CRM_CUSTOMER_1',CONCAT('CRM_CUSTOMER_',MAX(CONVERT(SUBSTRING(CUSTOMER_CD,14),UNSIGNED))+1)) as customerCode
+		FROM 
+			CRM_CUSTOMER_TB
+	</selectKey>	
 		INSERT INTO
 			CRM_CUSTOMER_TB
 				(
 				CUSTOMER_CD
 				,USER_CD
+				,SHOP_CD
 				,CUSTOMER_NM
 				,CUSTOMER_CELLPHONE_NO
 				,CUSTOMER_SEX_FL
@@ -34,6 +41,7 @@
 				(
 				#{customerCode}
 				,#{userCode}
+				,#{shopCode}
 				,#{customerName}
 				,#{customerCellphoneNumber}
 				,#{customerSexFlag}
@@ -51,19 +59,19 @@
 	</insert>
 	
 	<!-- 1. 고객코드가져오기(가입시) -->
-	<select id="getCustomerCode" resultType="String">
-		SELECT
-			CUSTOMER_CD 
-		FROM
-			CRM_CUSTOMER_TB
-		ORDER BY 
-			CUSTOMER_JOIN_DT DESC
-		LIMIT 
-			0,1
-	</select>
+<!-- 	<select id="getCustomerCode" resultType="String"> -->
+<!-- 		SELECT -->
+<!-- 			CUSTOMER_CD  -->
+<!-- 		FROM -->
+<!-- 			CRM_CUSTOMER_TB -->
+<!-- 		ORDER BY  -->
+<!-- 			CUSTOMER_JOIN_DT DESC -->
+<!-- 		LIMIT  -->
+<!-- 			0,1 -->
+<!-- 	</select> -->
 	
 	<!-- 2. 고객목록 -->
-	<select id="getCustomerList" resultType="com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer">
+	<select id="getCustomerList" parameterType="com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer" resultType="com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer">
 		SELECT 
 			CUSTOMER_CD as customerCode
 			,USER_CD as userCode
@@ -74,6 +82,7 @@
 			,EMPLOYEE_NM as employeeName
 		FROM 
 			CRM_CUSTOMER_TB 
+		WHERE SHOP_CD=#{shopCode}
 		ORDER BY 
 			CUSTOMER_JOIN_DT DESC
 	</select>

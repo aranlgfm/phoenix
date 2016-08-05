@@ -4,6 +4,7 @@ public class CrmCustomer {
 	
 	private String customerCode;
 	private String userCode;
+	private String shopCode;
 	private String customerName;
 	private String customerCellphoneNumber;
 	private int customerSexFlag;
@@ -30,6 +31,12 @@ public class CrmCustomer {
 	public void setUserCode(String userCode) {
 		this.userCode = userCode;
 	}
+	public String getShopCode() {
+		return shopCode;
+	}
+	public void setShopCode(String shopCode) {
+		this.shopCode = shopCode;
+	}
 	public String getCustomerName() {
 		return customerName;
 	}
@@ -52,11 +59,7 @@ public class CrmCustomer {
 		return customerFirstVisitDate;
 	}
 	public void setCustomerFirstVisitDate(String customerFirstVisitDate) {
-		if(customerFirstVisitDate == ""){
-			customerFirstVisitDate = null;
-		}else{
-			this.customerFirstVisitDate = customerFirstVisitDate;
-		}
+		this.customerFirstVisitDate = customerFirstVisitDate;
 	}
 	public String getCustomerJoinDate() {
 		return customerJoinDate;
@@ -80,21 +83,13 @@ public class CrmCustomer {
 		return customerBirthDate;
 	}
 	public void setCustomerBirthDate(String customerBirthDate) {
-		if(customerBirthDate == ""){
-			customerBirthDate = null;
-		}else{
-			this.customerBirthDate = customerBirthDate;
-		}
+		this.customerBirthDate = customerBirthDate;
 	}
 	public String getCustomerPostNumber() {
 		return customerPostNumber;
 	}
 	public void setCustomerPostNumber(String customerPostNumber) {
-		if(customerPostNumber==""){
-			customerPostNumber = null;
-		}else{
-			this.customerPostNumber = customerPostNumber;
-		}
+		this.customerPostNumber = customerPostNumber;
 	}
 	public String getCustomerAddress() {
 		return customerAddress;
@@ -112,11 +107,7 @@ public class CrmCustomer {
 		return customerAnniversaryDate;
 	}
 	public void setCustomerAnniversaryDate(String customerAnniversaryDate) {
-		if(customerAnniversaryDate == ""){
-			customerAnniversaryDate = null;
-		}else{
-			this.customerAnniversaryDate = customerAnniversaryDate;
-		}
+		this.customerAnniversaryDate = customerAnniversaryDate;
 	}
 	public String getCustomerMemo() {
 		return customerMemo;
@@ -127,13 +118,14 @@ public class CrmCustomer {
 	
 	@Override
 	public String toString() {
-		return "CrmCustomer [customerCode=" + customerCode + ", userCode=" + userCode + ", customerName=" + customerName
-				+ ", customerCellphoneNumber=" + customerCellphoneNumber + ", customerSexFlag=" + customerSexFlag
-				+ ", customerFirstVisitDate=" + customerFirstVisitDate + ", customerJoinDate=" + customerJoinDate
-				+ ", employeeCode=" + employeeCode + ", employeeName=" + employeeName + ", customerBirthDate="
-				+ customerBirthDate + ", customerPostNumber=" + customerPostNumber + ", customerAddress="
-				+ customerAddress + ", customerEmailAddress=" + customerEmailAddress + ", customerAnniversaryDate="
-				+ customerAnniversaryDate + ", customerMemo=" + customerMemo + "]";
+		return "CrmCustomer [customerCode=" + customerCode + ", userCode=" + userCode + ", shopCode=" + shopCode
+				+ ", customerName=" + customerName + ", customerCellphoneNumber=" + customerCellphoneNumber
+				+ ", customerSexFlag=" + customerSexFlag + ", customerFirstVisitDate=" + customerFirstVisitDate
+				+ ", customerJoinDate=" + customerJoinDate + ", employeeCode=" + employeeCode + ", employeeName="
+				+ employeeName + ", customerBirthDate=" + customerBirthDate + ", customerPostNumber="
+				+ customerPostNumber + ", customerAddress=" + customerAddress + ", customerEmailAddress="
+				+ customerEmailAddress + ", customerAnniversaryDate=" + customerAnniversaryDate + ", customerMemo="
+				+ customerMemo + "]";
 	}
 	
 }

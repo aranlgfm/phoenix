@@ -22,7 +22,7 @@ public interface CustomerDao {
 	 * (Repository) crm고객목록
 	 * @return
 	 */
-	List<CrmCustomer> getCustomerList();
+	List<CrmCustomer> getCustomerList(CrmCustomer user);
 	
 	/**
 	 * (Repository) crm고객수정

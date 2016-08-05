@@ -17,7 +17,7 @@ public interface CustomerService {
 	 * (Service) crm고객목록
 	 * @return
 	 */
-	List<CrmCustomer> getCustomerList();
+	List<CrmCustomer> getCustomerList(CrmCustomer user);
 	
 	/**
 	 * (Service) crm고객수정

@@ -6,6 +6,29 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="<c:url value="/webjars/jquery/3.1.0/jquery.min.js"/>"></script>
+<script>
+	$(document).ready(function(){
+		// 버튼 클릭 시 유효성검사
+		$('#submitBtn').click(function(){
+			if(('#customerName').val().length<2){
+				$('#msg').html('이름넣어요');
+			}else{
+				$('#msg').html('');
+			}
+		});
+		$('#putToday').click(function(){
+			var today = '${today}';
+			var day1 = today.substring(0, 4);
+			var day2 = today.substring(4, 6);
+			var day3 = today.substring(6, 8);
+			$('#day1').val(day1);
+			$('#day2').val(day2);
+			$('#day3').val(day3);
+		});
+	});
+</script>
 </head>
 <body>
 <c:import url="customerManagement.jsp"></c:import>
@@ -22,11 +45,12 @@
 			</tr>
 			<tr>
 				<td>* 이름</td>
-				<td><input type="text" name="customerName" size="12"/></td>
+				<td><input name="customerName" id="customerName" type="text" size="12"/>
+				</td>
 			</tr>
 			<tr>
 				<td>* 핸드폰번호</td>
-				<td><input name="customerCellphoneNumber" type="text" size="5"/>-<input type="text" size="5"/>-<input type="text" size="5"/></td>
+				<td><input name="customerCellphoneNumber" id="phoneNo1" type="text" size="5"/>-<input id="phoneNo2" type="text" size="5"/>-<input id="phoneNo3" type="text" size="5"/></td>
 			</tr>
 			<tr>
 				<td>* 성별</td>
@@ -37,7 +61,8 @@
 			<tr>
 				<td>최초방문일</td>
 				<td>
-					<input name="customerFirstVisitDate" type="text" size="4"/>년<input type="text" size="4"/>월<input type="text" size="4"/>일
+					<input name="customerFirstVisitDate" id="day1" type="text" size="4"/>년<input id="day2" type="text" size="4"/>월<input id="day3" type="text" size="4"/>일
+					<input id="putToday" type="button" value="오늘"/>
 				</td>
 			</tr>
 			<tr>
@@ -87,7 +112,8 @@
 				<td><textarea cols="70" rows="5" name="customerMemo"></textarea></td>
 			</tr>
 		</table>
-	<input type="submit" value="확인"/>
+							<div id="msg"></div>
+	<input id="submitBtn" type="button" value="확인"/>
 	<a href="/phoenix/crm/customerManagement/form/customerManagement"><input type="button" value="취소"/></a>
 	</form>
 

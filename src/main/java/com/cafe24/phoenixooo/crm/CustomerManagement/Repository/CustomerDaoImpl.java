@@ -44,8 +44,8 @@ public class CustomerDaoImpl implements CustomerDao {
 	 * (Repository구현) crm고객목록
 	 */
 	@Override
-	public List<CrmCustomer> getCustomerList() {
-		return sqlSession.selectList(NS+"getCustomerList");
+	public List<CrmCustomer> getCustomerList(CrmCustomer user) {
+		return sqlSession.selectList(NS+"getCustomerList", user);
 	}
 
 	/**

@@ -19,8 +19,8 @@ public class CustomerServiceImpl implements CustomerService {
 	 */
 	@Override
 	public int insertCustomer(CrmCustomer customer) {
-		String customerCode = customerDao.getCustomerCode();
-		customer.setCustomerCode(customerCode);
+//		String customerCode = customerDao.getCustomerCode();
+//		customer.setCustomerCode(customerCode);
 		// 커뮤니티회원과 구분하는 것은 나중에 구현할 것
 		customer.setUserCode("미용실회원");
 		return customerDao.insertCustomer(customer);
@@ -30,8 +30,8 @@ public class CustomerServiceImpl implements CustomerService {
 	 * (Service구현) crm고객목록
 	 */
 	@Override
-	public List<CrmCustomer> getCustomerList() {
-		return customerDao.getCustomerList();
+	public List<CrmCustomer> getCustomerList(CrmCustomer user) {
+		return customerDao.getCustomerList(user);
 	}
 
 	/**
