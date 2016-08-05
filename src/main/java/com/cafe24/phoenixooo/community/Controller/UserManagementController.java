@@ -244,4 +244,14 @@ public class UserManagementController {
 		}
 		return pageUrl;
 	}
+	
+	/**
+	 * 10. crm 로그아웃 처리
+	 * @return
+	 */
+	@RequestMapping(value = "/phoenix/crm/process/logout", method = RequestMethod.GET)
+	public String crmProcessLogout(HttpSession session) {
+		session.invalidate();
+		return "/phoenix";
+	}
 }
