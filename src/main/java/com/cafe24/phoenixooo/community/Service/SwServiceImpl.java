@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,8 @@ import com.cafe24.phoenixooo.community.Repository.SwDao;
 
 @Service
 public class SwServiceImpl implements SwService{
+	
+	Logger log = Logger.getLogger(this.getClass());
 	
 	@Autowired
 	private SwDao swDao;
@@ -40,7 +43,7 @@ public class SwServiceImpl implements SwService{
 	@Override
 	public List<OrderListCommand> getPaymentList(UserCustomer userCustomer) {
 		//map을 매개변수로 넘겨서 select를 한다
-		Map map=new HashMap();
+		Map<String,Object> map=new HashMap();
 		map.put("userCode", userCustomer.getUserCode());
 		
 		//각각의 테이블에서 select한 것들을 List 타입으로 받는다.
@@ -151,6 +154,8 @@ public class SwServiceImpl implements SwService{
 			repaymentRequestCommand.setShopCode(partOfRepaymentRequest.getShopCode());
 			//swCode값 1개 셋팅
 			repaymentRequestCommand.setSwCode(partOfRepaymentRequest.getSwCode());
+
+			log.debug("인터셉터 테스트");
 			
 			// 서브가져온 값 매개변수로 넣고 환불신청 쿼리로 넘어가기
 			return swDao.insertRequestingRepayment(repaymentRequestCommand); 

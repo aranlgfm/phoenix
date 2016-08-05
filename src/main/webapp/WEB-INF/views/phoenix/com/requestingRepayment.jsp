@@ -38,7 +38,7 @@
 	</table>
 </div>
 
-<form action="/phoenix/com/form/requestRepayment" method="post">
+<form action="/phoenix/com/process/requestRepayment" method="post">
 	<input type="hidden" value="${swOrderCode}" name="swOrderCode">
 	<input type="hidden" value="${orderDate}" name="orderDate">
 	<input type="hidden" value="${swName}" name="swName">

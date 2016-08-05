@@ -55,6 +55,14 @@
 	
 	<!-- 환불신청하기 -->
 	<insert id="insertRequestingRepayment" parameterType="com.cafe24.phoenixooo.community.Model.RepaymentRequestCommand">
+		<selectKey resultType="hashmap" keyProperty="repaymentRequestCode" order="BEFORE">
+			select 
+				if(isnull(REPAYMENT_REQUEST_CD)
+				,'COM_REPAYMENT_REQUEST_1'
+				, concat('COM_REPAYMENT_REQUEST_', MAX(CONVERT(SUBSTRING(REPAYMENT_REQUEST_CD,23), UNSIGNED))+1)) as repaymentRequestCode
+			from 
+				COM_REPAYMENT_REQUEST_TB
+		</selectKey>
 		INSERT INTO 
 			COM_REPAYMENT_REQUEST_TB
 			(
@@ -72,7 +80,7 @@
 			)
 		VALUES 
 			(
-			'COM_REPAYMENT_REQUEST_4'
+			#{repaymentRequestCode}
 			, #{paymentCode}
 			, 'COM_USER_1'
 			, #{userCode}
@@ -98,7 +106,8 @@
 			,SW_WON as swWon
 		FROM
 			COM_PAYMENT_TB
-		WHERE ORDER_CD = #{orderCode}
+		WHERE 
+			ORDER_CD = #{orderCode}
 
 	</select>
 

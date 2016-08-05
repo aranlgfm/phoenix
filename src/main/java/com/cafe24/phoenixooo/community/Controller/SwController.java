@@ -57,7 +57,7 @@ public class SwController
 	
 	
 	//환불신청 처리
-	@RequestMapping(value = "/phoenix/com/form/requestRepayment", method = RequestMethod.POST)
+	@RequestMapping(value = "/phoenix/com/process/requestRepayment", method = RequestMethod.POST)
 	public String requestRepayment(OrderListCommand orderListCommand,RepaymentRequestCommand repaymentRequestCommand) {
 		swService.insertRequestingRepayment(orderListCommand);
 		return "/phoenix/com/repaymentList";
