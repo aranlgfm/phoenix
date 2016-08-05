@@ -59,9 +59,21 @@
 							<input type="hidden" name="goodsName" value="${list.goodsName}">
 							<input type="hidden" name="accountName" value="${list.accountName}">
 							<input type="hidden" name="purchaseForOneOrder" value="${list.purchaseForOneOrder}">
+							
 							<input type="submit" value="결제">
 						</form>
-
+						<form action="/phoenix/crm/form/goodsStockDetail" method="post">
+							<input type="hidden" name="stockCode" value="${list.stockCode}">						
+							<input type="hidden" name="stockDate" value="${list.stockDate}">
+							<input type="hidden" name="employeeName" value="${list.employeeName}">		
+							<input type="hidden" name="accountName" value="${list.accountName}">
+							<input type="hidden" name="goodsName" value="${list.goodsName}">
+							<input type="hidden" name="buyingGoodsUnitWon" value="${list.buyingGoodsUnitWon}">
+							<input type="hidden" name="goodsQuantityNumber" value="${list.goodsQuantityNumber}">
+							<input type="hidden" name="purchaseForOneOrder" value="${list.purchaseForOneOrder}">	
+							
+							<input type="submit" value="상세">
+						</form>
 					</td>
 					<%-- 				
 					<td>

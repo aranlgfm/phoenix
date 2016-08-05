@@ -70,4 +70,13 @@ public class GoodsStockController
 		goodsStocdkService.insertGoodsPayment(goodsPayment);
 		return "redirect:/phoenix/crm/form/goodsStock";
 	}
+	
+	//입고 된 거 수정,삭제하는 화면으로
+	@RequestMapping(value = "/phoenix/crm/form/goodsStockDetail", method = RequestMethod.POST)
+	public String moveToGoodsStockDetail(GoodsStock goodsStock,Model model) 
+	{ 
+		model.addAttribute("goodsStock", goodsStock);
+		return "/phoenix/crm/stockManagement/goodsStockDetail";
+	}
+	
 }

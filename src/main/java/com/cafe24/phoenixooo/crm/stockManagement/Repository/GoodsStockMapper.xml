@@ -13,25 +13,25 @@
 		</selectKey>
 		INSERT INTO 
 			CRM_GOODS_STOCK_TB
-			(
-				STOCK_CD
-				,ACCOUNT_CD
-				, SHOP_CD
-				, EMPLOYEE_CD
-				, GOODS_CD
-				, STOCK_DT
-				, GOODS_QUANTITY_NO
-			)
-			VALUES 
-			(
-				#{stockCode}
-				, (select ACCOUNT_CD from CRM_ACCOUNT_TB where SHOP_CD=#{shopCode} and ACCOUNT_NM=#{accountName})
-				, #{shopCode}
-				, (select EMPLOYEE_CD from CRM_EMPLOYEE_TB where SHOP_CD=#{shopCode} and EMPLOYEE_NM=#{employeeName})
-				, (select GOODS_CD from CRM_GOODS_TB where SHOP_CD=#{shopCode} and GOODS_NM=#{goodsName})
-				, NOW()
-				, #{goodsQuantityNumber}
-			)		
+		(
+			STOCK_CD
+			,ACCOUNT_CD
+			, SHOP_CD
+			, EMPLOYEE_CD
+			, GOODS_CD
+			, STOCK_DT
+			, GOODS_QUANTITY_NO
+		)
+		VALUES 
+		(
+			#{stockCode}
+			, (select ACCOUNT_CD from CRM_ACCOUNT_TB where SHOP_CD=#{shopCode} and ACCOUNT_NM=#{accountName})
+			, #{shopCode}
+			, (select EMPLOYEE_CD from CRM_EMPLOYEE_TB where SHOP_CD=#{shopCode} and EMPLOYEE_NM=#{employeeName})
+			, (select GOODS_CD from CRM_GOODS_TB where SHOP_CD=#{shopCode} and GOODS_NM=#{goodsName})
+			, NOW()
+			, #{goodsQuantityNumber}
+		)		
 	</insert>
 	
 	<!-- 입고내역 가져오기 -->
