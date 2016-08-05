@@ -26,6 +26,7 @@
 <body>
 <!-- test -->
 	<c:set var="shopCode" value="CRM_SHOP_1" scope="session"/>
+	<c:set var="userCode" value="COM_USER_22" scope="session"/>
 <!-- test -->
 
 	<c:import url="businessManagementTemp.jsp"></c:import>

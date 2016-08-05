@@ -28,4 +28,44 @@
 		WHERE
 			ITEM_CD = #{value}	
 	</select>	
+	
+	<!-- 시술등록 -->
+	<insert id="insertProcedurePayment" parameterType="com.cafe24.phoenixooo.crm.businessManagement.Model.RequestProcedurePayment">
+		<selectKey resultType="hashmap" keyProperty="paymentCode" order="BEFORE">
+			select if(isnull(PAYMENT_CD),'CRM_PAYMENT_1',concat('CRM_PAYMENT_',MAX(CONVERT(SUBSTRING(PAYMENT_CD,13),UNSIGNED))+1)) as paymentCode from CRM_PAYMENT_TB
+		</selectKey>
+			INSERT
+			INTO
+				CRM_PAYMENT_TB
+			(
+				PAYMENT_CD
+				,SHOP_CD
+				,EMPLOYEE_CD
+				,USER_CD
+				,ITEMDESIGN_CD
+				,USER_NM
+				,EMPLOYEE_NM
+				,ITEMDESIGN_NM
+				,PAYMENT_TYPE_GB
+				,PAYMENT_TOTAL_WON
+				,PAYMENT_DT
+				,PAYMENT_MEMO
+			)
+			VALUES
+			(
+				#{paymentCode}
+				,(SELECT SHOP_CD FROM CRM_ITEM_TB WHERE ITEM_CD = #{itemCode})
+				,#{employeeCode}
+				,#{userCode}
+				,#{itemDesignCode}
+				,(SELECT USER_NM FROM COM_USER_TB WHERE USER_CD = #{userCode})
+				,(SELECT EMPLOYEE_NM FROM CRM_EMPLOYEE_TB WHERE EMPLOYEE_CD = #{employeeCode})
+				,(SELECT ITEMDESIGN_NM FROM CRM_ITEM_DESIGN_TB WHERE ITEMDESIGN_CD = #{itemDesignCode})
+				,(SELECT PAYMENT_TYPE_GB FROM CRM_PAYMENT_TYPE_TB WHERE PAYMENT_TYPE_CD = #{paymentTypeCode})
+				,#{paymentTotalPrice}
+				,#{paymentDate}
+				,#{paymentMemo}
+			)
+	</insert>
+	
 </mapper>

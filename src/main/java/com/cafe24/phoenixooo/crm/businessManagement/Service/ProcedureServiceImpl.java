@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItemDesign;
+import com.cafe24.phoenixooo.crm.businessManagement.Model.RequestProcedurePayment;
 import com.cafe24.phoenixooo.crm.businessManagement.Repository.ProcedureDao;
 
 @Service
@@ -19,6 +20,12 @@ public class ProcedureServiceImpl implements ProcedureService{
 	@Override
 	public List<ProcedureItemDesign> selectItemDesignList(String itemCode) {
 		return dao.selectItemDesignList(itemCode); 
+	}
+
+	//시술등록	
+	@Override
+	public void insertProcedurePayment(RequestProcedurePayment payment) {
+		dao.insertProcedurePayment(payment);
 	}
 	
 	

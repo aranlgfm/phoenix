@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItemDesign;
+import com.cafe24.phoenixooo.crm.businessManagement.Model.RequestProcedurePayment;
 
 @Repository
 public class ProcedureDaoImpl implements ProcedureDao{
@@ -15,11 +16,20 @@ public class ProcedureDaoImpl implements ProcedureDao{
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
+	//디자인리스트
 	@Override
 	public List<ProcedureItemDesign> selectItemDesignList(String itemCode) {
-		System.out.println("DAODAO");
 		return sqlSession.selectList(NS+".selectItemDesignList", itemCode);
 	}
+	
+	//시술등록
+	@Override
+	public void insertProcedurePayment(RequestProcedurePayment payment) {
+		sqlSession.insert(NS+".insertProcedurePayment", payment);
+		
+	}
+	
+	
 	
 
 }

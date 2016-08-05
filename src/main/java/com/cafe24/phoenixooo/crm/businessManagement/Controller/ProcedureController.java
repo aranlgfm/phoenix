@@ -14,6 +14,8 @@ import com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer;
 import com.cafe24.phoenixooo.crm.CustomerManagement.Service.CustomerService;
 import com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItem;
 import com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItemDesign;
+import com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedurePayment;
+import com.cafe24.phoenixooo.crm.businessManagement.Model.RequestProcedurePayment;
 import com.cafe24.phoenixooo.crm.businessManagement.Service.BusinessManagementSettingService;
 import com.cafe24.phoenixooo.crm.businessManagement.Service.ProcedureService;
 
@@ -49,6 +51,8 @@ public class ProcedureController {
 		return "/phoenix/crm/businessManagement/procedurePaymentCustomerList";
 	}
 	
+	
+	
 	//시술내역등록	
 	@RequestMapping(value = "/phoenix/crm/form/procedurePayment", method = RequestMethod.GET)
 	public String procedurePayment(HttpSession session,Model model) {
@@ -57,8 +61,10 @@ public class ProcedureController {
 		return "/phoenix/crm/businessManagement/procedurePayment";
 	}
 	
-	//아이템셀렉박스 클릭시...디자인목록 보여주기..	
-	@RequestMapping(value = "/phoenix/crm/process/procedurePaymentSelectItem", method = RequestMethod.GET)
+	
+	//아이템셀렉박스 클릭시...디자인목록 보여주기..
+	//샾코드 있어서 여기서부터 그냥 POST
+	@RequestMapping(value = "/phoenix/crm/process/procedurePaymentSelectItem", method = RequestMethod.POST)
 	public String procedurePaymentSelectItem(ProcedureItemDesign item, Model model) {
 		List<ProcedureItem> itemList = businessManagementSettingService.selectItemList(item.getShopCode());
 		List<ProcedureItemDesign> itemDesignList = procedureService.selectItemDesignList(item.getItemCode());
@@ -67,29 +73,33 @@ public class ProcedureController {
 		return "/phoenix/crm/businessManagement/procedurePayment";
 	}
 	
-	@RequestMapping(value = "/phoenix/crm/process/procedurePaymentSelectItemDesign", method = RequestMethod.GET)
+	@RequestMapping(value = "/phoenix/crm/process/procedurePaymentSelectItemDesign", method = RequestMethod.POST)
 	public String procedurePaymentSelectItemDesign(ProcedureItemDesign item, Model model) {
-		System.out.println("디자인컨트롤러");
-		System.out.println(item.getItemDesignCode());
-		System.out.println(item.getShopCode());
-		System.out.println(item.getItemCode());
-		
 		List<ProcedureItem> itemList = businessManagementSettingService.selectItemList(item.getShopCode());
 		List<ProcedureItemDesign> itemDesignList = procedureService.selectItemDesignList(item.getItemCode());
-		//ProcedureItemDesign itemDesign;
-		System.out.println("for문시작");
-		System.out.println("for문시작");
+		ProcedureItemDesign itemDesign = null;
+		
 		for(int i=0; i<itemDesignList.size(); i++){
 			System.out.println(itemDesignList.get(i).getItemDesignCode());
 			if(itemDesignList.get(i).getItemDesignCode().equals(item.getItemDesignCode())){
-				//itemDesign = itemDesignList.get(i);
+				itemDesign = itemDesignList.get(i);
 			}
 		}
-		//ProcedureItemDesign itemDesign = procedureService.selectItemDesign(item.getItemDesignCode());
+		
 		model.addAttribute("itemList", itemList);
 		model.addAttribute("itemDesignList", itemDesignList);
-		//model.addAttribute("itemDesign", itemDesign);
-		return null;
+		model.addAttribute("itemDesign", itemDesign);
+		return "/phoenix/crm/businessManagement/procedurePayment";
+	}
+	
+	//시술등록
+	@RequestMapping(value = "/phoenix/crm/process/insertProcedurePayment", method = RequestMethod.POST)
+	public String insertProcedurePayment(RequestProcedurePayment payment) {
+		System.out.println(payment);
+		String url ="redirect:/phoenix/crm/form/procedurePayment";
+		String url2 ="redirect:/phoenix/crm/form/procedurePaymentCustomerList";
+		procedureService.insertProcedurePayment(payment);
+		return "url2";
 	}
 	
 }	

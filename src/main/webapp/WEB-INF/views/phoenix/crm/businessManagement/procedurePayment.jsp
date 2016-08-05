@@ -25,19 +25,16 @@
 		<script>
 			$(document).on("ready",function(){
 				$("#itemSelect").on("change",function(){
-					$("#itemFormCode").val($("#itemSelect").val());
+					$("#itemFormItemdCode").val($("#itemSelect").val());
  					$("#itemForm").submit();
 				});
 				
 				
 				$("#itemDesignSelect").on("change",function(){
 					
-					$("#itemFormCode").val($("#itemSelect").val());
-					var a = $("#itemFormCode").val($("#itemSelect").val());
-					consol.log(a);
-					consol.log(a);
-					$("#itemDesignFormCode").val($("#itemDesignSelect").val());
- 					//$("#itemDesignForm").submit();
+					$("#itemDesignFormitemCode").val($("#itemSelect").val());
+					$("#itemDesignFormDesignCode").val($("#itemDesignSelect").val());
+ 					$("#itemDesignForm").submit();
 				});
 			});
 		</script>
@@ -52,21 +49,25 @@
 			
 			
 			<!-- 임시폼 -->
-				<form id="itemForm" action="/phoenix/crm/process/procedurePaymentSelectItem" method="get">
-					<input id="itemFormCode" name="itemCode" type="text" value="">
-					<input name="ShopCode" type="text" value="${sessionScope.shopCode}">
+				<form id="itemForm" action="/phoenix/crm/process/procedurePaymentSelectItem" method="POST">
+					<input id="itemFormItemdCode" name="itemCode" type="hidden" value="">
+					<input name="ShopCode" type="hidden" value="${sessionScope.shopCode}">
 				</form>
 				
-				<form id="itemDesignForm" action="/phoenix/crm/process/procedurePaymentSelectItemDesign" method="get">
-					<input id="itemFormCode" name="itemCode" type="text" value="">
-					<input id="itemDesignFormCode" name="itemDesignCode" type="text" value="">
-					<input name="ShopCode" type="text" value="${sessionScope.shopCode}">
+				<form id="itemDesignForm" action="/phoenix/crm/process/procedurePaymentSelectItemDesign" method="POST">
+					<input id="itemDesignFormitemCode" name="itemCode" type="hidden" value="">
+					<input id="itemDesignFormDesignCode" name="itemDesignCode" type="hidden" value="">
+					<input name="ShopCode" type="hidden" value="${sessionScope.shopCode}">
 				</form>
-				
 			<!-- 임시폼 -->
 			
 			
-			<form action="/phoenix/crm/process/procedurePayment" method="POST">
+			<form action="/phoenix/crm/process/insertProcedurePayment" method="POST">
+			<!-- 임시값 샾코드,유저코드 세션-->
+				<input type="hidden" name="shopCode" value="${sessionScope.shopCode}"> 
+				<input type="hidden" name="userCode" value="${sessionScope.userCode}"> 
+				
+			<!-- 임시값 -->
 				<div>
 					<!-- 시술품목 -->
 					<div>
@@ -79,7 +80,7 @@
 								<c:when test="${itemDesignList ne null}">
 									<option value="">시술품목선택</option>
 									<c:forEach var="item" items="${itemList}">
-										<c:forEach var="itemDesign" items="${itemDesignList}" begin="1" end="1">
+										<c:forEach var="itemDesign" items="${itemDesignList}" begin="0" end="0">
 											<c:choose>
 												<c:when test="${itemDesign.itemName eq item.itemName}">
 													<option value="${item.itemCode}" selected="selected">${item.itemName}</option>
@@ -98,32 +99,46 @@
 										</c:forEach>
 								</c:otherwise>
 							</c:choose>
-							</select>
+							</select><!-- 시술품목셀렉 -->
 						
 							<!-- 시술디자인셀렉 -->
-							<!-- 임시  -->
-							
-							<!-- 임시  -->
 							<select id="itemDesignSelect" name="itemDesignCode">
-								<option value="">디자인선택</option>	
-								<c:forEach var="item" items="${itemDesignList}">
-									<option value="${item.itemDesignCode}">${item.itemDesignName}</option>
-								</c:forEach>
-							</select>
+							<c:choose>
+								<c:when test="${itemDesign ne null}">
+									<option value="">디자인선택</option>
+									<c:forEach var="designList" items="${itemDesignList}">
+											<c:choose>
+												<c:when test="${itemDesign.itemDesignName eq designList.itemDesignName}">
+													<option value="${designList.itemDesignCode}" selected="selected">${designList.itemDesignName}</option>
+												</c:when>
+												<c:otherwise>
+													<option value="${designList.itemDesignCode}">${designList.itemDesignName}</option>
+												</c:otherwise>
+											</c:choose>
+									</c:forEach>
+								</c:when>							
+								<c:otherwise>
+										<option value="">디자인선택</option>
+										<c:forEach var="designList" items="${itemDesignList}">
+											<option value="${designList.itemDesignCode}">${designList.itemDesignName}</option>
+										</c:forEach>
+								</c:otherwise>
+							</c:choose>
+							</select><!-- 시술디자인셀렉 -->
 							
 							
-							<select name="itemCode">
+							<!-- 이건 제외. -->
+							<select name="employeeCode">
 								<option value="">담당자선택</option>	
-								<c:forEach var="item" items="">
-									<option value=""></option>
-								</c:forEach>
+								<option value="CRM_EMPLOYEE_1">존</option>
+								<option value="CRM_EMPLOYEE_2">비와이</option>
+								<option value="CRM_EMPLOYEE_6">겐지</option>
 							</select>
 							
-							<select name="itemCode">
+							<select name="paymentTypeCode">
 								<option value="">결제방식</option>	
-									<option value="">현금</option>
-									<option value="">카드</option>
-									<option value="">현금영수증</option>
+								<option value="PAYMENT_TYPE_CASH">카드</option>
+								<option value="PAYMENT_TYPE_CARD">현금영수증</option>
 							</select>
 						</div>
 					</div><!-- 시술정보/결제방식 -->
@@ -132,42 +147,22 @@
 					<div>
 						<div>
 							<label>시술가격</label>
-							<input type="text">
+							<input type="text" name="paymentTotalPrice" value="${itemDesign.itemDesignPrice}">
 							
 							<label>시술일</label>
-							<select>
-								<option>00-00-00</option>
+							<select name="paymentDate">
+								<option value="20101010">00000000</option>
 							</select>
 						</div>
 						<div>
-							<textarea rows="5" cols="50"></textarea>
+							<textarea name="paymentMemo" rows="5" cols="50" value=""></textarea>
 						</div>
 					</div>
 				</div><!-- 전체form -->
 				<input type="submit" value="등록">
-				<input type="submit" value="취소">
+				<input type="button" value="취소">
 			</form>
 		</div>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 </body>
 </html>
