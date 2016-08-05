@@ -58,15 +58,38 @@ public class ProcedureController {
 	}
 	
 	//아이템셀렉박스 클릭시...디자인목록 보여주기..	
-	@RequestMapping(value = "/phoenix/crm/process/procedurePaymentSelectItemDesign", method = RequestMethod.GET)
+	@RequestMapping(value = "/phoenix/crm/process/procedurePaymentSelectItem", method = RequestMethod.GET)
 	public String procedurePaymentSelectItem(ProcedureItemDesign item, Model model) {
 		List<ProcedureItem> itemList = businessManagementSettingService.selectItemList(item.getShopCode());
 		List<ProcedureItemDesign> itemDesignList = procedureService.selectItemDesignList(item.getItemCode());
-		String selectedItem = itemDesignList.get(0).getItemName();
-		model.addAttribute("selectedItem", selectedItem);
 		model.addAttribute("itemList", itemList);
 		model.addAttribute("itemDesignList", itemDesignList);
 		return "/phoenix/crm/businessManagement/procedurePayment";
+	}
+	
+	@RequestMapping(value = "/phoenix/crm/process/procedurePaymentSelectItemDesign", method = RequestMethod.GET)
+	public String procedurePaymentSelectItemDesign(ProcedureItemDesign item, Model model) {
+		System.out.println("디자인컨트롤러");
+		System.out.println(item.getItemDesignCode());
+		System.out.println(item.getShopCode());
+		System.out.println(item.getItemCode());
+		
+		List<ProcedureItem> itemList = businessManagementSettingService.selectItemList(item.getShopCode());
+		List<ProcedureItemDesign> itemDesignList = procedureService.selectItemDesignList(item.getItemCode());
+		//ProcedureItemDesign itemDesign;
+		System.out.println("for문시작");
+		System.out.println("for문시작");
+		for(int i=0; i<itemDesignList.size(); i++){
+			System.out.println(itemDesignList.get(i).getItemDesignCode());
+			if(itemDesignList.get(i).getItemDesignCode().equals(item.getItemDesignCode())){
+				//itemDesign = itemDesignList.get(i);
+			}
+		}
+		//ProcedureItemDesign itemDesign = procedureService.selectItemDesign(item.getItemDesignCode());
+		model.addAttribute("itemList", itemList);
+		model.addAttribute("itemDesignList", itemDesignList);
+		//model.addAttribute("itemDesign", itemDesign);
+		return null;
 	}
 	
 }	

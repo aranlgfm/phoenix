@@ -17,4 +17,15 @@
 			i.ITEM_CD = #{value}	
 	</select>
 	
+	<!-- 아이템디자인 셀렉 -->
+	<select id="selectItemDesign" parameterType="java.lang.String" resultType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItemDesign">
+		SELECT	
+			ITEMDESIGN_CD as itemDesignCode
+			,ITEMDESIGN_NM as itemDesignName
+			,ITEMDESIGN_WON as itemDesignPrice
+		FROM
+			CRM_ITEM_DESIGN_TB
+		WHERE
+			ITEM_CD = #{value}	
+	</select>	
 </mapper>

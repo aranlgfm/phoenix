@@ -36,11 +36,6 @@ public class BusinessManagementSettingController {
 	@Autowired
 	BusinessManagementSettingService service;
 	
-	//CRM 전체메인. 나중에 바꿀것.
-	@RequestMapping(value="/phoenix/crm/form/login", method = RequestMethod.GET)
-	public String crmFormBusiness(){
-		return "/phoenix/crm/crmTemp";
-	}
 	
 	/**
 	 * 1-1. 영업관리 설정관리 요청시 처음 나오는 페이지 컨트롤러

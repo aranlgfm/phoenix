@@ -28,6 +28,17 @@
 					$("#itemFormCode").val($("#itemSelect").val());
  					$("#itemForm").submit();
 				});
+				
+				
+				$("#itemDesignSelect").on("change",function(){
+					
+					$("#itemFormCode").val($("#itemSelect").val());
+					var a = $("#itemFormCode").val($("#itemSelect").val());
+					consol.log(a);
+					consol.log(a);
+					$("#itemDesignFormCode").val($("#itemDesignSelect").val());
+ 					//$("#itemDesignForm").submit();
+				});
 			});
 		</script>
 </head>
@@ -41,10 +52,17 @@
 			
 			
 			<!-- 임시폼 -->
-				<form id="itemForm" action="/phoenix/crm/process/procedurePaymentSelectItemDesign" method="get">
+				<form id="itemForm" action="/phoenix/crm/process/procedurePaymentSelectItem" method="get">
 					<input id="itemFormCode" name="itemCode" type="text" value="">
 					<input name="ShopCode" type="text" value="${sessionScope.shopCode}">
 				</form>
+				
+				<form id="itemDesignForm" action="/phoenix/crm/process/procedurePaymentSelectItemDesign" method="get">
+					<input id="itemFormCode" name="itemCode" type="text" value="">
+					<input id="itemDesignFormCode" name="itemDesignCode" type="text" value="">
+					<input name="ShopCode" type="text" value="${sessionScope.shopCode}">
+				</form>
+				
 			<!-- 임시폼 -->
 			
 			
@@ -55,8 +73,11 @@
 						<div>시술정보선택</div>
 						<div>
 							<select id="itemSelect" name="itemCode">
+							
+							<!-- 시술품목셀렉 -->
 							<c:choose>
 								<c:when test="${itemDesignList ne null}">
+									<option value="">시술품목선택</option>
 									<c:forEach var="item" items="${itemList}">
 										<c:forEach var="itemDesign" items="${itemDesignList}" begin="1" end="1">
 											<c:choose>
@@ -73,18 +94,24 @@
 								<c:otherwise>
 										<option value="">시술품목선택</option>
 										<c:forEach var="item" items="${itemList}">
-										<option value="${item.itemCode}">${item.itemName}</option>
+											<option value="${item.itemCode}">${item.itemName}</option>
 										</c:forEach>
 								</c:otherwise>
 							</c:choose>
 							</select>
 						
-							<select name="itemDesignCode">
+							<!-- 시술디자인셀렉 -->
+							<!-- 임시  -->
+							
+							<!-- 임시  -->
+							<select id="itemDesignSelect" name="itemDesignCode">
 								<option value="">디자인선택</option>	
 								<c:forEach var="item" items="${itemDesignList}">
 									<option value="${item.itemDesignCode}">${item.itemDesignName}</option>
 								</c:forEach>
 							</select>
+							
+							
 							<select name="itemCode">
 								<option value="">담당자선택</option>	
 								<c:forEach var="item" items="">
