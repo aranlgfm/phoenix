@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.cafe24.phoenixooo.crm.salesManagement.Model.EmployeeListForSales;
+import com.cafe24.phoenixooo.crm.salesManagement.Model.EmployeeSales;
 
 @Repository
 public class EmployeeSalesDaoImpl implements EmployeeSalesDao {
@@ -21,6 +22,14 @@ public class EmployeeSalesDaoImpl implements EmployeeSalesDao {
 	@Override
 	public List<EmployeeListForSales> selectEmployeeList(EmployeeListForSales emp) {
 		return sqlSession.selectList(NS+"selectEmployeeList", emp);
+	}
+
+	/**
+	 * (Repository구현) 총직원매출리스트
+	 */
+	@Override
+	public List<EmployeeSales> selectAllEmpSales() {
+		return sqlSession.selectList(NS+"selectAllEmpSales");
 	}
 
 }

@@ -6,8 +6,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script>
+	
+</script>
 <style>
-	#confines, #procsl, #prodsl, #totalMoney
+	#confines, #procsl, #prodsl, #totalMoney, table, tr,th,td
 	{
 		border-style: solid;
     	border-width: medium;
@@ -20,37 +23,33 @@
 		<table id="procsl">
 			<tr>
 				<th>품목</th>
-				<th>계산구분</th>
-				<th>합계</th>
+				<th>현금/(건)</th>
+				<th>카드/(건)</th>
+			</tr>
+
+			<c:forEach var="list" items="${list}">
+			<tr>
 				
+				<td>${list.itemDesignName} </td>
+				
+				
+				<td>
+					<c:if test="${list.paymentTypeGb eq '현금'}"><span id="sumCash">${list.totalMoney}</span>/(${list.totalCount})</c:if>
+				</td>
+				<td>
+					<c:if test="${list.paymentTypeGb eq '카드'}"><span id="sumCard">${list.totalMoney}</span>/(${list.totalCount})</c:if>
+				</td>
 			</tr>
-			<c:forEach var="pc" items="${list}">
-			<tr>
-				<td>${pc.itemDesignName} </td>
-				<td>${pc.paymentTypeGb}</td>
-				<td>${pc.paymentTotalWon}</td>
-			</tr>
+			
 			</c:forEach>
-		</table>
-		<div>${SalesInfo.paymentDate} 제품 판매 내역</div>
-		<table id="prodsl">
 			<tr>
-				<th>제품명</th>
-				<th>카드</th>
-				<th>현금</th>
-				<th>영수증</th>
-				<th>미수금</th>
-				<th>합계</th>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>1</td>
-				<td>1</td>
-				<td>1</td>
-				<td>1</td>
-				<td>1</td>
+				<td>총합계</td>
+				<td></td>
+				<td></td>
 			</tr>
 		</table>
+	
+	
 	</div>
 	
 	<div id="totalMoney">

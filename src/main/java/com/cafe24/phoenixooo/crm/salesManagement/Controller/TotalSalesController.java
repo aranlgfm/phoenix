@@ -1,6 +1,10 @@
 package com.cafe24.phoenixooo.crm.salesManagement.Controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,7 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.cafe24.phoenixooo.crm.salesManagement.Model.SalesInfo;
+import com.cafe24.phoenixooo.crm.salesManagement.Model.DaySalesInfo;
 import com.cafe24.phoenixooo.crm.salesManagement.Service.TotalSalesService;
 
 @Controller
@@ -26,7 +30,15 @@ public class TotalSalesController {
 	
 	//기간검색
 	@RequestMapping(value = "/phoenix/crm/salesManagement/periodSearch", method = RequestMethod.GET)
-	public String periodSearch() {
+	public String periodSearch(Model model) {
+		Date today = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		String realToday = format.format(today);
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>"+realToday); // 
+		
+		model.addAttribute("serverTime", realToday );
+		
+		
 		return "/phoenix/crm/salesManagement/periodSearch";
 	}
 	
@@ -34,7 +46,7 @@ public class TotalSalesController {
 	@RequestMapping(value = "/phoenix/crm/salesManagement/periodSearch", method = RequestMethod.POST)
 	public String periodSearch(String paymentDate, Model model) {
 		System.out.println("periodSearch에서 넘긴 현재날짜 : "+paymentDate);
-		List<SalesInfo> list = totalSalesService.SelectDailySales(paymentDate);
+		List<DaySalesInfo> list = totalSalesService.SelectDailySales(paymentDate);
 		model.addAttribute("list", list);
 		System.out.println("model : "+model);
 		return "/phoenix/crm/salesManagement/periodSalesList";

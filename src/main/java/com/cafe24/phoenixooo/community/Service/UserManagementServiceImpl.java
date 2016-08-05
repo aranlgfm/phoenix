@@ -123,5 +123,9 @@ public class UserManagementServiceImpl implements UserManagementService {
 		return userDao.userDrawal(user);
 	}
 	
-	
+	@Override
+	public UserCustomer loginToCrm(UserCustomer user) {
+		// TODO Auto-generated method stub
+		return userDao.loginToCrm(user);
+	}
 }

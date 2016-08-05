@@ -33,24 +33,45 @@
 		<!-- 기간검색 -->
 		<div>
 			<input name="" type="date"/>
-			<select name="">
+			<select>
 				<option>직원명</option>
-				<c:forEach var="empList" items="${empList}">
-					<option>${empList.employeeName}</option>
-<%-- 					value="${a.employeeCode}" --%>
+				<c:forEach var="empList" items="${emp.empList}">
+					<option value="${empList.employeeCode}">${empList.employeeName}</option>
 				</c:forEach>
 			</select>
+			<input type="submit" value="검색"/>
 		</div>
 		<!-- 직원별 매출분포 -->
 		<div>
 			
 		</div>
 		<!-- 직원별 매출내역 : 리스트 -->
-		<div>
-			<c:forEach var="" items="">
-			
+		<table>
+			<tr>
+				<th>직원명</th>
+				<th>총금액</th>
+				<th>현금</th>
+				<th>카드</th>
+			</tr>
+			<c:forEach var="empSales" items="${emp.empSales}">
+				<tr>
+					<td>${empSales.employeeName}</td> 
+					<td>${empSales.paymentTotalWon}</td>
+						<c:if test="${empSales.paymentType eq '현금'}">
+					<td>
+						${empSales.paymentTotalWon}
+					</td>
+						</c:if>
+<td></td>
+<td></td>
+						<c:if test="${empSales.paymentType eq '카드'}">
+					<td>
+						${empSales.paymentTotalWon}
+					</td>
+						</c:if>
+				</tr>
 			</c:forEach>
-		</div>
+		</table>
 	</form>
 	
 </body>

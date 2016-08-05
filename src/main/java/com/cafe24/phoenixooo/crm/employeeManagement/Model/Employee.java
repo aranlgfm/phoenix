@@ -4,7 +4,7 @@ public class Employee {
 	private String employeeCode;
 	private String shopCode;
 	private String employeePw;
-	private String levelName;
+	private String employeeLevelName;
 	private String employeeName;
 	private String employeeBirthDate;
 	private String employeeAddr;
@@ -31,11 +31,11 @@ public class Employee {
 	public void setEmployeePw(String employeePw) {
 		this.employeePw = employeePw;
 	}
-	public String getLevelName() {
-		return levelName;
+	public String getEmployeeLevelName() {
+		return employeeLevelName;
 	}
-	public void setLevelName(String levelName) {
-		this.levelName = levelName;
+	public void setEmployeeLevelName(String employeeLevelName) {
+		this.employeeLevelName = employeeLevelName;
 	}
 	public String getEmployeeName() {
 		return employeeName;
@@ -83,7 +83,7 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "Employee [employeeCode=" + employeeCode + ", shopCode=" + shopCode + ", employeePw=" + employeePw
-				+ ", levelName=" + levelName + ", employeeName=" + employeeName + ", employeeBirthDate="
+				+ ", employeeLevelName=" + employeeLevelName + ", employeeName=" + employeeName + ", employeeBirthDate="
 				+ employeeBirthDate + ", employeeAddr=" + employeeAddr + ", employeePhoneNo=" + employeePhoneNo
 				+ ", employeeCellPhoneNo=" + employeeCellPhoneNo + ", employeeJoinDate=" + employeeJoinDate
 				+ ", employeeMemo=" + employeeMemo + "]";

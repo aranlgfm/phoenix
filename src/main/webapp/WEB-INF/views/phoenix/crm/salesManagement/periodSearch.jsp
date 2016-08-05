@@ -11,11 +11,20 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script>
-	$(function() {
-	    $('#realDay').datepicker({	
-	    	dateFormat : "yymmdd"
-	    });
+	
+	$(document).ready(function(){
+		
+		
+		//ID : realDay인 태그를 누르면 달력 나와서 format방식에 해당하는 data-type(String)을 value값으로 준다.
+		$(function() {
+		    $('#realDay').datepicker({	
+		    	dateFormat : "yymmdd"
+		    });
+		});
+		
 	});
+	
+	
 </script>
 <style>
 	#confines 
@@ -32,7 +41,7 @@
 			<div>기간검색</div>
 			<div>
 				검색일자
-				<input id="realDay" type="text" value="" name="paymentDate">
+				<input id="realDay" type="text" value="${serverTime}" name="paymentDate">
 				<input type="submit" value="검색">
 			</div>
 		</form>

@@ -2,25 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cafe24.phoenixooo.crm.salesManagement.Repository.TotalSalesMapper">
 
-	<select id="SelectDailySales" parameterType="String" resultType="com.cafe24.phoenixooo.crm.salesManagement.Model.SalesInfo">
+	<select id="SelectDailySales" parameterType="String" resultType="com.cafe24.phoenixooo.crm.salesManagement.Model.DaySalesInfo">
 		SELECT
-			PAYMENT_CD as paymentCode
-			,EMPLOYEE_CD as employeeCode 
-			,SHOP_CD	as shopCode
-			,USER_CD as userCode
-			,POINT_CD as pointCode
-			,ITEMDESIGN_CD as itemDesignCode
-			,USER_NM as userName
-			,EMPLOYEE_NM as employeeName
-			,ITEMDESIGN_NM as itemDesignName
-			,PAYMENT_TYPE_GB as paymentTypeGb
-			,PAYMENT_TOTAL_WON as paymentTotalWon
-			,PAYMENT_DT as paymentDate
-		        
+			ITEMDESIGN_NM as itemDesignName
+		    ,PAYMENT_TYPE_GB as paymentTypeGb 
+		    , count(*) as totalCount
+		    ,SUM(PAYMENT_TOTAL_WON) as totalMoney
+		   ,PAYMENT_DT as paymentDate
 		FROM
-			CRM_PAYMENT_TB	
+			CRM_PAYMENT_TB
 		WHERE
 			PAYMENT_DT = #{paymentDate}
+		GROUP BY
+			ITEMDESIGN_NM,PAYMENT_TYPE_GB
 				
 	</select>
 
