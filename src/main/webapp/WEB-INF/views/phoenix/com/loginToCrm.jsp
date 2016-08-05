@@ -15,7 +15,7 @@
 		<c:if test="${user eq 'false'}">
 			<h3 style="color: red;">해킹감지</h3>
 		</c:if>
-	<form action="/phoenix/com/process/login" method="POST">
+	<form action="/phoenix/crm/process/login" method="POST">
 		<div>
 			<label>미용실코드 : </label>
 			<input type="text" name="shopCode"/>

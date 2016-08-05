@@ -67,4 +67,6 @@ public interface UserManagementService {
 	 * @return
 	 */
 	int deleteUser(UserCustomer user);
+	
+	UserCustomer loginToCrm(UserCustomer user);
 }

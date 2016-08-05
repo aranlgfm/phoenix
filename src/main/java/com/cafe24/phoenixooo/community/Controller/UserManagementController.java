@@ -235,8 +235,8 @@ public class UserManagementController {
 		
 		//로그인 취소시에도 세션에 false값 저장되어있어서 힘듭니다.
 		
-		if(userService.login(user) != null){
-			session.setAttribute("user", userService.login(user));
+		if(userService.loginToCrm(user) != null){
+			session.setAttribute("user", userService.loginToCrm(user));
 			pageUrl = "/phoenix/crm/crmTemp";
 		}else{
 			session.setAttribute("user", "false");
