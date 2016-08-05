@@ -14,21 +14,21 @@
 			,EMPLOYEE_NM as employeeName 
 		FROM
 			CRM_EMPLOYEE_TB
-		WHERE SHOP_CD = 'CRM_SHOP_1'
+		WHERE SHOP_CD = #{shopCode}
 	</select>
 	
-	<!-- 2. 직원매출검색 -->
-<!-- 	<select id="selectEmpSales"> -->
-<!-- 		SELECT  -->
-<!-- 			SUM(PAYMENT_TOTAL_WON),EMPLOYEE_NM  -->
-<!-- 		FROM  -->
-<!-- 			CRM_PAYMENT_TB  -->
-<!-- 		WHERE  -->
-<!-- 			EMPLOYEE_NM='라인하르트'  -->
-<!-- 		AND  -->
-<!-- 			PAYMENT_TYPE_GB='현금'  -->
-<!-- 		AND  -->
-<!-- 			PAYMENT_DT BETWEEN '2016-07-01' AND '2016-08-30' -->
-<!-- 	</select> -->
+	<!-- 2. 총직원매출검색 -->
+	<select id="selectAllEmpSales" resultType="com.cafe24.phoenixooo.crm.salesManagement.Model.EmployeeSales">
+		SELECT 
+			SUM(PAYMENT_TOTAL_WON) as paymentTotalWon
+			,EMPLOYEE_NM as employeeName
+			,PAYMENT_TYPE_GB as paymentType
+		FROM 
+			CRM_PAYMENT_TB 
+		GROUP BY 
+			EMPLOYEE_CD,PAYMENT_TYPE_GB
+		ORDER BY 
+			EMPLOYEE_NM asc
+	</select>
 	
 </mapper>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cafe24.phoenixooo.crm.salesManagement.Model.EmployeeListForSales;
+import com.cafe24.phoenixooo.crm.salesManagement.Model.EmployeeSales;
 import com.cafe24.phoenixooo.crm.salesManagement.Repository.EmployeeSalesDao;
 
 @Service
@@ -19,8 +20,15 @@ public class EmployeeSalesServiceImpl implements EmployeeSalesService {
 	 */
 	@Override
 	public List<EmployeeListForSales> selectEmployeeList(EmployeeListForSales emp) {
-		System.out.println(emp.getShopCode());
 		return empDao.selectEmployeeList(emp);
+	}
+
+	/**
+	 * (Service구현) 총직원매출리스트
+	 */
+	@Override
+	public List<EmployeeSales> selectAllEmpSales() {
+		return empDao.selectAllEmpSales();
 	}
 	
 	

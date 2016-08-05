@@ -3,6 +3,7 @@ package com.cafe24.phoenixooo.crm.salesManagement.Repository;
 import java.util.List;
 
 import com.cafe24.phoenixooo.crm.salesManagement.Model.EmployeeListForSales;
+import com.cafe24.phoenixooo.crm.salesManagement.Model.EmployeeSales;
 
 public interface EmployeeSalesDao {
 
@@ -12,4 +13,10 @@ public interface EmployeeSalesDao {
 	 * @return
 	 */
 	List<EmployeeListForSales> selectEmployeeList(EmployeeListForSales emp);
+	
+	/**
+	 * (Repository) 총직원매출리스트
+	 * @return
+	 */
+	List<EmployeeSales> selectAllEmpSales();
 }
