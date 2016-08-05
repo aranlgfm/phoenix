@@ -1,13 +1,12 @@
 package com.cafe24.phoenixooo.crm.salesManagement.Repository;
 
 import java.util.List;
-import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.cafe24.phoenixooo.crm.salesManagement.Model.SalesInfo;
+import com.cafe24.phoenixooo.crm.salesManagement.Model.DaySalesInfo;
 
 @Repository
 public class TotalSalesDaoImpl implements TotalSalesDao{
@@ -19,7 +18,7 @@ public class TotalSalesDaoImpl implements TotalSalesDao{
 	
 	//일간총매출 처리중
 	@Override
-	public List<SalesInfo> SelectDailySales(String paymentDate) {
+	public List<DaySalesInfo> SelectDailySales(String paymentDate) {
 		return sqlSession.selectList(NS+".SelectDailySales", paymentDate);
 	}
 	

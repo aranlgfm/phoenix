@@ -20,17 +20,23 @@
 		<table id="procsl">
 			<tr>
 				<th>품목</th>
-				<th>계산구분</th>
-				<th>합계</th>
-				
+				<th>현금/(건)</th>
+				<th>카드/(건)</th>
 			</tr>
-			<c:forEach var="pc" items="${list}">
+
+			<c:forEach var="list" items="${list}">
 			<tr>
-				<td>${pc.itemDesignName} </td>
-				<td>${pc.paymentTypeGb}</td>
-				<td>${pc.paymentTotalWon}</td>
+				
+				<td>${list.itemDesignName} </td>
+				<td>
+					<c:if test="${list.paymentTypeGb eq '현금'}">${list.totalMoney}/(${list.totalCount})</c:if>
+				</td>
+				<td>
+					<c:if test="${list.paymentTypeGb eq '카드'}">${list.totalMoney}/(${list.totalCount})</c:if>
+				</td>
 			</tr>
 			</c:forEach>
+	
 		</table>
 		<div>${SalesInfo.paymentDate} 제품 판매 내역</div>
 		<table id="prodsl">

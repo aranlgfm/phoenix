@@ -2,9 +2,9 @@ package com.cafe24.phoenixooo.crm.salesManagement.Service;
 
 import java.util.List;
 
-import com.cafe24.phoenixooo.crm.salesManagement.Model.SalesInfo;
+import com.cafe24.phoenixooo.crm.salesManagement.Model.DaySalesInfo;
 
 public interface TotalSalesService {
 
-	List<SalesInfo> SelectDailySales(String paymentDate);
+	List<DaySalesInfo> SelectDailySales(String paymentDate);
 }

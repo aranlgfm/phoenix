@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.cafe24.phoenixooo.crm.salesManagement.Model.SalesInfo;
+import com.cafe24.phoenixooo.crm.salesManagement.Model.DaySalesInfo;
 import com.cafe24.phoenixooo.crm.salesManagement.Service.TotalSalesService;
 
 @Controller
@@ -34,7 +34,7 @@ public class TotalSalesController {
 	@RequestMapping(value = "/phoenix/crm/salesManagement/periodSearch", method = RequestMethod.POST)
 	public String periodSearch(String paymentDate, Model model) {
 		System.out.println("periodSearch에서 넘긴 현재날짜 : "+paymentDate);
-		List<SalesInfo> list = totalSalesService.SelectDailySales(paymentDate);
+		List<DaySalesInfo> list = totalSalesService.SelectDailySales(paymentDate);
 		model.addAttribute("list", list);
 		System.out.println("model : "+model);
 		return "/phoenix/crm/salesManagement/periodSalesList";
