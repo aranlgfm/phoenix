@@ -42,4 +42,10 @@ public class GoodsStockDaoImpl implements GoodsStockDao{
 		// TODO Auto-generated method stub
 		return sqlSession.delete(NS+".deleteGoodsStock", goodsStock);
 	}
+	
+	@Override
+	public int updateGoodsStock(GoodsStock goodsStock) {
+		// TODO Auto-generated method stub
+		return sqlSession.update(NS+".updateGoodsStock", goodsStock);
+	}
 }

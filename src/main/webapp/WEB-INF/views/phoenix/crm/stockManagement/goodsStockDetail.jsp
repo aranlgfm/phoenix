@@ -7,11 +7,32 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="<c:url value="/webjars/jquery/3.1.0/jquery.min.js"/>"></script>
+<script>
+	$(document).ready(function()
+		{
+			$('.deleteGoodsStockBtn').on('click',function()
+				{
+					$(".goodsStockForm").attr('action','/phoenix/crm/process/deleteGoodsStock');
+					$(".goodsStockForm").submit();
+				}
+			)
+			
+			$('.updateGoodsStockBtn').on('click',function()
+				{
+					$(".goodsStockForm").attr('action','/phoenix/crm/process/updateGoodsStock');
+					$(".goodsStockForm").submit();
+				}
+			)
+		}
+	)
+</script>
 </head>
 <body>
 	<!-- 수정 할려면 jquery  써야될 거 같은데? -->
 
-	<form action="/phoenix/crm/process/deleteGoodsStock" method="post">
+	<form class="goodsStockForm" action="" method="post">
 		<input type="hidden" name="stockCode" value="${goodsStock.stockCode }">
 		<table>
 			<tr>
@@ -84,7 +105,8 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="submit" value="삭제">
+					<input class="updateGoodsStockBtn" type="button" value="수정">
+					<input class="deleteGoodsStockBtn" type="button" value="삭제">
 				</td>
 			</tr>
 		</table>

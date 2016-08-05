@@ -99,6 +99,21 @@
 		WHERE 
 			STOCK_CD=#{stockCode}		
 	</delete>
+	
+	<!-- 입고된 거 수정 처리 -->
+	<!-- shopCode는 session에서 꺼내온다고 생각하자 -->
+	<update id="updateGoodsStock" parameterType="com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsStock">
+		UPDATE 
+			CRM_GOODS_STOCK_TB
+		SET
+			ACCOUNT_CD=(select ACCOUNT_CD from CRM_ACCOUNT_TB where SHOP_CD=#{shopCode} and ACCOUNT_NM=#{accountName})
+			,SHOP_CD=#{shopCode}
+			,EMPLOYEE_CD=(select EMPLOYEE_CD from CRM_EMPLOYEE_TB where SHOP_CD=#{shopCode} and EMPLOYEE_NM=#{employeeName})
+			,GOODS_CD=(select GOODS_CD from CRM_GOODS_TB where SHOP_CD=#{shopCode} and GOODS_NM=#{goodsName})
+			,GOODS_QUANTITY_NO=#{goodsQuantityNumber}
+		WHERE 
+			STOCK_CD=#{stockCode}		
+	</update>
 </mapper>
 
 

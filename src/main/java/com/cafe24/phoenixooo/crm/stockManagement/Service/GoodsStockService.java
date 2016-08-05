@@ -14,4 +14,6 @@ public interface GoodsStockService {
 	int insertGoodsPayment(GoodsPayment goodsPayment);
 	
 	int deleteGoodsStock(GoodsStock goodsStock);
+	
+	int updateGoodsStock(GoodsStock goodsStock);
 }
