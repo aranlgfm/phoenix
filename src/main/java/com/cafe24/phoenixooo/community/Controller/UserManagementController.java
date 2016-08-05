@@ -26,6 +26,7 @@ import com.cafe24.phoenixooo.community.Service.UserManagementService;
  * 7.비번 찾기 
  * 8.회원수정
  * 9.회원탈퇴
+ * 10.CRM 로그인
  */
 
 @Controller
@@ -216,6 +217,31 @@ public class UserManagementController {
 	return "/phoenix/com/userWithdrawalGoodbye";
 	}
 	
+	/**
+	 * 10.CRM 로그인 화면으로 이동
+	 */
+	@RequestMapping(value="/phoenix/crm/form/login", method = RequestMethod.GET)
+	public String crmFormBusiness(){
+		return "/phoenix/com/loginToCrm";
+	}
 	
-	
+	/**
+	 * 10. CRM 로그인 처리
+	 * @return
+	 */
+	@RequestMapping(value = "/phoenix/crm/process/login", method = RequestMethod.POST)
+	public String crmProcessLogin(HttpSession session, UserCustomer user) {
+		String pageUrl;
+		
+		//로그인 취소시에도 세션에 false값 저장되어있어서 힘듭니다.
+		
+		if(userService.login(user) != null){
+			session.setAttribute("user", userService.login(user));
+			pageUrl = "/phoenix/crm/crmTemp";
+		}else{
+			session.setAttribute("user", "false");
+			pageUrl = "/phoenix/com/loginToCrm";
+		}
+		return pageUrl;
+	}
 }

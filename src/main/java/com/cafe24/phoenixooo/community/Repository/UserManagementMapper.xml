@@ -144,6 +144,7 @@
 					,USER_CD as userCode
 					,USER_NICK_NM as userNickName
 					,USER_GROUP_NM as userGroupName
+					,USER_SHOP_CD as shopCode
 				FROM 
 					COM_USER_TB
 				WHERE 

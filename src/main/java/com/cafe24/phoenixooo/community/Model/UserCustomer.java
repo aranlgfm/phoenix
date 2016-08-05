@@ -21,6 +21,7 @@ public class UserCustomer {
 	private String userGroupName;
 	private String userJoinDate; // 여기까지 
 	
+	private String shopCode;
 	private String userId;
 	private String userPw;
 	private String userName;
@@ -35,17 +36,12 @@ public class UserCustomer {
 	private String userCellphoneNumber;
 	private String userIntroduceContent;
 	
-	
 	public String getUserCode() {
 		return userCode;
 	}
-	
-	//생성자에 userCode강제 삽입하는데.
-	//디비에서 UserCustomer값 그대로 가지고 오면 set이랑 안겹치나요?
 	public void setUserCode(String userCode) {
 		this.userCode = userCode;
 	}
-	
 	public String getUserGroupName() {
 		return userGroupName;
 	}
@@ -57,6 +53,12 @@ public class UserCustomer {
 	}
 	public void setUserJoinDate(String userJoinDate) {
 		this.userJoinDate = userJoinDate;
+	}
+	public String getShopCode() {
+		return shopCode;
+	}
+	public void setShopCode(String shopCode) {
+		this.shopCode = shopCode;
 	}
 	public String getUserId() {
 		return userId;
@@ -139,15 +141,12 @@ public class UserCustomer {
 	
 	@Override
 	public String toString() {
-		return "User [userCode=" + userCode + ", userGroupName=" + userGroupName + ", userJoinDate=" + userJoinDate
-				+ ", userId=" + userId + ", userPw=" + userPw + ", userName=" + userName + ", userNickName="
-				+ userNickName + ", userSexFlag=" + userSexFlag + ", userAnniversaryDate=" + userAnniversaryDate
-				+ ", userBirthdayDate=" + userBirthdayDate + ", userAddress=" + userAddress + ", userPostNumber="
-				+ userPostNumber + ", userEmailAddress=" + userEmailAddress + ", userPhoneNumber=" + userPhoneNumber
-				+ ", userCellphoneNumber=" + userCellphoneNumber + ", userIntroduceContent=" + userIntroduceContent
-				+ "]";
+		return "UserCustomer [userCode=" + userCode + ", userGroupName=" + userGroupName + ", userJoinDate="
+				+ userJoinDate + ", shopCode=" + shopCode + ", userId=" + userId + ", userPw=" + userPw + ", userName="
+				+ userName + ", userNickName=" + userNickName + ", userSexFlag=" + userSexFlag
+				+ ", userAnniversaryDate=" + userAnniversaryDate + ", userBirthdayDate=" + userBirthdayDate
+				+ ", userAddress=" + userAddress + ", userPostNumber=" + userPostNumber + ", userEmailAddress="
+				+ userEmailAddress + ", userPhoneNumber=" + userPhoneNumber + ", userCellphoneNumber="
+				+ userCellphoneNumber + ", userIntroduceContent=" + userIntroduceContent + "]";
 	}
-	
-	
-	
 }
