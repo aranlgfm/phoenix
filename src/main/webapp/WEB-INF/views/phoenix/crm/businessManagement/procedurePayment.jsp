@@ -127,7 +127,7 @@
 							</select><!-- 시술디자인셀렉 -->
 							
 							
-							<!-- 이건 제외. -->
+							<!-- 이건 제외 가라임. -->
 							<select name="employeeCode">
 								<option value="">담당자선택</option>	
 								<option value="CRM_EMPLOYEE_1">존</option>
@@ -160,6 +160,7 @@
 					</div>
 				</div><!-- 전체form -->
 				<input type="submit" value="등록">
+				<input type="submit" name="again" value="추가등록">
 				<input type="button" value="취소">
 			</form>
 		</div>

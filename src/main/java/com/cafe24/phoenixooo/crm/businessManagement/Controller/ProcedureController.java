@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer;
 import com.cafe24.phoenixooo.crm.CustomerManagement.Service.CustomerService;
@@ -37,7 +38,7 @@ public class ProcedureController {
 	//임시메인
 	@RequestMapping(value = "/phoenix/crm/businessManagement/businessManagement", method = RequestMethod.GET)
 	public String businessManagement(CrmCustomer customer,Model model) {
-		List<CrmCustomer> list = customerService.getCustomerList();
+		List<CrmCustomer> list = customerService.getCustomerList(customer);
 		model.addAttribute("list", list);
 		return "/phoenix/crm/businessManagement/procedurePaymentCustomerList";
 	}
@@ -46,7 +47,7 @@ public class ProcedureController {
 	//시술내역	
 	@RequestMapping(value = "/phoenix/crm/form/procedurePaymentCustomerList", method = RequestMethod.GET)
 	public String procedurePayment(CrmCustomer customer,Model model) {
-		List<CrmCustomer> list = customerService.getCustomerList();
+		List<CrmCustomer> list = customerService.getCustomerList(customer);
 		model.addAttribute("list", list);
 		return "/phoenix/crm/businessManagement/procedurePaymentCustomerList";
 	}
@@ -73,6 +74,9 @@ public class ProcedureController {
 		return "/phoenix/crm/businessManagement/procedurePayment";
 	}
 	
+	
+	
+	//아이템상세 디자인
 	@RequestMapping(value = "/phoenix/crm/process/procedurePaymentSelectItemDesign", method = RequestMethod.POST)
 	public String procedurePaymentSelectItemDesign(ProcedureItemDesign item, Model model) {
 		List<ProcedureItem> itemList = businessManagementSettingService.selectItemList(item.getShopCode());
@@ -92,14 +96,20 @@ public class ProcedureController {
 		return "/phoenix/crm/businessManagement/procedurePayment";
 	}
 	
+	
+	
 	//시술등록
 	@RequestMapping(value = "/phoenix/crm/process/insertProcedurePayment", method = RequestMethod.POST)
-	public String insertProcedurePayment(RequestProcedurePayment payment) {
-		System.out.println(payment);
-		String url ="redirect:/phoenix/crm/form/procedurePayment";
-		String url2 ="redirect:/phoenix/crm/form/procedurePaymentCustomerList";
+	public String insertProcedurePayment(RequestProcedurePayment payment,@RequestParam("again") String again) {
+		String url ="redirect:/phoenix/crm/form/procedurePaymentCustomerList";
+		if(again != null ){
+			url = "redirect:/phoenix/crm/form/procedurePayment";
+		}
 		procedureService.insertProcedurePayment(payment);
-		return "url2";
+		return url;
 	}
+	
+	
+	
 	
 }	
