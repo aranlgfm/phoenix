@@ -52,24 +52,12 @@
 		</c:forEach>	
 	</div>
 
-	<table>
-		<c:forEach var="list" items="${map.comment.commentList}">
-			<tr>
-				<td>${map.comment.commentContent}</td>
-				<td><a href="/phoenix/com/process/deleteComment?commentCode=${map.comment.commentCode }&articleCode=${map.comment.articleCode}">댓글 삭제</a></td>
-			</tr>
-		</c:forEach>
-	</table>
+	<div>
+		<c:import url="/phoenix/com/commentList"></c:import>
+	</div>
 	
-	<form action="/phoenix/com/process/insertComment" method="post">
-		<input type="hidden" value=${map.comment.articleCode } name="articleCode">
-		<table>
-			<tr>
-				<td><span>아이디나옴</span></td>
-				<td><textarea rows="10" cols="150" name="commentContent"></textarea></td>
-				<td><input class="insertComment" type="submit" value="등록"></td>
-			</tr>
-		</table>
-	</form>
+	<div>
+		<c:import url="/phoenix/com/form/comment"></c:import>
+	</div>
 </body>
 </html>

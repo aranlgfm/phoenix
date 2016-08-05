@@ -7,17 +7,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
-	<form action="/phoenix/com/form/modifyBasicArticle" method="post">
+	<h1>게시글 수정화면</h1>
+	<form action="/phoenix/com/process/modifyBasicArticle" method="post">
+		<input type="hidden" name="articleCode" value="${map.article.articleCode}">
 		<table>
-			<input type="hidden" name="articleCode" value=${article.articleCode }>
 			<tr>
 				<td>제목</td>
-				<td><input class="articleName" type="text" name="articleName" value=${article.articleName }></td>
+				<td><input class="articleName" type="text" name="articleName" value="${map.article.articleName}"></td>
 			</tr>
 			<tr>
 				<td>내용</td>
-				<td><textarea class="articleContent" cols="80" rows="20" name="articleContent">${article.articleContent }</textarea></td>
+				<td><textarea class="articleContent" cols="80" rows="20" name="articleContent">${map.article.articleContent}</textarea></td>
 			</tr>
 			<tr>
 				<td>파일</td>

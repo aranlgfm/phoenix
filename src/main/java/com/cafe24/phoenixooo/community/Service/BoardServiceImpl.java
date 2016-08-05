@@ -60,12 +60,9 @@ public class BoardServiceImpl implements BoardService
 		return map;
 	}
 	
-	
-	
-	
 	//글 1개 등록
 	@Override
-	public void insertArticle(Article article, HttpServletRequest request) {
+	public String insertArticle(Article article, HttpServletRequest request) {
  
 		System.out.println("articleCode 확인중->"+article.getArticleCode());
 		
@@ -171,17 +168,10 @@ public class BoardServiceImpl implements BoardService
 				}
 
 			}
-			
 		}
-		
+		return articleCode;
 	}
-	
-
 		
-	
-	
-	
-	
 	//글 1개 수정
 	@Override
 	public Article modifyArticle(Article article) {
@@ -205,6 +195,17 @@ public class BoardServiceImpl implements BoardService
 	public int insertComment(Comment comment) {
 		return boardDao.insertComment(comment);
 	}
+	
+	
+	//댓글 리스트
+	public List<Comment> commentList(String articleCode){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("articleCode", articleCode);
+		return boardDao.selectCommentList(map);
+		
+	}
+	
+	
 	
 	//댓글 삭제
 	@Override

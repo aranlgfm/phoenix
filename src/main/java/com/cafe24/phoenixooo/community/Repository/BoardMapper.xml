@@ -92,7 +92,7 @@
         </selectKey> -->
 	</insert>
 	
-	<!-- 가맹이 계약파일정보 신청 -->
+	<!-- 파일정보 등록 -->
 	<insert id="subAddImgFile"	parameterType="com.cafe24.phoenixooo.community.Model.ImgFile">
 		<selectKey resultType="hashmap" keyProperty="fileCode" order="BEFORE">
 			select if(isnull(FILE_CD),'COM_FILE_1', concat('COM_FILE_', MAX(CONVERT(SUBSTRING(FILE_CD,10), UNSIGNED))+1))
@@ -141,6 +141,11 @@
 	</delete>
 	
 	<insert id="insertComment" parameterType="com.cafe24.phoenixooo.community.Model.Comment">
+		<selectKey resultType="hashmap" keyProperty="commentCode" order="BEFORE">
+			select if(isnull(COMMENT_CD),'COM_COMMENT_1', concat('COM_COMMENT_', MAX(CONVERT(SUBSTRING(COMMENT_CD,13), UNSIGNED))+1))
+			as commentCode
+			from COM_COMMENT_TB
+		</selectKey>
 		INSERT INTO 
 			COM_COMMENT_TB
 			(
@@ -153,7 +158,7 @@
 			)
 		VALUES 
 			(
-				'COM_COMMENT_7'
+				#{commentCode}
 				, #{articleCode}
 				, 'COM_USER_123'
 				, #{commentContent}
@@ -176,7 +181,7 @@
 		where 
 			ARTICLE_CD=#{articleCode}
 		ORDER BY 
-			COMMENT_CD ASC
+			COMMENT_DT DESC
 	</select>
 	
 	<delete id="deleteComment" parameterType="com.cafe24.phoenixooo.community.Model.Comment">
