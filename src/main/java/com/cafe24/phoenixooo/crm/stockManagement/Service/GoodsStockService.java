@@ -12,4 +12,6 @@ public interface GoodsStockService {
 	List<GoodsStock> selectGoodsStockList(GoodsStock goodsStock);
 	
 	int insertGoodsPayment(GoodsPayment goodsPayment);
+	
+	int deleteGoodsStock(GoodsStock goodsStock);
 }

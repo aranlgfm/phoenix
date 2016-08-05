@@ -91,4 +91,43 @@
 				, #{paymentMemo}
 			)		
 	</insert>
+	
+	<!-- 입고된 것  삭제 처리 -->
+	<delete id="deleteGoodsStock" parameterType="com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsStock">
+		DELETE FROM 
+			CRM_GOODS_STOCK_TB 
+		WHERE 
+			STOCK_CD=#{stockCode}		
+	</delete>
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

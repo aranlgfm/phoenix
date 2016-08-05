@@ -9,7 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="" method="post">
+	<form action="/phoenix/crm/process/deleteGoodsStock" method="post">
+		<input type="hidden" name="stockCode" value="${goodsStock.stockCode }">
 		<table>
 			<tr>
 				<td>
@@ -81,7 +82,6 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="submit" value="수정">
 					<input type="submit" value="삭제">
 				</td>
 			</tr>

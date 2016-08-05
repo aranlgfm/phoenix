@@ -79,4 +79,49 @@ public class GoodsStockController
 		return "/phoenix/crm/stockManagement/goodsStockDetail";
 	}
 	
+	//입고된 것 삭제 처리
+	@RequestMapping(value = "/phoenix/crm/process/deleteGoodsStock", method = RequestMethod.POST)
+	public String deleteGoodsStock(GoodsStock goodsStock,Model model) 
+	{ 
+		goodsStocdkService.deleteGoodsStock(goodsStock);
+		model.addAttribute("goodsStock", goodsStock);
+		return "redirect:/phoenix/crm/form/goodsStock";
+	}
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

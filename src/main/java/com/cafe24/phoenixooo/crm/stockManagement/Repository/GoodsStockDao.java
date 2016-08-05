@@ -13,4 +13,6 @@ public interface GoodsStockDao {
 	List<GoodsStock> selectGoodsStockList(GoodsStock goodsStock);
 	
 	int insertGoodsPayment(GoodsPayment goodsPayment);
+	
+	int deleteGoodsStock(GoodsStock goodsStock);
 }
