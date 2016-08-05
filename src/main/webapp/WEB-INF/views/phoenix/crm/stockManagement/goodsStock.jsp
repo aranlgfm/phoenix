@@ -7,11 +7,28 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="<c:url value="/webjars/jquery/3.1.0/jquery.min.js"/>"></script>
+<script>
+/* on('ready',function(){})이 왜 안되는 거지? 버전 문제인가? */
+		
+	$(document).ready(function()
+		{
+			console.log("jquery 테스트");
+			$('.insertingGoodsStockBtn').on('click',function()
+				{
+					$(".insertingGoodsStock").submit();
+				}
+			)
+		}
+	)
+	console.log("jquery 테스트");
+</script>
 </head>
 <body>
 	<!-- 입고가 되고 나면 결제 하는 시스템으로 되어 있다 -->
-	<form action="/phoenix/crm/form/insertingGoodsStock" method="post">
-		<input type="submit" value="미용용품입고등록">
+	<form class="insertingGoodsStock" action="/phoenix/crm/form/insertingGoodsStock" method="post">
+		<input class="insertingGoodsStockBtn btn btn-primary" type="button" value="미용용품입고등록">
 	</form>
 	
 	
