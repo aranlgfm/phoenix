@@ -179,7 +179,7 @@ public class BusinessManagementSettingController {
 	 * Design으로 객체를 받아서
 	 * 서비스에서 시술품목디자인(아이템상세)를 삭제하고
 	 * 받은 매개변수값을 다시 시술품목(아이템)삭제합니다.
-	 * 나중에 정사적인 방법으로 바꿀께용~~~
+	 * 나중에 정상적인 방법으로 바꿀께용~~~
 	 * @param item
 	 * @return
 	 */
