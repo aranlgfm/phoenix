@@ -9,6 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<!-- 수정 할려면 jquery  써야될 거 같은데? -->
+
 	<form action="/phoenix/crm/process/deleteGoodsStock" method="post">
 		<input type="hidden" name="stockCode" value="${goodsStock.stockCode }">
 		<table>
@@ -87,5 +89,6 @@
 			</tr>
 		</table>
 	</form>
+
 </body>
 </html>
