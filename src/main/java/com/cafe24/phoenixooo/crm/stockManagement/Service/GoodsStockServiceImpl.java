@@ -44,4 +44,10 @@ public class GoodsStockServiceImpl implements GoodsStockService{
 		// TODO Auto-generated method stub
 		return goodsStockDao.deleteGoodsStock(goodsStock);
 	}
+	
+	@Override
+	public int updateGoodsStock(GoodsStock goodsStock) {
+		// TODO Auto-generated method stub
+		return goodsStockDao.updateGoodsStock(goodsStock);
+	}
 }

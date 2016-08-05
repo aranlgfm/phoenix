@@ -88,7 +88,15 @@ public class GoodsStockController
 		return "redirect:/phoenix/crm/form/goodsStock";
 	}
 	
-	
+	//입고된 것 수정 처리
+	@RequestMapping(value = "/phoenix/crm/process/updateGoodsStock", method = RequestMethod.POST)
+	public String updateGoodsStock(GoodsStock goodsStock,Model model) 
+	{ 
+		goodsStock.setShopCode("CRM_SHOP_1");
+		goodsStocdkService.updateGoodsStock(goodsStock);
+		model.addAttribute("goodsStock", goodsStock);
+		return "redirect:/phoenix/crm/form/goodsStock";
+	}
 }
 
 
