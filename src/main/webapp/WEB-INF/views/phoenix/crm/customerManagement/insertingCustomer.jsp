@@ -12,12 +12,32 @@
 	$(document).ready(function(){
 		// 버튼 클릭 시 유효성검사
 		$('#submitBtn').click(function(){
-			if(('#customerName').val().length<2){
+			if($('#customerName').val() == ''){
 				$('#msg').html('이름넣어요');
-			}else{
-				$('#msg').html('');
+			}else if($('#').val() == ''){
+				$('#msg').html('비밀번호');
 			}
 		});
+		
+		$('#phoneNo1').keyup(function(){
+			$(this).val($(this).val().replace(/[^0-9]/g,""));
+			if($('#phoneNo1').val().length==3){
+				$('#phoneNo2').focus();
+				$('#phoneNo2').keyup(function(){
+					$(this).val($(this).val().replace(/[^0-9]/g,""));
+					if($('#phoneNo2').val().length==4){
+						$('#phoneNo3').focus();
+						$('#phoneNo3').keyup(function(){
+							$(this).val($(this).val().replace(/[^0-9]/g,""));
+							if($('#phoneNo3').val().length==4){
+								$('#employeeName').focus();
+							}
+						});
+					}
+				});
+			}
+		});
+		
 		$('#putToday').click(function(){
 			var today = '${today}';
 			var day1 = today.substring(0, 4);
@@ -50,7 +70,7 @@
 			</tr>
 			<tr>
 				<td>* 핸드폰번호</td>
-				<td><input name="customerCellphoneNumber" id="phoneNo1" type="text" size="5"/>-<input id="phoneNo2" type="text" size="5"/>-<input id="phoneNo3" type="text" size="5"/></td>
+				<td><input name="customerCellphoneNumber" id="phoneNo1" type="text" size="4"/>-<input id="phoneNo2" type="text" size="4"/>-<input id="phoneNo3" type="text" size="4"/></td>
 			</tr>
 			<tr>
 				<td>* 성별</td>
@@ -68,7 +88,7 @@
 			<tr>
 				<td>담당자</td>
 				<td>
-					<input name="employeeName" type="text"/>
+					<input name="employeeName" id="employeeName" type="text"/>
 				</td>
 			</tr>
 			<tr>
@@ -112,9 +132,9 @@
 				<td><textarea cols="70" rows="5" name="customerMemo"></textarea></td>
 			</tr>
 		</table>
-							<div id="msg"></div>
 	<input id="submitBtn" type="button" value="확인"/>
 	<a href="/phoenix/crm/customerManagement/form/customerManagement"><input type="button" value="취소"/></a>
+	<div id="msg"></div>
 	</form>
 
 </body>
