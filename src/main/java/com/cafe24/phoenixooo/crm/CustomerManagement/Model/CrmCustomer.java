@@ -2,14 +2,14 @@ package com.cafe24.phoenixooo.crm.CustomerManagement.Model;
 
 public class CrmCustomer {
 	
-	private String customerCode;
-	private String userCode;
-	private String shopCode;
-	private String customerName;
-	private String customerCellphoneNumber;
-	private int customerSexFlag;
+	private String customerCode;				// not noll
+	private String userCode;					// not noll	
+	private String shopCode;					// not noll
+	private String customerName;				// not noll
+	private String customerCellphoneNumber;		// not noll
+	private int customerSexFlag;				// not noll
 	private String customerFirstVisitDate;
-	private String customerJoinDate;
+	private String customerJoinDate;			// not noll
 	private String employeeCode;
 	private String employeeName;
 	private String customerBirthDate;
@@ -59,7 +59,11 @@ public class CrmCustomer {
 		return customerFirstVisitDate;
 	}
 	public void setCustomerFirstVisitDate(String customerFirstVisitDate) {
-		this.customerFirstVisitDate = customerFirstVisitDate;
+		if(customerFirstVisitDate == ""){
+			this.customerFirstVisitDate = null;
+		}else{
+			this.customerFirstVisitDate = customerFirstVisitDate;
+		}
 	}
 	public String getCustomerJoinDate() {
 		return customerJoinDate;
@@ -71,31 +75,51 @@ public class CrmCustomer {
 		return employeeCode;
 	}
 	public void setEmployeeCode(String employeeCode) {
-		this.employeeCode = employeeCode;
+		if(employeeCode == ""){
+			this.employeeCode = null;
+		}else{
+			this.employeeCode = employeeCode;
+		}
 	}
 	public String getEmployeeName() {
 		return employeeName;
 	}
 	public void setEmployeeName(String employeeName) {
-		this.employeeName = employeeName;
+		if(employeeName == ""){
+			this.employeeName = null;
+		}else{
+			this.employeeName = employeeName;
+		}
 	}
 	public String getCustomerBirthDate() {
 		return customerBirthDate;
 	}
 	public void setCustomerBirthDate(String customerBirthDate) {
-		this.customerBirthDate = customerBirthDate;
+		if(customerBirthDate == ""){
+			this.customerBirthDate = null;
+		}else{
+			this.customerBirthDate = customerBirthDate;
+		}
 	}
 	public String getCustomerPostNumber() {
 		return customerPostNumber;
 	}
 	public void setCustomerPostNumber(String customerPostNumber) {
-		this.customerPostNumber = customerPostNumber;
+		if(customerPostNumber == ""){
+			this.customerPostNumber = null;
+		}else{
+			this.customerPostNumber = customerPostNumber;
+		}
 	}
 	public String getCustomerAddress() {
 		return customerAddress;
 	}
 	public void setCustomerAddress(String customerAddress) {
-		this.customerAddress = customerAddress;
+		if(customerAddress == ""){
+			this.customerAddress = null;
+		}else{
+			this.customerAddress = customerAddress;
+		}
 	}
 	public String getCustomerEmailAddress() {
 		return customerEmailAddress;

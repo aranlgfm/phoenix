@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="<c:url value="/webjars/jquery/3.1.0/jquery.min.js"/>"></script>
+<!-- 다음 우편번호 api -->
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
 	$(document).ready(function(){
 		// 버튼 클릭 시 유효성검사
@@ -16,19 +18,28 @@
 				$('#msg').html('고객명을 입력해주세요.');
 			}else if($('#phoneNo1').val() == '' || $('#phoneNo2').val() == '' || $('#phoneNo3').val() == ''){
 				$('#msg').html('전화번호를 입력해주세요.');
-			}else if(!($('#flag').is(':checked'))){
-				$('#msg').html('성별을 선택해주세요.');
-			}else if($('#day1').val() == '' || $('#day2').val() == '' || $('#day3').val() == ''){
-				$('#msg').html('최초방문일을 입력해주세요.');
-			}else if($('#email').val() == ''){
-				$('#msg').html('이메일을 입력해주세요.');
-			}else if($('#phoneNo1').val() != '' && $('#phoneNo2').val() != '' && $('#phoneNo3').val() != ''){
-				$('#customerFirstVisitDate').html($('#phoneNo1').val());
-// 			}else{
-// 				$('#insertForm').submit();
+// 			}else if(!($('.flag').is(':checked'))){
+// 				$('#msg').html('성별을 선택해주세요.');
+// 			}else if(($('#day1').val() == '' || $('#day2').val() == '' || $('#day3').val() == '') || $('#selectDate').val == ''){
+// 				$('#msg').html('최초방문일을 입력해주세요.');
+// 			}else if($('#email').val() == '' || $('#mailDomain').val() == ''){
+// 				$('#msg').html('이메일을 입력해주세요.');
+// 			}else if($('#phoneNo1').val() != '' && $('#phoneNo2').val() != '' && $('#phoneNo3').val() != ''){
+			}else{
+				// 화면에 입력된 것들 합치기 전화번호 생일 등
+				$('#customerFirstVisitDate').val($('#day1').val()+'-'+$('#day2').val()+'-'+$('#day3').val());
+// 				$('#customerCellphoneNumber').val($('#phoneNo1').val()+$('#phoneNo2').val()+$('#phoneNo3').val());
+				$('#customerBirthDate').val($('#birth1').val()+'-'+$('#birth2').val()+'-'+$('#birth3').val());
+// 				if($('#daumPostAddr').val() != ''){
+// 					$('#customerAddress').val($('#daumPostAddr').val()+'^'+$('#userPutAddr').val());
+// 				}
+// 				$('#customerEmailAddress').val($('#email').val()+'@'+$('#mailDomain').val());
+// 				$('#customerAnniversaryDate').val($('#anni1').val()+'-'+$('#anni2').val()+'-'+$('#anni3').val());
+				$('#insertForm').submit();
 			}
 		});
 		
+		// 전화번호 입력시 칸 이동시키기
 		$('#phoneNo1').keyup(function(){
 			$(this).val($(this).val().replace(/[^0-9]/g,""));
 			if($('#phoneNo1').val().length==3){
@@ -48,6 +59,7 @@
 			}
 		});
 		
+		// 오늘 버튼 눌렀을 때 오늘날짜 입력되게 하기
 		$('#putToday').click(function(){
 			var today = '${today}';
 			var day1 = today.substring(0, 4);
@@ -57,12 +69,61 @@
 			$('#day2').val(day2);
 			$('#day3').val(day3);
 		});
+		
+		// 달력에서 선택했을 때 날짜 입력
+		$('#selectVisitDate').change(function(){
+			var str = $('#selectVisitDate').val();
+			var str1 = str.substring(0,4);
+			var str2 = str.substring(5,7);
+			var str3 = str.substring(8,10);
+			$('#day1').val(str1);
+			$('#day2').val(str2);
+			$('#day3').val(str3);
+		});
+		
+		// 달력에서 선택했을 때 날짜 입력
+		$('#birthDate').change(function(){
+			var birth = $('#birthDate').val();
+			var birth1 = birth.substring(0,4); 
+			var birth2 = birth.substring(5,7); 
+			var birth3 = birth.substring(8,10);
+			$('#birth1').val(birth1);
+			$('#birth2').val(birth2);
+			$('#birth3').val(birth3);
+		});
+		
+		// 우편번호찾기 후에 데이터 입력
+		$('#daumPostNo').click(function(){
+			new daum.Postcode({
+		        oncomplete: function(data) {
+		        	console.log(data);
+		        	$('#daumPostAddr').val(data.roadAddress);
+		        	$('#customerPostNumber').val(data.zonecode);
+		        }
+		    }).open();
+		});
+		
+		// 메일도메인선택시 입력
+		$('#mailSelect').change(function(){
+			$('#mailDomain').val($('#mailSelect').val());
+		});
+		
+		// 달력에서 선택했을 때 날짜 입력
+		$('#anniDate').change(function(){
+			var anni = $('#anniDate').val();
+			var anni1 = anni.substring(0,4); 
+			var anni2 = anni.substring(5,7); 
+			var anni3 = anni.substring(8,10);
+			$('#anni1').val(anni1);
+			$('#anni2').val(anni2);
+			$('#anni3').val(anni3);
+		});
+		
 	});
 </script>
 </head>
 <body>
 <c:import url="customerManagement.jsp"></c:import>
-
 <div id="all">
 	<ul class="nav nav-tabs">
 		<li><a href="/phoenix/crm/customerManagement/form/customerList">회원목록</a></li>
@@ -83,20 +144,24 @@
 			</tr>
 			<tr>
 				<td>* 핸드폰번호</td>
-				<td><input name="customerCellphoneNumber" id="phoneNo1" type="text" size="4"/>-<input id="phoneNo2" type="text" size="4"/>-<input id="phoneNo3" type="text" size="4"/></td>
+				<td>
+					<input id="customerCellphoneNumber" name="customerCellphoneNumber" type="hidden"/>
+					<input id="phoneNo1" type="text" size="4"/>-<input id="phoneNo2" type="text" size="4"/>-<input id="phoneNo3" type="text" size="4"/>
+				</td>
 			</tr>
 			<tr>
 				<td>* 성별</td>
-				<td><input id="flag" type="radio" name="customerSexFlag" value="0"/>남
-					<input id="flag" type="radio" name="customerSexFlag" value="1"/>여
+				<td><input class="flag" type="radio" name="customerSexFlag" value="0"/>남
+					<input class="flag" type="radio" name="customerSexFlag" value="1"/>여
 				</td>
 			</tr>
 			<tr>
 				<td>최초방문일</td>
 				<td>
-					<input id="customerFirstVisitDate" name="customerFirstVisitDate" type="text"/>
+					<input id="customerFirstVisitDate" name="customerFirstVisitDate" type="hidden"/>
 					<input id="day1" type="text" size="4"/>년<input id="day2" type="text" size="4"/>월<input id="day3" type="text" size="4"/>일
 					<input id="putToday" type="button" value="오늘"/>
+					<input id="selectVisitDate" type="date"/>
 				</td>
 			</tr>
 			<tr>
@@ -107,38 +172,53 @@
 			</tr>
 			<tr>
 				<td>생년월일</td>
-				<td><input name="customerBirthDate" type="text" size="4"/>년<input type="text" size="4"/>월<input type="text" size="4"/>일
-					<input type="radio" name="asdf" value="sun"/>양력
-					<input type="radio" name="asdf" value="moon"/>음력
+				<td>
+					<input id="customerBirthDate" name="customerBirthDate" type="hidden"/>
+					<input id="birth1" type="text" size="4"/>년<input id="birth2" type="text" size="4"/>월<input id="birth3" type="text" size="4"/>일
+					<input id="birthDate" type="date"/>
 				</td>
 			</tr>
 			<tr>
 				<td>우편번호</td>
-				<td><input type="text" name="customerPostNumber" size="7"/></td>
+				<td>
+					<input id="customerPostNumber" name="customerPostNumber" type="text" size="7" readonly="readonly"/>
+					<input id="daumPostNo" type="button" value="우편번호찾기"/>
+				</td>
+			</tr>
+			<tr>
+				<td>주소</td>
+				<td>
+					<input id="customerAddress" name="customerAddress" type="hidden"/>
+					<input id="daumPostAddr" type="text"/>
+				</td>
 			</tr>
 			<tr>
 				<td>상세주소</td>
-				<td><input type="text" name="customerAddress"/></td>
+				<td><input id="userPutAddr" type="text"/></td>
 			</tr>
-			
 			<tr>
 				<td>* 이메일</td>
-				<td><input id="email" type="text" name="customerEmailAddress" size="12"/>@<input type="text" size="12"/>
-				<select>
-					<option>::선 택::</option>
-					<option>gmail.com</option>
-					<option>naver.com</option>
-					<option>daum.net</option>
-					<option>yahoo.co.kr</option>
-					<option>nate.com</option>
-					<option>cafe24.com</option>
-					<option>ksmart.org</option>
-				</select>
+				<td>
+					<input id="customerEmailAddress" name="customerEmailAddress" type="hidden"/>
+					<input id="email" type="text" size="12"/>
+					@
+					<input id="mailDomain" type="text"/>
+					<select id="mailSelect">
+						<option value="">::직접입력::</option>
+						<option value="gmail.com">gmail.com</option>
+						<option value="naver.com">naver.com</option>
+						<option value="daum.net">daum.net</option>
+						<option value="yahoo.co.kr">yahoo.co.kr</option>
+						<option value="nate.com">nate.com</option>
+					</select>
 				</td>
 			</tr>
 			<tr>
 				<td>기념일</td><!-- userAnniversaryDate -->
-				<td><input name="customerAnniversaryDate" type="text" size="4"/>년<input type="text" size="4"/>월<input type="text" size="4"/>일
+				<td>
+					<input id="customerAnniversaryDate" name="customerAnniversaryDate" type="hidden"/>
+					<input id="anni1" type="text" size="4"/>년<input id="anni2" type="text" size="4"/>월<input id="anni3" type="text" size="4"/>일
+					<input id="anniDate" type="date"/>
 				</td>
 			</tr>
 			<tr>

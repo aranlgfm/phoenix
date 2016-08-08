@@ -36,7 +36,7 @@ public class CustomerController {
 	
 	@RequestMapping(value = "/phoenix/crm/customerManagement/form/customerManagement", method = RequestMethod.GET)
 	public String crmCustomerManagement(){
-		return "/phoenix/crm/customerManagement/customerManagement";
+		return "redirect:/phoenix/crm/customerManagement/form/customerList";
 	}
 	
 	
