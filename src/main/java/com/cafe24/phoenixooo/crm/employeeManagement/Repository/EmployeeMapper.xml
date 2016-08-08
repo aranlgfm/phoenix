@@ -22,11 +22,10 @@
 		VALUES
 		(
 			<!-- #{employeeCode} -->
-			'CRM_EMPLOYEE_5'
+			'CRM_EMPLOYEE_6'
 			<!-- ,#{shopCode} -->
 			,'CRM_SHOP_3'
-			<!-- ,#{employeePw} -->
-			,'2222'
+			,#{employeePw}
 			,#{employeeName}
 			,#{employeeBirthDate}
 			,#{employeeAddr}
@@ -50,11 +49,11 @@
 			,SHOP_CD as shopCode
 			,EMPLOYEE_PW as employeePw
 			,EMPLOYEE_NM as employeeName
-			<!-- ,EMPLOYEE_BIRTH_DT as employeeBirthDate -->
+			,EMPLOYEE_BIRTH_DT as employeeBirthDate
 			,EMPLOYEE_ADDR as employeeAddr
 			,EMPLOYEE_PHONE_NO as employeePhoneNo
 			,EMPLOYEE_CELLPHONE_NO as employeeCellPhoneNo
-			<!-- ,EMPLOYEE_JOIN_DT as employeeJoinDate -->
+			,EMPLOYEE_JOIN_DT as employeeJoinDate
 			,EMPLOYEE_MEMO as employeeMemo
 			,EMPLOYEE_LEVEL_NM as employeeLevelName
 		FROM
@@ -76,11 +75,11 @@
 			,SHOP_CD as shopCode
 			,EMPLOYEE_PW as employeePw
 			,EMPLOYEE_NM as employeeName
-			<!-- ,EMPLOYEE_BIRTH_DT as employeeBirthDate -->
+			,EMPLOYEE_BIRTH_DT as employeeBirthDate
 			,EMPLOYEE_ADDR as employeeAddr
 			,EMPLOYEE_PHONE_NO as employeePhoneNo
 			,EMPLOYEE_CELLPHONE_NO as employeeCellPhoneNo
-			<!-- ,EMPLOYEE_JOIN_DT as employeeJoinDate -->
+			,EMPLOYEE_JOIN_DT as employeeJoinDate
 			,EMPLOYEE_MEMO as employeeMemo
 			,EMPLOYEE_LEVEL_NM as employeeLevelName
 		FROM
@@ -94,15 +93,12 @@
 		UPDATE
 			CRM_EMPLOYEE_TB
 		SET
-			EMPLOYEE_PW=#{employeePw}
-			,EMPLOYEE_NM=#{employeeName}
-			<!-- ,EMPLOYEE_BIRTH_DT=NOW() -->
+			EMPLOYEE_LEVEL_NM=#{employeeLevelName}
+			,EMPLOYEE_PW=#{employeePw}
 			,EMPLOYEE_ADDR=#{employeeAddr}
 			,EMPLOYEE_PHONE_NO=#{employeePhoneNo}
 			,EMPLOYEE_CELLPHONE_NO=#{employeeCellPhoneNo}
-			<!-- ,EMPLOYEE_JOIN_DT=NOW() -->
 			,EMPLOYEE_MEMO=#{employeeMemo}
-			,EMPLOYEE_LEVEL_NM=#{employeeLevelName}
 		WHERE
 			EMPLOYEE_CD=#{employeeCode}
 	</update>

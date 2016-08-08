@@ -16,14 +16,14 @@
 			<td>직급</td>
 			<td>직원명</td>
 			<td>핸드폰번호</td>
-			<!-- <td>입사일</td> -->
+			<td>입사일</td>
 		</tr>
 		<c:forEach var="list" items="${employeeList}">
 			<tr>
 				<td>${list.employeeLevelName}</td>
 				<td><a href="/phoenix/crm/employeeManagement/employeeDetail?employeeCode=${list.employeeCode}">${list.employeeName}</a></td>
 				<td>${list.employeeCellPhoneNo}</td>
-				<%-- <td>${list.employeeJoinDate}</td> --%>
+				<td>${list.employeeJoinDate}</td>
 			</tr>
 		</c:forEach>
 	</table>

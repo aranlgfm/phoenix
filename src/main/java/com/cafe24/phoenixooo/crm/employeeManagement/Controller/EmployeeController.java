@@ -1,7 +1,6 @@
 package com.cafe24.phoenixooo.crm.employeeManagement.Controller;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -52,7 +51,7 @@ public class EmployeeController {
 	@RequestMapping(value="/phoenix/crm/employeeManagement/insertingEmployee", method=RequestMethod.POST)
 	public String insertEmployee(Employee employee) {
 		employeeService.insertEmployee(employee);
-		return "/phoenix/crm/employeeManagement/employeeList";
+		return "redirect:/phoenix/crm/employeeManagement/employeeList";
 	}
 	
 	/**
@@ -64,11 +63,8 @@ public class EmployeeController {
 	@RequestMapping(value="/phoenix/crm/employeeManagement/employeeDetail", method=RequestMethod.GET)
 	public String employeeDetail(Employee employee, Model model) {
 		System.out.println("직원 상세보기");
-		/*Employee employeep = new Employee();
-		employeep.setEmployeeCode(employe);*/
 		Employee employeeo = employeeService.employeeDetail(employee);
 		model.addAttribute("employee", employeeo);
-		/*model.addAttribute("employee", employee);*/
 		return "/phoenix/crm/employeeManagement/employeeDetail";
 	}
 	
@@ -81,9 +77,8 @@ public class EmployeeController {
 	@RequestMapping(value="/phoenix/crm/employeeManagement/updateEmployee", method=RequestMethod.GET)
 	public String updateEmployee(Employee employee, Model model) {
 		System.out.println("수정화면");
-		String employeeCode = employee.getEmployeeCode();
-		model.addAttribute("employeeCode", employeeCode);
-		/*model.addAttribute("employee", employee);*/
+		employee = employeeService.employeeDetail(employee);
+		model.addAttribute("employee", employee);
 		return "/phoenix/crm/employeeManagement/updateEmployee";
 	}
 	
@@ -95,8 +90,10 @@ public class EmployeeController {
 	 */
 	@RequestMapping(value="/phoenix/crm/employeeManagement/updateEmployee", method=RequestMethod.POST)
 	public String updateEmployee(Employee employee) {
+		System.out.println("수정처리");
+		employee.setEmployeeCode(employee.getEmployeeCode());
 		employeeService.updateEmployee(employee);
-		return "/phoenix/crm/employeeManagement/employeeList";
+		return "redirect:/phoenix/crm/employeeManagement/employeeList";
 	}
 	
 	/**
