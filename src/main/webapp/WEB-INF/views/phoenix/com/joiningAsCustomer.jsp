@@ -36,7 +36,7 @@
 	</style>
 </head>
 
-<body class="margin">
+<body>
 	<c:import url="../../top.jsp"></c:import>
 	<br/>
 	<br/>
