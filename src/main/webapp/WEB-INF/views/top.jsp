@@ -28,10 +28,14 @@
 	#userNick {
 		color: #ffffff;
 	}
+	#all {
+		width : 70%;
+		margin : auto;
+	}
 </style>
 </head>
 <body>
-
+<div id="all">
 	<div id="crm">
 		<a id="crm" href="/phoenix/crm/form/login">CRM로그인</a>
 		&nbsp; &nbsp;
@@ -79,6 +83,6 @@
 			
 		</div>
 	</nav>
-
+</div>
 </body>
 </html>
