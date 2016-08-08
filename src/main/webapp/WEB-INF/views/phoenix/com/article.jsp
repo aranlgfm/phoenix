@@ -14,66 +14,55 @@
 		{
 			text-align: center;
 		}
-		.articleContent
-		{
-			width:60%;
-			margin:auto;
-			text-align:center;
-			border: 1px;
-		}
-		td,th
-		{
-			text-align:center;
-		}
 		.modifyArticle
 		{
 			width:60%;
 			margin:auto;
 			text-align:right;
-		}	
-		.content
+		}		
+		#table 
 		{
-			height:500px;
-		}	
-		.firstElement
-		{
-			width:20%;
+			display: table; 
+			width: 60%;
+			margin:auto;
 		}
-		.secondElement
-		{
-			width:80%;
-		}
+		.row {display: table-row;}
+		.cell {display: table-cell; padding: 3px; border: 1px solid #DDD;}
+		.col1 { width: 20%;}
+		.col2 {width: 80%;}
+		.cell3,.cell4{height:600px;}
+		.cell3{vertical-align: middle;}
+		.cell1,.cell2,.cell3{text-align: center;}
 	</style>
 </head>
 <body>
+
 	<c:import url="../../top.jsp"></c:import>
 	
 	<br><br>
 	
-	<div class="articleContent">
-		<table class="table table-bordered">
-			<tr>
-				<td class="firstElement">제목</td>
-				<td class="secondElement">${map.article.articleName }</td>
-			</tr>
-			<tr class="content">
-				<td class="firstElement">내용</td>
-				<td class="secondElement">${map.article.articleContent }</td>
-			</tr>
-		</table>
+	<div id="table">
+		<div class="row">
+			<span class="cell col1 cell1">제목</span>
+			<span class="cell col2 cell2">${map.article.articleName }</span>
+		</div>
+		<div class="row">
+			<span class="cell col1 cell3">내용</span>
+			<span class="cell col2 cell4">${map.article.articleContent }</span>
+		</div>
 	</div>
 	
 	<div class="modifyArticle">
-		<input class="recommendBtn" type="button" value="추천">
+		<!-- <input class="recommendBtn" type="button" value="추천"> -->
 	
 		<a href="/phoenix/com/form/modifyingBasicArticle?articleCode=${map.article.articleCode }">수정</a>
+		 &nbsp; &nbsp; &nbsp;
 		<a href="/phoenix/com/process/deleteBasicArticle?articleCode=${map.article.articleCode }&boardGroupCode=${article.boardGroupCode}">삭제</a>		
 	</div>
 		
 	<div>
-		
 		<c:forEach var="imgFile" items="${map.imgFile}" >
-		<label>	[${imgFile.fileName}] 이미지 파일</label>
+			<label>	[${imgFile.fileName}] 이미지 파일</label>
 			<div> 
 				<label>imgFile download :</label>
 				<a href="${imgFile.filePath}" download="${imgFile.fileName}">${imgFile.fileName}</a>

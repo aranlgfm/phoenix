@@ -4,9 +4,12 @@
 <%@ page session="false" %>
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>댓글 리스트</title>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>댓글 리스트</title>
+	<link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="<c:url value="/webjars/jquery/3.1.0/jquery.min.js"/>"></script>
+	
 </head>
 <body>
 	

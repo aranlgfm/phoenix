@@ -18,12 +18,12 @@
 	{
 		width:60%;
 		margin:auto;
-		text-align:center;
 		border: 1px;
 	}
-	td,th
+	td
 	{
 		text-align:center;
+		vertical-align: middle;
 	}
 	.insertingArticle
 	{
@@ -38,10 +38,6 @@
 <body>
 
 	<c:import url="../../top.jsp"></c:import>
-
-	<h1 class="title">
-		기본 게시판
-	</h1>
 	
 	<br><br><br>
 	
@@ -54,10 +50,10 @@
 	<div class="basicBoardList">
 		<table class="table table-bordered">
 			<tr>
-				<th>글번호</th>
-				<th>글제목</th>
-				<th>작성시간</th>
-				<th>작성자</th>
+				<td>글번호</td>
+				<td>글제목</td>
+				<td>작성시간</td>
+				<td>작성자</td>
 			</tr>
 			<c:forEach var="list" items="${articleList}">
 				<tr>
