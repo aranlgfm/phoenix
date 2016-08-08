@@ -6,10 +6,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<style>
+	#all {
+			width : 70%;
+			margin : auto;
+		}
+</style>
 <script>
 	
 	$(document).ready(function(){
@@ -17,7 +23,7 @@
 		
 		//ID : realDay인 태그를 누르면 달력 나와서 format방식에 해당하는 data-type(String)을 value값으로 준다.
 		$(function() {
-		    $('#realDay').datepicker({	
+		    $('.realDay').datepicker({	
 		    	dateFormat : "yymmdd"
 		    });
 		});
@@ -26,25 +32,21 @@
 	
 	
 </script>
-<style>
-	#confines 
-	{
-		border-style: solid;
-    	border-width: medium;
-	}
-</style>
+
 <title>기간 검색</title>
 </head>
 <body>
-	<div id="confines">
-		<form action="/phoenix/crm/salesManagement/periodSearch" method="post">
-			<div>기간검색</div>
+<div id="all">
+	<div>
+		<form class="navbar-search pull-left" action="/phoenix/crm/salesManagement/periodSearch" method="post">
 			<div>
-				검색일자
-				<input id="realDay" type="text" value="${serverTime}" name="paymentDate">
-				<input type="submit" value="검색">
+			<strong>기간검색</strong>
+				<input class="realDay" type="text" value="${serverTime}" name="paymentDate">
+				<input class="btn" type="submit" value="검색">
 			</div>
 		</form>
+		
 	</div>
+</div>
 </body>
 </html>

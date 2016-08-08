@@ -16,8 +16,8 @@
 		width : 70%;
 		margin : auto;
 	}
-
 </style>
+
 </head>
 <body>
 <div id="all">
@@ -32,7 +32,7 @@
 				<li class="active"><a href="/phoenix/crm/customerManagement/form/customerManagement">회원관리</a></li>
 				<li class="active"><a href="/phoenix/crm/employeeManagement/employeeList">직원관리</a></li>
 				<li class="active"><a href="/phoenix/crm/stockManagement/stockManagement">매입/지출</a></li>
-				<li class="active"><a href="/phoenix/crm/salesManagement/salesManagementHome">매출관리</a></li>
+				<li class="active salesManagement"><a href="/phoenix/crm/salesManagement/salesManagementHome">매출관리</a></li>
 			</ul>
 			
 			<ul class="nav navbar-nav navbar-right">
