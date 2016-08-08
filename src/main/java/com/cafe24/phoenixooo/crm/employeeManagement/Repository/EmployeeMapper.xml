@@ -4,6 +4,9 @@
 	
 	<!-- 1. 직원 등록 -->
 	<insert id="insertEmployee" parameterType="com.cafe24.phoenixooo.crm.employeeManagement.Model.Employee">
+		<selectKey resultType="hashmap" keyProperty="employeeCode" order="BEFORE">
+			select if(isnull(EMPLOYEE_CD),'CRM_EMPLOYEE_1',concat('CRM_EMPLOYEE_',MAX(CONVERT(SUBSTRING(EMPLOYEE_CD,14),UNSIGNED))+1)) as employeeCode from CRM_EMPLOYEE_TB
+		</selectKey>
 		INSERT INTO
 			CRM_EMPLOYEE_TB
 		(
@@ -21,8 +24,7 @@
 		)
 		VALUES
 		(
-			<!-- #{employeeCode} -->
-			'CRM_EMPLOYEE_6'
+			#{employeeCode}
 			<!-- ,#{shopCode} -->
 			,'CRM_SHOP_3'
 			,#{employeePw}
