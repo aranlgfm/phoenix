@@ -16,24 +16,29 @@
 </script>
 <style>
 	a {
-		color: #000000;
+		color: #ffffff;
 	}
 	#crm {
 		float : right;
+		color : #000000;
 	}
 	#rightMenu {
 		margin : 8px 0px;
+	}
+	#userNick {
+		color: #ffffff;
 	}
 </style>
 </head>
 <body>
 
 	<div id="crm">
-		<a href="/phoenix/crm/form/login">CRM로그인</a> 
-		<a href="/phoenix/com/form/swList">CRM구매</a>
+		<a id="crm" href="/phoenix/crm/form/login">CRM로그인</a>
+		&nbsp; &nbsp;
+		<a id="crm" href="/phoenix/com/form/swList">CRM구매</a>
 	</div>
 
-	<nav class="navbar navbar-default" style="clear:both;">
+	<nav class="navbar navbar-inverse" style="clear:both;">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="/phoenix">로고</a>
@@ -53,7 +58,7 @@
 					&nbsp; &nbsp;
 					<c:choose>
 						<c:when test="${user ne null and user ne 'false'}">
-							<span>${user.userNickName}님 환영합니다.</span>
+							<span id="userNick">${user.userNickName}님 환영합니다.</span>
 							<select onchange="window.open(value, '_self');">
 								<option>MyPage</option>
 								<option value="/phoenix/com/form/userModification">회원정보수정</option>
