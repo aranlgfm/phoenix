@@ -6,17 +6,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="<c:url value="/webjars/jquery/3.1.0/jquery.min.js"/>"></script>
+<style>
+	#all {
+		width : 70%;
+		margin : auto;
+	}
+</style>
 </head>
 <body>
 <c:import url="../crmTemp.jsp"></c:import>
-
-<hr>
-
-<div>
-	<a href="/phoenix/crm/customerManagement/form/customerList">회원목록</a>
-	<a href="/phoenix/crm/customerManagement/form/insertingCustomer">회원등록</a>
-	<a href="#">회원관리설정</a>
-</div>
 
 </body>
 </html>

@@ -15,8 +15,21 @@
 	});
 </script>
 <style>
-	a {
+	.topA:link {
 		color: #ffffff;
+		text-decoration : none;
+	}
+	.topA:active {
+		color: #ffffff;
+		text-decoration : none;
+	}
+	.topA:visited {
+		color: #ffffff;
+		text-decoration : none;
+	}
+	.topA:hover {
+		color : #ffffff;
+		text-decoration: none;
 	}
 	#crm {
 		float : right;
@@ -73,9 +86,9 @@
 							<a href="/phoenix/com/process/logout"><input class="btn btn-default" type="button" value="로그아웃"/></a>
 						</c:when>
 						<c:otherwise>
-							<a class="glyphicon glyphicon-user" href="/phoenix/com/form/terms">회원가입</a>
+							<a class="topA" href="/phoenix/com/form/terms">회원가입</a>
 							&nbsp; &nbsp;
-							<a class="glyphicon glyphicon-log-in" href="/phoenix/com/form/login">로그인</a>
+							<a class="topA" href="/phoenix/com/form/login">로그인</a>
 						</c:otherwise>
 					</c:choose>
 				</form>
