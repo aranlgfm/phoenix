@@ -79,7 +79,7 @@ public class BoardController
 			System.out.println(articleCode+"<--이거 나오면 됨");
 			model.addAttribute("articleCode", articleCode);
  	 		
- 	 		return "redirect:/phoenix/com/form/basicArticle";
+ 	 		return "redirect:/phoenix/com/form/article";
 		}
 		
 		
