@@ -26,6 +26,7 @@
 </script>
 </head>
 <body>
+
 	<c:import url="../../top.jsp"></c:import>
 
 	<h1 class="title">

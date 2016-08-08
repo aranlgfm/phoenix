@@ -19,7 +19,7 @@
 		width:60%;
 		margin:auto;
 		text-align:center;
-		border: 1px;
+		border: 1px;0
 	}
 	td,th
 	{
@@ -36,6 +36,7 @@
 
 <!-- 실제 값들 가져오는 거 처리 해야함. 페이징해야되고, 글 몇개가져올지 해야되고. -->
 <body>
+
 	<c:import url="../../top.jsp"></c:import>
 
 	<h1 class="title">
