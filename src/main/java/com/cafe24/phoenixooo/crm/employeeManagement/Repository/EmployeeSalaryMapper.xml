@@ -20,10 +20,11 @@
 		)
 		VALUES
 		(
-			#{salartCode}
+			#{salaryCode}
 			<!-- ,#{shopCode} -->
 			,'CRM_SHOP_3'
-			,#{employeeCode}
+			<!-- ,#{employeeCode} -->
+			,'CRM_EMPLOYEE_1'
 			,NOW()
 			,#{salaryMonthDate}
 			,#{employeeName}
