@@ -60,6 +60,8 @@
 		<a href="/phoenix/com/process/deleteBasicArticle?articleCode=${map.article.articleCode }&boardGroupCode=${article.boardGroupCode}">삭제</a>		
 	</div>
 		
+	<br><br><br>
+		
 	<div>
 		<c:forEach var="imgFile" items="${map.imgFile}" >
 			<label>	[${imgFile.fileName}] 이미지 파일</label>
@@ -69,10 +71,14 @@
 			</div>
 		</c:forEach>	
 	</div>
-
+	
+	<br><br>
+	
 	<div>
 		<c:import url="/phoenix/com/commentList"></c:import>
 	</div>
+	
+	<br><br>
 	
 	<div>
 		<c:import url="/phoenix/com/form/comment"></c:import>
