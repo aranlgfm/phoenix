@@ -59,7 +59,7 @@ public class CrmCustomer {
 		return customerFirstVisitDate;
 	}
 	public void setCustomerFirstVisitDate(String customerFirstVisitDate) {
-		if(customerFirstVisitDate == ""){
+		if(customerFirstVisitDate.length() < 4){
 			this.customerFirstVisitDate = null;
 		}else{
 			this.customerFirstVisitDate = customerFirstVisitDate;
@@ -75,7 +75,7 @@ public class CrmCustomer {
 		return employeeCode;
 	}
 	public void setEmployeeCode(String employeeCode) {
-		if(employeeCode == ""){
+		if(employeeCode.length() < 1){
 			this.employeeCode = null;
 		}else{
 			this.employeeCode = employeeCode;
@@ -85,7 +85,7 @@ public class CrmCustomer {
 		return employeeName;
 	}
 	public void setEmployeeName(String employeeName) {
-		if(employeeName == ""){
+		if(employeeName.length() < 1){
 			this.employeeName = null;
 		}else{
 			this.employeeName = employeeName;
@@ -95,8 +95,9 @@ public class CrmCustomer {
 		return customerBirthDate;
 	}
 	public void setCustomerBirthDate(String customerBirthDate) {
-		if(customerBirthDate == ""){
+		if(customerBirthDate.length() < 4){
 			this.customerBirthDate = null;
+			System.out.println("아 왜...ㅠㅠㅠ");
 		}else{
 			this.customerBirthDate = customerBirthDate;
 		}
@@ -105,7 +106,7 @@ public class CrmCustomer {
 		return customerPostNumber;
 	}
 	public void setCustomerPostNumber(String customerPostNumber) {
-		if(customerPostNumber == ""){
+		if(customerPostNumber.length() < 4){
 			this.customerPostNumber = null;
 		}else{
 			this.customerPostNumber = customerPostNumber;
@@ -115,7 +116,7 @@ public class CrmCustomer {
 		return customerAddress;
 	}
 	public void setCustomerAddress(String customerAddress) {
-		if(customerAddress == ""){
+		if(customerAddress.length() < 4){
 			this.customerAddress = null;
 		}else{
 			this.customerAddress = customerAddress;
@@ -125,13 +126,21 @@ public class CrmCustomer {
 		return customerEmailAddress;
 	}
 	public void setCustomerEmailAddress(String customerEmailAddress) {
-		this.customerEmailAddress = customerEmailAddress;
+		if(customerEmailAddress.length() < 4){
+			this.customerEmailAddress = null;
+		}else{
+			this.customerEmailAddress = customerEmailAddress;
+		}
 	}
 	public String getCustomerAnniversaryDate() {
 		return customerAnniversaryDate;
 	}
 	public void setCustomerAnniversaryDate(String customerAnniversaryDate) {
-		this.customerAnniversaryDate = customerAnniversaryDate;
+		if(customerAnniversaryDate.length() < 4){
+			this.customerAnniversaryDate = null;
+		}else{
+			this.customerAnniversaryDate = customerAnniversaryDate;
+		}
 	}
 	public String getCustomerMemo() {
 		return customerMemo;

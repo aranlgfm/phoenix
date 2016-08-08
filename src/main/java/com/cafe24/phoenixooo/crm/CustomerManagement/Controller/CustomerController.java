@@ -64,7 +64,7 @@ public class CustomerController {
 		UserCustomer user = (UserCustomer)session.getAttribute("user");
 		customer.setShopCode(user.getShopCode());
 		customerService.insertCustomer(customer);
-		return "/phoenix/crm/customerManagement/customerManagement";
+		return "redirect:/phoenix/crm/customerManagement/form/customerList";
 	}
 	
 	/**
