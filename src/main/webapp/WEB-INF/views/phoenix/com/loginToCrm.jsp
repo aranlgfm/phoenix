@@ -7,38 +7,94 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>/com/form/login</title>
+<link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
+<style>
+	.allLeft 
+	{
+		margin-left: -100px;
+	}
+	.textCenter{
+		text-align: center;
+		margin-top: 250px;
+		
+	}
+	.textRight{
+		text-align: right;
+	}
+	.title{
+		font-size: 30px;
+		font-weight: bolder;
+	}
+	
+		div.center { 
+			
+ 		width:300px; 
+ 		margin:auto;
+ 		
+		}
+		
+		.centerT{
+			position:absolute;
+			width:300px; 
+ 		margin:auto;
+ 		text-align: center;
+		}
+
+</style>
 </head>
 <body>
-	<h1>
-		로그인
-	</h1>
-		<c:if test="${user eq 'false'}">
-			<h3 style="color: red;">해킹감지</h3>
-		</c:if>
-	<form action="/phoenix/crm/process/login" method="POST">
-		<div>
-			<label>미용실코드 : </label>
-			<input type="text" name="shopCode"/>
-		</div>
-		<div>
-			<label>아이디 : </label>
-			<input type="text" name="userId"/>
-		</div>
-		
-		<div>
-			<label>비밀번호 : </label>
-			<input type="password" name="userPw"/>
-		</div>
-		
-		<div>
-			<input type="submit" value="로그인"/>
-			<a href="/phoenix"><input type="button" value="취소"/></a>
-		</div>
-	</form>
+<div class="allLeft">
 	<div>
-		<a href="/phoenix/com/form/findingId">아이디 찾기</a>
-		<a href="/phoenix/com/form/findingPw">비밀번호 찾기</a>
+		<div class="textCenter title">
+			로그인
+		</div>
+		
+		<br>
+			<c:if test="${user eq 'false'}">
+				<h3 style="color: red;">해킹감지</h3>
+			</c:if>
+		<div class="center"> 
+			<form class="form-horizontal" action="/phoenix/crm/process/login" method="POST">
+				<div class="form-group">
+					<label class="control-label col-sm-4">미용실코드 : </label>
+					<div class="col-sm-8">
+						<input class="form-control" type="text" name="shopCode"/>
+					</div>
+				</div>
+	
+				<div class="form-group">	
+					<label class="control-label col-sm-4">아이디 : </label>
+					<div class="col-sm-8">
+						<input class="form-control" type="text" name="userId"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-4">비밀번호 : </label>
+					<div class="col-sm-8">
+						<input class="form-control" type="password" name="userPw"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-4"></label>
+					<div class="col-sm-8">
+						<button class="btn btn-default" type="submit">로그인</button>
+						<a class="btn btn-default" href="/phoenix">취소</a>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-4"></label>
+					<div class="col-sm-8">
+						<a href="/phoenix/com/form/findingId">아이디 찾기</a>
+						/
+						<a href="/phoenix/com/form/findingPw">비밀번호 찾기</a>
+					</div>
+				</div>
+			</form>
+		</div>
 	</div>
-
+</div>
 </body>
 </html>
