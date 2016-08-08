@@ -13,9 +13,19 @@
 		// 버튼 클릭 시 유효성검사
 		$('#submitBtn').click(function(){
 			if($('#customerName').val() == ''){
-				$('#msg').html('이름넣어요');
-			}else if($('#').val() == ''){
-				$('#msg').html('비밀번호');
+				$('#msg').html('고객명을 입력해주세요.');
+			}else if($('#phoneNo1').val() == '' || $('#phoneNo2').val() == '' || $('#phoneNo3').val() == ''){
+				$('#msg').html('전화번호를 입력해주세요.');
+			}else if(!($('#flag').is(':checked'))){
+				$('#msg').html('성별을 선택해주세요.');
+			}else if($('#day1').val() == '' || $('#day2').val() == '' || $('#day3').val() == ''){
+				$('#msg').html('최초방문일을 입력해주세요.');
+			}else if($('#email').val() == ''){
+				$('#msg').html('이메일을 입력해주세요.');
+			}else if($('#phoneNo1').val() != '' && $('#phoneNo2').val() != '' && $('#phoneNo3').val() != ''){
+				$('#customerFirstVisitDate').html($('#phoneNo1').val());
+// 			}else{
+// 				$('#insertForm').submit();
 			}
 		});
 		
@@ -53,11 +63,14 @@
 <body>
 <c:import url="customerManagement.jsp"></c:import>
 
-<h1>
-	고객등록화면  
-</h1>
+<div id="all">
+	<ul class="nav nav-tabs">
+		<li><a href="/phoenix/crm/customerManagement/form/customerList">회원목록</a></li>
+		<li class="active"><a href="/phoenix/crm/customerManagement/form/insertingCustomer">회원등록</a></li>
+		<li><a href="#">회원관리설정</a></li>
+	</ul>
 
-	<form action="/phoenix/crm/customerManagement/process/insertCustomer" method="POST">
+	<form id="insertForm" action="/phoenix/crm/customerManagement/process/insertCustomer" method="POST">
 		<table>
 			<tr>
 				<th>Filed</th>
@@ -74,14 +87,15 @@
 			</tr>
 			<tr>
 				<td>* 성별</td>
-				<td><input type="radio" name="customerSexFlag" value="0"/>남
-					<input type="radio" name="customerSexFlag" value="1"/>여
+				<td><input id="flag" type="radio" name="customerSexFlag" value="0"/>남
+					<input id="flag" type="radio" name="customerSexFlag" value="1"/>여
 				</td>
 			</tr>
 			<tr>
 				<td>최초방문일</td>
 				<td>
-					<input name="customerFirstVisitDate" id="day1" type="text" size="4"/>년<input id="day2" type="text" size="4"/>월<input id="day3" type="text" size="4"/>일
+					<input id="customerFirstVisitDate" name="customerFirstVisitDate" type="text"/>
+					<input id="day1" type="text" size="4"/>년<input id="day2" type="text" size="4"/>월<input id="day3" type="text" size="4"/>일
 					<input id="putToday" type="button" value="오늘"/>
 				</td>
 			</tr>
@@ -109,7 +123,7 @@
 			
 			<tr>
 				<td>* 이메일</td>
-				<td><input type="text" name="customerEmailAddress" size="12"/>@<input type="text" size="12"/>
+				<td><input id="email" type="text" name="customerEmailAddress" size="12"/>@<input type="text" size="12"/>
 				<select>
 					<option>::선 택::</option>
 					<option>gmail.com</option>
@@ -136,6 +150,6 @@
 	<a href="/phoenix/crm/customerManagement/form/customerManagement"><input type="button" value="취소"/></a>
 	<div id="msg"></div>
 	</form>
-
+</div>
 </body>
 </html>

@@ -11,10 +11,16 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>/phoenix</title>
 <style>
+	#all 
+	{
+		width : 70%;
+		margin : auto;
+	}
 
 </style>
 </head>
 <body>
+<div id="all">
 	<nav class="navbar navbar-inverse">	
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -60,5 +66,6 @@
 				</c:choose> --%>
 		</div>
 	</nav>
+</div>
 </body>
 </html>
