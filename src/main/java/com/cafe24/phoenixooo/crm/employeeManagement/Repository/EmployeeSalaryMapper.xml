@@ -1,4 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cafe24.phoenixooo.crm.employeeManagement.Repository.EmployeeSalaryMapper">
+
+	<!-- 1. 급여지급 등록 -->
+	<insert id="insertEmployeeSalary" parameterType="com.cafe24.phoenixooo.crm.employeeManagement.Model.EmployeeSalary">
+	<selectKey resultType="hashmap" keyProperty="employeeCode" order="BEFORE">
+		select if(isnull(SALARY_CD),'CRM_SALARY_1',concat('CRM_SALARY_',MAX(CONVERT(SUBSTRING(SALARY_CD,11),UNSIGNED))+1)) as salaryCode from CRM_SALARY_TB
+	</selectKey>
+		INSERT INTO
+			CRM_SALARY_TB
+		(
+			SALARY_CD
+			,SHOP_CD
+			,EMPLOYEE_CD
+			,SALARY_PAY_DT
+			,SALARY_MONTH_DT
+			,EMPLOYEE_NM
+			,SALARY_WON
+		)
+		VALUES
+		(
+			#{salartCode}
+			<!-- ,#{shopCode} -->
+			,'CRM_SHOP_3'
+			,#{employeeCode}
+			,NOW()
+			,#{salaryMonthDate}
+			,#{employeeName}
+			,#{salaryWon}
+		)
+	</insert>
+
+	<!-- 2. 전체 컬럼수 구하기 -->
+	<select id="selectTotalCount" resultType="Integer">
+		SELECT COUNT(*) FROM CRM_SALARY_TB
+	</select>
+	
+	<!-- 3. 직원 리스트 -->
+	<select id="selectEmployeeSalaryList" parameterType="java.util.Map" resultType="com.cafe24.phoenixooo.crm.employeeManagement.Model.EmployeeSalary">
+		SELECT	
+			SALARY_CD as salaryCode
+			,SHOP_CD as shopCode
+			,EMPLOYEE_CD as employeeCode
+			,SALARY_PAY_DT as salaryPayCode
+			,SALARY_MONTH_DT as salaryMonthCode
+			,EMPLOYEE_NM as employeeName
+			,SALARY_WON as salaryWon
+		FROM
+			CRM_SALARY_TB
+		<where>
+			<if test="word != null">
+				EMPLOYEE_NM like CONCAT('%',#{word},'%')
+			</if>
+		</where>
+		ORDER BY SALARY_CD DESC
+		LIMIT #{pageHelper.startRow}, #{pageHelper.linePerPage}
+	</select>
+
 </mapper>

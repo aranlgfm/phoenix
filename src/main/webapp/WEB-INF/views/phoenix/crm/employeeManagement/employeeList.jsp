@@ -10,6 +10,7 @@
 	<h1>직원 리스트 페이지</h1>
 	
 	<a href="/phoenix/crm/employeeManagement/insertingEmployee">직원 입력</a>
+	<a href="/phoenix/crm/employeeManagement/employeeSalaryList">급여지급 리스트</a>
 	
 	<table border="1">
 		<tr>
