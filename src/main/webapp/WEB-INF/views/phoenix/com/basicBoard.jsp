@@ -19,7 +19,7 @@
 		width:60%;
 		margin:auto;
 		text-align:center;
-		border: 1px;0
+		border: 1px;
 	}
 	td,th
 	{
