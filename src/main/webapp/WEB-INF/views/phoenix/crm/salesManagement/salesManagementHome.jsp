@@ -54,12 +54,12 @@
 	</ul>
 	</div>
 </div>	
-<p></p>
-<p></p>	
+<br>
+<br>
 	<div>
 		<c:import url="/phoenix/crm/salesManagement/periodSearch"></c:import>
 	</div>
+	<br>
 	
-
 </body>
 </html>

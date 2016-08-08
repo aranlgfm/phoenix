@@ -6,21 +6,32 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<style>
+	#all {
+			width : 70%;
+			margin : auto;
+		}
+</style>
 <script>
 	
 </script>
-<style>
-	#confines, #procsl, #prodsl, #totalMoney, table, tr,th,td
-	{
-		border-style: solid;
-    	border-width: medium;
-	}
-</style>
+
 <body>
-	<h1>기간별 매출 내역</h1>
-	<div id="confines">
+	<div>
+		<c:import url="../crmTemp.jsp"></c:import>
+	</div>
+	
+	
+<div id="all">
+	
+	<h3>기간별 매출 내역</h3>
+	<div>
 		<div>${SalesInfo.paymentDate} 시술 매출 내역</div>
-		<table id="procsl">
+		<table class="table table-striped">
 			<tr>
 				<th>품목</th>
 				<th>현금/(건)</th>
@@ -39,6 +50,7 @@
 				<td>
 					<c:if test="${list.paymentTypeGb eq '카드'}"><span id="sumCard">${list.totalMoney}</span>/(${list.totalCount})</c:if>
 				</td>
+				
 			</tr>
 			
 			</c:forEach>
@@ -52,9 +64,10 @@
 	
 	</div>
 	
-	<div id="totalMoney">
+	<strong>
 		최종결산 금액
-	</div>
+	</strong>
 	
+</div>
 </body>
 </html>
