@@ -1,92 +1,96 @@
 package com.cafe24.phoenixooo.crm.businessManagement.Model;
 
-import com.cafe24.phoenixooo.community.Model.UserCustomer;
-import com.cafe24.phoenixooo.crm.employeeManagement.Model.Employee;
+import com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer;
 
 /**
- * 이번에는 다른방식으로 해봐야지~~
+ * 이번에는 다른방식으로 해봐야지는 개뿔
+ * 포기.
  * @author 201-04
  *
  */
-public class ProcedurePayment {
+public class ProcedurePayment extends CrmCustomer{
 
 	private String paymentCode;
+	private String itemDesignCode;
+	private String itemDesignName;
+	private String paymentTypeCode; //결제방법
 	private int paymentTotalPrice; //최종가격
 	private String paymentDate; // 시술일
 	private String paymentMemo; // 시술메모
-	private String paymentTypeCode; //결제방법
 	
-	private ProcedureItemDesign itemDesign;
-		/*
-		 * 샾코드
-		 * 샾이름
-		 * 시술디자인명
-		 * 
-		 */
-	private Employee employee;
-		/*
-		 * 담당자이름 
-		 */
-	private UserCustomer user;
-		/*
-		 * 유저이름
-		 * 
-		 */
-	
-	ProcedurePayment(){
-		this.itemDesign = new ProcedureItemDesign();
-		this.employee = new Employee();
-		this.user = new UserCustomer();
-	}
-	
+	//추가한것;;
+	private int totalPayment; // 카운터를.. 담아야한다..;;
+
 	public String getPaymentCode() {
 		return paymentCode;
 	}
+
 	public void setPaymentCode(String paymentCode) {
 		this.paymentCode = paymentCode;
 	}
-	public int getPaymentTotalPrice() {
-		return paymentTotalPrice;
+
+	public String getItemDesignCode() {
+		return itemDesignCode;
 	}
-	public void setPaymentTotalPrice(int paymentTotalPrice) {
-		this.paymentTotalPrice = paymentTotalPrice;
+
+	public void setItemDesignCode(String itemDesignCode) {
+		this.itemDesignCode = itemDesignCode;
 	}
-	public String getPaymentDate() {
-		return paymentDate;
+
+	public String getItemDesignName() {
+		return itemDesignName;
 	}
-	public void setPaymentDate(String paymentDate) {
-		this.paymentDate = paymentDate;
+
+	public void setItemDesignName(String itemDesignName) {
+		this.itemDesignName = itemDesignName;
 	}
+
 	public String getPaymentTypeCode() {
 		return paymentTypeCode;
 	}
+
 	public void setPaymentTypeCode(String paymentTypeCode) {
 		this.paymentTypeCode = paymentTypeCode;
 	}
-	public ProcedureItemDesign getItemDesign() {
-		return itemDesign;
+
+	public int getPaymentTotalPrice() {
+		return paymentTotalPrice;
 	}
-	public void setItemDesign(ProcedureItemDesign itemDesign) {
-		this.itemDesign = itemDesign;
+
+	public void setPaymentTotalPrice(int paymentTotalPrice) {
+		this.paymentTotalPrice = paymentTotalPrice;
 	}
-	public Employee getEmployee() {
-		return employee;
+
+	public String getPaymentDate() {
+		return paymentDate;
 	}
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
+
+	public void setPaymentDate(String paymentDate) {
+		this.paymentDate = paymentDate;
 	}
-	public UserCustomer getUser() {
-		return user;
+
+	public String getPaymentMemo() {
+		return paymentMemo;
 	}
-	public void setUser(UserCustomer user) {
-		this.user = user;
+
+	public void setPaymentMemo(String paymentMemo) {
+		this.paymentMemo = paymentMemo;
+	}
+
+	public int getTotalPayment() {
+		return totalPayment;
+	}
+
+	public void setTotalPayment(int totalPayment) {
+		this.totalPayment = totalPayment;
 	}
 
 	@Override
 	public String toString() {
-		return "ProcedurePayment [paymentCode=" + paymentCode + ", paymentTotalPrice=" + paymentTotalPrice
-				+ ", paymentDate=" + paymentDate + ", paymentMemo=" + paymentMemo + ", paymentTypeCode="
-				+ paymentTypeCode + ", itemDesign=" + itemDesign + ", employee=" + employee + ", user=" + user + "]";
+		return "ProcedurePayment [paymentCode=" + paymentCode + ", itemDesignCode=" + itemDesignCode
+				+ ", itemDesignName=" + itemDesignName + ", paymentTypeCode=" + paymentTypeCode + ", paymentTotalPrice="
+				+ paymentTotalPrice + ", paymentDate=" + paymentDate + ", paymentMemo=" + paymentMemo
+				+ ", totalPayment=" + totalPayment + "]";
 	}
 
 	

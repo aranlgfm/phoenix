@@ -2,21 +2,81 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cafe24.phoenixooo.crm.businessManagement.Repository.ProcedureMapper">
 	
-	
-	<select id="getCustomerList" parameterType="java.lang.String" resultType="com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer">
-		SELECT 
-			CUSTOMER_CD as customerCode
-			,USER_CD as userCode
-			,CUSTOMER_NM as customerName
-			,CUSTOMER_CELLPHONE_NO as customerCellphoneNumber
-			,EMPLOYEE_CD as employeeCode
-			,EMPLOYEE_NM as employeeName
-		FROM 
-			CRM_CUSTOMER_TB 
-		WHERE SHOP_CD=#{value}
-		ORDER BY 
-			CUSTOMER_JOIN_DT DESC
+	<!-- 회원리스트 -->
+	<select id="getCustomerList" parameterType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedurePayment" resultType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedurePayment">
+		SELECT
+			C.CUSTOMER_CD AS customerCode
+			,C.CUSTOMER_NM AS customerName
+			,C.CUSTOMER_SEX_FL AS customerSexFlag
+			,C.EMPLOYEE_NM AS employeeName
+			,C.CUSTOMER_CELLPHONE_NO AS customerCellphoneNumber
+			,(SELECT COUNT(*) FROM CRM_PAYMENT_TB  WHERE CUSTOMER_CD = C.CUSTOMER_CD) AS totalPayment
+			,(SELECT MAX(PAYMENT_DT) FROM CRM_PAYMENT_TB  WHERE CUSTOMER_CD = C.CUSTOMER_CD) AS paymentDate 
+		FROM
+			CRM_CUSTOMER_TB AS C
+		WHERE
+			C.SHOP_CD = #{shopCode}
+		ORDER BY
+			C.CUSTOMER_CD ASC
+			<!-- 코드번호 CUSTOMER_CD
+				회원명 CUSTOMER_NM 
+				담당자 EMPLOYEE_NM
+				총시술 (SELECT COUNT(*) FROM crm_payment_tb  WHERE CUSTOMER_CD = C.CUSTOMER_CD) 
+			 -->		
 	</select>
+	
+	<!-- 시술내역 리스트 가져오기 -->
+	<select id="getPaymentList" parameterType="java.util.Map" resultType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedurePayment">
+		<!--
+			before이걸로 셀렉을 가져올 수 있는데 이걸로 해야할까?
+			뭘로 해야할까?? 뭐가 더 효율적이지??
+			어차피 토탈카운트면 다 효율적이지도 않는데 뭐할라고 토탈을 하지??
+			com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedurePayment
+			com.cafe24.phoenixooo.crm.businessManagement.Model.PageHelper
+		  -->
+		SELECT
+			PAYMENT_CD AS paymentCode
+			,CUSTOMER_CD AS customerCode
+			,PAYMENT_DT AS paymentDate
+			,ITEMDESIGN_NM AS itemDesignName
+			,PAYMENT_TOTAL_WON AS paymentTotalPrice
+			,CUSTOMER_NM AS customerName
+			,EMPLOYEE_NM AS employeeName
+			,PAYMENT_MEMO AS paymentMemo
+		FROM
+			CRM_PAYMENT_TB
+		WHERE
+			SHOP_CD = #{shopCode}
+			
+			<if test="pageHelper.searchKeyword != null and searchKeyword != ''">
+			AND
+				ITEMDESIGN_NM LIKE CONCAT('%',#{pageHelper.searchKeyword},'%')		
+			</if>
+			
+			
+		ORDER BY
+			<if test="pageHelper.arrayKeyword == null or arrayKeword == ''">
+				PAYMENT_DT DESC
+			</if>
+			<if test="pageHelper.arrayKeyword != null and arrayKeword != ''">
+				${pageHelper.arrayKeyword} DESC
+			</if>
+		LIMIT
+			#{pageHelper.recordStartNo}, #{pageHelper.pagePerRecordSize}
+	</select>
+	
+	<!-- 전체 레코드 수를 알아야 하지 않니?? -->
+	<select id="selectTotalCount" parameterType="com.cafe24.phoenixooo.crm.businessManagement.Model.RequestPageHelper" resultType="int">
+        SELECT 
+        COUNT(*) 
+        FROM 
+        	CRM_PAYMENT_TB
+        <if test="searchKeyword != null and searchKeyword != ''">
+		WHERE
+			ITEMDESIGN_NM LIKE CONCAT('%',#{searchKeyword},'%')		
+		</if>	
+    </select>
+	
 	
 	
 	
@@ -86,4 +146,47 @@
 			)
 	</insert>
 	
+	
+	
+	<!-- 시술내역 하나 선택.;; -->
+	<select id="selectProcedurePayment" parameterType="java.lang.String" resultType="com.cafe24.phoenixooo.crm.businessManagement.Model.RequestProcedurePayment">
+		SELECT
+			SHOP_CD as shopCode
+			,PAYMENT_CD AS paymentCode
+			,EMPLOYEE_CD as employeeCode
+			,ITEMDESIGN_CD itemDesignCode
+			,(SELECT ITEM_CD FROM CRM_ITEM_DESIGN_TB WHERE ITEMDESIGN_CD = P.ITEMDESIGN_CD) as itemCode 
+			,(SELECT PAYMENT_TYPE_CD FROM CRM_PAYMENT_TYPE_TB WHERE PAYMENT_TYPE_GB = P.PAYMENT_TYPE_GB)
+			,PAYMENT_TOTAL_WON
+			,PAYMENT_MEMO as paymentMemo
+		FROM
+			CRM_PAYMENT_TB AS P
+		WHERE
+			PAYMENT_CD = #{value}	
+	</select>	
+	
+	
+	<update id="modifyProcedurePayment" parameterType="com.cafe24.phoenixooo.crm.businessManagement.Model.RequestProcedurePayment">
+		UPDATE
+			CRM_PAYMENT_TB
+		SET	
+			EMPLOYEE_CD = #{employeeCode}
+			,ITEMDESIGN_CD = #{itemDesignCode}
+			,EMPLOYEE_NM = (SELECT EMPLOYEE_NM FROM CRM_EMPLOYEE_TB WHERE EMPLOYEE_CD = #{employeeCode})
+			,ITEMDESIGN_NM = (SELECT ITEMDESIGN_NM FROM CRM_ITEM_DESIGN_TB WHERE ITEMDESIGN_CD = #{itemDesignCode}) 
+			,PAYMENT_TYPE_GB = (SELECT PAYMENT_TYPE_GB FROM CRM_PAYMENT_TYPE_TB WHERE PAYMENT_TYPE_CD = #{paymentTypeCode})
+			,PAYMENT_TOTAL_WON = #{paymentTotalPrice}
+			,PAYMENT_DT = #{paymentDate}
+			,PAYMENT_MEMO = #{paymentMemo}
+		WHERE
+			PAYMENT_CD = #{paymentCode}		
+	</update>
+	
+	<delete id="deleteProcedurePayment" parameterType="java.lang.String">
+		DELETE
+		FROM
+			CRM_PAYMENT_TB
+		WHERE
+			PAYMENT_CD = #{value}	
+	</delete>
 </mapper>

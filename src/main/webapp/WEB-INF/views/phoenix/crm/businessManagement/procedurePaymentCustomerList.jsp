@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page session="true"%>
 <!DOCTYPE html>
 <html>
@@ -26,7 +28,6 @@
 <body>
 <!-- test -->
 	<c:set var="shopCode" value="CRM_SHOP_1" scope="session"/>
-	<c:set var="customerCode" value="CRM_CUSTOMER_1" scope="session"/>
 <!-- test -->
 
 	<c:import url="businessManagementTemp.jsp"></c:import>
@@ -50,7 +51,7 @@
 		<div style="border: 1px double;">
 			<div style="background-color: gray;">회원검색결과</div>
 			<form action="" method="POST">
-			<input type="hidden" name="shopCode" value="${sessionScope.shopCode}" size="10"/>
+			<input type="hidden" name="shopCode" value="${sessionScope.shopCode}"/>
 				<div>
 					<table>
 						<tr>
@@ -60,20 +61,30 @@
 							<th>최근방문일</th>
 							<th>총시술</th>
 							<th>휴대폰</th>
-							<th>메모</th>
 							<th>관리</th>
 						</tr>
 						<c:forEach var="list" items="${list}">
 							<tr>
-								<td>${list.customerCode}</td>
-								<td>${list.customerName}</td>
+								<td>
+									${fn:substring(list.customerCode,13,fn:length(list.customerCode))}
+								</td>
+								<td>
+									${list.customerName}
+									<c:choose>
+										<c:when test="${list.customerSexFlag > 0}">[여]</c:when>
+										<c:otherwise>[남]</c:otherwise>
+									</c:choose>
+								</td>
 								<td>${list.employeeName}</td>
-								<td>${list.customerJoinDate}</td>
-								<td>${list.customerCode}</td>
+								<td>
+									${list.paymentDate}
+								</td>
+								<td>
+									<c:if test="${list.totalPayment > 0}">총${list.totalPayment}회</c:if>
+									<c:if test="${list.totalPayment == 0}">&nbsp;-&nbsp;</c:if>
+								</td>
 								<td>${list.customerCellphoneNumber}</td>
-								<td>1회</td>	
-								<td>${list.customerMemo}</td>	
-								<td><a href="/phoenix/crm/form/insertProcedurePayment">등록</a></td>	
+								<td><a href="/phoenix/crm/form/insertProcedurePayment?customerCode=${list.customerCode}">등록</a></td>	
 							</tr>
 						</c:forEach>
 					</table>

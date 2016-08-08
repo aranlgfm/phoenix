@@ -13,7 +13,7 @@
 	<c:import url="../crmTemp.jsp"></c:import>
 	<hr>
 	<a href="/phoenix/crm/form/procedurePaymentCustomerList">시술내역등록</a>
-	<a href="">시술내역</a>
+	<a href="/phoenix/crm/form/ProcedurePaymentList">시술내역</a>
 	<a href="">제품판매등록</a>
 	<a href="">제품판매내역</a>
 	<a href="/phoenix/crm/form/businessManagementSetting">영업관리설정</a>
