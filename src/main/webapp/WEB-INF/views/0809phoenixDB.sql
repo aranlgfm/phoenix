@@ -3,7 +3,7 @@
 # Server version:               5.5.17-log
 # Server OS:                    Linux
 # HeidiSQL version:             6.0.0.3603
-# Date/time:                    2016-08-05 15:59:42
+# Date/time:                    2016-08-09 09:02:03
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -47,9 +47,12 @@ CREATE TABLE IF NOT EXISTS `COM_ARTICLE_TB` (
   PRIMARY KEY (`ARTICLE_CD`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='게시글\n\nARTICLE_DT\nARTICLE_IP\n';
 
-# Dumping data for table phoenixooo.COM_ARTICLE_TB: 34 rows
+# Dumping data for table phoenixooo.COM_ARTICLE_TB: 41 rows
 /*!40000 ALTER TABLE `COM_ARTICLE_TB` DISABLE KEYS */;
 INSERT INTO `COM_ARTICLE_TB` (`ARTICLE_CD`, `USER_CD`, `BOARDGROUP_CD`, `ARTICLE_NM`, `ARTICLE_CTT`, `ARTICLE_DT`, `ARTICLE_IP`) VALUES
+	('COM_ARTICLE_40', 'COM_USER_4', 'COM_BOARDGROUP_3', '이건 다운되냐', '이건 다운되냐이건 다운되냐이건 다운되냐이건 다운되냐이건 다운되냐', '2016-08-08 16:38:03', '안되는건가?'),
+	('COM_ARTICLE_38', 'COM_USER_4', 'COM_BOARDGROUP_3', '한글sdfsdafasdfsdf', '내용 안바뀌는데', '2016-08-08 16:35:02', '안되는건가?'),
+	('COM_ARTICLE_39', 'COM_USER_4', 'COM_BOARDGROUP_3', 'asdfasdfa', 'sdfasdfasdf', '2016-08-08 16:36:39', '안되는건가?'),
 	('COM_ARTICLE_33', 'COM_USER_4', 'COM_BOARDGROUP_3', 'asdgadsgads', 'gadgadgag', '2016-08-02 15:55:25', '안되는건가?'),
 	('COM_ARTICLE_34', 'COM_USER_4', 'COM_BOARDGROUP_3', 'adfgadf', 'gadfgadg', '2016-08-02 17:36:42', '안되는건가?'),
 	('COM_ARTICLE_32', 'COM_USER_4', 'COM_BOARDGROUP_3', 'asdgadsgads', 'gadgadgag', '2016-08-02 15:54:57', '안되는건가?'),
@@ -74,15 +77,20 @@ INSERT INTO `COM_ARTICLE_TB` (`ARTICLE_CD`, `USER_CD`, `BOARDGROUP_CD`, `ARTICLE
 	('COM_ARTICLE_13', 'COM_USER_4', 'COM_BOARDGROUP_3', 'ㅁㅇㄹㄶㅁㅇㅀㅁㅇ', 'ㅎㅁㅇㄶㅁㄴㅇㅎ', '2016-08-02 14:58:59', '안되는건가?'),
 	('COM_ARTICLE_12', 'COM_USER_4', 'COM_BOARDGROUP_3', 'ㅁㅇㅀㅁㅇㄹ', 'ㅎㅁㄴㅇㅎㅁㄴㅇ', '2016-08-02 14:57:30', '안되는건가?'),
 	('COM_ARTICLE_11', 'COM_USER_4', 'COM_BOARDGROUP_3', '이ㅏㅓ민아런', 'ㅇ미ㅏㄴ러ㅣㅁ나얼', '2016-08-02 14:55:34', '안되는건가?'),
+	('COM_ARTICLE_36', 'COM_USER_4', 'COM_BOARDGROUP_3', '글써지냐', 'ㅇㄴㅁㅇㄻㄴㅇ', '2016-08-08 10:41:11', '안되는건가?'),
 	('COM_ARTICLE_10', 'COM_USER_4', 'COM_BOARDGROUP_3', '이제 오토된다', '야호', '2016-08-02 14:55:12', '안되는건가?'),
-	('COM_ARTICLE_9', 'COM_USER_4', 'COM_BOARDGROUP_3', 'fglskdjfgklsd', 'sfhsfghdfgj', '2016-08-02 14:49:28', '안되는건가?'),
+	('COM_ARTICLE_37', 'COM_USER_4', 'COM_BOARDGROUP_3', '머리를 어떻게 해야될지 모르겟어요', '내 머리좀 어떻게 해주세요', '2016-08-08 11:06:29', '안되는건가?'),
 	('COM_ARTICLE_35', 'COM_USER_4', 'COM_BOARDGROUP_3', '1', '1', '2016-08-05 13:39:38', '안되는건가?'),
-	('COM_ARTICLE_7', 'COM_USER_4', 'COM_BOARDGROUP_3', 'ealskdgjalksdj', 'sdflkgja;lkdfjg;laksd', '2016-08-02 14:47:56', '안되는건가?'),
-	('COM_ARTICLE_4', 'COM_USER_4', 'COM_BOARDGROUP_3', 'xdfcgsdfgdfg', 'adfgadfgsdfg', '2016-08-02 14:44:45', '안되는건가?'),
-	('COM_ARTICLE_5', 'COM_USER_4', 'COM_BOARDGROUP_3', 'adshfkasd;lfaj;', 'asdlkajsdkjadsg', '2016-08-02 14:47:08', '안되는건가?'),
+	('COM_ARTICLE_7', 'COM_USER_4', 'COM_BOARDGROUP_3', '한글sdfsdafasdfsdf', '내용 안바뀌는데', '2016-08-02 14:47:56', '안되는건가?'),
+	('COM_ARTICLE_4', 'COM_USER_4', 'COM_BOARDGROUP_3', 'ㅁㄴㅇㄻㄴㅇㄻㄴㅇ', 'ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄹ', '2016-08-02 14:44:45', '안되는건가?'),
+	('COM_ARTICLE_5', 'COM_USER_4', 'COM_BOARDGROUP_3', 'ㅁㅇㄴㄻㄴㅇㄹ', 'ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄹ', '2016-08-02 14:47:08', '안되는건가?'),
 	('COM_ARTICLE_2', 'COM_USER_4', 'COM_BOARDGROUP_3', 'asdGASDF', 'ADFASDFASDF', '2016-08-02 14:23:02', '안되는건가?'),
 	('COM_ARTICLE_3', 'COM_USER_4', 'COM_BOARDGROUP_3', 'asdfhbasmdnh', 'asdlkjfhaksdj', '2016-08-02 14:36:20', '안되는건가?'),
-	('COM_ARTICLE_1', 'COM_USER_1', 'COM_BOARDGROUP_3', '아아아아아', '아아아아아', '0000-00-00 00:00:00', '111.111.111');
+	('COM_ARTICLE_1', 'COM_USER_1', 'COM_BOARDGROUP_3', '아아아아아', '아아아아아', '0000-00-00 00:00:00', '111.111.111'),
+	('COM_ARTICLE_41', 'COM_USER_4', 'COM_BOARDGROUP_3', '한글sdfsdafasdfsdf', '내용 안바뀌는데', '2016-08-08 16:43:37', '안되는건가?'),
+	('COM_ARTICLE_42', 'COM_USER_4', 'COM_BOARDGROUP_3', '한글sdfsdafasdfsdf', '내용 안바뀌는데', '2016-08-08 16:44:13', '안되는건가?'),
+	('COM_ARTICLE_43', 'COM_USER_4', 'COM_BOARDGROUP_3', '한글sdfsdafasdfsdf', '내용 안바뀌는데', '2016-08-08 16:44:34', '안되는건가?'),
+	('COM_ARTICLE_44', 'COM_USER_4', 'COM_BOARDGROUP_3', '한글sdfsdafasdfsdf', '내용 안바뀌는데', '2016-08-08 17:24:20', '안되는건가?');
 /*!40000 ALTER TABLE `COM_ARTICLE_TB` ENABLE KEYS */;
 
 
@@ -134,14 +142,22 @@ CREATE TABLE IF NOT EXISTS `COM_COMMENT_TB` (
   PRIMARY KEY (`COMMENT_CD`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='게시글댓글\n\n';
 
-# Dumping data for table phoenixooo.COM_COMMENT_TB: 5 rows
+# Dumping data for table phoenixooo.COM_COMMENT_TB: 13 rows
 /*!40000 ALTER TABLE `COM_COMMENT_TB` DISABLE KEYS */;
 INSERT INTO `COM_COMMENT_TB` (`COMMENT_CD`, `ARTICLE_CD`, `USER_CD`, `COMMENT_CTT`, `COMMENT_DT`, `COMMENT_IP`) VALUES
 	('COM_COMMENT_1', 'COM_ARTICLE_2', 'COM_USER_77', '김우빈 잘생겼다아!!', '2016-07-22 14:57:45', ''),
 	('COM_COMMENT_2', 'COM_ARTICLE_3', 'COM_USER_50', '이 머리 얼굴 동그란 사람도 어울릴까요?', '2016-07-22 14:58:14', ''),
 	('COM_COMMENT_3', 'COM_ARTICLE_2', 'COM_USER_45', '머리가 김우빈빨', '2016-07-22 14:58:49', ''),
+	('COM_COMMENT_9', 'COM_ARTICLE_9', 'COM_USER_123', '고러치?', '2016-08-05 17:29:21', '123.456.789.456'),
+	('COM_COMMENT_8', 'COM_ARTICLE_9', 'COM_USER_123', '잘되냐', '2016-08-05 17:29:16', '123.456.789.456'),
 	('COM_COMMENT_5', 'COM_ARTICLE_6', 'COM_USER_123', '머리가 김우빈빨', '2016-07-22 14:58:49', '123.456.789.456'),
-	('COM_COMMENT_7', 'COM_ARTICLE_6', 'COM_USER_123', 'ㅇㅇ', '2016-07-29 09:27:02', '123.456.789.456');
+	('COM_COMMENT_7', 'COM_ARTICLE_6', 'COM_USER_123', 'ㅇㅇ', '2016-07-29 09:27:02', '123.456.789.456'),
+	('COM_COMMENT_10', 'COM_ARTICLE_9', 'COM_USER_123', '하하하', '2016-08-05 17:29:24', '123.456.789.456'),
+	('COM_COMMENT_11', 'COM_ARTICLE_9', 'COM_USER_123', '나이스?', '2016-08-05 17:29:28', '123.456.789.456'),
+	('COM_COMMENT_12', 'COM_ARTICLE_7', 'COM_USER_123', '', '2016-08-08 11:52:38', '123.456.789.456'),
+	('COM_COMMENT_13', 'COM_ARTICLE_7', 'COM_USER_123', '댓글 테스트', '2016-08-08 13:58:42', '123.456.789.456'),
+	('COM_COMMENT_14', 'COM_ARTICLE_7', 'COM_USER_123', 'ㅇㄴㄹㄴㅇㄹㄴㅇㄹㄴㅇㄹㄴㅇㄹ', '2016-08-08 13:58:47', '123.456.789.456'),
+	('COM_COMMENT_15', 'COM_ARTICLE_7', 'COM_USER_123', '왜 댓글이 위로 입력되냐 ㄴㅋㅋㅋㅋㅋㅋㅋ', '2016-08-08 13:59:00', '123.456.789.456');
 /*!40000 ALTER TABLE `COM_COMMENT_TB` ENABLE KEYS */;
 
 
@@ -173,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `COM_FILE_TB` (
   PRIMARY KEY (`FILE_CD`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='게시글파일\nFILE_CD\nARTICLE_CD\nFILE_PATH\n';
 
-# Dumping data for table phoenixooo.COM_FILE_TB: 21 rows
+# Dumping data for table phoenixooo.COM_FILE_TB: 23 rows
 /*!40000 ALTER TABLE `COM_FILE_TB` DISABLE KEYS */;
 INSERT INTO `COM_FILE_TB` (`FILE_CD`, `ARTICLE_CD`, `FILE_PATH`, `FILE_NAME`, `RANDOM_NAME`) VALUES
 	('COM_FILE_11', 'COM_ARTICLE_30', '/resources/upload/HYOGHKZOXMYJLWREOMRU1956452855.jpg', 'Penguins.jpg', 'HYOGHKZOXMYJLWREOMRU1956452855'),
@@ -196,7 +212,9 @@ INSERT INTO `COM_FILE_TB` (`FILE_CD`, `ARTICLE_CD`, `FILE_PATH`, `FILE_NAME`, `R
 	('COM_FILE_18', 'COM_ARTICLE_33', '/resources/upload/OCFVJYVRXRZBJWVGTLKW8214346698.jpg', 'Koala.jpg', 'OCFVJYVRXRZBJWVGTLKW8214346698'),
 	('COM_FILE_19', 'COM_ARTICLE_33', '/resources/upload/QZYOOOTLFPXZDUIQVXWN2177712657.jpg', 'Lighthouse.jpg', 'QZYOOOTLFPXZDUIQVXWN2177712657'),
 	('COM_FILE_20', 'COM_ARTICLE_33', '/resources/upload/DNNXAODIAAZVMFUPLJIK2147937638.jpg', 'Penguins.jpg', 'DNNXAODIAAZVMFUPLJIK2147937638'),
-	('COM_FILE_21', 'COM_ARTICLE_34', '/resources/upload/UMKTDRKMFFFGVWJKICSE5119629497.jpg', 'Chrysanthemum.jpg', 'UMKTDRKMFFFGVWJKICSE5119629497');
+	('COM_FILE_21', 'COM_ARTICLE_34', '/resources/upload/UMKTDRKMFFFGVWJKICSE5119629497.jpg', 'Chrysanthemum.jpg', 'UMKTDRKMFFFGVWJKICSE5119629497'),
+	('COM_FILE_22', 'COM_ARTICLE_39', '/resources/upload/KUBXLWYVUJUWWAGQFOCG5627455123.jpg', 'Chrysanthemum.jpg', 'KUBXLWYVUJUWWAGQFOCG5627455123'),
+	('COM_FILE_23', 'COM_ARTICLE_40', '/resources/upload/KGNTUTVVNTGCVEKAQJGH3618713192.jpg', 'Lighthouse.jpg', 'KGNTUTVVNTGCVEKAQJGH3618713192');
 /*!40000 ALTER TABLE `COM_FILE_TB` ENABLE KEYS */;
 
 
@@ -377,10 +395,10 @@ CREATE TABLE IF NOT EXISTS `COM_USER_TB` (
   UNIQUE KEY `USER_NICK_NM` (`USER_NICK_NM`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='기본회원테이블 / EMAIL 유니크처리하기';
 
-# Dumping data for table phoenixooo.COM_USER_TB: 28 rows
+# Dumping data for table phoenixooo.COM_USER_TB: 29 rows
 /*!40000 ALTER TABLE `COM_USER_TB` DISABLE KEYS */;
 INSERT INTO `COM_USER_TB` (`USER_CD`, `USER_GROUP_NM`, `USER_NM`, `USER_NICK_NM`, `USER_ID`, `USER_PW`, `USER_SEX_FL`, `USER_ANNIVERSARY_DT`, `USER_BIRTH_DT`, `USER_ADDR`, `USER_POST_NO`, `USER_EMAIL_ADDR`, `USER_JOIN_DT`, `USER_SHOP_CD`, `USER_PHONE_NO`, `USER_CELLPHONE_NO`, `USER_INTRODUCE_CTT`) VALUES
-	('COM_USER_1', '관리자', '이승주', '관리자1', 'sj00', 'sj00', 1, '0000-01-01', '0000-07-30', '호성동', 00000012345, 'sj@mail.com', '2016-07-22 14:19:50', 'CRM_SHOP_1', '0631231234', '01012341234', '관리자입니다.'),
+	('COM_USER_1', '관리자', '이승주', '관리자1', 'asdf', 'asdf', 1, '0000-01-01', '0000-07-30', '호성동', 00000012345, 'sj@mail.com', '2016-07-22 14:19:50', 'CRM_SHOP_1', '0631231234', '01012341234', '관리자입니다.'),
 	('COM_USER_2', '관리자', '강재욱', '관리자2', 'jwid02', 'jwpw02', 0, '0000-01-01', '0000-01-01', '삼천동', 00000012345, 'jw@mail.com', '2016-07-22 14:21:21', 'CRM_SHOP_1', '0631231234', '01012341234', '관리자2입니다.'),
 	('COM_USER_3', '미용실원장', '신복기', '원장님1', 'won111', 'wontest', 0, '0000-01-01', '2016-07-26', '서신동', 00000023456, 'bk@mail.com', '2016-07-26 10:10:36', 'CRM_SHOP_1', NULL, NULL, '(NULL)'),
 	('COM_USER_4', '회원', '차이수', 'Flow', '111', '111', 1, '2016-07-28', '2016-07-28', '1동', 00000000555, 'aranlgfm@gmail.com', '2016-07-26 17:07:51', 'CRM_SHOP_1', '111222333', '111222333', '(NULL)'),
@@ -407,7 +425,8 @@ INSERT INTO `COM_USER_TB` (`USER_CD`, `USER_GROUP_NM`, `USER_NM`, `USER_NICK_NM`
 	('COM_USER_27', '미용실원장', '차청', '라라라', 'toto09', '123123', 0, NULL, NULL, '', 00000002222, 'aranlgfm@gmail.com', '2016-07-27 11:58:01', 'CRM_SHOP_1', NULL, NULL, NULL),
 	('COM_USER_28', '디자이너', '차적', 'gaga155', 'ggg123', '123123', 1, NULL, NULL, '', 00000000123, 'aranlgfm@gmail.com', '2016-07-27 13:25:06', 'CRM_SHOP_2', NULL, NULL, NULL),
 	('COM_USER_29', '디자이너', '차황', 'geogeo13', 'geogeo1', '123123', 1, NULL, NULL, '', 00000044443, 'aranlgfm@gmail.com', '2016-07-27 13:38:57', 'cd3422342341', NULL, NULL, NULL),
-	('COM_USER_30', '디자이너', '차홍', 'tata14', 'tata1', '123123', 1, NULL, NULL, '', 00000000222, 'aranlgfm@gmail.com', '2016-07-27 13:41:59', 'sha1', NULL, NULL, NULL);
+	('COM_USER_30', '디자이너', '차홍', 'tata14', 'tata1', '123123', 1, NULL, NULL, '', 00000000222, 'aranlgfm@gmail.com', '2016-07-27 13:41:59', 'sha1', NULL, NULL, NULL),
+	('COM_USER_31', '회원', 'feokfeo', 'ofoefkeok', 'ceifekfd', '123123', 0, '2016-08-08', '2016-08-08', '', 00000027648, '', '2016-08-08 16:27:13', NULL, '', NULL, '33212312');
 /*!40000 ALTER TABLE `COM_USER_TB` ENABLE KEYS */;
 
 
@@ -424,7 +443,7 @@ CREATE TABLE IF NOT EXISTS `CRM_ACCOUNT_TB` (
   PRIMARY KEY (`ACCOUNT_CD`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='거래처';
 
-# Dumping data for table phoenixooo.CRM_ACCOUNT_TB: 7 rows
+# Dumping data for table phoenixooo.CRM_ACCOUNT_TB: 9 rows
 /*!40000 ALTER TABLE `CRM_ACCOUNT_TB` DISABLE KEYS */;
 INSERT INTO `CRM_ACCOUNT_TB` (`ACCOUNT_CD`, `SHOP_CD`, `ACCOUNT_NM`, `CHARGER_NM`, `CHARGER_CELLPHONE_NO`, `CHARGER_PHONE_NO`, `CHARGER_FAX_NO`, `CHARGER_MEMO`) VALUES
 	('CRM_ACCOUNT_1', 'CRM_SHOP_1', '삼성', '이건희', '01054855548', '02147483647', '0648485656', ''),
@@ -433,7 +452,9 @@ INSERT INTO `CRM_ACCOUNT_TB` (`ACCOUNT_CD`, `SHOP_CD`, `ACCOUNT_NM`, `CHARGER_NM
 	('CRM_ACCOUNT_4', 'CRM_SHOP_1', 'ㅗㅓㄽ', 'ㄹ호로', 'ㅀㄹ', 'ㅎㄹ홀', '홀홀', 'ㄹ홀호'),
 	('CRM_ACCOUNT_5', 'CRM_SHOP_1', '이스트?트', '떡볶이', '01098758745', '0635458758', '0635486696', 'ㅇㄹㄴㅇㄹ'),
 	('CRM_ACCOUNT_6', 'CRM_SHOP_1', '', '', '', '', '', ''),
-	('CRM_ACCOUNT_7', 'CRM_SHOP_1', '피닉스', '피오나', '01012341235', '0632221234', '00000000000', '거래처등록성공');
+	('CRM_ACCOUNT_7', 'CRM_SHOP_1', '피닉스', '피오나', '01012341235', '0632221234', '00000000000', '거래처등록성공'),
+	('CRM_ACCOUNT_8', 'CRM_SHOP_1', 'q', 'q', 'q', 'q', 'q', 'q'),
+	('CRM_ACCOUNT_9', 'CRM_SHOP_1', '111', '111111', '111', '111', '111', '1111');
 /*!40000 ALTER TABLE `CRM_ACCOUNT_TB` ENABLE KEYS */;
 
 
@@ -458,14 +479,16 @@ CREATE TABLE IF NOT EXISTS `CRM_CUSTOMER_TB` (
   PRIMARY KEY (`CUSTOMER_CD`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='CRM 고객테이블';
 
-# Dumping data for table phoenixooo.CRM_CUSTOMER_TB: 5 rows
+# Dumping data for table phoenixooo.CRM_CUSTOMER_TB: 7 rows
 /*!40000 ALTER TABLE `CRM_CUSTOMER_TB` DISABLE KEYS */;
 INSERT INTO `CRM_CUSTOMER_TB` (`CUSTOMER_CD`, `USER_CD`, `SHOP_CD`, `CUSTOMER_NM`, `CUSTOMER_CELLPHONE_NO`, `CUSTOMER_SEX_FL`, `CUSTOMER_FIRST_VISIT_DT`, `CUSTOMER_JOIN_DT`, `EMPLOYEE_CD`, `EMPLOYEE_NM`, `CUSTOMER_BIRTH_DT`, `CUSTOMER_POST_NO`, `CUSTOMER_ADDR`, `CUSTOMER_EMAIL_ADDR`, `CUSTOMER_ANNIVERSARY_DT`, `CUSTOMER_MEMO`) VALUES
 	('CRM_CUSTOMER_1', '미용실회원', 'CRM_SHOP_1', '김수현', '0101111111', 0, '2016-08-01', '2016-08-01 11:47:10', '2', '차홍', NULL, NULL, NULL, NULL, NULL, '잘생겼다'),
 	('CRM_CUSTOMER_2', 'COM_USER_25', 'CRM_SHOP_1', '전지현', '01000001111', 1, '2016-08-01', '2016-08-01 12:27:10', '1', '루시우', '2016-08-02', 0, '1', '1', '2016-08-01', '좀 이상하게 생겼어요'),
-	('CRM_CUSTOMER_5', '미용실회원', 'CRM_SHOP_1', '차이수', '010', 0, NULL, '2016-08-04 17:22:32', NULL, '차홍', NULL, NULL, '', '1111', NULL, '엄청 잘생겼네..'),
+	('CRM_CUSTOMER_5', '미용실회원', 'CRM_SHOP_1', '차이수', '010', 0, NULL, '2016-08-04 17:22:32', '1', '차홍', NULL, NULL, '', '1111', NULL, '엄청 잘생겼네..'),
 	('CRM_CUSTOMER_4', '미용실회원', 'CRM_SHOP_1', '배수지', '222333222', 1, '2016-08-04', '2016-08-01 13:54:59', '3', '메르시', NULL, NULL, '', 'suzi@mail', NULL, '차이수님이랑 잘 어울리시는듯'),
-	('CRM_CUSTOMER_3', 'COM_USER_12', 'CRM_SHOP_1', '유아인', '123123123', 0, '2016-08-04', '2016-08-01 13:54:39', '4', '비달사순', NULL, NULL, '', 'test', NULL, '돈 많으신듯한 손님.');
+	('CRM_CUSTOMER_3', 'COM_USER_12', 'CRM_SHOP_1', '유아인', '123123123', 0, '2016-08-04', '1111-11-11 11:11:11', '4', '비달사순', NULL, NULL, '', 'test', NULL, '돈 많으신듯한 손님.'),
+	('CRM_CUSTOMER_6', '미용실회원', 'CRM_SHOP_1', '이종석', '1111111111', 0, NULL, '2016-08-08 15:10:07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	('CRM_CUSTOMER_7', '미용실회원', 'CRM_SHOP_1', '김우빈', '11111111111', 0, '2016-08-08', '2016-08-08 15:45:49', NULL, '리퍼', '2016-08-02', 6097, '서울 강남구 봉은사로 403^203호', 'test@test', '2016-08-04', '');
 /*!40000 ALTER TABLE `CRM_CUSTOMER_TB` ENABLE KEYS */;
 
 
@@ -485,15 +508,16 @@ CREATE TABLE IF NOT EXISTS `CRM_EMPLOYEE_TB` (
   PRIMARY KEY (`EMPLOYEE_CD`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='직원';
 
-# Dumping data for table phoenixooo.CRM_EMPLOYEE_TB: 6 rows
+# Dumping data for table phoenixooo.CRM_EMPLOYEE_TB: 7 rows
 /*!40000 ALTER TABLE `CRM_EMPLOYEE_TB` DISABLE KEYS */;
 INSERT INTO `CRM_EMPLOYEE_TB` (`EMPLOYEE_CD`, `SHOP_CD`, `EMPLOYEE_PW`, `EMPLOYEE_NM`, `EMPLOYEE_BIRTH_DT`, `EMPLOYEE_ADDR`, `EMPLOYEE_PHONE_NO`, `EMPLOYEE_CELLPHONE_NO`, `EMPLOYEE_JOIN_DT`, `EMPLOYEE_MEMO`, `EMPLOYEE_LEVEL_NM`) VALUES
-	('CRM_EMPLOYEE_1', 'CRM_SHOP_1', '2222', '존', '2016-08-02', '전주', '0632877795', '01077317795', '2016-08-02', '유후', '원장'),
-	('CRM_EMPLOYEE_2', 'CRM_SHOP_1', '2222', '비와이', '2016-07-22', '대전', '02147483647', '01059687451', '2016-07-22', '', '사원'),
+	('CRM_EMPLOYEE_1', 'CRM_SHOP_1', '1111', '존', '2016-08-02', '1111', '1111', '1111', '2016-08-02', '1111', '호구'),
+	('CRM_EMPLOYEE_2', 'CRM_SHOP_1', '2222', '비와이', '2016-07-22', '대전', '02147483647', '01059687451', '2016-07-22', ' ', '사원'),
 	('CRM_EMPLOYEE_3', 'CRM_SHOP_2', '2332', '토마스', '2016-07-22', '대천', '02147483647', '01059687454', '2016-07-22', '', '매니저'),
-	('CRM_EMPLOYEE_4', 'CRM_SHOP_2', '1111', 'TOM', '0000-00-00', '', '', '', '2016-08-01', '', '원장'),
-	('CRM_EMPLOYEE_5', 'CRM_SHOP_3', '2222', '김원중', NULL, NULL, NULL, NULL, '2016-08-02', NULL, '원장'),
-	('CRM_EMPLOYEE_6', 'CRM_SHOP_1', '1111', '겐지', '2016-08-05', '전주', '123123123123', '123123123', '2016-08-05', NULL, '사원');
+	('CRM_EMPLOYEE_4', 'CRM_SHOP_2', '1111', 'TOM', '2016-08-08', '브라질', '123', '123', '2016-08-01', '', '원장'),
+	('CRM_EMPLOYEE_7', 'CRM_SHOP_3', '1111', '샘', '2016-08-08', '1111', '1111', '1111', '2016-08-08', '1111', '호구 '),
+	('CRM_EMPLOYEE_6', 'CRM_SHOP_3', '1234', '차이수', '2016-08-08', '용머리', '1234', '1234', '2016-08-08', '메모', '호구'),
+	('CRM_EMPLOYEE_5', 'CRM_SHOP_3', '1234', '김원중', '2016-08-05', '용머리고개', '1234', '1234', '2016-08-05', '하기싫어', '회장');
 /*!40000 ALTER TABLE `CRM_EMPLOYEE_TB` ENABLE KEYS */;
 
 
@@ -550,7 +574,7 @@ CREATE TABLE IF NOT EXISTS `CRM_ETC_COST_TB` (
   PRIMARY KEY (`ETC_COST_CD`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='기타지출항목';
 
-# Dumping data for table phoenixooo.CRM_ETC_COST_TB: 6 rows
+# Dumping data for table phoenixooo.CRM_ETC_COST_TB: 7 rows
 /*!40000 ALTER TABLE `CRM_ETC_COST_TB` DISABLE KEYS */;
 INSERT INTO `CRM_ETC_COST_TB` (`ETC_COST_CD`, `SHOP_CD`, `ETC_COST_NM`) VALUES
 	('CRM_ETC_COST_1', 'CRM_SHOP_1', '세금'),
@@ -558,7 +582,8 @@ INSERT INTO `CRM_ETC_COST_TB` (`ETC_COST_CD`, `SHOP_CD`, `ETC_COST_NM`) VALUES
 	('CRM_ETC_COST_3', 'CRM_SHOP_1', '비품'),
 	('CRM_ETC_COST_4', 'CRM_SHOP_2', '커피'),
 	('CRM_ETC_COST_6', 'CRM_SHOP_1', '잡지'),
-	('CRM_ETC_COST_5', 'CRM_SHOP_1', '커피');
+	('CRM_ETC_COST_5', 'CRM_SHOP_1', '커피'),
+	('CRM_ETC_COST_7', 'CRM_SHOP_1', '');
 /*!40000 ALTER TABLE `CRM_ETC_COST_TB` ENABLE KEYS */;
 
 
@@ -693,14 +718,15 @@ CREATE TABLE IF NOT EXISTS `CRM_GOODS_TB` (
   PRIMARY KEY (`GOODS_CD`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='미용용품단가';
 
-# Dumping data for table phoenixooo.CRM_GOODS_TB: 5 rows
+# Dumping data for table phoenixooo.CRM_GOODS_TB: 6 rows
 /*!40000 ALTER TABLE `CRM_GOODS_TB` DISABLE KEYS */;
 INSERT INTO `CRM_GOODS_TB` (`GOODS_CD`, `SHOP_CD`, `EMPLOYEE_CD`, `ACCOUNT_CD`, `GOODS_NM`, `BUYING_GOODS_UNIT_WON`, `SALE_GOODS_UNIT_WON`, `GOODS_MEMO`) VALUES
 	('CRM_GOODS_1', 'CRM_SHOP_2', 'CRM_EMPLOYEE_1', 'CRM_ACCOUNT_2', '댕기머리샴푸', 10000, 30000, ''),
 	('CRM_GOODS_2', 'CRM_SHOP_1', 'CRM_EMPLOYEE_1', 'CRM_ACCOUNT_1', '샴푸', 11000, 40000, ''),
 	('CRM_GOODS_3', 'CRM_SHOP_2', 'CRM_EMPLOYEE_2', 'CRM_ACCOUNT_2', '강한왁스', 9000, 20000, ''),
 	('CRM_GOODS_4', 'CRM_SHOP_1', 'CRM_EMPLOYEE_2', 'CRM_ACCOUNT_2', '댕기머리샴푸', 20000, 45000, ''),
-	('CRM_GOODS_5', 'CRM_SHOP_3', 'CRM_EMPLOYEE_4', 'CRM_ACCOUNT_1', '기본샴푸', 0, 0, '');
+	('CRM_GOODS_5', 'CRM_SHOP_3', 'CRM_EMPLOYEE_4', 'CRM_ACCOUNT_1', '기본샴푸', 0, 0, ''),
+	('CRM_GOODS_11', 'CRM_SHOP_1', 'CRM_EMPLOYEE_11', 'QQQQQ', '11111', 111, 111, '111111');
 /*!40000 ALTER TABLE `CRM_GOODS_TB` ENABLE KEYS */;
 
 
@@ -799,10 +825,10 @@ CREATE TABLE IF NOT EXISTS `CRM_PAYMENT_TB` (
   `PAYMENT_CD` varchar(45) NOT NULL,
   `SHOP_CD` varchar(45) NOT NULL,
   `EMPLOYEE_CD` varchar(45) NOT NULL,
-  `USER_CD` varchar(45) NOT NULL,
+  `CUSTOMER_CD` varchar(45) NOT NULL,
   `POINT_CD` varchar(45) DEFAULT NULL,
   `ITEMDESIGN_CD` varchar(45) NOT NULL,
-  `USER_NM` varchar(45) NOT NULL,
+  `CUSTOMER_NM` varchar(45) NOT NULL,
   `EMPLOYEE_NM` varchar(45) NOT NULL,
   `ITEMDESIGN_NM` varchar(45) NOT NULL,
   `PAYMENT_TYPE_GB` varchar(45) NOT NULL,
@@ -812,19 +838,45 @@ CREATE TABLE IF NOT EXISTS `CRM_PAYMENT_TB` (
   PRIMARY KEY (`PAYMENT_CD`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='CRM결제';
 
-# Dumping data for table phoenixooo.CRM_PAYMENT_TB: 9 rows
+# Dumping data for table phoenixooo.CRM_PAYMENT_TB: 19 rows
 /*!40000 ALTER TABLE `CRM_PAYMENT_TB` DISABLE KEYS */;
-INSERT INTO `CRM_PAYMENT_TB` (`PAYMENT_CD`, `SHOP_CD`, `EMPLOYEE_CD`, `USER_CD`, `POINT_CD`, `ITEMDESIGN_CD`, `USER_NM`, `EMPLOYEE_NM`, `ITEMDESIGN_NM`, `PAYMENT_TYPE_GB`, `PAYMENT_TOTAL_WON`, `PAYMENT_DT`, `PAYMENT_MEMO`) VALUES
-	('CRM_PAYMENT_1', 'CRM_SHOP_1', 'CRM_EMPLOYEE_1', 'COM_USER_1', 'CRM_POINT_1', 'CRM_ITEM_DESIGN_1', '구아란', '겐지', '아놀드파마', '현금', 50000, '2016-07-22', NULL),
-	('CRM_PAYMENT_2', 'CRM_SHOP_1', 'CRM_EMPLOYEE_3', 'COM_USER_2', 'CRM_POINT_1', 'CRM_ITEM_DESIGN_1', '이승주', '라인하르트', '아놀드파마', '카드', 30000, '2016-07-22', NULL),
-	('CRM_PAYMENT_3', 'CRM_SHOP_1', 'CRM_EMPLOYEE_3', 'COM_USER_3', 'CRM_POINT_2', 'CRM_ITEM_DESIGN_2', '신복기', '라인하르트', '파뿌리염색', '현금', 300000, '2016-08-03', NULL),
-	('CRM_PAYMENT_4', 'CRM_SHOP_1', 'CRM_EMPLOYEE_3', 'COM_USER_4', 'CRM_POINT_3', 'CRM_ITEM_DESIGN_2', '차이수', '라인하르트', '파뿌리염색', '현금', 300000, '2016-08-03', NULL),
-	('CRM_PAYMENT_5', 'CRM_SHOP_1', 'CRM_EMPLOYEE_1', 'COM_USER_4', NULL, 'CRM_ITEM_DESIGN_9', '차이수', '겐지', '드래드 펌', '카드', 200000, '2016-08-05', NULL),
-	('CRM_PAYMENT_6', 'CRM_SHOP_1', 'CRM_EMPLOYEE_4', 'COM_USER_23', NULL, 'CRM_ITEM_DESIGN_12', '강재욱', '파라', '셋팅펌', '카드', 250000, '2016-08-05', NULL),
-	('CRM_PAYMENT_7', 'CRM_SHOP_1', 'CRM_EMPLOYEE_5', 'COM_USER_24', NULL, 'CRM_ITEM_DESIGN_2', '이승주', '디바', '파뿌리염색', '현금', 300000, '2016-08-05', NULL),
-	('CRM_PAYMENT_8', 'CRM_SHOP_1', 'CRM_EMPLOYEE_6', 'COM_USER_24', NULL, 'CRM_ITEM_DESIGN_12', '이승주', '류승룡', '셋팅펌', '현금', 250000, '2016-08-05', NULL),
-	('CRM_PAYMENT_9', 'CRM_SHOP_1', 'CRM_EMPLOYEE_6', 'COM_USER_25', NULL, 'CRM_ITEM_DESIGN_12', '가로쉬', '류승룡', '셋팅펌', '현금', 250000, '2016-08-05', NULL);
+INSERT INTO `CRM_PAYMENT_TB` (`PAYMENT_CD`, `SHOP_CD`, `EMPLOYEE_CD`, `CUSTOMER_CD`, `POINT_CD`, `ITEMDESIGN_CD`, `CUSTOMER_NM`, `EMPLOYEE_NM`, `ITEMDESIGN_NM`, `PAYMENT_TYPE_GB`, `PAYMENT_TOTAL_WON`, `PAYMENT_DT`, `PAYMENT_MEMO`) VALUES
+	('CRM_PAYMENT_1', 'CRM_SHOP_1', 'CRM_EMPLOYEE_1', 'CRM_CUSTOMER_1', 'CRM_POINT_1', 'CRM_ITEM_DESIGN_1', '구아란', '겐지', '아놀드파마', '현금', 50000, '2016-07-22', NULL),
+	('CRM_PAYMENT_2', 'CRM_SHOP_1', 'CRM_EMPLOYEE_3', 'CRM_CUSTOMER_1', 'CRM_POINT_1', 'CRM_ITEM_DESIGN_1', '이승주', '라인하르트', '아놀드파마', '카드', 30000, '2016-07-22', NULL),
+	('CRM_PAYMENT_3', 'CRM_SHOP_1', 'CRM_EMPLOYEE_3', 'CRM_CUSTOMER_1', 'CRM_POINT_2', 'CRM_ITEM_DESIGN_2', '신복기', '라인하르트', '파뿌리염색', '현금', 300000, '2016-08-03', NULL),
+	('CRM_PAYMENT_4', 'CRM_SHOP_1', 'CRM_EMPLOYEE_3', 'CRM_CUSTOMER_1', 'CRM_POINT_3', 'CRM_ITEM_DESIGN_2', '차이수', '라인하르트', '파뿌리염색', '현금', 300000, '2016-08-03', NULL),
+	('CRM_PAYMENT_5', 'CRM_SHOP_1', 'CRM_EMPLOYEE_1', 'CRM_CUSTOMER_1', NULL, 'CRM_ITEM_DESIGN_9', '차이수', '겐지', '드래드 펌', '카드', 200000, '2016-08-05', NULL),
+	('CRM_PAYMENT_6', 'CRM_SHOP_1', 'CRM_EMPLOYEE_4', 'CRM_CUSTOMER_1', NULL, 'CRM_ITEM_DESIGN_12', '강재욱', '파라', '셋팅펌', '카드', 250000, '2016-08-05', NULL),
+	('CRM_PAYMENT_7', 'CRM_SHOP_1', 'CRM_EMPLOYEE_5', 'CRM_CUSTOMER_1', NULL, 'CRM_ITEM_DESIGN_2', '이승주', '디바', '파뿌리염색', '현금', 300000, '2016-08-05', NULL),
+	('CRM_PAYMENT_8', 'CRM_SHOP_1', 'CRM_EMPLOYEE_6', 'CRM_CUSTOMER_1', NULL, 'CRM_ITEM_DESIGN_12', '이승주', '류승룡', '셋팅펌', '현금', 250000, '2016-08-05', NULL),
+	('CRM_PAYMENT_9', 'CRM_SHOP_1', 'CRM_EMPLOYEE_6', 'CRM_CUSTOMER_1', NULL, 'CRM_ITEM_DESIGN_12', '가로쉬', '류승룡', '셋팅펌', '현금', 250000, '2016-08-05', NULL),
+	('CRM_PAYMENT_10', 'CRM_SHOP_1', 'CRM_EMPLOYEE_1', 'CRM_CUSTOMER_1', NULL, 'CRM_ITEM_DESIGN_8', '김대봉', '존', '샤기컷', '현금', 20000, '2010-10-10', '56345611'),
+	('CRM_PAYMENT_11', 'CRM_SHOP_1', 'CRM_EMPLOYEE_2', 'CRM_CUSTOMER_1', NULL, 'CRM_ITEM_DESIGN_10', '김대봉', '비와이', '헤어케어1', '카드', 1000000, '2010-10-10', '22222222222'),
+	('CRM_PAYMENT_12', 'CRM_SHOP_1', 'CRM_EMPLOYEE_2', 'CRM_CUSTOMER_1', NULL, 'CRM_ITEM_DESIGN_12', '김대봉', '비와이', '호구전용', '현금', 130000000, '2010-10-10', '121212'),
+	('CRM_PAYMENT_13', 'CRM_SHOP_1', 'CRM_EMPLOYEE_2', 'CRM_CUSTOMER_1', NULL, 'CRM_ITEM_DESIGN_9', '김대봉', '비와이', '드래드 펌', '카드', 200000, '2010-10-10', '테숫후'),
+	('CRM_PAYMENT_14', 'CRM_SHOP_1', 'CRM_EMPLOYEE_1', 'CRM_CUSTOMER_1', NULL, 'CRM_ITEM_DESIGN_11', '김대봉', '존', '헤어케어2', '카드', 2000000, '2010-10-10', '테숫후'),
+	('CRM_PAYMENT_15', 'CRM_SHOP_1', 'CRM_EMPLOYEE_2', 'CRM_CUSTOMER_1', NULL, 'CRM_ITEM_DESIGN_8', '김수현', '비와이', '샤기컷', '카드', 12212, '2010-10-10', '21'),
+	('CRM_PAYMENT_16', 'CRM_SHOP_1', 'CRM_EMPLOYEE_2', 'CRM_CUSTOMER_1', NULL, 'CRM_ITEM_DESIGN_8', '김수현', '비와이', '샤기컷', '현금', 20000, '2010-10-10', '123'),
+	('CRM_PAYMENT_17', 'CRM_SHOP_1', 'CRM_EMPLOYEE_2', 'CRM_CUSTOMER_1', NULL, 'CRM_ITEM_DESIGN_8', '김수현', '비와이', '샤기컷', '현금', 20000, '2010-10-10', '2E2E'),
+	('CRM_PAYMENT_18', 'CRM_SHOP_1', 'CRM_EMPLOYEE_1', 'CRM_CUSTOMER_1', NULL, 'CRM_ITEM_DESIGN_8', '김수현', '존', '샤기컷', '카드', 20000, '2010-10-10', '11'),
+	('CRM_PAYMENT_19', 'CRM_SHOP_1', 'CRM_EMPLOYEE_2', 'CRM_CUSTOMER_1', NULL, 'CRM_ITEM_DESIGN_9', '김수현', '비와이', '드래드 펌', '카드', 200000, '2010-10-10', '2323');
 /*!40000 ALTER TABLE `CRM_PAYMENT_TB` ENABLE KEYS */;
+
+
+# Dumping structure for table phoenixooo.CRM_PAYMENT_TYPE_TB
+CREATE TABLE IF NOT EXISTS `CRM_PAYMENT_TYPE_TB` (
+  `PAYMENT_TYPE_CD` varchar(50) NOT NULL,
+  `PAYMENT_TYPE_GB` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`PAYMENT_TYPE_CD`),
+  UNIQUE KEY `PAYMENT_TYPE_GB` (`PAYMENT_TYPE_GB`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='결제방법';
+
+# Dumping data for table phoenixooo.CRM_PAYMENT_TYPE_TB: 2 rows
+/*!40000 ALTER TABLE `CRM_PAYMENT_TYPE_TB` DISABLE KEYS */;
+INSERT INTO `CRM_PAYMENT_TYPE_TB` (`PAYMENT_TYPE_CD`, `PAYMENT_TYPE_GB`) VALUES
+	('PAYMENT_TYPE_CASH', '현금'),
+	('PAYMENT_TYPE_CARD', '카드');
+/*!40000 ALTER TABLE `CRM_PAYMENT_TYPE_TB` ENABLE KEYS */;
 
 
 # Dumping structure for table phoenixooo.CRM_POINT_TB
@@ -940,13 +992,6 @@ INSERT INTO `home_comment` (`comment_no`, `comment_writer`, `comment_pw`, `comme
 	(12, '이승주', '1234', '배경색이 산뜻하네요!', '2016-07-22 16:52:50'),
 	(13, 'ㅋㅋㅋㅋ', '4657', '아란아 안녕 ㅎㅎㅎ 덥다....', '2016-07-25 18:36:13');
 /*!40000 ALTER TABLE `home_comment` ENABLE KEYS */;
-
-
-# Dumping structure for table phoenixooo.PAYMENT_TYPE_TB
-IF NOT EXISTS ;
-
-# Dumping data for table phoenixooo.PAYMENT_TYPE_TB: 2 rows
-/*!40000 ALTER TABLE `PAYMENT_TYPE_TB` DISABLE KEYS */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

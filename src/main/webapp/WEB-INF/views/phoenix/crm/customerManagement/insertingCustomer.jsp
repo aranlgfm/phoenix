@@ -12,28 +12,31 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <style>
 	.textCenter{
-			text-align: center;
-		}
-		.textRight{
-			text-align: right;
-		}
-		.title{
-			font-size: 30px;
-			font-weight: bolder;
-		}
+		text-align: center;
+	}
+	.textRight{
+		text-align: right;
+	}
+	.title{
+		font-size: 30px;
+		font-weight: bolder;
+	}
+	
+	div.center { 
+		width:550px; 
+		margin:auto;
 		
- 		div.center { 
-	 		width:550px; 
-	 		margin:auto;
-	 		
- 		}
- 		
- 		.centerT{
- 			position:absolute;
- 			width:550px; 
-	 		margin:auto;
-	 		text-align: center;
- 		}
+	}
+	
+	.centerT{
+		position:absolute;
+		width:550px; 
+		margin:auto;
+		text-align: center;
+	}
+ 	#msg {
+ 		color : #db4f53;
+ 	}
 </style>
 <script>
 	$(document).ready(function(){
@@ -45,20 +48,20 @@
 				$('#msg').html('전화번호를 입력해주세요.');
 			}else if(!($('.flag').is(':checked'))){
 				$('#msg').html('성별을 선택해주세요.');
-			}else if(($('#day1').val() == '' || $('#day2').val() == '' || $('#day3').val() == '') || $('#selectDate').val == ''){
+			}else if($('#selectVisitDate').val() == ''){
 				$('#msg').html('최초방문일을 입력해주세요.');
 			}else if($('#email').val() == '' || $('#mailDomain').val() == ''){
 				$('#msg').html('이메일을 입력해주세요.');
 			}else{
 				// 화면에 입력된 것들 합치기 전화번호 생일 등
-				$('#customerFirstVisitDate').val($('#day1').val()+'-'+$('#day2').val()+'-'+$('#day3').val());
+				$('#customerFirstVisitDate').val($('#selectVisitDate').val());
 				$('#customerCellphoneNumber').val($('#phoneNo1').val()+$('#phoneNo2').val()+$('#phoneNo3').val());
-				$('#customerBirthDate').val($('#birth1').val()+'-'+$('#birth2').val()+'-'+$('#birth3').val());
+				$('#customerBirthDate').val($('#birthDate').val());
 				if($('#daumPostAddr').val() != ''){
 					$('#customerAddress').val($('#daumPostAddr').val()+'^'+$('#userPutAddr').val());
 				}
 				$('#customerEmailAddress').val($('#email').val()+'@'+$('#mailDomain').val());
-				$('#customerAnniversaryDate').val($('#anni1').val()+'-'+$('#anni2').val()+'-'+$('#anni3').val());
+				$('#customerAnniversaryDate').val($('#anniDate').val());
 				$('#insertForm').submit();
 			}
 		});
@@ -92,17 +95,6 @@
 			$('#selectVisitDate').val(today1+'-'+today2+'-'+today3);
 		});
 		
-		// 달력에서 선택했을 때 날짜 입력
-		$('#birthDate').change(function(){
-			var birth = $('#birthDate').val();
-			var birth1 = birth.substring(0,4); 
-			var birth2 = birth.substring(5,7); 
-			var birth3 = birth.substring(8,10);
-			$('#birth1').val(birth1);
-			$('#birth2').val(birth2);
-			$('#birth3').val(birth3);
-		});
-		
 		// 우편번호찾기 후에 데이터 입력
 		$('#daumPostNo').click(function(){
 			new daum.Postcode({
@@ -119,17 +111,6 @@
 			$('#mailDomain').val($('#mailSelect').val());
 		});
 		
-		// 달력에서 선택했을 때 날짜 입력
-		$('#anniDate').change(function(){
-			var anni = $('#anniDate').val();
-			var anni1 = anni.substring(0,4); 
-			var anni2 = anni.substring(5,7); 
-			var anni3 = anni.substring(8,10);
-			$('#anni1').val(anni1);
-			$('#anni2').val(anni2);
-			$('#anni3').val(anni3);
-		});
-		
 	});
 </script>
 </head>
@@ -139,9 +120,8 @@
 	<ul class="nav nav-tabs">
 		<li><a href="/phoenix/crm/customerManagement/form/customerList">회원목록</a></li>
 		<li class="active"><a href="/phoenix/crm/customerManagement/form/insertingCustomer">회원등록</a></li>
-		<li><a href="#">회원관리설정</a></li>
 	</ul>
-
+	
 	<div class="center">
 		<form id="insertForm" class="form-horizontal" role="form" action="/phoenix/crm/customerManagement/process/insertCustomer" method="POST">
 			<br>
@@ -151,6 +131,7 @@
 				<div class="col-sm-4">
 					<input name="customerName" id="customerName" class="form-control" type="text" placeholder="고객명"/>
 				</div>
+				<div class="control-label col-sm-5" id="msg"></div>
 			</div>
 			<div class="form-inline form-group">
 				<input id="customerCellphoneNumber" name="customerCellphoneNumber" type="hidden"/>
@@ -200,12 +181,11 @@
 				<label class="control-label col-sm-3" for="customerName">주소 : </label>
 				<input id="customerAddress" name="customerAddress" type="hidden"/>
 				<div class="col-sm-6">
-					<label><input id="daumPostAddr" class="form-control" type="text"/></label>
+					<label><input id="daumPostAddr" class="form-control" type="text" readonly="readonly"/></label>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="customerAddress">상세주소 : </label>
-				<input id="customerAddress" name="customerAddress" type="hidden"/>
 				<div class="col-sm-6">
 					<label><input id="userPutAddr" class="form-control" type="text"/></label>
 				</div>
@@ -240,10 +220,11 @@
 					<textarea rows="5" class="form-control" name="customerMemo"></textarea>
 				</label>
 			</div>
-			<div>
-				<input id="submitBtn" class="btn btn-default" type="button" value="확인"/>
-				<a href="/phoenix/crm/customerManagement/form/customerManagement"><input class="btn btn-default" type="button" value="취소"/></a>
-				<div id="msg"></div>
+			<div class="form-group centerT">
+				<div class="center col-sm-10">
+					<input id="submitBtn" class="btn btn-default" type="button" value="확인"/>
+					<a href="/phoenix/crm/customerManagement/form/customerManagement"><input class="btn btn-default" type="button" value="취소"/></a>
+				</div>
 			</div>
 		</form>
 	</div>

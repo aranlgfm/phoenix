@@ -22,7 +22,6 @@
 	<ul class="nav nav-tabs">
 		<li class="active"><a href="/phoenix/crm/customerManagement/form/customerList">회원목록</a></li>
 		<li><a href="/phoenix/crm/customerManagement/form/insertingCustomer">회원등록</a></li>
-		<li><a href="#">회원관리설정</a></li>
 	</ul>
 
 	<c:import url="searchingForCustomerByDetail.jsp"></c:import>

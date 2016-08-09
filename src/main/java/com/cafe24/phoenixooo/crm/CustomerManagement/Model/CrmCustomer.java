@@ -97,7 +97,6 @@ public class CrmCustomer {
 	public void setCustomerBirthDate(String customerBirthDate) {
 		if(customerBirthDate.length() < 4){
 			this.customerBirthDate = null;
-			System.out.println("아 왜...ㅠㅠㅠ");
 		}else{
 			this.customerBirthDate = customerBirthDate;
 		}
