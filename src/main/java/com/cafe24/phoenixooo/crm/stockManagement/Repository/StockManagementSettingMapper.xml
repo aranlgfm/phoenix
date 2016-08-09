@@ -33,4 +33,36 @@
 				, #{chargerMemo}
 			)		
 	</insert>
+	
+	<!-- 제품 등록 -->
+	<insert id="insertGoods" parameterType="com.cafe24.phoenixooo.crm.stockManagement.Model.Goods">
+	 	<selectKey resultType="hashmap" keyProperty="goodsCode" order="BEFORE">
+			select if(isnull(GOODS_CD),'CRM_GOODS_1', concat('CRM_GOODS_', MAX(CONVERT(SUBSTRING(GOODS_CD,11), UNSIGNED))+1))as goodsCode from CRM_GOODS_TB
+		</selectKey>
+		INSERT INTO 
+			CRM_GOODS_TB
+				(
+					GOODS_CD
+					,SHOP_CD
+					,EMPLOYEE_CD
+					,ACCOUNT_CD
+					,GOODS_NM
+					,BUYING_GOODS_UNIT_WON
+					,SALE_GOODS_UNIT_WON
+					,GOODS_MEMO
+				)
+		VALUES
+				(
+					#{goodsCode}
+					,#{shopCode}
+					,#{employeeCode}
+					,#{accountCode}
+					,#{goodsName}
+					,#{butingGoodsUnitWon}
+					,#{saleGoodsUnitWon}
+					,#{goodsMemo}
+				)
+				
+	</insert>
+	
 </mapper>

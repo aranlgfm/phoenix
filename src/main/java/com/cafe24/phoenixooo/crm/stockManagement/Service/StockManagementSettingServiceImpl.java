@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cafe24.phoenixooo.crm.stockManagement.Model.Account;
+import com.cafe24.phoenixooo.crm.stockManagement.Model.Goods;
 import com.cafe24.phoenixooo.crm.stockManagement.Repository.StockManagementSettingDao;
 
 @Service
@@ -18,4 +19,11 @@ public class StockManagementSettingServiceImpl implements StockManagementSetting
 		// TODO Auto-generated method stub
 		return stockManagementSettingDao.insertAccount(account);
 	}
+	
+	//제품설정동록
+	@Override
+	public int insertGoods(Goods goods) {
+		// TODO Auto-generated method stub
+		return stockManagementSettingDao.insertGoods(goods);
+	}	
 }
