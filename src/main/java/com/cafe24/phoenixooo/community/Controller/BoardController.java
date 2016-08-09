@@ -79,7 +79,7 @@ public class BoardController
 			System.out.println(articleCode+"<--이거 나오면 됨");
 			model.addAttribute("articleCode", articleCode);
  	 		
- 	 		return "redirect:/phoenix/com/form/article";
+ 	 		return "redirect:/phoenix/com/form/basicArticle";
 		}
 		
 		
@@ -110,6 +110,7 @@ public class BoardController
 			System.out.println(article.getArticleName()+"<--------------------getArticleName");
 			System.out.println(article.getArticleContent()+"<--------------------getArticleContent");
 			Article map = boardService.modifyArticle(article);
+			model.addAttribute("articleCode", article.getArticleCode());
 			model.addAttribute("map", map);
 		return "redirect:/phoenix/com/form/basicArticle";
 		}		

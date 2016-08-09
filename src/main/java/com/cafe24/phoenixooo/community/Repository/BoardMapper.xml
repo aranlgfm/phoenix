@@ -6,6 +6,7 @@
 	<select id="selectArticleList" parameterType="java.util.Map" resultType="com.cafe24.phoenixooo.community.Model.Article">
 		SELECT
 			articleTable.ARTICLE_CD as articleCode
+			,articleTable.BOARDGROUP_CD as boardGroupCode
 			,userTable.USER_NICK_NM as userNickName
 			,articleTable.ARTICLE_NM as articleName
 			,articleTable.ARTICLE_CTT as articleContent
