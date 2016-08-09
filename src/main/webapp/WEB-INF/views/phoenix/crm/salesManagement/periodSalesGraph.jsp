@@ -6,6 +6,57 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- JQ-PLOT의 CSS를 설정 -->
+<link class="include" rel="stylesheet" type="text/css" href="jquery.jqplot.css"/>
+<!-- JQ-PLOT의 기본 설정 -->
+<link href="css/jquery.jqplot.min.css" rel="stylesheet">
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/jquery.jqplot.min.js"></script>
+<script src="js/jqplot.dateAxisRenderer.min.js"></script>
+<script src="js/jqplot.highlighter.min.js"></script>
+
+<script>
+	var plot;
+	var chartData = [[0,0]];
+	
+	$(document).ready(function(){
+		renderChart();
+		update();
+		
+	});
+	
+	function renderChart(){
+		plot = $.jqplot('chart',[chartData],{
+			title:'Current User'
+			, axes:{
+				xaxis:{
+					renderer:$.jqplot.DateAxisRenderer
+					,tickOptions:{
+						formatString:'%m-%d %H:%M::%S'
+						, showLabel:false
+						, showGridline:false
+					}
+					, tickInterval:'5 minutes'
+				}
+			}
+		, series:[{
+			color:'#5FAB78'
+		}]
+		,highlighter:{
+			show:true,
+			sizeAdjust:7.5
+		}
+		,cursor:{
+			show:false
+		}
+	});
+}
+	function getChartData(){
+		$
+	}
+	
+</script>
+
 <style>
 	#confines 
 	{
@@ -16,9 +67,9 @@
 <title>기간별 매출 그래프</title>
 </head>
 <body>
-	<h1>기간별 매출 그래프</h1>
-	<div id="confines">
-		이곳은 그래프가 들어갈 곳
-	</div>
+	<div id="graph" style="width:300px; height:300px;"></div>
+
+
+
 </body>
 </html>

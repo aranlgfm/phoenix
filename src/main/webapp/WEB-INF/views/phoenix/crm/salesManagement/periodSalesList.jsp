@@ -28,7 +28,9 @@
 	
 <div id="all">
 	
-	<h3>기간별 매출 내역</h3>
+	<a href="/phoenix/crm/salesManagement/periodSalesGraph">그라프</a>
+	
+	<h2>일간총매출 내역</h2>
 	<div>
 		<div>${SalesInfo.paymentDate} 시술 매출 내역</div>
 		<table class="table table-striped">
