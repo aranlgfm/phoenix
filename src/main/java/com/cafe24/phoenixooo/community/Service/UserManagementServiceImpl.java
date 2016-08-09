@@ -1,5 +1,8 @@
 package com.cafe24.phoenixooo.community.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -108,10 +111,14 @@ public class UserManagementServiceImpl implements UserManagementService {
 	 * (서비스구현) 회원정보수정
 	 */
 	@Override
-	public UserCustomer modifyUpdate(UserCustomer user) {
-		userDao.modifyUpdate(user);
-		UserCustomer result = userDao.modifySelect(user);
-		return result; 
+	public Map<String, Object> modifyUpdate(UserCustomer user) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		int result = userDao.modifyUpdate(user);
+		UserCustomer userCustomer = userDao.modifySelect(user);
+		map.put("userCustomer", userCustomer);
+		map.put("result", result);
+		return map; 
 	}
 	
 	/**

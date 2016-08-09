@@ -38,13 +38,12 @@
 					
 					/* 패스워드 */
 					if($("#userPw").val() == ""){
-						//$("#userPwMsg").attr("style","color:red;");
 						$("#userPwMsg").html("비밀번호 입력하세요");
 		 			}else if($("#userPw").val() != $("#userRepw").val()){
 		 				$("#userPwMsg").html("");
-		 				//$("#userRepwMsg").attr("style","color:red;");
 						$("#userRepwMsg").html("비밀번호가 일치하지 않습니다.");
 		 			}else{
+		 				$("#userPwMsg").html("");
 		 				$("#userRepwMsg").html("");
 		 			}
 					
@@ -73,7 +72,7 @@
 					if($("#userPhoneNumber1").val() == "" || $("#userPhoneNumber2").val() == "" || $("#userPhoneNumber3").val() == ""){
 						$("#userPhoneNumbermsg").html("전화번호를 입력해주세요.");
 		 			}else{
-		 				$("#userPhoneNumber").val($("#userPhoneNumber1").val()+$('#userPhoneNumber2').val()+$('#userPhoneNumber3').val());
+		 				$("#userPhoneNumber").val($("#userPhoneNumber1").val()+"-"+$('#userPhoneNumber2').val()+"-"+$('#userPhoneNumber3').val());
 		 				$("#userPhoneNumberMsg").html("");
 		 			}
 					
@@ -81,7 +80,7 @@
 					if($("#userCellphoneNumber1").val() == "" || $("#userCellphoneNumber2").val() == "" || $("#userCellphoneNumber3").val() == ""){
 						$("#userCellphoneNumber").html("전화번호를 입력해주세요.");
 		 			}else{
-		 				$("#userCellphoneNumber").val($("#userCellphoneNumber1").val()+$('#userCellphoneNumber2').val()+$('#userCellphoneNumber3').val());
+		 				$("#userCellphoneNumber").val($("#userCellphoneNumber1").val()+"-"+$('#userCellphoneNumber2').val()+"-"+$('#userCellphoneNumber3').val());
 		 				$("#userCellphoneNumberMsg").html("");
 		 			}
 
@@ -95,8 +94,10 @@
 					
 					/* 주소 */
 					if($("#userPostNumber").val() != ""){
-		 				$("#userAddress").val($("#userPostNumber").val()+$("#searchAddress").val()+$("#userPutAddress").val());
+		 				$("#userAddress").val($("#searchAddress").val()+"^"+$("#userPutAddress").val());
 		 			}
+					
+					$("#userForm").submit();
 				});
 				
 				
@@ -162,169 +163,166 @@
 		<br/>
 		<br/>
 		<div class="center">
-			<form class="form-horizontal" role="form" action="/phoenix/com/process/joiningAsCustomer" method="POST">
-			<input type="hidden" name="userGroupName" value="${group}"/>
-							
-			<div class="form-group">
-				<label class="control-label col-sm-3" for="userId">아이디:</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="userId" name="userId" placeholder="6자이상 12자이하" maxlength="12">
-				</div>
-				<span id="userIdMsg"></span>
-			</div>
-			  
-			<div class="form-group">
-				<label class="control-label col-sm-3" for="userPw">비밀번호:</label>
-				<div class="col-sm-4">
-					<input type="password" class="form-control" id="userPw" name="userPw" placeholder="6자이상 12자이하">
-				</div>
-				<span id="userPwMsg"></span>
-			</div>
-			 
-			<div class="form-group">
-				<label class="control-label col-sm-3" for="userRePw">비밀번호확인:</label>
-				<div class="col-sm-4"> 
-					<input type="password" class="form-control"id="userRepw" placeholder="다시입력해">
-				</div>
-				<span id="userRepwMsg"></span>
-			</div>
-			 
-			<div class="form-group">
-				<label class="control-label col-sm-3" for="userName">이름:</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="userName" name="userName" placeholder="이름을 입력하세요">
-				</div>
-				<span id="userNameMsg"></span>
-			</div>
-			 
-			<div class="form-group">
-				<label class="control-label col-sm-3" for="userNickName">닉네임:</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="userNickName" name="userNickName" placeholder="닉네임 입력하세요">
-				</div>
-				<span id="userNickNameMsg"></span>
-			</div>
-			  
-			<div class="form-group">
-			<label class="control-label col-sm-3" for="userSexFlag">성별:</label>
-				<div class="col-sm-4">
-					  <label class="radio-inline"><input type="radio" name="userSexFlag" value="0">남</label>
-					  <label class="radio-inline"><input type="radio" name="userSexFlag" value="1">여</label>
-				</div>
-				<span id="userSexFlagMsg"></span>
-			</div>
-			  
-			<hr>
-			<!-- 우편번호 -->
-			<div class="form-group">
-				<label class="control-label col-sm-3" for="userPostNumber">우편번호:</label>
-				<div class="col-sm-9 row">
-					<div class="col-xs-4">
-						<input type="text" class="form-control" id="userPostNumber" name="userPostNumber" readonly="readonly">
+			
+			<form class="form-horizontal" id="userForm" role="form" action="/phoenix/com/process/joiningAsCustomer" method="POST">
+				<input type="hidden" name="userGroupName" value="${group}"/>
+								
+				<div class="form-group">
+					<label class="control-label col-sm-3" for="userId">아이디:</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="userId" name="userId" placeholder="6자이상 12자이하" maxlength="12">
 					</div>
-					<div class="col-xs-3">
-						<input type="button" id="searchPostNumber" class="btn btn-info" value="우편번호">
+					<span id="userIdMsg"></span>
+				</div>
+				  
+				<div class="form-group">
+					<label class="control-label col-sm-3" for="userPw">비밀번호:</label>
+					<div class="col-sm-4">
+						<input type="password" class="form-control" id="userPw" name="userPw" placeholder="6자이상 12자이하">
+					</div>
+					<span id="userPwMsg"></span>
+				</div>
+				 
+				<div class="form-group">
+					<label class="control-label col-sm-3" for="userRePw">비밀번호확인:</label>
+					<div class="col-sm-4"> 
+						<input type="password" class="form-control"id="userRepw" placeholder="다시입력해">
+					</div>
+					<span id="userRepwMsg"></span>
+				</div>
+				 
+				<div class="form-group">
+					<label class="control-label col-sm-3" for="userName">이름:</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="userName" name="userName" placeholder="이름을 입력하세요">
+					</div>
+					<span id="userNameMsg"></span>
+				</div>
+				 
+				<div class="form-group">
+					<label class="control-label col-sm-3" for="userNickName">닉네임:</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="userNickName" name="userNickName" placeholder="닉네임 입력하세요">
+					</div>
+					<span id="userNickNameMsg"></span>
+				</div>
+				  
+				<div class="form-group">
+				<label class="control-label col-sm-3" for="userSexFlag">성별:</label>
+					<div class="col-sm-4">
+						  <label class="radio-inline"><input type="radio" class="userSexFlag" name="userSexFlag" value="0">남</label>
+						  <label class="radio-inline"><input type="radio" class="userSexFlag" name="userSexFlag" value="1">여</label>
+					</div>
+					<span id="userSexFlagMsg"></span>
+				</div>
+				  
+				<hr>
+				<!-- 우편번호 -->
+				<div class="form-group">
+					<label class="control-label col-sm-3" for="userPostNumber">우편번호:</label>
+					<div class="col-sm-9 row">
+						<div class="col-xs-4">
+							<input type="text" class="form-control" id="userPostNumber" name="userPostNumber">
+						</div>
+						<div class="col-xs-3">
+							<input type="button" id="searchPostNumber" class="btn btn-info" value="우편번호">
+						</div>
 					</div>
 				</div>
-			</div>
-			
-			<!-- 상세주소 -->
-			<div class="form-group">
-				<label class="control-label col-sm-3" for="userAddress">상세주소:</label>
-				<div class="col-sm-6">
-					<input type="text" class="form-control" id="searchAddress" readonly="readonly">
-					<input type="text" class="form-control" id="userPutAddress" >
-					<!-- 전체다 넘길 주소값 --> 
-					<input type="hidden" id="userAddress" name="userAddress"/>
+				
+				<!-- 상세주소 -->
+				<div class="form-group">
+					<label class="control-label col-sm-3" for="userAddress">상세주소:</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="searchAddress" readonly="readonly">
+						<input type="text" class="form-control" id="userPutAddress" >
+						<!-- 전체다 넘길 주소값 --> 
+						<input type="hidden" id="userAddress" name="userAddress"/>
+					</div>
 				</div>
-			</div>
-			
-			<!-- 집전화번호 -->
-			<div class="form-inline form-group">
-			<label class="control-label col-sm-3" for="userPhoneNumber">집전화번호:</label>
-				<div class="col-sm-9">
-					<input type="text" class="form-control" id="userPhoneNumber1" size="1" maxlength="3">&nbsp;-&nbsp;
-					<input type="text" class="form-control" id="userPhoneNumber2" size="1" maxlength="4">&nbsp;-&nbsp;
-					<input type="text" class="form-control" id="userPhoneNumber3" size="1" maxlength="4">
-					<!-- 전체다 넘길 집전화번호 --> 
-					<input type="hidden" id="userPhoneNumber" name="userPhoneNumber"/>
+				
+				<!-- 집전화번호 -->
+				<div class="form-inline form-group">
+				<label class="control-label col-sm-3" for="userPhoneNumber">집전화번호:</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="userPhoneNumber1" size="1" maxlength="3">&nbsp;-&nbsp;
+						<input type="text" class="form-control" id="userPhoneNumber2" size="1" maxlength="4">&nbsp;-&nbsp;
+						<input type="text" class="form-control" id="userPhoneNumber3" size="1" maxlength="4">
+						<!-- 전체다 넘길 집전화번호 --> 
+						<input type="hidden" id="userPhoneNumber" name="userPhoneNumber"/>
+					</div>
+					<span id="userPhoneNumberMsg"></span>
 				</div>
-				<span id="userPhoneNumberMsg"></span>
-			</div>
-
-
-
-			<!-- 핸드폰번호 -->
-			<div class="form-inline form-group">
-			<label class="control-label col-sm-3" for="userCellphoneNumber">핸드폰번호:</label>
-				<div class="col-sm-9">
-						<input type="text" class="form-control" id="userCellphoneNumber1" size="1" maxlength="3">&nbsp;-&nbsp; 
-						<input type="text" class="form-control" id="userCellphoneNumber2" size="1" maxlength="4">&nbsp;-&nbsp; 
-						<input type="text" class="form-control" id="userCellphoneNumber3" size="1" maxlength="4">	
-					<!-- 전체다 넘길 집전화번호 --> 
-					<input type="hidden" id="userCellphoneNumber" name="userCellphoneNumber"/>
-					<span id="userCellphoneNumberMsg"></span>
+	
+	
+	
+				<!-- 핸드폰번호 -->
+				<div class="form-inline form-group">
+				<label class="control-label col-sm-3" for="userCellphoneNumber">핸드폰번호:</label>
+					<div class="col-sm-9">
+							<input type="text" class="form-control" id="userCellphoneNumber1" size="1" maxlength="3">&nbsp;-&nbsp; 
+							<input type="text" class="form-control" id="userCellphoneNumber2" size="1" maxlength="4">&nbsp;-&nbsp; 
+							<input type="text" class="form-control" id="userCellphoneNumber3" size="1" maxlength="4">	
+						<!-- 전체다 넘길 집전화번호 --> 
+						<input type="hidden" id="userCellphoneNumber" name="userCellphoneNumber"/>
+						<span id="userCellphoneNumberMsg"></span>
+					</div>
 				</div>
-			</div>
-			
-			
-			<!-- 이메일 -->
-			<div class="form-inline form-group">
-			<label class="control-label col-sm-3" for="userEmailAddress">이메일:</label>
-				<div class="col-sm-9">
-					<input type="text" class="form-control" id="userEmailId" name="userEmailId" placeholder="이메일" size="5">&nbsp;@&nbsp;
-					<input type="text" class="form-control" id="userEmailDomain" name="userEmailDomain" size="7">
-					<select class="form-control" id="selectEmailDomain">
-						<option value="">::직접입력::</option>
-						<option value="gmail.com">gmail.com</option>
-						<option value="naver.com">naver.com</option>
-						<option value="daum.net">daum.net</option>
-						<option value="yahoo.co.kr">yahoo.co.kr</option>
-						<option value="nate.com">nate.com</option>
-					</select>
+				
+				
+				<!-- 이메일 -->
+				<div class="form-inline form-group">
+				<label class="control-label col-sm-3" for="userEmailAddress">이메일:</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="userEmailId" name="userEmailId" placeholder="이메일" size="5">&nbsp;@&nbsp;
+						<input type="text" class="form-control" id="userEmailDomain" name="userEmailDomain" size="7">
+						<select class="form-control" id="selectEmailDomain">
+							<option value="">::직접입력::</option>
+							<option value="gmail.com">gmail.com</option>
+							<option value="naver.com">naver.com</option>
+							<option value="daum.net">daum.net</option>
+							<option value="yahoo.co.kr">yahoo.co.kr</option>
+							<option value="nate.com">nate.com</option>
+						</select>
+					</div>
+	<!-- 				유저이메일 -->
+					<input type="hidden" id="userEmailAddress" name="userEmailAddress">
+					<span id="userEmailAddressMsg"></span>
 				</div>
-<!-- 				유저이메일 -->
-				<input type="hidden" id="userEmailAddress" name="userEmailAddress">
-				<span id="userEmailAddressMsg"></span>
-			</div>
-			
-			
-			
-			<!-- 생년월일 -->  
-			<div class="form-group">
-				<label class="control-label col-sm-3" for="userBirthdayDate">생년월일:</label>
-				<div class="col-sm-4">
-					<input type="date" class="form-control" id="userBirthdayDate" name="userBirthdayDate">
+				
+				
+				
+				<!-- 생년월일 -->  
+				<div class="form-group">
+					<label class="control-label col-sm-3" for="userBirthdayDate">생년월일:</label>
+					<div class="col-sm-4">
+						<input type="date" class="form-control" id="userBirthdayDate" name="userBirthdayDate">
+					</div>
 				</div>
-				<!-- 유저생일 -->
-				<input type="text" id="userBirthdayDate" name="userBirthdayDate"/>
-			</div>
-			 
-			<!-- 기념일 -->
-			<div class="form-group">
-			<label class="control-label col-sm-3" for="userAnniversaryDate">기념일:</label>
-				<div class="col-sm-4">
-					<input type="date" class="form-control" id="userAnniversaryDate" name="userAnniversaryDate">
+				 
+				<!-- 기념일 -->
+				<div class="form-group">
+				<label class="control-label col-sm-3" for="userAnniversaryDate">기념일:</label>
+					<div class="col-sm-4">
+						<input type="date" class="form-control" id="userAnniversaryDate" name="userAnniversaryDate">
+					</div>
 				</div>
-				유저기념일
-				<input type="text" id="userBirthdayDate" name="userAnniversaryDate"/>
-			</div>
-			
-			<!-- 자기소개 -->
-			<div class="form-group">
-			<label class="control-label col-sm-3" for="userIntroduceContent">자기소개:</label>
-				<div class="col-sm-8">
-					<textarea class="form-control" rows="3" cols="20" id="userIntroduceContent" name="userIntroduceContent"></textarea>
+				
+				<!-- 자기소개 -->
+				<div class="form-group">
+				<label class="control-label col-sm-3" for="userIntroduceContent">자기소개:</label>
+					<div class="col-sm-8">
+						<textarea class="form-control" rows="3" cols="20" id="userIntroduceContent" name="userIntroduceContent"></textarea>
+					</div>
 				</div>
-			</div>
-			
-			<!-- 등록취소 -->
-			<div class="form-group centerT"> 
-				<div class="center col-sm-10">
-					<button type="button" class="btn btn-default" id="submitBtn">등록</button>
-					<a class="btn btn-default" href="/phoenix/com/form/terms">취소</a>
+				
+				<!-- 등록취소 -->
+				<div class="form-group centerT"> 
+					<div class="center col-sm-10">
+						<button type="button" class="btn btn-default" id="submitBtn">등록</button>
+						<a class="btn btn-default" href="/phoenix/com/form/terms">취소</a>
+					</div>
 				</div>
-			</div>
 			</form>
 			<!-- 여기도 확인버튼 분기시켜야함. 디자이너나 원장이 가입하면 요청이 달라야함. 페이지 다름. -->
 		</div>

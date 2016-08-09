@@ -30,7 +30,7 @@ public class UserCustomer {
 	private String userAnniversaryDate;
 	private String userBirthdayDate;
 	private String userAddress;
-	private int userPostNumber;
+	private String userPostNumber;
 	private String userEmailAddress;
 	private String userPhoneNumber;
 	private String userCellphoneNumber;
@@ -94,13 +94,21 @@ public class UserCustomer {
 		return userAnniversaryDate;
 	}
 	public void setUserAnniversaryDate(String userAnniversaryDate) {
-		this.userAnniversaryDate = userAnniversaryDate;
+		if(userAnniversaryDate.equals("")){
+			this.userAnniversaryDate = null;
+		}else{
+			this.userAnniversaryDate = userAnniversaryDate;
+		}
 	}
 	public String getUserBirthdayDate() {
 		return userBirthdayDate;
 	}
 	public void setUserBirthdayDate(String userBirthdayDate) {
-		this.userBirthdayDate = userBirthdayDate;
+		if(userBirthdayDate.equals("")){
+			this.userBirthdayDate = null;
+		}else{
+			this.userBirthdayDate = userBirthdayDate;
+		}
 	}
 	public String getUserAddress() {
 		return userAddress;
@@ -108,12 +116,18 @@ public class UserCustomer {
 	public void setUserAddress(String userAddress) {
 		this.userAddress = userAddress;
 	}
-	public int getUserPostNumber() {
+	public String getUserPostNumber() {
 		return userPostNumber;
 	}
-	public void setUserPostNumber(int userPostNumber) {
-		this.userPostNumber = userPostNumber;
+	
+	public void setUserPostNumber(String userPostNumber) {
+		if(userPostNumber.length() < 3){
+			this.userPostNumber = null;
+		}else{
+			this.userPostNumber = userPostNumber;
+		}
 	}
+	
 	public String getUserEmailAddress() {
 		return userEmailAddress;
 	}

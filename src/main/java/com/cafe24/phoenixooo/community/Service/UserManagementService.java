@@ -1,5 +1,7 @@
 package com.cafe24.phoenixooo.community.Service;
 
+import java.util.Map;
+
 import com.cafe24.phoenixooo.community.Model.UserCustomer;
 import com.cafe24.phoenixooo.community.Model.UserDesigner;
 import com.cafe24.phoenixooo.community.Model.UserDirector;
@@ -59,7 +61,7 @@ public interface UserManagementService {
 	 * @param user
 	 * @return
 	 */
-	UserCustomer modifyUpdate(UserCustomer user);
+	Map<String, Object> modifyUpdate(UserCustomer user);
 	
 	/**
 	 * (서비스) 회원탈퇴

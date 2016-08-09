@@ -185,8 +185,8 @@
 					COM_USER_TB
 				WHERE 
 					USER_CD = #{userCode} 
-	</select>	
-	
+	</select>
+
 	<!-- 8.회원정보 수정(업데이트)  -->
 	<update id="modifyInfoUpdate" parameterType="com.cafe24.phoenixooo.community.Model.UserCustomer">
 		UPDATE

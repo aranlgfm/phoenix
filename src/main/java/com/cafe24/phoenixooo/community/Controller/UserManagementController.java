@@ -213,8 +213,10 @@ public class UserManagementController {
 	 * @return
 	 */
 	@RequestMapping(value = "/phoenix/com/process/modifyUser", method = RequestMethod.POST)
-	public String comProcessModifyUser(HttpSession session,UserCustomer user) {
-		user = userService.modifyUpdate(user);
+	public String comProcessModifyUser(HttpSession session,UserCustomer user,Model model) {
+		Map<String, Object> map = userService.modifyUpdate(user);
+		model.addAttribute("userCustomer", map.get("userCustomer"));
+		model.addAttribute("result", map.get("result"));
 		session.setAttribute("user", user);
 		return "/phoenix/com/userModification";
 	}
