@@ -7,7 +7,9 @@ import org.springframework.web.multipart.MultipartFile;
 public class Article 
 {
 	private String articleCode;
+	private String articleNumber;
 	private String userCode;
+	private String userNickName;
 	private String boardGroupCode;
 	private String articleName;
 	private String articleContent;
@@ -23,11 +25,23 @@ public class Article
 	public void setArticleCode(String articleCode) {
 		this.articleCode = articleCode;
 	}
+	public String getArticleNumber() {
+		return articleNumber;
+	}
+	public void setArticleNumber(String articleNumber) {
+		this.articleNumber = articleNumber;
+	}
 	public String getUserCode() {
 		return userCode;
 	}
 	public void setUserCode(String userCode) {
 		this.userCode = userCode;
+	}
+	public String getUserNickName() {
+		return userNickName;
+	}
+	public void setUserNickName(String userNickName) {
+		this.userNickName = userNickName;
 	}
 	public String getBoardGroupCode() {
 		return boardGroupCode;
@@ -77,12 +91,4 @@ public class Article
 	public void setImgFile(List<MultipartFile> imgFile) {
 		this.imgFile = imgFile;
 	}
-	@Override
-	public String toString() {
-		return "Article [articleCode=" + articleCode + ", userCode=" + userCode + ", boardGroupCode=" + boardGroupCode
-				+ ", articleName=" + articleName + ", articleContent=" + articleContent + ", articleDate=" + articleDate
-				+ ", articleIp=" + articleIp + ", articleWriter=" + articleWriter + ", commentList=" + commentList
-				+ ", imgFile=" + imgFile + "]";
-	}
-	
 }

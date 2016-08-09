@@ -32,6 +32,13 @@
 		text-align:right;
 	}
 </style>
+<script>
+	$(document).ready(function()
+	{
+		console.log();
+		var articleNumber=${articleList};
+	});
+</script>
 </head>
 
 <!-- 실제 값들 가져오는 거 처리 해야함. 페이징해야되고, 글 몇개가져올지 해야되고. -->
@@ -57,10 +64,10 @@
 			</tr>
 			<c:forEach var="list" items="${articleList}">
 				<tr>
-					<td class="centerCell">${list.articleCode}</td>
+					<td class="centerCell">${list.articleNumber}</td>
 					<td><a href="/phoenix/com/form/basicArticle?articleCode=${list.articleCode}">${list.articleName}</a></td>
-					<td class="centerCell"></td>
-					<td class="centerCell"></td>					
+					<td class="centerCell">${list.articleDate}</td>
+					<td class="centerCell">${list.userNickName}</td>					
 				</tr>
 			</c:forEach>
 		</table>

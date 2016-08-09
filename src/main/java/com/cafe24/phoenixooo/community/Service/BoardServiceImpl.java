@@ -33,7 +33,12 @@ public class BoardServiceImpl implements BoardService
 
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("boardGroupCode", boardGroupCode);
-        return boardDao.selectArticleList(	map);
+        List<Article> list=boardDao.selectArticleList(	map);
+        for(int i=0;i<list.size();i++)
+        {
+        	list.get(i).setArticleNumber(list.get(i).getArticleCode().substring(12));
+        }
+        return list;
 	}
 	
 	//글 1개  가져오기

@@ -5,16 +5,27 @@
 	
 	<select id="selectArticleList" parameterType="java.util.Map" resultType="com.cafe24.phoenixooo.community.Model.Article">
 		SELECT
-			ARTICLE_CD as articleCode
-			,ARTICLE_NM as articleName
-			,ARTICLE_CTT as articleContent
+			articleTable.ARTICLE_CD as articleCode
+			,userTable.USER_NICK_NM as userNickName
+			,articleTable.ARTICLE_NM as articleName
+			,articleTable.ARTICLE_CTT as articleContent
+			,articleTable.ARTICLE_DT as articleDate
 		FROM
-			COM_ARTICLE_TB
+			COM_ARTICLE_TB as articleTable
+		INNER JOIN
+			COM_USER_TB as userTable
+		ON
+			articleTable.USER_CD=userTable.USER_CD
 		WHERE
-			BOARDGROUP_CD=#{boardGroupCode}
+			articleTable.BOARDGROUP_CD=#{boardGroupCode}
 		ORDER BY ARTICLE_CD DESC
 		LIMIT 0, 20
 	</select>
+	
+<!-- 	<select id="selectUserNickName" >
+		SELECT
+			USER_NICK_NM from COM_USER_TB where USER_CD=
+	</select> -->
 	
 	<!-- 먼저 글 1개 가져오는 쿼리 -->
 	<select id="selectArticle" parameterType="String" resultType="com.cafe24.phoenixooo.community.Model.Article">
