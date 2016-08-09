@@ -18,8 +18,9 @@
 			articleTable.USER_CD=userTable.USER_CD
 		WHERE
 			articleTable.BOARDGROUP_CD=#{boardGroupCode}
-		ORDER BY ARTICLE_CD DESC
-		LIMIT 0, 20
+		ORDER BY 
+			length(articleTable.ARTICLE_CD) desc, articleTable.ARTICLE_CD desc
+		LIMIT 0, 10
 	</select>
 	
 <!-- 	<select id="selectUserNickName" >
