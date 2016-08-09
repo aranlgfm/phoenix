@@ -4,8 +4,10 @@ public class DaySalesInfo {
 
 	private String itemDesignName;
 	private String paymentTypeGb;
-	private int totalCount;
-	private int totalMoney; 
+	private String totalCash;
+	private int countCash;
+	private String totalCard;
+	private int countCard;
 	private String paymentDate;
 	public String getItemDesignName() {
 		return itemDesignName;
@@ -19,17 +21,29 @@ public class DaySalesInfo {
 	public void setPaymentTypeGb(String paymentTypeGb) {
 		this.paymentTypeGb = paymentTypeGb;
 	}
-	public int getTotalCount() {
-		return totalCount;
+	public String getTotalCash() {
+		return totalCash;
 	}
-	public void setTotalCount(int totalCount) {
-		this.totalCount = totalCount;
+	public void setTotalCash(String totalCash) {
+		this.totalCash = totalCash;
 	}
-	public int getTotalMoney() {
-		return totalMoney;
+	public int getCountCash() {
+		return countCash;
 	}
-	public void setTotalMoney(int totalMoney) {
-		this.totalMoney = totalMoney;
+	public void setCountCash(int countCash) {
+		this.countCash = countCash;
+	}
+	public String getTotalCard() {
+		return totalCard;
+	}
+	public void setTotalCard(String totalCard) {
+		this.totalCard = totalCard;
+	}
+	public int getCountCard() {
+		return countCard;
+	}
+	public void setCountCard(int countCard) {
+		this.countCard = countCard;
 	}
 	public String getPaymentDate() {
 		return paymentDate;
@@ -39,9 +53,9 @@ public class DaySalesInfo {
 	}
 	@Override
 	public String toString() {
-		return "DaySalesInfo [itemDesignName=" + itemDesignName + ", paymentTypeGb=" + paymentTypeGb + ", totalCount="
-				+ totalCount + ", totalMoney=" + totalMoney + ", paymentDate=" + paymentDate + "]";
+		return "DaySalesInfo [itemDesignName=" + itemDesignName + ", paymentTypeGb=" + paymentTypeGb + ", totalCash="
+				+ totalCash + ", countCash=" + countCash + ", totalCard=" + totalCard + ", countCard=" + countCard
+				+ ", paymentDate=" + paymentDate + "]";
 	}
-	
 	
 }

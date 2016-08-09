@@ -5,16 +5,19 @@
 	<select id="SelectDailySales" parameterType="String" resultType="com.cafe24.phoenixooo.crm.salesManagement.Model.DaySalesInfo">
 		SELECT
 			ITEMDESIGN_NM as itemDesignName
-		    ,PAYMENT_TYPE_GB as paymentTypeGb 
-		    , count(*) as totalCount
-		    ,SUM(PAYMENT_TOTAL_WON) as totalMoney
+			,PAYMENT_TYPE_GB as paymentTypeGb
+		    ,SUM(PAYMENT_TOTAL_WON) as totalCash
+		    ,count(*) as countCash
+		    ,SUM(PAYMENT_TOTAL_WON) as totalCard
+		    ,count(*) as countCard
 		   ,PAYMENT_DT as paymentDate
 		FROM
 			CRM_PAYMENT_TB
 		WHERE
 			PAYMENT_DT = #{paymentDate}
 		GROUP BY
-			ITEMDESIGN_NM,PAYMENT_TYPE_GB
+			ITEMDESIGN_NM, PAYMENT_TYPE_GB	
+			
 				
 	</select>
 

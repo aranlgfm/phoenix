@@ -9,19 +9,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>일간총매출</h1>
+	
 	<div>
-		<div>
-			<c:import url="/phoenix/crm/salesManagement/periodSearch"></c:import>
-		</div>
-		
-		<div>
-			<c:import url="/phoenix/crm/salesManagement/periodSalesGraph"></c:import>
-		</div>
 		
 		<div>
 			<c:import url="/phoenix/crm/salesManagement/periodSalesList"></c:import>
 		</div>
+	
 	</div>
 </body>
 </html>

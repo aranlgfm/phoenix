@@ -45,10 +45,12 @@
 				
 				
 				<td>
-					<c:if test="${list.paymentTypeGb eq '현금'}"><span id="sumCash">${list.totalMoney}</span>/(${list.totalCount})</c:if>
+					<c:if test="${list.paymentTypeGb eq '현금'}"><span id="sumCash">${list.totalCash}</span>/(${list.countCash})</c:if>
+				
 				</td>
 				<td>
-					<c:if test="${list.paymentTypeGb eq '카드'}"><span id="sumCard">${list.totalMoney}</span>/(${list.totalCount})</c:if>
+				
+					<c:if test="${list.paymentTypeGb eq '카드'}"><span id="sumCash">${list.totalCard}</span>/(${list.countCard})</c:if>
 				</td>
 				
 			</tr>
