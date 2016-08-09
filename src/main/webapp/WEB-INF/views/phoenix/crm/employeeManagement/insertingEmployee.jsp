@@ -9,17 +9,32 @@
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script>
 	
-	$(document).ready(function(){
-		
+	$(document).ready(function() {	
+	/* 	
+		$('#submitBtn').click(function() {
+			if($('#EmployeeLevelName').val() == '') {
+				$('#EmployeeLevelName').val('직급을 입력해 주세요.');
+			}else if($('#EmployeeName').val() == '') {
+				$('#EmployeeName').val('직원명을 입력해 주세요.');
+			}else if($('#EmployeePw').val() == '') {
+				$('#EmployeePw').val('');
+			}else if($('#EmployeeBirthDate').val() == '') {
+				$('#EmployeeBirthDate').val('생년월일을 입력해 주세요.');
+			}else if($('#EmployeeJoinDate').val() == '') {
+				$('#EmployeeJoinDate').val('생년월일을 입력해 주세요.');
+			}else {
+				$('#submitBtn').submit();
+			}
+		});
+		 */
 		$(function() {
-			$('#EmployeeBirthDate').datepicker({	
+			$('#EmployeeBirthDate').datepicker( {	
 		    	dateFormat : "yymmdd"
 		    });
-			$('#EmployeeJoinDate').datepicker({	
+			$('#EmployeeJoinDate').datepicker( {	
 		    	dateFormat : "yymmdd"
 		    });
 		});
-		
 	});
 	
 </script>
@@ -30,23 +45,26 @@
 	<h1>직원 등록 페이지</h1>
 	
 	<form action="/phoenix/crm/employeeManagement/insertingEmployee" method="POST">
-		<table border="1">
+		<table class="table table-bordered">
 			<tr>
 				<td>* 직급선택</td>
-				<td><input type="text" name="EmployeeLevelName" /></td>
+				<td><input id="EmployeeLevelName" type="text" name="EmployeeLevelName" /></td>
 			</tr>
 			<tr>
 				<td>* 직원명</td>
-				<td><input type="text" name="EmployeeName" /></td>
+				<td><input id="EmployeeName" type="text" name="EmployeeName" /></td>
+				
 			</tr>
 			<tr>
 				<td>* 비밀번호</td>
-				<td><input type="password" name="EmployeePw" /></td>
+				<td><input id="EmployeePw" type="password" name="EmployeePw" /></td>
+				
 			</tr>
 			<tr>
 				<td>생일</td>
 				<td>
 					<input id="EmployeeBirthDate" type="text" name="EmployeeBirthDate" />
+					
 					<!-- <input type="checkbox" name="Gregorian" value="양" />
 					<input type="checkbox" name="Lunar" value="음" /> -->
 				</td>
@@ -66,13 +84,14 @@
 			<tr>
 				<td>* 입사일</td>
 				<td><input id="EmployeeJoinDate" type="text" name="EmployeeJoinDate" /></td>
+				
 			</tr>
 			<tr>
 				<td>메모</td>
 				<td><textarea rows="20" cols="50" name="EmployeeMemo"></textarea></td>
 			</tr>
 		</table>
-		<button>등록</button>
+		<button type="button" class="btn btn-default" id="submitBtn">등록</button>
 	</form>
 	
 </body>

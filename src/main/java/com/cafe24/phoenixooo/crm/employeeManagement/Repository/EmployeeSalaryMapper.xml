@@ -5,7 +5,7 @@
 	<!-- 1. 급여지급 등록 -->
 	<insert id="insertEmployeeSalary" parameterType="com.cafe24.phoenixooo.crm.employeeManagement.Model.EmployeeSalary">
 	<selectKey resultType="hashmap" keyProperty="employeeCode" order="BEFORE">
-		select if(isnull(SALARY_CD),'CRM_SALARY_1',concat('CRM_SALARY_',MAX(CONVERT(SUBSTRING(SALARY_CD,11),UNSIGNED))+1)) as salaryCode from CRM_SALARY_TB
+		select if(isnull(SALARY_CD),'CRM_SALARY_1',concat('CRM_SALARY_',MAX(CONVERT(SUBSTRING(SALARY_CD,12),UNSIGNED))+1)) as salaryCode from CRM_SALARY_TB
 	</selectKey>
 		INSERT INTO
 			CRM_SALARY_TB

@@ -9,7 +9,7 @@
 <body>
 	<h1>직원 상세보기</h1>
 	
-	<table border="1">
+	<table class="table table-bordered">
 		<tr>
 			<td>직급</td>
 			<td>직원코드</td>

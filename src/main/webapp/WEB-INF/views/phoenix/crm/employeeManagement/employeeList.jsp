@@ -4,6 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>직원 리스트</title>
 </head>
 <body>
@@ -12,7 +15,7 @@
 	<a href="/phoenix/crm/employeeManagement/insertingEmployee">직원 입력</a>
 	<a href="/phoenix/crm/employeeManagement/employeeSalaryList">급여지급 리스트</a>
 	
-	<table border="1">
+	<table class="table table-bordered">
 		<tr>
 			<td>직급</td>
 			<td>직원명</td>
@@ -29,18 +32,21 @@
 		</c:forEach>
 	</table>
 	
-	<form action="/phoenix/crm/employeeManagement/employeeList" method="GET">
-		검색어 : 
-		<input type="text" name="word">
-		<button>검색</button>
-	</form>
+	<div>
+		<c:if test="${page>1}">
+			<a href="/phoenix/crm/employeeManagement/employeeList?page=${page-1}">이전</a>
+		</c:if>
+		<c:if test="${page<lastPage}">
+			<a href="/phoenix/crm/employeeManagement/employeeList?page=${page+1}">다음</a>
+		</c:if>
+	</div>
 	
-	<c:if test="${page>1}">
-		<a href="/phoenix/crm/employeeManagement/employeeList?page=${page-1}">이전</a>
-	</c:if>
-	<c:if test="${page<lastPage}">
-		<a href="/phoenix/crm/employeeManagement/employeeList?page=${page+1}">다음</a>
-	</c:if>
-	
+	<div>	
+		<form action="/phoenix/crm/employeeManagement/employeeList" method="GET">
+			검색어 : 
+			<input type="text" name="word">
+			<button type="button" class="btn btn-info">검색</button>
+		</form>
+	</div>
 </body>
 </html>
