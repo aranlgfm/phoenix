@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +8,14 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="<c:url value="/webjars/jquery/3.1.0/jquery.min.js"/>"></script>
+<style>
+	table, tr, th, td {
+		border : 1px solid #000000;
+	}
+	td {
+		border-collapse: collapse;
+	}
+</style>
 <script>
 /* on('ready',function(){})이 왜 안되는 거지? 버전 문제인가? */
 		
@@ -26,6 +33,22 @@
 </script>
 </head>
 <body>
+
+	<c:import url="../crmTemp.jsp"></c:import>
+	
+	<c:set var="shopCode" value="CRM_SHOP_1" scope="session"></c:set>
+	
+	<hr>
+	
+	<div>
+		<a href="/phoenix/crm/form/goodsStock">미용용품입고내역</a>
+		<a href="#">미용용품결제내역</a>
+		<a href="/phoenix/crm/form/goodsUseList">미용용품사용내역</a>
+		<a href="/phoenix/crm/form/stockManagementSetting">미용용품설정</a>
+		<a href="/phoenix/crm/form/stockManagement/etcCostList">매입지출등록</a>
+		<a href="/phoenix/crm/form/stockManagement/etcCostSetting?shopCode=${shopCode}">기타지출설정</a>
+	</div>
+
 	<!-- 입고가 되고 나면 결제 하는 시스템으로 되어 있다 -->
 	<form class="insertingGoodsStock" action="/phoenix/crm/form/insertingGoodsStock" method="post">
 		<input class="insertingGoodsStockBtn btn btn-primary" type="button" value="미용용품입고등록">

@@ -20,7 +20,7 @@
 		margin:auto;
 		border: 1px;
 	}
-	td
+	.centerCell
 	{
 		text-align:center;
 		vertical-align: middle;
@@ -50,17 +50,17 @@
 	<div class="basicBoardList">
 		<table class="table table-bordered">
 			<tr>
-				<td>글번호</td>
-				<td>글제목</td>
-				<td>작성시간</td>
-				<td>작성자</td>
+				<td class="centerCell">글번호</td>
+				<td class="centerCell">글제목</td>
+				<td class="centerCell">작성시간</td>
+				<td class="centerCell">작성자</td>
 			</tr>
 			<c:forEach var="list" items="${articleList}">
 				<tr>
-					<td>${list.articleCode}</td>
+					<td class="centerCell">${list.articleCode}</td>
 					<td><a href="/phoenix/com/form/basicArticle?articleCode=${list.articleCode}">${list.articleName}</a></td>
-					<td></td>
-					<td></td>					
+					<td class="centerCell"></td>
+					<td class="centerCell"></td>					
 				</tr>
 			</c:forEach>
 		</table>

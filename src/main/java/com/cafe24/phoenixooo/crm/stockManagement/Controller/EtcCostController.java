@@ -21,12 +21,12 @@ public class EtcCostController {
 	
 	@Autowired
 	private EtcCostService costService;
-	
+/*	
 	@RequestMapping(value = "/phoenix/crm/stockManagement/stockManagement", method = RequestMethod.GET)
 	public String crmFormStockManagement(){
 		return "/phoenix/crm/stockManagement/stockManagement";
 	}
-	
+*/	
 	
 	/**
 	 * CRM-Controller 기타지출항목설정
