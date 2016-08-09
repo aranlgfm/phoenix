@@ -1,7 +1,5 @@
 package com.cafe24.phoenixooo;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -9,17 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
-		return "home";
-	}
-	
-	// 주석 꼭 달아주세요. 엑셀에 있는 설명 갖다붙이면 됨
-	// phoenix
-	@RequestMapping(value = "/phoenix", method = RequestMethod.GET)
-	public String phoenix() {
 		return "phoenix";
 	}
 	

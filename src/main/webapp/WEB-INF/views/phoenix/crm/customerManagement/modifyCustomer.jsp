@@ -43,12 +43,10 @@
 		
 		// 화면 로딩 되자마자 폰번호 입력하기
 		var phone = $('#phone').val();
-		var phone1 = phone.substring(0,3);
-		var phone2 = phone.substring(3,7);
-		var phone3 = phone.substring(7,11);
-		$('#phoneNo1').val(phone1);
-		$('#phoneNo2').val(phone2);
-		$('#phoneNo3').val(phone3);
+		var phoneNo = phone.split('-');
+		$('#phoneNo1').val(phoneNo[0]);
+		$('#phoneNo2').val(phoneNo[1]);
+		$('#phoneNo3').val(phoneNo[2]);
 		
 		// 화면 로딩 되자마자 메일주소 입력하기
 		var mail = $('#mail').val();
@@ -68,12 +66,10 @@
 				$('#msg').html('전화번호를 입력해주세요.');
 			}else if($('#selectVisitDate').val() == ''){
 				$('#msg').html('최초방문일을 입력해주세요.');
-			}else if($('#email').val() == '' || $('#mailDomain').val() == ''){
-				$('#msg').html('이메일을 입력해주세요.');
 			}else{
 				// 화면에 입력된 것들 합치기 전화번호 생일 등
 				$('#customerFirstVisitDate').val($('#selectVisitDate').val());
-				$('#customerCellphoneNumber').val($('#phoneNo1').val()+$('#phoneNo2').val()+$('#phoneNo3').val());
+				$('#customerCellphoneNumber').val($('#phoneNo1').val()+'-'+$('#phoneNo2').val()+'-'+$('#phoneNo3').val());
 				$('#customerBirthDate').val($('#birthDate').val());
 				if($('#daumPostAddr').val() != ''){
 					$('#customerAddress').val($('#daumPostAddr').val()+'^'+$('#userPutAddr').val());
@@ -180,7 +176,7 @@
 				</div>
 			</div>
 			<div class="form-inline form-group">
-				<label class="control-label col-sm-3" for="customerEmailAddress">* 이메일 : </label>
+				<label class="control-label col-sm-3" for="customerEmailAddress">이메일 : </label>
 				<input id="customerEmailAddress" name="customerEmailAddress" type="hidden"/>
 				<div class="col-sm-9">
 						<input id="email" type="text" class="form-control" size="4"/> @
@@ -226,7 +222,7 @@
 				<label class="control-label col-sm-3" for="customerName">주소 : </label>
 				<input id="customerAddress" name="customerAddress" type="hidden"/>
 				<div class="col-sm-6">
-					<label><input id="daumPostAddr" class="form-control" type="text"/></label>
+					<label><input id="daumPostAddr" class="form-control" type="text" readonly="readonly"/></label>
 				</div>
 			</div>
 			<div class="form-group">

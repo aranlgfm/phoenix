@@ -6,13 +6,29 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="<c:url value="/webjars/jquery/3.1.0/jquery.min.js"/>"></script>
 <style>
-	table, tr, th, td {
-		border : 1px solid #000000;
-	}
-	td {
-		border-collapse: collapse;
-	}
+.tag:HOVER {
+	color : #000000;
+	text-decoration: none;
+}
+.tag:LINK {
+	color : #000000;
+	text-decoration: none;
+}
+.tag:VISITED {
+	color : #000000;
+	text-decoration: none;
+}
+.tag:FOCUS {
+	color : #000000;
+	text-decoration: none;
+}
+th {
+	background-color : #7c7c7c;
+	color : #ffffff;
+}
 </style>
 </head>
 <body>
@@ -26,35 +42,42 @@
 
 	<c:import url="searchingForCustomerByDetail.jsp"></c:import>
 	
-	<table>
-		<tr>
-			<th>고객명</th>
-			<th>고객연락처</th>
-			<th>성별</th>
-			<th>담당자</th>
-			<th>시술등록</th>
-			<th>예약등록</th>
-			<th>정보수정</th>
-			<th>고객삭제</th>
-		</tr>
-	<c:forEach var="list" items="${list}">
-		<tr>
-			<td>${list.customerName}</td>
-			<td>${list.customerCellphoneNumber}</td>
-		<c:if test="${list.customerSexFlag == 0}">
-			<td>남</td>
-		</c:if>
-		<c:if test="${list.customerSexFlag == 1}">
-			<td>여</td>
-		</c:if>
-			<td>${list.employeeName}</td>
-			<td><a href="">시술등록</a></td>
-			<td><a href="">예약등록</a></td>
-			<td><a href="/phoenix/crm/customerManagement/form/modifyCustomer?customerCode=${list.customerCode}">정보수정</a></td>
-			<td><a href="/phoenix/crm/customerManagement/process/deleteCustomer?customerCode=${list.customerCode}">고객삭제</a></td>
-		</tr>
-	</c:forEach>
-	</table>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<div>
+		<table class="table table-hover">
+			<tr>
+				<th>고객명</th>
+				<th>고객연락처</th>
+				<th>성별</th>
+				<th>담당자</th>
+				<th>시술등록</th>
+				<th>예약등록</th>
+				<th>정보수정</th>
+				<th>고객삭제</th>
+			</tr>
+		<c:forEach var="list" items="${list}">
+			<tr>
+				<td>${list.customerName}</td>
+				<td>${list.customerCellphoneNumber}</td>
+			<c:if test="${list.customerSexFlag == 0}">
+				<td>남</td>
+			</c:if>
+			<c:if test="${list.customerSexFlag == 1}">
+				<td>여</td>
+			</c:if>
+				<td>${list.employeeName}</td>
+				<td><a class="tag" href="/phoenix/crm/form/insertProcedurePayment?customerCode=${list.customerCode}">시술등록</a></td>
+				<td><a class="tag" href="">예약등록</a></td>
+				<td><a class="tag" href="/phoenix/crm/customerManagement/form/modifyCustomer?customerCode=${list.customerCode}">정보수정</a></td>
+				<td><a class="tag" href="/phoenix/crm/customerManagement/process/deleteCustomer?customerCode=${list.customerCode}">고객삭제</a></td>
+			</tr>
+		</c:forEach>
+		</table>
+	</div>
 </div>
 </body>
 </html>

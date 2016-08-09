@@ -50,12 +50,10 @@
 				$('#msg').html('성별을 선택해주세요.');
 			}else if($('#selectVisitDate').val() == ''){
 				$('#msg').html('최초방문일을 입력해주세요.');
-			}else if($('#email').val() == '' || $('#mailDomain').val() == ''){
-				$('#msg').html('이메일을 입력해주세요.');
 			}else{
 				// 화면에 입력된 것들 합치기 전화번호 생일 등
 				$('#customerFirstVisitDate').val($('#selectVisitDate').val());
-				$('#customerCellphoneNumber').val($('#phoneNo1').val()+$('#phoneNo2').val()+$('#phoneNo3').val());
+				$('#customerCellphoneNumber').val($('#phoneNo1').val()+'-'+$('#phoneNo2').val()+'-'+$('#phoneNo3').val());
 				$('#customerBirthDate').val($('#birthDate').val());
 				if($('#daumPostAddr').val() != ''){
 					$('#customerAddress').val($('#daumPostAddr').val()+'^'+$('#userPutAddr').val());
@@ -191,7 +189,7 @@
 				</div>
 			</div>
 			<div class="form-inline form-group">
-				<label class="control-label col-sm-3" for="customerEmailAddress">* 이메일 : </label>
+				<label class="control-label col-sm-3" for="customerEmailAddress">이메일 : </label>
 				<input id="customerEmailAddress" name="customerEmailAddress" type="hidden"/>
 				<div class="col-sm-9">
 						<input id="email" type="text" class="form-control" size="4"/> @
