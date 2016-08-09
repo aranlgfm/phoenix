@@ -149,9 +149,7 @@
 							<input type="text" name="paymentTotalPrice" value="${itemDesign.itemDesignPrice}">
 							
 							<label>시술일</label>
-							<select name="paymentDate">
-								<option value="20101010">00000000</option>
-							</select>
+							<input type="date" name="paymentDate" value="">
 						</div>
 						<div>
 							<textarea name="paymentMemo" rows="5" cols="50" value=""></textarea>
