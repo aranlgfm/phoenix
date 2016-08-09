@@ -58,7 +58,7 @@
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="/">Home</a></li>
 				<li><a href="/phoenix/com/form/basicBoard?boardGroupCode=COM_BOARDGROUP_3">자유게시판</a></li>
-				<li><a href="/phoenix/com/form/designerBoard?boardGroupCode=COM_BOARDGROUP_1">디자이너게시판</a></li>
+				<li><a href="/phoenix/com/form/basicBoard?boardGroupCode=COM_BOARDGROUP_1">디자이너게시판</a></li>
 				<li><a href="/phoenix/com/form/basicBoard?boardGroupCode=COM_BOARDGROUP_2">상담게시판</a></li>
 				<li><a href="/phoenix/com/form/basicBoard?boardGroupCode=COM_BOARDGROUP_4">공지사항</a></li>
 			</ul>

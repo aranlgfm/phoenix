@@ -168,12 +168,12 @@ public class BoardController
 		}
 		
 		
-		
+/*		
 		//디자이너 게시판으로 이동
 				@RequestMapping(value = "/phoenix/com/form/designerBoard", method = RequestMethod.GET)
 				public String moveToDesignerBoard() {
 				return "/phoenix/com/designerBoard";
-				}
+				}*/
 		
 }
 
