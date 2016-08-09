@@ -261,7 +261,7 @@ public class UserManagementController {
 		
 		if(userService.loginToCrm(user) != null){
 			session.setAttribute("user", userService.loginToCrm(user));
-			pageUrl = "/phoenix/crm/crmTemp";
+			pageUrl = "redirect:/phoenix/crm/form/procedurePaymentCustomerList";
 		}else{
 			session.setAttribute("user", "false");
 			pageUrl = "/phoenix/com/loginToCrm";

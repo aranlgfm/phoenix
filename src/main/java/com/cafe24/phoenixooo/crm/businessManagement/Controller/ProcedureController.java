@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.cafe24.phoenixooo.community.Model.UserCustomer;
 import com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer;
 import com.cafe24.phoenixooo.crm.CustomerManagement.Service.CustomerService;
 import com.cafe24.phoenixooo.crm.businessManagement.Model.PageHelper;
@@ -56,7 +57,6 @@ public class ProcedureController {
 		return "/phoenix/crm/businessManagement/procedurePaymentCustomerList";
 	}
 	
-	
 	/**
 	 * 1-1 시술내역
 	 * @param session
@@ -65,7 +65,8 @@ public class ProcedureController {
 	 */
 	@RequestMapping(value = "/phoenix/crm/form/procedurePaymentCustomerList", method = RequestMethod.GET)
 	public String procedurePayment(HttpSession session,Model model) {
-		List<ProcedurePayment> list = procedureService.getCustomerList((String)session.getAttribute("shopCode"));
+		UserCustomer user = (UserCustomer)session.getAttribute("user");
+		List<ProcedurePayment> list = procedureService.getCustomerList(user.getShopCode());
 		model.addAttribute("list", list);
 		return "/phoenix/crm/businessManagement/procedurePaymentCustomerList";
 	}

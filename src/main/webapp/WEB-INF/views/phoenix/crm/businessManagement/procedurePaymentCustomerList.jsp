@@ -27,7 +27,7 @@
 
 <body>
 <!-- test -->
-	<c:set var="shopCode" value="CRM_SHOP_1" scope="session"/>
+<%-- 	<c:set var="shopCode" value="CRM_SHOP_1" scope="session"/> --%>
 <!-- test -->
 
 	<c:import url="businessManagementTemp.jsp"></c:import>
@@ -51,7 +51,7 @@
 		<div style="border: 1px double;">
 			<div style="background-color: gray;">회원검색결과</div>
 			<form action="" method="POST">
-			<input type="hidden" name="shopCode" value="${sessionScope.shopCode}"/>
+			<input type="text" name="shopCode" value="${sessionScope.shopCode}"/>
 				<div>
 					<table>
 						<tr>
