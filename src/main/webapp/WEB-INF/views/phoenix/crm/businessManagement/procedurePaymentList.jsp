@@ -8,14 +8,13 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
-	<style>
-		table{border: 1px solid;}
-		tr{border: 1px solid;}
-		th{border: 1px solid;}
-	</style>
+
 	<script src="//code.jquery.com/jquery.min.js"></script>
 		<script>
 			$(document).on("ready",function(){
+				$("#paymentCustomerList").removeClass("active");
+				$("#paymentList").addClass("active");
+				$("#businessManagementSetting").removeClass("active");
 				
 				$(".arrayButton").on("click",function(){
 					$("#arrayKeyword").val($(this).attr("id"));
@@ -30,15 +29,15 @@
 	<c:set var="shopCode" value="CRM_SHOP_1" scope="session"/>
 <!-- test -->
 
-	<c:import url="businessManagementTemp.jsp"></c:import>
+	<c:import url="businessManagementMain.jsp"></c:import>
 	<hr>
 		<!-- 시술내역검색검색 -->
 		<div style="border: 1px double;">
 			<div style="background-color: gray;">시술내역검새검색</div>
 			<form action="/phoenix/crm/form/ProcedurePaymentList" method="POST">
-				<input type="text" id="pagePerRecordSize" name="pagePerRecordSize" value="${pageHelper.pagePerRecordSize}">
-				<input type="text" id="totalRecordSize" name="totalRecordSize" value="${pageHelper.totalRecordSize}">
-				<input type="text" id="pagePerListSize" name="pagePerListSize" value="${pageHelper.pagePerListSize}">
+				<input type="hidden" id="pagePerRecordSize" name="pagePerRecordSize" value="${pageHelper.pagePerRecordSize}">
+				<input type="hidden" id="totalRecordSize" name="totalRecordSize" value="${pageHelper.totalRecordSize}">
+				<input type="hidden" id="pagePerListSize" name="pagePerListSize" value="${pageHelper.pagePerListSize}">
 <!-- 				<input type="text" id="arrayKeyword" name="arrayKeyword" value=""> -->
 				<div>
 					<!-- 시술내역검색 -->
@@ -129,12 +128,12 @@
 		
 		<!-- 페이징 및 다른값들 넘길때 필요한 폼 -->
 		<form action="/phoenix/crm/form/ProcedurePaymentList" id="pagingForm" method="post">
-			<input type="text" id="currentPageNo" name="currentPageNo" value="${pageHelper.currentPageNo}">
-			<input type="text" id="pagePerRecordSize" name="pagePerRecordSize" value="${pageHelper.pagePerRecordSize}">
-			<input type="text" id="totalRecordSize" name="totalRecordSize" value="${pageHelper.totalRecordSize}">
-			<input type="text" id="pagePerListSize" name="pagePerListSize" value="${pageHelper.pagePerListSize}">
-			<input type="text" id="arrayKeyword" name="arrayKeyword" value="">
-			<input type="text" id="searchKeyword" name="searchKeyword" value="">
+			<input type="hidden" id="currentPageNo" name="currentPageNo" value="${pageHelper.currentPageNo}">
+			<input type="hidden" id="pagePerRecordSize" name="pagePerRecordSize" value="${pageHelper.pagePerRecordSize}">
+			<input type="hidden" id="totalRecordSize" name="totalRecordSize" value="${pageHelper.totalRecordSize}">
+			<input type="hidden" id="pagePerListSize" name="pagePerListSize" value="${pageHelper.pagePerListSize}">
+			<input type="hidden" id="arrayKeyword" name="arrayKeyword" value="">
+			<input type="hidden" id="searchKeyword" name="searchKeyword" value="">
 		</form>
 		<!-- 일단 여기다 페이징을 해봅시다. -->
 		

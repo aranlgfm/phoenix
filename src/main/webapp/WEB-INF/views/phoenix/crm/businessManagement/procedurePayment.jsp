@@ -40,7 +40,7 @@
 
 
 <body>
-	<c:import url="businessManagementTemp.jsp"></c:import>
+	<c:import url="businessManagementMain.jsp"></c:import>
 	<hr>
 		<!-- 회원시술등록 -->
 		<div style="border: 1px double;">

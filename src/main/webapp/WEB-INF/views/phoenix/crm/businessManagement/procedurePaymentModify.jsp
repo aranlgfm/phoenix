@@ -43,7 +43,7 @@
 
 
 <body>
-	<c:import url="businessManagementTemp.jsp"></c:import>
+	<c:import url="businessManagementMain.jsp"></c:import>
 	<hr>
 	<h1 style="color: red;">수정할때 담당자랑 결제방법 안고르면 에러나용!</h1>
 		<!-- 회원시술수정 -->

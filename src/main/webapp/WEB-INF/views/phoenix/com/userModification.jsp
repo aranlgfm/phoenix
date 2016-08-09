@@ -118,12 +118,10 @@
 			    }).open();
 			});//우편번호
 			
-			
 			//메일선택시~
 			$("#selectEmailDomain").change(function(){
 				$("#userEmailDomain").val($("#selectEmailDomain").val());
 			});
-			
 		});
 	</script>
 	<style>
@@ -157,14 +155,13 @@
 	</style>	
 </head>
 <body>
-
 	<div class="textCenter title">
 		회원정보수정
 	</div>
 	<br/>
 	<br/>
 	<div class="center">
-	<input type="text" id="result" value="${result}">
+	<input type="hidden" id="result" value="${result}">
 		<form class="form-horizontal" id="userForm" action="/phoenix/com/process/modifyUser" method="POST">
 			<input type="hidden" name="userCode" size="12"  value="${sessionScope.user.userCode}"/>
 			

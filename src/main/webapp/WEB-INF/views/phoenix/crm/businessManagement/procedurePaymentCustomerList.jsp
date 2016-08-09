@@ -9,28 +9,19 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
-	<style>
-		table {
-			border: 1px solid;	
-		}
-		
-		tr{
-			border: 1px solid;
-		}
-
-		th{
-			border: 1px solid;
-		}
-			
-	</style>
+	<script src="<c:url value="/webjars/jquery/3.1.0/jquery.min.js"/>"></script>
+	<script>
+		$(document).ready(function(){
+			$("#paymentCustomerList").addClass("active");
+			$("#paymentList").removeClass("active");
+			$("#businessManagementSetting").removeClass("active");
+		});	
+	</script>
 </head>
 
 <body>
-<!-- test -->
-<%-- 	<c:set var="shopCode" value="CRM_SHOP_1" scope="session"/> --%>
-<!-- test -->
 
-	<c:import url="businessManagementTemp.jsp"></c:import>
+	<c:import url="businessManagementMain.jsp"></c:import>
 	<hr>
 		<!-- 회원검색 -->
 		<div style="border: 1px double;">
@@ -51,7 +42,7 @@
 		<div style="border: 1px double;">
 			<div style="background-color: gray;">회원검색결과</div>
 			<form action="" method="POST">
-			<input type="text" name="shopCode" value="${sessionScope.shopCode}"/>
+			<input type="hidden" name="shopCode" value="${sessionScope.shopCode}"/>
 				<div>
 					<table>
 						<tr>
@@ -92,6 +83,6 @@
 			</form>
 		</div>
 		<!-- E시술품목 리스트DIV -->
-	
+	</div>
 </body>
 </html>
