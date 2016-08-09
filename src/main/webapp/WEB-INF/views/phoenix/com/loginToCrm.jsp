@@ -58,21 +58,21 @@
 				<div class="form-group">
 					<label class="control-label col-sm-4">미용실코드 : </label>
 					<div class="col-sm-8">
-						<input class="form-control" type="text" name="shopCode"/>
+						<input class="form-control" type="text" name="shopCode" value="CRM_SHOP_1"/>
 					</div>
 				</div>
 	
 				<div class="form-group">	
 					<label class="control-label col-sm-4">아이디 : </label>
 					<div class="col-sm-8">
-						<input class="form-control" type="text" name="userId"/>
+						<input class="form-control" type="text" name="userId" value="111"/>
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label class="control-label col-sm-4">비밀번호 : </label>
 					<div class="col-sm-8">
-						<input class="form-control" type="password" name="userPw"/>
+						<input class="form-control" type="password" name="userPw" value="111"/>
 					</div>
 				</div>
 				

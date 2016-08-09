@@ -9,11 +9,6 @@
 <title>phoenix</title>
 <link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="<c:url value="/webjars/jquery/3.1.0/jquery.min.js"/>"></script>
-<script>
-	$(document).ready(function(){
-		
-	});
-</script>
 <style>
 	.topA:link {
 		color: #ffffff;
@@ -61,7 +56,7 @@
 				<a class="navbar-brand" href="/phoenix">로고</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="/phoenix">Home</a></li>
+				<li class="active"><a href="/">Home</a></li>
 				<li><a href="/phoenix/com/form/basicBoard?boardGroupCode=COM_BOARDGROUP_3">자유게시판</a></li>
 				<li><a href="/phoenix/com/form/designerBoard?boardGroupCode=COM_BOARDGROUP_1">디자이너게시판</a></li>
 				<li><a href="/phoenix/com/form/basicBoard?boardGroupCode=COM_BOARDGROUP_2">상담게시판</a></li>

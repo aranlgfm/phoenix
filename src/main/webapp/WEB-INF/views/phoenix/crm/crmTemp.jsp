@@ -24,10 +24,10 @@
 	<nav class="navbar navbar-inverse">	
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/phoenix">HairShop Nav</a>
+				<a class="navbar-brand" href="/crm">HairShop Nav</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="/phoenix">Home</a></li>
+				<li class="active"><a href="/crm">Home</a></li>
 				<li class="active"><a href="/phoenix/crm/businessManagement/businessManagement">영업관리</a></li>
 				<li class="active"><a href="/phoenix/crm/customerManagement/form/customerManagement">회원관리</a></li>
 				<li class="active"><a href="/phoenix/crm/employeeManagement/employeeList">직원관리</a></li>
