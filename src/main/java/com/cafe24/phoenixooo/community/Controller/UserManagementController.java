@@ -1,5 +1,7 @@
 package com.cafe24.phoenixooo.community.Controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -9,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cafe24.phoenixooo.community.Model.UserCustomer;
 import com.cafe24.phoenixooo.community.Model.UserDesigner;
@@ -93,6 +96,25 @@ public class UserManagementController {
 		return "/phoenix/com/joiningAsCustomer";
 	}
 	
+	
+	/**
+	 * 3. 커뮤니티 일반고객 가입처리시 아이디 유효성
+	 * @return
+	 */
+	@RequestMapping(value = "/phoenix/com/process/joiningAsCustomer/checkId", method = RequestMethod.POST)
+	
+	public @ResponseBody Map<String, Object> comProcessJoiningAsCustomer(@RequestParam Map<String, Object> data) {
+		
+		System.out.println("제이슨 컨트롤러");
+		System.out.println(data.get("userId"));
+		int result = userService.checkUserId((String)data.get("userId"));
+		data.put("result", result);
+		System.out.println("넘길값");
+		System.out.println("넘길값");
+		System.out.println(data.get("result"));
+		System.out.println(data.get("result"));
+		return data;
+	}
 	
 	/**
 	 * 3. 커뮤니티 일반고객 가입처리

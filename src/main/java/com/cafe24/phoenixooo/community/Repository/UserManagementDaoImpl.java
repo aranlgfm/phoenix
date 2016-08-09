@@ -129,7 +129,16 @@ public class UserManagementDaoImpl implements UserManagementDao {
 	
 	@Override
 	public UserCustomer loginToCrm(UserCustomer user) {
-		// TODO Auto-generated method stub
 		return sqlSession.selectOne(NS+".loginToCrm", user);
+	}
+	
+	/**
+	 * JSON 유효성검사
+	 * @param userId
+	 * @return
+	 */
+	@Override
+	public int checkUserId(String userId) {
+		return sqlSession.selectOne(NS+".checkUserId", userId);
 	}
 }

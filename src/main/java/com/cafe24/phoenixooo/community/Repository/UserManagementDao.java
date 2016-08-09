@@ -89,4 +89,7 @@ public interface UserManagementDao {
 	int userDrawal(UserCustomer user);
 	
 	UserCustomer loginToCrm(UserCustomer user);
+	
+	int checkUserId(String userId);
+	
 }

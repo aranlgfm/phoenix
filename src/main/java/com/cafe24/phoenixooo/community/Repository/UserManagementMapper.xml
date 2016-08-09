@@ -114,6 +114,14 @@
 		WHERE USER_ID = #{userId}
 	</select>
 	
+	<!-- 5-0 아이디셀렉 (-중복-) -->
+	<select id="checkUserId" parameterType="java.lang.String" resultType="int">
+		SELECT count(USER_ID)
+				FROM COM_USER_TB
+				WHERE 
+				USER_ID = #{value}
+	</select>
+	
 	<!-- 5. 아이디찾기 셀렉  -->
 	<select id="finding" parameterType="com.cafe24.phoenixooo.community.Model.UserCustomer" resultType="String">
 		<choose>

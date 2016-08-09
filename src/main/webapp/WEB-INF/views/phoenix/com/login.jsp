@@ -9,8 +9,10 @@
 	<title>회원로그인</title>
 	<link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
 	<style>
+		
 		.textCenter{
 			text-align: center;
+			margin-top: 150px;
 		}
 		.textRight{
 			text-align: right;
@@ -40,7 +42,7 @@
 	<c:import url="../../top.jsp"></c:import>
 	<br/>
 	<br/>
-	<div id="all"><!-- 전체 -->
+	<div id="all" class="left"><!-- 전체 -->
 		<div class="textCenter title">
 			로그인
 		</div>	

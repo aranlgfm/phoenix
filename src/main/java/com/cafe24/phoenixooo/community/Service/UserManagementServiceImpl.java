@@ -128,4 +128,12 @@ public class UserManagementServiceImpl implements UserManagementService {
 		// TODO Auto-generated method stub
 		return userDao.loginToCrm(user);
 	}
+	
+	/**
+	 * JSON 유효성
+	 */
+	@Override
+	public int checkUserId(String userId) {
+		return userDao.checkUserId(userId);	
+	}
 }

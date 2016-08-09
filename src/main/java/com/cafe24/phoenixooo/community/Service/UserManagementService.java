@@ -69,4 +69,11 @@ public interface UserManagementService {
 	int deleteUser(UserCustomer user);
 	
 	UserCustomer loginToCrm(UserCustomer user);
+	
+	/**
+	 * JSON 아이디 유효성
+	 * @param userId
+	 * @return
+	 */
+	int checkUserId(String userId);
 }

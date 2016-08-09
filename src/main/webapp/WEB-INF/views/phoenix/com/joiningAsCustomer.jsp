@@ -13,33 +13,91 @@
 	<script src="/webjars/jquery/3.1.0/jquery.min.js"></script>
 		<script>
 			$(document).ready(function(){
+				
+				/* 유효성 */
 				$('#submitBtn').click(function(){
-					if($('#customerName').val() == ''){
-						$('#msg').html('고객명을 입력해주세요.');
-					}else if($('#phoneNo1').val() == '' || $('#phoneNo2').val() == '' || $('#phoneNo3').val() == ''){
-						$('#msg').html('전화번호를 입력해주세요.');
-		 			}else if(!($('.flag').is(':checked'))){
-		 				$('#msg').html('성별을 선택해주세요.');
-		 			}else if(($('#day1').val() == '' || $('#day2').val() == '' || $('#day3').val() == '') || $('#selectDate').val == ''){
-		 				$('#msg').html('최초방문일을 입력해주세요.');
-		 			}else if($('#email').val() == '' || $('#mailDomain').val() == ''){
-		 				$('#msg').html('이메일을 입력해주세요.');
-		 			}else if($('#phoneNo1').val() != '' && $('#phoneNo2').val() != '' && $('#phoneNo3').val() != ''){
-					}else{
-						//화면에 입력된 것들 합치기 전화번호 생일 등
-						$('#customerFirstVisitDate').val($('#day1').val()+'-'+$('#day2').val()+'-'+$('#day3').val());
-		 				$('#customerCellphoneNumber').val($('#phoneNo1').val()+$('#phoneNo2').val()+$('#phoneNo3').val());
-						$('#customerBirthDate').val($('#birth1').val()+'-'+$('#birth2').val()+'-'+$('#birth3').val());
-		 				if($('#daumPostAddr').val() != ''){
-		 					$('#customerAddress').val($('#daumPostAddr').val()+'^'+$('#userPutAddr').val());
-		 				}
-		 				$('#customerEmailAddress').val($('#email').val()+'@'+$('#mailDomain').val());
-		 				$('#customerAnniversaryDate').val($('#anni1').val()+'-'+$('#anni2').val()+'-'+$('#anni3').val());
-						$('#insertForm').submit();
+					/* 아이디 */
+					if($('#userId').val() == ""){
+						$('#userIdMsg').html('아이디를 입력하세요');
 					}
+					if($('#userId').val() != ""){
+						$.ajax({
+							url : "/phoenix/com/process/joiningAsCustomer/checkId",
+							type: "post",
+							data : {"userId" : $('#userId').val()},
+							success : function(userId){
+								$("#ajax").remove();
+								if(userId.result > 0){
+									$('#userIdMsg').html("중복아이디");
+								}else{
+									$('#userIdMsg').html("");
+								}
+							}//success
+						})
+					}
+					
+					/* 패스워드 */
+					if($("#userPw").val() == ""){
+						//$("#userPwMsg").attr("style","color:red;");
+						$("#userPwMsg").html("비밀번호 입력하세요");
+		 			}else if($("#userPw").val() != $("#userRepw").val()){
+		 				$("#userPwMsg").html("");
+		 				//$("#userRepwMsg").attr("style","color:red;");
+						$("#userRepwMsg").html("비밀번호가 일치하지 않습니다.");
+		 			}else{
+		 				$("#userRepwMsg").html("");
+		 			}
+					
+					/* 이름 */
+					if($("#userName").val() == ""){
+						$("#userNameMsg").html("이름을 입력하세요");
+		 			}else{
+		 				$("#userNameMsg").html("");
+		 			}
+					
+					/* 닉네임 */
+					if($("#userNickName").val() == ""){
+						$("#userNickNameMsg").html("별명을 입력하세요");
+		 			}else{
+		 				$("#userNickNameMsg").html("");
+		 			}
+					
+					/* 성별 */
+					if(!($(".userSexFlag").is(":checked"))){
+		 				$('#userSexFlagMsg').html("성별을 선택해주세요.");
+		 			}else{
+		 				$('#userSexFlagMsg').html("");
+		 			}
+					
+					/* 유선 */
+					if($("#userPhoneNumber1").val() == "" || $("#userPhoneNumber2").val() == "" || $("#userPhoneNumber3").val() == ""){
+						$("#userPhoneNumbermsg").html("전화번호를 입력해주세요.");
+		 			}else{
+		 				$("#userPhoneNumber").val($("#userPhoneNumber1").val()+$('#userPhoneNumber2').val()+$('#userPhoneNumber3').val());
+		 				$("#userPhoneNumberMsg").html("");
+		 			}
+					
+					/* 폰번호 */
+					if($("#userCellphoneNumber1").val() == "" || $("#userCellphoneNumber2").val() == "" || $("#userCellphoneNumber3").val() == ""){
+						$("#userCellphoneNumber").html("전화번호를 입력해주세요.");
+		 			}else{
+		 				$("#userCellphoneNumber").val($("#userCellphoneNumber1").val()+$('#userCellphoneNumber2').val()+$('#userCellphoneNumber3').val());
+		 				$("#userCellphoneNumberMsg").html("");
+		 			}
+
+					/* 이메일 */
+					if($("#userEmailId").val() == "" || $('#userEmailDomain').val() == ""){
+		 				$('#userEmailAddressMsg').html('이메일을 입력해주세요.');
+		 			}else{
+		 				$("#userEmailAddress").val($("#userEmailId").val()+"@"+$('#userEmailDomain').val());
+		 				$('#userEmailAddressMsg').html("");
+		 			}
+					
+					/* 주소 */
+					if($("#userPostNumber").val() != ""){
+		 				$("#userAddress").val($("#userPostNumber").val()+$("#searchAddress").val()+$("#userPutAddress").val());
+		 			}
 				});
-				
-				
 				
 				
 				// 우편번호찾기 후에 데이터 입력
@@ -53,23 +111,11 @@
 				    }).open();
 				});//우편번호
 				
-				// 오늘 버튼 눌렀을 때 오늘날짜 입력되게 하기
-				$('#putToday').click(function(){
-					var today = '${today}';
-					var day1 = today.substring(0, 4);
-					var day2 = today.substring(4, 6);
-					var day3 = today.substring(6, 8);
-					$('#day1').val(day1);
-					$('#day2').val(day2);
-					$('#day3').val(day3);
-				});
-				
 				
 				//메일선택시~
 				$("#selectEmailDomain").change(function(){
 					$("#userEmailDomain").val($("#selectEmailDomain").val());
 				});
-				
 			});
 		
 		</script>
@@ -97,6 +143,10 @@
 	 		margin:auto;
 	 		text-align: center;
  		}
+ 		
+ 		span{
+ 			color: red;
+ 		}
 	</style>
 </head>
 
@@ -115,40 +165,45 @@
 			<form class="form-horizontal" role="form" action="/phoenix/com/process/joiningAsCustomer" method="POST">
 			<input type="hidden" name="userGroupName" value="${group}"/>
 							
-			  <div class="form-group">
-			    <label class="control-label col-sm-3" for="userId">아이디:</label>
-			    <div class="col-sm-4">
-			      <input type="text" class="form-control" id="userId" name="userId" placeholder="6자이상 12자이하" maxlength="12">
-			    </div>
-			  </div>
+			<div class="form-group">
+				<label class="control-label col-sm-3" for="userId">아이디:</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="userId" name="userId" placeholder="6자이상 12자이하" maxlength="12">
+				</div>
+				<span id="userIdMsg"></span>
+			</div>
 			  
-			  <div class="form-group">
-			    <label class="control-label col-sm-3" for="userPw">비밀번호:</label>
-			    <div class="col-sm-4">
-			      <input type="password" class="form-control" id="userPw" name="userPw" placeholder="6자이상 12자이하">
-			    </div>
-			  </div>
+			<div class="form-group">
+				<label class="control-label col-sm-3" for="userPw">비밀번호:</label>
+				<div class="col-sm-4">
+					<input type="password" class="form-control" id="userPw" name="userPw" placeholder="6자이상 12자이하">
+				</div>
+				<span id="userPwMsg"></span>
+			</div>
 			 
-			  <div class="form-group">
-			    <label class="control-label col-sm-3" for="userRePw">비밀번호확인:</label>
-			    <div class="col-sm-4"> 
-			      <input type="password" class="form-control"id="userRePw" placeholder="다시입력해">
-			    </div>
-			  </div>
+			<div class="form-group">
+				<label class="control-label col-sm-3" for="userRePw">비밀번호확인:</label>
+				<div class="col-sm-4"> 
+					<input type="password" class="form-control"id="userRepw" placeholder="다시입력해">
+				</div>
+				<span id="userRepwMsg"></span>
+			</div>
 			 
-			  <div class="form-group">
-			    <label class="control-label col-sm-3" for="userName">이름:</label>
-			   <div class="col-sm-4">
-			      <input type="text" class="form-control" id="userName" name="userName" placeholder="이름을 입력하세요">
-			    </div>
-			  </div>
-			  
-			  <div class="form-group">
-			    <label class="control-label col-sm-3" for="userNickName">닉네임:</label>
-			    <div class="col-sm-4">
-			      <input type="text" class="form-control" id="userNickName" name="userNickName" placeholder="닉네임 입력하세요">
-			    </div>
-			  </div>
+			<div class="form-group">
+				<label class="control-label col-sm-3" for="userName">이름:</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="userName" name="userName" placeholder="이름을 입력하세요">
+				</div>
+				<span id="userNameMsg"></span>
+			</div>
+			 
+			<div class="form-group">
+				<label class="control-label col-sm-3" for="userNickName">닉네임:</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="userNickName" name="userNickName" placeholder="닉네임 입력하세요">
+				</div>
+				<span id="userNickNameMsg"></span>
+			</div>
 			  
 			<div class="form-group">
 			<label class="control-label col-sm-3" for="userSexFlag">성별:</label>
@@ -156,6 +211,7 @@
 					  <label class="radio-inline"><input type="radio" name="userSexFlag" value="0">남</label>
 					  <label class="radio-inline"><input type="radio" name="userSexFlag" value="1">여</label>
 				</div>
+				<span id="userSexFlagMsg"></span>
 			</div>
 			  
 			<hr>
@@ -179,7 +235,7 @@
 					<input type="text" class="form-control" id="searchAddress" readonly="readonly">
 					<input type="text" class="form-control" id="userPutAddress" >
 					<!-- 전체다 넘길 주소값 --> 
-					<input id="userAddress" name="userAddress" type="hidden"/>
+					<input type="hidden" id="userAddress" name="userAddress"/>
 				</div>
 			</div>
 			
@@ -191,8 +247,9 @@
 					<input type="text" class="form-control" id="userPhoneNumber2" size="1" maxlength="4">&nbsp;-&nbsp;
 					<input type="text" class="form-control" id="userPhoneNumber3" size="1" maxlength="4">
 					<!-- 전체다 넘길 집전화번호 --> 
-					<input id="userPhoneNumber" name="userPhoneNumber" type="hidden"/>
+					<input type="hidden" id="userPhoneNumber" name="userPhoneNumber"/>
 				</div>
+				<span id="userPhoneNumberMsg"></span>
 			</div>
 
 
@@ -205,7 +262,8 @@
 						<input type="text" class="form-control" id="userCellphoneNumber2" size="1" maxlength="4">&nbsp;-&nbsp; 
 						<input type="text" class="form-control" id="userCellphoneNumber3" size="1" maxlength="4">	
 					<!-- 전체다 넘길 집전화번호 --> 
-					<input id="userCellphoneNumber3" name="userCellphoneNumber3" type="hidden"/>
+					<input type="hidden" id="userCellphoneNumber" name="userCellphoneNumber"/>
+					<span id="userCellphoneNumberMsg"></span>
 				</div>
 			</div>
 			
@@ -227,6 +285,7 @@
 				</div>
 <!-- 				유저이메일 -->
 				<input type="hidden" id="userEmailAddress" name="userEmailAddress">
+				<span id="userEmailAddressMsg"></span>
 			</div>
 			
 			
@@ -238,7 +297,7 @@
 					<input type="date" class="form-control" id="userBirthdayDate" name="userBirthdayDate">
 				</div>
 				<!-- 유저생일 -->
-				<input id="userBirthdayDate" name="userBirthdayDate" type="hidden"/>
+				<input type="text" id="userBirthdayDate" name="userBirthdayDate"/>
 			</div>
 			 
 			<!-- 기념일 -->
@@ -247,8 +306,8 @@
 				<div class="col-sm-4">
 					<input type="date" class="form-control" id="userAnniversaryDate" name="userAnniversaryDate">
 				</div>
-<!-- 				유저기념일 -->
-<!-- 				<input id="userAnniversaryDate" name="userAnniversaryDate" type="hidden"/> -->
+				유저기념일
+				<input type="text" id="userBirthdayDate" name="userAnniversaryDate"/>
 			</div>
 			
 			<!-- 자기소개 -->
@@ -262,7 +321,7 @@
 			<!-- 등록취소 -->
 			<div class="form-group centerT"> 
 				<div class="center col-sm-10">
-					<button type="submit" class="btn btn-default">등록</button>
+					<button type="button" class="btn btn-default" id="submitBtn">등록</button>
 					<a class="btn btn-default" href="/phoenix/com/form/terms">취소</a>
 				</div>
 			</div>
