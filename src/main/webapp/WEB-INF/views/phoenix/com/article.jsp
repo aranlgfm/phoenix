@@ -55,9 +55,10 @@
 	<div class="modifyArticle">
 		<!-- <input class="recommendBtn" type="button" value="추천"> -->
 	
-		<a href="/phoenix/com/form/modifyingBasicArticle?articleCode=${map.article.articleCode }">수정</a>
+		<a href="/phoenix/com/form/modifyingBasicArticle?articleCode=${map.article.articleCode }">수정</a>	
+		
 		 &nbsp; &nbsp; &nbsp;
-		<a href="/phoenix/com/process/deleteBasicArticle?articleCode=${map.article.articleCode }&boardGroupCode=${article.boardGroupCode}">삭제</a>		
+		<a href="/phoenix/com/process/deleteBasicArticle?articleCode=${map.article.articleCode }&boardGroupCode=${map.article.boardGroupCode}">삭제</a>	
 	</div>
 		
 	<br><br><br>
