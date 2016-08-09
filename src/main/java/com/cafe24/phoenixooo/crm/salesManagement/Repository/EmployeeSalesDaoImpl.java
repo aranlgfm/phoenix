@@ -28,8 +28,8 @@ public class EmployeeSalesDaoImpl implements EmployeeSalesDao {
 	 * (Repository구현) 총직원매출리스트
 	 */
 	@Override
-	public List<EmployeeSales> selectAllEmpSales() {
-		return sqlSession.selectList(NS+"selectAllEmpSales");
+	public List<EmployeeSales> selectAllEmpSales(EmployeeSales emp) {
+		return sqlSession.selectList(NS+"selectAllEmpSales", emp);
 	}
 
 }

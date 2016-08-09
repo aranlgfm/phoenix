@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.cafe24.phoenixooo.community.Model.UserCustomer;
 import com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer;
 import com.cafe24.phoenixooo.crm.CustomerManagement.Service.CustomerService;
-import com.cafe24.phoenixooo.crm.salesManagement.Model.EmployeeListForSales;
 
 /**
  * CRM-Controller 회원등록화면

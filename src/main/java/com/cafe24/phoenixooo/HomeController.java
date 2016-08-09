@@ -31,7 +31,7 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/crm", method = RequestMethod.GET)
 	public String crm() {
-		return "/phoenix/crm/crmTemp";
+		return "redirect:/phoenix/crm/form/procedurePaymentCustomerList";
 	}
 	
 }

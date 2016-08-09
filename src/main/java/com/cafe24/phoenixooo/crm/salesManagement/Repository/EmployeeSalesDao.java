@@ -18,5 +18,5 @@ public interface EmployeeSalesDao {
 	 * (Repository) 총직원매출리스트
 	 * @return
 	 */
-	List<EmployeeSales> selectAllEmpSales();
+	List<EmployeeSales> selectAllEmpSales(EmployeeSales emp);
 }

@@ -14,6 +14,10 @@ public class EmployeeSales {
 	private String paymentType;
 	private int paymentTotalWon;
 	private String paymentDate;
+	private String totalCash;
+	private int countCash;
+	private String totalCard;
+	private int countCard;
 	
 	public String getPaymentCode() {
 		return paymentCode;
@@ -87,6 +91,30 @@ public class EmployeeSales {
 	public void setPaymentDate(String paymentDate) {
 		this.paymentDate = paymentDate;
 	}
+	public String getTotalCash() {
+		return totalCash;
+	}
+	public void setTotalCash(String totalCash) {
+		this.totalCash = totalCash;
+	}
+	public int getCountCash() {
+		return countCash;
+	}
+	public void setCountCash(int countCash) {
+		this.countCash = countCash;
+	}
+	public String getTotalCard() {
+		return totalCard;
+	}
+	public void setTotalCard(String totalCard) {
+		this.totalCard = totalCard;
+	}
+	public int getCountCard() {
+		return countCard;
+	}
+	public void setCountCard(int countCard) {
+		this.countCard = countCard;
+	}
 	
 	@Override
 	public String toString() {
@@ -94,7 +122,8 @@ public class EmployeeSales {
 				+ ", userCode=" + userCode + ", pointCode=" + pointCode + ", itemdesignCode=" + itemdesignCode
 				+ ", userName=" + userName + ", employeeName=" + employeeName + ", itemdesignName=" + itemdesignName
 				+ ", paymentType=" + paymentType + ", paymentTotalWon=" + paymentTotalWon + ", paymentDate="
-				+ paymentDate + "]";
+				+ paymentDate + ", totalCash=" + totalCash + ", countCash=" + countCash + ", totalCard=" + totalCard
+				+ ", countCard=" + countCard + "]";
 	}
-
+	
 }

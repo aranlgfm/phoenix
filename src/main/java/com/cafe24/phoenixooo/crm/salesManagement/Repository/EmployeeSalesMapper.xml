@@ -18,14 +18,20 @@
 	</select>
 	
 	<!-- 2. 총직원매출검색 -->
-	<select id="selectAllEmpSales" resultType="com.cafe24.phoenixooo.crm.salesManagement.Model.EmployeeSales">
-		SELECT 
-			SUM(PAYMENT_TOTAL_WON) as paymentTotalWon
-			,EMPLOYEE_NM as employeeName
+	<select id="selectAllEmpSales" parameterType="com.cafe24.phoenixooo.crm.salesManagement.Model.EmployeeSales" resultType="com.cafe24.phoenixooo.crm.salesManagement.Model.EmployeeSales">
+		SELECT
+			EMPLOYEE_NM as employeeName
 			,PAYMENT_TYPE_GB as paymentType
-		FROM 
-			CRM_PAYMENT_TB 
-		GROUP BY 
+		    ,if(PAYMENT_TYPE_GB = '현금', sum(PAYMENT_TOTAL_WON),0) as totalCash
+		    ,if(PAYMENT_TYPE_GB = '현금', count(PAYMENT_TOTAL_WON),0) as countCash
+		    
+		    ,if(PAYMENT_TYPE_GB = '카드', sum(PAYMENT_TOTAL_WON),0) as totalCard
+		    ,if(PAYMENT_TYPE_GB = '카드', count(PAYMENT_TOTAL_WON),0) as countCard
+		   ,PAYMENT_DT as paymentDate
+		FROM
+			CRM_PAYMENT_TB
+		WHERE PAYMENT_DT = #{paymentDate}
+		GROUP BY
 			EMPLOYEE_CD,PAYMENT_TYPE_GB
 		ORDER BY 
 			EMPLOYEE_NM asc
