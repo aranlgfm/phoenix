@@ -10,12 +10,12 @@
 	<link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
 	<script src="<c:url value="/webjars/jquery/3.1.0/jquery.min.js"/>"></script>
 	<style>
-		#table 
+	/* 	#table2
 		{
 			display: table; 
-			width: 60%;
+			width: 100%;
 			margin:auto;
-		} 
+		}  */
 		.title{text-align: center;} 
 		.row {display: table-row;}
 		.cell6,.cell7,.cell8 {display: table-cell; padding: 3px; border: 0px solid #DDD;}
@@ -30,19 +30,19 @@
 	</style>
 </head>
 <body>
-	<form action="/phoenix/com/process/insertComment" method="post">
-		<input type="hidden" value="${articleCode}" name="articleCode">
-		<div id="table">
-			<div class="row">
-				<span class="cell col3 cell6">아이디나옴</span>
+		<form action="/phoenix/com/process/insertComment" method="post">
+			<input type="hidden" value="${articleCode}" name="articleCode">
+			<div id="table3">
+				<div class="row">
+					<span class="cell col3 cell6">아이디나옴</span>
+				</div>
+				<div class="row">
+					<span class="cell col4 cell8"><textarea rows="5"  cols="140%" name="commentContent"></textarea></span>
+				</div>
+				<div class="row">
+					<span class="cell col5 cell7"><input class="insertComment" type="submit" value="등록"></span>
+				</div>
 			</div>
-			<div class="row">
-				<span class="cell col4 cell8"><textarea rows="5" cols="100%" name="commentContent"></textarea></span>
-			</div>
-			<div class="row">
-				<span class="cell col5 cell7"><input class="insertComment" type="submit" value="등록"></span>
-			</div>
-		</div>
-	</form>
+		</form>
 </body>
 </html>

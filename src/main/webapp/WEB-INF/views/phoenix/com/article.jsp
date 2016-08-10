@@ -26,6 +26,12 @@
 			width: 60%;
 			margin:auto;
 		}
+		#table3
+		{
+			display: table; 
+			width: 60%;
+			margin:auto;
+		} 
 		.row {display: table-row;}
 		.cell {display: table-cell; padding: 3px; border: 1px solid #DDD;}
 		.col1 { width: 20%;}
@@ -33,6 +39,7 @@
 		.cell3,.cell4{height:600px;}
 		.cell3{vertical-align: middle;}
 		.cell1,.cell2,.cell3{text-align: center;}
+		.fileDiv{width:80%;text-align:right;}
 	</style>
 </head>
 <body>
@@ -40,6 +47,16 @@
 	<c:import url="../../top.jsp"></c:import>
 	
 	<br><br>
+	
+	<div class="fileDiv">
+		<c:forEach var="imgFile" items="${map.imgFile}" >
+			<label>	[${imgFile.fileName}] 이미지 파일</label>
+			<div> 
+				<label>imgFile download :</label>
+				<a href="${imgFile.filePath}" download="${imgFile.fileName}">${imgFile.fileName}</a>
+			</div>
+		</c:forEach>	
+	</div>
 	
 	<div id="table">
 		<div class="row">
@@ -63,17 +80,9 @@
 		
 	<br><br><br>
 		
-	<div>
-		<c:forEach var="imgFile" items="${map.imgFile}" >
-			<label>	[${imgFile.fileName}] 이미지 파일</label>
-			<div> 
-				<label>imgFile download :</label>
-				<a href="${imgFile.filePath}" download="${imgFile.fileName}">${imgFile.fileName}</a>
-			</div>
-		</c:forEach>	
-	</div>
 	
-	<br><br>
+	
+	<br><br><br><br><br>
 	
 	<div>
 		<c:import url="/phoenix/com/commentList"></c:import>
