@@ -22,4 +22,10 @@ public class TotalSalesDaoImpl implements TotalSalesDao{
 		return sqlSession.selectList(NS+".SelectDailySales", paymentDate);
 	}
 	
+	//월간총매충 처리
+	@Override
+	public List<DaySalesInfo> getMonthlyList(String Tomonth) {
+		return sqlSession.selectList(NS+".selectMonthlyList", Tomonth);
+	}
+	
 }

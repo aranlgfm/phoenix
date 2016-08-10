@@ -34,14 +34,14 @@
 		<strong>${DaySalesInfo.paymentDate} 시술 매출 내역</strong>
 		<table class="table table-striped">
 			<tr>
-				<th>품목</th>
+				<th>일자</th>
 				<th>현금/(건)</th>
 				<th>카드/(건)</th>
 			</tr>
 
 			<c:forEach var="list" items="${list}">
 			<tr>
-				<td>${list.itemDesignName} </td>
+				<td>${list.paymentDate} </td>
 				<td>${list.totalCash}/(${list.countCash})</td>
 				<td>${list.totalCard}/(${list.countCard})</td>
 			</tr>

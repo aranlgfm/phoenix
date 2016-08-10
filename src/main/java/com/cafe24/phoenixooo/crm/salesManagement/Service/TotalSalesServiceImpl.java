@@ -18,7 +18,6 @@ public class TotalSalesServiceImpl implements TotalSalesService {
 	//일간총매출 처리중
 	@Override
 	public List<DaySalesInfo> SelectDailySales(String paymentDate) {
-		
 		List<DaySalesInfo> list = totalSalesDao.SelectDailySales(paymentDate); 
 		System.out.println("파뿌리확인"+list);
 		
@@ -36,12 +35,16 @@ public class TotalSalesServiceImpl implements TotalSalesService {
 		}
 		
 		System.out.println("중복아이디 합치고난 후의 리스트 : "+list);
-		
-		
 		return 	list;
 	}
 	
+	//월간총매출 처리
 	
+	@Override
+	public List<DaySalesInfo> selectMonthlyList(String Tomonth) {
+		
+		return totalSalesDao.getMonthlyList(Tomonth);
+	}
 	
 	
 }

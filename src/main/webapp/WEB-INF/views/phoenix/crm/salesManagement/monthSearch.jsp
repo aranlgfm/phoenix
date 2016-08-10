@@ -18,44 +18,35 @@
 </style>
 <script>
 	
+	$(document).ready(function(){
+		
+		
+		//ID : realDay인 태그를 누르면 달력 나와서 format방식에 해당하는 data-type(String)을 value값으로 준다.
+		$(function() {
+		    $('."toMonth"').datepicker({	
+		    	dateFormat : "yyyymm"
+		    });
+		});
+		
+	});
+	
+	
 </script>
 
+<title>기간 검색</title>
+</head>
 <body>
+<div id="all">
 	<div>
-		<c:import url="salesManagementMain.jsp"></c:import>
-	</div>
-		<br>
-	<div>
-		<c:import url="periodSearch.jsp"></c:import>
-	</div>
-		<br><br><br>
-	
-	<div id="all">
-		<strong>${DaySalesInfo.paymentDate} 시술 매출 내역</strong>
-		<table class="table table-striped">
-			<tr>
-				<th>품목</th>
-				<th>현금/(건)</th>
-				<th>카드/(건)</th>
-			</tr>
-
-			<c:forEach var="list" items="${list}">
-			<tr>
-				<td>${list.itemDesignName} </td>
-				<td>${list.totalCash}/(${list.countCash})</td>
-				<td>${list.totalCard}/(${list.countCard})</td>
-			</tr>
-			</c:forEach>
-			<tr>
-				<td>총합계</td>
-				<td></td>
-				<td></td>
-			</tr>
-		</table>
+		<form class="navbar-search pull-left" action="/phoenix/crm/salesManagement/monthlySales" method="post">
+			<div>
+			<strong>기간검색</strong>
+				<input class="toMonth" type="text" value="${serverTime}" name="toMonth">
+				<input class="btn" type="submit" value="검색">
+			</div>
+		</form>
 		
-		<strong>
-			최종결산 금액
-		</strong>
 	</div>
+</div>
 </body>
 </html>

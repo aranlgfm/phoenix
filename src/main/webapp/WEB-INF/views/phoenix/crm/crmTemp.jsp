@@ -28,11 +28,11 @@
 			</div>
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="/crm">Home</a></li>
-				<li class="active"><a href="/phoenix/crm/businessManagement/businessManagement">영업관리</a></li>
+				<li class="active"><a href="/phoenix/crm/form/procedurePaymentCustomerList">영업관리</a></li>
 				<li class="active"><a href="/phoenix/crm/customerManagement/form/customerManagement">회원관리</a></li>
 				<li class="active"><a href="/phoenix/crm/employeeManagement/employeeList">직원관리</a></li>
 				<li class="active"><a href="/phoenix/crm/form/goodsStock">매입/지출</a></li>
-				<li class="active salesManagement"><a href="/phoenix/crm/salesManagement/salesManagementHome">매출관리</a></li>
+				<li class="active salesManagement"><a href="/phoenix/crm/salesManagement/salesManagementMain">매출관리</a></li>
 			</ul>
 			
 			<ul class="nav navbar-nav navbar-right">

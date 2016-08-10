@@ -7,4 +7,6 @@ import com.cafe24.phoenixooo.crm.salesManagement.Model.DaySalesInfo;
 public interface TotalSalesDao {
 
 	List<DaySalesInfo> SelectDailySales(String paymentDate);
+	
+	List<DaySalesInfo> getMonthlyList(String Tomonth);
 }

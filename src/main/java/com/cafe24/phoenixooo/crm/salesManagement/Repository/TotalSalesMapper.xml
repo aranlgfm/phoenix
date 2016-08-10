@@ -21,6 +21,22 @@
 				
 	</select>
 
+	<select id="selectMonthlyList" parameterType="String" resultType="com.cafe24.phoenixooo.crm.salesManagement.Model.DaySalesInfo">
+		SELECT
+			PAYMENT_DT as paymentDate
+			,PAYMENT_TYPE_GB as paymentTypeGb
+		    ,if(PAYMENT_TYPE_GB = '현금', sum(PAYMENT_TOTAL_WON),0) as totalCash
+		    ,if(PAYMENT_TYPE_GB = '현금', count(PAYMENT_TOTAL_WON),0) as countCash
+		    ,if(PAYMENT_TYPE_GB = '카드', sum(PAYMENT_TOTAL_WON),0) as totalCard
+		    ,if(PAYMENT_TYPE_GB = '카드', count(PAYMENT_TOTAL_WON),0) as countCard
+		   
+		FROM
+			CRM_PAYMENT_TB
+		WHERE PAYMENT_DT between '20160801' and '20160831'
+		GROUP BY
+			PAYMENT_DT, PAYMENT_TYPE_GB 
+	</select>
+
 
 
 

@@ -9,13 +9,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
 	<div>
-		
 		<div>
 			<c:import url="/phoenix/crm/salesManagement/periodSalesList"></c:import>
 		</div>
-	
 	</div>
 </body>
 </html>
