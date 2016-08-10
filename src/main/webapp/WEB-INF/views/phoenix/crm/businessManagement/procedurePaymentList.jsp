@@ -25,9 +25,7 @@
 </head>
 
 <body>
-<!-- test -->
-	<c:set var="shopCode" value="CRM_SHOP_1" scope="session"/>
-<!-- test -->
+
 	<c:import url="businessManagementMain.jsp"></c:import>
 	<hr>
 		<!-- 시술내역검색검색 -->
@@ -51,7 +49,7 @@
 	<hr>
 		<!-- 시술내역검색결과 리스트 -->
 		<form action="" method="POST">
-		<input type="hidden" name="shopCode" value="${sessionScope.shopCode}"/>
+		<input type="hidden" name="shopCode" value="${user.shopCode}"/>
 		<div>
 			<table class="table table-hover">
 				<tr class="textCenter">
@@ -117,8 +115,6 @@
 			<c:when test="${pageHelper.currentPageNo == pageHelper.totalPageSize}">▷</c:when>
 			<c:otherwise><a href="/phoenix/crm/form/ProcedurePaymentList?currentPageNo=${pageHelper.totalPageSize}">▶</a></c:otherwise>
 		</c:choose>
-		
-		
 		
 		
 		<!-- 페이징 및 다른값들 넘길때 필요한 폼 -->

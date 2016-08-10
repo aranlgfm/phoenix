@@ -8,6 +8,7 @@ public class RequestPageHelper {
 	private String arrayKeyword; //정렬할때 쓸 값
 	private String searchKeyword;
 	
+	private String columName; 
 	private String shopCode;
 	private String tableName;
 
@@ -27,6 +28,20 @@ public class RequestPageHelper {
 	
 	
 	
+	public String getColumName() {
+		return columName;
+	}
+
+
+
+	public void setColumName(String columName) {
+		this.columName = columName;
+	}
+
+
+
+
+
 	public String getShopCode() {
 		return shopCode;
 	}

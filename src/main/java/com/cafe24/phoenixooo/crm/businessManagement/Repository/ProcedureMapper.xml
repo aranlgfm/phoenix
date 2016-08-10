@@ -3,7 +3,7 @@
 <mapper namespace="com.cafe24.phoenixooo.crm.businessManagement.Repository.ProcedureMapper">
 	
 	<!-- 회원리스트 -->
-	<select id="getCustomerList" parameterType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedurePayment" resultType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedurePayment">
+	<select id="getCustomerList" parameterType="java.util.Map" resultType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedurePayment">
 		SELECT
 			C.CUSTOMER_CD AS customerCode
 			,C.CUSTOMER_NM AS customerName
@@ -16,13 +16,21 @@
 			CRM_CUSTOMER_TB AS C
 		WHERE
 			C.SHOP_CD = #{shopCode}
+			
+		<if test="pageHelper.searchKeyword != null and searchKeyword != ''">
+		AND
+			C.CUSTOMER_NM LIKE CONCAT('%',#{pageHelper.searchKeyword},'%')		
+		</if>
+			
 		ORDER BY
-			C.CUSTOMER_CD ASC
-			<!-- 코드번호 CUSTOMER_CD
-				회원명 CUSTOMER_NM 
-				담당자 EMPLOYEE_NM
-				총시술 (SELECT COUNT(*) FROM crm_payment_tb  WHERE CUSTOMER_CD = C.CUSTOMER_CD) 
-			 -->		
+			<if test="pageHelper.arrayKeyword == null or arrayKeword == ''">
+				C.CUSTOMER_CD DESC
+			</if>
+			<if test="pageHelper.arrayKeyword != null and arrayKeword != ''">
+				${pageHelper.arrayKeyword} DESC
+			</if>
+		LIMIT
+			#{pageHelper.recordStartNo}, #{pageHelper.pagePerRecordSize}	
 	</select>
 	
 	<!-- 시술내역 리스트 가져오기 -->
@@ -68,7 +76,7 @@
 	<!-- 전체 레코드 수를 알아야 하지 않니?? -->
 	<select id="selectTotalCount" parameterType="com.cafe24.phoenixooo.crm.businessManagement.Model.RequestPageHelper" resultType="int">
 		SELECT
-		COUNT(PAYMENT_CD)
+		COUNT(*)
 		FROM
 			${tableName}
 		WHERE
@@ -76,7 +84,7 @@
         <!-- 샾코드를 랑 테이블명 --> 
         <if test="searchKeyword != null and searchKeyword != ''">
 		AND
-			ITEMDESIGN_NM LIKE CONCAT('%',#{searchKeyword},'%')		
+			${columName} LIKE CONCAT('%',#{searchKeyword},'%')		
 		</if>	
     </select>
     
