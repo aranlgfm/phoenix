@@ -67,13 +67,15 @@
 	
 	<!-- 전체 레코드 수를 알아야 하지 않니?? -->
 	<select id="selectTotalCount" parameterType="com.cafe24.phoenixooo.crm.businessManagement.Model.RequestPageHelper" resultType="int">
-        SELECT 
-        COUNT(*) 
-        FROM 
-        	CRM_PAYMENT_TB
-        	<!-- 샾코드를 추가해야함  -->
-        <if test="searchKeyword != null and searchKeyword != ''">
+		SELECT
+		COUNT(PAYMENT_CD)
+		FROM
+			${tableName}
 		WHERE
+		SHOP_CD = #{shopCode}
+        <!-- 샾코드를 랑 테이블명 --> 
+        <if test="searchKeyword != null and searchKeyword != ''">
+		AND
 			ITEMDESIGN_NM LIKE CONCAT('%',#{searchKeyword},'%')		
 		</if>	
     </select>

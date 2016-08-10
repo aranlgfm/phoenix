@@ -18,7 +18,8 @@ public class PageHelper {
 	//추가하는 페이징
 	private String arrayKeyword;
 	private String searchKeyword;
-	
+	private String shopCode;
+	private String tableName;
 	
 	PageHelper(){}
 	public PageHelper(	
@@ -30,6 +31,8 @@ public class PageHelper {
 		this.pagePerListSize = ph.getPagePerListSize();
 		this.arrayKeyword = ph.getArrayKeyword();
 		this.searchKeyword = ph.getSearchKeyword();
+		this.shopCode = ph.getShopCode();
+		this.tableName = ph.getTableName();
 		//totalRecordSize익셉션
 		if(this.totalRecordSize == 0){
 			this.totalRecordSize = 1;
@@ -97,9 +100,18 @@ public class PageHelper {
 		this.searchKeyword = searchKeyword;
 	}
 	
-	
-	
-	
+	public String getShopCode() {
+		return shopCode;
+	}
+	public void setShopCode(String shopCode) {
+		this.shopCode = shopCode;
+	}
+	public String getTableName() {
+		return tableName;
+	}
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
+	}
 	
 	
 	public int getCurrentPageNo() {

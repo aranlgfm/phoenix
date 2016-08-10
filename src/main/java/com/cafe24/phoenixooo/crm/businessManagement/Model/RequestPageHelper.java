@@ -7,8 +7,9 @@ public class RequestPageHelper {
 	private int pagePerListSize; //페이지하단에 보여지는 그룹개수 (통상10개)
 	private String arrayKeyword; //정렬할때 쓸 값
 	private String searchKeyword;
-
 	
+	private String shopCode;
+	private String tableName;
 
 	public RequestPageHelper(){
 		if(this.currentPageNo == 0){
@@ -24,6 +25,40 @@ public class RequestPageHelper {
 	
 	
 	
+	
+	
+	public String getShopCode() {
+		return shopCode;
+	}
+
+
+
+
+
+	public void setShopCode(String shopCode) {
+		this.shopCode = shopCode;
+	}
+
+
+
+
+
+	public String getTableName() {
+		return tableName;
+	}
+
+
+
+
+
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
+	}
+
+
+
+
+
 	public String getSearchKeyword() {
 		return searchKeyword;
 	}
@@ -38,8 +73,6 @@ public class RequestPageHelper {
 	public void setArrayKeyword(String arrayKeyword) {
 		this.arrayKeyword = arrayKeyword;
 	}
-	
-	
 	
 	
 	public int getCurrentPageNo() {
@@ -66,6 +99,21 @@ public class RequestPageHelper {
 	public void setPagePerListSize(int pagePerListSize) {
 		this.pagePerListSize = pagePerListSize;
 	}
+	
+
+
+
+	@Override
+	public String toString() {
+		return "RequestPageHelper [currentPageNo=" + currentPageNo + ", pagePerRecordSize=" + pagePerRecordSize
+				+ ", totalRecordSize=" + totalRecordSize + ", pagePerListSize=" + pagePerListSize + ", arrayKeyword="
+				+ arrayKeyword + ", searchKeyword=" + searchKeyword + ", shopCode=" + shopCode + ", tableName="
+				+ tableName + "]";
+	}
+	
+	
+	
+	
 }
 
 

@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
-import javax.swing.plaf.synth.SynthSplitPaneUI;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter.DEFAULT;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cafe24.phoenixooo.community.Model.UserCustomer;
-import com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer;
-import com.cafe24.phoenixooo.crm.CustomerManagement.Service.CustomerService;
 import com.cafe24.phoenixooo.crm.businessManagement.Model.PageHelper;
 import com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItem;
 import com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItemDesign;
@@ -63,9 +59,10 @@ public class ProcedureController {
 	 * @param session
 	 * @param model
 	 * @return
+	 * 테이블 명 : CRM_CUSTOMER_TB
 	 */
 	@RequestMapping(value = "/phoenix/crm/form/procedurePaymentCustomerList", method = RequestMethod.GET)
-	public String procedurePayment(HttpSession session,Model model) {
+	public String procedurePayment(HttpSession session,RequestPageHelper rpageHelper,Model model) {
 		UserCustomer user = (UserCustomer)session.getAttribute("user");
 		List<ProcedurePayment> list = procedureService.getCustomerList(user.getShopCode());
 		model.addAttribute("list", list);
@@ -162,14 +159,18 @@ public class ProcedureController {
 	
 	/**
 	 * 4.시술내역리스트
+	 * 테이블명 : CRM_PAYMENT_TB
 	 */
 	@RequestMapping(value = "/phoenix/crm/form/ProcedurePaymentList", method = RequestMethod.GET)
 	public String getProcedurePayment(HttpSession session,RequestPageHelper rpageHelper,Model model) {
-		
 		//pageHelper통한 페이지;;
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("shopCode", (String)session.getAttribute("shopCode"));
 		
+		//테이블명과 샾코드를 가져다가 넣음.
+		rpageHelper.setShopCode((String)session.getAttribute("shopCode"));
+		rpageHelper.setTableName("CRM_PAYMENT_TB");
+		System.out.println(rpageHelper);
 		int totalRecord = (procedureService.selectTotalCount(rpageHelper));
 		rpageHelper.setTotalRecordSize(totalRecord);
 		
