@@ -5,16 +5,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>stockManagement</title>
 <link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="<c:url value="/webjars/jquery/3.1.0/jquery.min.js"/>"></script>
 <style>
-	table, tr, th, td {
-		border : 1px solid #000000;
-	}
-	td {
-		border-collapse: collapse;
-	}
+.tag:HOVER {
+	color : #000000;
+	text-decoration: none;
+}
+.tag:LINK {
+	color : #000000;
+	text-decoration: none;
+}
+.tag:VISITED {
+	color : #000000;
+	text-decoration: none;
+}
+.tag:FOCUS {
+	color : #000000;
+	text-decoration: none;
+}
+th {
+	background-color : #7c7c7c;
+	color : #ffffff;
+}
 </style>
 </head>
 <body>
@@ -24,13 +38,15 @@
 
 <hr>
 
-<div>
-	<a href="#">미용용품입고내역</a>
-	<a href="#">미용용품결제내역</a>
-	<a href="#">미용용품사용내역</a>
-	<a href="#">미용용품설정</a>
-	<a href="/phoenix/crm/form/stockManagement/etcCostList">매입지출등록</a>
-	<a href="/phoenix/crm/form/stockManagement/etcCostSetting?shopCode=${shopCode}">기타지출설정</a>
+<div id="all">
+	<ul class="nav nav-tabs">
+		<li><a href="/phoenix/crm/form/goodsStock">미용용품입고내역</a></li>
+		<li><a href="#">미용용품결제내역</a></li>
+		<li><a href="/phoenix/crm/form/goodsUseList">미용용품사용내역</a></li>
+		<li><a href="/phoenix/crm/form/stockManagementSetting">미용용품설정</a></li>
+		<li><a href="/phoenix/crm/form/stockManagement/etcCostList">매입지출등록</a></li>
+		<li><a href="/phoenix/crm/form/stockManagement/etcCostSetting?shopCode=${shopCode}">기타지출설정</a></li>
+	</ul>	
 </div>
 
 </body>

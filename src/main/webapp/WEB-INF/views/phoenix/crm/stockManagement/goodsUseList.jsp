@@ -6,52 +6,59 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>goodsUseList</title>
+<link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <body>
-	<table>
-		<tr>
-			<td>
-				최종사용일
-			</td>
-			<td>
-				거래처명
-			</td>
-			<td>
-				미용용품명
-			</td>
-			<td>
-				사용수량
-			</td>
-			<td>
-				사용직원
-			</td>
-			<td>
-				관리
-			</td>
-		</tr>
-		<c:forEach var="list" items="${goodsUseList}">
-			<tr>
+	<c:import url="stockManagement.jsp"></c:import>
+	<hr>
+	
+	<div id="all">
+	
+		<table class="table table-hover">
+			<tr class="textCenter">
 				<td>
-					${list.useDate}
+					최종사용일
 				</td>
 				<td>
-					${list.accountName}
+					거래처명
 				</td>
 				<td>
-					${list.goodsName}
+					미용용품명
 				</td>
 				<td>
-					${list.useQuantityNumber}
+					사용수량
 				</td>
 				<td>
-					${list.employeeName}
+					사용직원
 				</td>
 				<td>
-					버튼 들어가야
+					관리
 				</td>
 			</tr>
-		</c:forEach>
-	</table>
+			<c:forEach var="list" items="${goodsUseList}">
+				<tr class="textCenter">
+					<td>
+						${list.useDate}
+					</td>
+					<td>
+						${list.accountName}
+					</td>
+					<td>
+						${list.goodsName}
+					</td>
+					<td>
+						${list.useQuantityNumber}
+					</td>
+					<td>
+						${list.employeeName}
+					</td>
+					<td>
+						버튼 들어가야
+					</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>	
 </body>
 </html>

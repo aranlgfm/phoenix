@@ -2,6 +2,8 @@ package com.cafe24.phoenixooo.crm.stockManagement.Controller;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cafe24.phoenixooo.crm.stockManagement.Model.Account;
 import com.cafe24.phoenixooo.crm.stockManagement.Model.Goods;
+import com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsUse;
 import com.cafe24.phoenixooo.crm.stockManagement.Service.StockManagementSettingService;
 
 
@@ -74,5 +77,15 @@ public class StockManagementSettingController {
 				stockManagementSettingService.insertGoods(goods);
 				System.out.println("------------->3"+goods);
 				return "redirect:/phoenix/crm/form/stockManagementSettingGoods";
+			}
+			
+			//미용용품설정목록화면
+			@RequestMapping(value = "/phoenix/crm/form/goodsSetting", method = RequestMethod.GET)
+			public String moveToGoodsSetting(Goods goods,Model model) 
+			{ 
+				//goods.setUserCode("COM_USER_1");
+				List<Goods> goodsSetting=stockManagementSettingService.selectGoodsSetting(goods);
+				model.addAttribute("goodsSetting", goodsSetting);
+				return "/phoenix/crm/stockManagement/goodsSetting";
 			}
 }

@@ -59,6 +59,13 @@ public class Goods {
 		this.goodsMemo = goodsMemo;
 	}
 	
+	@Override
+	public String toString() {
+		return "Goods [goodsCode=" + goodsCode + ", shopCode=" + shopCode + ", employeeCode=" + employeeCode
+				+ ", accountCode=" + accountCode + ", goodsName=" + goodsName + ", butingGoodsUnitWon="
+				+ butingGoodsUnitWon + ", saleGoodsUnitWon=" + saleGoodsUnitWon + ", goodsMemo=" + goodsMemo + "]";
+	}
+	
 	
 	
 	

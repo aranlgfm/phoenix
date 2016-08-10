@@ -65,4 +65,14 @@
 				
 	</insert>
 	
+	<select id="selectGoodsSetting" parameterType="com.cafe24.phoenixooo.crm.stockManagement.Model.Goods" resultType="com.cafe24.phoenixooo.crm.stockManagement.Model.Goods">
+		SELECT
+			ACCOUNT_CD as accountCode
+		 	,GOODS_NM as goodsName
+		 	,BUYING_GOODS_UNIT_WON as buyingGoodsUnitWon
+		 	,SALE_GOODS_UNIT_WON as saleGoodsUnitWon
+		FROM
+			CRM_GOODS_TB as goods
+	</select>
+	
 </mapper>
