@@ -40,6 +40,18 @@ public class TotalSearchController {
 		return "/phoenix/com/searchResult";
 	}
 	
+	@RequestMapping(value="/phoenix/com/form/searchResult",method = RequestMethod.GET)
+	public String comFormSearchResultget(String word, Model model){
+		Map<String,Object> map = new HashMap<String,Object>();
+		System.out.println("controller");
+		model.addAttribute("word", word);
+		System.out.println(word);
+		map.put("list", service.selectArticleList(word)) ;
+		model.addAttribute("map", map);
+		
+		return "/phoenix/com/searchResult";
+	}
+	
 	/**
 	 * 검색결과 처리 페이지
 	 * 해당 검색 결과를 카테고리에 따라 분류

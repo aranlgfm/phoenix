@@ -5,121 +5,123 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>GOODBYE</title>
-	<style>
-		.hairImg{
-			width: 200px;
-			height: 200px;
-			float: left;
-			padding-right: 30px;
+<title>GOODBYE</title>
+<link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="<c:url value="/webjars/jquery/3.1.0/jquery.min.js"/>"></script>
+<style>
+	.hairImg{
+		width: 200px;
+		height: 200px;
+		float: left;
+		padding-right: 30px;
+	}
+	.cancle{
+		clear: both;
+	}
+	.test{
+		margin: auto;
+	}
+</style>
+<script>
+	$(document).ready(function(){
+		// 카테고리 클릭 시 메뉴버튼 엑티브상태로 변화
+		if($('#cate').val() != ''){
+			if($('#cate').val() == 'free'){
+				$('#free').addClass('active');
+			}else if($('#cate').val() == 'hair'){
+				$('#hair').addClass('active');
+			}else if($('#cate').val() == 'shop'){
+				$('#shop').addClass('active');
+			}else if($('#cate').val() == 'designer'){
+				$('#designer').addClass('active');
+			}
+		}else{
+			$('#total').addClass('active');
 		}
-		.cancle{
-			clear: both;
-		}
-		.test{
-			margin: auto;
-		}
-	</style>
+	});
+</script>
 </head>
 <body>
-<h1>
-	검색결과
-</h1>
 
-<div>
-	<form action="/phoenix/com/form/searchResult" method="POST">
-		<input type="text" name="word" value="${word}"/>
-		<input type="submit" value="검색"/>
+<c:import url="../../top.jsp"></c:import>
+
+<div id="all">
+
+<!-- 상단 메뉴버튼 -->
+	<ul class="nav nav-tabs">
+		<li id="total"><a href="/phoenix/com/form/searchResult?word=${word}">통합</a></li>
+		<li id="free"><a href="/phoenix/com/process/searchResult?cate=free&word=${word}">자유게시판</a></li>
+		<li id="hair"><a href="/phoenix/com/process/searchResult?cate=hair&word=${word}">헤어게시판</a></li>
+		<li id="shop"><a href="/phoenix/com/process/searchResult?cate=shop&word=${word}">미용실</a></li>
+		<li id="designer"><a href="/phoenix/com/process/searchResult?cate=designer&word=${word}">디자이너</a></li>
+	</ul>
 	
+	<input id="cate" type="hidden" value="${cate}"/>
+
+
+
+<!-- 카테고리별 검색 -->
 	<c:choose>
-		<c:when test="${user ne null and user ne 'false'}">
-			<span>${user.userNickName}님 환영합니다.</span>
-			<select onchange="window.open(value, '_self');">
-				<option>MyPage</option>
-				<option value="/phoenix/com/form/userModification">회원정보수정</option>
-				<option value="/phoenix/com/form/userWithdrawal">회원탈퇴</option>
-				<option value="/phoenix/com/form/paymentList">주문결제내역</option>
-				<option value="/phoenix/com/form/repaymentList">환불내역</option>
-			</select>
-			<a href="/phoenix/com/process/logout"><input type="button" value="로그아웃"/></a>
-		</c:when>
-		<c:otherwise>
-			<a href="/phoenix/com/form/terms"><input type="button" value="회원가입"/></a>
-			<a href="/phoenix/com/form/login"><input type="button" value="로그인"/></a>
-		</c:otherwise>	
-	</c:choose>
-	</form>	
-</div>
-
-<hr/>
-<div>
-	<a href="/phoenix/com/process/searchResult?cate=&word=${word}">통합</a>
-	<a href="/phoenix/com/process/searchResult?cate=free&word=${word}">자유게시판</a>
-	<a href="/phoenix/com/process/searchResult?cate=hair&word=${word}">헤어게시판</a>
-	<a href="/phoenix/com/process/searchResult?cate=shop&word=${word}">미용실</a>
-	<a href="/phoenix/com/process/searchResult?cate=designer&word=${word}">디자이너</a>
-</div>
-<hr/>
-
-<c:choose>
 		<c:when test="${cate eq 'free'}">
-			<h3>자유게시판</h3>
-			<hr>
-			<!-- 셀렉트 다시 -->
-			<c:forEach items="${list.freeArticle}" var="item">
-								<div>${item.boardGroupCode} ${item.articleName}</div>
-					</c:forEach>
+			<div>
+				<h5>자유게시판</h5>
+				<!-- 셀렉트 다시 -->
+				<c:forEach items="${list.freeArticle}" var="item">
+					<div>${item.boardGroupCode} ${item.articleName}</div>
+				</c:forEach>
+			</div>
 		</c:when>
 		
 		<c:when test="${cate eq 'hair'}">
-		
-			<h3>헤어게시판</h3>
-			<hr>	
-			<!-- 셀렉트 다시 -->
-			<c:forEach items="${list.hairArticle}" var="item">
-						<div>${item.boardGroupCode} ${item.articleName}</div>
-			</c:forEach>
-			<div><img class="hairImg" src="/resources/test1.jpg"/></div>
-			<div><a href="/phoenix/com/process/withdraw"><img class="hairImg" src="/resources/test2.jpg"/></a></div>
-			<div><img class="hairImg" src="/resources/test3.jpg"/></div>
-			<div><img class="hairImg" src="/resources/test4.jpg"/></div>
-			<div><img class="hairImg" src="/resources/test5.jpg"/></div>
-			<div class="cancle"></div>
+			<div>
+				<h5>헤어게시판</h5>
+				<!-- 셀렉트 다시 -->
+				<c:forEach items="${list.hairArticle}" var="item">
+							<div>${item.boardGroupCode} ${item.articleName}</div>
+				</c:forEach>
+				<div><img class="hairImg" src="/resources/test1.jpg"/></div>
+				<div><a href="/phoenix/com/process/withdraw"><img class="hairImg" src="/resources/test2.jpg"/></a></div>
+				<div><img class="hairImg" src="/resources/test3.jpg"/></div>
+				<div><img class="hairImg" src="/resources/test4.jpg"/></div>
+				<div><img class="hairImg" src="/resources/test5.jpg"/></div>
+				<div class="cancle"></div>
+			</div>
 		</c:when>
 		
 		<c:when test="${cate eq 'shop'}">
-		
-			<h3>미용실</h3>	
-			<hr>
-		</c:when>
-		<c:when test="${cate eq 'designer'}">
-		
-			<h3>디자이너</h3>
-			<hr>
-			<!-- 셀렉트 다시 -->
-			<c:forEach items="${list}" var="item">
-				<c:forEach items="${item}" var="li">
-					<c:if test="${li.boardGroupCode eq 'COM_BOARDGROUP_4'}">
-						<div>${li.boardGroupCode} ${li.articleName}</div>
-					</c:if>
+			<div>
+				<h5>미용실</h5>	
+				<!-- 셀렉트 다시 -->
+				<c:forEach items="${list.shopList}" var="li">
+					<div>${li.shopName}</div>
 				</c:forEach>
-			</c:forEach>
+			</div>
 		</c:when>
-	
-	
+		
+		<c:when test="${cate eq 'designer'}">
+			<div>
+				<h5>디자이너</h5>
+				<!-- 셀렉트 다시 -->
+				<c:forEach items="${list.designerList}" var="li">
+					<div>${li.userName} / ${li.shopName}</div>
+				</c:forEach>
+			</div>
+		</c:when>
+
+
+
 		<c:otherwise>
 			<div>
-				<h3>자유게시판</h3>
-				<hr>
+				<h5>자유게시판</h5>
 					<c:forEach items="${map.list.freeArticle}" var="item">
 								<div>${item.boardGroupCode} ${item.articleName}</div>
 					</c:forEach>
-				<br/><br/><br/>
-				</div>
-				
-				<div>
-				<h3>디자이너 헤어게시판</h3>
+				<br/>
+			</div>
 				<hr>
+				
+			<div>
+				<h5>디자이너 헤어게시판</h5>
 					<c:forEach items="${map.list.hairArticle}" var="item">
 								<div>${item.boardGroupCode} ${item.articleName}</div>
 					</c:forEach>
@@ -130,33 +132,30 @@
 					<div><img class="hairImg" src="/resources/test4.jpg"/></div>
 					<div><img class="hairImg" src="/resources/test5.jpg"/></div>
 					<div class="cancle"></div>
-					<br/><br/><br/>
-				</div>
-				<!-- 
-					shopList
+					<br/>
+			</div>
+				<hr>
 				
-				 -->
-				<div>
-					<h3>미용실</h3>
-					<hr>
+			<div>
+				<h5>미용실</h5>
 					<c:forEach items="${map.list.shopList}" var="item">
 							<div>${item.shopName} ${item.shopAddress}</div>
 					</c:forEach>					
-
-					<br/><br/><br/>
-				</div>
-				
-				<div>
-				<h3>디자이너</h3>
+				<br/>
+			</div>
 				<hr>
-				<div>
+				
+			<div>
+				<h5>디자이너</h5>
 					<c:forEach items="${map.list.designerList}" var="item">
 							<div>${item.userName} ${item.shopName}</div>
 					</c:forEach>	
-				<br/><br/><br/>
-				</div>
+				<br/>
+			</div>
+				<hr>
+
 		</c:otherwise>
 	</c:choose>
-
+</div>
 </body>
 </html>

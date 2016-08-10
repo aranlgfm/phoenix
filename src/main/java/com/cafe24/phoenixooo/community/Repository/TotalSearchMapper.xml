@@ -17,8 +17,11 @@
 		SELECT
 			ARTICLE_CD as articleCode
 			,ARTICLE_NM as articleName
+<!-- 			,USER_CD as userCode -->
+<!-- 			,USER_NICK as userNickName -->
 			,ARTICLE_CTT as articleContent
 			,BOARDGROUP_CD as boardGroupCode
+<!-- 			,ARTICLE_DT as articleDate -->
 		FROM
 			COM_ARTICLE_TB
 		WHERE
