@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cafe24.phoenixooo.crm.salesManagement.Model.DaySalesInfo;
+import com.cafe24.phoenixooo.crm.salesManagement.Model.MonthSalesInfo;
 import com.cafe24.phoenixooo.crm.salesManagement.Service.TotalSalesService;
 
 @Controller
@@ -25,7 +26,8 @@ public class TotalSalesController {
 	//매출관리 기본 홈
 	@RequestMapping(value = "/phoenix/crm/salesManagement/salesManagementMain", method = RequestMethod.GET)
 	public String salesManagementHome(Model model) {
-		System.out.println("매출관리 메인 요청됨");
+		System.out.println("매출관리 메인 요청함");
+		
 		Date today = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		String paymentDate = format.format(today);
@@ -38,7 +40,7 @@ public class TotalSalesController {
 	}
 	
 	//기간검색
-	@RequestMapping(value = "/phoenix/crm/salesManagement/periodSearch", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/phoenix/crm/salesManagement/periodSearch", method = RequestMethod.GET)
 	public String periodSearch(Model model) {
 		Date today = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
@@ -49,9 +51,9 @@ public class TotalSalesController {
 		
 		
 		return "/phoenix/crm/salesManagement/periodSearch";
-	}
+	}*/
 	
-	//기간검색 -> 일간매출내역 처리
+	//일간검색 -> 일간매출내역 처리
 	@RequestMapping(value = "/phoenix/crm/salesManagement/periodSearch", method = RequestMethod.POST)
 	public String periodSearch(String paymentDate, Model model) {
 		System.out.println("periodSearch에서 넘긴 현재날짜 : "+paymentDate);
@@ -60,6 +62,9 @@ public class TotalSalesController {
 		System.out.println("model : "+model);
 		return "/phoenix/crm/salesManagement/periodSalesList";
 	}
+	
+	
+	
 	
 	
 	
@@ -82,7 +87,7 @@ public class TotalSalesController {
 	//일간총매출
 	@RequestMapping(value = "/phoenix/crm/salesManagement/dailySales", method = RequestMethod.GET)
 	public String dailySales(Model model1) {
-		System.out.println("매출관리 메인 요청됨");
+		System.out.println("일간총매출 페이지 요청함");
 		Date today = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		String model = format.format(today);
@@ -100,13 +105,11 @@ public class TotalSalesController {
 	
 	//월간총매출
 	@RequestMapping(value = "/phoenix/crm/salesManagement/monthlySales", method = RequestMethod.GET)
-	public String monthlySales(Model model) {
-		System.out.println("월간총매출 GET 메서드 요청");
-		Date toMonth = new Date();
-		SimpleDateFormat format = new SimpleDateFormat("yyyyMM");
-		String Tomonth = format.format(toMonth);
-		System.out.println("월간총매출 요청시 현재 월 : "+Tomonth); // 
-		List<DaySalesInfo> list = totalSalesService.selectMonthlyList(Tomonth);
+	public String monthlySales(MonthSalesInfo month, Model model) {
+		System.out.println("월간총매출 페이지 요청함");
+		System.out.println("기간 날짜 조회 : "+month);
+		 
+		List<DaySalesInfo> list = totalSalesService.selectMonthlyList(month);
 		
 		model.addAttribute("list", list);
 		

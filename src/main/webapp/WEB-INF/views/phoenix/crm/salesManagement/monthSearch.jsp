@@ -23,8 +23,17 @@
 		
 		//ID : realDay인 태그를 누르면 달력 나와서 format방식에 해당하는 data-type(String)을 value값으로 준다.
 		$(function() {
-		    $('."toMonth"').datepicker({	
-		    	dateFormat : "yyyymm"
+		    $('.toMonths, .toMonthe').datepicker({	
+		    	dateFormat : "yymmdd",
+	    		prevText: '이전 달',
+	    	    nextText: '다음 달',
+	    	    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	    	    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	    	    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+	    	    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+	    	    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+	    	    showMonthAfterYear: true,
+	    	    yearSuffix: '년'
 		    });
 		});
 		
@@ -38,10 +47,11 @@
 <body>
 <div id="all">
 	<div>
-		<form class="navbar-search pull-left" action="/phoenix/crm/salesManagement/monthlySales" method="post">
+		<form class="navbar-search pull-left" action="/phoenix/crm/salesManagement/monthlySales" method="get">
 			<div>
 			<strong>기간검색</strong>
-				<input class="toMonth" type="text" value="${serverTime}" name="toMonth">
+				<input class="toMonths" type="text" value="${serverTime}" name="paymentStartDay"> ~ 
+				<input class="toMonthe" type="text" value="${serverTime}" name="paymentEndDay">
 				<input class="btn" type="submit" value="검색">
 			</div>
 		</form>

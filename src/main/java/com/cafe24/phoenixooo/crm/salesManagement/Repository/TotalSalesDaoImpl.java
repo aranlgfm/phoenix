@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.cafe24.phoenixooo.crm.salesManagement.Model.DaySalesInfo;
+import com.cafe24.phoenixooo.crm.salesManagement.Model.MonthSalesInfo;
 
 @Repository
 public class TotalSalesDaoImpl implements TotalSalesDao{
@@ -24,8 +25,8 @@ public class TotalSalesDaoImpl implements TotalSalesDao{
 	
 	//월간총매충 처리
 	@Override
-	public List<DaySalesInfo> getMonthlyList(String Tomonth) {
-		return sqlSession.selectList(NS+".selectMonthlyList", Tomonth);
+	public List<DaySalesInfo> getMonthlyList(MonthSalesInfo month) {
+		return sqlSession.selectList(NS+".selectMonthlyList", month);
 	}
 	
 }

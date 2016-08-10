@@ -21,7 +21,7 @@
 				
 	</select>
 
-	<select id="selectMonthlyList" parameterType="String" resultType="com.cafe24.phoenixooo.crm.salesManagement.Model.DaySalesInfo">
+	<select id="selectMonthlyList" parameterType="com.cafe24.phoenixooo.crm.salesManagement.Model.MonthSalesInfo" resultType="com.cafe24.phoenixooo.crm.salesManagement.Model.DaySalesInfo">
 		SELECT
 			PAYMENT_DT as paymentDate
 			,PAYMENT_TYPE_GB as paymentTypeGb
@@ -32,7 +32,7 @@
 		   
 		FROM
 			CRM_PAYMENT_TB
-		WHERE PAYMENT_DT between '20160801' and '20160831'
+		WHERE PAYMENT_DT between #{paymentStartDay} and #{paymentEndDay}
 		GROUP BY
 			PAYMENT_DT, PAYMENT_TYPE_GB 
 	</select>
