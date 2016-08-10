@@ -22,18 +22,49 @@ import com.cafe24.phoenixooo.community.Repository.BoardDao;
 
 @Service
 public class BoardServiceImpl implements BoardService
-{
-	private final int LINE_PER_PAGE = 3;
-	
+{	
 	@Autowired
 	private BoardDao boardDao;
 	
 	@Override
-	public List<Article> getArticleList(String boardGroupCode) {
+	public List<Article> getArticleList(Article article) {
+		Map<String, Object> map = new HashMap<String, Object>();
+        map.put("boardGroupCode", article.getBoardGroupCode());
+        map.put("limitIndex", article.getLimitIndex());
+               
+        int totalArticleNumber=boardDao.selectTotalArticleNumber(map).getTotalArticleNumber();
+        System.out.println(totalArticleNumber+"<--------------------이거 토탈아티클넘버");
 
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("boardGroupCode", boardGroupCode);
-        List<Article> list=boardDao.selectArticleList(	map);
+        //다음에 페이지에 가져올 데이터 개수가 10개 미만이라면
+        if((totalArticleNumber-(10*article.getCurrentPageNumber()))<10)
+        {
+        	if(totalArticleNumber<11 && article.getCurrentPageNumber()==1)
+        	{
+        		article.setLimitNumber(totalArticleNumber);
+        	}
+        	else
+        	{
+        		article.setLimitNumber(totalArticleNumber-(10*article.getCurrentPageNumber()));
+        	}       	
+        }
+        else
+        {
+        	article.setLimitNumber(10);
+        }
+       System.out.println(article.getLimitNumber()+"<------------------------------------이게 문제야");
+        map.put("limitNumber",article.getLimitNumber());
+
+        List<Article> list=boardDao.selectArticleList(map);
+        
+        int limitIndex=article.getLimitIndex();
+        int totalPageNumber=(totalArticleNumber-1)/10;
+        int currentPageNumber=(limitIndex/10)+1;
+        
+        list.get(0).setLimitIndex(limitIndex);
+        list.get(0).setTotalArticleNumber(totalArticleNumber);
+        list.get(0).setTotalPageNumber(totalPageNumber);
+        list.get(0).setCurrentPageNumber(currentPageNumber);
+        
         for(int i=0;i<list.size();i++)
         {
         	list.get(i).setArticleNumber(list.get(i).getArticleCode().substring(12));

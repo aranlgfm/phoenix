@@ -36,8 +36,31 @@
 		width: 200px;
 		height: 200px;
 	}
+	.previousDiv
+	{
+		float:left;
+	}
+	.nextDiv
+	{
+		float: right;
+	}
 </style>
 <script>
+	$(document).ready(function()
+	{
+			$(".previous").click(function()
+			{
+				$(".previousForm").attr("action","/phoenix/com/form/basicBoard");
+				$(".previousForm").attr("method","get");
+				$(".previousForm").submit();
+			});	
+			$(".next").click(function()
+			{
+				$(".nextForm").attr("action","/phoenix/com/form/basicBoard");
+				$(".nextForm").attr("method","get");
+				$(".nextForm").submit();
+			})
+	})
 </script>
 </head>
 
@@ -180,6 +203,39 @@
 						</tr>
 					</c:forEach>
 				</table>
+				<div>
+					<c:choose>
+						<c:when test="${articleList[0].currentPageNumber eq 1}" >
+							
+						</c:when>							
+						<c:otherwise>
+							<div class="previousDiv">
+								<form class="previousForm">
+									<input type="hidden" name="boardGroupCode" value="${articleList[0].boardGroupCode}">
+									<input type="hidden" name="limitIndex" value="${articleList[0].limitIndex-10}">
+									<input type="hidden" name="currentPageNumber" value="${articleList[0].currentPageNumber-1}">
+									<input class="previous" type="button" value="이전">
+								</form>
+							</div>
+						</c:otherwise>
+					</c:choose>
+					<c:choose>
+						<c:when test="${articleList[0].currentPageNumber eq articleList[0].totalPageNumber||articleList[0].totalArticleNumber<11}" >
+							
+						</c:when>
+						<c:otherwise>
+							<div class="nextDiv">
+								<form class="nextForm">
+									<input type="hidden" name="boardGroupCode" value="${articleList[0].boardGroupCode}">
+									<input type="hidden" name="limitIndex" value="${articleList[0].limitIndex+10}">
+									<input type="hidden" name="currentPageNumber" value="${articleList[0].currentPageNumber+1}">
+									<input class="next" type="button" value="다음">
+								</form>
+							</div>
+						</c:otherwise>
+					</c:choose>
+					
+				</div>
 			</div>
 		</c:otherwise>
 	</c:choose>

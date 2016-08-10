@@ -28,10 +28,13 @@ public class BoardController
 	
 		///phoenix-> 자유게시판 클릭 시 자유게시판 이동
 		@RequestMapping(value = "/phoenix/com/form/basicBoard", method = RequestMethod.GET)
-		public String moveToBasicBoard(@RequestParam("boardGroupCode") String boardGroupCode, Model model) {
+		public String moveToBasicBoard(
+				Article article
+				, Model model) {
 			//System.out.println(boardGroupCode);
+			//System.out.println("이거 리미트 인덱스 0 나와야 된다   "+limitIndex2);
 			
-			List<Article> articleList = boardService.getArticleList(boardGroupCode);
+			List<Article> articleList = boardService.getArticleList(article);
 			model.addAttribute("articleList", articleList);
 	        
 		return "/phoenix/com/basicBoard";

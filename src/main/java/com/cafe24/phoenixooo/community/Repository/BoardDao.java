@@ -12,6 +12,9 @@ public interface BoardDao
 	//글 목록 가져오기
 	List<Article> selectArticleList(Map<String,Object> map);
 	
+	//토탈 게시물 개수 가져오기
+	Article selectTotalArticleNumber(Map<String, Object> map);
+	
 	//글 1개 가져오기
 	Article selectArticle(String articleCode);
 	

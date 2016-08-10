@@ -11,7 +11,7 @@ import com.cafe24.phoenixooo.community.Model.Comment;
 public interface BoardService 
 {
 	//글목록 가져옴.
-	List<Article> getArticleList(String boardGroupCode);
+	List<Article> getArticleList(Article article);
 	//글 1개 가져옴.
 	Map<String, Object> getArticle(String articleCode);
 	//글 1개 등록

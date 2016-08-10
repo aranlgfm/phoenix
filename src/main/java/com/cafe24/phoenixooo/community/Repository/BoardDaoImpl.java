@@ -25,6 +25,13 @@ public class BoardDaoImpl implements BoardDao
 			return sqlSession.selectList(NS + ".selectArticleList", map);
 	}
 	
+	
+	@Override
+	public Article selectTotalArticleNumber(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NS+".selectTotalArticleNumber", map);
+	}
+	
 	//글 1개 가져오기
 	@Override
 	public Article selectArticle(String articleCode) {

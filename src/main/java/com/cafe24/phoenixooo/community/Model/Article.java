@@ -19,6 +19,18 @@ public class Article
 	private List<Comment> commentList;
 	private List<MultipartFile> imgFile; // 파일 업로드
 	
+	//총 게시글 개수
+	private int totalArticleNumber;
+	//총페이지 개수
+	private int totalPageNumber;
+	//현재 페이지 번호
+	private int currentPageNumber;
+	//db 접근시 시작 인덱스
+	private int limitIndex;
+	//가져올 데이터 개수
+	private int limitNumber;
+	
+	
 	public String getArticleCode() {
 		return articleCode;
 	}
@@ -91,4 +103,36 @@ public class Article
 	public void setImgFile(List<MultipartFile> imgFile) {
 		this.imgFile = imgFile;
 	}
+	public int getTotalArticleNumber() {
+		return totalArticleNumber;
+	}
+	public void setTotalArticleNumber(int totalArticleNumber) {
+		this.totalArticleNumber = totalArticleNumber;
+	}
+	public int getTotalPageNumber() {
+		return totalPageNumber;
+	}
+	public void setTotalPageNumber(int totalPageNumber) {
+		this.totalPageNumber = totalPageNumber;
+	}
+	public int getCurrentPageNumber() {
+		return currentPageNumber;
+	}
+	public void setCurrentPageNumber(int currentPageNumber) {
+		this.currentPageNumber = currentPageNumber;
+	}
+	public int getLimitIndex() {
+		return limitIndex;
+	}
+	public void setLimitIndex(int limitIndex) {
+		this.limitIndex = limitIndex;
+	}
+	public int getLimitNumber() {
+		return limitNumber;
+	}
+	public void setLimitNumber(int limitNumber) {
+		this.limitNumber = limitNumber;
+	}
+	
+	
 }

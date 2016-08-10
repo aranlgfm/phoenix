@@ -21,8 +21,18 @@
 			articleTable.BOARDGROUP_CD=#{boardGroupCode}
 		ORDER BY 
 			length(articleTable.ARTICLE_CD) desc, articleTable.ARTICLE_CD desc
-		LIMIT 0, 10
+		LIMIT #{limitIndex},#{limitNumber}
 	</select>
+	
+	<select id="selectTotalArticleNumber" parameterType="java.util.Map" resultType="com.cafe24.phoenixooo.community.Model.Article">
+		SELECT
+			COUNT(ARTICLE_CD) as totalArticleNumber
+		FROM
+			COM_ARTICLE_TB
+		WHERE
+			BOARDGROUP_CD=#{boardGroupCode}
+	</select>
+	
 	
 <!-- 	<select id="selectUserNickName" >
 		SELECT
