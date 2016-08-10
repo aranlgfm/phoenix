@@ -24,7 +24,7 @@
 			}else if($('#EmployeeJoinDate').val() == '') {
 				$('#EmployeePwMsg').html('');
 				$('#EmployeeJoinDateMsg').html('입사일을 입력해 주세요.');
-			}else {
+			}else{
 				$('#submitBtn').submit();
 			}
 		});
@@ -159,7 +159,7 @@
 				<div class="col-sm-9">
 						<input type="text" class="form-control" id="EmployeeCellPhoneNo1" size="1" maxlength="3">&nbsp;-&nbsp; 
 						<input type="text" class="form-control" id="EmployeeCellPhoneNo2" size="1" maxlength="4">&nbsp;-&nbsp; 
-						<input type="text" class="form-control" id="EmployeeCellPhoneNor3" size="1" maxlength="4">	
+						<input type="text" class="form-control" id="EmployeeCellPhoneNo3" size="1" maxlength="4">	
 					<!-- 전체다 넘길 집전화번호 --> 
 					<input type="hidden" id="EmployeeCellPhoneNo" name="EmployeeCellPhoneNo"/>
 					<span id="EmployeeCellPhoneNoMsg"></span>

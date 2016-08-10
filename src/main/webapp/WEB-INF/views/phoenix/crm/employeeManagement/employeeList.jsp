@@ -4,31 +4,79 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style>
+	
+	.divTh {
+		padding:5px;
+		font-weight:bolder;
+		background-color : #7c7c7c;
+		color : #ffffff;
+	}
+	
+	th {
+		background-color : #7c7c7c;
+	color : #ffffff;
+	}
+	
+	.textCenter {
+		text-align: center;
+	}
+	
+	.textCenter th,td {
+		text-align: center;
+	}
+	
+	.textRight {
+		text-align: right;
+	}
+	
+</style>
+
 <title>직원 리스트</title>
 </head>
 <body>
-	<h1>직원 리스트 페이지</h1>
-	
-	<a href="/phoenix/crm/employeeManagement/insertingEmployee">직원 입력</a>
-	<a href="/phoenix/crm/employeeManagement/employeeSalaryList">급여지급 리스트</a>
-	
-	<table class="table table-bordered">
-		<tr>
-			<td>직급</td>
-			<td>직원명</td>
-			<td>핸드폰번호</td>
-			<td>입사일</td>
-		</tr>
+
+	<c:import url="employeeManagementMain.jsp"></c:import>
+	<hr>
+		<div class="divTh">직원검색</div>
+	<br/>
+	<form action="/phoenix/crm/employeeManagement/employeeList" method="GET">
+		<div>
+			<!-- <label>검색어 :</label>
+			<input type="text" name="word"><button type="button" class="btn btn-info">검색</button>
+			 -->
+			<div class="textCenter">
+				<label>검색어 :</label>
+				<input type="text" name="word" size="10"/>
+				<input type="submit" value="검색"/>
+			</div>
+			
+		</div>
+	</form>
+	<hr>
+	<table class="table table-hover">
+		<thead>
+			<tr class="textCenter">
+				<th>직급</th>
+				<th>직원명</th>
+				<th>핸드폰번호</th>
+				<th>입사일</th>
+			</tr>
+		</thead>
 		<c:forEach var="list" items="${employeeList}">
-			<tr>
+		<tbody>	
+			<tr class="textCenter">
 				<td>${list.employeeLevelName}</td>
 				<td><a href="/phoenix/crm/employeeManagement/employeeDetail?employeeCode=${list.employeeCode}">${list.employeeName}</a></td>
 				<td>${list.employeeCellPhoneNo}</td>
 				<td>${list.employeeJoinDate}</td>
 			</tr>
+		</tbody>	
 		</c:forEach>
 	</table>
 	
@@ -41,12 +89,8 @@
 		</c:if>
 	</div>
 	
-	<div>	
-		<form action="/phoenix/crm/employeeManagement/employeeList" method="GET">
-			검색어 : 
-			<input type="text" name="word">
-			<button type="button" class="btn btn-info">검색</button>
-		</form>
-	</div>
+	<br/>
+	
+
 </body>
 </html>
