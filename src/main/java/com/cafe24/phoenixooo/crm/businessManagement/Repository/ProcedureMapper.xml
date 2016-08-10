@@ -71,14 +71,13 @@
         COUNT(*) 
         FROM 
         	CRM_PAYMENT_TB
+        	<!-- 샾코드를 추가해야함  -->
         <if test="searchKeyword != null and searchKeyword != ''">
 		WHERE
 			ITEMDESIGN_NM LIKE CONCAT('%',#{searchKeyword},'%')		
 		</if>	
     </select>
-	
-	
-	
+    
 	
 	<!-- 넘어온 시술에 대한 세부디자인 리스트 -->
 	<select id="selectItemDesignList" parameterType="java.lang.String" resultType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItemDesign">

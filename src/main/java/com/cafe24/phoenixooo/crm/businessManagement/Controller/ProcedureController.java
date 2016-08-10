@@ -52,7 +52,8 @@ public class ProcedureController {
 	//임시메인
 	@RequestMapping(value = "/phoenix/crm/businessManagement/businessManagement", method = RequestMethod.GET)
 	public String businessManagement(HttpSession session,Model model) {
-		List<ProcedurePayment> list = procedureService.getCustomerList((String)session.getAttribute("shopCode"));
+		UserCustomer user = (UserCustomer)session.getAttribute("user");
+		List<ProcedurePayment> list = procedureService.getCustomerList(user.getShopCode());
 		model.addAttribute("list", list);
 		return "/phoenix/crm/businessManagement/procedurePaymentCustomerList";
 	}
@@ -169,13 +170,8 @@ public class ProcedureController {
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("shopCode", (String)session.getAttribute("shopCode"));
 		
-		
 		int totalRecord = (procedureService.selectTotalCount(rpageHelper));
 		rpageHelper.setTotalRecordSize(totalRecord);
-	
-		System.out.println("검색전");
-		System.out.println(totalRecord);
-		System.out.println("검색전");
 		
 		map.put("pageHelper", new PageHelper(rpageHelper));
 		//리스트 가져오기;
@@ -184,7 +180,6 @@ public class ProcedureController {
 		model.addAttribute("pageHelper",map.get("pageHelper"));
 		return "/phoenix/crm/businessManagement/procedurePaymentList";
 	}
-	
 	
 	/**
 	 * 4.시술내역리스트 POST

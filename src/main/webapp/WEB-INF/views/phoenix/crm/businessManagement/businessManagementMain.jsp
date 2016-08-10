@@ -10,6 +10,18 @@
 	<link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
 	<script src="<c:url value="/webjars/jquery/3.1.0/jquery.min.js"/>"></script>
 	<style>
+		.divTh{
+				padding:5px;
+				font-weight:bolder;
+				background-color : #7c7c7c;
+				color : #ffffff;
+		}	 
+		
+		th  {
+			background-color : #7c7c7c;
+			color : #ffffff;
+		}	
+		
 		.tag:HOVER {
 			color : #000000;
 			text-decoration: none;
@@ -26,13 +38,18 @@
 			color : #000000;
 			text-decoration: none;
 		}
-		th {
-			background-color : #7c7c7c;
-			color : #ffffff;
-		}	
-		table{border: 1px solid;width: 100%;}
-		tr{border: 1px solid;}
-		th{border: 1px solid;}
+		
+		.textCenter{
+			text-align: center;
+		}
+		
+		.textCenter th,td{
+			text-align: center;
+		}
+		
+		.textRight{
+			text-align: right;
+		}
 	</style>
 </head>
 
