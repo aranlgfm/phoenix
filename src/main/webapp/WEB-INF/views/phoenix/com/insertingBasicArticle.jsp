@@ -5,6 +5,39 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<style>
+		.title
+		{
+			text-align: center;
+		}
+		.modifyArticle
+		{
+			width:60%;
+			margin:auto;
+			text-align:right;
+		}		
+		#table 
+		{
+			display: table; 
+			margin:auto;
+		}
+		#table3
+		{
+			display: table; 
+			margin:auto;
+		} 
+		.row {display: table-row;}
+		.cell {display: table-cell; padding: 3px; border: 1px solid #DDD;}
+		.col1 { width: 20%;}
+		.col2 {width: 80%;}
+		.cell3,.cell4{height:600px;}
+		.cell3{vertical-align: middle;}
+		.cell1,.cell2,.cell3{text-align: center;}
+		#fileDiv5{width:80%; text-align: left;}
+		.articleName{width:100%;height: 100%;}
+		textarea{width:100%;height: 100%;}
+		.goInsertBtn{text-align: center;}
+</style>
 <script>
 	$(document).ready(function(){
 		
@@ -29,27 +62,32 @@
 	
 	<br><br><br>
 
-	<form id="insertBasicArticle" action="/phoenix/com/form/insertBasicArticle" method="post" enctype="multipart/form-data">
-		<input type="hidden" value="${article.boardGroupCode}" name="boardGroupCode">
-		<table>
-			<tr>
-				<td>제목</td>
-				<td><input class="articleName" type="text" name="articleName"></td><td></td>
-			</tr>
-			<tr>
-				<td>내용</td>
-				<td><textarea class="articleContent" cols="80" rows="20" name="articleContent"></textarea></td>
-				</tr>
-		</table>
-		<div>
+	<div id="all">
+		<div id="fileDiv5">
 			<label>이미지파일: </label>
 			<input id="imgFile" type="file" name="imgFile" />
 			<input id="AddImgBtn" type="button" value="이미지 추가"/>
-			
+			<span id="imgFileAdd"></span>
+			<br><br>
 		</div>	
-		<span id="imgFileAdd"></span>
-		<input id="goInsertBtn" type="button" value="등록">
-		
-	</form>
+	
+		<form id="insertBasicArticle" action="/phoenix/com/form/insertBasicArticle" method="post" enctype="multipart/form-data">
+			<input type="hidden" value="${article.boardGroupCode}" name="boardGroupCode">	
+			<div id="table">
+				<div class="row">
+					<span class="cell col1 cell1">제목</span>
+					<span class="cell col2 cell2"><input class="articleName" type="text" name="articleName"></span>
+				</div>
+				<div class="row">
+					<span class="cell col1 cell3">내용</span>
+					<span class="cell col2 cell4"><textarea class="articleContent" cols="150%" rows="20" name="articleContent"></textarea></span>
+				</div>
+			</div>
+			<div class="goInsertBtn">
+				<input id="goInsertBtn" type="button" value="등록">	
+				<input id="cancelBtn" type="button" value="취소">
+			</div>	
+		</form>
+	</div>
 </body>
 </html>
