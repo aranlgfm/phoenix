@@ -63,15 +63,17 @@
 	<br><br><br>
 
 	<div id="all">
-		<div id="fileDiv5">
-			<label>이미지파일: </label>
-			<input id="imgFile" type="file" name="imgFile" />
-			<input id="AddImgBtn" type="button" value="이미지 추가"/>
-			<span id="imgFileAdd"></span>
-			<br><br>
-		</div>	
+			
 	
 		<form id="insertBasicArticle" action="/phoenix/com/form/insertBasicArticle" method="post" enctype="multipart/form-data">
+			<div id="fileDiv5">
+				<label>이미지파일: </label>
+				<input id="imgFile" type="file" name="imgFile" />
+				<input id="AddImgBtn" type="button" value="이미지 추가"/>
+				<span id="imgFileAdd"></span>
+			<br><br>
+			</div>	
+	
 			<input type="hidden" value="${article.boardGroupCode}" name="boardGroupCode">	
 			<div id="table">
 				<div class="row">
