@@ -10,11 +10,6 @@
 <link class="include" rel="stylesheet" type="text/css" href="jquery.jqplot.css"/>
 <!-- JQ-PLOT의 기본 설정 -->
 <link href="css/jquery.jqplot.min.css" rel="stylesheet">
-<script src="js/jquery-2.1.4.min.js"></script>
-<script src="js/jquery.jqplot.min.js"></script>
-<script src="js/jqplot.dateAxisRenderer.min.js"></script>
-<script src="js/jqplot.highlighter.min.js"></script>
-
 <script>
 	var plot;
 	var chartData = [[0,0]];

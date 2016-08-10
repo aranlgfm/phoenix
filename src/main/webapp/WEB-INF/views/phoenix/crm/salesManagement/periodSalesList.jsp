@@ -17,7 +17,9 @@
 		}
 </style>
 <script>
-	
+	$(document).ready(function(){
+		$(".dailySales").addClass("active");
+	});
 </script>
 
 <body>
@@ -31,7 +33,9 @@
 		<br><br><br>
 	
 	<div id="all">
-		<strong>${DaySalesInfo.paymentDate} 시술 매출 내역</strong>
+		<c:forEach var="list" items="${list}" begin="1" end="1"> 
+			<strong>${list.paymentDate} 시술 매출 내역</strong>
+		</c:forEach>
 		<table class="table table-striped">
 			<tr>
 				<th>품목</th>

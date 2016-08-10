@@ -21,7 +21,7 @@
 				
 	</select>
 
-	<select id="selectMonthlyList" parameterType="com.cafe24.phoenixooo.crm.salesManagement.Model.MonthSalesInfo" resultType="com.cafe24.phoenixooo.crm.salesManagement.Model.DaySalesInfo">
+	<select id="selectMonthlyList" parameterType="com.cafe24.phoenixooo.crm.salesManagement.Model.MonthSalesInfo" resultType="com.cafe24.phoenixooo.crm.salesManagement.Model.MonthSalesInfo">
 		SELECT
 			PAYMENT_DT as paymentDate
 			,PAYMENT_TYPE_GB as paymentTypeGb

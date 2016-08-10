@@ -17,7 +17,10 @@
 		}
 </style>
 <script>
-	
+	$(document).ready(function(){
+		$(".dailySales").removeClass("active");
+		$(".monthlySales").addClass("active");
+	});
 </script>
 
 <body>
@@ -31,7 +34,9 @@
 		<br><br><br>
 	
 	<div id="all">
-		<strong>${DaySalesInfo.paymentDate} 시술 매출 내역</strong>
+		
+		<strong>시술 매출 내역</strong>
+	
 		<table class="table table-striped">
 			<tr>
 				<th>일자</th>

@@ -42,10 +42,10 @@ public class TotalSalesServiceImpl implements TotalSalesService {
 	//월간총매출 처리
 	
 	@Override
-	public List<DaySalesInfo> selectMonthlyList(MonthSalesInfo month) {
+	public List<MonthSalesInfo> selectMonthlyList(MonthSalesInfo month) {
 		System.out.println("월간총매출 서비스단");
 		
-		List<DaySalesInfo> list = totalSalesDao.getMonthlyList(month);
+		List<MonthSalesInfo> list = totalSalesDao.getMonthlyList(month);
 		System.out.println("월간총매출 서비스단 리턴값 가공시작");
 		
 		for(int i=0; i<list.size()-1; i++)

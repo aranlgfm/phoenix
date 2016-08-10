@@ -95,13 +95,6 @@ public class TotalSalesController {
 		
 		return "redirect:/phoenix/crm/salesManagement/salesManagementMain";
 	}
-
-	
-	
-	
-	
-	
-	
 	
 	//월간총매출
 	@RequestMapping(value = "/phoenix/crm/salesManagement/monthlySales", method = RequestMethod.GET)
@@ -109,32 +102,14 @@ public class TotalSalesController {
 		System.out.println("월간총매출 페이지 요청함");
 		System.out.println("기간 날짜 조회 : "+month);
 		 
-		List<DaySalesInfo> list = totalSalesService.selectMonthlyList(month);
+		List<MonthSalesInfo> list = totalSalesService.selectMonthlyList(month);
 		
 		model.addAttribute("list", list);
+
 		
 		return "/phoenix/crm/salesManagement/monthlySalesList";
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	//년간총매출

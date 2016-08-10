@@ -10,5 +10,5 @@ public interface TotalSalesDao {
 	List<DaySalesInfo> SelectDailySales(String paymentDate);
 	
 
-	List<DaySalesInfo> getMonthlyList(MonthSalesInfo month);
+	List<MonthSalesInfo> getMonthlyList(MonthSalesInfo month);
 }

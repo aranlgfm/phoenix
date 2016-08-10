@@ -10,5 +10,5 @@ public interface TotalSalesService {
 	List<DaySalesInfo> SelectDailySales(String paymentDate);
 	
 
-	List<DaySalesInfo> selectMonthlyList(MonthSalesInfo month);
+	List<MonthSalesInfo> selectMonthlyList(MonthSalesInfo month);
 }

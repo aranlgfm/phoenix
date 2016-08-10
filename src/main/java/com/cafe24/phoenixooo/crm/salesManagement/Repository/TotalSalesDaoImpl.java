@@ -25,7 +25,7 @@ public class TotalSalesDaoImpl implements TotalSalesDao{
 	
 	//월간총매충 처리
 	@Override
-	public List<DaySalesInfo> getMonthlyList(MonthSalesInfo month) {
+	public List<MonthSalesInfo> getMonthlyList(MonthSalesInfo month) {
 		return sqlSession.selectList(NS+".selectMonthlyList", month);
 	}
 	
