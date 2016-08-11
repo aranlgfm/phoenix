@@ -29,4 +29,10 @@ public class TotalSalesDaoImpl implements TotalSalesDao{
 		return sqlSession.selectList(NS+".selectMonthlyList", month);
 	}
 	
+	//년간총매출 처리
+	@Override
+	public List<MonthSalesInfo> selectYearlySearch(MonthSalesInfo year) {
+		return sqlSession.selectList(NS+".selectYearlySearch", year);
+	}
+	
 }

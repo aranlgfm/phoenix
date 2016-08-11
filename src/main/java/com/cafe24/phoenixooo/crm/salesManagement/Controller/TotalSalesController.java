@@ -104,13 +104,13 @@ public class TotalSalesController {
 		return "/phoenix/crm/salesManagement/monthlySalesList";
 	}
 
+	//월간총매출 검색 ->처리
 	@RequestMapping(value="/phoenix/crm/salesManagement/monthlySearch", method=RequestMethod.POST)
 	public String monthlySearch(MonthSalesInfo month, Model model){
 		System.out.println("월간총매출 검색 처리 요청함");
 		System.out.println("월간 검색 년,월 : "+month);
 		String sumYM = month.getPaymentYear()+month.getPaymentMonth();
 		month.setPaymentYearMonth(sumYM);
-		
 		System.out.println("가공된 년,월 : "+month.getPaymentYearMonth());
 		
 		List<MonthSalesInfo> list = totalSalesService.selectMonthlyList(month);
@@ -125,7 +125,26 @@ public class TotalSalesController {
 	//년간총매출
 	@RequestMapping(value = "/phoenix/crm/salesManagement/yearlySales", method = RequestMethod.GET)
 	public String yearlySales() {
-		return "/phoenix/crm/salesManagement/yearlySales";
+		System.out.println("년간총매출 페이지 요청됨");
+		// get요청 했을 시 셀렉트 박스가 자동으로 값이 지정되게 만들려면
+		// 여기서 date 생성해서 넘기면 됨(데이터를 서비스로 넘겨서 처리하고 리턴받던가)
+		
+		return "/phoenix/crm/salesManagement/yearlySalesList";
 	}
+	
+	//년간총매출 검색 - >처리
+	@RequestMapping(value="/phoenix/crm/salesManagement/yearlySearch", method=RequestMethod.POST)
+	public String yearlySearch(MonthSalesInfo year, Model model){
+		System.out.println("년간총매출 년간 검색처리 요청됨");
+		System.out.println("년감총매출 검색 년 : "+year.getPaymentYear());
+		
+		List<MonthSalesInfo> list = totalSalesService.selectYearlySearch(year);
+		model.addAttribute("list", list);
+		System.out.println("최종 년간총매출내역 : "+model);
+		System.out.println("년간검색 데이터 포워딩");
+		return "/phoenix/crm/salesManagement/yearlySalesList";
+	}
+	
+	
 	
 }

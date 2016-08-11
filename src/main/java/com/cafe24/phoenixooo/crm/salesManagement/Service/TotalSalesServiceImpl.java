@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.SystemPropertyUtils;
 
 import com.cafe24.phoenixooo.crm.salesManagement.Model.DaySalesInfo;
 import com.cafe24.phoenixooo.crm.salesManagement.Model.MonthSalesInfo;
@@ -20,7 +21,7 @@ public class TotalSalesServiceImpl implements TotalSalesService {
 	@Override
 	public List<DaySalesInfo> SelectDailySales(String paymentDate) {
 		List<DaySalesInfo> list = totalSalesDao.SelectDailySales(paymentDate); 
-		System.out.println("일간총매출 서비스단");
+		System.out.println("일간총매출 서비스단 실행");
 		
 		for(int i=0; i<list.size()-1; i++)
 		{	
@@ -43,7 +44,7 @@ public class TotalSalesServiceImpl implements TotalSalesService {
 	
 	@Override
 	public List<MonthSalesInfo> selectMonthlyList(MonthSalesInfo month) {
-		System.out.println("월간총매출 서비스단");
+		System.out.println("월간총매출 서비스단 실행");
 		
 		List<MonthSalesInfo> list = totalSalesDao.getMonthlyList(month);
 		System.out.println("월간총매출 서비스단 리턴값 가공시작");
@@ -51,6 +52,33 @@ public class TotalSalesServiceImpl implements TotalSalesService {
 		for(int i=0; i<list.size()-1; i++)
 		{	
 			if(list.get(i).getPaymentDate().equals(list.get(i+1).getPaymentDate()))
+			{
+				System.out.println("for문속 if문 아이디 같은때 실행됨");	
+				list.get(i).setTotalCash(list.get(i+1).getTotalCash());
+				list.get(i).setCountCash(list.get(i+1).getCountCash());
+				list.remove(i+1);
+				System.out.println("아이디 같을 때 하나지움");
+			}
+			System.out.println("아이디 틀려서 나오거나 / 같은때 하나 지우고 나옴");
+		}
+		
+		System.out.println("중복아이디 합치고난 후의 리스트 : "+list);
+		return list;
+	}
+	
+	
+	//년간총매출 검색 처리
+	@Override
+	public List<MonthSalesInfo> selectYearlySearch(MonthSalesInfo year) {
+System.out.println("년간총매출 서비스단 실행");
+		System.out.println("년간 서비스 단의 year 데이터 : "+year.getPaymentYear());
+		List<MonthSalesInfo> list = totalSalesDao.selectYearlySearch(year);
+		System.out.println("되돌아오냐 서비스로??????????????????????");
+		System.out.println("년간총매출 서비스단 리턴값 가공시작");
+		
+		for(int i=0; i<list.size()-1; i++)
+		{	
+			if(list.get(i).getPaymentYearMonth().equals(list.get(i+1).getPaymentYearMonth()))
 			{
 				System.out.println("for문속 if문 아이디 같은때 실행됨");	
 				list.get(i).setTotalCash(list.get(i+1).getTotalCash());
@@ -64,6 +92,5 @@ public class TotalSalesServiceImpl implements TotalSalesService {
 		System.out.println("중복아이디 합치고난 후의 리스트 : "+list);
 		return list;
 	}
-	
 	
 }
