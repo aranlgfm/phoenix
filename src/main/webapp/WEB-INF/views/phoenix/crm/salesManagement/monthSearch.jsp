@@ -47,14 +47,48 @@
 <body>
 <div id="all">
 	<div>
-		<form class="navbar-search pull-left" action="/phoenix/crm/salesManagement/monthlySales" method="get">
+		<form class="navbar-search pull-left" action="/phoenix/crm/salesManagement/monthlySearch" method="post">
 			<div>
 			<strong>기간검색</strong>
-				<input class="toMonths" type="text" value="${serverTime}" name="paymentStartDay"> ~ 
-				<input class="toMonthe" type="text" value="${serverTime}" name="paymentEndDay">
+				<%-- <input class="toMonths" type="text" value="${serverTime}" name="paymentStartDay"> ~ 
+				<input class="toMonthe" type="text" value="${serverTime}" name="paymentEndDay"> --%>
+				
+				<!-- 월간 검색 : 년 -->
+				<select name="paymentYear">
+					<option value="2016">2016년</option>
+					<option value="2015">2015년</option>
+					<option value="2014">2014년</option>
+					<option value="2013">2013년</option>
+					<option value="2012">2012년</option>
+					<option value="2011">2011년</option>
+					<option value="2010">2010년</option>
+					<option value="2009">2009년</option>
+					<option value="2008">2008년</option>
+					<option value="2007">2007년</option>
+					<option value="2006">2006년</option>
+				</select>
+				<!-- 월간 검색 : 월 -->
+				<select name="paymentMonth">
+					<option value="01">1월</option>
+					<option value="02">2월</option>
+					<option value="03">3월</option>
+					<option value="04">4월</option>
+					<option value="05">5월</option>
+					<option value="06">6월</option>
+					<option value="07">7월</option>
+					<option value="08">8월</option>
+					<option value="09">9월</option>
+					<option value="10">10월</option>
+					<option value="11">11월</option>
+					<option value="12">12월</option>
+				</select>
+				
 				<input class="btn" type="submit" value="검색">
 			</div>
 		</form>
+		
+		
+		
 		
 	</div>
 </div>

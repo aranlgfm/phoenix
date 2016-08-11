@@ -1,10 +1,8 @@
 package com.cafe24.phoenixooo.crm.salesManagement.Controller;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -98,18 +96,30 @@ public class TotalSalesController {
 	
 	//월간총매출
 	@RequestMapping(value = "/phoenix/crm/salesManagement/monthlySales", method = RequestMethod.GET)
-	public String monthlySales(MonthSalesInfo month, Model model) {
+	public String monthlySales() {
 		System.out.println("월간총매출 페이지 요청함");
-		System.out.println("기간 날짜 조회 : "+month);
-		 
-		List<MonthSalesInfo> list = totalSalesService.selectMonthlyList(month);
-		
-		model.addAttribute("list", list);
-
+		// get요청 했을 시 셀렉트 박스가 자동으로 값이 지정되게 만들려면
+		// 여기서 date 생성해서 넘기면 됨
 		
 		return "/phoenix/crm/salesManagement/monthlySalesList";
 	}
 
+	@RequestMapping(value="/phoenix/crm/salesManagement/monthlySearch", method=RequestMethod.POST)
+	public String monthlySearch(MonthSalesInfo month, Model model){
+		System.out.println("월간총매출 검색 처리 요청함");
+		System.out.println("월간 검색 년,월 : "+month);
+		String sumYM = month.getPaymentYear()+month.getPaymentMonth();
+		month.setPaymentYearMonth(sumYM);
+		
+		System.out.println("가공된 년,월 : "+month.getPaymentYearMonth());
+		
+		List<MonthSalesInfo> list = totalSalesService.selectMonthlyList(month);
+		model.addAttribute("list", list);
+		System.out.println("최종 월간검색내역 : "+model);
+		System.out.println("월간검색 데이터 포워딩");
+		return "/phoenix/crm/salesManagement/monthlySalesList";
+	}
+	
 	
 	
 	//년간총매출

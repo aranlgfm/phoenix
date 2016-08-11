@@ -24,6 +24,7 @@
 	<select id="selectMonthlyList" parameterType="com.cafe24.phoenixooo.crm.salesManagement.Model.MonthSalesInfo" resultType="com.cafe24.phoenixooo.crm.salesManagement.Model.MonthSalesInfo">
 		SELECT
 			PAYMENT_DT as paymentDate
+		    ,substring(PAYMENT_DT, 1, 7) as paymentYearMonth 
 			,PAYMENT_TYPE_GB as paymentTypeGb
 		    ,if(PAYMENT_TYPE_GB = '현금', sum(PAYMENT_TOTAL_WON),0) as totalCash
 		    ,if(PAYMENT_TYPE_GB = '현금', count(PAYMENT_TOTAL_WON),0) as countCash
@@ -32,9 +33,10 @@
 		   
 		FROM
 			CRM_PAYMENT_TB
-		WHERE PAYMENT_DT between #{paymentStartDay} and #{paymentEndDay}
-		GROUP BY
-			PAYMENT_DT, PAYMENT_TYPE_GB 
+		WHERE 
+			PAYMENT_DT between concat(#{paymentYearMonth},'01') and concat(#{paymentYearMonth}, '31')
+		group by
+			PAYMENT_DT, PAYMENT_TYPE_GB
 	</select>
 
 
