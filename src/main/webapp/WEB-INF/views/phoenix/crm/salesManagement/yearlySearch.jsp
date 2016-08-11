@@ -52,7 +52,6 @@
 			<strong>기간검색</strong>
 				<%-- <input class="toMonths" type="text" value="${serverTime}" name="paymentStartDay"> ~ 
 				<input class="toMonthe" type="text" value="${serverTime}" name="paymentEndDay"> --%>
-				
 				<!-- 년간 검색 : 년 -->
 				<select name="paymentYear">
 					<option value="2016">2016년</option>
@@ -67,8 +66,6 @@
 					<option value="2007">2007년</option>
 					<option value="2006">2006년</option>
 				</select>
-			
-				
 				<input class="btn" type="submit" value="검색">
 			</div>
 		</form>

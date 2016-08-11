@@ -24,7 +24,6 @@
 </head>
 <body>
 	<c:import url="../crmTemp.jsp"></c:import>
-	<hr>
 	<div id="all">	
 		<ul class="nav nav-tabs">
 			<li class="dailySales"><a href="/phoenix/crm/salesManagement/dailySales">일간총매출</a></li>

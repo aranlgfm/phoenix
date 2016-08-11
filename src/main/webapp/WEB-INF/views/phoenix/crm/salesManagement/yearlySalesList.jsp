@@ -34,8 +34,9 @@
 		<br><br><br>
 	
 	<div id="all">
-		
-		<strong>시술 매출 내역</strong>
+		<c:forEach var="list" items="${list}" begin="1" end="1"> 
+			<strong>${list.paymentYear}년 시술 매출 내역</strong>
+		</c:forEach>
 	
 		<table class="table table-striped">
 			<tr>

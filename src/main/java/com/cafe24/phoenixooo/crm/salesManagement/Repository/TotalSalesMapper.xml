@@ -42,7 +42,8 @@
 
 	<select id="selectYearlySearch" parameterType="com.cafe24.phoenixooo.crm.salesManagement.Model.MonthSalesInfo" resultType="com.cafe24.phoenixooo.crm.salesManagement.Model.MonthSalesInfo">
 		SELECT 
-			substring(PAYMENT_DT, 1, 7) as paymentYearMonth
+			substring(PAYMENT_DT, 1, 4) as paymentYear
+			,substring(PAYMENT_DT, 1, 7) as paymentYearMonth
 			,PAYMENT_TYPE_GB as paymentTypeGb
 			,if(PAYMENT_TYPE_GB = '현금', sum(PAYMENT_TOTAL_WON),0) as totalCash
 		    ,if(PAYMENT_TYPE_GB = '현금', count(PAYMENT_TOTAL_WON),0) as countCash
@@ -56,7 +57,8 @@
 			PAYMENT_TYPE_GB
 	union
 		SELECT 
-			substring(PAYMENT_DT, 1, 7) as paymentYearMonth
+			substring(PAYMENT_DT, 1, 4) as paymentYear
+			,substring(PAYMENT_DT, 1, 7) as paymentYearMonth
 			,PAYMENT_TYPE_GB as paymentTypeGb
 			,if(PAYMENT_TYPE_GB='현금', sum(PAYMENT_TOTAL_WON),0 ) as totalCash
 		    ,if(PAYMENT_TYPE_GB='현금', count(PAYMENT_TOTAL_WON),0 ) as countCash
@@ -69,7 +71,8 @@
 			PAYMENT_TYPE_GB
 	union
 		SELECT 
-			substring(PAYMENT_DT, 1, 7) as paymentYearMonth
+			substring(PAYMENT_DT, 1, 4) as paymentYear
+			,substring(PAYMENT_DT, 1, 7) as paymentYearMonth
 			,PAYMENT_TYPE_GB as paymentTypeGb
 			,if(PAYMENT_TYPE_GB='현금', sum(PAYMENT_TOTAL_WON),0 ) as totalCash
 		    ,if(PAYMENT_TYPE_GB='현금', count(PAYMENT_TOTAL_WON),0 ) as countCash
@@ -82,7 +85,8 @@
 			PAYMENT_TYPE_GB
 	union
 		SELECT 
-			substring(PAYMENT_DT, 1, 7) as paymentYearMonth
+			substring(PAYMENT_DT, 1, 4) as paymentYear
+			,substring(PAYMENT_DT, 1, 7) as paymentYearMonth
 			,PAYMENT_TYPE_GB as paymentTypeGb
 			,if(PAYMENT_TYPE_GB='현금', sum(PAYMENT_TOTAL_WON),0 ) as totalCash
 		    ,if(PAYMENT_TYPE_GB='현금', count(PAYMENT_TOTAL_WON),0 ) as countCash
@@ -95,7 +99,8 @@
 			PAYMENT_TYPE_GB
 	union
 		SELECT 
-			substring(PAYMENT_DT, 1, 7) as paymentYearMonth
+			substring(PAYMENT_DT, 1, 4) as paymentYear
+			,substring(PAYMENT_DT, 1, 7) as paymentYearMonth
 			,PAYMENT_TYPE_GB as paymentTypeGb
 			,if(PAYMENT_TYPE_GB='현금', sum(PAYMENT_TOTAL_WON),0 ) as totalCash
 		    ,if(PAYMENT_TYPE_GB='현금', count(PAYMENT_TOTAL_WON),0 ) as countCash
@@ -108,7 +113,8 @@
 			PAYMENT_TYPE_GB
 	union
 		SELECT 
-			substring(PAYMENT_DT, 1, 7) as paymentYearMonth
+			substring(PAYMENT_DT, 1, 4) as paymentYear
+			,substring(PAYMENT_DT, 1, 7) as paymentYearMonth
 			,PAYMENT_TYPE_GB as paymentTypeGb
 			,if(PAYMENT_TYPE_GB='현금', sum(PAYMENT_TOTAL_WON),0 ) as totalCash
 		    ,if(PAYMENT_TYPE_GB='현금', count(PAYMENT_TOTAL_WON),0 ) as countCash
@@ -121,7 +127,8 @@
 			PAYMENT_TYPE_GB
 	union
 		SELECT 
-			substring(PAYMENT_DT, 1, 7) as paymentYearMonth
+			substring(PAYMENT_DT, 1, 4) as paymentYear
+			,substring(PAYMENT_DT, 1, 7) as paymentYearMonth
 			,PAYMENT_TYPE_GB as paymentTypeGb
 			,if(PAYMENT_TYPE_GB='현금', sum(PAYMENT_TOTAL_WON),0 ) as totalCash
 		    ,if(PAYMENT_TYPE_GB='현금', count(PAYMENT_TOTAL_WON),0 ) as countCash
@@ -134,7 +141,8 @@
 			PAYMENT_TYPE_GB
 	union
 		SELECT 
-			substring(PAYMENT_DT, 1, 7) as paymentYearMonth
+			substring(PAYMENT_DT, 1, 4) as paymentYear
+			,substring(PAYMENT_DT, 1, 7) as paymentYearMonth
 			,PAYMENT_TYPE_GB as paymentTypeGb
 			,if(PAYMENT_TYPE_GB='현금', sum(PAYMENT_TOTAL_WON),0 ) as totalCash
 		    ,if(PAYMENT_TYPE_GB='현금', count(PAYMENT_TOTAL_WON),0 ) as countCash
@@ -147,7 +155,8 @@
 			PAYMENT_TYPE_GB
 		    union
 		SELECT 
-			substring(PAYMENT_DT, 1, 7) as paymentYearMonth
+			substring(PAYMENT_DT, 1, 4) as paymentYear
+			,substring(PAYMENT_DT, 1, 7) as paymentYearMonth
 			,PAYMENT_TYPE_GB as paymentTypeGb
 			,if(PAYMENT_TYPE_GB='현금', sum(PAYMENT_TOTAL_WON),0 ) as totalCash
 		    ,if(PAYMENT_TYPE_GB='현금', count(PAYMENT_TOTAL_WON),0 ) as countCash
@@ -161,7 +170,8 @@
 			PAYMENT_TYPE_GB
 	union
 		SELECT 
-			substring(PAYMENT_DT, 1, 7) as paymentYearMonth
+			substring(PAYMENT_DT, 1, 4) as paymentYear
+			,substring(PAYMENT_DT, 1, 7) as paymentYearMonth
 			,PAYMENT_TYPE_GB as paymentTypeGb
 			,if(PAYMENT_TYPE_GB='현금', sum(PAYMENT_TOTAL_WON),0 ) as totalCash
 		    ,if(PAYMENT_TYPE_GB='현금', count(PAYMENT_TOTAL_WON),0 ) as countCash
@@ -174,7 +184,8 @@
 			PAYMENT_TYPE_GB
 	union
 		SELECT 
-			substring(PAYMENT_DT, 1, 7) as paymentYearMonth
+			substring(PAYMENT_DT, 1, 4) as paymentYear
+			,substring(PAYMENT_DT, 1, 7) as paymentYearMonth
 			,PAYMENT_TYPE_GB as paymentTypeGb
 			,if(PAYMENT_TYPE_GB='현금', sum(PAYMENT_TOTAL_WON),0 ) as totalCash
 		    ,if(PAYMENT_TYPE_GB='현금', count(PAYMENT_TOTAL_WON),0 ) as countCash
@@ -187,7 +198,8 @@
 			PAYMENT_TYPE_GB
 	union
 		SELECT 
-			substring(PAYMENT_DT, 1, 7) as paymentYearMonth
+			substring(PAYMENT_DT, 1, 4) as paymentYear
+			,substring(PAYMENT_DT, 1, 7) as paymentYearMonth
 			,PAYMENT_TYPE_GB as paymentTypeGb
 			,if(PAYMENT_TYPE_GB='현금', sum(PAYMENT_TOTAL_WON),0 ) as totalCash
 		    ,if(PAYMENT_TYPE_GB='현금', count(PAYMENT_TOTAL_WON),0 ) as countCash
