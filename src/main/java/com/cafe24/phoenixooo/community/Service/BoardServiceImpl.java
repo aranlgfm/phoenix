@@ -65,10 +65,14 @@ public class BoardServiceImpl implements BoardService
         list.get(0).setTotalPageNumber(totalPageNumber);
         list.get(0).setCurrentPageNumber(currentPageNumber);
         
+        
         for(int i=0;i<list.size();i++)
         {
         	list.get(i).setArticleNumber(list.get(i).getArticleCode().substring(12));
+        	List<ImgFile> imgFileList=boardDao.selectImgFileList(list.get(i));
+        	list.get(i).setImgFileList(imgFileList);
         }
+        
         return list;
 	}
 	

@@ -18,7 +18,7 @@ public class Article
 	private String articleWriter;
 	private List<Comment> commentList;
 	private List<MultipartFile> imgFile; // 파일 업로드
-	
+	private List<ImgFile> imgFileList; //
 	//총 게시글 개수
 	private int totalArticleNumber;
 	//총페이지 개수
@@ -29,7 +29,6 @@ public class Article
 	private int limitIndex;
 	//가져올 데이터 개수
 	private int limitNumber;
-	
 	
 	public String getArticleCode() {
 		return articleCode;
@@ -102,6 +101,12 @@ public class Article
 	}
 	public void setImgFile(List<MultipartFile> imgFile) {
 		this.imgFile = imgFile;
+	}
+	public List<ImgFile> getImgFileList() {
+		return imgFileList;
+	}
+	public void setImgFileList(List<ImgFile> imgFileList) {
+		this.imgFileList = imgFileList;
 	}
 	public int getTotalArticleNumber() {
 		return totalArticleNumber;

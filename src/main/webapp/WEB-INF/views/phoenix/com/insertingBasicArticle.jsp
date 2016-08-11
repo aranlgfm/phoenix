@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -61,11 +61,12 @@
 	<c:import url="../../top.jsp"></c:import>
 	
 	<br><br><br>
-
-	<div id="all">
-			
 	
+
+	<div id="all">	
 		<form id="insertBasicArticle" action="/phoenix/com/form/insertBasicArticle" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="boardGroupCode" value=${boardGroupCode}>
+			
 			<div id="fileDiv5">
 				<label>이미지파일: </label>
 				<input id="imgFile" type="file" name="imgFile" />
@@ -73,8 +74,7 @@
 				<span id="imgFileAdd"></span>
 			<br><br>
 			</div>	
-	
-			<input type="hidden" value="${article.boardGroupCode}" name="boardGroupCode">	
+					
 			<div id="table">
 				<div class="row">
 					<span class="cell col1 cell1">제목</span>

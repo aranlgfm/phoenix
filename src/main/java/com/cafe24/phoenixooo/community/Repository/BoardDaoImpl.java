@@ -104,4 +104,10 @@ public class BoardDaoImpl implements BoardDao
 		return sqlSession.selectList(NS+".selectImgFileName", articleCode);
 	}
 	
+	//글 1개에 해당하는 파일리스트 가져오기
+	@Override
+	public List<ImgFile> selectImgFileList(Article article) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NS+".selectImgFileList",article);
+	}
 }

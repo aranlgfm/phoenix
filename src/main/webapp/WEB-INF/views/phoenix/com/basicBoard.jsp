@@ -71,21 +71,26 @@
 	
 	<br><br><br>
 	
-	<div class="insertingArticle">
-		<a href="/phoenix/com/form/insertingBasicArticle?boardGroupCode=COM_BOARDGROUP_3">글쓰기</a>
-	</div>
 	
-	<br><br>
 	
 	<c:choose>
 		<c:when test="${articleList[0].boardGroupCode eq 'COM_BOARDGROUP_1'}" >
+			<div class="insertingArticle">
+				<a href='/phoenix/com/form/insertingBasicArticle?boardGroupCode="${articleList[0].boardGroupCode}"'>글쓰기</a>
+			</div>
+	
+			<br><br>
+			
+			이거 파일 패스임<br>
+			${articleList[0].imgFileList[0].filePath}
+			
 			<div class="row">
 				<div class="col-md-2">
 					
 				</div>
 				<div class="col-md-2">
 					<div class="articleDate01">
-						여기에 날짜 및 시간
+						
 					</div>
 					<div class="designerAtricleImg01">
 						<a href=""><img class="hairImg01" src="/resources/test1.jpg"/></a>
@@ -186,6 +191,9 @@
 			</div>
 		</c:when>
 		<c:otherwise>
+			<div class="insertingArticle">
+				<a href='/phoenix/com/form/insertingBasicArticle?boardGroupCode="${articleList[0].boardGroupCode}"'>글쓰기</a>
+			</div>
 			<div class="basicBoardList">
 				<table class="table table-bordered">
 					<tr>

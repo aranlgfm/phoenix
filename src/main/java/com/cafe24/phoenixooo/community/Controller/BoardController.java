@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cafe24.phoenixooo.community.Model.Article;
 import com.cafe24.phoenixooo.community.Model.Comment;
+import com.cafe24.phoenixooo.community.Model.UserCustomer;
 import com.cafe24.phoenixooo.community.Service.BoardService;
 
 
@@ -67,6 +69,7 @@ public class BoardController
 		@RequestMapping(value = "/phoenix/com/form/insertingBasicArticle", method = RequestMethod.GET)
 		public String moveToInsertingBasicArticle(String boardGroupCode, Model model) {
 			//글쓰기 누르면 articleCode주기
+			System.out.println(boardGroupCode+"글쓰는 화면에서의 코드");
 			model.addAttribute("boardGroupCode", boardGroupCode);
 			return "/phoenix/com/insertingBasicArticle";
 		}
@@ -75,9 +78,14 @@ public class BoardController
 		
 		// article에서 글쓰고 난 후 보여지는 게시글 1개의 화면
 		@RequestMapping(value = "/phoenix/com/form/insertBasicArticle", method = RequestMethod.POST)
-		public String insertBasicArticle(Article article, HttpServletRequest request, Model model) {
+		public String insertBasicArticle(Article article, HttpServletRequest request, Model model,HttpSession session) {
 			System.out.println("insertBasicArticle 글쓰기 실행됨!");
+			System.out.println(((UserCustomer)(session.getAttribute("user"))).getUserCode());
+			
+			System.out.println(article.getBoardGroupCode()+"<---------------------------------------------------------왜 이게 안나오지. jsp에서 보낸걸 controller에서 못 받음.");
+			
 			//request 같이 보냄
+			article.setUserCode(((UserCustomer)(session.getAttribute("user"))).getUserCode());
 			String articleCode = boardService.insertArticle(article, request);
 			System.out.println(articleCode+"<--이거 나오면 됨");
 			model.addAttribute("articleCode", articleCode);

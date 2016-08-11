@@ -33,6 +33,24 @@
 			BOARDGROUP_CD=#{boardGroupCode}
 	</select>
 	
+	<select id="selectImgFileList" parameterType="com.cafe24.phoenixooo.community.Model.Article" resultType="com.cafe24.phoenixooo.community.Model.ImgFile">
+		select
+			FILE_CD as fileCode
+			,ARTICLE_CD as articleCode
+			,FILE_PATH as filePath
+			,FILE_NAME as fileName
+			,RANDOM_NAME as randomName
+		from
+			COM_FILE_TB
+		where
+			ARTICLE_CD=#{articleCode}	
+	</select>
+	
+	
+	
+	
+	
+	
 	
 <!-- 	<select id="selectUserNickName" >
 		SELECT
@@ -103,8 +121,8 @@
 		VALUES 
 			(
 				#{articleCode}
-				, 'COM_USER_4'
-				, 'COM_BOARDGROUP_3'
+				, #{userCode}
+				, #{boardGroupCode}
 				, #{articleName}
 				, #{articleContent}
 				, NOW()

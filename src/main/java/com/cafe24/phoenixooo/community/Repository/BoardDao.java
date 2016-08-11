@@ -36,7 +36,8 @@ public interface BoardDao
 	//댓글 삭제
 	int deleteComment(Comment comment);
 	
-
+	//글 1개에 해당하는 파일리스트 가져오기
+	List<ImgFile> selectImgFileList(Article article);
 	
 	
 	
