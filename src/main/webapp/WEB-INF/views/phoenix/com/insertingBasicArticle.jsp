@@ -28,8 +28,8 @@
 		} 
 		.row {display: table-row;}
 		.cell {display: table-cell; padding: 3px; border: 1px solid #DDD;}
-		.col1 { width: 20%;}
-		.col2 {width: 80%;}
+		.col1 { width: 20%;height: 40px;}
+		.col2 {width: 80%;height: 40px;}
 		.cell3,.cell4{height:600px;}
 		.cell3{vertical-align: middle;}
 		.cell1,.cell2,.cell3{text-align: center;}
