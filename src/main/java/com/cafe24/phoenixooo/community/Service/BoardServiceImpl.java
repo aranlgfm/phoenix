@@ -35,22 +35,16 @@ public class BoardServiceImpl implements BoardService
         int totalArticleNumber=boardDao.selectTotalArticleNumber(map).getTotalArticleNumber();
         System.out.println(totalArticleNumber+"<--------------------이거 토탈아티클넘버");
 
-        //다음에 페이지에 가져올 데이터 개수가 10개 미만이라면
-        if((totalArticleNumber-(10*article.getCurrentPageNumber()))<10)
+        //
+        if(	article.getCurrentPageNumber()<((totalArticleNumber/10)+1)	)
         {
-        	if(totalArticleNumber<11 && article.getCurrentPageNumber()==1)
-        	{
-        		article.setLimitNumber(totalArticleNumber);
-        	}
-        	else
-        	{
-        		article.setLimitNumber(totalArticleNumber-(10*article.getCurrentPageNumber()));
-        	}       	
+        	article.setLimitNumber(10);    	
         }
         else
         {
-        	article.setLimitNumber(10);
+        	article.setLimitNumber(totalArticleNumber%10);
         }
+        
        System.out.println(article.getLimitNumber()+"<------------------------------------이게 문제야");
         map.put("limitNumber",article.getLimitNumber());
 
