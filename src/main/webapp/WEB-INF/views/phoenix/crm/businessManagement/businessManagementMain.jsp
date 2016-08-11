@@ -51,7 +51,7 @@
 			text-align: right;
 		}
 		
-		.textLeft{
+		.textLeft{ 
 			text-align: left;
 		}
 	</style>
