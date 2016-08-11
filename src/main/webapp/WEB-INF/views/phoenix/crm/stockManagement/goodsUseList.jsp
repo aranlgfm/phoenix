@@ -8,6 +8,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>goodsUseList</title>
 <link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="<c:url value="/webjars/jquery/3.1.0/jquery.min.js"/>"></script>
+<script>
+	$(document).ready(function(){
+		$(".goodsStock").removeClass("active");
+		$(".goodsUseList").addClass("active");
+	});
+</script>
 </head>
 <body>
 	<c:import url="stockManagement.jsp"></c:import>
@@ -17,24 +24,24 @@
 	
 		<table class="table table-hover">
 			<tr class="textCenter">
-				<td>
+				<th>
 					최종사용일
-				</td>
-				<td>
+				</th>
+				<th>
 					거래처명
-				</td>
-				<td>
+				</th>
+				<th>
 					미용용품명
-				</td>
-				<td>
+				</th>
+				<th>
 					사용수량
-				</td>
-				<td>
+				</th>
+				<th>
 					사용직원
-				</td>
-				<td>
+				</th>
+				<th>
 					관리
-				</td>
+				</th>
 			</tr>
 			<c:forEach var="list" items="${goodsUseList}">
 				<tr class="textCenter">

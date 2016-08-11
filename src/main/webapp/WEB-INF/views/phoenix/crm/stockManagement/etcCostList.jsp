@@ -6,23 +6,27 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<style>
-	table, tr, th, td {
-		border : 1px solid #000000;
-	}
-	td {
-		border-collapse: collapse;
-	}
-</style>
+<script src="<c:url value="/webjars/jquery/3.1.0/jquery.min.js"/>"></script>
+<script>
+	$(document).ready(function(){
+		/* $(".goodsStock").removeClass("active"); */
+		$(".stockManagementSetting").removeClass("active");
+		/* $(".goodsUseList").removeClass("active");
+		$(".etcCostList").removeClass("active");
+		$(".etcCostSetting").removeClass("active"); */
+		$(".etcCostList").addClass("active");
+	});
+</script>
+
 </head>
 <body>
 	<c:import url="stockManagement.jsp"></c:import>
 	
 	<hr>
 	<div id="all">	
-		<h1>지출내역등록</h1>
+		<!-- <h1>지출내역등록</h1> -->
 		<form action="/phoenix/crm/process/stockManagement/insertEtcCostItem" method="POST">
-			<input type="submit" value="지출내역등록"/>
+			<input class="btn btn-primary" type="submit" value="지출내역등록"/>
 		
 			<table>
 				<tr>

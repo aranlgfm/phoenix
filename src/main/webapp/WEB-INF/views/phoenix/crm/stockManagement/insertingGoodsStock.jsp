@@ -9,10 +9,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<c:import url="stockManagement.jsp"></c:import>
 	여기는 미용용품 입고 등록 화면임
 	
 	<!-- 셀렉트 부분 동적쿼리로 만들어야 한다 -->
-	<form action="/phoenix/crm/process/insertGoodsStock" mothod="post">
+	<form action="/phoenix/crm/process/insertGoodsStock" method="post">
 		<table>
 			<tr>
 				<td>

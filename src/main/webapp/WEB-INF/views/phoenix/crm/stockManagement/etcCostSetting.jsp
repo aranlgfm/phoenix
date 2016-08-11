@@ -7,6 +7,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<script src="<c:url value="/webjars/jquery/3.1.0/jquery.min.js"/>"></script>
+<script>
+	$(document).ready(function(){
+		/* $(".goodsStock").removeClass("active"); */
+		$(".etcCostList").removeClass("active");
+		/* $(".goodsUseList").removeClass("active");
+		$(".etcCostList").removeClass("active");
+		$(".etcCostSetting").removeClass("active"); */
+		$(".etcCostSetting").addClass("active");
+	});
+</script>
 </head>
 <body>
 
@@ -14,18 +26,19 @@
 	
 	<hr>
 	<div id="all">
-		<a href="/phoenix/crm/form/stockManagement/etcCostSetting?shopCode=${shopCode}">[기타지출항목설정]</a>
-		<a href="/phoenix/crm/form/stockManagement/etcCostTypeSetting?shopCode=${shopCode}">기타지출세부항목설정</a>
-		
+		<a class="btn btn-primary" href="/phoenix/crm/form/stockManagement/etcCostSetting?shopCode=${shopCode}">[기타지출항목설정]</a>
+		<a class="btn btn-primary" href="/phoenix/crm/form/stockManagement/etcCostTypeSetting?shopCode=${shopCode}">기타지출세부항목설정</a>
+		<br><br>
 		<form action="/phoenix/crm/process/stockManagement/insertEtcCostItem" method="POST">
 			<div>
 				<input name="shopCode" type="hidden" value="${shopCode}"/>
 				<input name="etcCostName" type="text"/>
 				<input type="submit" value="기타지출항목등록"/>
 			</div>
+			<br>
 		</form>
 		
-		<h3>현재 지출항목</h3>
+		<div class="divTh">현재 지출항목</div>
 		
 		<table>
 		<c:forEach var="list" items="${list}">

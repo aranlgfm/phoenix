@@ -3,34 +3,26 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>goodsStock</title>
-<link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
-<script src="<c:url value="/webjars/jquery/3.1.0/jquery.min.js"/>"></script>
-<style>
-	/* table, tr, th, td {
-		border : 1px solid #000000;
-	}
-	td {
-		border-collapse: collapse; */
-	}
-</style>
-<script>
-/* on('ready',function(){})이 왜 안되는 거지? 버전 문제인가? */
-		
-	$(document).ready(function()
-		{
-			console.log("jquery 테스트");
-			$('.insertingGoodsStockBtn').on('click',function()
-				{
-					$(".insertingGoodsStock").submit();
-				}
-			)
-		}
-	)
-	console.log("jquery 테스트");
-</script>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>goodsStock</title>
+	<script src="<c:url value="/webjars/jquery/3.1.0/jquery.min.js"/>"></script>
+	<script>
+		/* on('ready',function(){})이 왜 안되는 거지? 버전 문제인가? */
+			
+		$(document).ready(function()
+			{
+			$(".goodsStock").addClass("active");
+				console.log("jquery 테스트");
+				$('.insertingGoodsStockBtn').on('click',function()
+					{
+						
+						$(".insertingGoodsStock").submit();
+						
+					})
+			})
+		console.log("jquery 테스트");
+	</script>
 </head>
 <body>
 
@@ -50,24 +42,24 @@
 		
 			<table class="table table-hover">
 				<tr class="textCenter">
-					<td>
+					<th>
 						입고일
-					</td>
-					<td>
+					</th>
+					<th>
 						거래처
-					</td>
-					<td>
+					</th>
+					<th>
 						제품명
-					</td>
-					<td>
+					</th>
+					<th>
 						입고액
-					</td>
-					<td>
+					</th>
+					<th>
 						담당자
-					</td>
-					<td>
+					</th>
+					<th>
 						관리
-					</td>
+					</th>
 				</tr>
 				<c:forEach var="list" items="${goodsStockList}">
 					<tr class="textCenter">
