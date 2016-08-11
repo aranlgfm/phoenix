@@ -47,7 +47,7 @@
 
 			<c:forEach var="list" items="${list}">
 			<tr>
-				<td>${list.paymentYearMonth} </td>
+				<td>${list.paymentMonth}월 </td>
 				<td>${list.totalCash}/(${list.countCash})</td>
 				<td>${list.totalCard}/(${list.countCard})</td>
 			</tr>

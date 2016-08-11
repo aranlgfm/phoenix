@@ -6,7 +6,9 @@ public class MonthSalesInfo extends DaySalesInfo {
 	private String paymentEndDay;
 	private String paymentYear;
 	private String paymentMonth;
+	private String paymentDay;
 	private String paymentYearMonth;
+	
 	
 	public String getPaymentStartDay() {
 		return paymentStartDay;
@@ -41,12 +43,21 @@ public class MonthSalesInfo extends DaySalesInfo {
 	public void setPaymentYearMonth(String paymentYearMonth) {
 		this.paymentYearMonth = paymentYearMonth;
 	}
+	
+	public String getPaymentDay() {
+		return paymentDay;
+	}
+	public void setPaymentDay(String paymentDay) {
+		this.paymentDay = paymentDay;
+	}
 	@Override
 	public String toString() {
 		return "MonthSalesInfo [paymentStartDay=" + paymentStartDay + ", paymentEndDay=" + paymentEndDay
-				+ ", paymentYear=" + paymentYear + ", paymentMonth=" + paymentMonth + ", paymentYearMonth="
-				+ paymentYearMonth + "]";
+				+ ", paymentYear=" + paymentYear + ", paymentMonth=" + paymentMonth + ", paymentDay=" + paymentDay
+				+ ", paymentYearMonth=" + paymentYearMonth + "]";
 	}
+	
+	
 	
 	
 	
