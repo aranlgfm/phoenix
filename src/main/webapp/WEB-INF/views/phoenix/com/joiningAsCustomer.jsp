@@ -15,7 +15,8 @@
 			$(document).ready(function(){
 				
 				/* 유효성 */
-				$('#submitBtn').click(function(){
+				$('#submitButton').click(function(){
+					console.log("야");
 					/* 아이디 */
 					if($('#userId').val() == ""){
 						$('#userIdMsg').html('아이디를 입력하세요');
@@ -97,7 +98,7 @@
 		 				$("#userAddress").val($("#searchAddress").val()+"^"+$("#userPutAddress").val());
 		 			}
 					
-					$("#userForm").submit();
+					//$("#userForm").submit();
 				});
 				
 				
@@ -145,7 +146,8 @@
 	 		text-align: center;
  		}
  		
- 		span{
+ 		.textWarn {
+ 			font-weight:bolder;
  			color: red;
  		}
 	</style>
@@ -168,7 +170,7 @@
 				<input type="hidden" name="userGroupName" value="${group}"/>
 								
 				<div class="form-group">
-					<label class="control-label col-sm-3" for="userId">아이디:</label>
+					<label class="control-label col-sm-3" for="userId"><span class="textWarn">* </span>아이디:</label>
 					<div class="col-sm-4">
 						<input type="text" class="form-control" id="userId" name="userId" placeholder="6자이상 12자이하" maxlength="12">
 					</div>
@@ -176,7 +178,7 @@
 				</div>
 				  
 				<div class="form-group">
-					<label class="control-label col-sm-3" for="userPw">비밀번호:</label>
+					<label class="control-label col-sm-3" for="userPw"><span class="textWarn">* </span>비밀번호:</label>
 					<div class="col-sm-4">
 						<input type="password" class="form-control" id="userPw" name="userPw" placeholder="6자이상 12자이하">
 					</div>
@@ -184,7 +186,7 @@
 				</div>
 				 
 				<div class="form-group">
-					<label class="control-label col-sm-3" for="userRePw">비밀번호확인:</label>
+					<label class="control-label col-sm-3" for="userRePw"><span class="textWarn">* </span>비밀번호확인:</label>
 					<div class="col-sm-4"> 
 						<input type="password" class="form-control"id="userRepw" placeholder="다시입력해">
 					</div>
@@ -192,7 +194,7 @@
 				</div>
 				 
 				<div class="form-group">
-					<label class="control-label col-sm-3" for="userName">이름:</label>
+					<label class="control-label col-sm-3" for="userName"><span class="textWarn">* </span>이름:</label>
 					<div class="col-sm-4">
 						<input type="text" class="form-control" id="userName" name="userName" placeholder="이름을 입력하세요">
 					</div>
@@ -200,7 +202,7 @@
 				</div>
 				 
 				<div class="form-group">
-					<label class="control-label col-sm-3" for="userNickName">닉네임:</label>
+					<label class="control-label col-sm-3" for="userNickName"><span class="textWarn">* </span>닉네임:</label>
 					<div class="col-sm-4">
 						<input type="text" class="form-control" id="userNickName" name="userNickName" placeholder="닉네임 입력하세요">
 					</div>
@@ -208,7 +210,7 @@
 				</div>
 				  
 				<div class="form-group">
-				<label class="control-label col-sm-3" for="userSexFlag">성별:</label>
+				<label class="control-label col-sm-3" for="userSexFlag"><span class="textWarn">* </span>성별:</label>
 					<div class="col-sm-4">
 						  <label class="radio-inline"><input type="radio" class="userSexFlag" name="userSexFlag" value="0">남</label>
 						  <label class="radio-inline"><input type="radio" class="userSexFlag" name="userSexFlag" value="1">여</label>
@@ -272,7 +274,7 @@
 				
 				<!-- 이메일 -->
 				<div class="form-inline form-group">
-				<label class="control-label col-sm-3" for="userEmailAddress">이메일:</label>
+				<label class="control-label col-sm-3" for="userEmailAddress"><span class="textWarn">* </span>이메일:</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="userEmailId" name="userEmailId" placeholder="이메일" size="5">&nbsp;@&nbsp;
 						<input type="text" class="form-control" id="userEmailDomain" name="userEmailDomain" size="7">
@@ -319,7 +321,7 @@
 				<!-- 등록취소 -->
 				<div class="form-group centerT"> 
 					<div class="center col-sm-10">
-						<button type="button" class="btn btn-default" id="submitBtn">등록</button>
+						<button id="submitButton" type="button" class="btn btn-default" >등록</button>
 						<a class="btn btn-default" href="/phoenix/com/form/terms">취소</a>
 					</div>
 				</div>

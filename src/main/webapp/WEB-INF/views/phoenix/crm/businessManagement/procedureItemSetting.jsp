@@ -33,7 +33,7 @@
 			<div class="textCenter">
 				<label>시술명 : </label>
 				<input type="hidden" name="itemCode" value="" size="10"/>
-				<input type="hidden" name="shopCode" value="${sessionScope.shopCode}" size="10"/>
+				<input type="hidden" name="shopCode" value="${user.shopCode}" size="10"/>
 				<input class="form-control" type="text" name="itemName" size="10"/>
 				<input class="form-control" type="submit" value="등록"/>
 			</div>

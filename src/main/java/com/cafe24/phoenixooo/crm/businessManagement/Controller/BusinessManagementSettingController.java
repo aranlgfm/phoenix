@@ -103,7 +103,9 @@ public class BusinessManagementSettingController {
 	 */
 	@RequestMapping(value="/phoenix/crm/form/procedureItemDesignSetting", method = RequestMethod.GET)
 	public String procedureDesignSetting(HttpSession session,Model model) {
-		String shopCode = (String)session.getAttribute("shopCode");//primary키 구해서 증가시킴
+		UserCustomer user = (UserCustomer)session.getAttribute("user");
+		String shopCode = user.getShopCode();
+		
 		List<ProcedureItem> list = service.selectItemList(shopCode);//아이템리스트
 		List<ProcedureItemDesign> listDesign = service.selectItemDesignList(shopCode);
 		model.addAttribute("item", list);
