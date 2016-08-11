@@ -30,7 +30,14 @@
 		   ,PAYMENT_DT as paymentDate
 		FROM
 			CRM_PAYMENT_TB
-		WHERE PAYMENT_DT = #{paymentDate}
+		WHERE 
+			PAYMENT_DT = #{paymentDate}
+		AND 
+			SHOP_CD = #{shopCode}
+	<if test="employeeCode != null and employeeCode != ''">
+		AND 
+			EMPLOYEE_CD = #{employeeCode}
+	</if>
 		GROUP BY
 			EMPLOYEE_CD,PAYMENT_TYPE_GB
 		ORDER BY 

@@ -24,116 +24,91 @@
 </head>
 <body>
 
-<c:import url="top.jsp"></c:import>
+<c:import url="./top.jsp"></c:import>
 	
 	<br><br><br>
 	
-	<!-- 아직 실제 데이터 값을 가져온 것이 아니다. 실제 이미지, 실제 게시 날짜, 실제 글 제목을 가져와서 뿌려줘야 한다. -->
+<div id="all">
+	
 	
 	<div class="row">
-		<div class="col-md-2">
-			
-		</div>
-		<div class="col-md-2">
-			<div class="articleDate01">
-				여기에 날짜 및 시간
-			</div>
-			<div class="designerAtricleImg01">
-				<a href=""><img class="hairImg01" src="/resources/test1.jpg"/></a>
-			</div>
-			<div class="designerAtricleTitle01">
-				여기에 글 제목
-			</div>		
-		</div>
-		<div class="col-md-2">
-			<div class="articleDate02">
-				여기에 날짜 및 시간
-			</div>
-			<div class="designerAtricleImg02">
-				<a href=""><img class="hairImg02" src="/resources/test2.jpg"/></a>
-			</div>
-			<div class="designerAtricleTitle02">
-				여기에 글 제목
-			</div>
-		</div>
-		<div class="col-md-2">
-			<div class="articleDate03">
-				여기에 날짜 및 시간
-			</div>
-			<div class="designerAtricleImg03">
-				<a href=""><img class="hairImg03" src="/resources/test3.jpg"/></a>
-			</div>	
-			<div class="designerAtricleTitle03">
-				여기에 글 제목
-			</div>
-		</div>
-		<div class="col-md-2">
-			<div class="articleDate04">
-				여기에 날짜 및 시간
-			</div>
-			<div class="designerAtricleImg04">
-				<a href=""><img class="hairImg04" src="/resources/test4.jpg"/></a>
-			</div>		
-			<div class="designerAtricleTitle04">
-				여기에 글 제목
-			</div>
-		</div>
-		<div  class="col-md-2">
-		</div>
-	</div>
+	<c:forEach begin="0" end="3" var="art" items="${articleList}">
+		  <div class="col-xs-6 col-md-3">
+			    <a href="/phoenix/com/form/basicArticle?articleCode=${art.articleCode}" class="thumbnail">
+			    	<div>${art.articleDate}</div>
+			      	<img src="${art.imgFileList[0].filePath}" alt="등록된 사진이 없습니다.">
+			      	<div>${art.articleName}</div>
+			    </a>
+		  </div>
+	</c:forEach>
+	<c:forEach begin="4" end="7" var="art" items="${articleList}">
+		  <div class="col-xs-6 col-md-3">
+			    <a href="/phoenix/com/form/basicArticle?articleCode=${art.articleCode}" class="thumbnail">
+			    	<div>${art.articleDate}</div>
+			      	<img src="${art.imgFileList[0].filePath}" alt="등록된 사진이 없습니다.">
+			      	<div>${art.articleName}</div>
+			    </a>
+		  </div>
+	</c:forEach>
+  </div>
 	
-	<br><br><br>
 	
-	<div class="row">
-		<div class="col-md-2">
+			<br><br>
+			<br><br><br>
 			
-		</div>
-		<div class="col-md-2">
-			<div class="articleDate05">
-				여기에 날짜 및 시간
+			<!-- 자유게시판 -->
+			<div class="basicBoardList">
+				<table class="table table-bordered">
+					<tr>
+						<td class="centerCell">글번호</td>
+						<td class="centerCell">글제목</td>
+						<td class="centerCell">작성시간</td>
+						<td class="centerCell">작성자</td>
+					</tr>
+					<c:forEach var="list" items="${articleList}">
+						<tr>
+							<td class="centerCell">${list.articleNumber}</td>
+							<td><a href="/phoenix/com/form/basicArticle?articleCode=${list.articleCode}">${list.articleName}</a></td>
+							<td class="centerCell">${list.articleDate}</td>
+							<td class="centerCell">${list.userNickName}</td>					
+						</tr>
+					</c:forEach>
+				</table>
+				<div>
+					<c:choose>
+						<c:when test="${articleList[0].currentPageNumber eq 1}" >
+							
+						</c:when>							
+						<c:otherwise>
+							<div class="previousDiv">
+								<form class="previousForm">
+									<input type="hidden" name="boardGroupCode" value="${articleList[0].boardGroupCode}">
+									<input type="hidden" name="limitIndex" value="${articleList[0].limitIndex-10}">
+									<input type="hidden" name="currentPageNumber" value="${articleList[0].currentPageNumber-1}">
+									<input class="previous" type="button" value="이전">
+								</form>
+							</div>
+						</c:otherwise>
+					</c:choose>
+					<c:choose>
+						<c:when test="${articleList[0].currentPageNumber eq articleList[0].totalPageNumber||articleList[0].totalArticleNumber<11}" >
+							
+						</c:when>
+						<c:otherwise>
+							<div class="nextDiv">
+								<form class="nextForm">
+									<input type="hidden" name="boardGroupCode" value="${articleList[0].boardGroupCode}">
+									<input type="hidden" name="limitIndex" value="${articleList[0].limitIndex+10}">
+									<input type="hidden" name="currentPageNumber" value="${articleList[0].currentPageNumber+1}">
+									<input class="next" type="button" value="다음">
+								</form>
+							</div>
+						</c:otherwise>
+					</c:choose>
+					
+				</div>
 			</div>
-			<div class="designerAtricleImg05">
-				<a href=""><img class="hairImg05" src="/resources/test5.jpg"/></a>
-			</div>
-			<div class="designerAtricleTitle05">
-				여기에 글 제목
-			</div>		
-		</div>
-		<div class="col-md-2">
-			<div class="articleDate06">
-				여기에 날짜 및 시간
-			</div>
-			<div class="designerAtricleImg06">
-				<a href=""><img class="hairImg06" src="/resources/test6.jpg"/></a>
-			</div>
-			<div class="designerAtricleTitle06">
-				여기에 글 제목
-			</div>
-		</div>
-		<div class="col-md-2">
-			<div class="articleDate07">
-				여기에 날짜 및 시간
-			</div>
-			<div class="designerAtricleImg07">
-				<a href=""><img class="hairImg07" src="/resources/test7.jpg"/></a>
-			</div>	
-			<div class="designerAtricleTitle07">
-				여기에 글 제목
-			</div>
-		</div>
-		<div class="col-md-2">
-			<div class="articleDate08">
-				여기에 날짜 및 시간
-			</div>
-			<div class="designerAtricleImg08">
-				<a href=""><img class="hairImg08" src="/resources/test8.jpg"/></a>
-			</div>		
-			<div class="designerAtricleTitle08">
-				여기에 글 제목
-			</div>
-		</div>
-		<div  class="col-md-2">
-		</div>
-	</div>
+	
+</div>
 </body>
 </html>

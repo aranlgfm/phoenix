@@ -27,6 +27,10 @@ public class EmployeeSalesController {
 	
 	/**
 	 * CRM-Controller 일간직원매출화면
+	 * @param emp
+	 * @param date
+	 * @param model
+	 * @param session
 	 * @return
 	 */
 	@RequestMapping(value = "/phoenix/crm/form/salesManagement/dailyEmployeeSales", method = RequestMethod.GET)
@@ -51,14 +55,59 @@ public class EmployeeSalesController {
 		return "/phoenix/crm/salesManagement/dailyEmployeeSales";
 	}
 	
+	/**
+	 * CRM-Controller 일간직원매출검색
+	 * @param emp
+	 * @param date
+	 * @param model
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping(value = "/phoenix/crm/process/salesManagement/dailyEmployeeSales", method = RequestMethod.POST)
 	public String crmProcessSalesManagementDailyEmployeeSales(EmployeeListForSales emp, String date, Model model, HttpSession session){
+		// 입력날짜가 없을 때 오늘날짜를 자동으로 입력하기 위한 코드
 		Date today = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		String realToday = format.format(today);
 		if(date == null || date == ""){
 			date = realToday;
 		}
+		// 샵코드를 받아오기 위한 코드
+		UserCustomer user = (UserCustomer)session.getAttribute("user");
+		emp.setShopCode(user.getShopCode());
+		// 직원리스트를 받아옴
+		List<EmployeeListForSales> empList = empService.selectEmployeeList(emp);
+		// 날짜별 매출내역을 알기 위해 날짜 입력
+		EmployeeSales empS = new EmployeeSales();
+		empS.setPaymentDate(date);
+		empS.setShopCode(user.getShopCode());
+		empS.setEmployeeCode(emp.getEmployeeCode());
+		List<EmployeeSales> empSales = empService.selectAllEmpSales(empS);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("empList", empList);
+		map.put("empSales", empSales);
+		map.put("today", date);
+		model.addAttribute("emp", map);
+		return "/phoenix/crm/salesManagement/dailyEmployeeSales";
+	}
+	
+	/**
+	 * CRM-Controller 월간직원매출검색
+	 * @param emp
+	 * @param date
+	 * @param model
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value = "/phoenix/crm/form/salesManagement/monthlyEmployeeSales", method = RequestMethod.GET) 
+	public String crmFormSalesManagementMonthlyEmployeeSales(EmployeeListForSales emp, String date, Model model, HttpSession session){
+		Date today = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMM");
+		String realToday = format.format(today);
+		if(date == null || date == ""){
+			date = realToday;
+		}
+		System.out.println(realToday+"나와라 쫌");
 		UserCustomer user = (UserCustomer)session.getAttribute("user");
 		emp.setShopCode(user.getShopCode());
 		List<EmployeeListForSales> empList = empService.selectEmployeeList(emp);
@@ -70,6 +119,6 @@ public class EmployeeSalesController {
 		map.put("empSales", empSales);
 		map.put("today", date);
 		model.addAttribute("emp", map);
-		return "/phoenix/crm/salesManagement/dailyEmployeeSales";
+		return "/phoenix/crm/salesManagement/monthlyEmployeeSales";
 	}
 }

@@ -1,19 +1,29 @@
 package com.cafe24.phoenixooo;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.cafe24.phoenixooo.community.Model.Article;
+import com.cafe24.phoenixooo.community.Service.BoardService;
 
 @Controller
 public class HomeController {
 
+	@Autowired
+	private BoardService service;
+	
 	/**
 	 * 피닉스 메인
 	 * @return
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home() {
-		return "phoenix";
+	public String home(){
+		return "redirect:/phoenix";
 	}
 	
 	/**
@@ -21,7 +31,11 @@ public class HomeController {
 	 * @return
 	 */
 	@RequestMapping(value = "/phoenix", method = RequestMethod.GET)
-	public String phoenix() {
+	public String phoenix(Article article, Model model){
+			article.setBoardGroupCode("COM_BOARDGROUP_1");
+			List<Article> articleList = service.getArticleList(article);
+			System.out.println(articleList.size()+"<================================articleList의 사이즈");
+			model.addAttribute("articleList", articleList);
 		return "phoenix";
 	}
 	
@@ -30,7 +44,7 @@ public class HomeController {
 	 * @return
 	 */
 	@RequestMapping(value = "/crm", method = RequestMethod.GET)
-	public String crm() {
+	public String crm(){
 		return "redirect:/phoenix/crm/form/procedurePaymentCustomerList";
 	}
 	
