@@ -46,12 +46,12 @@
 		<div style="border: 1px double;">
 			<div style="background-color: gray;">회원시술등록</div>
 			
-			<!-- 임시ITEM SELECT FORM -->
+			<!-- ITEM SELECT FORM -->
 				<form id="itemForm" action="/phoenix/crm/process/procedurePaymentSelectItem" method="POST">
 					<input class="formItemCode" name="itemCode" type="hidden" value="">
 					<input name="ShopCode" type="hidden" value="${sessionScope.shopCode}">
 				</form>
-			<!-- 임시ITEMDESIGN SELECT FORM -->
+			<!-- ITEMDESIGN SELECT FORM -->
 				<form id="itemDesignForm" action="/phoenix/crm/process/procedurePaymentSelectItemDesign" method="POST">
 					<input class="formItemCode" name="itemCode" type="hidden" value="">
 					<input class="formItemDesignCode" name="itemDesignCode" type="hidden" value="">
@@ -126,13 +126,34 @@
 							</select><!-- 시술디자인셀렉 -->
 							
 							
-							<!-- 이건 제외 가라임. -->
+							
+	
+							<!-- 담당자 셀렉 -->
 							<select name="employeeCode">
-								<option value="">담당자선택</option>	
-								<option value="CRM_EMPLOYEE_1">존</option>
-								<option value="CRM_EMPLOYEE_2">비와이</option>
-								<option value="CRM_EMPLOYEE_6">겐지</option>
-							</select>
+							<c:choose>
+								<c:when test="${employeeList ne null}">
+									<option value="">담당자선택</option>
+									<c:forEach var="employeeList" items="${employeeList}">
+											<option value="${employeeList.employeeCode}">${employeeList.employeeName}</option>
+									</c:forEach>
+								</c:when>							
+								<c:otherwise>
+										<option value="">담당자선택</option>
+										<c:forEach var="employeeList" items="${employeeList}">
+											<option value="${employeeList.employeeCode}">${employeeList.itemDesignName}</option>
+										</c:forEach>
+								</c:otherwise>
+							</c:choose>
+							</select><!-- 담당자 셀렉 -->
+							
+							
+<!-- 							이건 제외 가라임. -->
+<!-- 							<select name="employeeCode"> -->
+<!-- 								<option value="">담당자선택</option>	 -->
+<!-- 								<option value="CRM_EMPLOYEE_1">존</option> -->
+<!-- 								<option value="CRM_EMPLOYEE_2">비와이</option> -->
+<!-- 								<option value="CRM_EMPLOYEE_6">겐지</option> -->
+<!-- 							</select> -->
 							
 							<select name="paymentTypeCode">
 								<option value="">결제방식</option>	

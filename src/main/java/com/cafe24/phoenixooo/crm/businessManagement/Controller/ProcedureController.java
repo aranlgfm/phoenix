@@ -22,6 +22,8 @@ import com.cafe24.phoenixooo.crm.businessManagement.Model.RequestPageHelper;
 import com.cafe24.phoenixooo.crm.businessManagement.Model.RequestProcedurePayment;
 import com.cafe24.phoenixooo.crm.businessManagement.Service.BusinessManagementSettingService;
 import com.cafe24.phoenixooo.crm.businessManagement.Service.ProcedureService;
+import com.cafe24.phoenixooo.crm.salesManagement.Model.EmployeeListForSales;
+import com.cafe24.phoenixooo.crm.salesManagement.Service.EmployeeSalesService;
 
 /**
  * 시술내역 시술내역리스트 등 영업관리의 첫페이지 작동시키는 컨트롤러 
@@ -34,6 +36,8 @@ public class ProcedureController {
 	private BusinessManagementSettingService businessManagementSettingService;
 	@Autowired
 	private ProcedureService procedureService;
+	@Autowired
+	EmployeeSalesService empService;
 	
 	/**
 	 * 1-1. 시술내역 - 시술내역 관리 첫페이지화면
@@ -109,12 +113,6 @@ public class ProcedureController {
 	@RequestMapping(value = "/phoenix/crm/form/procedurePaymentCustomerList", method = RequestMethod.POST)
 	public String procedurePaymentforPost(HttpSession session,RequestPageHelper rpageHelper,Model model) {
 		
-		System.out.println("POST");
-		System.out.println("POST");
-		System.out.println("POST");
-		System.out.println("POST");
-		System.out.println("POST");
-		
 		UserCustomer user = (UserCustomer)session.getAttribute("user");
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("shopCode", user.getShopCode());
@@ -161,6 +159,12 @@ public class ProcedureController {
 	public String insertProcedurePayment(HttpSession session,Model model,@RequestParam(value="customerCode", required=false) String customerCode) {
 		UserCustomer user = (UserCustomer)session.getAttribute("user");
 		List<ProcedureItem> itemList = businessManagementSettingService.selectItemList(user.getShopCode());
+
+		EmployeeListForSales emp = new EmployeeListForSales();
+		emp.setShopCode(user.getShopCode());
+		List<EmployeeListForSales> employeeList = empService.selectEmployeeList(emp);
+		
+		model.addAttribute("employeeList",employeeList);
 		model.addAttribute("customerCode",customerCode);
 		model.addAttribute("itemList", itemList);
 		return "/phoenix/crm/businessManagement/procedurePayment";
@@ -179,6 +183,12 @@ public class ProcedureController {
 	public String procedurePaymentSelectItem(ProcedureItemDesign item, Model model) {
 		List<ProcedureItem> itemList = businessManagementSettingService.selectItemList(item.getShopCode());
 		List<ProcedureItemDesign> itemDesignList = procedureService.selectItemDesignList(item.getItemCode());
+		
+		EmployeeListForSales emp = new EmployeeListForSales();
+		emp.setShopCode(item.getShopCode());
+		List<EmployeeListForSales> employeeList = empService.selectEmployeeList(emp);
+		
+		model.addAttribute("employeeList",employeeList);
 		model.addAttribute("itemList", itemList);
 		model.addAttribute("itemDesignList", itemDesignList);
 		return "/phoenix/crm/businessManagement/procedurePayment";
@@ -208,6 +218,14 @@ public class ProcedureController {
 				itemDesign = itemDesignList.get(i);
 			}
 		}
+		
+		
+		EmployeeListForSales emp = new EmployeeListForSales();
+		emp.setShopCode(item.getShopCode());
+		List<EmployeeListForSales> employeeList = empService.selectEmployeeList(emp);
+		
+		
+		model.addAttribute("employeeList",employeeList);
 		model.addAttribute("itemList", itemList);
 		model.addAttribute("itemDesignList", itemDesignList);
 		model.addAttribute("itemDesign", itemDesign);
