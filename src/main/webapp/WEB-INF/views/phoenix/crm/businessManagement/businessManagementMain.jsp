@@ -50,12 +50,15 @@
 		.textRight{
 			text-align: right;
 		}
+		
+		.textLeft{
+			text-align: left;
+		}
 	</style>
 </head>
 
 <body>
 	<c:import url="../crmTemp.jsp"></c:import>
-	<hr>
 	<div id="all">
 		<ul class="nav nav-tabs">
 			<li id="paymentCustomerList"><a href="/phoenix/crm/form/procedurePaymentCustomerList">시술내역등록</a></li>

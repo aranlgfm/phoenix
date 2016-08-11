@@ -15,46 +15,52 @@
 			$("#businessManagementSetting").addClass("active");
 		});	
 	</script>
+	<style>
+		.bgColorGray{
+			background-color: #F6F6F6;
+		}
+	</style>
 </head>
+
 <body>
 	<c:import url="businessManagementMain.jsp"></c:import>
 	<hr>
-		<a href="/phoenix/crm/form/procedureItemSetting">시술품목설정</a>
-		<a href="/phoenix/crm/form/procedureItemDesignSetting">시술디자인설정</a>
-	<hr>
-	<div style="border: 1px double;">	
+	<div>
+		<button class="btn btn-default"><a href="/phoenix/crm/form/procedureItemSetting">시술품목설정</a></button>
+		<button class="btn btn-default"><a href="/phoenix/crm/form/procedureItemDesignSetting">시술디자인설정</a></button>
+	</div>	
 		<!-- S시술품목별 시술디자인설정 -->
 		<div>			
-			<form action="/phoenix/crm/process/insertProcedureItemDesign" method="POST">
+			<form class="form-inline" action="/phoenix/crm/process/insertProcedureItemDesign" method="POST">
 			<input type="hidden" name="shopCode" value="${sessionScope.shopCode}">
-				<div>
-					<div style="background-color: gray;">
+				<br>
+				<div><!-- 전체 -->
+					<div class="divTh">
 						시술품목별 시술디자인설정
 					</div>
 					<!-- 시술품목 -->
-					<div>
-						<label>시술품목선택</label>
-						<select name="itemCode">
-							<option value="">::선택::</option>	
-							<c:forEach var="item" items="${item}">
-								<option value="${item.itemCode}">${item.itemName}</option>
-							</c:forEach>
-						</select>
-					</div>
-					<!-- 시술디자인 -->
-					<div>
-						<label>시술디자인명</label>
-						<input type="text" name="itemDesignName" size="10"/>
-					</div>
-					<!-- 시술가격 -->
-					<div>
-						<label>시술가격</label>
-						<input type="text" name="itemDesignPrice" size="10"/>
-					</div>
-					<input type="submit" value="등록하기"/>
-				</div>
+					<br>
+					<table class="table">
+						<tr class="textCenter">
+							<td class="bgColorGray"><label>시술품목</label></td>
+							<td class="textLeft">
+								<select class="form-control" name="itemCode">
+									<option value="">::선택::</option>	
+									<c:forEach var="item" items="${item}">
+										<option value="${item.itemCode}">${item.itemName}</option>
+									</c:forEach>
+								</select>
+							</td>
+							<td class="bgColorGray"><label>시술디자인명</label></td>
+							<td class="textLeft"><input class="form-control" type="text" name="itemDesignName" size="10"/></td>
+							<td class="bgColorGray"><label>시술가격</label></td>
+							<td class="textLeft"><input class="form-control" type="text" name="itemDesignPrice" size="10"/></td>
+						</tr>
+						<tr class="textCenter">
+							<td colspan="6"><input class="form-control" type="submit" value="등록"/></td>
+						</tr>
+					</table>	
 			</form>
-		</div>
 		<!-- E시술품목별 시술디자인설정 -->
 		
 		
@@ -62,31 +68,26 @@
 		<div>
 			<form action="" method="POST">
 				<div>
-					<div style="background-color: gray;">
-						시술품목 리스트
-					</div>
-					<div>
-						<table>
-							<tr>
-								<th>시술품목</th>
-								<th>시술디자인</th>
-								<th>시술가격</th>
-								<th>관리</th>
+					<table class="table table-hover">
+						<tr class="textCenter">
+							<th>시술품목</th>
+							<th>시술디자인</th>
+							<th>시술가격</th>
+							<th>관리</th>
+						</tr>
+						<c:forEach var="item" items="${itemDesign}">
+							<input type="hidden" value="${item.itemDesignCode}">
+							<tr class="textCenter">
+								<td>${item.itemName}</td>	
+								<td>${item.itemDesignName}</td>	
+								<td>${item.itemDesignPrice}</td>	
+								<td>
+									<a href="/phoenix/crm/form/modifyProcedureItemDesign?itemDesignCode=${item.itemDesignCode}">수정</a>
+									<a href="/phoenix/crm/process/deleteProcedureItemDesign?itemDesignCode=${item.itemDesignCode}">삭제</a>
+								</td>	
 							</tr>
-							<c:forEach var="item" items="${itemDesign}">
-								<input type="hidden" value="${item.itemDesignCode}">
-								<tr>
-									<td>${item.itemName}</td>	
-									<td>${item.itemDesignName}</td>	
-									<td>${item.itemDesignPrice}</td>	
-									<td>
-										<a href="/phoenix/crm/form/modifyProcedureItemDesign?itemDesignCode=${item.itemDesignCode}">수정</a>
-										<a href="/phoenix/crm/process/deleteProcedureItemDesign?itemDesignCode=${item.itemDesignCode}">삭제</a>
-									</td>	
-								</tr>
-							</c:forEach>
-						</table>
-					</div>
+						</c:forEach>
+					</table>
 				</div>
 			</form>
 		</div>
