@@ -77,12 +77,11 @@ public class ProcedureController {
 	 */
 	@RequestMapping(value = "/phoenix/crm/form/procedurePaymentCustomerList", method = RequestMethod.GET)
 	public String procedurePayment(HttpSession session,RequestPageHelper rpageHelper,Model model) {
-
 		UserCustomer user = (UserCustomer)session.getAttribute("user");
-		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("shopCode", user.getShopCode());
 		rpageHelper.setShopCode(user.getShopCode());
+		
 		rpageHelper.setTableName("CRM_CUSTOMER_TB");
 		rpageHelper.setColumName("CUSTOMER_NM");
 		int totalRecord = (procedureService.selectTotalCount(rpageHelper));
@@ -90,6 +89,10 @@ public class ProcedureController {
 		map.put("pageHelper", new PageHelper(rpageHelper));
 		
 		List<ProcedurePayment> list = procedureService.getCustomerList(map);
+		if(map == null){
+			System.out.println("123123123123123123123");
+			return "/phoenix/crm/businessManagement/procedurePaymentCustomerList";
+		}
 		model.addAttribute("list", list);
 		model.addAttribute("pageHelper",map.get("pageHelper"));
 		return "/phoenix/crm/businessManagement/procedurePaymentCustomerList";

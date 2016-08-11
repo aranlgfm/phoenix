@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.cafe24.phoenixooo.community.Model.UserCustomer;
 import com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItem;
 import com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItemDesign;
 import com.cafe24.phoenixooo.crm.businessManagement.Service.BusinessManagementSettingService;
@@ -47,8 +48,8 @@ public class BusinessManagementSettingController {
 	 */
 	@RequestMapping(value="/phoenix/crm/form/businessManagementSetting", method = RequestMethod.GET)
 	public String businessManagementSetting(HttpSession session,Model model) {
-		
-		String shopCode = (String)session.getAttribute("shopCode");
+		UserCustomer user = (UserCustomer)session.getAttribute("user");
+		String shopCode = user.getShopCode();
 		List<ProcedureItem> list = service.selectItemList(shopCode);
 		model.addAttribute("item", list);
 		return "/phoenix/crm/businessManagement/procedureItemSetting";
@@ -63,8 +64,8 @@ public class BusinessManagementSettingController {
 	 */
 	@RequestMapping(value="/phoenix/crm/form/procedureItemSetting", method = RequestMethod.GET)
 	public String procedureItemSetting(HttpSession session,Model model) {
-		
-		String shopCode = (String)session.getAttribute("shopCode");
+		UserCustomer user = (UserCustomer)session.getAttribute("user");
+		String shopCode = user.getShopCode();
 		List<ProcedureItem> list = service.selectItemList(shopCode);
 		model.addAttribute("item", list);
 		return "/phoenix/crm/businessManagement/procedureItemSetting";
