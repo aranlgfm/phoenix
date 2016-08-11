@@ -32,7 +32,7 @@
 		<!-- S시술품목별 시술디자인설정 -->
 		<div>			
 			<form class="form-inline" action="/phoenix/crm/process/insertProcedureItemDesign" method="POST">
-			<input type="hidden" name="shopCode" value="${sessionScope.shopCode}">
+			<input type="hidden" name="shopCode" value="${user.shopCode}">
 				<br>
 				<div><!-- 전체 -->
 					<div class="divTh">
@@ -44,7 +44,7 @@
 						<tr class="textCenter">
 							<td class="bgColorGray"><label>시술품목</label></td>
 							<td class="textLeft">
-								<select class="form-control" name="itemCode">
+								<select class="" name="itemCode">
 									<option value="">::선택::</option>	
 									<c:forEach var="item" items="${item}">
 										<option value="${item.itemCode}">${item.itemName}</option>
@@ -52,9 +52,9 @@
 								</select>
 							</td>
 							<td class="bgColorGray"><label>시술디자인명</label></td>
-							<td class="textLeft"><input class="form-control" type="text" name="itemDesignName" size="10"/></td>
+							<td class="textLeft"><input class="" type="text" name="itemDesignName" size="10"/></td>
 							<td class="bgColorGray"><label>시술가격</label></td>
-							<td class="textLeft"><input class="form-control" type="text" name="itemDesignPrice" size="10"/></td>
+							<td class="textLeft"><input class="" type="text" name="itemDesignPrice" size="10"/></td>
 						</tr>
 						<tr class="textCenter">
 							<td colspan="6"><input class="form-control" type="submit" value="등록"/></td>
