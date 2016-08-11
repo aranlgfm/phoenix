@@ -93,10 +93,10 @@
 						${articleList[0].articleDate}
 					</div>
 					<div class="designerAtricleImg01">
-						<a href=""><img class="hairImg01" src="/resources/test1.jpg"/></a>
+						<a href="/phoenix/com/form/basicArticle?articleCode=${articleList[0].articleCode}"><img class="hairImg01" src=${articleList[0].imgFileList[0].filePath}/></a>
 					</div>
 					<div class="designerAtricleTitle01">
-						여기에 글 제목
+						${articleList[0].articleName}
 					</div>		
 				</div>
 				<div class="col-md-2">
@@ -104,10 +104,10 @@
 						${articleList[1].articleDate}
 					</div>
 					<div class="designerAtricleImg02">
-						<a href=""><img class="hairImg02" src="/resources/test2.jpg"/></a>
+						<a href="/phoenix/com/form/basicArticle?articleCode=${articleList[1].articleCode}"><img class="hairImg02" src=${articleList[1].imgFileList[0].filePath}/></a>
 					</div>
 					<div class="designerAtricleTitle02">
-						여기에 글 제목
+						${articleList[1].articleName}
 					</div>
 				</div>
 				<div class="col-md-2">
@@ -115,10 +115,10 @@
 						${articleList[2].articleDate}
 					</div>
 					<div class="designerAtricleImg03">
-						<a href=""><img class="hairImg03" src="/resources/test3.jpg"/></a>
+						<a href="/phoenix/com/form/basicArticle?articleCode=${articleList[2].articleCode}"><img class="hairImg03" src=${articleList[2].imgFileList[0].filePath}/></a>
 					</div>	
 					<div class="designerAtricleTitle03">
-						여기에 글 제목
+						${articleList[2].articleName}
 					</div>
 				</div>
 				<div class="col-md-2">
@@ -126,10 +126,10 @@
 						${articleList[3].articleDate}
 					</div>
 					<div class="designerAtricleImg04">
-						<a href=""><img class="hairImg04" src="/resources/test4.jpg"/></a>
+						<a href="/phoenix/com/form/basicArticle?articleCode=${articleList[3].articleCode}"><img class="hairImg04" src=${articleList[3].imgFileList[0].filePath}/></a>
 					</div>		
 					<div class="designerAtricleTitle04">
-						여기에 글 제목
+						${articleList[3].articleName}
 					</div>
 				</div>
 				<div class="col-md-2">
@@ -137,10 +137,10 @@
 						${articleList[4].articleDate}
 					</div>
 					<div class="designerAtricleImg05">
-						<a href=""><img class="hairImg05" src="/resources/test5.jpg"/></a>
+						<a href="/phoenix/com/form/basicArticle?articleCode=${articleList[4].articleCode}"><img class="hairImg05" src=${articleList[4].imgFileList[0].filePath}/></a>
 					</div>
 					<div class="designerAtricleTitle05">
-						여기에 글 제목
+						${articleList[4].articleName}
 					</div>		
 				</div>
 				<div  class="col-md-1">
@@ -158,10 +158,10 @@
 						${articleList[5].articleDate}
 					</div>
 					<div class="designerAtricleImg06">
-						<a href=""><img class="hairImg06" src="/resources/test6.jpg"/></a>
+						<a href="/phoenix/com/form/basicArticle?articleCode=${articleList[5].articleCode}"><img class="hairImg06" src=${articleList[5].imgFileList[0].filePath}/></a>
 					</div>
 					<div class="designerAtricleTitle06">
-						여기에 글 제목
+						${articleList[5].articleName}
 					</div>
 				</div>
 				<div class="col-md-2">
@@ -169,10 +169,10 @@
 						${articleList[6].articleDate}
 					</div>
 					<div class="designerAtricleImg07">
-						<a href=""><img class="hairImg07" src="/resources/test7.jpg"/></a>
+						<a href="/phoenix/com/form/basicArticle?articleCode=${articleList[6].articleCode}"><img class="hairImg07" src=${articleList[6].imgFileList[0].filePath}/></a>
 					</div>	
 					<div class="designerAtricleTitle07">
-						여기에 글 제목
+						${articleList[6].articleName}
 					</div>
 				</div>
 				<div class="col-md-2">
@@ -180,10 +180,10 @@
 						${articleList[7].articleDate}
 					</div>
 					<div class="designerAtricleImg08">
-						<a href=""><img class="hairImg08" src="/resources/test8.jpg"/></a>
+						<a href="/phoenix/com/form/basicArticle?articleCode=${articleList[7].articleCode}"><img class="hairImg08" src=${articleList[7].imgFileList[0].filePath}/></a>
 					</div>		
 					<div class="designerAtricleTitle08">
-						여기에 글 제목
+						${articleList[7].articleName}
 					</div>
 				</div>
 				<div class="col-md-2">
@@ -191,10 +191,10 @@
 						${articleList[8].articleDate}
 					</div>
 					<div class="designerAtricleImg09">
-						<a href=""><img class="hairImg09" src="/resources/test9.jpg"/></a>
+						<a href="/phoenix/com/form/basicArticle?articleCode=${articleList[8].articleCode}"><img class="hairImg09" src=${articleList[8].imgFileList[0].filePath}/></a>
 					</div>		
 					<div class="designerAtricleTitle09">
-						여기에 글 제목
+						${articleList[8].articleName}
 					</div>
 				</div>
 				<div class="col-md-2">
@@ -202,10 +202,10 @@
 						${articleList[9].articleDate}
 					</div>
 					<div class="designerAtricleImg10">
-						<a href=""><img class="hairImg10" src="/resources/test10.jpg"/></a>
+						<a href="/phoenix/com/form/basicArticle?articleCode=${articleList[9].articleCode}"><img class="hairImg10" src=${articleList[9].imgFileList[0].filePath}/></a>
 					</div>		
 					<div class="designerAtricleTitle10">
-						여기에 글 제목
+						${articleList[9].articleName}
 					</div>
 				</div>
 				<div  class="col-md-1">
