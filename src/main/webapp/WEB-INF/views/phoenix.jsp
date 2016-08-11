@@ -26,36 +26,31 @@
 
 <c:import url="./top.jsp"></c:import>
 	
-	<br><br><br>
-	
 <div id="all">
 	
-	
+	<h3><span class="label label-default">헤어게시판 최신글</span></h3>	
 	<div class="row">
 	<c:forEach begin="0" end="3" var="art" items="${articleList}">
 		  <div class="col-xs-6 col-md-3">
 			    <a href="/phoenix/com/form/basicArticle?articleCode=${art.articleCode}" class="thumbnail">
-			    	<div>${art.articleDate}</div>
+			    	${art.articleDate}
 			      	<img src="${art.imgFileList[0].filePath}" alt="등록된 사진이 없습니다.">
-			      	<div>${art.articleName}</div>
+			      	${art.articleName}
 			    </a>
 		  </div>
 	</c:forEach>
 	<c:forEach begin="4" end="7" var="art" items="${articleList}">
 		  <div class="col-xs-6 col-md-3">
 			    <a href="/phoenix/com/form/basicArticle?articleCode=${art.articleCode}" class="thumbnail">
-			    	<div>${art.articleDate}</div>
+			    	${art.articleDate}
 			      	<img src="${art.imgFileList[0].filePath}" alt="등록된 사진이 없습니다.">
-			      	<div>${art.articleName}</div>
+			      	${art.articleName}
 			    </a>
 		  </div>
 	</c:forEach>
   </div>
 	
-	
-			<br><br>
-			<br><br><br>
-			
+		<h3><span class="label label-default">자유게시판 최신글</span></h3>	
 			<!-- 자유게시판 -->
 			<div class="basicBoardList">
 				<table class="table table-bordered">
@@ -65,7 +60,7 @@
 						<td class="centerCell">작성시간</td>
 						<td class="centerCell">작성자</td>
 					</tr>
-					<c:forEach var="list" items="${articleList}">
+					<c:forEach begin="0" end="4" var="list" items="${artList}">
 						<tr>
 							<td class="centerCell">${list.articleNumber}</td>
 							<td><a href="/phoenix/com/form/basicArticle?articleCode=${list.articleCode}">${list.articleName}</a></td>
@@ -74,39 +69,6 @@
 						</tr>
 					</c:forEach>
 				</table>
-				<div>
-					<c:choose>
-						<c:when test="${articleList[0].currentPageNumber eq 1}" >
-							
-						</c:when>							
-						<c:otherwise>
-							<div class="previousDiv">
-								<form class="previousForm">
-									<input type="hidden" name="boardGroupCode" value="${articleList[0].boardGroupCode}">
-									<input type="hidden" name="limitIndex" value="${articleList[0].limitIndex-10}">
-									<input type="hidden" name="currentPageNumber" value="${articleList[0].currentPageNumber-1}">
-									<input class="previous" type="button" value="이전">
-								</form>
-							</div>
-						</c:otherwise>
-					</c:choose>
-					<c:choose>
-						<c:when test="${articleList[0].currentPageNumber eq articleList[0].totalPageNumber||articleList[0].totalArticleNumber<11}" >
-							
-						</c:when>
-						<c:otherwise>
-							<div class="nextDiv">
-								<form class="nextForm">
-									<input type="hidden" name="boardGroupCode" value="${articleList[0].boardGroupCode}">
-									<input type="hidden" name="limitIndex" value="${articleList[0].limitIndex+10}">
-									<input type="hidden" name="currentPageNumber" value="${articleList[0].currentPageNumber+1}">
-									<input class="next" type="button" value="다음">
-								</form>
-							</div>
-						</c:otherwise>
-					</c:choose>
-					
-				</div>
 			</div>
 	
 </div>

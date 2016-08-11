@@ -34,8 +34,13 @@ public class HomeController {
 	public String phoenix(Article article, Model model){
 			article.setBoardGroupCode("COM_BOARDGROUP_1");
 			List<Article> articleList = service.getArticleList(article);
-			System.out.println(articleList.size()+"<================================articleList의 사이즈");
+			Article art2 = new Article();
+			art2.setBoardGroupCode("COM_BOARDGROUP_3");
+			List<Article> artList = service.getArticleList(art2);
+			System.out.println(articleList.size()+"아티클 사이즈");
 			model.addAttribute("articleList", articleList);
+			model.addAttribute("artList", artList);
+			
 		return "phoenix";
 	}
 	
