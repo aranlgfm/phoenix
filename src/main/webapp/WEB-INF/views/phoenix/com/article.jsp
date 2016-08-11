@@ -48,50 +48,50 @@
 	
 	<br><br>
 	
-	<div class="fileDiv">
-		<c:forEach var="imgFile" items="${map.imgFile}" >
-			<label>	[${imgFile.fileName}] 이미지 파일</label>
-			<div> 
-				<label>imgFile download :</label>
-				<a href="${imgFile.filePath}" download="${imgFile.fileName}">${imgFile.fileName}</a>
+		<div class="fileDiv">
+			<c:forEach var="imgFile" items="${map.imgFile}" >
+				<label>	[${imgFile.fileName}] 이미지 파일</label>
+				<div> 
+					<label>imgFile download :</label>
+					<a href="${imgFile.filePath}" download="${imgFile.fileName}">${imgFile.fileName}</a>
+				</div>
+			</c:forEach>	
+		</div>
+		
+		<div id="table">
+			<div class="row">
+				<span class="cell col1 cell1">제목</span>
+				<span class="cell col2 cell2">${map.article.articleName }</span>
 			</div>
-		</c:forEach>	
-	</div>
-	
-	<div id="table">
-		<div class="row">
-			<span class="cell col1 cell1">제목</span>
-			<span class="cell col2 cell2">${map.article.articleName }</span>
+			<div class="row">
+				<span class="cell col1 cell3">내용</span>
+				<span class="cell col2 cell4">${map.article.articleContent }</span>
+			</div>
 		</div>
-		<div class="row">
-			<span class="cell col1 cell3">내용</span>
-			<span class="cell col2 cell4">${map.article.articleContent }</span>
+		
+		<div class="modifyArticle">
+			<!-- <input class="recommendBtn" type="button" value="추천"> -->
+		
+			<a href="/phoenix/com/form/modifyingBasicArticle?articleCode=${map.article.articleCode }">수정</a>	
+			
+			 &nbsp; &nbsp; &nbsp;
+			<a href="/phoenix/com/process/deleteBasicArticle?articleCode=${map.article.articleCode }&boardGroupCode=${map.article.boardGroupCode}">삭제</a>	
 		</div>
-	</div>
-	
-	<div class="modifyArticle">
-		<!-- <input class="recommendBtn" type="button" value="추천"> -->
-	
-		<a href="/phoenix/com/form/modifyingBasicArticle?articleCode=${map.article.articleCode }">수정</a>	
+			
+		<br><br><br>
+			
 		
-		 &nbsp; &nbsp; &nbsp;
-		<a href="/phoenix/com/process/deleteBasicArticle?articleCode=${map.article.articleCode }&boardGroupCode=${map.article.boardGroupCode}">삭제</a>	
-	</div>
 		
-	<br><br><br>
+		<br><br><br><br><br>
 		
-	
-	
-	<br><br><br><br><br>
-	
-	<div>
-		<c:import url="/phoenix/com/commentList"></c:import>
-	</div>
-	
-	<br><br>
-	
-	<div>
-		<c:import url="/phoenix/com/form/comment"></c:import>
-	</div>
+		<div>
+			<c:import url="/phoenix/com/commentList"></c:import>
+		</div>
+		
+		<br><br>
+		
+		<div>
+			<c:import url="/phoenix/com/form/comment"></c:import>
+		</div>
 </body>
 </html>

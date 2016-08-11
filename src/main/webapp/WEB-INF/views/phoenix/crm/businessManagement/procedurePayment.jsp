@@ -136,8 +136,8 @@
 							
 							<select name="paymentTypeCode">
 								<option value="">결제방식</option>	
-								<option value="PAYMENT_TYPE_CASH">카드</option>
-								<option value="PAYMENT_TYPE_CARD">현금영수증</option>
+								<option value="PAYMENT_TYPE_CARD">카드</option>
+								<option value="PAYMENT_TYPE_CASH">현금</option>
 							</select>
 						</div>
 					</div><!-- 시술정보/결제방식 -->

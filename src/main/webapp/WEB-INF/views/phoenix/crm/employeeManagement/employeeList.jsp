@@ -51,7 +51,7 @@
 			<input type="text" name="word"><button type="button" class="btn btn-info">검색</button>
 			 -->
 			<div class="textCenter">
-				<label>검색어 :</label>
+				<label>직원명</label>
 				<input type="text" name="word" size="10"/>
 				<input type="submit" value="검색"/>
 			</div>
@@ -80,17 +80,14 @@
 		</c:forEach>
 	</table>
 	
-	<div>
+	<%-- <div>	
 		<c:if test="${page>1}">
 			<a href="/phoenix/crm/employeeManagement/employeeList?page=${page-1}">이전</a>
 		</c:if>
 		<c:if test="${page<lastPage}">
 			<a href="/phoenix/crm/employeeManagement/employeeList?page=${page+1}">다음</a>
 		</c:if>
-	</div>
-	
-	<br/>
-	
+	</div> --%>
 
 </body>
 </html>
