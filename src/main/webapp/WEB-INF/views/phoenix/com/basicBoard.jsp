@@ -250,7 +250,7 @@
 						</c:otherwise>
 					</c:choose>
 					<c:choose>
-						<c:when test="${articleList[0].currentPageNumber eq articleList[0].totalPageNumber||articleList[0].totalArticleNumber<11}" >
+						<c:when test="${articleList[0].currentPageNumber eq articleList[0].totalPageNumber}" >
 							
 						</c:when>
 						<c:otherwise>

@@ -51,7 +51,7 @@ public class BoardServiceImpl implements BoardService
         List<Article> list=boardDao.selectArticleList(map);
         
         int limitIndex=article.getLimitIndex();
-        int totalPageNumber=(totalArticleNumber-1)/10;
+        int totalPageNumber=((totalArticleNumber-1)/10)+1;
         int currentPageNumber=(limitIndex/10)+1;
         
         list.get(0).setLimitIndex(limitIndex);
