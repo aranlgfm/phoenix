@@ -16,7 +16,7 @@ public interface ProcedureService {
 	void insertProcedurePayment(RequestProcedurePayment payment);
 	
 	//회원리스트
-	List<ProcedurePayment> getCustomerList(String shopCode);
+	List<ProcedurePayment> getCustomerList(Map<String, Object> map);
 	
 	//전체레코드수
 	int selectTotalCount(RequestPageHelper pageHelper);

@@ -14,16 +14,15 @@
 	{
 		margin: auto;
 	}
-	.modifying
+	.btns
 	{
-		width:60%;
-		margin:auto;
+		width:100%;
 		text-align:center;
 	}		
 	#table 
 	{
 		display: table; 
-		width: 60%;
+		width: 100%;
 		margin:auto;
 	}
 	.row {display: table-row;}
@@ -35,6 +34,9 @@
 	.cell1,.cell2,.cell3{text-align: center;}
 	.articleName{width:100%;height: 100%;}
 	textarea{width:100%;height: 100%;}
+	.modifyingDiv{float:left;}
+	.cancelDiv{float:left;}
+	.btns{margin: auto;}
 </style>
 <script>
 	$(document).ready(function()
@@ -48,9 +50,9 @@
 		
 		$(".cancelBtn").click(function()
 		{
-			$(".modifyForm").attr("action","/phoenix/com/form/insertBasicArticle");
-			$(".modifyForm").attr("method","post");
-			$(".modifyForm").submit();
+			$(".cancelForm").attr("action","/phoenix/com/form/basicArticle");
+			$(".cancelForm").attr("method","get");
+			$(".cancelForm").submit();
 		});
 	});
 </script>
@@ -58,26 +60,35 @@
 <body>
 	<c:import url="../../top.jsp"></c:import>
 	
-	<form class="modifyForm">
-		<input type="hidden" name="articleCode" value="${map.article.articleCode}">	
-		<div id="table">
-			<div class="row">
-				<span class="cell col1 cell1">제목</span>
-				<span class="cell col2 cell2"><input class="articleName" type="text" name="articleName" value="${map.article.articleName}"></span>
+	<div id="all">
+		<form class="modifyForm">
+			<input type="hidden" name="articleCode" value="${map.article.articleCode}">	
+			<div id="table">
+				<div class="row">
+					<span class="cell col1 cell1">제목</span>
+					<span class="cell col2 cell2"><input class="articleName" type="text" name="articleName" value="${map.article.articleName}"></span>
+				</div>
+				<div class="row">
+					<span class="cell col1 cell3">내용</span>
+					<span class="cell col2 cell4"><textarea class="articleContent" name="articleContent">${map.article.articleContent}</textarea></span>
+				</div>
+				<div class="row">
+					<span class="cell col1">파일</span>
+					<span class="cell col2"><input type="file" name="articleFile"></span>
+				</div>
 			</div>
-			<div class="row">
-				<span class="cell col1 cell3">내용</span>
-				<span class="cell col2 cell4"><textarea class="articleContent" name="articleContent">${map.article.articleContent}</textarea></span>
+		</form>
+		<div class="btns">	
+			<div class="modifyingDiv">
+				<input class="modifyingBtn" type="button" value="수정">
 			</div>
-			<div class="row">
-				<span class="cell col1">파일</span>
-				<span class="cell col2"><input type="file" name="articleFile"></span>
+			<div class="cancelDiv">
+				<form class="cancelForm">
+					<input type="hidden" name="articleCode" value="${map.article.articleCode}">	
+					<input class="cancelBtn" type="button" value="취소">
+				</form>
 			</div>
 		</div>
-		<div class="modifying">
-			<input class="modifyingBtn" type="button" value="수정">
-			<input class="cancelBtn" type="button" value="취소">
-		</div>
-	</form>
+	</div>
 </body>
 </html>

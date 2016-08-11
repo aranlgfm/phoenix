@@ -33,9 +33,9 @@ public class ProcedureServiceImpl implements ProcedureService{
 	
 	//시술회원리스트
 	@Override
-	public List<ProcedurePayment> getCustomerList(String shopCode) {
+	public List<ProcedurePayment> getCustomerList(Map<String, Object> map) {
 		 
-		return dao.getCustomerList(shopCode);
+		return dao.getCustomerList(map);
 	}
 	
 	

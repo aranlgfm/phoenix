@@ -1,40 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?> 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cafe24.phoenixooo.community.Repository.TotalSearchMapper">
 
-	<!-- 
-		1.게시판 셀렉
-		2.유저(미용실) 셀렉
-		3.유저(디자이너) 셀렉
-		
-	-->
-	
-	<!-- 
-		#{boardGroupCode} 분기됨.
-	 -->
-	 
-	<select id="selectArticleList" parameterType="java.util.Map" resultType="com.cafe24.phoenixooo.community.Model.Article">
+	<!-- 1.게시판 셀렉 2.유저(미용실) 셀렉 3.유저(디자이너) 셀렉 -->
+
+	<!-- #{boardGroupCode} 분기됨. -->
+
+	<select id="selectArticleList" parameterType="java.util.Map"
+		resultType="com.cafe24.phoenixooo.community.Model.Article">
 		SELECT
-			ARTICLE_CD as articleCode
-			,ARTICLE_NM as articleName
-<!-- 			,USER_CD as userCode -->
-<!-- 			,USER_NICK as userNickName -->
-			,ARTICLE_CTT as articleContent
-			,BOARDGROUP_CD as boardGroupCode
-<!-- 			,ARTICLE_DT as articleDate -->
+			a.ARTICLE_CD as articleCode
+			,a.ARTICLE_NM as articleName
+			,a.USER_CD as userCode
+			,u.USER_NICK_NM as userNickName
+			,a.ARTICLE_DT as articleDate
 		FROM
-			COM_ARTICLE_TB
+		COM_ARTICLE_TB as a
+		INNER JOIN
+			COM_USER_TB as u
+		ON
+			a.USER_CD=u.USER_CD
 		WHERE
 			BOARDGROUP_CD = #{boardGroupCode}
 		AND
-			ARTICLE_NM LIKE CONCAT('%',#{word},'%')	
+			ARTICLE_NM LIKE CONCAT('%',#{word},'%')
 		ORDER BY
 			ARTICLE_CD ASC
-		LIMIT 0, #{searchResultLimitNumber}
+		LIMIT 
+			0, #{searchResultLimitNumber}
 	</select>
-	
+
 	<!-- 2. 미용실 셀렉 -->
-	<select id="selectUserDirectorList" parameterType="java.util.Map" resultType="com.cafe24.phoenixooo.community.Model.UserDirector">
+	<select id="selectUserDirectorList" parameterType="java.util.Map"
+		resultType="com.cafe24.phoenixooo.community.Model.UserDirector">
 		SELECT
 			USER_CD as userCode
 			,SHOP_CD as shopCode
@@ -43,14 +41,16 @@
 		FROM
 			CRM_SHOP_TB
 		WHERE
-			SHOP_NM LIKE CONCAT('%',#{word},'%')	
+			SHOP_NM LIKE CONCAT('%',#{word},'%')
 		ORDER BY
 			SHOP_NM ASC
-		LIMIT 0, #{searchResultLimitNumber}
+		LIMIT 
+			0, #{searchResultLimitNumber}
 	</select>
-	
+
 	<!-- 2. 디자이너 셀렉 -->
-	<select id="selectUserDesignerList" parameterType="java.util.Map" resultType="com.cafe24.phoenixooo.community.Model.UserDesigner">
+	<select id="selectUserDesignerList" parameterType="java.util.Map"
+		resultType="com.cafe24.phoenixooo.community.Model.UserDesigner">
 		SELECT
 			u.USER_CD as userCode
 			,u.USER_SHOP_CD as shopCode
@@ -59,11 +59,12 @@
 		FROM
 			COM_USER_TB u INNER JOIN CRM_SHOP_TB s
 		ON
-			u.USER_SHOP_CD = s.SHOP_CD	
+			u.USER_SHOP_CD = s.SHOP_CD
 		WHERE
-			USER_NM LIKE CONCAT('%',#{word},'%')	
+			USER_NM LIKE CONCAT('%',#{word},'%')
 		ORDER BY
 			USER_NM ASC
-		LIMIT 0, #{searchResultLimitNumber}
+		LIMIT 
+			0, #{searchResultLimitNumber}
 	</select>
 </mapper>

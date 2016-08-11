@@ -35,8 +35,8 @@ public class ProcedureDaoImpl implements ProcedureDao{
 	
 	//회원리스트
 	@Override
-	public List<ProcedurePayment> getCustomerList(String shopCode) {
-		return sqlSession.selectList(NS+".getCustomerList", shopCode);
+	public List<ProcedurePayment> getCustomerList(Map<String, Object> map) {
+		return sqlSession.selectList(NS+".getCustomerList", map);
 	}
 	//전체카운터?
 	@Override

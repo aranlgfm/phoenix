@@ -63,10 +63,13 @@
 <title>직원 등록</title>
 </head>
 <body>
+	<c:import url="employeeManagementMain.jsp"></c:import>
 
+	<hr>
+	
 	<div id="all"><!-- 전체 -->
 	<div class="textCenter title">
-		<h1>직원 등록 페이지</h1>
+		<h1>직원 등록</h1>
 	</div>
 	
 	<br/>
@@ -174,7 +177,7 @@
 				<span id="EmployeeJoinDateMsg"></span>
 			</div>
 				
-			<!-- 자기소개 -->
+			<!-- 메모 -->
 			<div class="form-group">
 			<label class="control-label col-sm-3" for="EmployeeMemo">메모:</label>
 				<div class="col-sm-8">

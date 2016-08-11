@@ -25,10 +25,13 @@
 		<!-- 회원검색 -->
 			<div class="divTh">회원검색</div>
 			<br>
-			<form action="/phoenix/crm/process/insertProcedureItem" method="POST">
+			<form action="/phoenix/crm/form/procedurePaymentCustomerList" method="POST">
+				<input type="hidden" id="pagePerRecordSize" name="pagePerRecordSize" value="${pageHelper.pagePerRecordSize}">
+				<input type="hidden" id="totalRecordSize" name="totalRecordSize" value="${pageHelper.totalRecordSize}">
+				<input type="hidden" id="pagePerListSize" name="pagePerListSize" value="${pageHelper.pagePerListSize}">
 				<div class="textCenter">
 					<label>회원명</label>
-					<input type="text" name="itemName" size="10"/>
+					<input type="text" name="searchKeyword" size="10"/>
 					<input type="submit" value="검색"/>
 				</div>
 			</form>
@@ -75,6 +78,55 @@
 			</div>
 		</div>
 		<!-- E시술품목 리스트DIV -->
+		
+		
+		
+		<!-- 이전 -->
+		<div class="textCenter">
+		<c:choose>
+			<c:when test="${pageHelper.currentPageNo == 1}">◁</c:when>
+			<c:otherwise><a href="/phoenix/crm/form/procedurePaymentCustomerList?currentPageNo=1">◀</a></c:otherwise>
+		</c:choose>
+		<c:choose>
+			<c:when test="${pageHelper.currentPageNo == 1}">이전</c:when>
+			<c:otherwise><a href="/phoenix/crm/form/procedurePaymentCustomerList?currentPageNo=${pageHelper.prevPageNo}">이전</a></c:otherwise>
+		</c:choose>
+		
+		<!-- 현재페이지 -->
+		<c:forEach begin="${pageHelper.currentListStartPageNo}" end="${pageHelper.currentListEndPageNo}" varStatus="number">
+			<c:choose>
+				<c:when test="${pageHelper.currentPageNo == number.index}">
+					<a href="/phoenix/crm/form/procedurePaymentCustomerList?currentPageNo=${number.index}"><b>[${number.index}]</b></a>
+				</c:when>
+				<c:otherwise>
+					<a href="/phoenix/crm/form/procedurePaymentCustomerList?currentPageNo=${number.index}">[${number.index}]</a>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+
+		<!-- 다음 -->
+		<c:choose>
+			<c:when test="${pageHelper.currentPageNo >= pageHelper.totalPageSize}">다음</c:when>
+			<c:otherwise><a href="/phoenix/crm/form/procedurePaymentCustomerList?currentPageNo=${pageHelper.nextPageNo}">다음</a></c:otherwise>
+		</c:choose>
+		<c:choose>
+			<c:when test="${pageHelper.currentPageNo == pageHelper.totalPageSize}">▷</c:when>
+			<c:otherwise><a href="/phoenix/crm/form/procedurePaymentCustomerList?currentPageNo=${pageHelper.totalPageSize}">▶</a></c:otherwise>
+		</c:choose>
+		
+		
+		<!-- 페이징 및 다른값들 넘길때 필요한 폼 -->
+		<form action="/phoenix/crm/form/ProcedurePaymentList" id="pagingForm" method="post">
+			<input type="hidden" id="currentPageNo" name="currentPageNo" value="${pageHelper.currentPageNo}">
+			<input type="hidden" id="pagePerRecordSize" name="pagePerRecordSize" value="${pageHelper.pagePerRecordSize}">
+			<input type="hidden" id="totalRecordSize" name="totalRecordSize" value="${pageHelper.totalRecordSize}">
+			<input type="hidden" id="pagePerListSize" name="pagePerListSize" value="${pageHelper.pagePerListSize}">
+			<input type="hidden" id="arrayKeyword" name="arrayKeyword" value="">
+			<input type="hidden" id="searchKeyword" name="searchKeyword" value="">
+		</form>
+		<!-- 일단 여기다 페이징을 해봅시다. -->
+		</div>
+		
 	</div><!-- top이랑 연결 -->
 </body>
 </html>

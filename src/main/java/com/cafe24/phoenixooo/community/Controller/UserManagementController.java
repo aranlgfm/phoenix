@@ -256,17 +256,8 @@ public class UserManagementController {
 	@RequestMapping(value = "/phoenix/crm/process/login", method = RequestMethod.POST)
 	public String crmProcessLogin(HttpSession session, UserCustomer user) {
 		String pageUrl;
-		
-		//로그인 취소시에도 세션에 false값 저장되어있어서 힘듭니다.
-		
-		if(userService.loginToCrm(user) != null){
-			session.setAttribute("user", userService.loginToCrm(user));
-			pageUrl = "redirect:/phoenix/crm/form/procedurePaymentCustomerList";
-		}else{
-			session.setAttribute("user", "false");
-			pageUrl = "/phoenix/com/loginToCrm";
-		}
-		return pageUrl;
+		session.setAttribute("user", userService.loginToCrm(user));
+		return "redirect:/phoenix/crm/form/procedurePaymentCustomerList";
 	}
 	
 	/**

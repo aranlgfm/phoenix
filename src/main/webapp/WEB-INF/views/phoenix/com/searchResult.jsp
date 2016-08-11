@@ -1,41 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>GOODBYE</title>
-<link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="<c:url value="/webjars/jquery/3.1.0/jquery.min.js"/>"></script>
 <style>
-	.hairImg{
+	.hairImg {
 		width: 200px;
 		height: 200px;
 		float: left;
 		padding-right: 30px;
 	}
-	.cancle{
+	
+	.cancle {
 		clear: both;
 	}
-	.test{
+	
+	.test {
 		margin: auto;
 	}
 </style>
 <script>
-	$(document).ready(function(){
-		// 카테고리 클릭 시 메뉴버튼 엑티브상태로 변화
-		if($('#cate').val() != ''){
-			if($('#cate').val() == 'free'){
+	$(document).ready(function() {
+		// 카테고리 클릭 시 메뉴버튼 엑티브상태로 변화 
+		if ($('#cate').val() != '') {
+			if ($('#cate').val() == 'free') {
 				$('#free').addClass('active');
-			}else if($('#cate').val() == 'hair'){
+			} else if ($('#cate').val() == 'hair') {
 				$('#hair').addClass('active');
-			}else if($('#cate').val() == 'shop'){
+			} else if ($('#cate').val() == 'shop') {
 				$('#shop').addClass('active');
-			}else if($('#cate').val() == 'designer'){
+			} else if ($('#cate').val() == 'designer') {
 				$('#designer').addClass('active');
 			}
-		}else{
+		} else {
 			$('#total').addClass('active');
 		}
 	});
@@ -43,119 +46,195 @@
 </head>
 <body>
 
-<c:import url="../../top.jsp"></c:import>
+	<c:import url="../../top.jsp"></c:import>
 
-<div id="all">
+	<div id="all">
 
-<!-- 상단 메뉴버튼 -->
-	<ul class="nav nav-tabs">
-		<li id="total"><a href="/phoenix/com/form/searchResult?word=${word}">통합</a></li>
-		<li id="free"><a href="/phoenix/com/process/searchResult?cate=free&word=${word}">자유게시판</a></li>
-		<li id="hair"><a href="/phoenix/com/process/searchResult?cate=hair&word=${word}">헤어게시판</a></li>
-		<li id="shop"><a href="/phoenix/com/process/searchResult?cate=shop&word=${word}">미용실</a></li>
-		<li id="designer"><a href="/phoenix/com/process/searchResult?cate=designer&word=${word}">디자이너</a></li>
-	</ul>
-	
-	<input id="cate" type="hidden" value="${cate}"/>
+		<!-- 상단 메뉴버튼 -->
+		<ul class="nav nav-tabs">
+			<li id="total"><a
+				href="/phoenix/com/form/searchResult?word=${word}">통합</a></li>
+			<li id="free"><a
+				href="/phoenix/com/process/searchResult?cate=free&word=${word}">자유게시판</a></li>
+			<li id="hair"><a
+				href="/phoenix/com/process/searchResult?cate=hair&word=${word}">헤어게시판</a></li>
+			<li id="shop"><a
+				href="/phoenix/com/process/searchResult?cate=shop&word=${word}">미용실</a></li>
+			<li id="designer"><a
+				href="/phoenix/com/process/searchResult?cate=designer&word=${word}">디자이너</a></li>
+		</ul>
 
-
-
-<!-- 카테고리별 검색 -->
-	<c:choose>
-		<c:when test="${cate eq 'free'}">
-			<div>
-				<h5>자유게시판</h5>
-				<!-- 셀렉트 다시 -->
-				<c:forEach items="${list.freeArticle}" var="item">
-					<div>${item.boardGroupCode} ${item.articleName}</div>
-				</c:forEach>
-			</div>
-		</c:when>
-		
-		<c:when test="${cate eq 'hair'}">
-			<div>
-				<h5>헤어게시판</h5>
-				<!-- 셀렉트 다시 -->
-				<c:forEach items="${list.hairArticle}" var="item">
-							<div>${item.boardGroupCode} ${item.articleName}</div>
-				</c:forEach>
-				<div><img class="hairImg" src="/resources/test1.jpg"/></div>
-				<div><a href="/phoenix/com/process/withdraw"><img class="hairImg" src="/resources/test2.jpg"/></a></div>
-				<div><img class="hairImg" src="/resources/test3.jpg"/></div>
-				<div><img class="hairImg" src="/resources/test4.jpg"/></div>
-				<div><img class="hairImg" src="/resources/test5.jpg"/></div>
-				<div class="cancle"></div>
-			</div>
-		</c:when>
-		
-		<c:when test="${cate eq 'shop'}">
-			<div>
-				<h5>미용실</h5>	
-				<!-- 셀렉트 다시 -->
-				<c:forEach items="${list.shopList}" var="li">
-					<div>${li.shopName}</div>
-				</c:forEach>
-			</div>
-		</c:when>
-		
-		<c:when test="${cate eq 'designer'}">
-			<div>
-				<h5>디자이너</h5>
-				<!-- 셀렉트 다시 -->
-				<c:forEach items="${list.designerList}" var="li">
-					<div>${li.userName} / ${li.shopName}</div>
-				</c:forEach>
-			</div>
-		</c:when>
+		<input id="cate" type="hidden" value="${cate}" />
+		<c:set var="f" value="${list.freeArticle}"></c:set>
+		<c:set var="h" value="${list.hairArticle}"></c:set>
+		<%-- <c:set var="s" value="${map.list.shopList}"></c:set> --%>
+		<%-- <c:set var="d" value="${map.list.designerList}"></c:set> --%>
 
 
+		<!-- 카테고리별 검색 -->
+		<c:choose>
+			<c:when test="${cate eq 'free'}">
+				<div>
+					<h5>자유게시판</h5>
+					<!-- 셀렉트 다시 -->
+					<table class="table table-bordered">
+						<tr>
+							<th>글제목</th>
+							<th>작성자</th>
+							<th>작성시간</th>
+						</tr>
+						<c:forEach items="${list.freeArticle}" var="item">
+							<tr>
+								<td>${item.articleName}</td>
+								<td>${item.userNickName}</td>
+								<td>${item.articleDate}</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
+			</c:when>
 
-		<c:otherwise>
-			<div>
-				<h5>자유게시판</h5>
-					<c:forEach items="${map.list.freeArticle}" var="item">
-								<div>${item.boardGroupCode} ${item.articleName}</div>
+			<c:when test="${cate eq 'hair'}">
+				<div>
+					<h5>헤어게시판</h5>
+					<!-- 셀렉트 다시 -->
+					<c:forEach items="${list.hairArticle}" var="item">
+						<div>${item.boardGroupCode}${item.articleName}</div>
 					</c:forEach>
-				<br/>
-			</div>
-				<hr>
-				
-			<div>
-				<h5>디자이너 헤어게시판</h5>
-					<c:forEach items="${map.list.hairArticle}" var="item">
-								<div>${item.boardGroupCode} ${item.articleName}</div>
-					</c:forEach>
-					
-					<div><img class="hairImg" src="/resources/test1.jpg"/></div>
-					<div><a href="/phoenix/com/process/withdraw"><img class="hairImg" src="/resources/test2.jpg"/></a></div>
-					<div><img class="hairImg" src="/resources/test3.jpg"/></div>
-					<div><img class="hairImg" src="/resources/test4.jpg"/></div>
-					<div><img class="hairImg" src="/resources/test5.jpg"/></div>
+					<div>
+						<img class="hairImg" src="/resources/test1.jpg" />
+					</div>
+					<div>
+						<a href="/phoenix/com/process/withdraw"><img class="hairImg"
+							src="/resources/test2.jpg" /></a>
+					</div>
+					<div>
+						<img class="hairImg" src="/resources/test3.jpg" />
+					</div>
+					<div>
+						<img class="hairImg" src="/resources/test4.jpg" />
+					</div>
+					<div>
+						<img class="hairImg" src="/resources/test5.jpg" />
+					</div>
 					<div class="cancle"></div>
-					<br/>
-			</div>
-				<hr>
-				
-			<div>
-				<h5>미용실</h5>
-					<c:forEach items="${map.list.shopList}" var="item">
-							<div>${item.shopName} ${item.shopAddress}</div>
-					</c:forEach>					
-				<br/>
-			</div>
-				<hr>
-				
-			<div>
-				<h5>디자이너</h5>
-					<c:forEach items="${map.list.designerList}" var="item">
-							<div>${item.userName} ${item.shopName}</div>
-					</c:forEach>	
-				<br/>
-			</div>
+				</div>
+			</c:when>
+
+			<c:when test="${cate eq 'shop'}">
+				<div>
+					<h5>미용실</h5>
+					<!-- 셀렉트 다시 -->
+					<c:forEach items="${list.shopList}" var="li">
+						<div>${li.shopName}</div>
+					</c:forEach>
+				</div>
+			</c:when>
+
+			<c:when test="${cate eq 'designer'}">
+				<div>
+					<h5>디자이너</h5>
+					<!-- 셀렉트 다시 -->
+					<c:forEach items="${list.designerList}" var="li">
+						<div>${li.userName}/ ${li.shopName}</div>
+					</c:forEach>
+				</div>
+			</c:when>
+
+
+
+			<c:otherwise>
+				<div>
+					<div class="div">자유게시판</div>
+					<c:if test="${f.articleName ne null}">
+						<table class="table table-condensed">
+							<tr>
+								<th>글제목</th>
+								<th>작성자</th>
+								<th>작성시간</th>
+							</tr>
+							<c:forEach items="${map.list.freeArticle}" var="item">
+								<tr>
+									<td>${item.articleName}</td>
+									<td>${item.userNickName}</td>
+									<td>${item.articleDate}</td>
+								</tr>
+							</c:forEach>
+						</table>
+					</c:if>
+					<br />
+				</div>
 				<hr>
 
-		</c:otherwise>
-	</c:choose>
-</div>
+				<div>
+					<h5>디자이너 헤어게시판</h5>
+					<c:forEach items="${map.list.hairArticle}" var="item">
+						<div>${item.boardGroupCode}${item.articleName}</div>
+					</c:forEach>
+
+					<div>
+						<img class="hairImg" src="/resources/test1.jpg" />
+					</div>
+					<div>
+						<a href="/phoenix/com/process/withdraw"><img class="hairImg"
+							src="/resources/test2.jpg" /></a>
+					</div>
+					<div>
+						<img class="hairImg" src="/resources/test3.jpg" />
+					</div>
+					<div>
+						<img class="hairImg" src="/resources/test4.jpg" />
+					</div>
+					<div>
+						<img class="hairImg" src="/resources/test5.jpg" />
+					</div>
+					<div class="cancle"></div>
+					<br />
+				</div>
+				<hr>
+
+				<div>
+					<h5>미용실</h5>
+					<%-- <c:if test="${s.shopName ne null}"> --%>
+					<table class="table">
+						<tr>
+							<th>샵</th>
+							<th>주소</th>
+						</tr>
+						<c:forEach items="${map.list.shopList}" var="item">
+							<tr>
+								<td>${item.shopName}</td>
+								<td>${item.shopAddress}</td>
+							</tr>
+						</c:forEach>
+					</table>
+					<%-- </c:if> --%>
+					<br />
+				</div>
+				<hr>
+
+				<div>
+					<h5>디자이너</h5>
+					<%-- <c:if test="${d.userName ne '[]'}"> --%>
+					<table class="table">
+						<tr>
+							<th>디자이너</th>
+							<th>샵</th>
+						</tr>
+						<c:forEach items="${map.list.designerList}" var="item">
+							<tr>
+								<td>${item.userName}</td>
+								<td>${item.shopName}</td>
+							</tr>
+						</c:forEach>
+					</table>
+					<%-- </c:if>	--%>
+					<br />
+				</div>
+				<hr>
+
+			</c:otherwise>
+		</c:choose>
+	</div>
 </body>
 </html>

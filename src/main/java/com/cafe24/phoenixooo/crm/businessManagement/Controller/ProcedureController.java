@@ -45,12 +45,25 @@ public class ProcedureController {
 	 * 4. 수정설명 생략 
 	 */
 	
+	
+	
 	//임시메인
 	@RequestMapping(value = "/phoenix/crm/businessManagement/businessManagement", method = RequestMethod.GET)
-	public String businessManagement(HttpSession session,Model model) {
+	public String businessManagement(HttpSession session,RequestPageHelper rpageHelper,Model model) {
 		UserCustomer user = (UserCustomer)session.getAttribute("user");
-		List<ProcedurePayment> list = procedureService.getCustomerList(user.getShopCode());
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("shopCode", user.getShopCode());
+		rpageHelper.setShopCode(user.getShopCode());
+		rpageHelper.setTableName("CRM_CUSTOMER_TB");
+		rpageHelper.setColumName("CUSTOMER_NM");
+		int totalRecord = (procedureService.selectTotalCount(rpageHelper));
+		rpageHelper.setTotalRecordSize(totalRecord);
+		map.put("pageHelper", new PageHelper(rpageHelper));
+		
+		List<ProcedurePayment> list = procedureService.getCustomerList(map);
 		model.addAttribute("list", list);
+		model.addAttribute("pageHelper",map.get("pageHelper"));
 		return "/phoenix/crm/businessManagement/procedurePaymentCustomerList";
 	}
 	
@@ -60,14 +73,78 @@ public class ProcedureController {
 	 * @param model
 	 * @return
 	 * 테이블 명 : CRM_CUSTOMER_TB
+	 * 컬럼 명 : CUSTOMER_NM
 	 */
 	@RequestMapping(value = "/phoenix/crm/form/procedurePaymentCustomerList", method = RequestMethod.GET)
 	public String procedurePayment(HttpSession session,RequestPageHelper rpageHelper,Model model) {
+
 		UserCustomer user = (UserCustomer)session.getAttribute("user");
-		List<ProcedurePayment> list = procedureService.getCustomerList(user.getShopCode());
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("shopCode", user.getShopCode());
+		rpageHelper.setShopCode(user.getShopCode());
+		rpageHelper.setTableName("CRM_CUSTOMER_TB");
+		rpageHelper.setColumName("CUSTOMER_NM");
+		int totalRecord = (procedureService.selectTotalCount(rpageHelper));
+		rpageHelper.setTotalRecordSize(totalRecord);
+		map.put("pageHelper", new PageHelper(rpageHelper));
+		
+		List<ProcedurePayment> list = procedureService.getCustomerList(map);
 		model.addAttribute("list", list);
+		model.addAttribute("pageHelper",map.get("pageHelper"));
 		return "/phoenix/crm/businessManagement/procedurePaymentCustomerList";
 	}
+	
+	/**
+	 * 1-2 시술내역 의 정렬 단어검색 등등
+	 * @param session
+	 * @param model
+	 * @return
+	 * 테이블 명 : CRM_CUSTOMER_TB
+	 * 컬럼 명 : CUSTOMER_NM
+	 */
+	@RequestMapping(value = "/phoenix/crm/form/procedurePaymentCustomerList", method = RequestMethod.POST)
+	public String procedurePaymentforPost(HttpSession session,RequestPageHelper rpageHelper,Model model) {
+		
+		System.out.println("POST");
+		System.out.println("POST");
+		System.out.println("POST");
+		System.out.println("POST");
+		System.out.println("POST");
+		
+		UserCustomer user = (UserCustomer)session.getAttribute("user");
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("shopCode", user.getShopCode());
+		rpageHelper.setShopCode(user.getShopCode());
+		rpageHelper.setTableName("CRM_CUSTOMER_TB");
+		rpageHelper.setColumName("CUSTOMER_NM");
+		int totalRecord = (procedureService.selectTotalCount(rpageHelper));
+		rpageHelper.setTotalRecordSize(totalRecord);
+		map.put("pageHelper", new PageHelper(rpageHelper));
+		
+		List<ProcedurePayment> list = procedureService.getCustomerList(map);
+		model.addAttribute("list", list);
+		model.addAttribute("pageHelper",map.get("pageHelper"));
+		return "/phoenix/crm/businessManagement/procedurePaymentCustomerList";
+		
+		
+		/**
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("shopCode", (String)session.getAttribute("shopCode"));
+		
+		int totalRecord = (procedureService.selectTotalCount(rpageHelper));
+		
+		rpageHelper.setTotalRecordSize(totalRecord);
+		map.put("pageHelper", new PageHelper(rpageHelper));
+		//리스트 가져오기;
+		List<ProcedurePayment> list = procedureService.getPaymentList(map);
+		model.addAttribute("list", list);
+		model.addAttribute("pageHelper",map.get("pageHelper"));
+		return "/phoenix/crm/businessManagement/procedurePaymentList";
+		 */
+	}
+	
+	
 	
 	
 	/**
@@ -79,7 +156,8 @@ public class ProcedureController {
 	 */
 	@RequestMapping(value = "/phoenix/crm/form/insertProcedurePayment", method = RequestMethod.GET)
 	public String insertProcedurePayment(HttpSession session,Model model,@RequestParam(value="customerCode", required=false) String customerCode) {
-		List<ProcedureItem> itemList = businessManagementSettingService.selectItemList((String)session.getAttribute("shopCode"));
+		UserCustomer user = (UserCustomer)session.getAttribute("user");
+		List<ProcedureItem> itemList = businessManagementSettingService.selectItemList(user.getShopCode());
 		model.addAttribute("customerCode",customerCode);
 		model.addAttribute("itemList", itemList);
 		return "/phoenix/crm/businessManagement/procedurePayment";
@@ -160,16 +238,19 @@ public class ProcedureController {
 	/**
 	 * 4.시술내역리스트
 	 * 테이블명 : CRM_PAYMENT_TB
+	 * 컬럼명 : ITEMDESIGN_NM
 	 */
 	@RequestMapping(value = "/phoenix/crm/form/ProcedurePaymentList", method = RequestMethod.GET)
 	public String getProcedurePayment(HttpSession session,RequestPageHelper rpageHelper,Model model) {
+		UserCustomer user = (UserCustomer)session.getAttribute("user");
 		//pageHelper통한 페이지;;
 		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("shopCode", (String)session.getAttribute("shopCode"));
+		map.put("shopCode", user.getShopCode());
 		
 		//테이블명과 샾코드를 가져다가 넣음.
-		rpageHelper.setShopCode((String)session.getAttribute("shopCode"));
+		rpageHelper.setShopCode(user.getShopCode());
 		rpageHelper.setTableName("CRM_PAYMENT_TB");
+		rpageHelper.setColumName("ITEMDESIGN_NM");
 		System.out.println(rpageHelper);
 		int totalRecord = (procedureService.selectTotalCount(rpageHelper));
 		rpageHelper.setTotalRecordSize(totalRecord);
@@ -189,17 +270,27 @@ public class ProcedureController {
 	 * @param pageHelper
 	 * @param model
 	 * @return
+	 * 테이블명 : CRM_PAYMENT_TB
+	 * 컬럼명 : ITEMDESIGN_NM 
+	 * rpageHelper.setColumName("ITEMDESIGN_NM");
+	 * 
 	 */
 	@RequestMapping(value = "/phoenix/crm/form/ProcedurePaymentList", method = RequestMethod.POST)
 	public String getProcedurePaymentforPost(HttpSession session,RequestPageHelper rpageHelper,Model model) {
 		
-		System.out.println("POST");
+		UserCustomer user = (UserCustomer)session.getAttribute("user");
+		//pageHelper통한 페이지;;
 		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("shopCode", (String)session.getAttribute("shopCode"));
+		map.put("shopCode", user.getShopCode());
 		
+		//테이블명과 샾코드를 가져다가 넣음.
+		rpageHelper.setShopCode(user.getShopCode());
+		rpageHelper.setTableName("CRM_PAYMENT_TB");
+		rpageHelper.setColumName("ITEMDESIGN_NM");
+		System.out.println(rpageHelper);
 		int totalRecord = (procedureService.selectTotalCount(rpageHelper));
-		
 		rpageHelper.setTotalRecordSize(totalRecord);
+		
 		map.put("pageHelper", new PageHelper(rpageHelper));
 		//리스트 가져오기;
 		List<ProcedurePayment> list = procedureService.getPaymentList(map);

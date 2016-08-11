@@ -20,6 +20,8 @@ public class PageHelper {
 	private String searchKeyword;
 	private String shopCode;
 	private String tableName;
+	private String columName;
+	
 	
 	PageHelper(){}
 	public PageHelper(	
@@ -86,6 +88,12 @@ public class PageHelper {
 	
 	
 	
+	public String getColumName() {
+		return columName;
+	}
+	public void setColumName(String columName) {
+		this.columName = columName;
+	}
 	public String getArrayKeyword() {
 		return arrayKeyword;
 	}
