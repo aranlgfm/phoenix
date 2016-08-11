@@ -37,6 +37,7 @@ public class BoardController
 			//System.out.println("이거 리미트 인덱스 0 나와야 된다   "+limitIndex2);
 			
 			List<Article> articleList = boardService.getArticleList(article);
+			System.out.println(articleList.size()+"<================================articleList의 사이즈");
 			model.addAttribute("articleList", articleList);
 	        
 		return "/phoenix/com/basicBoard";
