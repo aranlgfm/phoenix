@@ -24,6 +24,10 @@
 	.test {
 		margin: auto;
 	}
+	#all {
+		width: 70%;
+		margin: auto;
+	}
 </style>
 <script>
 	$(document).ready(function() {
@@ -52,21 +56,16 @@
 
 		<!-- 상단 메뉴버튼 -->
 		<ul class="nav nav-tabs">
-			<li id="total"><a
-				href="/phoenix/com/form/searchResult?word=${word}">통합</a></li>
-			<li id="free"><a
-				href="/phoenix/com/process/searchResult?cate=free&word=${word}">자유게시판</a></li>
-			<li id="hair"><a
-				href="/phoenix/com/process/searchResult?cate=hair&word=${word}">헤어게시판</a></li>
-			<li id="shop"><a
-				href="/phoenix/com/process/searchResult?cate=shop&word=${word}">미용실</a></li>
-			<li id="designer"><a
-				href="/phoenix/com/process/searchResult?cate=designer&word=${word}">디자이너</a></li>
+			<li id="total"><a href="/phoenix/com/form/searchResult?word=${word}">통합</a></li>
+			<li id="free"><a href="/phoenix/com/process/searchResult?cate=free&word=${word}">자유게시판</a></li>
+			<li id="hair"><a href="/phoenix/com/process/searchResult?cate=hair&word=${word}">헤어게시판</a></li>
+			<li id="shop"><a href="/phoenix/com/process/searchResult?cate=shop&word=${word}">미용실</a></li>
+			<li id="designer"><a href="/phoenix/com/process/searchResult?cate=designer&word=${word}">디자이너</a></li>
 		</ul>
 
 		<input id="cate" type="hidden" value="${cate}" />
-		<c:set var="f" value="${list.freeArticle}"></c:set>
-		<c:set var="h" value="${list.hairArticle}"></c:set>
+<%-- 		<c:set var="f" value="${list.freeArticle}"></c:set> --%>
+<%-- 		<c:set var="h" value="${list.hairArticle}"></c:set> --%>
 		<%-- <c:set var="s" value="${map.list.shopList}"></c:set> --%>
 		<%-- <c:set var="d" value="${map.list.designerList}"></c:set> --%>
 
@@ -98,9 +97,20 @@
 				<div>
 					<h5>헤어게시판</h5>
 					<!-- 셀렉트 다시 -->
+					<table class="table table-bordered">
+						<tr>
+							<th>글제목</th>
+							<th>작성자</th>
+							<th>작성시간</th>
+						</tr>
 					<c:forEach items="${list.hairArticle}" var="item">
-						<div>${item.boardGroupCode}${item.articleName}</div>
+						<tr>
+							<td>${item.articleName}</td>
+							<td>${item.userNickName}</td>
+							<td>${item.articleDate}</td>
+						</tr>
 					</c:forEach>
+					</table>
 					<div>
 						<img class="hairImg" src="/resources/test1.jpg" />
 					</div>
@@ -125,9 +135,18 @@
 				<div>
 					<h5>미용실</h5>
 					<!-- 셀렉트 다시 -->
+					<table class="table table-bordered">
+						<tr>
+							<th>샵</th>
+							<th>주소</th>
+						</tr>
 					<c:forEach items="${list.shopList}" var="li">
-						<div>${li.shopName}</div>
+						<tr>
+							<td>${li.shopName}</td>
+							<td>${li.shopAddress}</td>
+						</tr>
 					</c:forEach>
+					</table>
 				</div>
 			</c:when>
 
@@ -135,18 +154,27 @@
 				<div>
 					<h5>디자이너</h5>
 					<!-- 셀렉트 다시 -->
+					<table class="table table-bordered">
+						<tr>
+							<th>디자이너</th>
+							<th>샵</th>
+						</tr>
 					<c:forEach items="${list.designerList}" var="li">
-						<div>${li.userName}/ ${li.shopName}</div>
+						<tr>
+							<td>${li.userName}</td>
+							<td>${li.shopName}</td>
+						</tr>
 					</c:forEach>
+					</table>
 				</div>
 			</c:when>
 
 
 
 			<c:otherwise>
+			<!-- 통합검색 -->
 				<div>
-					<div class="div">자유게시판</div>
-					<c:if test="${f.articleName ne null}">
+					<h5>자유게시판</h5>
 						<table class="table table-condensed">
 							<tr>
 								<th>글제목</th>
@@ -154,23 +182,33 @@
 								<th>작성시간</th>
 							</tr>
 							<c:forEach items="${map.list.freeArticle}" var="item">
-								<tr>
-									<td>${item.articleName}</td>
-									<td>${item.userNickName}</td>
-									<td>${item.articleDate}</td>
-								</tr>
+							<tr>
+								<td>${item.articleName}</td>
+								<td>${item.userNickName}</td>
+								<td>${item.articleDate}</td>
+							</tr>
 							</c:forEach>
 						</table>
-					</c:if>
-					<br />
+					<br/>
 				</div>
 				<hr>
 
 				<div>
 					<h5>디자이너 헤어게시판</h5>
-					<c:forEach items="${map.list.hairArticle}" var="item">
-						<div>${item.boardGroupCode}${item.articleName}</div>
-					</c:forEach>
+						<table class="table table-condensed">
+							<tr>
+								<th>글제목</th>
+								<th>작성자</th>
+								<th>작성시간</th>
+							</tr>
+							<c:forEach items="${map.list.hairArticle}" var="item">
+							<tr>
+								<td>${item.articleName}</td>
+								<td>${item.userNickName}</td>
+								<td>${item.articleDate}</td>
+							</tr>
+							</c:forEach>
+						</table>
 
 					<div>
 						<img class="hairImg" src="/resources/test1.jpg" />
@@ -195,8 +233,7 @@
 
 				<div>
 					<h5>미용실</h5>
-					<%-- <c:if test="${s.shopName ne null}"> --%>
-					<table class="table">
+					<table class="table table-condensed">
 						<tr>
 							<th>샵</th>
 							<th>주소</th>
@@ -208,15 +245,13 @@
 							</tr>
 						</c:forEach>
 					</table>
-					<%-- </c:if> --%>
-					<br />
+					<br/>
 				</div>
 				<hr>
 
 				<div>
 					<h5>디자이너</h5>
-					<%-- <c:if test="${d.userName ne '[]'}"> --%>
-					<table class="table">
+					<table class="table table-condensed">
 						<tr>
 							<th>디자이너</th>
 							<th>샵</th>
@@ -228,7 +263,6 @@
 							</tr>
 						</c:forEach>
 					</table>
-					<%-- </c:if>	--%>
 					<br />
 				</div>
 				<hr>
