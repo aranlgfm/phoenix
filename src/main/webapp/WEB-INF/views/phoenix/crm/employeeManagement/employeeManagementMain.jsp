@@ -57,6 +57,7 @@
 	<hr>
 	<div id="all">
 		<ul class="nav nav-tabs">
+			<li id="employeeList"><a href="/phoenix/crm/employeeManagement/employeeList">직원 리스트</a></li>
 			<li id="indertingEmployee"><a href="/phoenix/crm/employeeManagement/insertingEmployee">직원 입력</a></li>
 			<li id="employeeSalaryList"><a href="/phoenix/crm/employeeManagement/employeeSalaryList">급여지급 리스트</a></li>
 		</ul>
