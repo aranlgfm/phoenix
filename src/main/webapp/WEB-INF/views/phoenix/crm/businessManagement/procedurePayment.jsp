@@ -49,19 +49,19 @@
 			<!-- ITEM SELECT FORM -->
 				<form id="itemForm" action="/phoenix/crm/process/procedurePaymentSelectItem" method="POST">
 					<input class="formItemCode" name="itemCode" type="hidden" value="">
-					<input name="ShopCode" type="hidden" value="${sessionScope.shopCode}">
+					<input name="ShopCode" type="hidden" value="${user.shopCode}">
 				</form>
 			<!-- ITEMDESIGN SELECT FORM -->
 				<form id="itemDesignForm" action="/phoenix/crm/process/procedurePaymentSelectItemDesign" method="POST">
 					<input class="formItemCode" name="itemCode" type="hidden" value="">
 					<input class="formItemDesignCode" name="itemDesignCode" type="hidden" value="">
-					<input name="ShopCode" type="hidden" value="${sessionScope.shopCode}">
+					<input name="ShopCode" type="hidden" value="${user.shopCode}">
 				</form>
 			
 			
 			<form action="/phoenix/crm/process/insertProcedurePayment" method="POST">
 			<!-- 임시값 샾코드,유저코드 세션-->
-				<input type="hidden" name="shopCode" value="${sessionScope.shopCode}"> 
+				<input type="hidden" name="shopCode" value="${user.shopCode}"> 
 				<c:if test="${customerCode ne null and customerCode ne ''}">
 					<c:set var="customerCode" value="${customerCode}" scope="session"></c:set>
 				</c:if>	 

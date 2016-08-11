@@ -94,7 +94,6 @@ public class ProcedureController {
 		
 		List<ProcedurePayment> list = procedureService.getCustomerList(map);
 		if(map == null){
-			System.out.println("123123123123123123123");
 			return "/phoenix/crm/businessManagement/procedurePaymentCustomerList";
 		}
 		model.addAttribute("list", list);
