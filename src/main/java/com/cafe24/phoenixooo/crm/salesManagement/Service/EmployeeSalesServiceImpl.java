@@ -31,10 +31,15 @@ public class EmployeeSalesServiceImpl implements EmployeeSalesService {
 		List<EmployeeSales> list = empDao.selectDaliyEmpSales(emp);
 		for(int i=0; i<list.size()-1; i++)
 		{	
-			if(list.get(i).getEmployeeName().equals(list.get(i+1).getEmployeeName()))
+			if(list.get(i).getEmployeeCode().equals(list.get(i+1).getEmployeeCode()))
 			{
-				list.get(i).setTotalCash(list.get(i+1).getTotalCash());
-				list.get(i).setCountCash(list.get(i+1).getCountCash());
+				if(list.get(i).getTotalCash().equals("0") || list.get(i).getTotalCash() == null){
+					list.get(i).setTotalCash(list.get(i+1).getTotalCash());
+					list.get(i).setCountCash(list.get(i+1).getCountCash());
+				}else{
+					list.get(i).setTotalCard(list.get(i+1).getTotalCard());
+					list.get(i).setCountCard(list.get(i+1).getCountCard());
+				}
 				list.remove(i+1);
 			}
 		}
@@ -49,10 +54,16 @@ public class EmployeeSalesServiceImpl implements EmployeeSalesService {
 		List<EmployeeSales> list = empDao.selectMonthlyEmpSales(emp);
 		for(int i=0; i<list.size()-1; i++)
 		{	
-			if(list.get(i).getEmployeeName().equals(list.get(i+1).getEmployeeName()))
+			
+			if(list.get(i).getEmployeeCode().equals(list.get(i+1).getEmployeeCode()))
 			{
-				list.get(i).setTotalCash(list.get(i+1).getTotalCash());
-				list.get(i).setCountCash(list.get(i+1).getCountCash());
+				if(list.get(i).getTotalCash().equals("0") || list.get(i).getTotalCash() == null){
+					list.get(i).setTotalCash(list.get(i+1).getTotalCash());
+					list.get(i).setCountCash(list.get(i+1).getCountCash());
+				}else{
+					list.get(i).setTotalCard(list.get(i+1).getTotalCard());
+					list.get(i).setCountCard(list.get(i+1).getCountCard());
+				}
 				list.remove(i+1);
 			}
 		}

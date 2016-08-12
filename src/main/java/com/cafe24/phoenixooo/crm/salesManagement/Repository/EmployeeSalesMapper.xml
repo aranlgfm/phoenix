@@ -21,7 +21,8 @@
 	<!-- 2. 일간직원매출검색 -->
 	<select id="selectDaliyEmpSales" parameterType="com.cafe24.phoenixooo.crm.salesManagement.Model.EmployeeSales" resultType="com.cafe24.phoenixooo.crm.salesManagement.Model.EmployeeSales">
 		SELECT
-			EMPLOYEE_NM as employeeName
+			EMPLOYEE_CD as employeeCode
+			,EMPLOYEE_NM as employeeName
 			,PAYMENT_TYPE_GB as paymentType
 		    ,if(PAYMENT_TYPE_GB = '현금', sum(PAYMENT_TOTAL_WON),0) as totalCash
 		    ,if(PAYMENT_TYPE_GB = '현금', count(PAYMENT_TOTAL_WON),0) as countCash
@@ -48,7 +49,8 @@
 	<!-- 3. 월간직원매출검색 -->
 	<select id="selectMonthlyEmpSales" parameterType="com.cafe24.phoenixooo.crm.salesManagement.Model.EmployeeSales" resultType="com.cafe24.phoenixooo.crm.salesManagement.Model.EmployeeSales">
 		SELECT
-			EMPLOYEE_NM as employeeName
+			EMPLOYEE_CD as employeeCode
+			,EMPLOYEE_NM as employeeName
 			,PAYMENT_TYPE_GB as paymentType
 		    ,if(PAYMENT_TYPE_GB = '현금', sum(PAYMENT_TOTAL_WON),0) as totalCash
 		    ,if(PAYMENT_TYPE_GB = '현금', count(PAYMENT_TOTAL_WON),0) as countCash
