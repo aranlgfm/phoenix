@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,12 +75,13 @@
 	
 	<br><br><br>
 	
-	
 	<!-- 디자이너 게시판부터 -->
 	<c:choose>
 		<c:when test="${articleList[0].boardGroupCode eq 'COM_BOARDGROUP_1'}" >
 			<div class="insertingArticle">
-				<a href="/phoenix/com/form/insertingBasicArticle?boardGroupCode=${articleList[0].boardGroupCode}">글쓰기</a>
+				<c:if test="${user.userCode ne null}" >
+					<a href="/phoenix/com/form/insertingBasicArticle?boardGroupCode=${articleList[0].boardGroupCode}">글쓰기</a>
+				</c:if>
 			</div>
 	
 			<br><br>
