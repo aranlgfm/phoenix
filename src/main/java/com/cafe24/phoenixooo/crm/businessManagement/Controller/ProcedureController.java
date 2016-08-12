@@ -242,8 +242,22 @@ public class ProcedureController {
 	 */
 	@RequestMapping(value ="/phoenix/crm/process/insertProcedurePayment", method = RequestMethod.POST)
 	public String insertProcedurePayment(RequestProcedurePayment payment,@RequestParam(value="addPayment", required=false) String addPayment,HttpSession session) {
+		System.out.println(payment);
 		String url ="redirect:/phoenix/crm/form/procedurePaymentCustomerList";
-		
+		System.out.println("123123");
+		System.out.println("123123");
+		System.out.println("123123");
+		System.out.println("123123");
+		System.out.println("123123");
+		System.out.println("123123");
+		System.out.println("123123");
+		System.out.println("123123");
+		System.out.println("123123");
+		System.out.println("123123");
+		System.out.println("123123");
+		System.out.println("123123");
+		System.out.println("123123");
+		System.out.println("123123");
 		if(addPayment != null){
 			url ="redirect:/phoenix/crm/form/insertProcedurePayment";
 		}else{

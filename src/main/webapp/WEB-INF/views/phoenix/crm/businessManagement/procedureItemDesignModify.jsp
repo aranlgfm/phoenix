@@ -14,8 +14,8 @@
 	<c:import url="businessManagementMain.jsp"></c:import>
 	<hr>
 	<div>
-		<button class="btn btn-default"><a href="/phoenix/crm/form/procedureItemSetting">시술품목설정</a></button>
-		<button class="btn btn-default"><a href="/phoenix/crm/form/procedureItemDesignSetting">시술디자인설정</a></button>
+		<a type="button" class="btn btn-default tag" href="/phoenix/crm/form/procedureItemSetting">시술품목설정</a>
+		<a type="button" class="btn btn-default tag" href="/phoenix/crm/form/procedureItemDesignSetting">시술디자인설정</a>
 	</div>
 	<br>
 	<div class="itemregisterCenter">
@@ -26,11 +26,11 @@
 				<input type="hidden" name="itemDesignCode" value="${item.itemDesignCode}">
 				<table class="table">
 					<tr class="textCenter">
-						<td class="bgColorGray"><label>시술디자인명</label></td>
+						<td class="bgColorGray tdVertical"><div class="tdVertical"><label>시술디자인명</label></div></td>
 						<td class="textLeft"><input class="form-control" type="text" name="itemDesignName" value="${item.itemDesignName}"></td>
 					</tr>
 					<tr>
-						<td class="bgColorGray"><label>시술가격</label></td>
+						<td class="bgColorGray tdVertical"><div class="tdVertical"><label>시술가격</label></div></td>
 						<td class="textLeft"><input class="form-control" type="text" name="itemDesignPrice" value="${item.itemDesignPrice}"></td>
 					</tr>
 				</table>

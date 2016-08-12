@@ -99,6 +99,10 @@
 		.bgColorGray{
 			background-color: #F6F6F6;
 		}
+		
+		.tdVertical{
+			padding:5px;
+		}
 	</style>
 </head>
 

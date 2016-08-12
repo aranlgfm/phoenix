@@ -24,8 +24,8 @@
 	<c:import url="businessManagementMain.jsp"></c:import>
 	<hr>
 	<div>
-		<a type="button" class="btn btn-default tag"  href="/phoenix/crm/form/procedureItemSetting">시술품목설정</a>
-		<a type="button" class="btn btn-default tag"  href="/phoenix/crm/form/procedureItemDesignSetting">시술디자인설정</a>
+		<a type="button" class="btn btn-default tag" href="/phoenix/crm/form/procedureItemSetting">시술품목설정</a>
+		<a type="button" class="btn btn-default tag" href="/phoenix/crm/form/procedureItemDesignSetting">시술디자인설정</a>
 	</div>	
 		<!-- S시술품목별 시술디자인설정 -->
 		<div>			
@@ -40,19 +40,19 @@
 					<br>
 					<table class="table">
 						<tr class="textCenter">
-							<td class="bgColorGray"><label>시술품목</label></td>
+							<td class="bgColorGray"><div class="tdVertical"><label>시술품목</label></div></td>
 							<td class="textLeft">
-								<select class="" name="itemCode">
+								<select class="form-control" name="itemCode">
 									<option value="">::선택::</option>	
 									<c:forEach var="item" items="${item}">
 										<option value="${item.itemCode}">${item.itemName}</option>
 									</c:forEach>
 								</select>
 							</td>
-							<td class="bgColorGray"><label>시술디자인명</label></td>
-							<td class="textLeft"><input class="" type="text" name="itemDesignName" size="10"/></td>
-							<td class="bgColorGray"><label>시술가격</label></td>
-							<td class="textLeft"><input class="" type="text" name="itemDesignPrice" size="10"/></td>
+							<td class="bgColorGray"><div class="tdVertical"><label>시술디자인명</label></div></td>
+							<td class="textLeft"><input class="form-control" type="text" name="itemDesignName" size="10"/></td>
+							<td class="bgColorGray"><div class="tdVertical"><label>시술금액</label></div></td>
+							<td class="textLeft"><input class="form-control" type="text" name="itemDesignPrice" size="10"/></td>
 						</tr>
 						<tr class="textCenter">
 							<td colspan="6"><input class="form-control" type="submit" value="등록"/></td>

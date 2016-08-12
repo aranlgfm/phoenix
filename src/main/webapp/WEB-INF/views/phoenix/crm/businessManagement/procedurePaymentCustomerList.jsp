@@ -30,7 +30,7 @@
 				<input type="hidden" id="totalRecordSize" name="totalRecordSize" value="${pageHelper.totalRecordSize}">
 				<input type="hidden" id="pagePerListSize" name="pagePerListSize" value="${pageHelper.pagePerListSize}">
 				<div class="textCenter">
-					<label>회원명</label>
+					<label>회원명 : </label>
 					<input class="form-control" type="text" name="searchKeyword" size="10"/>
 					<input class="form-control" type="submit" value="검색"/>
 				</div>

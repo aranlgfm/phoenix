@@ -39,7 +39,7 @@
 		<div>
 			<!-- 시술내역검색 -->
 			<div class="textCenter">
-				<label>디자인</label>
+				<label>디자인 : </label>
 				<input class="form-control" type="text" id="searchKeyword" name="searchKeyword" value="">
 				<input class="form-control" type="submit" value="검색"/>
 			</div>

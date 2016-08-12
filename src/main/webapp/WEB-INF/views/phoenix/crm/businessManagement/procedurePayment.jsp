@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page session="true"%>
 <!DOCTYPE html>
 <html>
@@ -52,20 +51,24 @@
 			<!-- ITEM SELECT FORM -->
 				<form id="itemForm" action="/phoenix/crm/process/procedurePaymentSelectItem" method="POST">
 					<input class="formItemCode" name="itemCode" type="hidden" value="">
-					<input name="ShopCode" type="hidden" value="${user.shopCode}">
+					<input name="ShopCode" type="text" value="${user.shopCode}">
 				</form>
 			<!-- ITEMDESIGN SELECT FORM -->
 				<form id="itemDesignForm" action="/phoenix/crm/process/procedurePaymentSelectItemDesign" method="POST">
 					<input class="formItemCode" name="itemCode" type="hidden" value="">
 					<input class="formItemDesignCode" name="itemDesignCode" type="hidden" value="">
-					<input name="ShopCode" type="hidden" value="${user.shopCode}">
+					<input name="ShopCode" type="text" value="${user.shopCode}">
 				</form>
 				
-				
+					
 <!-- 회원시술등록 FORM 회원시술등록 FORM 회원시술등록 FORM 회원시술등록 FORM 회원시술등록 FORM 회원시술등록 FORM 회원시술등록 FORM 회원시술등록 FORM -->			
 			<form class="form-inline" action="/phoenix/crm/process/insertProcedurePayment" method="POST">
 			<!-- 임시값 샾코드,유저코드 세션-->
-				<input type="hidden" name="shopCode" value="${user.shopCode}"> 
+				
+				
+				<input type="text" name="paymentCode" value="test123">
+								
+				<input type="text" name="shopCode" value="${user.shopCode}"> 
 				<c:if test="${customerCode ne null and customerCode ne ''}">
 					<c:set var="customerCode" value="${customerCode}" scope="session"></c:set>
 				</c:if>	 
@@ -166,7 +169,7 @@
 					<div>
 						<div>
 							<label>시술금액 : </label>
-							<input class="form-control" type="text" size="10" name="paymentTotalPrice" value="<fmt:formatNumber value="${itemDesign.itemDesignPrice}"></fmt:formatNumber>">
+							<input class="form-control" type="text" size="10" name="paymentTotalPrice" value="${itemDesign.itemDesignPrice}">
 							&nbsp;&nbsp;
 							<label>시술일 : </label>
 							<input class="form-control" type="date" name="paymentDate" value="">
@@ -180,9 +183,9 @@
 				</div><!-- 전체form -->
 				<hr>
 				<div>
-				<input class="form-control btn btn-default" type="submit" value="등록">
-				<input class="form-control btn btn-default" type="submit" name="addPayment" value="추가등록">
-				<a type="button" class="btn btn-default tag" href="/phoenix/crm/form/procedurePaymentCustomerList">취소</a>
+					<input class="form-control btn btn-default" type="submit" value="등록">
+					<input class="form-control btn btn-default" type="submit" name="addPayment" value="추가등록">
+					<a type="button" class="btn btn-default tag" href="/phoenix/crm/form/procedurePaymentCustomerList">취소</a>
 				</div>
 				<br>
 			</form>
