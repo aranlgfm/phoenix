@@ -16,7 +16,6 @@
 				
 				/* 유효성 */
 				$('#submitButton').click(function(){
-					console.log("야");
 					/* 아이디 */
 					if($('#userId').val() == ""){
 						$('#userIdMsg').html('아이디를 입력하세요');

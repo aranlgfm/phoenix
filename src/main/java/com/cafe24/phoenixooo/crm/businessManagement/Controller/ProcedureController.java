@@ -239,15 +239,20 @@ public class ProcedureController {
 	 * @return
 	 */
 	@RequestMapping(value ="/phoenix/crm/process/insertProcedurePayment", method = RequestMethod.POST)
-	public String insertProcedurePayment(RequestProcedurePayment payment,@RequestParam(value="addPayment", required=false) String addPayment,HttpSession session) {
-		System.out.println(payment);
-		String url ="redirect:/phoenix/crm/form/procedurePaymentCustomerList";
+	public String insertProcedurePayment(RequestProcedurePayment payment,@RequestParam(value="addPayment") String addPayment,HttpSession session) {
 		
-		if(addPayment != null){
-			url ="redirect:/phoenix/crm/form/insertProcedurePayment";
-		}else{
+		String url ="redirect:/phoenix/crm/form/procedurePaymentCustomerList";
+		if(addPayment.equals("등록")){
 			session.removeAttribute("customerCode");
+		}else{
+			url ="redirect:/phoenix/crm/form/insertProcedurePayment";
 		}
+		
+//		if(addPayment != null){
+//			url ="redirect:/phoenix/crm/form/insertProcedurePayment";
+//		}else{
+//			session.removeAttribute("customerCode");
+//		}
 		
 		procedureService.insertProcedurePayment(payment);
 		return url;

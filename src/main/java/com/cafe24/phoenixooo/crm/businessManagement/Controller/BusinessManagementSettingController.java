@@ -129,7 +129,7 @@ public class BusinessManagementSettingController {
 	/**
 	 * 3-1 시술품목 수정전 SELECT
 	 * @param itemCode
-	 * @param model
+	 * @param modelro
 	 * @return
 	 */
 	@RequestMapping(value="/phoenix/crm/form/modifyProcedureItem", method = RequestMethod.GET)
@@ -141,7 +141,7 @@ public class BusinessManagementSettingController {
 	@RequestMapping(value="/phoenix/crm/process/modifyProcedureItem", method = RequestMethod.POST)
 	public String modifyProcedure(ProcedureItem item,Model model) {
 		service.modifyItem(item);
-		return "redirect:/phoenix/crm/form/procedureItemSetting";
+		return "redirect:/phoenix/crm/form/pcedureItemSetting";
 	}
 	
 	
@@ -156,7 +156,8 @@ public class BusinessManagementSettingController {
 		model.addAttribute("item", service.selectItemDesign(itemDesignCode));
 		return "/phoenix/crm/businessManagement/procedureItemDesignModify";
 	}
-
+	
+	
 	/**
 	 * 4-2시술품목디자인 수정.
 	 * @param item
@@ -168,6 +169,7 @@ public class BusinessManagementSettingController {
 		service.modifyItemDesign(item);
 		return "redirect:/phoenix/crm/form/procedureItemDesignSetting";
 	}
+	
 	
 	/**
 	 * 5-1 시술품목 삭제.

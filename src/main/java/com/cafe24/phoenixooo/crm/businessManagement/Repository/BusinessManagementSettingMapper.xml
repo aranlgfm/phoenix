@@ -35,6 +35,7 @@
 		LIMIT 0,1
 	</select>
 	
+	
 	<!-- 1. 시술품목 INSERT -->
 	<insert id="insertProcedureItem" parameterType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItem">
 		INSERT 
@@ -108,6 +109,7 @@
 	</select>
 	
 	
+	
 	<!-- 4-1 시술품목(아이템) SELECT -->
 	<select id="selectItem" parameterType="java.lang.String" resultType="com.cafe24.phoenixooo.crm.businessManagement.Model.ProcedureItem">
 		SELECT	
@@ -116,7 +118,9 @@
 		FROM
 			CRM_ITEM_TB
 		WHERE
-			ITEM_CD = #{value}			
+			ITEM_CD = #{value}
+		<!-- 에이~ 처음부터 이걸 유니크값으로 하고 익셉션 상황에서 넘겨주면 되는건데 그치?
+			갠프에다 해봐야겄다 ㅋ.ㅋ~~  -->
 	</select>
 
 	<!-- 4-2 시술품목(아이템) UPDATE -->
@@ -126,7 +130,8 @@
 		SET
 			ITEM_NM = #{itemName}
 		WHERE 
-			ITEM_CD = #{itemCode}	
+			ITEM_CD = #{itemCode}
+			
 	</update>
 
 	

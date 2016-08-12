@@ -103,6 +103,10 @@
 		.tdVertical{
 			padding:5px;
 		}
+		
+		#msg{
+			color: red;
+		}
 	</style>
 </head>
 

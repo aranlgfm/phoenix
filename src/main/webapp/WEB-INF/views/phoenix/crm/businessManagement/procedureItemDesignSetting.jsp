@@ -14,6 +14,30 @@
 			$("#paymentCustomerList").removeClass("active");
 			$("#paymentList").removeClass("active");
 			$("#businessManagementSetting").addClass("active");
+			
+			//유효성
+			$("#mainSubmit").click(function(){
+				if($("#itemSelect").val() == ""){
+					$("#msg").html("시술품목을 선택하세요");
+				}else if($("#itemDesignName").val() == ""){
+					$("#msg").html("디자인명을 입력하세요");
+				}else if($("#itemDesignPrice").val() < 0 || $("#itemDesignPrice").val() == ""){
+					$("#msg").html("가격을 입력하세요");
+				}else{
+					console.log("여기 맞지??");
+					$(".designName").each(function(){
+						var name = $(this).html(); 
+						console.log(name);
+						if(name == $("#itemDesignName").val()){
+							$("#msg").html("디자인명 중복");
+							return false;
+						}else{
+							$("#mainForm").submit();
+							return;
+						}
+					});
+				}
+			});//유효성
 		});	
 	</script>
 	<style>
@@ -30,7 +54,7 @@
 	</div>	
 		<!-- S시술품목별 시술디자인설정 -->
 		<div>			
-			<form class="form-inline" action="/phoenix/crm/process/insertProcedureItemDesign" method="POST">
+			<form class="form-inline" id="mainForm" action="/phoenix/crm/process/insertProcedureItemDesign" method="POST">
 			<input type="hidden" name="shopCode" value="${user.shopCode}">
 				<br>
 				<div><!-- 전체 -->
@@ -40,10 +64,15 @@
 					<!-- 시술품목 -->
 					<br>
 					<table class="table">
+						<tr>
+							<td colspan="6">
+								<div class="textCenter" id="msg"></div>
+							</td>
+						</tr>
 						<tr class="textCenter">
 							<td class="bgColorGray"><div class="tdVertical"><label>시술품목</label></div></td>
 							<td class="textLeft">
-								<select class="form-control" name="itemCode">
+								<select class="form-control" id="itemSelect" name="itemCode">
 									<option value="">::선택::</option>	
 									<c:forEach var="item" items="${item}">
 										<option value="${item.itemCode}">${item.itemName}</option>
@@ -51,12 +80,12 @@
 								</select>
 							</td>
 							<td class="bgColorGray"><div class="tdVertical"><label>시술디자인명</label></div></td>
-							<td class="textLeft"><input class="form-control" type="text" name="itemDesignName" size="10"/></td>
+							<td class="textLeft"><input class="form-control" id="itemDesignName" type="text" name="itemDesignName" size="10"/></td>
 							<td class="bgColorGray"><div class="tdVertical"><label>시술금액</label></div></td>
-							<td class="textLeft"><input class="form-control" type="text" name="itemDesignPrice" size="10"/></td>
+							<td class="textLeft"><input class="form-control" id="itemDesignPrice" type="text" name="itemDesignPrice" size="10"/></td>
 						</tr>
 						<tr class="textCenter">
-							<td colspan="6"><input class="form-control" type="submit" value="등록"/></td>
+							<td colspan="6"><input class="form-control" id="mainSubmit" type="button" value="등록"/></td>
 						</tr>
 					</table>	
 			</form>
@@ -78,7 +107,7 @@
 							<input type="hidden" value="${item.itemDesignCode}">
 							<tr class="textCenter">
 								<td>${item.itemName}</td>	
-								<td>${item.itemDesignName}</td>	
+								<td><span class="designName">${item.itemDesignName}</span></td>	
 								<td><fmt:formatNumber value="${item.itemDesignPrice}"></fmt:formatNumber></td>	
 								<td>
 									<a href="/phoenix/crm/form/modifyProcedureItemDesign?itemDesignCode=${item.itemDesignCode}">수정</a>
