@@ -67,6 +67,9 @@ public class UserManagementController {
 		
 		if(userService.login(user) != null){
 			session.setAttribute("user", userService.login(user));
+			
+			//System.out.println(((UserCustomer)session.getAttribute("user")).getUserCode());
+			
 			pageUrl = "/phoenix";
 		}else{
 			session.setAttribute("user", "false");

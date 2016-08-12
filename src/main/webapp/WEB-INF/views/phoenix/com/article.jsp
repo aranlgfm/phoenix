@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,11 +70,12 @@
 		
 		<div class="modifyArticle">
 			<!-- <input class="recommendBtn" type="button" value="추천"> -->
-		
-			<a href="/phoenix/com/form/modifyingBasicArticle?articleCode=${map.article.articleCode }">수정</a>	
-			
-			 &nbsp; &nbsp; &nbsp;
-			<a href="/phoenix/com/process/deleteBasicArticle?articleCode=${map.article.articleCode }&boardGroupCode=${map.article.boardGroupCode}">삭제</a>	
+			<c:if test="${user.userCode eq map.article.userCode}" >
+				<a href="/phoenix/com/form/modifyingBasicArticle?articleCode=${map.article.articleCode }">수정</a>	
+				&nbsp; &nbsp; &nbsp;
+				<a href="/phoenix/com/process/deleteBasicArticle?articleCode=${map.article.articleCode }&boardGroupCode=${map.article.boardGroupCode}">삭제</a>	
+			</c:if>
+				
 		</div>
 			
 		<br><br><br>
