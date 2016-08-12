@@ -15,6 +15,7 @@
 			,EMPLOYEE_PW
 			,EMPLOYEE_NM
 			,EMPLOYEE_BIRTH_DT
+			,EMPLOYEE_POST_NO
 			,EMPLOYEE_ADDR
 			,EMPLOYEE_PHONE_NO
 			,EMPLOYEE_CELLPHONE_NO
@@ -30,6 +31,7 @@
 			,#{employeePw}
 			,#{employeeName}
 			,#{employeeBirthDate}
+			,#{employeePostNo}
 			,#{employeeAddr}
 			,#{employeePhoneNo}
 			,#{employeeCellPhoneNo}

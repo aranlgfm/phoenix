@@ -9,14 +9,14 @@
 <link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="<c:url value="/webjars/jquery/3.1.0/jquery.min.js"/>"></script>
 <style>
-	.divTh{
+	.divTh {
 		padding:5px;
 		font-weight:bolder;
 		background-color : #7c7c7c;
 		color : #ffffff;
 	}	 
 	
-	th  {
+	th {
 		background-color : #7c7c7c;
 		color : #ffffff;
 	}	
@@ -38,15 +38,15 @@
 		text-decoration: none;
 	}
 	
-	.textCenter{
+	.textCenter {
 		text-align: center;
 	}
 	
-	.textCenter th,td{
+	.textCenter th, td {
 		text-align: center;
 	}
 	
-	.textRight{
+	.textRight {
 		text-align: right;
 	}
 </style>
@@ -54,7 +54,7 @@
 
 <body>
 	<c:import url="../crmTemp.jsp"></c:import>
-	<hr>
+	
 	<div id="all">
 		<ul class="nav nav-tabs">
 			<li id="employeeList"><a href="/phoenix/crm/employeeManagement/employeeList">직원 리스트</a></li>

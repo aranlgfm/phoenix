@@ -62,7 +62,7 @@
 	<hr>
 	<table class="table table-hover">
 		<thead>
-			<tr>
+			<tr class="textCenter">
 				<th>직원명</th>
 				<th>급여지급일</th>
 				<th>근무년월</th>
@@ -71,7 +71,7 @@
 		</thead>
 		<c:forEach var="list" items="${employeeSalaryList}">
 			<tbody>
-				<tr>
+				<tr class="textCenter">
 					<td>${list.employeeName}</td>
 					<td>${list.salaryPayDate}</td>
 					<td>${list.salaryMonthDate}</td>
@@ -80,6 +80,16 @@
 			</tbody>
 		</c:forEach>
 	</table>
+	
+	<ul class="pager">
+		<li class="tag"><a class="tag" href="#">◀ Previous</a></li>
+		<li><a class="tag" href="">1</a></li>
+		<li><a class="tag" href="">2</a></li>
+		<li><a class="tag" href="">3</a></li>
+		<li><a class="tag" href="">4</a></li>
+		<li><a class="tag" href="">5</a></li>
+		<li class="tag"><a class="tag" href="#">Next ▶</a></li>
+	</ul>
 	
 	<!-- <form action="/phoenix/crm/employeeManagement/employeeSalaryList" method="GET">
 		검색어 : 
