@@ -20,6 +20,11 @@
 		margin:auto;
 		border: 1px;
 	}
+	.designerDiv
+	{
+		width:75%;
+		margin:auto;
+	}
 	.centerCell
 	{
 		text-align:center;
@@ -36,14 +41,14 @@
 		width: 200px;
 		height: 200px;
 	}
-	.previousDiv
+ 	.previousDiv
 	{
 		float:left;
 	}
 	.nextDiv
 	{
 		float: right;
-	}
+	} 
 </style>
 <script>
 	$(document).ready(function()
@@ -72,7 +77,7 @@
 	<br><br><br>
 	
 	
-	
+	<!-- 디자이너 게시판부터 -->
 	<c:choose>
 		<c:when test="${articleList[0].boardGroupCode eq 'COM_BOARDGROUP_1'}" >
 			<div class="insertingArticle">
@@ -211,6 +216,39 @@
 				<div  class="col-md-1">
 				</div>
 			</div>
+			<br><br>		
+			<div class="designerDiv">
+				<c:choose>
+					<c:when test="${articleList[0].currentPageNumber eq 1}" >
+						
+					</c:when>							
+					<c:otherwise>
+						<div class="previousDiv">
+							<form class="previousForm">
+								<input type="hidden" name="boardGroupCode" value="${articleList[0].boardGroupCode}">
+								<input type="hidden" name="limitIndex" value="${articleList[0].limitIndex-10}">
+								<input type="hidden" name="currentPageNumber" value="${articleList[0].currentPageNumber-1}">
+								<input class="previous" type="button" value="이전">
+							</form>
+						</div>
+					</c:otherwise>
+				</c:choose>
+				<c:choose>
+					<c:when test="${articleList[0].currentPageNumber eq articleList[0].totalPageNumber}" >
+						
+					</c:when>
+					<c:otherwise>
+						<div class="nextDiv">
+							<form class="nextForm">
+								<input type="hidden" name="boardGroupCode" value="${articleList[0].boardGroupCode}">
+								<input type="hidden" name="limitIndex" value="${articleList[0].limitIndex+10}">
+								<input type="hidden" name="currentPageNumber" value="${articleList[0].currentPageNumber+1}">
+								<input class="next" type="button" value="다음">
+							</form>
+						</div>
+					</c:otherwise>
+				</c:choose>		
+			</div>
 		</c:when>
 		<c:otherwise>
 			<div class="insertingArticle">
@@ -233,6 +271,9 @@
 						</tr>
 					</c:forEach>
 				</table>
+				
+				<br>
+				
 				<div>
 					<c:choose>
 						<c:when test="${articleList[0].currentPageNumber eq 1}" >
@@ -263,8 +304,7 @@
 								</form>
 							</div>
 						</c:otherwise>
-					</c:choose>
-					
+					</c:choose>		
 				</div>
 			</div>
 		</c:otherwise>
