@@ -37,7 +37,7 @@
 	
 </style>
 
-<title>Insert title here</title>
+<title>급여지급 리스트</title>
 </head>
 <body>
 	

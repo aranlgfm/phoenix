@@ -18,6 +18,17 @@
 		
 		// 유효성 검사
 		$('#submitBtn').click(function() {
+			
+			if($("#EmployeePw").val() == ""){
+				$("#EmployeePwMsg").html("비밀번호 입력하세요");
+ 			}else if($("#EmployeePw").val() != $("#EmployeePwRepw").val()){
+ 				$("#EmployeePwMsg").html("");
+				$("#EmployeePwRepwMsg").html("비밀번호가 일치하지 않습니다.");
+ 			}else{
+ 				$("#EmployeePwMsg").html("");
+ 				$("#EmployeePwRepwMsg").html("");
+ 			}
+			
 			if($('#EmployeeLevelName').val() == '') {
 				$('#EmployeeLevelNameMsg').html('직급을 입력해 주세요.');
 			}else if($('#EmployeeName').val() == '') {
@@ -161,15 +172,15 @@
 				</div>
 				<span id="EmployeePwMsg"></span>
 			</div>
-			 <!-- 
+			
 			<div class="form-group">
-				<label class="control-label col-sm-3" for="userRePw">비밀번호확인:</label>
+				<label class="control-label col-sm-3" for="EmployeePwRePw">* 비밀번호확인:</label>
 				<div class="col-sm-4"> 
-					<input type="password" class="form-control"id="userRepw" placeholder="다시입력해">
+					<input type="password" class="form-control"id="EmployeePwRepw" />
 				</div>
-				<span id="userRepwMsg"></span>
+				<span id="EmployeePwRepwMsg"></span>
 			</div>
-			  -->
+
 				<!-- 생년월일 -->  
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="EmployeeBirthDate">생년월일:</label>
