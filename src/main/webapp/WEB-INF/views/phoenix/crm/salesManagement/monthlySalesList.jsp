@@ -31,8 +31,7 @@
 	<div>
 		<c:import url="monthSearch.jsp"></c:import>
 	</div>
-		<br><br><br>
-	
+			
 	<div id="all">
 		<c:forEach var="list" items="${list}" begin="1" end="1"> 
 			<strong>${list.paymentYearMonth} 시술 매출 내역</strong>

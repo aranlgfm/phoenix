@@ -47,26 +47,28 @@
 <body>
 <div id="all">
 	<div>
-		<form class="navbar-search pull-left" action="/phoenix/crm/salesManagement/yearlySearch" method="post">
-			<div>
-			<strong>기간검색</strong>
-				<%-- <input class="toMonths" type="text" value="${serverTime}" name="paymentStartDay"> ~ 
-				<input class="toMonthe" type="text" value="${serverTime}" name="paymentEndDay"> --%>
-				<!-- 년간 검색 : 년 -->
-				<select name="paymentYear">
-					<option value="2016">2016년</option>
-					<option value="2015">2015년</option>
-					<option value="2014">2014년</option>
-					<option value="2013">2013년</option>
-					<option value="2012">2012년</option>
-					<option value="2011">2011년</option>
-					<option value="2010">2010년</option>
-					<option value="2009">2009년</option>
-					<option value="2008">2008년</option>
-					<option value="2007">2007년</option>
-					<option value="2006">2006년</option>
-				</select>
-				<input class="btn" type="submit" value="검색">
+		<form class="form-horizontal" action="/phoenix/crm/salesManagement/yearlySearch" method="post">
+			<div class="form-group">	
+				<div class="col-sm-2">
+					<!-- 년간 검색 : 년 -->
+					<select name="paymentYear" class="form-control">
+						<option value="2016">2016년</option>
+						<option value="2015">2015년</option>
+						<option value="2014">2014년</option>
+						<option value="2013">2013년</option>
+						<option value="2012">2012년</option>
+						<option value="2011">2011년</option>
+						<option value="2010">2010년</option>
+						<option value="2009">2009년</option>
+						<option value="2008">2008년</option>
+						<option value="2007">2007년</option>
+						<option value="2006">2006년</option>
+					</select>
+				</div>
+				
+					<div class="col-sm-1">
+						<input class="form-control" type="submit" value="검색">
+					</div>
 			</div>
 		</form>
 		

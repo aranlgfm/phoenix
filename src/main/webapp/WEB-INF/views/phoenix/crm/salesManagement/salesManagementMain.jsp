@@ -32,7 +32,7 @@
 		 	<li class=""><a href="/phoenix/crm/form/salesManagement/dailyEmployeeSales">일간직원매출</a></li>
 		 	<li class=""><a href="/phoenix/crm/form/salesManagement/monthlyEmployeeSales">월간직원매출</a></li>
 		 	<li class=""><a href="/phoenix/crm/form/salesManagement/yearlyEmployeeSales">년간직원매출</a></li>
-		 	<li class=""><a href="/phoenix/crm/salesManagement/periodSales">기간별매출통계</a></li>	
+		 	<!-- <li class=""><a href="/phoenix/crm/salesManagement/periodSales">기간별매출통계</a></li> -->	
 		</ul>
 	</div>
 </body>

@@ -30,7 +30,7 @@
 	<div>
 		<c:import url="dailySearch.jsp"></c:import>
 	</div>
-		<br><br><br>
+		
 	
 	<div id="all">
 		<c:forEach var="list" items="${list}" begin="1" end="1"> 
