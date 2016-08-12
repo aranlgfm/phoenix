@@ -197,58 +197,5 @@
 	</div>
 	</div><!-- 전체 -->
 
-
-<!-- 	
-	
-	<form action="/phoenix/crm/employeeManagement/insertingEmployee" method="POST">
-		<table class="table table-bordered">
-			<tr>
-				<td>* 직급</td>
-				<td><input id="EmployeeLevelName" type="text" name="EmployeeLevelName" /></td>
-			</tr>
-			<tr>
-				<td>* 직원명</td>
-				<td><input id="EmployeeName" type="text" name="EmployeeName" /></td>
-				
-			</tr>
-			<tr>
-				<td>* 비밀번호</td>
-				<td><input id="EmployeePw" type="password" name="EmployeePw" /></td>
-				
-			</tr>
-			<tr>
-				<td>생일</td>
-				<td>
-					<input id="EmployeeBirthDate" type="date" name="EmployeeBirthDate" />
-					
-					<input type="checkbox" name="Gregorian" value="양" />
-					<input type="checkbox" name="Lunar" value="음" />
-				</td>
-			</tr>
-			<tr>
-				<td>주소</td>
-				<td><input type="text" name="EmployeeAddr" /></td>
-			</tr>
-			<tr>
-				<td>전화번호</td>
-				<td><input type="text" name="EmployeePhoneNo" />-<input type="text" name="Num2" />-<input type="text" name="Num3" /></td>
-			</tr>
-			<tr>
-				<td>핸드폰번호</td>
-				<td><input type="text" name="EmployeeCellPhoneNo" />-<input type="text" name="CellNum2" />-<input type="text" name="CellNum3" /></td>
-			</tr>
-			<tr>
-				<td>* 입사일</td>
-				<td><input id="EmployeeJoinDate" type="date" name="EmployeeJoinDate" /></td>
-				
-			</tr>
-			<tr>
-				<td>메모</td>
-				<td><textarea rows="5" cols="22" name="EmployeeMemo"></textarea></td>
-			</tr>
-		</table>
-		<button type="button" class="btn btn-info" id="submitBtn">등록</button>
-	</form>
-	 -->
 </body>
 </html>
