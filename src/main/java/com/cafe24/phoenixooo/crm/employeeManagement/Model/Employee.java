@@ -7,6 +7,7 @@ public class Employee {
 	private String employeeLevelName;
 	private String employeeName;
 	private String employeeBirthDate;
+	private String employeePostNo;
 	private String employeeAddr;
 	private String employeePhoneNo;
 	private String employeeCellPhoneNo;
@@ -49,6 +50,12 @@ public class Employee {
 	public void setEmployeeBirthDate(String employeeBirthDate) {
 		this.employeeBirthDate = employeeBirthDate;
 	}
+	public String getEmployeePostNo() {
+		return employeePostNo;
+	}
+	public void setEmployeePostNo(String employeePostNo) {
+		this.employeePostNo = employeePostNo;
+	}
 	public String getEmployeeAddr() {
 		return employeeAddr;
 	}
@@ -84,9 +91,9 @@ public class Employee {
 	public String toString() {
 		return "Employee [employeeCode=" + employeeCode + ", shopCode=" + shopCode + ", employeePw=" + employeePw
 				+ ", employeeLevelName=" + employeeLevelName + ", employeeName=" + employeeName + ", employeeBirthDate="
-				+ employeeBirthDate + ", employeeAddr=" + employeeAddr + ", employeePhoneNo=" + employeePhoneNo
-				+ ", employeeCellPhoneNo=" + employeeCellPhoneNo + ", employeeJoinDate=" + employeeJoinDate
-				+ ", employeeMemo=" + employeeMemo + "]";
+				+ employeeBirthDate + ", employeePostNo=" + employeePostNo + ", employeeAddr=" + employeeAddr
+				+ ", employeePhoneNo=" + employeePhoneNo + ", employeeCellPhoneNo=" + employeeCellPhoneNo
+				+ ", employeeJoinDate=" + employeeJoinDate + ", employeeMemo=" + employeeMemo + "]";
 	}
 	
 }

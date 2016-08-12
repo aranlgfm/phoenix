@@ -73,8 +73,8 @@
 			<tbody>
 				<tr>
 					<td>${list.employeeName}</td>
-					<td>${list.salaryPayCode}</td>
-					<td>${list.salaryMonthCode}</td>
+					<td>${list.salaryPayDate}</td>
+					<td>${list.salaryMonthDate}</td>
 					<td>${list.salaryWon}</td>
 				</tr>
 			</tbody>

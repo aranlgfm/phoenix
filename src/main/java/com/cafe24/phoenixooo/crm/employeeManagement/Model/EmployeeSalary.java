@@ -4,8 +4,8 @@ public class EmployeeSalary {
 	private String salaryCode;
 	private String shopCode;
 	private String employeeCode;
-	private String salaryPayCode;
-	private String salaryMonthCode;
+	private String salaryPayDate;
+	private String salaryMonthDate;
 	private String employeeName;
 	private int salaryWon;
 	
@@ -27,17 +27,17 @@ public class EmployeeSalary {
 	public void setEmployeeCode(String employeeCode) {
 		this.employeeCode = employeeCode;
 	}
-	public String getSalaryPayCode() {
-		return salaryPayCode;
+	public String getSalaryPayDate() {
+		return salaryPayDate;
 	}
-	public void setSalaryPayCode(String salaryPayCode) {
-		this.salaryPayCode = salaryPayCode;
+	public void setSalaryPayDate(String salaryPayDate) {
+		this.salaryPayDate = salaryPayDate;
 	}
-	public String getSalaryMonthCode() {
-		return salaryMonthCode;
+	public String getSalaryMonthDate() {
+		return salaryMonthDate;
 	}
-	public void setSalaryMonthCode(String salaryMonthCode) {
-		this.salaryMonthCode = salaryMonthCode;
+	public void setSalaryMonthDate(String salaryMonthDate) {
+		this.salaryMonthDate = salaryMonthDate;
 	}
 	public String getEmployeeName() {
 		return employeeName;
@@ -55,7 +55,7 @@ public class EmployeeSalary {
 	@Override
 	public String toString() {
 		return "EmployeeSalary [salaryCode=" + salaryCode + ", shopCode=" + shopCode + ", employeeCode=" + employeeCode
-				+ ", salaryPayCode=" + salaryPayCode + ", salaryMonthCode=" + salaryMonthCode + ", employeeName="
+				+ ", salaryPayDate=" + salaryPayDate + ", salaryMonthDate=" + salaryMonthDate + ", employeeName="
 				+ employeeName + ", salaryWon=" + salaryWon + "]";
 	}
 	

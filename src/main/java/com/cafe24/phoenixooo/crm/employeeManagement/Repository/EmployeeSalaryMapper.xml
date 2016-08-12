@@ -43,8 +43,8 @@
 			SALARY_CD as salaryCode
 			,SHOP_CD as shopCode
 			,EMPLOYEE_CD as employeeCode
-			,SALARY_PAY_DT as salaryPayCode
-			,SALARY_MONTH_DT as salaryMonthCode
+			,SALARY_PAY_DT as salaryPayDate
+			,SALARY_MONTH_DT as salaryMonthDate
 			,EMPLOYEE_NM as employeeName
 			,SALARY_WON as salaryWon
 		FROM

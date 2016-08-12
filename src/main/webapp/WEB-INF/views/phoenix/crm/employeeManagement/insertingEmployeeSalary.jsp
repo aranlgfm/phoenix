@@ -114,7 +114,7 @@
 			<!-- 등록취소 -->
 			<div class="form-group centerT"> 
 				<div class="center col-sm-10">
-					<button type="button" class="btn btn-default" id="submitBtn">등록</button>
+					<button type="submit" class="btn btn-default" id="submitBtn">등록</button>
 					<a class="btn btn-default" href="/phoenix/crm/employeeManagement/employeeSalaryList">취소</a>
 				</div>
 			</div>
