@@ -233,6 +233,17 @@
 						</div>
 					</c:otherwise>
 				</c:choose>
+				 
+<%-- 				<c:choose>
+					<c:when test="${articleList[0].totalPageNumber < 11 }">					
+						<c:forEach var="i" begin="1" end="10">
+							<a>${articleList[0].currentPageNumber-1+i}</a>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+					</c:otherwise>
+				</c:choose> --%>
+				
 				<c:choose>
 					<c:when test="${articleList[0].currentPageNumber eq articleList[0].totalPageNumber}" >
 						
