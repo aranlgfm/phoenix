@@ -46,7 +46,9 @@ public class EmployeeSalesController {
 		List<EmployeeListForSales> empList = empService.selectEmployeeList(emp);
 		EmployeeSales empS = new EmployeeSales();
 		empS.setPaymentDate(date);
-		List<EmployeeSales> empSales = empService.selectAllEmpSales(empS);
+		empS.setEmployeeCode(emp.getEmployeeCode());
+		empS.setShopCode(user.getShopCode());
+		List<EmployeeSales> empSales = empService.selectDaliyEmpSales(empS);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("empList", empList);
 		map.put("empSales", empSales);
@@ -82,13 +84,46 @@ public class EmployeeSalesController {
 		empS.setPaymentDate(date);
 		empS.setShopCode(user.getShopCode());
 		empS.setEmployeeCode(emp.getEmployeeCode());
-		List<EmployeeSales> empSales = empService.selectAllEmpSales(empS);
+		List<EmployeeSales> empSales = empService.selectDaliyEmpSales(empS);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("empList", empList);
 		map.put("empSales", empSales);
 		map.put("today", date);
 		model.addAttribute("emp", map);
 		return "/phoenix/crm/salesManagement/dailyEmployeeSales";
+	}
+	
+	/**
+	 * CRM-Controller 월간직원매출화면
+	 * @param emp
+	 * @param date
+	 * @param model
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value = "/phoenix/crm/form/salesManagement/monthlyEmployeeSales", method = RequestMethod.GET) 
+	public String crmFormSalesManagementMonthlyEmployeeSales(EmployeeListForSales emp, String date, Model model, HttpSession session){
+		Date today = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM");
+		String realToday = format.format(today);
+		if(date == null || date == ""){
+			date = realToday;
+		}
+
+		UserCustomer user = (UserCustomer)session.getAttribute("user");
+		emp.setShopCode(user.getShopCode());
+		List<EmployeeListForSales> empList = empService.selectEmployeeList(emp);
+		EmployeeSales empS = new EmployeeSales();
+		empS.setPaymentMonth(date);
+		empS.setShopCode(user.getShopCode());
+		empS.setEmployeeCode(emp.getEmployeeCode());
+		List<EmployeeSales> empSales = empService.selectMonthlyEmpSales(empS);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("empList", empList);
+		map.put("empSales", empSales);
+		map.put("today", date);
+		model.addAttribute("emp", map);
+		return "/phoenix/crm/salesManagement/monthlyEmployeeSales";
 	}
 	
 	/**
@@ -99,26 +134,96 @@ public class EmployeeSalesController {
 	 * @param session
 	 * @return
 	 */
-	@RequestMapping(value = "/phoenix/crm/form/salesManagement/monthlyEmployeeSales", method = RequestMethod.GET) 
-	public String crmFormSalesManagementMonthlyEmployeeSales(EmployeeListForSales emp, String date, Model model, HttpSession session){
+	@RequestMapping(value = "/phoenix/crm/process/salesManagement/monthlyEmployeeSales", method = RequestMethod.POST) 
+	public String crmProcessSalesManagementMonthlyEmployeeSales(EmployeeListForSales emp, String date, Model model, HttpSession session){
 		Date today = new Date();
-		SimpleDateFormat format = new SimpleDateFormat("yyyyMM");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM");
 		String realToday = format.format(today);
 		if(date == null || date == ""){
 			date = realToday;
 		}
-		System.out.println(realToday+"나와라 쫌");
+		
 		UserCustomer user = (UserCustomer)session.getAttribute("user");
 		emp.setShopCode(user.getShopCode());
 		List<EmployeeListForSales> empList = empService.selectEmployeeList(emp);
 		EmployeeSales empS = new EmployeeSales();
-		empS.setPaymentDate(date);
-		List<EmployeeSales> empSales = empService.selectAllEmpSales(empS);
+		empS.setPaymentMonth(date);
+		empS.setShopCode(user.getShopCode());
+		empS.setEmployeeCode(emp.getEmployeeCode());
+		List<EmployeeSales> empSales = empService.selectMonthlyEmpSales(empS);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("empList", empList);
 		map.put("empSales", empSales);
 		map.put("today", date);
 		model.addAttribute("emp", map);
 		return "/phoenix/crm/salesManagement/monthlyEmployeeSales";
+	}
+	
+	/**
+	 * CRM-Controller 연간직원매출검색
+	 * @param emp
+	 * @param date
+	 * @param model
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value = "/phoenix/crm/form/salesManagement/yearEmployeeSales", method = RequestMethod.GET) 
+	public String crmFormSalesManagementYearEmployeeSales(EmployeeListForSales emp, String date, Model model, HttpSession session){
+		Date today = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy");
+		String realToday = format.format(today);
+		if(date == null || date == ""){
+			date = realToday;
+		}
+		
+		UserCustomer user = (UserCustomer)session.getAttribute("user");
+		emp.setShopCode(user.getShopCode());
+		List<EmployeeListForSales> empList = empService.selectEmployeeList(emp);
+		EmployeeSales empS = new EmployeeSales();
+		empS.setPaymentMonth(date);
+		empS.setShopCode(user.getShopCode());
+		empS.setEmployeeCode(emp.getEmployeeCode());
+		List<EmployeeSales> empSales = empService.selectMonthlyEmpSales(empS);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("empList", empList);
+		map.put("empSales", empSales);
+		map.put("today", date);
+		model.addAttribute("emp", map);
+		System.out.println(empSales.get(0).getCountCash()+"겐지야 부탁한다");
+		System.out.println(empSales.get(0).getTotalCash()+"겐지야 부탁한다");
+		return "/phoenix/crm/salesManagement/yearEmployeeSales";
+	}
+	
+	/**
+	 * CRM-Controller 연간직원매출검색
+	 * @param emp
+	 * @param date
+	 * @param model
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value = "/phoenix/crm/process/salesManagement/yearEmployeeSales", method = RequestMethod.POST) 
+	public String crmProcessSalesManagementYearEmployeeSales(EmployeeListForSales emp, String date, Model model, HttpSession session){
+		Date today = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy");
+		String realToday = format.format(today);
+		if(date == null || date == ""){
+			date = realToday;
+		}
+
+		UserCustomer user = (UserCustomer)session.getAttribute("user");
+		emp.setShopCode(user.getShopCode());
+		List<EmployeeListForSales> empList = empService.selectEmployeeList(emp);
+		EmployeeSales empS = new EmployeeSales();
+		empS.setPaymentMonth(date);
+		empS.setShopCode(user.getShopCode());
+		empS.setEmployeeCode(emp.getEmployeeCode());
+		List<EmployeeSales> empSales = empService.selectMonthlyEmpSales(empS);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("empList", empList);
+		map.put("empSales", empSales);
+		map.put("today", date);
+		model.addAttribute("emp", map);
+		return "/phoenix/crm/salesManagement/yearEmployeeSales";
 	}
 }

@@ -54,6 +54,51 @@
 		.textLeft{ 
 			text-align: left;
 		}
+		
+		.allLeft 
+	{
+		margin-left: -100px;
+	}
+	
+	.textRight{
+		text-align: right;
+	}
+	.title{
+		font-size: 30px;
+		font-weight: bolder;
+	}
+	
+		div.center { 
+			
+ 		width:300px; 
+ 		margin:auto;
+ 		
+		}
+		
+		.centerT{
+			position:absolute;
+			width:300px; 
+	 		margin:auto;
+	 		text-align: center;
+		}
+		
+		
+		
+		div .registerCenter{
+			width:520px; 
+ 			margin: auto;
+ 			border: 1px solid silver;
+		}
+		
+		div .itemregisterCenter{
+			width:350px; 
+ 			margin: auto;
+ 			border: 1px solid silver;
+		}
+		
+		.bgColorGray{
+			background-color: #F6F6F6;
+		}
 	</style>
 </head>
 
@@ -63,8 +108,6 @@
 		<ul class="nav nav-tabs">
 			<li id="paymentCustomerList"><a href="/phoenix/crm/form/procedurePaymentCustomerList">시술내역등록</a></li>
 			<li id="paymentList"><a href="/phoenix/crm/form/ProcedurePaymentList">시술내역</a></li>
-			<li id="" class=""><a href="">제품판매등록</a></li>
-			<li id="" class=""><a href="">제품판매내역</a></li>
 			<li id="businessManagementSetting"><a href="/phoenix/crm/form/businessManagementSetting">영업관리설정</a></li>
 		</ul>
 </body>

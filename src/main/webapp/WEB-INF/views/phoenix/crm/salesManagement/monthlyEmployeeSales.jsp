@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,13 @@
 		width : 70%;
 		margin : auto;
 }
+.won {
+		text-align : right;
+		padding-right : 20%;
+}
+.title {
+	text-align: center;
+}
 </style>
 <script>
 	$(document).ready(function(){
@@ -24,7 +32,7 @@
 		var date1 = today.substring(0,4);
 		$('#selectYear').val(date1);
 
-		if(today.length > 9){
+		if(today.length > 6){
 			var date2 = today.substring(5,7);
 			$('#selectMonth').val(date2);
 		}else{
@@ -33,7 +41,7 @@
 		}
 		
 		$('#btn').click(function(){
-			$('#date').val($('#selectYear').val()+$('#selectMonth').val());
+			$('#date').val($('#selectYear').val()+'-'+$('#selectMonth').val());
 			$('#searchForm').submit();
 		});
 		
@@ -45,9 +53,7 @@
 <!-- 여기부터 메뉴부분 -->
 <c:import url="../crmTemp.jsp"></c:import>
 
-<div id="all">	
-	
-	<div class="container">
+<div id="all">
 	<ul class="nav nav-tabs">
 		<li>
 			<a href="/phoenix/crm/salesManagement/dailySales">일간총매출</a>
@@ -56,7 +62,7 @@
 	 		<a href="/phoenix/crm/salesManagement/monthlySales">월간총매출</a>
 	 	</li>
 	 	<li>
-	 		<a href="/phoenix/crm/salesManagement/yearlySales">년간총매출</a>
+	 		<a href="/phoenix/crm/salesManagement/yearlySales">연간총매출</a>
 	 	</li>
 	 	<li>
 	 		<a href="/phoenix/crm/form/salesManagement/dailyEmployeeSales">일간직원매출</a>
@@ -65,21 +71,24 @@
 	 		<a href="/phoenix/crm/form/salesManagement/monthlyEmployeeSales">월간직원매출</a>
 	 	</li>
 	 	<li>
-	 		<a href="">년간직원매출</a>
+	 		<a href="/phoenix/crm/form/salesManagement/yearEmployeeSales">연간직원매출</a>
 	 	</li>
 	 	<li>
 	 		<a href="">기간별매출통계</a>
 	 	</li>	
 	</ul>
-	</div>
-	
+
+<c:set var = "cashSum" value = "0" />
+<c:set var = "cashCountSum" value = "0" />
+<c:set var = "cardSum" value = "0" />
+<c:set var = "cardCountSum" value = "0" />	
 <!-- 여기까지 메뉴부분 -->
 	
 	<br>
 	
-	<form id="searchForm" class="form-horizontal" role="form" action="/phoenix/crm/process/salesManagement/dailyEmployeeSales" method="POST">
+	<form id="searchForm" class="form-horizontal" role="form" action="/phoenix/crm/process/salesManagement/monthlyEmployeeSales" method="POST">
 		<!-- 기간검색 -->
-		<input name="date" type="hidden"/>
+		<input id="date" name="date" type="hidden"/>
 		<div class="form-group">
 			<div class="col-sm-2">
 				<select id="selectYear" class="form-control">
@@ -107,7 +116,7 @@
 			</div>
 			<div class="col-sm-2">
 				<select name="employeeCode" class="form-control" class="control-label col-sm-3">
-					<option>직원명</option>
+					<option value="">직원명</option>
 					<c:forEach var="empList" items="${emp.empList}">
 						<option value="${empList.employeeCode}">${empList.employeeName}</option>
 					</c:forEach>
@@ -126,24 +135,27 @@
 	<table class="table table-striped">
 		<tr>
 			<th>직원명</th>
-			<th>현금/(건)</th>
-			<th>카드/(건)</th>
+			<th class="title">현금/(건)</th>
+			<th class="title">카드/(건)</th>
 		</tr>
 		<c:forEach var="empSales" items="${emp.empSales}">
 			<tr>
 				<td>${empSales.employeeName}</td> 
-				<td>${empSales.totalCash}/(${empSales.countCash})</td>
-				<td>${empSales.totalCard}/(${empSales.countCard})</td>
+				<td class="won"><fmt:formatNumber value="${empSales.totalCash}" groupingUsed="true"/>원 (${empSales.countCash})</td>
+				<td class="won"><fmt:formatNumber value="${empSales.totalCard}" groupingUsed="true"/>원 (${empSales.countCard})</td>
 			</tr>
+			<c:set var= "cashSum" value="${cashSum + empSales.totalCash}"/>
+			<c:set var= "cashCountSum" value="${cashCountSum + empSales.countCash}"/>
+			<c:set var= "cardSum" value="${cardSum + empSales.totalCard}"/>
+			<c:set var= "cardCountSum" value="${cardCountSum + empSales.countCard}"/>
 		</c:forEach>
 		
 		<tr>
 			<td>총합계</td>
-			<td></td>
-			<td></td>
+			<td class="won"><fmt:formatNumber value="${cashSum}" groupingUsed="true"/>원 (<c:out value="${cashCountSum}"/>)</td>
+			<td class="won"><fmt:formatNumber value="${cardSum}" groupingUsed="true"/>원 (<c:out value="${cardCountSum}"/>)</td>
 		</tr>
 	</table>
-	
 </div>	
 	
 </body>

@@ -81,7 +81,7 @@
 	<c:choose>
 		<c:when test="${articleList[0].boardGroupCode eq 'COM_BOARDGROUP_1'}" >
 			<div class="insertingArticle">
-				<a href='/phoenix/com/form/insertingBasicArticle?boardGroupCode="${articleList[0].boardGroupCode}"'>글쓰기</a>
+				<a href="/phoenix/com/form/insertingBasicArticle?boardGroupCode=${articleList[0].boardGroupCode}">글쓰기</a>
 			</div>
 	
 			<br><br>
@@ -252,7 +252,7 @@
 		</c:when>
 		<c:otherwise>
 			<div class="insertingArticle">
-				<a href='/phoenix/com/form/insertingBasicArticle?boardGroupCode="${articleList[0].boardGroupCode}"'>글쓰기</a>
+				<a href="/phoenix/com/form/insertingBasicArticle?boardGroupCode=${articleList[0].boardGroupCode}">글쓰기</a>
 			</div>
 			<div class="basicBoardList">
 				<table class="table table-bordered">

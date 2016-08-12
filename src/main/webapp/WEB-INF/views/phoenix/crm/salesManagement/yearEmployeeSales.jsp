@@ -25,15 +25,17 @@
 </style>
 <script>
 	$(document).ready(function(){
+		
+		// 화면 열리면 바로 달력에 오늘에 해당하는 년, 월 입력하기
+		// 검색 후에는 검색했던 년, 달로 입력
 		var today = '${emp.today}';
-		if(today.length > 9){
-			$('#date').val(today);
-		}else{
-			var date1 = today.substring(0,4);
-			var date2 = today.substring(4,6);
-			var date3 = today.substring(6,8);
-			$('#date').val(date1+'-'+date2+'-'+date3);
-		}
+		$('#selectYear').val(today);
+
+		$('#btn').click(function(){
+			$('#date').val($('#selectYear').val());
+			$('#searchForm').submit();
+		});
+		
 	});
 </script>
 </head>
@@ -58,13 +60,13 @@
 	 	<li>
 	 		<a href="/phoenix/crm/salesManagement/yearlySales">연간총매출</a>
 	 	</li>
-	 	<li class="active dayLi">
+	 	<li>
 	 		<a href="/phoenix/crm/form/salesManagement/dailyEmployeeSales">일간직원매출</a>
 	 	</li>
 	 	<li>
 	 		<a href="/phoenix/crm/form/salesManagement/monthlyEmployeeSales">월간직원매출</a>
 	 	</li>
-	 	<li>
+	 	<li class="active dayLi">
 	 		<a href="/phoenix/crm/form/salesManagement/yearEmployeeSales">연간직원매출</a>
 	 	</li>
 	 	<li>
@@ -76,11 +78,17 @@
 	
 	<br>
 	
-	<form id="searchForm" class="form-horizontal" role="form" action="/phoenix/crm/process/salesManagement/dailyEmployeeSales" method="POST">
+	<form id="searchForm" class="form-horizontal" role="form" action="/phoenix/crm/process/salesManagement/yearEmployeeSales" method="POST">
 		<!-- 기간검색 -->
+		<input id="date" name="date" type="hidden"/>
 		<div class="form-group">
 			<div class="col-sm-2">
-				<input id="date" name="date" type="date" class="form-control"/>
+				<select id="selectYear" class="form-control">
+					<option value="2016">2016</option>
+					<option value="2015">2015</option>
+					<option value="2014">2014</option>
+					<option value="2013">2013</option>
+				</select>
 			</div>
 			<div class="col-sm-2">
 				<select name="employeeCode" class="form-control" class="control-label col-sm-3">
@@ -91,7 +99,7 @@
 				</select>
 			</div>
 			<div class="col-sm-1">
-				<input class="form-control" type="submit" value="검색"/>
+				<input id="btn" class="form-control" type="button" value="검색"/>
 			</div>
 		</div>
 	</form>
@@ -124,7 +132,6 @@
 			<td class="won"><fmt:formatNumber value="${cardSum}" groupingUsed="true"/>원 (<c:out value="${cardCountSum}"/>)</td>
 		</tr>
 	</table>
-	
 </div>	
 	
 </body>

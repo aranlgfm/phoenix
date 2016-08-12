@@ -22,21 +22,22 @@
 <body>
 	<c:import url="stockManagement.jsp"></c:import>
 	
-	<hr>
-	<div id="all">	
+	
+	<div id="all">
+		<hr>	
 		<!-- <h1>지출내역등록</h1> -->
 		<form action="/phoenix/crm/process/stockManagement/insertEtcCostItem" method="POST">
 			<input class="btn btn-primary" type="submit" value="지출내역등록"/>
-		
+			<br><br>
 			<table>
 				<tr>
-					<th>지출일</th>
-					<td><input name="" type="date"/></td>
+					<td>지출일</td>
+					<td><input class="form-control" name="" type="date"/></td>
 				</tr>
 				<tr>
-					<th>지출항목</th>
+					<td>지출항목</td>
 					<td>
-						<select name="etcCostCode">
+						<select class="form-control" name="etcCostCode">
 							<option>||기타지출항목||</option>
 						<c:forEach var="list" items="${cost.list}">
 							<option value="${list.etcCostCode}">${list.etcCostName}</option>
@@ -45,30 +46,30 @@
 					</td>
 				</tr>
 				<tr>
-					<th>세부항목</th>
+					<td>세부항목</td>
 					<td>
-						<select>
+						<select class="form-control">
 							<option>항목 선택하면 세부항목나올 곳</option>
 						</select>
 					</td>
 				</tr>
 				<tr>
-					<th>지출금액</th>
+					<td>지출금액</td>
 					<td>
-						<input name="" type="text"/>
+						<input class="form-control" name="" type="text"/>
 					</td>
 				</tr>
 				<tr>
-					<th>담당자</th>
+					<td>담당자</td>
 					<td>
-						<select>
+						<select class="form-control">
 							<option>직원이름나올 곳</option>
 						</select>
 					</td>
 				</tr>
 					<tr>
-						<th>메모</th>
-						<td><textarea class="" cols="30" rows="10" name=""></textarea></td>
+						<td>메모</td>
+						<td><textarea class="form-control" class="" cols="30" rows="10" name=""></textarea></td>
 					</tr>
 			</table>
 		</form>

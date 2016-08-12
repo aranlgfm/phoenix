@@ -15,8 +15,15 @@ public interface EmployeeSalesDao {
 	List<EmployeeListForSales> selectEmployeeList(EmployeeListForSales emp);
 	
 	/**
-	 * (Repository) 총직원매출리스트
+	 * (Repository) 일간직원매출
 	 * @return
 	 */
-	List<EmployeeSales> selectAllEmpSales(EmployeeSales emp);
+	List<EmployeeSales> selectDaliyEmpSales(EmployeeSales emp);
+	
+	/**
+	 * (Repository) 월간직원매출
+	 * @param emp
+	 * @return
+	 */
+	List<EmployeeSales> selectMonthlyEmpSales(EmployeeSales emp);
 }
