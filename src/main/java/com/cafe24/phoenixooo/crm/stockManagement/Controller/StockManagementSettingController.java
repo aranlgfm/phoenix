@@ -4,12 +4,15 @@ package com.cafe24.phoenixooo.crm.stockManagement.Controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.cafe24.phoenixooo.community.Model.UserCustomer;
 import com.cafe24.phoenixooo.crm.stockManagement.Model.Account;
 import com.cafe24.phoenixooo.crm.stockManagement.Model.Goods;
 import com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsUse;
@@ -39,9 +42,11 @@ public class StockManagementSettingController {
 	
 	//거래처 등록 처리
 	@RequestMapping(value = "/phoenix/crm/process/insertAccount", method = RequestMethod.POST)
-	public String insertAccount(Account account,Model model) 
+	public String insertAccount(Account account,Model model,HttpSession session) 
 	{ 
-		account.setShopCode("CRM_SHOP_1");
+		account.setUserCode(((UserCustomer)(session.getAttribute("user"))).getUserCode());
+		account.setShopCode(((UserCustomer)(session.getAttribute("user"))).getShopCode());
+		
 		System.out.println("------------------->"+account);
 		stockManagementSettingService.insertAccount(account);
 		return "redirect:/phoenix/crm/form/stockManagementSetting";

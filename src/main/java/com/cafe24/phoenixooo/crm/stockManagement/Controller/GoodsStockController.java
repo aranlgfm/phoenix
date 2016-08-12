@@ -3,12 +3,15 @@ package com.cafe24.phoenixooo.crm.stockManagement.Controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.cafe24.phoenixooo.community.Model.UserCustomer;
 import com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsPayment;
 import com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsStock;
 import com.cafe24.phoenixooo.crm.stockManagement.Service.GoodsStockService;
@@ -21,10 +24,11 @@ public class GoodsStockController
 	
 	//미용용품 입고등록과 내역 첫 화면
 	@RequestMapping(value = "/phoenix/crm/form/goodsStock", method = RequestMethod.GET)
-	public String moveTogoodsStock(GoodsStock goodsStock,Model model) 
+	public String moveTogoodsStock(GoodsStock goodsStock,Model model,HttpSession session) 
 	{ 
-		goodsStock.setUserCode("COM_USER_6");
-		goodsStock.setShopCode("CRM_SHOP_1");
+		goodsStock.setUserCode(((UserCustomer)(session.getAttribute("user"))).getUserCode());
+		goodsStock.setShopCode(((UserCustomer)(session.getAttribute("user"))).getShopCode());
+		
 		List<GoodsStock> goodsStockList=goodsStocdkService.selectGoodsStockList(goodsStock);
 		model.addAttribute("goodsStockList", goodsStockList);
 		return "/phoenix/crm/stockManagement/goodsStock";
@@ -38,8 +42,8 @@ public class GoodsStockController
 	}
 	
 	//입고 등록 처리
-	@RequestMapping(value = "/phoenix/crm/process/insertGoodsStock", method = RequestMethod.GET)
-	public String insertGoodsStock(GoodsStock goodsStock,Model model) 
+	@RequestMapping(value = "/phoenix/crm/process/insertGoodsStock", method = RequestMethod.POST)
+	public String insertGoodsStock(GoodsStock goodsStock,Model model,HttpSession session) 
 	{ 
 		/*System.out.println(goodsStockCommand.getStockDate()+"<----------getStockDate");
 		System.out.println(goodsStockCommand.getEmployeeName()+"<----------getEmployeeName");
@@ -48,8 +52,8 @@ public class GoodsStockController
 		System.out.println(goodsStockCommand.getBuyingGoodsUnitWon()+"<----------getBuyingGoodsUnitWon");
 		System.out.println(goodsStockCommand.getGoodsQuantityNumber()+"<----------getGoodsQuantityNumber");*/
 		
-		goodsStock.setUserCode("COM_USER_6");
-		goodsStock.setShopCode("CRM_SHOP_1");
+		goodsStock.setUserCode(((UserCustomer)(session.getAttribute("user"))).getUserCode());
+		goodsStock.setShopCode(((UserCustomer)(session.getAttribute("user"))).getShopCode());
 		goodsStocdkService.insertGoodsStock(goodsStock);
 		return "redirect:/phoenix/crm/form/goodsStock";
 	}
@@ -90,9 +94,11 @@ public class GoodsStockController
 	
 	//입고된 것 수정 처리
 	@RequestMapping(value = "/phoenix/crm/process/updateGoodsStock", method = RequestMethod.POST)
-	public String updateGoodsStock(GoodsStock goodsStock,Model model) 
+	public String updateGoodsStock(GoodsStock goodsStock,Model model,HttpSession session) 
 	{ 
-		goodsStock.setShopCode("CRM_SHOP_1");
+		goodsStock.setUserCode(((UserCustomer)(session.getAttribute("user"))).getUserCode());
+		goodsStock.setShopCode(((UserCustomer)(session.getAttribute("user"))).getShopCode());
+		
 		goodsStocdkService.updateGoodsStock(goodsStock);
 		model.addAttribute("goodsStock", goodsStock);
 		return "redirect:/phoenix/crm/form/goodsStock";
