@@ -18,6 +18,7 @@
 		<form action="/phoenix/crm/form/insertingGoods" method="get">
 			<input class="btn btn-default tag" type="submit" value="미용용품 설정등록">
 		</form>	
+		<br>
 				<table class="table table-hover">
 					<tr class="textCenter">
 						<th>
