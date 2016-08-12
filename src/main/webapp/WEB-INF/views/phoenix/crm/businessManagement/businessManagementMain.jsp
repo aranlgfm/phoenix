@@ -90,6 +90,15 @@
  			border: 1px solid silver;
 		}
 		
+		div .itemregisterCenter{
+			width:350px; 
+ 			margin: auto;
+ 			border: 1px solid silver;
+		}
+		
+		.bgColorGray{
+			background-color: #F6F6F6;
+		}
 	</style>
 </head>
 

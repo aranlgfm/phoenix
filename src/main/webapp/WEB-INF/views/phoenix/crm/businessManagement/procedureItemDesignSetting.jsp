@@ -16,9 +16,7 @@
 		});	
 	</script>
 	<style>
-		.bgColorGray{
-			background-color: #F6F6F6;
-		}
+		
 	</style>
 </head>
 
@@ -26,8 +24,8 @@
 	<c:import url="businessManagementMain.jsp"></c:import>
 	<hr>
 	<div>
-		<button class="btn btn-default"><a href="/phoenix/crm/form/procedureItemSetting">시술품목설정</a></button>
-		<button class="btn btn-default"><a href="/phoenix/crm/form/procedureItemDesignSetting">시술디자인설정</a></button>
+		<a type="button" class="btn btn-default tag"  href="/phoenix/crm/form/procedureItemSetting">시술품목설정</a>
+		<a type="button" class="btn btn-default tag"  href="/phoenix/crm/form/procedureItemDesignSetting">시술디자인설정</a>
 	</div>	
 		<!-- S시술품목별 시술디자인설정 -->
 		<div>			

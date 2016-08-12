@@ -7,25 +7,41 @@
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
+	<script src="<c:url value="/webjars/jquery/3.1.0/jquery.min.js"/>"></script>
 </head>
 
 <body>
-	<h3>시술품목디자인수정</h3>
-	
-	<form action="/phoenix/crm/process/modifyProcedureItemDesign" method="post">
-		<input type="hidden" name="itemDesignCode" value="${item.itemDesignCode}">
-		<table>
-			<tr>
-				<td>시술디자인명</td>
-				<td><input type="text" name="itemDesignName" value="${item.itemDesignName}"></td>
-			</tr>
-			<tr>
-				<td>시술가격</td>
-				<td><input type="text" name="itemDesignPrice" value="${item.itemDesignPrice}"></td>
-			</tr>
-		</table>
-		<input type="submit" value="수정">
-		<input type="button" value="취소">
-	</form>	
+	<c:import url="businessManagementMain.jsp"></c:import>
+	<hr>
+	<div>
+		<button class="btn btn-default"><a href="/phoenix/crm/form/procedureItemSetting">시술품목설정</a></button>
+		<button class="btn btn-default"><a href="/phoenix/crm/form/procedureItemDesignSetting">시술디자인설정</a></button>
+	</div>
+	<br>
+	<div class="itemregisterCenter">
+		<div class="textCenter">
+			<div class="divTh">시술품목디자인수정</div>
+			
+			<form class="form-inline" action="/phoenix/crm/process/modifyProcedureItemDesign" method="post">
+				<input type="hidden" name="itemDesignCode" value="${item.itemDesignCode}">
+				<table class="table">
+					<tr class="textCenter">
+						<td class="bgColorGray"><label>시술디자인명</label></td>
+						<td class="textLeft"><input class="form-control" type="text" name="itemDesignName" value="${item.itemDesignName}"></td>
+					</tr>
+					<tr>
+						<td class="bgColorGray"><label>시술가격</label></td>
+						<td class="textLeft"><input class="form-control" type="text" name="itemDesignPrice" value="${item.itemDesignPrice}"></td>
+					</tr>
+				</table>
+				<hr>
+				<div>
+					<input class="btn btn-default tag" type="submit" value="수정">
+					<a type="button" class="btn btn-default tag" href="/phoenix/crm/form/procedureItemDesignSetting">취소</a>
+				</div>
+				<br>
+			</form>	
+		</div>
+	</div>		
 </body>
 </html>
