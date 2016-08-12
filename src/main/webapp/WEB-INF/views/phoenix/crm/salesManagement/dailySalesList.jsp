@@ -18,6 +18,7 @@
 </style>
 <script>
 	$(document).ready(function(){
+		
 		$(".dailySales").addClass("active");
 	});
 </script>

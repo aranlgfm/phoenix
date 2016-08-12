@@ -51,17 +51,6 @@ public class TotalSalesController {
 	
 	
 	
-	
-	
-	
-	
-	// 매출 그래프
-	@RequestMapping(value = "/phoenix/crm/salesManagement/SalesGraph", method = RequestMethod.GET)
-	public String SalesGraph() {
-		return "/phoenix/crm/salesManagement/SalesGraph";
-	}
-	
-	
 	//일간 매출 내역
 	@RequestMapping(value = "/phoenix/crm/salesManagement/dailySalesList", method = RequestMethod.GET)
 	public String dailySalesList() {
@@ -216,4 +205,25 @@ public class TotalSalesController {
 			return "/phoenix/crm/salesManagement/periodSalesList";
 		}
 	
+		
+		// 매출 그래프
+		@RequestMapping(value = "/phoenix/crm/salesManagement/SalesGraph", method = RequestMethod.GET)
+		public String SalesGraph() {
+			return "/phoenix/crm/salesManagement/SalesGraph";
+		}	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 }

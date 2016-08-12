@@ -6,63 +6,47 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- JQ-PLOT의 CSS를 설정 -->
-<link class="include" rel="stylesheet" type="text/css" href="jquery.jqplot.css"/>
-<!-- JQ-PLOT의 기본 설정 -->
-<link href="css/jquery.jqplot.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/jquery.jqplot.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.barRenderer.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.dateAxisRenderer.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/jquery.jqplot.min.css">
+
 <script>
-	var plot;
-	var chartData = [[0,0]];
-	
 	$(document).ready(function(){
-		renderChart();
-		update();
+	    
 		
+		var line1 = [['Nissan', 4],['Porche', 6],['Acura', 2],['Aston Martin', 5],['Rolls Royce', 6]];
+			 
+	    $('#chart').jqplot([line1], {
+	        title:'ㅁㅇㄴㄻㄴㅇㅎㅁㅁㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄹ',
+	        // Provide a custom seriesColors array to override the default colors.
+	        seriesColors:['#85802b', '#00749F', '#73C774', '#C7754C', '#17BDB8'],
+	        seriesDefaults:{
+	            renderer:$.jqplot.BarRenderer,
+	            rendererOptions: {
+	                // Set varyBarColor to tru to use the custom colors on the bars.
+	                varyBarColor: true
+	            }
+	        },
+	        axes:{
+	            xaxis:{
+	                renderer: $.jqplot.CategoryAxisRenderer
+	            }
+	        }
+	    });
 	});
-	
-	function renderChart(){
-		plot = $.jqplot('chart',[chartData],{
-			title:'Current User'
-			, axes:{
-				xaxis:{
-					renderer:$.jqplot.DateAxisRenderer
-					,tickOptions:{
-						formatString:'%m-%d %H:%M::%S'
-						, showLabel:false
-						, showGridline:false
-					}
-					, tickInterval:'5 minutes'
-				}
-			}
-		, series:[{
-			color:'#5FAB78'
-		}]
-		,highlighter:{
-			show:true,
-			sizeAdjust:7.5
-		}
-		,cursor:{
-			show:false
-		}
-	});
-}
-	function getChartData(){
-		$
-	}
 	
 </script>
-
-<style>
-	#confines 
-	{
-		border-style: solid;
-    	border-width: medium;
-	}
-</style>
 <title>기간별 매출 그래프</title>
 </head>
 <body>
-	<div id="graph" style="width:300px; height:300px;"></div>
+	<div id="chart">
+			
+	</div>
 
 
 
