@@ -25,14 +25,14 @@
 		<!-- 회원검색 -->
 			<div class="divTh">회원검색</div>
 			<br>
-			<form action="/phoenix/crm/form/procedurePaymentCustomerList" method="POST">
+			<form class="form-inline" action="/phoenix/crm/form/procedurePaymentCustomerList" method="POST">
 				<input type="hidden" id="pagePerRecordSize" name="pagePerRecordSize" value="${pageHelper.pagePerRecordSize}">
 				<input type="hidden" id="totalRecordSize" name="totalRecordSize" value="${pageHelper.totalRecordSize}">
 				<input type="hidden" id="pagePerListSize" name="pagePerListSize" value="${pageHelper.pagePerListSize}">
 				<div class="textCenter">
 					<label>회원명</label>
-					<input type="text" name="searchKeyword" size="10"/>
-					<input type="submit" value="검색"/>
+					<input class="form-control" type="text" name="searchKeyword" size="10"/>
+					<input class="form-control" type="submit" value="검색"/>
 				</div>
 			</form>
 		<hr>
@@ -82,38 +82,38 @@
 		
 		
 		<!-- 이전 -->
-		<div class="textCenter">
+		<ul class="pager">
 		<c:choose>
-			<c:when test="${pageHelper.currentPageNo == 1}">◁</c:when>
-			<c:otherwise><a href="/phoenix/crm/form/procedurePaymentCustomerList?currentPageNo=1">◀</a></c:otherwise>
+			<c:when test="${pageHelper.currentPageNo == 1}"><li class="tag"><a class="tag disabled" href="#">◁</a></li></c:when>
+			<c:otherwise><li class="tag"><a class="tag" href="/phoenix/crm/form/procedurePaymentCustomerList?currentPageNo=1">◀ </a></li></c:otherwise>
 		</c:choose>
 		<c:choose>
-			<c:when test="${pageHelper.currentPageNo == 1}">이전</c:when>
-			<c:otherwise><a href="/phoenix/crm/form/procedurePaymentCustomerList?currentPageNo=${pageHelper.prevPageNo}">이전</a></c:otherwise>
+			<c:when test="${pageHelper.currentPageNo == 1}"><li class="tag disabled"><a class="tag" href="#">Previous</a></li></c:when>
+			<c:otherwise><li class="tag"><a class="tag" href="/phoenix/crm/form/procedurePaymentCustomerList?currentPageNo=${pageHelper.prevPageNo}">Previous</a></c:otherwise>
 		</c:choose>
 		
 		<!-- 현재페이지 -->
 		<c:forEach begin="${pageHelper.currentListStartPageNo}" end="${pageHelper.currentListEndPageNo}" varStatus="number">
 			<c:choose>
 				<c:when test="${pageHelper.currentPageNo == number.index}">
-					<a href="/phoenix/crm/form/procedurePaymentCustomerList?currentPageNo=${number.index}"><b>[${number.index}]</b></a>
+					<li class="tag"><a class="tag" href="/phoenix/crm/form/procedurePaymentCustomerList?currentPageNo=${number.index}"><b>${number.index}</b></a></li>
 				</c:when>
 				<c:otherwise>
-					<a href="/phoenix/crm/form/procedurePaymentCustomerList?currentPageNo=${number.index}">[${number.index}]</a>
+					<li class="tag"><a class="tag" href="/phoenix/crm/form/procedurePaymentCustomerList?currentPageNo=${number.index}">${number.index}</a></li>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
-
+		
 		<!-- 다음 -->
 		<c:choose>
-			<c:when test="${pageHelper.currentPageNo >= pageHelper.totalPageSize}">다음</c:when>
-			<c:otherwise><a href="/phoenix/crm/form/procedurePaymentCustomerList?currentPageNo=${pageHelper.nextPageNo}">다음</a></c:otherwise>
+			<c:when test="${pageHelper.currentPageNo >= pageHelper.totalPageSize}"><li class="tag disabled"><a class="tag" href="#">Next</a></li></c:when>
+			<c:otherwise><li class="tag"><a class="tag" href="/phoenix/crm/form/procedurePaymentCustomerList?currentPageNo=${pageHelper.nextPageNo}">Next</a></li></c:otherwise>
 		</c:choose>
 		<c:choose>
-			<c:when test="${pageHelper.currentPageNo == pageHelper.totalPageSize}">▷</c:when>
-			<c:otherwise><a href="/phoenix/crm/form/procedurePaymentCustomerList?currentPageNo=${pageHelper.totalPageSize}">▶</a></c:otherwise>
+			<c:when test="${pageHelper.currentPageNo == pageHelper.totalPageSize}"><li class="tag disabled"><a class="tag" href="#">▷</a></li></c:when>
+			<c:otherwise><li class="tag"><a class="tag" href="/phoenix/crm/form/procedurePaymentCustomerList?currentPageNo=${pageHelper.totalPageSize}">▶</a></li></c:otherwise>
 		</c:choose>
-		
+		</ul>
 		
 		<!-- 페이징 및 다른값들 넘길때 필요한 폼 -->
 		<form action="/phoenix/crm/form/ProcedurePaymentList" id="pagingForm" method="post">

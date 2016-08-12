@@ -34,6 +34,7 @@
 					$(".formItemDesignCode").val($("#itemDesignSelect").val());
 						$("#itemDesignForm").submit();
 				});
+				
 			});
 		</script>
 </head>
@@ -43,8 +44,9 @@
 	<c:import url="businessManagementMain.jsp"></c:import>
 	<hr>
 		<!-- 회원시술등록 -->
-		<div style="border: 1px double;">
-			<div style="background-color: gray;">회원시술등록</div>
+	<div class="registerCenter">
+		<div class="textCenter">
+			<div class="divTh">회원시술등록</div>
 			
 			<!-- ITEM SELECT FORM -->
 				<form id="itemForm" action="/phoenix/crm/process/procedurePaymentSelectItem" method="POST">
@@ -57,23 +59,25 @@
 					<input class="formItemDesignCode" name="itemDesignCode" type="hidden" value="">
 					<input name="ShopCode" type="hidden" value="${user.shopCode}">
 				</form>
-			
-			
-			<form action="/phoenix/crm/process/insertProcedurePayment" method="POST">
+				
+				
+<!-- 회원시술등록 FORM 회원시술등록 FORM 회원시술등록 FORM 회원시술등록 FORM 회원시술등록 FORM 회원시술등록 FORM 회원시술등록 FORM 회원시술등록 FORM -->			
+			<form class="form-inline" action="/phoenix/crm/process/insertProcedurePayment" method="POST">
 			<!-- 임시값 샾코드,유저코드 세션-->
 				<input type="hidden" name="shopCode" value="${user.shopCode}"> 
 				<c:if test="${customerCode ne null and customerCode ne ''}">
 					<c:set var="customerCode" value="${customerCode}" scope="session"></c:set>
 				</c:if>	 
-					<input type="text" name="customerCode" value="${sessionScope.customerCode}">
+					<input type="hidden" name="customerCode" value="${sessionScope.customerCode}">
 			<!-- 임시값 -->
 				<div>
 					<!-- 시술품목 -->
 					<div>
-						<div>시술정보선택</div>
+						<hr>
+						<div><label>시술정보선택</label></div>
+						<br>
 						<div>
-							<select id="itemSelect" name="itemCode">
-							
+							<select class="form-control" id="itemSelect" name="itemCode">
 							<!-- 시술품목셀렉 -->
 							<c:choose>
 								<c:when test="${itemDesignList ne null}">
@@ -101,7 +105,7 @@
 							</select><!-- 시술품목셀렉 -->
 						
 							<!-- 시술디자인셀렉 -->
-							<select id="itemDesignSelect" name="itemDesignCode">
+							<select class="form-control" id="itemDesignSelect" name="itemDesignCode">
 							<c:choose>
 								<c:when test="${itemDesign ne null}">
 									<option value="">디자인선택</option>
@@ -127,9 +131,9 @@
 							
 							
 							
-	
+		
 							<!-- 담당자 셀렉 -->
-							<select name="employeeCode">
+							<select class="form-control" name="employeeCode">
 							<c:choose>
 								<c:when test="${employeeList ne null}">
 									<option value="">담당자선택</option>
@@ -147,40 +151,41 @@
 							</select><!-- 담당자 셀렉 -->
 							
 							
-<!-- 							이건 제외 가라임. -->
-<!-- 							<select name="employeeCode"> -->
-<!-- 								<option value="">담당자선택</option>	 -->
-<!-- 								<option value="CRM_EMPLOYEE_1">존</option> -->
-<!-- 								<option value="CRM_EMPLOYEE_2">비와이</option> -->
-<!-- 								<option value="CRM_EMPLOYEE_6">겐지</option> -->
-<!-- 							</select> -->
 							
-							<select name="paymentTypeCode">
+							<select class="form-control" name="paymentTypeCode">
 								<option value="">결제방식</option>	
 								<option value="PAYMENT_TYPE_CARD">카드</option>
 								<option value="PAYMENT_TYPE_CASH">현금</option>
 							</select>
 						</div>
 					</div><!-- 시술정보/결제방식 -->
+					
 					<hr>
 					<!-- 결제방식/메모 -->
 					<div>
 						<div>
-							<label>시술가격</label>
-							<input type="text" name="paymentTotalPrice" value="${itemDesign.itemDesignPrice}">
-							
-							<label>시술일</label>
-							<input type="date" name="paymentDate" value="">
+							<label>시술가격 : </label>
+							<input class="form-control" type="text" size="10" name="paymentTotalPrice" value="${itemDesign.itemDesignPrice}">
+							&nbsp;&nbsp;
+							<label>시술일 : </label>
+							<input class="form-control" type="date" name="paymentDate" value="">
 						</div>
+						<br>
 						<div>
-							<textarea name="paymentMemo" rows="5" cols="50" value=""></textarea>
+							<label></label>
+							<textarea class="form-control" name="paymentMemo" rows="5" cols="55" value="" placeholder="메모"></textarea>
 						</div>
 					</div>
 				</div><!-- 전체form -->
-				<input type="submit" value="등록">
-				<input type="submit" name="addPayment" value="추가등록">
-				<input type="button" value="취소">
+				<hr>
+				<div>
+				<input class="form-control" type="submit" value="등록">
+				<input class="form-control" type="submit" name="addPayment" value="추가등록">
+				<button class="form-control"><a class="tag" href="/phoenix/crm/form/procedurePaymentCustomerList">취소</a></button>
+				</div>
+				<br>
 			</form>
 		</div>
+	</div>	
 </body>
 </html>
