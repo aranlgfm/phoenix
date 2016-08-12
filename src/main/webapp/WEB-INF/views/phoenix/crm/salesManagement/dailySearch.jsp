@@ -47,7 +47,7 @@
 <body>
 <div id="all">
 	<div>
-		<form class="navbar-search pull-left" action="/phoenix/crm/salesManagement/periodSearch" method="post">
+		<form class="navbar-search pull-left" action="/phoenix/crm/salesManagement/dailySearch" method="post">
 			<div>
 			<strong>기간검색</strong>
 				<input class="realDay" type="text" value="${serverTime}" name="paymentDate">

@@ -34,7 +34,7 @@ public class TotalSalesController {
 		List<DaySalesInfo> list = totalSalesService.SelectDailySales(paymentDate);
 		model.addAttribute("list", list);
 		
-		return "/phoenix/crm/salesManagement/periodSalesList";
+		return "/phoenix/crm/salesManagement/dailySalesList";
 	}
 	
 	//기간검색
@@ -52,13 +52,13 @@ public class TotalSalesController {
 	}*/
 	
 	//일간검색 -> 일간매출내역 처리
-	@RequestMapping(value = "/phoenix/crm/salesManagement/periodSearch", method = RequestMethod.POST)
+	@RequestMapping(value = "/phoenix/crm/salesManagement/dailySearch", method = RequestMethod.POST)
 	public String periodSearch(String paymentDate, Model model) {
-		System.out.println("periodSearch에서 넘긴 현재날짜 : "+paymentDate);
+		System.out.println("dailySearch에서 넘긴 현재날짜 : "+paymentDate);
 		List<DaySalesInfo> list = totalSalesService.SelectDailySales(paymentDate);
 		model.addAttribute("list", list);
 		System.out.println("model : "+model);
-		return "/phoenix/crm/salesManagement/periodSalesList";
+		return "/phoenix/crm/salesManagement/dailySalesList";
 	}
 	
 	
@@ -68,16 +68,16 @@ public class TotalSalesController {
 	
 	
 	//기간별 매출 그래프
-	@RequestMapping(value = "/phoenix/crm/salesManagement/periodSalesGraph", method = RequestMethod.GET)
+	@RequestMapping(value = "/phoenix/crm/salesManagement/SalesGraph", method = RequestMethod.GET)
 	public String periodSalesGraph() {
-		return "/phoenix/crm/salesManagement/periodSalesGraph";
+		return "/phoenix/crm/salesManagement/SalesGraph";
 	}
 	
 	
 	//기간별 매출 내역
-	@RequestMapping(value = "/phoenix/crm/salesManagement/periodSalesList", method = RequestMethod.GET)
+	@RequestMapping(value = "/phoenix/crm/salesManagement/dailySalesList", method = RequestMethod.GET)
 	public String periodSalesList() {
-		return "/phoenix/crm/salesManagement/periodSalesList";
+		return "/phoenix/crm/salesManagement/dailySalesList";
 	}
 	
 	

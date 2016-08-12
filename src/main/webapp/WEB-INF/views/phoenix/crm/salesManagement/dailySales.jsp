@@ -11,7 +11,7 @@
 <body>
 	<div>
 		<div>
-			<c:import url="/phoenix/crm/salesManagement/periodSalesList"></c:import>
+			<c:import url="/phoenix/crm/salesManagement/dailySalesList"></c:import>
 		</div>
 	</div>
 </body>

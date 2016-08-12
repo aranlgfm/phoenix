@@ -28,7 +28,7 @@
 	</div>
 		<br>
 	<div>
-		<c:import url="periodSearch.jsp"></c:import>
+		<c:import url="dailySearch.jsp"></c:import>
 	</div>
 		<br><br><br>
 	
