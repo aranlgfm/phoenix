@@ -14,4 +14,6 @@ public interface TotalSalesDao {
 	
 	//년간 총매출
 	List<MonthSalesInfo> selectYearlySearch(MonthSalesInfo year);
+	
+	List<MonthSalesInfo> selectPeriodList(MonthSalesInfo period);
 }

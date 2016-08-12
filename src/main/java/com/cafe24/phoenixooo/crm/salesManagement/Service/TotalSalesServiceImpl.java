@@ -70,7 +70,7 @@ public class TotalSalesServiceImpl implements TotalSalesService {
 	//년간총매출 검색 처리
 	@Override
 	public List<MonthSalesInfo> selectYearlySearch(MonthSalesInfo year) {
-System.out.println("년간총매출 서비스단 실행");
+		System.out.println("년간총매출 서비스단 실행");
 		System.out.println("년간 서비스 단의 year 데이터 : "+year.getPaymentYear());
 		List<MonthSalesInfo> list = totalSalesDao.selectYearlySearch(year);
 		System.out.println("되돌아오냐 서비스로??????????????????????");
@@ -92,5 +92,18 @@ System.out.println("년간총매출 서비스단 실행");
 		System.out.println("중복아이디 합치고난 후의 리스트 : "+list);
 		return list;
 	}
+	
+	
+	//기간별매출통계리스트 처리
+	@Override
+	public List<MonthSalesInfo> selectPeriodList(MonthSalesInfo period) {
+		System.out.println("기간별매출통계 서비스단");
+		
+		List<MonthSalesInfo> list = totalSalesDao.selectPeriodList(period);
+		System.out.println("디비갔다 나온 값 (서비스단"+list);
+		return list;
+	}
+	
+	
 	
 }
