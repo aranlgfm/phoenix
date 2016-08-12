@@ -18,10 +18,9 @@
 </head>
 <body>
 	<c:import url="stockManagement.jsp"></c:import>
-	<hr>
 	
 	<div id="all">
-	
+		<hr>
 		<table class="table table-hover">
 			<tr class="textCenter">
 				<th>

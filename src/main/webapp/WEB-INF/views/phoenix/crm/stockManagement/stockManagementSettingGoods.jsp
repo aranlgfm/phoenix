@@ -9,12 +9,14 @@
 </head>
 <body>
 	<c:import url="stockManagement.jsp"></c:import>
-	<hr>
+	
 	<div id="all">
+		<hr>
 		<form action="/phoenix/crm/form/insertingGoods" method="get">
 			<input type="submit" value="제품 등록">
+			<!-- <a class="btn btn-primary" href="/phoenix/crm/stockManagement/goodsSetting">거래처등록</a> -->
 		</form>	
-		<a href="/phoenix/crm/form/goodsSetting">미용용품설정목록</a>
+		<a href="goodsSetting">미용용품설정목록</a>
 	</div>	
 </body>
 </html>

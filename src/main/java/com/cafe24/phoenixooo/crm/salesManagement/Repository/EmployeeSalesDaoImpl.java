@@ -25,11 +25,19 @@ public class EmployeeSalesDaoImpl implements EmployeeSalesDao {
 	}
 
 	/**
-	 * (Repository구현) 총직원매출리스트
+	 * (Repository구현) 일간직원매출
 	 */
 	@Override
-	public List<EmployeeSales> selectAllEmpSales(EmployeeSales emp) {
-		return sqlSession.selectList(NS+"selectAllEmpSales", emp);
+	public List<EmployeeSales> selectDaliyEmpSales(EmployeeSales emp) {
+		return sqlSession.selectList(NS+"selectDaliyEmpSales", emp);
+	}
+
+	/**
+	 * (Repository구현) 월간직원매출
+	 */
+	@Override
+	public List<EmployeeSales> selectMonthlyEmpSales(EmployeeSales emp) {
+		return sqlSession.selectList(NS+"selectMonthlyEmpSales", emp);
 	}
 
 }

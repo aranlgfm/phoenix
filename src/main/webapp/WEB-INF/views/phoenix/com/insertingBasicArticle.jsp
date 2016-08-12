@@ -49,8 +49,19 @@
 		
 		//게시글 서브밋하기
 		$('#goInsertBtn').click(function(){
+			$('#insertBasicArticle').attr("action","/phoenix/com/form/insertBasicArticle");
+			$('#insertBasicArticle').attr("method","post");
+			$('#insertBasicArticle').attr("enctype","multipart/form-data");
 			$('#insertBasicArticle').submit();
 		})
+		
+		//취소버튼
+		$("#cancelBtn").click(function()
+		{
+			$('.cancelForm').attr("action","/phoenix/com/form/basicBoard");
+			$('.cancelForm').attr("method","get");
+			$('.cancelForm').submit();
+		});
 		
 	});
 </script>
@@ -64,9 +75,7 @@
 	
 
 	<div id="all">	
-		<form id="insertBasicArticle" action="/phoenix/com/form/insertBasicArticle" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="boardGroupCode" value=${boardGroupCode}>
-			
+		<form id="insertBasicArticle">	
 			<div id="fileDiv5">
 				<label>이미지파일: </label>
 				<input id="imgFile" type="file" name="imgFile" />
@@ -84,12 +93,17 @@
 					<span class="cell col1 cell3">내용</span>
 					<span class="cell col2 cell4"><textarea class="articleContent" cols="150%" rows="20" name="articleContent"></textarea></span>
 				</div>
+				<input type="hidden" name="boardGroupCode" value=${boardGroupCode } />
 			</div>
-			<div class="goInsertBtn">
-				<input id="goInsertBtn" type="button" value="등록">	
-				<input id="cancelBtn" type="button" value="취소">
-			</div>	
 		</form>
+		<form class="cancelForm">
+			<input type="hidden" name="boardGroupCode" value=${boardGroupCode } />
+		</form>
+		<div class="goInsertBtn">
+			<input id="goInsertBtn" type="button" value="등록">	
+			<input id="cancelBtn" type="button" value="취소">
+		</div>	
+		
 	</div>
 </body>
 </html>

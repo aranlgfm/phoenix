@@ -15,8 +15,15 @@ public interface EmployeeSalesService {
 	List<EmployeeListForSales> selectEmployeeList(EmployeeListForSales emp);
 	
 	/**
-	 * (Service) 총직원매출리스트
+	 * (Service) 일간직원매출
 	 * @return
 	 */
-	List<EmployeeSales> selectAllEmpSales(EmployeeSales emp);
+	List<EmployeeSales> selectDaliyEmpSales(EmployeeSales emp);
+	
+	/**
+	 * (Service) 월간직원매출
+	 * @param emp
+	 * @return
+	 */
+	List<EmployeeSales> selectMonthlyEmpSales(EmployeeSales emp);
 }

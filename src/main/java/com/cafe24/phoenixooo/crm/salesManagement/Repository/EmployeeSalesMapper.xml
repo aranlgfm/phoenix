@@ -4,7 +4,8 @@
 
 <!-- 
 	1. 직원리스트
-	2. 직원매출검색 
+	2. 일간직원매출검색
+	3. 월간직원매출검색
 -->
 
 	<!-- 1. 직원리스트 -->
@@ -17,8 +18,8 @@
 		WHERE SHOP_CD = #{shopCode}
 	</select>
 	
-	<!-- 2. 총직원매출검색 -->
-	<select id="selectAllEmpSales" parameterType="com.cafe24.phoenixooo.crm.salesManagement.Model.EmployeeSales" resultType="com.cafe24.phoenixooo.crm.salesManagement.Model.EmployeeSales">
+	<!-- 2. 일간직원매출검색 -->
+	<select id="selectDaliyEmpSales" parameterType="com.cafe24.phoenixooo.crm.salesManagement.Model.EmployeeSales" resultType="com.cafe24.phoenixooo.crm.salesManagement.Model.EmployeeSales">
 		SELECT
 			EMPLOYEE_NM as employeeName
 			,PAYMENT_TYPE_GB as paymentType
@@ -34,10 +35,37 @@
 			PAYMENT_DT = #{paymentDate}
 		AND 
 			SHOP_CD = #{shopCode}
-	<if test="employeeCode != null and employeeCode != ''">
+		<if test="employeeCode != '' and employeeCode != null">
+			AND 
+				EMPLOYEE_CD = #{employeeCode}
+		</if>
+		GROUP BY
+			EMPLOYEE_CD,PAYMENT_TYPE_GB
+		ORDER BY 
+			EMPLOYEE_NM asc
+	</select>
+	
+	<!-- 3. 월간직원매출검색 -->
+	<select id="selectMonthlyEmpSales" parameterType="com.cafe24.phoenixooo.crm.salesManagement.Model.EmployeeSales" resultType="com.cafe24.phoenixooo.crm.salesManagement.Model.EmployeeSales">
+		SELECT
+			EMPLOYEE_NM as employeeName
+			,PAYMENT_TYPE_GB as paymentType
+		    ,if(PAYMENT_TYPE_GB = '현금', sum(PAYMENT_TOTAL_WON),0) as totalCash
+		    ,if(PAYMENT_TYPE_GB = '현금', count(PAYMENT_TOTAL_WON),0) as countCash
+		    
+		    ,if(PAYMENT_TYPE_GB = '카드', sum(PAYMENT_TOTAL_WON),0) as totalCard
+		    ,if(PAYMENT_TYPE_GB = '카드', count(PAYMENT_TOTAL_WON),0) as countCard
+		   ,PAYMENT_DT as paymentDate
+		FROM
+			CRM_PAYMENT_TB
+		WHERE 
+			PAYMENT_DT LIKE #{paymentMonth}
 		AND 
-			EMPLOYEE_CD = #{employeeCode}
-	</if>
+			SHOP_CD = #{shopCode}
+		<if test="employeeCode != '' and employeeCode != null">
+			AND 
+				EMPLOYEE_CD = #{employeeCode}
+		</if>
 		GROUP BY
 			EMPLOYEE_CD,PAYMENT_TYPE_GB
 		ORDER BY 
