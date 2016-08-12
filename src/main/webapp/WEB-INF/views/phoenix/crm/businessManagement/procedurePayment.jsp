@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page session="true"%>
 <!DOCTYPE html>
 <html>
@@ -164,8 +165,8 @@
 					<!-- 결제방식/메모 -->
 					<div>
 						<div>
-							<label>시술가격 : </label>
-							<input class="form-control" type="text" size="10" name="paymentTotalPrice" value="${itemDesign.itemDesignPrice}">
+							<label>시술금액 : </label>
+							<input class="form-control" type="text" size="10" name="paymentTotalPrice" value="<fmt:formatNumber value="${itemDesign.itemDesignPrice}"></fmt:formatNumber>">
 							&nbsp;&nbsp;
 							<label>시술일 : </label>
 							<input class="form-control" type="date" name="paymentDate" value="">
@@ -179,9 +180,9 @@
 				</div><!-- 전체form -->
 				<hr>
 				<div>
-				<input class="form-control" type="submit" value="등록">
-				<input class="form-control" type="submit" name="addPayment" value="추가등록">
-				<button class="form-control"><a class="tag" href="/phoenix/crm/form/procedurePaymentCustomerList">취소</a></button>
+				<input class="form-control btn btn-default" type="submit" value="등록">
+				<input class="form-control btn btn-default" type="submit" name="addPayment" value="추가등록">
+				<a type="button" class="btn btn-default tag" href="/phoenix/crm/form/procedurePaymentCustomerList">취소</a>
 				</div>
 				<br>
 			</form>

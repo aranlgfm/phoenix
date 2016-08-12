@@ -72,6 +72,7 @@
 					<td>${list.employeeName}</td>
 					<td>${list.paymentMemo}</td>
 					<td>
+					
 						<a href="/phoenix/crm/form/modifyProcedurePayment?paymentCode=${list.paymentCode}">수정</a>
 						<a href="/phoenix/crm/process/deleteProcedurePayment?paymentCode=${list.paymentCode}">삭제</a>
 						<a href="/phoenix/crm/form/insertProcedurePayment?customerCode=${list.customerCode}">등록</a>
