@@ -60,6 +60,7 @@
 			<li id="employeeList"><a href="/phoenix/crm/employeeManagement/employeeList">직원 리스트</a></li>
 			<li id="indertingEmployee"><a href="/phoenix/crm/employeeManagement/insertingEmployee">직원 입력</a></li>
 			<li id="employeeSalaryList"><a href="/phoenix/crm/employeeManagement/employeeSalaryList">급여지급 리스트</a></li>
+			<li id="insertingEmployeeSalary"><a href="/phoenix/crm/employeeManagement/insertingEmployeeSalary">급여지급 입력</a></li>
 		</ul>
 </body>
 </html>

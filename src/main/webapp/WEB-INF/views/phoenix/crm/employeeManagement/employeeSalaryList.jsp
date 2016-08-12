@@ -4,44 +4,96 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style>
+	
+	.divTh {
+		padding:5px;
+		font-weight:bolder;
+		background-color : #7c7c7c;
+		color : #ffffff;
+	}
+	
+	th {
+		background-color : #7c7c7c;
+	color : #ffffff;
+	}
+	
+	.textCenter {
+		text-align: center;
+	}
+	
+	.textCenter th,td {
+		text-align: center;
+	}
+	
+	.textRight {
+		text-align: right;
+	}
+	
+</style>
+
 <title>Insert title here</title>
 </head>
 <body>
 	
-	<h1>급여지급 리스트</h1>
+	<c:import url="employeeManagementMain.jsp"></c:import>
 	
-	<a href="/phoenix/crm/employeeManagement/insertingEmployeeSalary">급여지급 입력</a>
-	
-	<table border="1">
-		<tr>
-			<td>직원명</td>
-			<td>급여지급일</td>
-			<td>근무년월</td>
-			<td>지급급여</td>
-		</tr>
-		<c:forEach var="list" items="${employeeSalaryList}">
+	<hr>
+	<div class="divTh">직원검색</div>
+	<br/>
+	<form action="/phoenix/crm/employeeManagement/employeeSalaryList" method="GET">
+		<div>
+			<!-- <label>검색어 :</label>
+			<input type="text" name="word"><button type="button" class="btn btn-info">검색</button>
+			 -->
+			<div class="textCenter">
+				<label>직원명</label>
+				<input type="text" name="word" size="10"/>
+				<input type="submit" value="검색"/>
+			</div>
+			
+		</div>
+	</form>
+	<hr>
+	<table class="table table-hover">
+		<thead>
 			<tr>
-				<td>${list.employeeName}</td>
-				<td>${list.salaryPayCode}</td>
-				<td>${list.salaryMonthCode}</td>
-				<td>${list.salaryWon}</td>
+				<th>직원명</th>
+				<th>급여지급일</th>
+				<th>근무년월</th>
+				<th>지급급여</th>
 			</tr>
+		</thead>
+		<c:forEach var="list" items="${employeeSalaryList}">
+			<tbody>
+				<tr>
+					<td>${list.employeeName}</td>
+					<td>${list.salaryPayCode}</td>
+					<td>${list.salaryMonthCode}</td>
+					<td>${list.salaryWon}</td>
+				</tr>
+			</tbody>
 		</c:forEach>
 	</table>
 	
-	<form action="/phoenix/crm/employeeManagement/employeeSalaryList" method="GET">
+	<!-- <form action="/phoenix/crm/employeeManagement/employeeSalaryList" method="GET">
 		검색어 : 
 		<input type="text" name="word">
 		<button>검색</button>
-	</form>
-	
+	</form> -->
+	<%-- 
 	<c:if test="${page>1}">
 		<a href="/phoenix/crm/employeeManagement/employeeSalaryList?page=${page-1}">이전</a>
 	</c:if>
 	<c:if test="${page<lastPage}">
 		<a href="/phoenix/crm/employeeManagement/employeeSalaryList?page=${page+1}">다음</a>
 	</c:if>
-	
+	 --%>
 	
 </body>
 </html>
