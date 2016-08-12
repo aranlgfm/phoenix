@@ -6,9 +6,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+	<script src="<c:url value="/webjars/jquery/3.1.0/jquery.min.js"/>"></script>
+	<script>
+	$(document).ready(function()
+			{
+			$(".goodsStock").addClass("active");
+			});
+	</script>
 </head>
+
 <body>
-	여기서 결제 등록할겁니다!
+<c:import url="stockManagement.jsp"></c:import>
+<div id="all">
+	<hr>
+	<div class="divTh">결제 등록</div>
 	<br><br>
 	<form action="/phoenix/crm/process/insertGoodsPayment" method="post">
 		<input type="hidden" name="stockCode" value="${goodsStock.stockCode}">
@@ -42,7 +53,7 @@
 					결제일
 				</td>
 				<td>
-					<input type="text" name="paymentDate">
+					<input class="form-control" type="text" name="paymentDate">
 				</td>
 			</tr>
 			<tr>
@@ -50,7 +61,7 @@
 					결제담당자
 				</td>
 				<td>
-					<select name="employeeName">
+					<select class="form-control" name="employeeName">
 						<option value="존">존</option>
 						<option value="비와이">비와이</option>
 						<option value="토마스">토마스</option>
@@ -62,7 +73,7 @@
 					결제금액
 				</td>
 				<td>
-					<input type="text" name="purchaseForOneOrder">
+					<input class="form-control" type="text" name="purchaseForOneOrder">
 				</td>
 			</tr>
 			<tr>
@@ -70,12 +81,12 @@
 					메모
 				</td>
 				<td>
-					<textarea name="paymentMemo" cols="150" rows="5"></textarea>
+					<textarea class="form-control" name="paymentMemo" cols="110" rows="5"></textarea>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<input type="submit" value="결제하기">
+					<input class="form-control" type="submit" value="결제하기">
 				</td>
 				<%-- <td>
 					${goodsStock.stockCode}
@@ -83,5 +94,7 @@
 			</tr>
 		</table>
 	</form>
+</div>
 </body>
+
 </html>

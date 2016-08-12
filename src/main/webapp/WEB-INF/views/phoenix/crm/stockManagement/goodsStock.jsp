@@ -27,88 +27,84 @@
 <body>
 
 	<c:import url="stockManagement.jsp"></c:import>
-	
 	<c:set var="shopCode" value="CRM_SHOP_1" scope="session"></c:set>
 	
-	<hr>
-	
 	<div id="all">
+		<hr>
 		<!-- 입고가 되고 나면 결제 하는 시스템으로 되어 있다 -->
 		<form class="insertingGoodsStock" action="/phoenix/crm/form/insertingGoodsStock" method="post">
 			<input class="insertingGoodsStockBtn btn btn-primary" type="button" value="미용용품입고등록">
 		</form>
 		<br>
-		
-		
-			<table class="table table-hover">
+		<table class="table table-hover">
+			<tr class="textCenter">
+				<th>
+					입고일
+				</th>
+				<th>
+					거래처
+				</th>
+				<th>
+					제품명
+				</th>
+				<th>
+					입고액
+				</th>
+				<th>
+					담당자
+				</th>
+				<th>
+					관리
+				</th>
+			</tr>
+			<c:forEach var="list" items="${goodsStockList}">
 				<tr class="textCenter">
-					<th>
-						입고일
-					</th>
-					<th>
-						거래처
-					</th>
-					<th>
-						제품명
-					</th>
-					<th>
-						입고액
-					</th>
-					<th>
-						담당자
-					</th>
-					<th>
-						관리
-					</th>
+					<td>
+						${list.stockDate}
+					</td>
+					<td>
+						${list.accountName}
+					</td>
+					<td>
+						${list.goodsName}
+					</td>
+					<td>
+						${list.purchaseForOneOrder}
+					</td>
+					<td>
+						${list.employeeName}
+					</td>
+					<td>
+						<form action="/phoenix/crm/form/goodsPayment" method="post">
+							<input type="hidden" name="stockCode" value="${list.stockCode}">
+							<input type="hidden" name="goodsName" value="${list.goodsName}">
+							<input type="hidden" name="accountName" value="${list.accountName}">
+							<input type="hidden" name="purchaseForOneOrder" value="${list.purchaseForOneOrder}">
+							
+							<input type="submit" value="결제">
+						</form>
+						<form action="/phoenix/crm/form/goodsStockDetail" method="post">
+							<input type="hidden" name="stockCode" value="${list.stockCode}">						
+							<input type="hidden" name="stockDate" value="${list.stockDate}">
+							<input type="hidden" name="employeeName" value="${list.employeeName}">		
+							<input type="hidden" name="accountName" value="${list.accountName}">
+							<input type="hidden" name="goodsName" value="${list.goodsName}">
+							<input type="hidden" name="buyingGoodsUnitWon" value="${list.buyingGoodsUnitWon}">
+							<input type="hidden" name="goodsQuantityNumber" value="${list.goodsQuantityNumber}">
+							<input type="hidden" name="purchaseForOneOrder" value="${list.purchaseForOneOrder}">	
+							
+							<input type="submit" value="상세">
+						</form>
+					</td>
+					<%-- 				
+					<td>
+						${list.stockCode} 왼쪽에 stockCode
+					</td> 
+					--%>
 				</tr>
-				<c:forEach var="list" items="${goodsStockList}">
-					<tr class="textCenter">
-						<td>
-							${list.stockDate}
-						</td>
-						<td>
-							${list.accountName}
-						</td>
-						<td>
-							${list.goodsName}
-						</td>
-						<td>
-							${list.purchaseForOneOrder}
-						</td>
-						<td>
-							${list.employeeName}
-						</td>
-						<td>
-							<form action="/phoenix/crm/form/goodsPayment" method="post">
-								<input type="hidden" name="stockCode" value="${list.stockCode}">
-								<input type="hidden" name="goodsName" value="${list.goodsName}">
-								<input type="hidden" name="accountName" value="${list.accountName}">
-								<input type="hidden" name="purchaseForOneOrder" value="${list.purchaseForOneOrder}">
-								
-								<input type="submit" value="결제">
-							</form>
-							<form action="/phoenix/crm/form/goodsStockDetail" method="post">
-								<input type="hidden" name="stockCode" value="${list.stockCode}">						
-								<input type="hidden" name="stockDate" value="${list.stockDate}">
-								<input type="hidden" name="employeeName" value="${list.employeeName}">		
-								<input type="hidden" name="accountName" value="${list.accountName}">
-								<input type="hidden" name="goodsName" value="${list.goodsName}">
-								<input type="hidden" name="buyingGoodsUnitWon" value="${list.buyingGoodsUnitWon}">
-								<input type="hidden" name="goodsQuantityNumber" value="${list.goodsQuantityNumber}">
-								<input type="hidden" name="purchaseForOneOrder" value="${list.purchaseForOneOrder}">	
-								
-								<input type="submit" value="상세">
-							</form>
-						</td>
-						<%-- 				
-						<td>
-							${list.stockCode} 왼쪽에 stockCode
-						</td> 
-						--%>
-					</tr>
-				</c:forEach>
-			</table>
-		</div>
+			</c:forEach>
+		</table>
+	</div>
 	
 </body>
 </html>
