@@ -14,13 +14,13 @@
 		<script>
 			$(document).ready(function(){
 				
-				/* 유효성 */
+				//유효성
 				$('#submitButton').click(function(){
-					/* 아이디 */
+
+					//아이디
 					if($('#userId').val() == ""){
 						$('#userIdMsg').html('아이디를 입력하세요');
-					}
-					if($('#userId').val() != ""){
+					}else if($('#userId').val() != ""){
 						$.ajax({
 							url : "/phoenix/com/process/joiningAsCustomer/checkId",
 							type: "post",
@@ -34,70 +34,54 @@
 								}
 							}//success
 						})
-					}
-					
-					/* 패스워드 */
-					if($("#userPw").val() == ""){
+					//비밀번호
+					}else if($("#userPw").val() == ""){
 						$("#userPwMsg").html("비밀번호 입력하세요");
 		 			}else if($("#userPw").val() != $("#userRepw").val()){
-		 				$("#userPwMsg").html("");
 						$("#userRepwMsg").html("비밀번호가 일치하지 않습니다.");
-		 			}else{
-		 				$("#userPwMsg").html("");
+		 			}
+		 			//이름
+		 			else if($("#userName").val() == ""){
 		 				$("#userRepwMsg").html("");
-		 			}
-					
-					/* 이름 */
-					if($("#userName").val() == ""){
 						$("#userNameMsg").html("이름을 입력하세요");
-		 			}else{
-		 				$("#userNameMsg").html("");
 		 			}
-					
-					/* 닉네임 */
-					if($("#userNickName").val() == ""){
+					//닉네임
+					else if($("#userNickName").val() == ""){
+						$("#userNameMsg").html("");
 						$("#userNickNameMsg").html("별명을 입력하세요");
-		 			}else{
-		 				$("#userNickNameMsg").html("");
 		 			}
-					
-					/* 성별 */
-					if(!($(".userSexFlag").is(":checked"))){
+					//성별
+					else if(!($(".userSexFlag").is(":checked"))){
+						$("#userNickNameMsg").html("");
 		 				$('#userSexFlagMsg').html("성별을 선택해주세요.");
-		 			}else{
-		 				$('#userSexFlagMsg').html("");
 		 			}
-					
-					/* 유선 */
-					if($("#userPhoneNumber1").val() == "" || $("#userPhoneNumber2").val() == "" || $("#userPhoneNumber3").val() == ""){
+					//전화번호
+					else if($("#userPhoneNumber1").val() == "" || $("#userPhoneNumber2").val() == "" || $("#userPhoneNumber3").val() == ""){
+						$('#userSexFlagMsg').html("");
 						$("#userPhoneNumbermsg").html("전화번호를 입력해주세요.");
-		 			}else{
-		 				$("#userPhoneNumber").val($("#userPhoneNumber1").val()+"-"+$('#userPhoneNumber2').val()+"-"+$('#userPhoneNumber3').val());
+		 			}
+					//전화번호2
+					else if($("#userCellphoneNumber1").val() == "" || $("#userCellphoneNumber2").val() == "" || $("#userCellphoneNumber3").val() == ""){
+						$("#userPhoneNumber").val($("#userPhoneNumber1").val()+"-"+$('#userPhoneNumber2').val()+"-"+$('#userPhoneNumber3').val());
 		 				$("#userPhoneNumberMsg").html("");
-		 			}
-					
-					/* 폰번호 */
-					if($("#userCellphoneNumber1").val() == "" || $("#userCellphoneNumber2").val() == "" || $("#userCellphoneNumber3").val() == ""){
 						$("#userCellphoneNumber").html("전화번호를 입력해주세요.");
-		 			}else{
-		 				$("#userCellphoneNumber").val($("#userCellphoneNumber1").val()+"-"+$('#userCellphoneNumber2').val()+"-"+$('#userCellphoneNumber3').val());
+		 			}
+					//이메일
+					else if($("#userEmailId").val() == "" || $('#userEmailDomain').val() == ""){
+						$("#userCellphoneNumber").val($("#userCellphoneNumber1").val()+"-"+$('#userCellphoneNumber2').val()+"-"+$('#userCellphoneNumber3').val());
 		 				$("#userCellphoneNumberMsg").html("");
+						$('#userEmailAddressMsg').html('이메일을 입력해주세요.');
+		 				result = 0;
 		 			}
-
-					/* 이메일 */
-					if($("#userEmailId").val() == "" || $('#userEmailDomain').val() == ""){
-		 				$('#userEmailAddressMsg').html('이메일을 입력해주세요.');
-		 			}else{
-		 				$("#userEmailAddress").val($("#userEmailId").val()+"@"+$('#userEmailDomain').val());
+					//주소
+					else if($("#userPostNumber").val() != ""){
+						$("#userEmailAddress").val($("#userEmailId").val()+"@"+$('#userEmailDomain').val());
 		 				$('#userEmailAddressMsg').html("");
-		 			}
-					
-					/* 주소 */
-					if($("#userPostNumber").val() != ""){
 		 				$("#userAddress").val($("#searchAddress").val()+"^"+$("#userPutAddress").val());
-		 			}
+		 			}else{
+						$("#userForm").submit();
+					}
 					
-					//$("#userForm").submit();
 				});
 				
 				
@@ -149,6 +133,7 @@
  			font-weight:bolder;
  			color: red;
  		}
+ 		
 	</style>
 </head>
 
@@ -173,7 +158,7 @@
 					<div class="col-sm-4">
 						<input type="text" class="form-control" id="userId" name="userId" placeholder="6자이상 12자이하" maxlength="12">
 					</div>
-					<span id="userIdMsg"></span>
+					<span class ="textWarn" id="userIdMsg"></span>
 				</div>
 				  
 				<div class="form-group">
@@ -181,7 +166,7 @@
 					<div class="col-sm-4">
 						<input type="password" class="form-control" id="userPw" name="userPw" placeholder="6자이상 12자이하">
 					</div>
-					<span id="userPwMsg"></span>
+					<span class ="textWarn" id="userPwMsg"></span>
 				</div>
 				 
 				<div class="form-group">
@@ -189,7 +174,7 @@
 					<div class="col-sm-4"> 
 						<input type="password" class="form-control"id="userRepw" placeholder="다시입력해">
 					</div>
-					<span id="userRepwMsg"></span>
+					<span class ="textWarn" id="userRepwMsg"></span>
 				</div>
 				 
 				<div class="form-group">
@@ -197,7 +182,7 @@
 					<div class="col-sm-4">
 						<input type="text" class="form-control" id="userName" name="userName" placeholder="이름을 입력하세요">
 					</div>
-					<span id="userNameMsg"></span>
+					<span class ="textWarn" id="userNameMsg"></span>
 				</div>
 				 
 				<div class="form-group">
@@ -205,7 +190,7 @@
 					<div class="col-sm-4">
 						<input type="text" class="form-control" id="userNickName" name="userNickName" placeholder="닉네임 입력하세요">
 					</div>
-					<span id="userNickNameMsg"></span>
+					<span class ="textWarn" id="userNickNameMsg"></span>
 				</div>
 				  
 				<div class="form-group">
@@ -214,7 +199,7 @@
 						  <label class="radio-inline"><input type="radio" class="userSexFlag" name="userSexFlag" value="0">남</label>
 						  <label class="radio-inline"><input type="radio" class="userSexFlag" name="userSexFlag" value="1">여</label>
 					</div>
-					<span id="userSexFlagMsg"></span>
+					<span class ="textWarn" id="userSexFlagMsg"></span>
 				</div>
 				  
 				<hr>

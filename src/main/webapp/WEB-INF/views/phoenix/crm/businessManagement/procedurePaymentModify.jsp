@@ -25,6 +25,8 @@
 	<script src="//code.jquery.com/jquery.min.js"></script>
 		<script>
 			$(document).ready(function(){
+				
+				
 				$("#itemSelect").change(function(){
 					$(".formItemCode").val($("#itemSelect").val());
  					$("#itemForm").submit();
@@ -38,6 +40,7 @@
 				});
 				
 				
+				//유효성
 				$("#mainSubmit").click(function(){
 					if($("#itemSelect").val() == null || $("#itemSelect").val() == ""){
 						$("#msg").html("시술품목을 선택하세요");
