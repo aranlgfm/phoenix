@@ -1,10 +1,18 @@
 package com.cafe24.phoenixooo.crm.CustomerManagement.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 import com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer;
 
 public interface CustomerDao {
+	
+	/**
+	 * (Repository) crm고객등록을 위한 직원검색
+	 * @param customer
+	 * @return
+	 */
+	CrmCustomer selectForCustomer(CrmCustomer customer);
 	
 	/**
 	 * (Repository) crm고객등록
@@ -19,10 +27,17 @@ public interface CustomerDao {
 	String getCustomerCode();
 	
 	/**
+	 * (Repository) crm고객 수
+	 * @param shopCode
+	 * @return
+	 */
+	int countCustomer(String shopCode);
+	
+	/**
 	 * (Repository) crm고객목록
 	 * @return
 	 */
-	List<CrmCustomer> getCustomerList(CrmCustomer user);
+	List<CrmCustomer> getCustomerList(Map<String, Object> map);
 	
 	/**
 	 * (Repository) crm고객수정

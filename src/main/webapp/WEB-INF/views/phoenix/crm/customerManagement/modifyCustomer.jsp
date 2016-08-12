@@ -60,6 +60,9 @@
 		$('#daumPostAddr').val(addr[0]);
 		$('#userPutAddr').val(addr[1]);
 		
+		// 화면 로딩 되자마자 담당자 입력하기
+		$('#putEmp').val('${customer.employeeName}');
+		
 		// 버튼 클릭 시 유효성검사
 		$('#submitBtn').click(function(){
 			if($('#phoneNo1').val() == '' || $('#phoneNo2').val() == '' || $('#phoneNo3').val() == ''){
@@ -137,6 +140,7 @@
 			<input id="phone" type="hidden" value="${customer.customerCellphoneNumber}"/>
 			<input id="mail" type="hidden" value="${customer.customerEmailAddress}"/>
 			<input id="addr" type="hidden" value="${customer.customerAddress}"/>
+			<input id="employeeName" type="hidden" value="${customer.employeeName}"/>
 			
 			<br>
 			<br>
@@ -192,9 +196,17 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-3" for="customerName">담당자 : </label>
+				<label class="control-label col-sm-3" for="employeeCode">담당자 : </label>
 				<div class="col-sm-4">
-					<input name="employeeName" id="employeeName" class="form-control" type="text" value="${customer.employeeName}"/>
+					<input id="putEmp" class="form-control" type="text" readonly="readonly"/>
+				</div>
+				<div class="col-sm-4">
+					<select id="selectEmp" name="employeeCode" class="form-control">
+						<option value="">담당자 변경</option>
+						<c:forEach var="empList" items="${empList}">
+							<option value="${empList.employeeCode}">${empList.employeeName}</option>
+						</c:forEach>
+					</select>
 				</div>
 			</div>
 			<div class="form-group">

@@ -1,8 +1,9 @@
 package com.cafe24.phoenixooo.crm.CustomerManagement.Service;
 
-import java.util.List;
+import java.util.Map;
 
 import com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer;
+import com.cafe24.phoenixooo.crm.CustomerManagement.Model.CustomerPageHelper;
 
 public interface CustomerService {
 
@@ -14,10 +15,17 @@ public interface CustomerService {
 	int insertCustomer(CrmCustomer customer);
 	
 	/**
+	 * (Service) crm고객 수
+	 * @param shopCode
+	 * @return
+	 */
+	int countCustomer(String shopCode);
+	
+	/**
 	 * (Service) crm고객목록
 	 * @return
 	 */
-	List<CrmCustomer> getCustomerList(CrmCustomer user);
+	Map<String, Object> getCustomerList(String shopCode, CustomerPageHelper pageHelper);
 	
 	/**
 	 * (Service) crm고객수정

@@ -23,61 +23,24 @@
 	<div class="center">
 		<form id="searchForm" class="form-horizontal" role="form" action="" method="POST">
 			<div class="center">
-				<div class="control-label col-sm-1">최근방문 : </div>
-				<div class="col-sm-2">
-					<input class="form-control" type="date"/>
-				</div>
 				
 				<div class="control-label col-sm-1">담당자 : </div>
 				<div class="col-sm-2">
-					<input class="form-control" type="text"/>
+					<select name="employeeCode" class="form-control">
+						<option value="">담당자</option>
+						<c:forEach var="empList" items="${emp}">
+							<option value="${empList.employeeCode}">${empList.employeeName}</option>
+						</c:forEach>
+					</select>
 				</div>
 				
-				<div class="control-label col-sm-1">연령 : </div>
-				<div class="col-sm-2">
-					<input class="form-control" type="text"/>
-				</div>
-
 				<div class="control-label col-sm-1">성별 : </div>
 				<div class="col-sm-2">
-					<input class="form-control" type="text"/>
+					<label class="radio-inline"><input class="flag" type="radio" value="0"/>남</label>
+					<label class="radio-inline"><input class="flag" type="radio" value="1"/>여</label>
 				</div>
-			</div>
 			
-			<div class="center">
-				<div class="control-label col-sm-1">생일 : </div>
-				<div class="col-sm-2">
-					<input class="form-control" type="text"/>
-				</div>
-				
-				<div class="control-label col-sm-1">기념일 : </div>
-				<div class="col-sm-2">
-					<input class="form-control" type="text"/>
-				</div>
-				
 				<div class="control-label col-sm-1">회원명 : </div>
-				<div class="col-sm-2">
-					<input class="form-control" type="text"/>
-				</div>
-
-				<div class="control-label col-sm-1">방문횟수 : </div>
-				<div class="col-sm-2">
-					<input class="form-control" type="text"/>
-				</div>
-			</div>
-			
-			<div class="center">
-				<div class="control-label col-sm-1">매출금액 : </div>
-				<div class="col-sm-2">
-					<input class="form-control" type="text"/>
-				</div>
-				
-				<div class="control-label col-sm-1">주소 : </div>
-				<div class="col-sm-2">
-					<input class="form-control" type="text"/>
-				</div>
-				
-				<div class="control-label col-sm-1">메모 : </div>
 				<div class="col-sm-2">
 					<input class="form-control" type="text"/>
 				</div>
@@ -87,8 +50,6 @@
 				</div>
 			</div>
 		</form>
-		<br>
-		<br>
 	</div>
 
 </body>

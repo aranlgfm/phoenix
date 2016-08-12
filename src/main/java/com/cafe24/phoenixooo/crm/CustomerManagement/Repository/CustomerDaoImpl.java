@@ -1,6 +1,7 @@
 package com.cafe24.phoenixooo.crm.CustomerManagement.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,13 +40,21 @@ public class CustomerDaoImpl implements CustomerDao {
 		result = daoHelper.getCUSTOMERCODE()+rs;
 		return result;
 	}
+	
+	/**
+	 * (Repository구현) crm고객 수
+	 */
+	@Override
+	public int countCustomer(String shopCode) {
+		return sqlSession.selectOne(NS+"countCustomer", shopCode);
+	}
 
 	/**
 	 * (Repository구현) crm고객목록
 	 */
 	@Override
-	public List<CrmCustomer> getCustomerList(CrmCustomer user) {
-		return sqlSession.selectList(NS+"getCustomerList", user);
+	public List<CrmCustomer> getCustomerList(Map<String, Object> map) {
+		return sqlSession.selectList(NS+"getCustomerList", map);
 	}
 
 	/**
@@ -71,7 +80,13 @@ public class CustomerDaoImpl implements CustomerDao {
 	public int deleteCustomer(CrmCustomer customer) {
 		return sqlSession.delete(NS+"deleteCustomer", customer);
 	}
-	
-	
+
+	/**
+	 * (Repository구현) crm고객등록을 위한 직원검색
+	 */
+	@Override
+	public CrmCustomer selectForCustomer(CrmCustomer customer) {
+		return sqlSession.selectOne(NS+"selectForCustomer", customer);
+	}
 
 }

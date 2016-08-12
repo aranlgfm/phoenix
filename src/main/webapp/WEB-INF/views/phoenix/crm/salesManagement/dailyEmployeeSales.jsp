@@ -67,9 +67,6 @@
 	 	<li>
 	 		<a href="/phoenix/crm/form/salesManagement/yearEmployeeSales">연간직원매출</a>
 	 	</li>
-	 	<li>
-	 		<a href="">기간별매출통계</a>
-	 	</li>	
 	</ul>
 	
 <!-- 여기까지 메뉴부분 -->

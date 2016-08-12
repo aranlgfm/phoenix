@@ -156,9 +156,14 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-3" for="customerName">담당자 : </label>
+				<label class="control-label col-sm-3" for="employeeCode">담당자 : </label>
 				<div class="col-sm-4">
-					<input name="employeeName" id="employeeName" class="form-control" type="text"/>
+					<select id="employeeName" name="employeeCode" class="form-control">
+						<option value="">담당자</option>
+						<c:forEach var="empList" items="${emp}">
+							<option value="${empList.employeeCode}">${empList.employeeName}</option>
+						</c:forEach>
+					</select>
 				</div>
 			</div>
 			<div class="form-group">

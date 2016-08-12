@@ -189,8 +189,6 @@ public class EmployeeSalesController {
 		map.put("empSales", empSales);
 		map.put("today", date);
 		model.addAttribute("emp", map);
-		System.out.println(empSales.get(0).getCountCash()+"겐지야 부탁한다");
-		System.out.println(empSales.get(0).getTotalCash()+"겐지야 부탁한다");
 		return "/phoenix/crm/salesManagement/yearEmployeeSales";
 	}
 	

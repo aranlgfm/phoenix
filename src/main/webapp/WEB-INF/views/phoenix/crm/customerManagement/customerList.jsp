@@ -59,7 +59,6 @@
 					<th>성별</th>
 					<th>담당자</th>
 					<th>시술등록</th>
-					<th>예약등록</th>
 					<th>정보수정</th>
 					<th>고객삭제</th>
 				</tr>
@@ -74,26 +73,47 @@
 							<td>여</td>
 						</c:if>
 						<td>${list.employeeName}</td>
-						<td><a class="tag"
-							href="/phoenix/crm/form/insertProcedurePayment?customerCode=${list.customerCode}">시술등록</a></td>
-						<td><a class="tag" href="">예약등록</a></td>
-						<td><a class="tag"
-							href="/phoenix/crm/customerManagement/form/modifyCustomer?customerCode=${list.customerCode}">정보수정</a></td>
-						<td><a class="tag"
-							href="/phoenix/crm/customerManagement/process/deleteCustomer?customerCode=${list.customerCode}">고객삭제</a></td>
+						<td><a class="tag" href="/phoenix/crm/form/insertProcedurePayment?customerCode=${list.customerCode}">시술등록</a></td>
+						<td><a class="tag" href="/phoenix/crm/customerManagement/form/modifyCustomer?customerCode=${list.customerCode}">정보수정</a></td>
+						<td><a class="tag" href="/phoenix/crm/customerManagement/process/deleteCustomer?customerCode=${list.customerCode}">고객삭제</a></td>
 					</tr>
 				</c:forEach>
 			</table>
 		</div>
 
+
+		<!-- 이전 -->
 		<ul class="pager">
-			<li class="tag"><a class="tag" href="#">◀ Previous</a></li>
-			<li><a class="tag" href="">1</a></li>
-			<li><a class="tag" href="">2</a></li>
-			<li><a class="tag" href="">3</a></li>
-			<li><a class="tag" href="">4</a></li>
-			<li><a class="tag" href="">5</a></li>
-			<li class="tag"><a class="tag" href="#">Next ▶</a></li>
+		<c:if test="${pageHelper.pageNo > 1}">
+			<li class="tag"><a class="tag" href="/phoenix/crm/customerManagement/form/customerList?PageNo=1">◀</a></li>
+			<li class="tag"><a class="tag" href="/phoenix/crm/customerManagement/form/customerList?PageNo=${pageHelper.pageNo - 1}">Previous</a></li>
+		</c:if>
+		<c:if test="${pageHelper.pageNo <= 0 or pageHelper.pageNo == 1}">
+			<li class="tag disabled"><a class="tag" href="#">◁</a></li>
+			<li class="tag disabled"><a class="tag" href="#">Previous</a></li>
+		</c:if>
+		
+		<!-- 현재페이지 -->
+		<c:forEach begin="1" end="${pageHelper.lastPageNo}" var="i">
+			<c:if test="${pageHelper.pageNo == i}">
+				<li class="tag"><a class="tag" href="/phoenix/crm/customerManagement/form/customerList?PageNo=${i}"><b>${i}</b></a></li>
+			</c:if>
+			<c:if test="${pageHelper.pageNo != i}">
+				<li class="tag"><a class="tag" href="/phoenix/crm/customerManagement/form/customerList?PageNo=${i}">${i}</a></li>
+			</c:if>			
+		</c:forEach>
+		
+		<!-- 다음 -->
+		<c:if test="${pageHelper.pageNo < pageHelper.lastPageNo and pageHelper.pageNo > 0}">
+			<li class="tag"><a class="tag" href="/phoenix/crm/customerManagement/form/customerList?PageNo=${pageHelper.pageNo + 1}">Next</a></li>
+			<li class="tag"><a class="tag" href="/phoenix/crm/customerManagement/form/customerList?PageNo=${pageHelper.lastPageNo}">▶</a></li>
+		</c:if>
+		
+		<c:if test="${pageHelper.pageNo >= pageHelper.lastPageNo}">
+			<li class="tag disabled"><a class="tag" href="#">Next</a></li>
+			<li class="tag disabled"><a class="tag" href="#">▷</a></li>
+		</c:if>
+			
 		</ul>
 
 	</div>

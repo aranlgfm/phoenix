@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cafe24.phoenixooo.crm.customerManagement.Repository.CustomerMapper">
-	<!-- 
+	<!--
+		0. 고객등록을 위한 직원검색 
 		1. 고객등록
 		1. 고객코드가져오기(가입시)
+		2. 고객목록을 위한 총 고객 수
 		2. 고객목록
 		3. 고객정보수정
 		3. 고객검색(수정용)
 		4. 고객삭제
 	 -->
+	 
+	<!-- 0. 고객등록을 위한 직원검색 -->
+	<select id="selectForCustomer" parameterType="com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer" resultType="com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer">
+		SELECT 
+			EMPLOYEE_CD as employeeCode
+			,SHOP_CD as shopCode
+			,EMPLOYEE_NM as employeeName
+		FROM 
+			CRM_EMPLOYEE_TB 
+		WHERE 
+			EMPLOYEE_CD = #{employeeCode}
+	</select>
+	 
 	<!-- 1. 고객등록 -->
 	<insert id="insertCustomer" parameterType="com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer">
 	<selectKey resultType="hashmap" keyProperty="customerCode" order="BEFORE">
@@ -70,8 +85,18 @@
 <!-- 			0,1 -->
 <!-- 	</select> -->
 	
+	<!-- 2. 고객목록을 위한 총 고객 수 -->
+	<select id="countCustomer" parameterType="java.lang.String" resultType="int">
+		SELECT 
+			COUNT(*)
+		FROM 
+			CRM_CUSTOMER_TB 
+		WHERE 
+			SHOP_CD=#{shopCode}
+	</select>
+	
 	<!-- 2. 고객목록 -->
-	<select id="getCustomerList" parameterType="com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer" resultType="com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer">
+	<select id="getCustomerList" parameterType="java.util.Map" resultType="com.cafe24.phoenixooo.crm.CustomerManagement.Model.CrmCustomer">
 		SELECT 
 			CUSTOMER_CD as customerCode
 			,USER_CD as userCode
@@ -85,6 +110,7 @@
 		WHERE SHOP_CD=#{shopCode}
 		ORDER BY 
 			CUSTOMER_JOIN_DT DESC
+		LIMIT #{startRow},#{endRow}
 	</select>
 	
 	<!-- 3. 고객정보수정 -->

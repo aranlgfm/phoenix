@@ -21,6 +21,10 @@
 	<logger name="com.cafe24.phoenixooo.crm.salesManagement.Repository">
 		<level value="debug"/>
 	</logger>
+
+	<logger name="com.cafe24.phoenixooo.crm.CustomerManagement.Repository">
+		<level value="debug"/>
+	</logger>
 	
 	<!-- Application Loggers -->
 	<logger name="com.cafe24.phoenixooo.community.Repository">
