@@ -23,9 +23,9 @@
 <body>
 
 	<c:import url="stockManagement.jsp"></c:import>
-	
-	<hr>
+
 	<div id="all">
+		<hr>
 		<a class="btn btn-primary" href="/phoenix/crm/form/stockManagement/etcCostSetting?shopCode=${shopCode}">[기타지출항목설정]</a>
 		<a class="btn btn-primary" href="/phoenix/crm/form/stockManagement/etcCostTypeSetting?shopCode=${shopCode}">기타지출세부항목설정</a>
 		<br><br>
