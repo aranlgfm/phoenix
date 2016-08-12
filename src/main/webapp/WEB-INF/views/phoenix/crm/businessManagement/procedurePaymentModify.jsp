@@ -130,29 +130,21 @@
 							
 							
 							
-							
 							<!-- 담당자 셀렉 -->
-							
-							
-							
-							
-							
 							<select class="form-control" name="employeeCode">
-							<c:choose>
-								<c:when test="${employeeList ne null}">
-									<option value="">담당자선택</option>
-									<c:forEach var="employeeList" items="${employeeList}">
+							<!-- 시술품목셀렉 -->
+								<option value="">담당자선택</option>
+								<c:forEach var="employeeList" items="${employeeList}">
+									<c:choose>
+										<c:when test="${procedurePayment.employeeCode eq employeeList.employeeCode}">
+											<option value="${employeeList.employeeCode}" selected="selected">${employeeList.employeeName}</option>
+										</c:when>
+										<c:otherwise>
 											<option value="${employeeList.employeeCode}">${employeeList.employeeName}</option>
-									</c:forEach>
-								</c:when>							
-								<c:otherwise>
-										<option value="">담당자선택</option>
-										<c:forEach var="employeeList" items="${employeeList}">
-											<option value="${employeeList.employeeCode}">${employeeList.itemDesignName}</option>
-										</c:forEach>
-								</c:otherwise>
-							</c:choose>
-							</select><!-- 담당자 셀렉 -->
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+							</select><!-- 시술품목셀렉 -->
 							
 							
 							<select class="form-control" name="paymentTypeCode">
@@ -167,10 +159,10 @@
 					<div>
 						<div>
 							<label>시술가격</label>
-							<input class="form-control" type="text" name="paymentTotalPrice" value="<fmt:formatNumber value="${itemDesign.itemDesignPrice}"/>">
+							<input class="form-control" type="text" name="paymentTotalPrice" value="${procedurePayment.paymentTotalPrice}">
 							&nbsp;&nbsp;
 							<label>시술일</label>
-							<input class="form-control" type="date" name="paymentDate" value="">
+							<input class="form-control" type="date" name="paymentDate" value="${procedurePayment.paymentDate}">
 						</div>
 						<br>
 						<div>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page session="true"%>
 <!DOCTYPE html>
 <html>
@@ -70,7 +71,7 @@
 						<tr class="textCenter">
 							<th>시술품목</th>
 							<th>시술디자인</th>
-							<th>시술가격</th>
+							<th>시술금액</th>
 							<th>관리</th>
 						</tr>
 						<c:forEach var="item" items="${itemDesign}">
@@ -78,7 +79,7 @@
 							<tr class="textCenter">
 								<td>${item.itemName}</td>	
 								<td>${item.itemDesignName}</td>	
-								<td>${item.itemDesignPrice}</td>	
+								<td><fmt:formatNumber value="${item.itemDesignPrice}"></fmt:formatNumber></td>	
 								<td>
 									<a href="/phoenix/crm/form/modifyProcedureItemDesign?itemDesignCode=${item.itemDesignCode}">수정</a>
 									<a href="/phoenix/crm/process/deleteProcedureItemDesign?itemDesignCode=${item.itemDesignCode}">삭제</a>

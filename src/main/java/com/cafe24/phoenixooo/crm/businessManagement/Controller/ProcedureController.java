@@ -49,8 +49,6 @@ public class ProcedureController {
 	 * 4. 수정설명 생략 
 	 */
 	
-	
-	
 	//임시메인
 	@RequestMapping(value = "/phoenix/crm/businessManagement/businessManagement", method = RequestMethod.GET)
 	public String businessManagement(HttpSession session,RequestPageHelper rpageHelper,Model model) {
@@ -244,20 +242,7 @@ public class ProcedureController {
 	public String insertProcedurePayment(RequestProcedurePayment payment,@RequestParam(value="addPayment", required=false) String addPayment,HttpSession session) {
 		System.out.println(payment);
 		String url ="redirect:/phoenix/crm/form/procedurePaymentCustomerList";
-		System.out.println("123123");
-		System.out.println("123123");
-		System.out.println("123123");
-		System.out.println("123123");
-		System.out.println("123123");
-		System.out.println("123123");
-		System.out.println("123123");
-		System.out.println("123123");
-		System.out.println("123123");
-		System.out.println("123123");
-		System.out.println("123123");
-		System.out.println("123123");
-		System.out.println("123123");
-		System.out.println("123123");
+		
 		if(addPayment != null){
 			url ="redirect:/phoenix/crm/form/insertProcedurePayment";
 		}else{
@@ -339,6 +324,7 @@ public class ProcedureController {
 	@RequestMapping(value ="/phoenix/crm/form/modifyProcedurePayment", method = RequestMethod.GET)
 	public String modifyProcedurePayment(@RequestParam("paymentCode") String paymentCode,Model model) {
 		ProcedureItemDesign itemDesign = null;
+	
 		//수정전 셀렉을 한다.
 		RequestProcedurePayment procedurePayment= procedureService.selectProcedurePayment(paymentCode);
 		List<ProcedureItem> itemList = businessManagementSettingService.selectItemList(procedurePayment.getShopCode());
@@ -351,6 +337,12 @@ public class ProcedureController {
 			}
 		}
 		
+		EmployeeListForSales emp = new EmployeeListForSales();
+		emp.setShopCode(procedurePayment.getShopCode());
+		List<EmployeeListForSales> employeeList = empService.selectEmployeeList(emp);
+		
+		
+		model.addAttribute("employeeList",employeeList);
 		model.addAttribute("procedurePayment", procedurePayment);
 		model.addAttribute("itemList", itemList);
 		model.addAttribute("itemDesignList", itemDesignList);
