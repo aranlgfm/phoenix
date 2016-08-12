@@ -21,8 +21,8 @@
 	<c:import url="businessManagementMain.jsp"></c:import>
 	<hr>
 	<div>
-		<button class="btn btn-default"><a href="/phoenix/crm/form/procedureItemSetting">시술품목설정</a></button>
-		<button class="btn btn-default"><a href="/phoenix/crm/form/procedureItemDesignSetting">시술디자인설정</a></button>
+		<a type="button" class="btn btn-default tag"  href="/phoenix/crm/form/procedureItemSetting">시술품목설정</a>
+		<a type="button" class="btn btn-default tag"  href="/phoenix/crm/form/procedureItemDesignSetting">시술디자인설정</a>
 	</div>
 	<br>
 	<!-- S시술품목 폼 -->

@@ -37,23 +37,11 @@ public class TotalSalesController {
 		return "/phoenix/crm/salesManagement/dailySalesList";
 	}
 	
-	//기간검색
-	/*@RequestMapping(value = "/phoenix/crm/salesManagement/periodSearch", method = RequestMethod.GET)
-	public String periodSearch(Model model) {
-		Date today = new Date();
-		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-		String realToday = format.format(today);
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>"+realToday); // 
-		
-		model.addAttribute("serverTime", realToday );
-		
-		
-		return "/phoenix/crm/salesManagement/periodSearch";
-	}*/
+	
 	
 	//일간검색 -> 일간매출내역 처리
 	@RequestMapping(value = "/phoenix/crm/salesManagement/dailySearch", method = RequestMethod.POST)
-	public String periodSearch(String paymentDate, Model model) {
+	public String dailySearch(String paymentDate, Model model) {
 		System.out.println("dailySearch에서 넘긴 현재날짜 : "+paymentDate);
 		List<DaySalesInfo> list = totalSalesService.SelectDailySales(paymentDate);
 		model.addAttribute("list", list);
@@ -67,16 +55,16 @@ public class TotalSalesController {
 	
 	
 	
-	//기간별 매출 그래프
+	// 매출 그래프
 	@RequestMapping(value = "/phoenix/crm/salesManagement/SalesGraph", method = RequestMethod.GET)
-	public String periodSalesGraph() {
+	public String SalesGraph() {
 		return "/phoenix/crm/salesManagement/SalesGraph";
 	}
 	
 	
-	//기간별 매출 내역
+	//일간 매출 내역
 	@RequestMapping(value = "/phoenix/crm/salesManagement/dailySalesList", method = RequestMethod.GET)
-	public String periodSalesList() {
+	public String dailySalesList() {
 		return "/phoenix/crm/salesManagement/dailySalesList";
 	}
 	
@@ -186,5 +174,46 @@ public class TotalSalesController {
 	}
 	
 	
+	//기간별매출통계 페이지 요청
+	
+	@RequestMapping(value="/phoenix/crm/salesManagement/periodSales", method=RequestMethod.GET)
+	public String periodSales(){
+		System.out.println("기간별매출통계 페이지 요청됨");
+		return "/phoenix/crm/salesManagement/periodSalesList";
+	}
+	
+	
+	//기간별매출통계 리스트 요청시
+	
+	@RequestMapping(value="/phoenix/crm/salesManagement/periodSalesList", method=RequestMethod.GET)
+	public String periodSalesList(MonthSalesInfo period, Model model){
+		System.out.println("기간별매출통계 페이지 요청됨");
+		//
+	/*	Date endDay = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyymmdd");
+		String paymentEndDay = format.format(endDay);
+		period.setPaymentEndDay(paymentEndDay);
+		System.out.println("기간별매출통계리스트에서 첫페이지에 보여줄 오늘날짜 입력값 : "+period);
+		
+		List<MonthSalesInfo> list = totalSalesService.selectPeriodList(period);
+		model.addAttribute("list", list);*/
+		
+		return "/phoenix/crm/salesManagement/periodSalesList";
+	}
+	
+	
+	
+	//기간검색 요청됨
+		@RequestMapping(value = "/phoenix/crm/salesManagement/periodSearch", method = RequestMethod.POST)
+		public String periodSearch(MonthSalesInfo period, Model model) {
+			System.out.println("기간별매출통계 검색 요청됨");
+			System.out.println("기간별매출 시작일 : "+period.getPaymentStartDay());
+			System.out.println("기간별매출 종료일 : "+period.getPaymentEndDay());
+			
+			List<MonthSalesInfo> list =  totalSalesService.selectPeriodList(period);
+			model.addAttribute("list", list);
+			
+			return "/phoenix/crm/salesManagement/periodSalesList";
+		}
 	
 }

@@ -227,6 +227,27 @@
 	
 	</select>
 
+	<select id="selectPeriodList" parameterType="com.cafe24.phoenixooo.crm.salesManagement.Model.MonthSalesInfo" resultType="com.cafe24.phoenixooo.crm.salesManagement.Model.MonthSalesInfo">
+		SELECT
+			PAYMENT_DT as paymentStartDay
+		    ,PAYMENT_DT as paymentEndDay
+			,PAYMENT_TYPE_GB as paymentTypeGb
+		    ,CRM_ITEM_TB.ITEM_NM as procedureName
+		    ,if(PAYMENT_TYPE_GB = '현금', sum(PAYMENT_TOTAL_WON),0) as totalCash
+		    ,if(PAYMENT_TYPE_GB = '현금', count(PAYMENT_TOTAL_WON),0) as countCash
+		    ,if(PAYMENT_TYPE_GB = '카드', sum(PAYMENT_TOTAL_WON),0) as totalCard
+		    ,if(PAYMENT_TYPE_GB = '카드', count(PAYMENT_TOTAL_WON),0) as countCard
+		FROM
+			CRM_PAYMENT_TB, CRM_ITEM_TB inner join CRM_ITEM_DESIGN_TB
+		ON 
+			CRM_ITEM_TB.ITEM_CD = CRM_ITEM_DESIGN_TB.ITEM_CD
+		WHERE 
+			PAYMENT_DT between #{paymentStartDay} and #{paymentEndDay}
+		GROUP BY
+			PAYMENT_TYPE_GB, CRM_ITEM_TB.ITEM_NM
+	</select>
+
+
 
 
 

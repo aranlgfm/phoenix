@@ -13,4 +13,7 @@ public interface TotalSalesService {
 	List<MonthSalesInfo> selectMonthlyList(MonthSalesInfo month);
 	
 	List<MonthSalesInfo> selectYearlySearch(MonthSalesInfo year);
+	
+	List<MonthSalesInfo> selectPeriodList(MonthSalesInfo period);
+	
 }

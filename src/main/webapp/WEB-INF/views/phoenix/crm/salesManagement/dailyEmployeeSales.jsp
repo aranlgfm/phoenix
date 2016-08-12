@@ -15,6 +15,13 @@
 		width : 70%;
 		margin : auto;
 }
+.won {
+		text-align : right;
+		padding-right : 20%;
+}
+.title {
+	text-align: center;
+}
 </style>
 <script>
 	$(document).ready(function(){
@@ -41,8 +48,6 @@
 <c:set var = "cardCountSum" value = "0" />
 
 <div id="all">	
-	
-	<div class="container">
 	<ul class="nav nav-tabs">
 		<li>
 			<a href="/phoenix/crm/salesManagement/dailySales">일간총매출</a>
@@ -66,7 +71,6 @@
 	 		<a href="">기간별매출통계</a>
 	 	</li>	
 	</ul>
-	</div>
 	
 <!-- 여기까지 메뉴부분 -->
 	
@@ -99,14 +103,14 @@
 	<table class="table table-striped">
 		<tr>
 			<th>직원명</th>
-			<th>현금/(건)</th>
-			<th>카드/(건)</th>
+			<th class="title">현금/(건)</th>
+			<th class="title">카드/(건)</th>
 		</tr>
 		<c:forEach var="empSales" items="${emp.empSales}">
 			<tr>
 				<td>${empSales.employeeName}</td> 
-				<td><fmt:formatNumber value="${empSales.totalCash}" groupingUsed="true"/>원 (${empSales.countCash})</td>
-				<td><fmt:formatNumber value="${empSales.totalCard}" groupingUsed="true"/>원 (${empSales.countCard})</td>
+				<td class="won"><fmt:formatNumber value="${empSales.totalCash}" groupingUsed="true"/>원 (${empSales.countCash})</td>
+				<td class="won"><fmt:formatNumber value="${empSales.totalCard}" groupingUsed="true"/>원 (${empSales.countCard})</td>
 			</tr>
 			<c:set var= "cashSum" value="${cashSum + empSales.totalCash}"/>
 			<c:set var= "cashCountSum" value="${cashCountSum + empSales.countCash}"/>
@@ -116,8 +120,8 @@
 		
 		<tr>
 			<td>총합계</td>
-			<td><fmt:formatNumber value="${cashSum}" groupingUsed="true"/>원 (<c:out value="${cashCountSum}"/>)</td>
-			<td><fmt:formatNumber value="${cardSum}" groupingUsed="true"/>원 (<c:out value="${cardCountSum}"/>)</td>
+			<td class="won"><fmt:formatNumber value="${cashSum}" groupingUsed="true"/>원 (<c:out value="${cashCountSum}"/>)</td>
+			<td class="won"><fmt:formatNumber value="${cardSum}" groupingUsed="true"/>원 (<c:out value="${cardCountSum}"/>)</td>
 		</tr>
 	</table>
 	
