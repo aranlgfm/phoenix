@@ -37,7 +37,7 @@ public class EmployeeSalaryController {
 	@RequestMapping(value="/phoenix/crm/employeeManagement/insertingEmployeeSalary", method=RequestMethod.POST)
 	public String insertEmployeeSalary(EmployeeSalary employeeSalary) {
 		employeeSalaryService.insertEmployeeSalary(employeeSalary);
-		return "/phoenix/crm/employeeManagement/employeeList";
+		return "redirect:/phoenix/crm/employeeManagement/employeeSalaryList";
 	}
 	
 	/**

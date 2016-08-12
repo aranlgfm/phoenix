@@ -11,7 +11,6 @@
 <script>
  		
 	$(document).ready(function() {	
-	
 		$('#submitBtn').click(function() {
 			if($('#EmployeeLevelName').val() == '') {
 				$('#EmployeeLevelNameMsg').html('직급을 입력해 주세요.');
@@ -188,8 +187,8 @@
 			<!-- 등록취소 -->
 			<div class="form-group centerT"> 
 				<div class="center col-sm-10">
-					<button type="button" class="btn btn-info" id="submitBtn">등록</button>
-					<a class="btn btn-info" href="/phoenix/crm/employeeManagement/employeeList">취소</a>
+					<button type="button" class="btn btn-default" id="submitBtn">등록</button>
+					<a class="btn btn-default" href="/phoenix/crm/employeeManagement/employeeList">취소</a>
 				</div>
 			</div>
 		</form>

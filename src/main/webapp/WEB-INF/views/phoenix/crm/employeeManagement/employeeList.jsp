@@ -53,7 +53,7 @@
 			<div class="textCenter">
 				<label>직원명</label>
 				<input type="text" name="word" size="10"/>
-				<input type="submit" value="검색"/>
+				<input class="btn btn-default" type="submit" value="검색"/>
 			</div>
 			
 		</div>

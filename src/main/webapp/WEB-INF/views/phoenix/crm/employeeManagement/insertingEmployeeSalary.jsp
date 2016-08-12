@@ -10,6 +10,22 @@
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
 <script>
+ 		
+	$(document).ready(function() {	
+		$('#submitBtn').click(function() {
+			if($('#SalaryMonthDate').val() == '') {
+				$('#SalaryMonthDateMsg').html('근무년월을 입력해 주세요.');
+			}else if($('#EmployeeName').val() == '') {
+				$('#SalaryMonthDateMsg').html('');
+				$('#EmployeeNameMsg').html('직원명을 입력해 주세요.');
+			}else if($('#SalaryWon').val() == '') {
+				$('#EmployeeNameMsg').html('');
+				$('#SalaryWonMsg').html('지급급여를 입력해 주세요.');
+			}else{
+				$('#submitBtn').submit();
+			}
+		});
+	});
 
 </script>
 
@@ -72,7 +88,7 @@
 			
 			<!-- 근무년월 -->  
 			<div class="form-group">
-				<label class="control-label col-sm-3" for="EmployeeBirthDate">근무년월:</label>
+				<label class="control-label col-sm-3" for="SalaryMonthDate">근무년월:</label>
 				<div class="col-sm-4">
 					<input type="date" class="form-control" id="SalaryMonthDate" name="SalaryMonthDate">
 				</div>
@@ -98,11 +114,12 @@
 			<!-- 등록취소 -->
 			<div class="form-group centerT"> 
 				<div class="center col-sm-10">
-					<button type="button" class="btn btn-info" id="submitBtn">등록</button>
-					<a class="btn btn-info" href="/phoenix/crm/employeeManagement/employeeSalaryList">취소</a>
+					<button type="button" class="btn btn-default" id="submitBtn">등록</button>
+					<a class="btn btn-default" href="/phoenix/crm/employeeManagement/employeeSalaryList">취소</a>
 				</div>
 			</div>
 	</form>
 	</div>
+	</div><!-- 전체 -->
 </body>
 </html>

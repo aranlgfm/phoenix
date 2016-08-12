@@ -26,7 +26,7 @@
 		(
 			#{employeeCode}
 			<!-- ,#{shopCode} -->
-			,'CRM_SHOP_3'
+			,'CRM_SHOP_4'
 			,#{employeePw}
 			,#{employeeName}
 			,#{employeeBirthDate}
