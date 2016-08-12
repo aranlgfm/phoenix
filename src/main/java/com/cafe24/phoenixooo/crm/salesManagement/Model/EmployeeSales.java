@@ -1,19 +1,18 @@
 package com.cafe24.phoenixooo.crm.salesManagement.Model;
 
-public class EmployeeSales {
+public class EmployeeSales extends EmployeeListForSales {
 
 	private String paymentCode;
-	private String shopCode;
-	private String employeeCode;
 	private String userCode;
 	private String pointCode;
 	private String itemdesignCode;
 	private String userName;
-	private String employeeName;
 	private String itemdesignName;
 	private String paymentType;
 	private int paymentTotalWon;
 	private String paymentDate;
+	private String paymentMonth;
+	private String paymentYear;
 	private String totalCash;
 	private int countCash;
 	private String totalCard;
@@ -24,18 +23,6 @@ public class EmployeeSales {
 	}
 	public void setPaymentCode(String paymentCode) {
 		this.paymentCode = paymentCode;
-	}
-	public String getShopCode() {
-		return shopCode;
-	}
-	public void setShopCode(String shopCode) {
-		this.shopCode = shopCode;
-	}
-	public String getEmployeeCode() {
-		return employeeCode;
-	}
-	public void setEmployeeCode(String employeeCode) {
-		this.employeeCode = employeeCode;
 	}
 	public String getUserCode() {
 		return userCode;
@@ -61,12 +48,6 @@ public class EmployeeSales {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public String getEmployeeName() {
-		return employeeName;
-	}
-	public void setEmployeeName(String employeeName) {
-		this.employeeName = employeeName;
-	}
 	public String getItemdesignName() {
 		return itemdesignName;
 	}
@@ -90,6 +71,18 @@ public class EmployeeSales {
 	}
 	public void setPaymentDate(String paymentDate) {
 		this.paymentDate = paymentDate;
+	}
+	public String getPaymentMonth() {
+		return paymentMonth;
+	}
+	public void setPaymentMonth(String paymentMonth) {
+		this.paymentMonth = paymentMonth+"%";
+	}
+	public String getPaymentYear() {
+		return paymentYear;
+	}
+	public void setPaymentYear(String paymentYear) {
+		this.paymentYear = paymentYear+"%";
 	}
 	public String getTotalCash() {
 		return totalCash;
@@ -118,12 +111,12 @@ public class EmployeeSales {
 	
 	@Override
 	public String toString() {
-		return "EmployeeSales [paymentCode=" + paymentCode + ", shopCode=" + shopCode + ", employeeCode=" + employeeCode
-				+ ", userCode=" + userCode + ", pointCode=" + pointCode + ", itemdesignCode=" + itemdesignCode
-				+ ", userName=" + userName + ", employeeName=" + employeeName + ", itemdesignName=" + itemdesignName
+		return "EmployeeSales [paymentCode=" + paymentCode + ", userCode=" + userCode + ", pointCode=" + pointCode
+				+ ", itemdesignCode=" + itemdesignCode + ", userName=" + userName + ", itemdesignName=" + itemdesignName
 				+ ", paymentType=" + paymentType + ", paymentTotalWon=" + paymentTotalWon + ", paymentDate="
-				+ paymentDate + ", totalCash=" + totalCash + ", countCash=" + countCash + ", totalCard=" + totalCard
-				+ ", countCard=" + countCard + "]";
+				+ paymentDate + ", paymentMonth=" + paymentMonth + ", paymentYear=" + paymentYear + ", totalCash="
+				+ totalCash + ", countCash=" + countCash + ", totalCard=" + totalCard + ", countCard=" + countCard
+				+ "]";
 	}
 	
 }
