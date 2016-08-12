@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:import url="stockManagementSetting.jsp"></c:import>
+	<c:import url="stockManagement.jsp"></c:import>
 	<br>
 	<div id="all">
 		<div class="divTh">여기는 거래처 정보를 입력해서 등록할 수 있는 화면임.</div>

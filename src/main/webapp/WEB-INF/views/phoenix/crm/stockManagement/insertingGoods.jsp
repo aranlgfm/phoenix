@@ -8,25 +8,24 @@
 <title>insertingGoods</title>
 </head>
 <body>
-	
-	<form action="/phoenix/crm/process/insertGoods" method="post">
+	<c:import url="stockManagement.jsp"></c:import>
+	<div id="all">
+	<br>
+		<form action="/phoenix/crm/process/insertGoods" method="post">
 			<table>
-		
-				
 				<tr>
 					<td>
 						거래처선택
 					</td>
 					<td>					 
-							<input type="text" name="accountCode">
-							<!--
-							<SELECT NAME=accountCode SIZE=1> 
-					            <OPTION VALUE=1>하나</OPTION> 
-					            <OPTION VALUE=2>둘</OPTION> 
-					            <OPTION VALUE=3 SELECTED>바보</OPTION> 
-					      	</SELECT> 
-					      	-->  
-				      	
+						<input class="form-control" type="text" name="accountCode">
+						<!--
+						<SELECT NAME=accountCode SIZE=1> 
+				            <OPTION VALUE=1>하나</OPTION> 
+				            <OPTION VALUE=2>둘</OPTION> 
+				            <OPTION VALUE=3 SELECTED>바보</OPTION> 
+				      	</SELECT> 
+				      	-->   	
 					</td>
 				</tr>
 				<tr>
@@ -34,7 +33,7 @@
 						제품명
 					</td>
 					<td>
-						<input type="text" name="goodsName">
+						<input class="form-control" type="text" name="goodsName">
 					</td>
 				</tr>
 				<tr>
@@ -42,7 +41,7 @@
 						사입가
 					</td>
 					<td>
-						<input type="text" name="butingGoodsUnitWon">원
+						<input class="form-control" type="text" name="butingGoodsUnitWon" value="원">
 					</td>
 				</tr>
 				<tr>
@@ -50,7 +49,7 @@
 						판매가
 					</td>
 					<td>
-						<input type="text" name="saleGoodsUnitWon">원
+						<input class="form-control" type="text" name="saleGoodsUnitWon" value="원">
 					</td>
 				</tr>
 				<!-- <tr>
@@ -66,15 +65,16 @@
 						메모
 					</td>
 					<td>
-						<textarea name="goodsMemo" cols="150" rows="5"></textarea>
+						<textarea class="form-control" name="goodsMemo" cols="110" rows="5"></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="submit" value="등록">
+						<input class="form-control" type="submit" value="등록">
 					</td>
 				</tr>
 			</table>
 		</form>
+	</div>
 </body>
 </html>

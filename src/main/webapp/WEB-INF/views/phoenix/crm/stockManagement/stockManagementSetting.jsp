@@ -21,7 +21,9 @@
 		<hr>	
 		<form action="/phoenix/crm/form/insertingAccount" method="get">
 			<input class="btn btn-primary" type="submit" value="거래처 등록">
+			<a class="btn btn-primary" href="goodsSetting">미용용품 설정</a>
 		</form>
+		
 	</div>	
 </body>
 </html>

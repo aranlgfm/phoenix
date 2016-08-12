@@ -60,7 +60,7 @@
 <div id="all">
 	<ul class="nav nav-tabs">
 		<li class="goodsStock"><a href="/phoenix/crm/form/goodsStock">미용용품입고내역</a></li>
-		<li class="goodsPaymentList"><a href="#">미용용품결제내역</a></li>
+		<!-- <li class="goodsPaymentList"><a href="#">미용용품결제내역</a></li> -->
 		<li class="goodsUseList"><a href="/phoenix/crm/form/goodsUseList">미용용품사용내역</a></li>
 		<li class="stockManagementSetting"><a href="/phoenix/crm/form/stockManagementSetting">미용용품설정</a></li>
 		<li class="etcCostList"><a href="/phoenix/crm/form/stockManagement/etcCostList">매입지출등록</a></li>

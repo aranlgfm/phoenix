@@ -8,50 +8,62 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table>
-			<tr>
-				<td>
-					거래처명
-				</td>
-				<td>
-					제품명
-				</td>
-				<td>
-					사입단가
-				</td>
-				<td>
-					판매단가
-				</td>
-				<td>
-					재고량	
-				</td>
-				<td>
-					관리
-				</td>
-			</tr>
-			<c:forEach var="list" items="${goodsSetting}">
-				<tr>
- 					<td>
- 						${list.employeeCode}
- 					</td>		
-					<td>
-						${list.goodsName}
-					</td> 			
-					<td>
-						${list.butingGoodsUnitWon}
-					</td> 
-					<td>
-						${list.saleGoodsUnitWon}
-					</td> 	
-					<td>
-						재고량 어떡하냐
-					</td>
-					<td>
-						<input type="button" value="상세">
-						<input type="button" value="삭제">
-					</td> 					
-				</tr>
-			</c:forEach>
+	<c:import url="stockManagement.jsp"></c:import>
+	
+	<div id="all">
+		<hr>
+		<a class="btn btn-primary" href="stockManagementSetting">거래처 설정</a>
+		<a class="btn btn-primary" href="stockManagementSetting">미용용품 설정</a>
+		<br><br>
+		<form action="/phoenix/crm/form/insertingGoods" method="get">
+			<input class="btn btn-default tag" type="submit" value="미용용품 설정등록">
+		</form>	
+				<table class="table table-hover">
+					<tr class="textCenter">
+						<th>
+							거래처명
+						</th>
+						<th>
+							제품명
+						</th>
+						<th>
+							사입단가
+						</th>
+						<th>
+							판매단가
+						</th>
+						<th>
+							재고량	
+						</th>
+						<th>
+							관리
+						</th>
+					</tr>
+					<c:forEach var="list" items="${goodsSetting}">
+						<tr class="textCenter">
+		 					<td>
+		 						${list.employeeCode}
+		 					</td>		
+							<td>
+								${list.goodsName}
+							</td> 			
+							<td>
+								${list.butingGoodsUnitWon}
+							</td> 
+							<td>
+								${list.saleGoodsUnitWon}
+							</td> 	
+							<td>
+								재고량 어떡하냐
+							</td>
+							<td>
+								<input type="button" value="상세">
+								<input type="button" value="삭제">
+							</td> 					
+						</tr>
+					</c:forEach>
 		</table>
+		
+	</div>	
 </body>
 </html>
