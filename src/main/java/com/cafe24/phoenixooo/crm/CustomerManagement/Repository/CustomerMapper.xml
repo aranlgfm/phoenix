@@ -108,6 +108,11 @@
 		FROM 
 			CRM_CUSTOMER_TB 
 		WHERE SHOP_CD=#{shopCode}
+		<if test="word != null and word != ''">
+			AND 
+				CUSTOMER_NM 
+			LIKE CONCAT('%',#{word},'%')
+		</if>
 		ORDER BY 
 			CUSTOMER_JOIN_DT DESC
 		LIMIT #{startRow},#{endRow}
