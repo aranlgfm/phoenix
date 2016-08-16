@@ -19,13 +19,13 @@ public interface CustomerService {
 	 * @param shopCode
 	 * @return
 	 */
-	int countCustomer(String shopCode);
+//	int countCustomer(String shopCode);
 	
 	/**
 	 * (Service) crm고객목록
 	 * @return
 	 */
-	Map<String, Object> getCustomerList(String shopCode, CustomerPageHelper pageHelper);
+	Map<String, Object> getCustomerList(String shopCode, CustomerPageHelper pageHelper, CrmCustomer customer, String word, String phone);
 	
 	/**
 	 * (Service) crm고객수정

@@ -45,8 +45,8 @@ public class CustomerDaoImpl implements CustomerDao {
 	 * (Repository구현) crm고객 수
 	 */
 	@Override
-	public int countCustomer(String shopCode) {
-		return sqlSession.selectOne(NS+"countCustomer", shopCode);
+	public int countCustomer(Map<String,Object> map) {
+		return sqlSession.selectOne(NS+"countCustomer", map);
 	}
 
 	/**

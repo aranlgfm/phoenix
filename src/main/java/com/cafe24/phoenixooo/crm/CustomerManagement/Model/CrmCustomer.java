@@ -7,7 +7,7 @@ public class CrmCustomer {
 	private String shopCode;					// not noll
 	private String customerName;				// not noll
 	private String customerCellphoneNumber;		// not noll
-	private int customerSexFlag;				// not noll
+	private String customerSexFlag;				// not noll
 	private String customerFirstVisitDate;
 	private String customerJoinDate;			// not noll
 	private String employeeCode;
@@ -49,10 +49,10 @@ public class CrmCustomer {
 	public void setCustomerCellphoneNumber(String customerCellphoneNumber) {
 		this.customerCellphoneNumber = customerCellphoneNumber;
 	}
-	public int getCustomerSexFlag() {
+	public String getCustomerSexFlag() {
 		return customerSexFlag;
 	}
-	public void setCustomerSexFlag(int customerSexFlag) {
+	public void setCustomerSexFlag(String customerSexFlag) {
 		this.customerSexFlag = customerSexFlag;
 	}
 	public String getCustomerFirstVisitDate() {

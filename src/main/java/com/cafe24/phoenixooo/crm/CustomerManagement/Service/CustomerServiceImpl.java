@@ -40,26 +40,33 @@ public class CustomerServiceImpl implements CustomerService {
 	/**
 	 * (Service구현) crm고객 수
 	 */
-	@Override
-	public int countCustomer(String shopCode) {
-		return customerDao.countCustomer(shopCode);
-	}
+//	@Override
+//	public int countCustomer(String shopCode) {
+//		return customerDao.countCustomer(shopCode);
+//	}
 
 	/**
 	 * (Service구현) crm고객목록
 	 */
 	@Override
-	public Map<String, Object> getCustomerList(String shopCode, CustomerPageHelper pageHelper) {
+	public Map<String, Object> getCustomerList(String shopCode, CustomerPageHelper pageHelper, CrmCustomer customer, String word, String phone) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("shopCode", shopCode);
+		// 검색 : employeeCode, customerSexFlag
+		map.put("word", word);
+		map.put("phone", phone);
+		map.put("employeeCode", customer.getEmployeeCode());
+		map.put("customerSexFlag", customer.getCustomerSexFlag());
 		pageHelper.setStartRow(pageHelper.getPageNo());
 		
-		pageHelper.setLastPageNo(customerDao.countCustomer(shopCode));
+		pageHelper.setLastPageNo(customerDao.countCustomer(map));
 		
 		map.put("startRow", pageHelper.getStartRow());
 		map.put("endRow", pageHelper.getEndRow());
+
 		List<CrmCustomer> list = customerDao.getCustomerList(map);
+		
 		map.put("list", list);
 		map.put("pageHelper", pageHelper);
 		return map;

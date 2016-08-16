@@ -35,10 +35,15 @@
 		color: #ffffff;
 	}
 </style>
+<script>
+	$(document).ready(function(){
+		$('#employeeCode').val('${employeeCode}');
+	});
+</script>
 </head>
 <body>
 	<c:import url="customerManagement.jsp"></c:import>
-
+	
 	<div id="all">
 		<ul class="nav nav-tabs">
 			<li class="active"><a
@@ -85,8 +90,8 @@
 		<!-- 이전 -->
 		<ul class="pager">
 		<c:if test="${pageHelper.pageNo > 1}">
-			<li class="tag"><a class="tag" href="/phoenix/crm/customerManagement/form/customerList?PageNo=1">◀</a></li>
-			<li class="tag"><a class="tag" href="/phoenix/crm/customerManagement/form/customerList?PageNo=${pageHelper.pageNo - 1}">Previous</a></li>
+			<li class="tag"><a class="tag" href="/phoenix/crm/customerManagement/form/customerList?PageNo=1&word=${word}&phone=${phone}&employeeCode=${employeeCode}">◀</a></li>
+			<li class="tag"><a class="tag" href="/phoenix/crm/customerManagement/form/customerList?PageNo=${pageHelper.pageNo - 1}&word=${word}&phone=${phone}&employeeCode=${employeeCode}">Previous</a></li>
 		</c:if>
 		<c:if test="${pageHelper.pageNo <= 0 or pageHelper.pageNo == 1}">
 			<li class="tag disabled"><a class="tag" href="#">◁</a></li>
@@ -96,17 +101,17 @@
 		<!-- 현재페이지 -->
 		<c:forEach begin="1" end="${pageHelper.lastPageNo}" var="i">
 			<c:if test="${pageHelper.pageNo == i}">
-				<li class="tag"><a class="tag" href="/phoenix/crm/customerManagement/form/customerList?PageNo=${i}"><b>${i}</b></a></li>
+				<li class="tag"><a class="tag" href="/phoenix/crm/customerManagement/form/customerList?PageNo=${i}&word=${word}&phone=${phone}&employeeCode=${employeeCode}"><b>${i}</b></a></li>
 			</c:if>
 			<c:if test="${pageHelper.pageNo != i}">
-				<li class="tag"><a class="tag" href="/phoenix/crm/customerManagement/form/customerList?PageNo=${i}">${i}</a></li>
+				<li class="tag"><a class="tag" href="/phoenix/crm/customerManagement/form/customerList?PageNo=${i}&word=${word}&phone=${phone}&employeeCode=${employeeCode}">${i}</a></li>
 			</c:if>			
 		</c:forEach>
 		
 		<!-- 다음 -->
 		<c:if test="${pageHelper.pageNo < pageHelper.lastPageNo and pageHelper.pageNo > 0}">
-			<li class="tag"><a class="tag" href="/phoenix/crm/customerManagement/form/customerList?PageNo=${pageHelper.pageNo + 1}">Next</a></li>
-			<li class="tag"><a class="tag" href="/phoenix/crm/customerManagement/form/customerList?PageNo=${pageHelper.lastPageNo}">▶</a></li>
+			<li class="tag"><a class="tag" href="/phoenix/crm/customerManagement/form/customerList?PageNo=${pageHelper.pageNo + 1}&word=${word}&phone=${phone}&employeeCode=${employeeCode}">Next</a></li>
+			<li class="tag"><a class="tag" href="/phoenix/crm/customerManagement/form/customerList?PageNo=${pageHelper.lastPageNo}&word=${word}&phone=${phone}&employeeCode=${employeeCode}">▶</a></li>
 		</c:if>
 		
 		<c:if test="${pageHelper.pageNo >= pageHelper.lastPageNo}">
@@ -117,5 +122,6 @@
 		</ul>
 
 	</div>
+	
 </body>
 </html>

@@ -31,7 +31,7 @@ public interface CustomerDao {
 	 * @param shopCode
 	 * @return
 	 */
-	int countCustomer(String shopCode);
+	int countCustomer(Map<String,Object> map);
 	
 	/**
 	 * (Repository) crm고객목록

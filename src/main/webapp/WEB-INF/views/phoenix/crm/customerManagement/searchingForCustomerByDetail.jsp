@@ -16,14 +16,15 @@
 </style>
 </head>
 <body>
-
+<br>
+<br>
 	<div class="center">
-		<form id="searchForm" class="form-horizontal" role="form" action="" method="POST">
+		<form id="searchForm" class="form-horizontal" role="form" action="/phoenix/crm/process/searchForCustomerByDetail" method="POST">
 			<div class="center">
 				
 				<div class="control-label col-sm-1">담당자 : </div>
 				<div class="col-sm-2">
-					<select name="employeeCode" class="form-control">
+					<select id="employeeCode" name="employeeCode" class="form-control">
 						<option value="">담당자</option>
 						<c:forEach var="empList" items="${emp}">
 							<option value="${empList.employeeCode}">${empList.employeeName}</option>
@@ -31,19 +32,18 @@
 					</select>
 				</div>
 				
-				<div class="control-label col-sm-1">성별 : </div>
+				<div class="control-label col-sm-1">연락처 : </div>
 				<div class="col-sm-2">
-					<label class="radio-inline"><input class="flag" type="radio" value="0"/>남</label>
-					<label class="radio-inline"><input class="flag" type="radio" value="1"/>여</label>
+					<input id="phone" name="phone" class="form-control" type="text"/>
 				</div>
 			
 				<div class="control-label col-sm-1">회원명 : </div>
 				<div class="col-sm-2">
-					<input class="form-control" type="text"/>
+					<input id="word" name="word" class="form-control" type="text"/>
 				</div>
 
 				<div class="col-sm-3">
-					<input id="btn" class="form-control" type="button" value="검색"/>
+					<input id="btn" class="form-control" type="submit" value="검색"/>
 				</div>
 			</div>
 		</form>

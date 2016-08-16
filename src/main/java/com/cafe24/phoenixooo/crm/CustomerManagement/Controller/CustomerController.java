@@ -83,7 +83,7 @@ public class CustomerController {
 	 * @return
 	 */
 	@RequestMapping(value = "/phoenix/crm/customerManagement/form/customerList", method = RequestMethod.GET)
-	public String crmFormCustomerList(HttpSession session, Model model, CustomerPageHelper pageHelper){
+	public String crmFormCustomerList(HttpSession session, Model model, CustomerPageHelper pageHelper, CrmCustomer customer, String word, String phone){
 		EmployeeListForSales emp = new EmployeeListForSales();
 		if(pageHelper.getPageNo() == 0){
 			pageHelper.setPageNo(1);
@@ -92,13 +92,17 @@ public class CustomerController {
 		UserCustomer userCus = new UserCustomer();
 		userCus = (UserCustomer)session.getAttribute("user");
 		String shopCode = userCus.getShopCode();
+		String employeeCode = customer.getEmployeeCode();
 
 		emp.setShopCode(shopCode);
 		List<EmployeeListForSales> empList = empService.selectEmployeeList(emp);
-		Map<String, Object> map = customerService.getCustomerList(shopCode, pageHelper);
+		Map<String, Object> map = customerService.getCustomerList(shopCode, pageHelper, customer, word, phone);
 		model.addAttribute("list", map.get("list"));
 		model.addAttribute("emp", empList);
 		model.addAttribute("pageHelper", pageHelper);
+		model.addAttribute("word", word);
+		model.addAttribute("phone", phone);
+		model.addAttribute("employeeCode", employeeCode);
 		return "/phoenix/crm/customerManagement/customerList";
 	}
 	
@@ -160,7 +164,25 @@ public class CustomerController {
 	 * @return
 	 */
 	@RequestMapping(value = "/phoenix/crm/process/searchForCustomerByDetail", method = RequestMethod.POST)
-	public String crmProcesSearchForCustomerByDetail(CrmCustomer customer){
-		return "/phoenix/crm/searchingForCustomerByDetail";
+	public String crmProcesSearchForCustomerByDetail(HttpSession session, Model model, CustomerPageHelper pageHelper, CrmCustomer customer, String word, String phone){
+		// 검색 : employeeCode, customerSexFlag, customerName
+		EmployeeListForSales emp = new EmployeeListForSales();
+		if(pageHelper.getPageNo() == 0){
+			pageHelper.setPageNo(1);
+		}
+		
+		UserCustomer userCus = new UserCustomer();
+		userCus = (UserCustomer)session.getAttribute("user");
+		String shopCode = userCus.getShopCode();
+		String employeeCode = customer.getEmployeeCode();
+
+		emp.setShopCode(shopCode);
+		List<EmployeeListForSales> empList = empService.selectEmployeeList(emp);
+		Map<String, Object> map = customerService.getCustomerList(shopCode, pageHelper, customer, word, phone);
+		model.addAttribute("list", map.get("list"));
+		model.addAttribute("emp", empList);
+		model.addAttribute("pageHelper", pageHelper);
+		model.addAttribute("employeeCode", employeeCode);
+		return "/phoenix/crm/customerManagement/customerList";
 	}
 }

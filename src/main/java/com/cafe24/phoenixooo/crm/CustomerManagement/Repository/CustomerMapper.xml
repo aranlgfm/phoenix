@@ -6,7 +6,7 @@
 		1. 고객등록
 		1. 고객코드가져오기(가입시)
 		2. 고객목록을 위한 총 고객 수
-		2. 고객목록
+		2. 고객목록(검색기능 추가)
 		3. 고객정보수정
 		3. 고객검색(수정용)
 		4. 고객삭제
@@ -86,13 +86,27 @@
 <!-- 	</select> -->
 	
 	<!-- 2. 고객목록을 위한 총 고객 수 -->
-	<select id="countCustomer" parameterType="java.lang.String" resultType="int">
+	<select id="countCustomer" parameterType="java.util.Map" resultType="int">
 		SELECT 
 			COUNT(*)
 		FROM 
 			CRM_CUSTOMER_TB 
 		WHERE 
 			SHOP_CD=#{shopCode}
+		<if test="word != null and word != ''">
+			AND 
+				CUSTOMER_NM 
+			LIKE CONCAT('%',#{word},'%')
+		</if>
+		<if test="employeeCode != null and employeeCode != ''">
+		AND 
+			EMPLOYEE_CD = #{employeeCode}
+		</if>
+		<if test="phone != null and phone != ''"> 
+		AND 
+			CUSTOMER_CELLPHONE_NO 
+			LIKE CONCAT('%',#{phone})
+		</if>
 	</select>
 	
 	<!-- 2. 고객목록 -->
@@ -111,7 +125,17 @@
 		<if test="word != null and word != ''">
 			AND 
 				CUSTOMER_NM 
-			LIKE CONCAT('%',#{word},'%')
+				LIKE CONCAT('%',#{word},'%')
+		</if>
+		<if test="employeeCode != null and employeeCode != ''">
+		AND 
+			EMPLOYEE_CD = #{employeeCode}
+		</if>
+		<if test="phone != null and phone != ''"> 
+		AND 
+			CUSTOMER_CELLPHONE_NO 
+			LIKE CONCAT('%',#{phone})
+
 		</if>
 		ORDER BY 
 			CUSTOMER_JOIN_DT DESC
@@ -169,4 +193,5 @@
 		WHERE 
 			CUSTOMER_CD = #{customerCode}
 	</delete>
+	
 </mapper>
