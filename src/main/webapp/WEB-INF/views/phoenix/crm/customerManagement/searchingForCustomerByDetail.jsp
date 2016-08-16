@@ -17,9 +17,6 @@
 </head>
 <body>
 
-<h1>
-	고객상세검색(기능안됨)
-</h1>
 	<div class="center">
 		<form id="searchForm" class="form-horizontal" role="form" action="" method="POST">
 			<div class="center">
