@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page session="false" %>
 <!DOCTYPE html>
 <html>
@@ -46,14 +47,17 @@
 			<c:forEach var="list" items="${list}">
 			<tr>
 				<td>${list.paymentDay}일 </td>
-				<td>${list.totalCash}/(${list.countCash})</td>
-				<td>${list.totalCard}/(${list.countCard})</td>
+				<td><fmt:formatNumber value="${list.totalCash}" groupingUsed="true"/>/(${list.countCash})</td>
+				<td><fmt:formatNumber value="${list.totalCard}" groupingUsed="true"/>/(${list.countCard})</td>
 			</tr>
+			<c:set var="cashSum" value="${cashSum + list.totalCash}"/>
+			<c:set var="cardSum" value="${cardSum + list.totalCard}"/>
 			</c:forEach>
+			
 			<tr>
 				<td>총합계</td>
-				<td></td>
-				<td></td>
+				<td><fmt:formatNumber value="${cashSum}" groupingUsed="true"/>원</td>
+				<td><fmt:formatNumber value="${cardSum}" groupingUsed="true"/>원</td>
 			</tr>
 		</table>
 		

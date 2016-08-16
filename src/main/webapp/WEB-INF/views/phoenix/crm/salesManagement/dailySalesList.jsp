@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page session="false" %>
 <!DOCTYPE html>
 <html>
@@ -20,6 +21,15 @@
 	$(document).ready(function(){
 		
 		$(".dailySales").addClass("active");
+		
+		
+		var ihd = $('td');
+		var al = $.makeArray(ihd);
+		console.log(al);
+		
+		console.log(typeof(al));
+	
+		
 	});
 </script>
 
@@ -46,21 +56,21 @@
 
 			<c:forEach var="list" items="${list}">
 			<tr>
-				<td>${list.itemDesignName} </td>
-				<td>${list.totalCash}/(${list.countCash})</td>
-				<td>${list.totalCard}/(${list.countCard})</td>
+				<td>${list.itemDesignName}</td>
+				<td><fmt:formatNumber value="${list.totalCash}" groupingUsed="true"/>/(${list.countCash})</td>
+				<td><fmt:formatNumber value="${list.totalCard}" groupingUsed="true"/>/(${list.countCard})</td>
 			</tr>
+			<c:set var="cashSum" value="${cashSum + list.totalCash}"/>
+			<c:set var="cardSum" value="${cardSum + list.totalCard}"/>
 			</c:forEach>
+		
 			<tr>
 				<td>총합계</td>
-				<td></td>
-				<td></td>
+				<td><fmt:formatNumber value="${cashSum}" groupingUsed="true"/>원</td>
+				<td><fmt:formatNumber value="${cardSum}" groupingUsed="true"/>원</td>
 			</tr>
 		</table>
 		
-		<strong>
-			최종결산 금액
-		</strong>
 	</div>
 </body>
 </html>
