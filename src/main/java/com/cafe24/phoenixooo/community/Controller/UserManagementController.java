@@ -191,9 +191,17 @@ public class UserManagementController {
 	 * @return
 	 */
 	@RequestMapping(value = "/phoenix/com/process/findingId", method = RequestMethod.POST)
-	public String comProcessFindingId(UserCustomer user) {
-		userService.findingId(user);
-		return "/phoenix/com/login";
+	public @ResponseBody Map<String, Object> comProcessFindingId(@RequestParam Map<String, Object> data, UserCustomer user) {
+		user.setUserName((String)data.get("userName"));
+		user.setUserEmailAddress((String)data.get("userEmailAddress"));
+		String id = userService.findingId(user);
+		System.out.println(id+"아이디야 나와라 안나올거냐");
+		System.out.println(id+"아이디야 나와라 안나올거냐");
+		System.out.println(id+"아이디야 나와라 안나올거냐");
+		System.out.println(id+"아이디야 나와라 안나올거냐");
+		System.out.println(id+"아이디야 나와라 안나올거냐");
+		data.put("result", id);
+		return data;
 	}
 	
 	/**
@@ -210,9 +218,12 @@ public class UserManagementController {
 	 * @return
 	 */
 	@RequestMapping(value = "/phoenix/com/process/findingPw", method = RequestMethod.POST)
-	public String comProcessFindingPw(UserCustomer user) {
-		userService.findingPw(user);
-		return "/phoenix/com/test";
+	public @ResponseBody Map<String, Object> comProcessFindingPw(@RequestParam Map<String, Object> data, UserCustomer user) {
+		user.setUserId((String)data.get("userId"));
+		user.setUserEmailAddress((String)data.get("userEmailAddress"));
+		String pw = userService.findingPw(user);
+		data.put("result", pw);
+		return data;
 	}
 
 	/**

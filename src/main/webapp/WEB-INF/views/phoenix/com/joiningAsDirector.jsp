@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>/com/form/joiningAsDirector</title>
+<title>미용실</title>
 <link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
 	<!-- 다음 우편번호 api -->
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>

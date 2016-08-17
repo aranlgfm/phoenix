@@ -87,7 +87,7 @@ public class UserManagementDaoImpl implements UserManagementDao {
 	 */
 	@Override
 	public String findingPw(UserCustomer user) {
-		return sqlSession.selectOne(NS+".findingId",user);
+		return sqlSession.selectOne(NS+".finding",user);
 	}
 	
 	/**

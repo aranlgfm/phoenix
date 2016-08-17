@@ -6,31 +6,114 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>/com/form/findingId</title>
+<title>아이디 찾기</title>
+<link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
+<!-- 다음 우편번호 api -->
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="/webjars/jquery/3.1.0/jquery.min.js"></script>
+<style>
+	
+	.textCenter{
+		text-align: center;
+		margin-top: 150px;
+	}
+	.textRight{
+		text-align: right;
+	}
+	.title{
+		font-size: 30px;
+		font-weight: bolder;
+	}
+	
+	div.center { 
+		width:300px; 
+		margin:auto;
+		
+	}
+	
+	.centerT{
+		position:absolute;
+		width:300px; 
+		margin:auto;
+		text-align: center;
+	}
+
+	.textWarn {
+		font-weight:bolder;
+		color: red;
+	}
+</style>
+<script>
+	$(document).ready(function(){
+		// 버튼클릭하면 아이디 찾아서 보여주기
+		$('#btn').click(function(){
+			$.ajax({
+				url : "/phoenix/com/process/findingId",
+				type: "post",
+				data : {"userName" : $('#userName').val(), "userEmailAddress" : $('#userEmailAddress').val()},
+				success : function(user){
+					if(user.result == null){
+						$('#msg').html('일치하는 회원이 없습니다.');
+					}else{
+						$('#msg').html('아이디는 <strong>'+user.result+'</strong>입니다.');
+					}
+				}
+			})
+		});
+	});
+</script>
 </head>
 <body>
-	<h1>
-		아이디 찾기
-	</h1>
-	
-	<div>
-		<p>가입시 입력한 이름과 이메일 주소를 적어주세요.</p>
-	</div>
-	<form action="/phoenix/com/process/findingId" method="POST">
-		<div>
-			<label>이 름 :</label>
-			<input type="text" name="userName" value=""/>
-		</div>
-		<div>
-			<label>이메일 :</label>
-			<input type="text" name="userEmailAddress" value=""/>
-		</div>
+<c:import url="../../top.jsp"></c:import>
+	<br/>
+	<br/>
+	<div id="all" class="left"><!-- 전체 -->
+		<div class="textCenter title">
+			아이디 찾기
+		</div>	
 		
-		<div>
-			
-			<input type="submit" value="보내기"/>
-			<a href="/phoenix"><input type="button" value="취소"/></a>
+		<br/>
+		<br/>
+
+		<div class="center">
+	
+			<form class="form-horizontal" role="form">
+				
+				<div class="form-group">
+					<p>가입시 입력한 이름과 이메일 주소를 적어주세요.</p>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-4" for="userName">이름:</label>
+					 <div class="col-sm-8">
+				      <input type="text" class="form-control" id="userName"/>
+				    </div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-4" for="userPw">이메일:</label>
+					 <div class="col-sm-8">
+				      <input type="text" class="form-control" id="userEmailAddress"/>
+				    </div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-4"></label>
+					<div class="col-sm-8">
+						<button id="btn" type="button" class="btn btn-default">찾기</button>
+						<a class="btn btn-default" href="/phoenix/com/form/login">로그인</a>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="center col-sm-10">
+						<span id="msg" class="textWarn"></span>
+					</div>
+				</div>
+				
+			</form>
 		</div>
-	</form>
+	</div>
+	
 </body>
 </html>

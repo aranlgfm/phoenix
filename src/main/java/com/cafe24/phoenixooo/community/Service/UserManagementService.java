@@ -37,14 +37,14 @@ public interface UserManagementService {
 	 * @param user
 	 * @return
 	 */
-	int findingId(UserCustomer user);
+	String findingId(UserCustomer user);
 	
 	/**
 	 * (서비스) 비번찾기
 	 * @param user
 	 * @return
 	 */
-	int findingPw(UserCustomer user);
+	String findingPw(UserCustomer user);
 	
 	/**
 	 * (서비스) 로그인
