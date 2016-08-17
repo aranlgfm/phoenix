@@ -52,15 +52,11 @@
 	<br/>
 	<form action="/phoenix/crm/employeeManagement/employeeSalaryList" method="GET">
 		<div>
-			<!-- <label>검색어 :</label>
-			<input type="text" name="word"><button type="button" class="btn btn-info">검색</button>
-			 -->
 			<div class="textCenter">
 				<label>직원명</label>
 				<input type="text" name="word" size="10"/>
 				<input class="btn btn-default" type="submit" value="검색"/>
 			</div>
-			
 		</div>
 	</form>
 	<hr>
@@ -71,6 +67,7 @@
 				<th>급여지급일</th>
 				<th>근무년월</th>
 				<th>지급급여</th>
+				<th>기타</th>
 			</tr>
 		</thead>
 		<c:forEach var="list" items="${employeeSalaryList}">
@@ -80,6 +77,7 @@
 					<td>${list.salaryPayDate}</td>
 					<td>${list.salaryMonthDate}</td>
 					<td>${list.salaryWon}</td>
+					<td><a class="btn btn-default" href="/phoenix/crm/employeeManagement/deleteEmployeeSalary?salaryCode=${list.salaryCode}">삭제</a></td>
 				</tr>
 			</tbody>
 		</c:forEach>

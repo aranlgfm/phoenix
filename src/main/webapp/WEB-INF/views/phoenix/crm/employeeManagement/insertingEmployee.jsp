@@ -139,7 +139,7 @@
 	<div class="center">
 		
 		<form class="form-horizontal" id="employeeForm" role="form" action="/phoenix/crm/employeeManagement/insertingEmployee" method="POST">
-			<%-- <input type="hidden" name="userGroupName" value="${group}"/> --%>
+			
 							
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="EmployeeLevelName">직급:</label>

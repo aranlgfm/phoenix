@@ -41,4 +41,12 @@ private final String NS = "com.cafe24.phoenixooo.crm.employeeManagement.Reposito
 		return sqlSession.selectList(NS + ".selectEmployeeSalaryList", map);
 	}
 
+	/**
+	 * (Dao) 급여지급 삭제
+	 */
+	@Override
+	public int deleteEmployeeSalary(EmployeeSalary employeeSalary) {
+		return sqlSession.delete(NS + ".deleteEmployeeSalary", employeeSalary);
+	}
+
 }

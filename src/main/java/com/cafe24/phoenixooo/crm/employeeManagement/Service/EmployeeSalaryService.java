@@ -26,4 +26,11 @@ public interface EmployeeSalaryService {
 	 * @return
 	 */
 	List<EmployeeSalary> getEmployeeSalaryList(int page, String word);
+	
+	/**
+	 * (Service) 급여지급 삭제
+	 * @param employeeSalary
+	 * @return
+	 */
+	int deleteEmployeeSalary(EmployeeSalary employeeSalary);
 }

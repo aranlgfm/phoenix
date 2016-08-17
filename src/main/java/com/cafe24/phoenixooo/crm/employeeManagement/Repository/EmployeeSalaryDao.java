@@ -26,4 +26,11 @@ public interface EmployeeSalaryDao {
 	 * @return
 	 */
 	List<EmployeeSalary> selectEmployeeSalaryList(Map<String, Object> map);
+	
+	/**
+	 * (Dao) 급여지급 삭제
+	 * @param employeeSalary
+	 * @return
+	 */
+	int deleteEmployeeSalary(EmployeeSalary employeeSalary);
 }
