@@ -16,7 +16,7 @@
 				//유효성
 				
 				$('#submitButton').click(function(){
-					var checkCount = 0;	
+					var result = "";
 					//아이디
 					if($("#userId").val() == ""){
 						$("#userIdMsg").html("아이디를입력하세요");
@@ -30,7 +30,6 @@
 									$("#userIdMsg").html("중복아이디");
 								}else{
 									$("#userIdMsg").html("");
-									checkCount++;
 								}
 							}//success
 						})
@@ -44,45 +43,44 @@
 								$("#"+name).html(msg);		
 							}else{
 								$("#"+name).html("");
-								if(index == $(".validCheck").length-1){
-									checkCount++;
-								}
 							}	
 						
 						});
 					
 					//값이 분리되어있는 것 유효성
-					
 					$(".validGroupCheck").each(function(index){
 						var name = ($(this).attr("id").replace(/[0-9]/g,""))+"Msg";
 						var msg = $(this).attr("valueCheck");
-						console.log(index);
+						console.log("나의 밸류는?");
+						console.log($(this).val());
 						if($(this).val() == ""){
 							$("#"+name).html(msg);
-						}else if($(this).prev().val() != ""){
+						}else if($(this).prev().val() != "" && $(this).next().val() != ""){
 							$("#"+name).html("");
-							if(index == $(".validGroupCheck").length-1){
-								checkCount++;
-							}
 						}
-					
+						
+						//라디오버튼 체크
 						if($(this).attr("type") == "radio"){
 							if(!($(".userSexFlag").is(":checked"))){
 								$("#"+name).html(msg);
 							}else{
 								$("#"+name).html("");
-								checkCount++;
 							}
 						}
 					});	
 					
 					//체크 후 서브밋;
-						if(checkCount == 4){
+					
+					$(".lastCheck").each(function(index){
+						result += $(this).text();
+						console.log(result.length);
+						if(index == $(".lastCheck").length-1 &&  result.length == 0){
 							$("#userCellphoneNumber").val($("#userCellphoneNumber1").val()+"-"+$("#userCellphoneNumber2").val()+"-"+$("#userCellphoneNumber3").val());
 							$("#userEmailAddress").val($("#userEmailAddress1").val()+"@"+$("#userEmailAddress2").val());
 							$("#userForm").submit();
 						}
-					});	//submit클릭이벤트
+					});
+				});	//submit클릭이벤트
 			
 				
 				// 우편번호찾기 후에 데이터 입력
