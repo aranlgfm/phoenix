@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +33,7 @@
 			<input type="hidden" value="${articleCode}" name="articleCode">
 			<div id="table3">
 				<div class="row">
-					<span class="cell col3 cell6">아이디나옴</span>
+					<span class="cell col3 cell6">${user.userNickName}</span>
 				</div>
 				<div class="row">
 					<span class="cell col4 cell8"><textarea rows="5"  cols="140%" name="commentContent"></textarea></span>

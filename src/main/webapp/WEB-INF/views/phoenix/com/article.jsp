@@ -37,7 +37,7 @@
 		.col2 {width: 80%;}
 		.cell3,.cell4{height:600px;}
 		.cell3{vertical-align: middle;}
-		.cell1,.cell2,.cell3{text-align: center;}
+		.cell1,.cell2,.cell3,.cell9,.cell10{text-align: center;}
 		.fileDiv{width:80%;text-align:right;}
 	</style>
 </head>
@@ -61,6 +61,10 @@
 			<div class="row">
 				<span class="cell col1 cell1">제목</span>
 				<span class="cell col2 cell2">${map.article.articleName }</span>
+			</div>
+			<div class="row">
+				<span class="cell col1 cell9">글쓴이</span>
+				<span class="cell col2 cell10">${map.article.userNickName }</span>
 			</div>
 			<div class="row">
 				<span class="cell col1 cell3">내용</span>

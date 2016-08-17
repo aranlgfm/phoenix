@@ -146,13 +146,14 @@ public class BoardController
 		
 		//댓글 등록
 		@RequestMapping(value = "/phoenix/com/process/insertComment", method = RequestMethod.POST)
-		public String insertComment(Comment comment, Model model) {
+		public String insertComment(Comment comment, Model model,HttpSession session) {
 			System.out.println("-----------댓글 등록버튼 클릭----------");
 			System.out.println(comment.getArticleCode());
 			System.out.println(comment.getCommentCode());
 			System.out.println(comment.getCommentContent());
 			System.out.println("-----------댓글 등록버튼 클릭----------");
 			
+			comment.setUserCode(((UserCustomer)(session.getAttribute("user"))).getUserCode());
 			boardService.insertComment(comment);
 			model.addAttribute("articleCode", comment.getArticleCode());
 			return "redirect:/phoenix/com/form/basicArticle";
