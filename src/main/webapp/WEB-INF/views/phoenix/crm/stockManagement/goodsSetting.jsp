@@ -33,12 +33,6 @@
 						<th>
 							판매단가
 						</th>
-						<th>
-							재고량	
-						</th>
-						<th>
-							관리
-						</th>
 					</tr>
 					<c:forEach var="list" items="${goodsSetting}">
 						<tr class="textCenter">
@@ -54,13 +48,6 @@
 							<td>
 								${list.saleGoodsUnitWon}
 							</td> 	
-							<td>
-								재고량 어떡하냐
-							</td>
-							<td>
-								<input type="button" value="상세">
-								<input type="button" value="삭제">
-							</td> 					
 						</tr>
 					</c:forEach>
 		</table>

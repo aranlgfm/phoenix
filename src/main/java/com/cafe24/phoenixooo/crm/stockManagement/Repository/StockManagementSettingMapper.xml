@@ -65,6 +65,7 @@
 				
 	</insert>
 	
+	<!-- 미용용품설정 내역 가져오기  -->
 	<select id="selectGoodsSetting" parameterType="com.cafe24.phoenixooo.crm.stockManagement.Model.Goods" resultType="com.cafe24.phoenixooo.crm.stockManagement.Model.Goods">
 		SELECT
 			ACCOUNT_CD as accountCode
@@ -73,6 +74,17 @@
 		 	,SALE_GOODS_UNIT_WON as saleGoodsUnitWon
 		FROM
 			CRM_GOODS_TB as goods
+	</select>
+	
+	<!-- 거래처설정 내역 가져오기  -->
+	<select id="selectStockManagementSetting" parameterType="com.cafe24.phoenixooo.crm.stockManagement.Model.Account" resultType="com.cafe24.phoenixooo.crm.stockManagement.Model.Account">
+		SELECT
+			ACCOUNT_NM as accountName
+			,CHARGER_NM as chargerName
+			,CHARGER_PHONE_NO as phoneNumber
+			,CHARGER_MEMO as chargerMemo
+		FROM
+			CRM_ACCOUNT_TB as account
 	</select>
 	
 </mapper>

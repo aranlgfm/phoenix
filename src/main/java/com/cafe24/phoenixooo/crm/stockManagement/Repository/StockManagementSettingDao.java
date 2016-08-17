@@ -14,5 +14,8 @@ public interface StockManagementSettingDao {
 	int insertGoods(Goods goods);
 	
 	//미용용품설정 내역 가져오기
-		List<Goods> selectGoodsSetting(Goods goods);
+	List<Goods> selectGoodsSetting(Goods goods);
+	
+	//거래처설정 내역 가져오기
+	List<Account> selectStockManagementSetting(Account account);
 }

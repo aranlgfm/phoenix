@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.cafe24.phoenixooo.community.Model.UserCustomer;
 import com.cafe24.phoenixooo.crm.stockManagement.Model.Account;
 import com.cafe24.phoenixooo.crm.stockManagement.Model.Goods;
-import com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsUse;
 import com.cafe24.phoenixooo.crm.stockManagement.Service.StockManagementSettingService;
 
 
@@ -28,8 +27,10 @@ public class StockManagementSettingController {
 	
 	//거래처 내역을 보여주고, 거래처 등록 버튼이 있는 화면으로. 그러니까 첫 화면.
 	@RequestMapping(value = "/phoenix/crm/form/stockManagementSetting", method = RequestMethod.GET)
-	public String moveToStockManagementSetting(Model model) 
+	public String moveToStockManagementSetting(Account account, Model model) 
 	{ 
+		List<Account> StockManagementSetting=stockManagementSettingService.selectStockManagementSetting(account);
+		model.addAttribute("StockManagementSetting", StockManagementSetting);
 		return "/phoenix/crm/stockManagement/stockManagementSetting";
 	}
 	
