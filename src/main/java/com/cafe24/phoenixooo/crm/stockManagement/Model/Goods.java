@@ -1,6 +1,6 @@
 package com.cafe24.phoenixooo.crm.stockManagement.Model;
 
-public class Goods {
+public class Goods extends Account{
 	private String goodsCode;
 	private String shopCode;
 	private String employeeCode;

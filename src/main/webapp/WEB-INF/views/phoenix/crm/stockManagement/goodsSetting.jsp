@@ -13,7 +13,7 @@
 	<div id="all">
 		<hr>
 		<a class="btn btn-primary" href="stockManagementSetting">거래처 설정</a>
-		<a class="btn btn-primary" href="stockManagementSetting">미용용품 설정</a>
+		<a class="btn btn-primary" href="goodsSetting">미용용품 설정</a>
 		<br><br>
 		<form action="/phoenix/crm/form/insertingGoods" method="get">
 			<input class="btn btn-default tag" type="submit" value="미용용품 설정등록">
@@ -37,7 +37,7 @@
 					<c:forEach var="list" items="${goodsSetting}">
 						<tr class="textCenter">
 		 					<td>
-		 						${list.employeeCode}
+		 						${list.accountName}
 		 					</td>		
 							<td>
 								${list.goodsName}

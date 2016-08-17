@@ -67,13 +67,17 @@
 	
 	<!-- 미용용품설정 내역 가져오기  -->
 	<select id="selectGoodsSetting" parameterType="com.cafe24.phoenixooo.crm.stockManagement.Model.Goods" resultType="com.cafe24.phoenixooo.crm.stockManagement.Model.Goods">
-		SELECT
-			ACCOUNT_CD as accountCode
-		 	,GOODS_NM as goodsName
-		 	,BUYING_GOODS_UNIT_WON as buyingGoodsUnitWon
-		 	,SALE_GOODS_UNIT_WON as saleGoodsUnitWon
+		SELECT 
+			CRM_ACCOUNT_TB.ACCOUNT_NM as accountName
+			,CRM_GOODS_TB.GOODS_NM as goodsName
+		 	,CRM_GOODS_TB.BUYING_GOODS_UNIT_WON as buyingGoodsUnitWon
+		 	,CRM_GOODS_TB.SALE_GOODS_UNIT_WON as saleGoodsUnitWon
 		FROM
-			CRM_GOODS_TB as goods
+			CRM_GOODS_TB
+		INNER JOIN
+			CRM_ACCOUNT_TB
+		ON
+			CRM_ACCOUNT_TB.ACCOUNT_CD=CRM_GOODS_TB.ACCOUNT_CD;
 	</select>
 	
 	<!-- 거래처설정 내역 가져오기  -->
