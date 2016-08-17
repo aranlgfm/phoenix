@@ -14,7 +14,6 @@ import com.cafe24.phoenixooo.community.Service.TotalSearchService;
 
 @Controller
 public class TotalSearchController {
-	// 개망....우리 키워드 해야되네;;; ㅡㅡ;
 	@Autowired
 	private TotalSearchService service;
 
@@ -27,9 +26,7 @@ public class TotalSearchController {
 	@RequestMapping(value = "/phoenix/com/form/searchResult", method = RequestMethod.POST)
 	public String comFormSearchResult(String word, Model model) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		System.out.println("controller");
 		model.addAttribute("word", word);
-		System.out.println(word);
 		map.put("list", service.selectArticleList(word));
 		model.addAttribute("map", map);
 		return "/phoenix/com/searchResult";
@@ -38,9 +35,7 @@ public class TotalSearchController {
 	@RequestMapping(value = "/phoenix/com/form/searchResult", method = RequestMethod.GET)
 	public String comFormSearchResultget(String word, Model model) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		System.out.println("controller");
 		model.addAttribute("word", word);
-		System.out.println(word);
 		map.put("list", service.selectArticleList(word));
 		model.addAttribute("map", map);
 

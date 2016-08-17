@@ -64,11 +64,6 @@
 		</ul>
 
 		<input id="cate" type="hidden" value="${cate}" />
-<%-- 		<c:set var="f" value="${list.freeArticle}"></c:set> --%>
-<%-- 		<c:set var="h" value="${list.hairArticle}"></c:set> --%>
-		<%-- <c:set var="s" value="${map.list.shopList}"></c:set> --%>
-		<%-- <c:set var="d" value="${map.list.designerList}"></c:set> --%>
-
 
 		<!-- 카테고리별 검색 -->
 		<c:choose>
@@ -105,28 +100,12 @@
 						</tr>
 					<c:forEach items="${list.hairArticle}" var="item">
 						<tr>
-							<td>${item.articleName}</td>
+							<td><a href="/phoenix/com/form/basicArticle?articleCode=${item.articleCode}">${item.articleName}</a></td>
 							<td>${item.userNickName}</td>
 							<td>${item.articleDate}</td>
 						</tr>
 					</c:forEach>
 					</table>
-					<div>
-						<img class="hairImg" src="/resources/test1.jpg" />
-					</div>
-					<div>
-						<a href="/phoenix/com/process/withdraw"><img class="hairImg"
-							src="/resources/test2.jpg" /></a>
-					</div>
-					<div>
-						<img class="hairImg" src="/resources/test3.jpg" />
-					</div>
-					<div>
-						<img class="hairImg" src="/resources/test4.jpg" />
-					</div>
-					<div>
-						<img class="hairImg" src="/resources/test5.jpg" />
-					</div>
 					<div class="cancle"></div>
 				</div>
 			</c:when>
@@ -169,8 +148,6 @@
 				</div>
 			</c:when>
 
-
-
 			<c:otherwise>
 			<!-- 통합검색 -->
 				<div>
@@ -183,7 +160,7 @@
 							</tr>
 							<c:forEach items="${map.list.freeArticle}" var="item">
 							<tr>
-								<td>${item.articleName}</td>
+								<td><a href="/phoenix/com/form/basicArticle?articleCode=${item.articleCode}">${item.articleName}</a></td>
 								<td>${item.userNickName}</td>
 								<td>${item.articleDate}</td>
 							</tr>
@@ -203,29 +180,19 @@
 							</tr>
 							<c:forEach items="${map.list.hairArticle}" var="item">
 							<tr>
-								<td>${item.articleName}</td>
+								<td><a href="/phoenix/com/form/basicArticle?articleCode=${item.articleCode}">${item.articleName}</a></td>
 								<td>${item.userNickName}</td>
 								<td>${item.articleDate}</td>
 							</tr>
 							</c:forEach>
 						</table>
 
-					<div>
-						<img class="hairImg" src="/resources/test1.jpg" />
-					</div>
-					<div>
-						<a href="/phoenix/com/process/withdraw"><img class="hairImg"
-							src="/resources/test2.jpg" /></a>
-					</div>
-					<div>
-						<img class="hairImg" src="/resources/test3.jpg" />
-					</div>
-					<div>
-						<img class="hairImg" src="/resources/test4.jpg" />
-					</div>
-					<div>
-						<img class="hairImg" src="/resources/test5.jpg" />
-					</div>
+
+
+		<!-- 여기를 수정해야 합니다. -->
+
+
+
 					<div class="cancle"></div>
 					<br />
 				</div>
