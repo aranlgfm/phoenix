@@ -16,6 +16,11 @@
 			width : 70%;
 			margin : auto;
 		}
+	.totalMoney
+	{
+		font-weight: bold;
+	}
+		
 </style>
 <script>
 	$(document).ready(function(){
@@ -54,6 +59,7 @@
 			</tr>
 			<c:set var="cashSum" value="${cashSum + list.totalCash}"/>
 			<c:set var="cardSum" value="${cardSum + list.totalCard}"/>
+			<c:set var="totalSum" value="${cardSum + cashSum}"/>
 			</c:forEach>
 			<tr>
 				<td>총합계</td>
@@ -62,9 +68,10 @@
 			</tr>
 		</table>
 		
-		<strong>
-			최종결산 금액
-		</strong>
+		<div class="totalMoney">
+			<div class="col-sm-5">최종결산금액</div>
+			<div class="col-sm-7"><fmt:formatNumber value="${totalSum}" groupingUsed="true"/>원</div>
+		</div>	
 	</div>
 </body>
 </html>
