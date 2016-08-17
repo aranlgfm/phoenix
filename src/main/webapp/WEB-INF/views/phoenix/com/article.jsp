@@ -94,8 +94,10 @@
 		
 		<br><br>
 		
-		<div>
-			<c:import url="/phoenix/com/form/comment"></c:import>
-		</div>
+		<c:if test="${user.userCode ne null}">
+			<div>
+				<c:import url="/phoenix/com/form/comment"></c:import>
+			</div>
+		</c:if>
 </body>
 </html>
