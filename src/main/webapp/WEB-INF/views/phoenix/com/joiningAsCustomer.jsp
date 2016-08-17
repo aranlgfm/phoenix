@@ -14,7 +14,9 @@
 		<script>
 			$(document).ready(function(){
 				//유효성
+				
 				$('#submitButton').click(function(){
+					var checkCount = 0;	
 					//아이디
 					if($("#userId").val() == ""){
 						$("#userIdMsg").html("아이디를입력하세요");
@@ -28,36 +30,39 @@
 									$("#userIdMsg").html("중복아이디");
 								}else{
 									$("#userIdMsg").html("");
+									checkCount++;
 								}
 							}//success
 						})
 					}
 					
 					//기본유효성
-					$(".validCheck").each(function(){
+					$(".validCheck").each(function(index){
 						var name = $(this).attr("id")+"Msg"; 
 						var msg = $(this).attr("valueCheck");
 							if($(this).val() == ""){
 								$("#"+name).html(msg);		
 							}else{
 								$("#"+name).html("");
-								if($(".validCheck").index == $(".validCheck").length-1){
+								if(index == $(".validCheck").length-1){
+									checkCount++;
 								}
 							}	
 						
 						});
 					
 					//값이 분리되어있는 것 유효성
+					
 					$(".validGroupCheck").each(function(index){
 						var name = ($(this).attr("id").replace(/[0-9]/g,""))+"Msg";
 						var msg = $(this).attr("valueCheck");
-						
+						console.log(index);
 						if($(this).val() == ""){
 							$("#"+name).html(msg);
 						}else if($(this).prev().val() != ""){
 							$("#"+name).html("");
-							if($(this).index == $(".validGroupCheck").length-1){
-								check += 1;
+							if(index == $(".validGroupCheck").length-1){
+								checkCount++;
 							}
 						}
 					
@@ -66,29 +71,25 @@
 								$("#"+name).html(msg);
 							}else{
 								$("#"+name).html("");
+								checkCount++;
 							}
 						}
 					});	
 					
 					//체크 후 서브밋;
-					$(".lastCheck").each(function(){
-						var result = "";
-						console.log($(this).html());
-						result += $(this).html();
-						if(result.length == 0){
-							$("#userCellphoneNumber").val($("#userCellphoneNumber1").val()+$('#userCellphoneNumber2').val()+$('#userCellphoneNumber3').val());
-							$("#userEmailAddress").val($("#userEmailId").val()+$('#userEmailDomain').val());
+						if(checkCount == 4){
+							$("#userCellphoneNumber").val($("#userCellphoneNumber1").val()+"-"+$("#userCellphoneNumber2").val()+"-"+$("#userCellphoneNumber3").val());
+							$("#userEmailAddress").val($("#userEmailAddress1").val()+"@"+$("#userEmailAddress2").val());
 							$("#userForm").submit();
 						}
-					});	
-				});
-				
+					});	//submit클릭이벤트
+			
 				
 				// 우편번호찾기 후에 데이터 입력
 				$('#searchPostNumber').click(function(){
 					new daum.Postcode({
 				        oncomplete: function(data) {
-				        	console.log(data);
+				        	//console.log(data);
 				        	$('#searchAddress').val(data.roadAddress);
 				        	$('#userPostNumber').val(data.zonecode);
 				        }
@@ -102,7 +103,6 @@
 					$("#userEmailAddress2").val($("#selectEmail2").val());
 				});
 			});
-		
 		</script>
 	<style>
 		.textCenter{
