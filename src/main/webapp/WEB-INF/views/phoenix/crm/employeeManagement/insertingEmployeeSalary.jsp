@@ -12,6 +12,7 @@
 <script>
  		
 	$(document).ready(function() {	
+		
 		$('#submitBtn').click(function() {
 			if($('#SalaryMonthDate').val() == '') {
 				$('#SalaryMonthDateMsg').html('근무년월을 입력해 주세요.');
@@ -81,7 +82,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="SalaryPayDate">급여지급일:</label>
 				<div class="col-sm-4">
-					<input type="text" class="form-control" id="SalaryPayDate" name="SalaryPayDate" placeholder="현재시각" readonly="readonly"/>
+					<input type="text" class="form-control" id="SalaryPayDate" name="SalaryPayDate" placeholder="현재시각" readonly="readonly" />
 				</div>
 				<span id="SalaryPayDateMsg"></span>
 			</div>
@@ -90,7 +91,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="SalaryMonthDate">근무년월:</label>
 				<div class="col-sm-4">
-					<input type="date" class="form-control" id="SalaryMonthDate" name="SalaryMonthDate">
+					<input type="date" class="form-control" id="SalaryMonthDate" name="SalaryMonthDate" />
 				</div>
 				<span id="SalaryMonthDateMsg"></span>
 			</div>
@@ -98,7 +99,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="EmployeeName">직원명:</label>
 				<div class="col-sm-4">
-					<input type="text" class="form-control" id="EmployeeName" name="EmployeeName" placeholder="2자이상 12자이하">
+					<input type="text" class="form-control" id="EmployeeName" name="EmployeeName" />
 				</div>
 				<span id="EmployeeNameMsg"></span>
 			</div>
@@ -106,7 +107,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="SalaryWon">지급급여:</label>
 				<div class="col-sm-4">
-					<input type="text" class="form-control" id="SalaryWon" name="SalaryWon" maxlength="12" placeholder="숫자만 입력">
+					<input type="text" class="form-control" id="SalaryWon" name="SalaryWon" maxlength="12" placeholder="숫자만 입력" />
 				</div>
 				<span id="SalaryWonMsg"></span>
 			</div>

@@ -35,6 +35,10 @@
 		text-align: right;
 	}
 	
+	.Btn {
+		text-align: center;
+	}
+	
 </style>
 
 <title>급여지급 리스트</title>
@@ -81,6 +85,9 @@
 		</c:forEach>
 	</table>
 	
+	<!-- 페이징 -->
+	
+	<!-- 
 	<ul class="pager">
 		<li class="tag"><a class="tag" href="#">◀ Previous</a></li>
 		<li><a class="tag" href="">1</a></li>
@@ -90,20 +97,16 @@
 		<li><a class="tag" href="">5</a></li>
 		<li class="tag"><a class="tag" href="#">Next ▶</a></li>
 	</ul>
+	 -->
 	
-	<!-- <form action="/phoenix/crm/employeeManagement/employeeSalaryList" method="GET">
-		검색어 : 
-		<input type="text" name="word">
-		<button>검색</button>
-	</form> -->
-	<%-- 
-	<c:if test="${page>1}">
-		<a href="/phoenix/crm/employeeManagement/employeeSalaryList?page=${page-1}">이전</a>
-	</c:if>
-	<c:if test="${page<lastPage}">
-		<a href="/phoenix/crm/employeeManagement/employeeSalaryList?page=${page+1}">다음</a>
-	</c:if>
-	 --%>
+	<div class="Btn">
+		<c:if test="${page>1}">
+			<a class="btn btn-default" href="/phoenix/crm/employeeManagement/employeeSalaryList?page=${page-1}">이전</a>
+		</c:if>
+		<c:if test="${page<lastPage}">
+			<a class="btn btn-default" href="/phoenix/crm/employeeManagement/employeeSalaryList?page=${page+1}">다음</a>
+		</c:if>
+	</div>
 	
 </body>
 </html>

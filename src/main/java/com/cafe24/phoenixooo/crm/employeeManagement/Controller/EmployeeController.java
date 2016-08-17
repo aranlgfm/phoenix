@@ -62,7 +62,6 @@ public class EmployeeController {
 	 */
 	@RequestMapping(value="/phoenix/crm/employeeManagement/employeeDetail", method=RequestMethod.GET)
 	public String employeeDetail(Employee employee, Model model) {
-		System.out.println("직원 상세보기");
 		Employee employeeo = employeeService.employeeDetail(employee);
 		model.addAttribute("employee", employeeo);
 		return "/phoenix/crm/employeeManagement/employeeDetail";

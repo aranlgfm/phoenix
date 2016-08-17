@@ -18,27 +18,18 @@
 		
 		// 유효성 검사
 		$('#submitBtn').click(function() {
-			
-			if($("#EmployeePw").val() == ""){
-				$("#EmployeePwMsg").html("비밀번호 입력하세요");
- 			}else if($("#EmployeePw").val() != $("#EmployeePwRepw").val()){
- 				$("#EmployeePwMsg").html("");
-				$("#EmployeePwRepwMsg").html("비밀번호가 일치하지 않습니다.");
- 			}else{
- 				$("#EmployeePwMsg").html("");
- 				$("#EmployeePwRepwMsg").html("");
- 			}
-			
+					
 			if($('#EmployeeLevelName').val() == '') {
 				$('#EmployeeLevelNameMsg').html('직급을 입력해 주세요.');
-			}else if($('#EmployeeName').val() == '') {
+			}else if($("#EmployeePw").val() == ""){
 				$('#EmployeeLevelNameMsg').html('');
-				$('#EmployeeNameMsg').html('직원명을 입력해 주세요.');
-			}else if($('#EmployeePw').val() == '') {
-				$('#EmployeeNameMsg').html('');
-				$('#EmployeePwMsg').html('비밀번호를 입력해 주세요.');
-			}else if($('#EmployeePhoneNo1').val() == '' || $('#EmployeePhoneNo2').val() == '' || $('#EmployeePhoneNo3').val() == ''){
-				$('#EmployeePwMsg').html('');
+				$("#EmployeePwMsg").html("비밀번호 입력하세요");
+				}else if($("#EmployeePw").val() != $("#EmployeePwRepw").val()){
+					$("#EmployeePwMsg").html("");
+				$("#EmployeePwRepwMsg").html("비밀번호가 일치하지 않습니다.");
+				}else if($('#EmployeePhoneNo1').val() == '' || $('#EmployeePhoneNo2').val() == '' || $('#EmployeePhoneNo3').val() == ''){
+					$("#EmployeePwMsg").html("");
+					$("#EmployeePwRepwMsg").html("");
 				$('#EmployeePhoneNoMsg').html('전화번호를 입력해주세요.');
 			}else if($('#phoneNo1').val() == '' || $('#phoneNo2').val() == '' || $('#phoneNo3').val() == ''){
 				$('#EmployeePhoneNoMsg').html('');
@@ -59,6 +50,7 @@
 		});
 	
 	
+		
 		// 우편번호찾기 후에 데이터 입력
 		$('#daumPostNo').click(function(){
 		
@@ -96,7 +88,7 @@
 			}).open();
 		});
 	});
-	
+		
 </script>
 
 <style>
@@ -150,15 +142,15 @@
 		<input type="hidden" name="employeeCode" value="${employee.employeeCode}" />
 							
 			<div class="form-group">
-				<label class="control-label col-sm-3" for="EmployeeLevelName">* 직급:</label>
+				<label class="control-label col-sm-3" for="EmployeeLevelName">직급:</label>
 				<div class="col-sm-4">
-					<input type="text" class="form-control" id="EmployeeLevelName" name="EmployeeLevelName" placeholder="6자이상 12자이하" maxlength="12">
+					<input type="text" class="form-control" id="EmployeeLevelName" name="EmployeeLevelName" maxlength="12" />
 				</div>
 				<span id="EmployeeLevelNameMsg"></span>
 			</div>
 			  
 			<div class="form-group">
-				<label class="control-label col-sm-3" for="EmployeeName">* 직원명:</label>
+				<label class="control-label col-sm-3" for="EmployeeName">직원명:</label>
 				<div class="col-sm-4">
 					<input type="text" class="form-control" id="EmployeeName" name="EmployeeName" value="${employee.employeeName}" readonly="readonly">
 				</div>
@@ -166,15 +158,15 @@
 			</div>
 			
 			<div class="form-group">
-				<label class="control-label col-sm-3" for="EmployeePw">* 비밀번호:</label>
+				<label class="control-label col-sm-3" for="EmployeePw">비밀번호:</label>
 				<div class="col-sm-4"> 
-					<input type="password" class="form-control"id="EmployeePw" name="EmployeePw" placeholder="6자이상 12자이하">
+					<input type="password" class="form-control"id="EmployeePw" name="EmployeePw" />
 				</div>
 				<span id="EmployeePwMsg"></span>
 			</div>
 			
 			<div class="form-group">
-				<label class="control-label col-sm-3" for="EmployeePwRePw">* 비밀번호확인:</label>
+				<label class="control-label col-sm-3" for="EmployeePwRePw">비밀번호확인:</label>
 				<div class="col-sm-4"> 
 					<input type="password" class="form-control"id="EmployeePwRepw" />
 				</div>
@@ -185,23 +177,23 @@
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="EmployeeBirthDate">생년월일:</label>
 				<div class="col-sm-4">
-					<input type="date" class="form-control" id="EmployeeBirthDate" name="EmployeeBirthDate">
+					<input type="date" class="form-control" id="EmployeeBirthDate" name="EmployeeBirthDate" />
 				</div>
 			</div>
 			
 			<!-- 주소 -->
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="EmployeeNo">우편번호 : </label>
-				<input id="EmployeeAddr" name="EmployeeAddr" type="hidden"/>
+				<input id="EmployeeAddr" name="EmployeeAddr" type="hidden" />
 				<div class="col-sm-9 row">
-					<label class="col-xs-6"><input id="EmployeePostNo" name="EmployeePostNo" class="form-control" type="text" size="7" placeholder="우편번호찾기 버튼 클릭" readonly="readonly"/></label>
-					<label class="col-sm-2"><input id="daumPostNo" type="button" class="btn btn-default" value="우편번호찾기"/></label>
+					<label class="col-xs-6"><input id="EmployeePostNo" name="EmployeePostNo" class="form-control" type="text" size="7" readonly="readonly" /></label>
+					<label class="col-sm-2"><input id="daumPostNo" type="button" class="btn btn-default" value="우편번호찾기" /></label>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="EmployeeName">도로명 주소 : </label>
 				<div class="col-sm-6">
-					<label><input id="EmployeePostAddr" class="form-control" type="text" readonly="readonly"/></label>
+					<label><input id="EmployeePostAddr" class="form-control" type="text" readonly="readonly" /></label>
 				</div>
 			</div>
 			
@@ -209,34 +201,34 @@
 			<div class="form-inline form-group">
 			<label class="control-label col-sm-3" for="EmployeePhoneNo">집전화번호:</label>
 				<div class="col-sm-9">
-					<input type="text" class="form-control" id="EmployeePhoneNo1" size="1" maxlength="3">&nbsp;-&nbsp;
-					<input type="text" class="form-control" id="EmployeePhoneNo2" size="1" maxlength="4">&nbsp;-&nbsp;
-					<input type="text" class="form-control" id="EmployeePhoneNo3" size="1" maxlength="4">
+					<input type="text" class="form-control" id="EmployeePhoneNo1" size="1" maxlength="3" />&nbsp;-&nbsp;
+					<input type="text" class="form-control" id="EmployeePhoneNo2" size="1" maxlength="4" />&nbsp;-&nbsp;
+					<input type="text" class="form-control" id="EmployeePhoneNo3" size="1" maxlength="4" />
 					<!-- 전체다 넘길 집전화번호 --> 
-					<input type="hidden" id="EmployeePhoneNo" name="EmployeePhoneNo"/>
+					<input type="hidden" id="EmployeePhoneNo" name="EmployeePhoneNo" />
 				</div>
 				<span id="EmployeePhoneNoMsg"></span>
 			</div>
 
 			<!-- 핸드폰번호 -->
 			<div class="form-inline form-group">
-			<input id="EmployeeCellPhoneNo" name="EmployeeCellPhoneNo" type="hidden"/>
+			<input id="EmployeeCellPhoneNo" name="EmployeeCellPhoneNo" type="hidden" />
 			<label class="control-label col-sm-3" for="phoneNo1">핸드폰번호:</label>
 				<div class="col-sm-9">
-						<input type="text" class="form-control" id="PhoneNo1" size="1" maxlength="3">&nbsp;-&nbsp; 
-						<input type="text" class="form-control" id="PhoneNo2" size="1" maxlength="4">&nbsp;-&nbsp; 
-						<input type="text" class="form-control" id="PhoneNo3" size="1" maxlength="4">	
+						<input type="text" class="form-control" id="PhoneNo1" size="1" maxlength="3" />&nbsp;-&nbsp; 
+						<input type="text" class="form-control" id="PhoneNo2" size="1" maxlength="4" />&nbsp;-&nbsp; 
+						<input type="text" class="form-control" id="PhoneNo3" size="1" maxlength="4" />	
 					<!-- 전체다 넘길 집전화번호 --> 
-					<input type="hidden" id="EmployeeCellPhoneNo" name="EmployeeCellPhoneNo"/>
+					<input type="hidden" id="EmployeeCellPhoneNo" name="EmployeeCellPhoneNo" />
 					<span id="EmployeeCellPhoneNoMsg"></span>
 				</div>
 			</div>
 			 
 			 
 			<div class="form-group">
-				<label class="control-label col-sm-3" for="EmployeeJoinDate">* 입사일:</label>
+				<label class="control-label col-sm-3" for="EmployeeJoinDate">입사일:</label>
 				<div class="col-sm-4">
-					<input type="date" class="form-control" id="EmployeeJoinDate" name="EmployeeJoinDate" value="${employee.employeeJoinDate}" readonly="readonly">
+					<input type="date" class="form-control" id="EmployeeJoinDate" name="EmployeeJoinDate" value="${employee.employeeJoinDate}" readonly="readonly" />
 				</div>
 				<span id="EmployeeJoinDateMsg"></span>
 			</div>
