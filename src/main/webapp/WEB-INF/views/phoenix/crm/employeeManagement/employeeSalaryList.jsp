@@ -84,19 +84,6 @@
 	</table>
 	
 	<!-- 페이징 -->
-	
-	<!-- 
-	<ul class="pager">
-		<li class="tag"><a class="tag" href="#">◀ Previous</a></li>
-		<li><a class="tag" href="">1</a></li>
-		<li><a class="tag" href="">2</a></li>
-		<li><a class="tag" href="">3</a></li>
-		<li><a class="tag" href="">4</a></li>
-		<li><a class="tag" href="">5</a></li>
-		<li class="tag"><a class="tag" href="#">Next ▶</a></li>
-	</ul>
-	 -->
-	
 	<div class="Btn">
 		<c:if test="${page>1}">
 			<a class="btn btn-default" href="/phoenix/crm/employeeManagement/employeeSalaryList?page=${page-1}">이전</a>
