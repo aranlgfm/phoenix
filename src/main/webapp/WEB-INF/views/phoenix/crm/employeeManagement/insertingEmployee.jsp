@@ -11,7 +11,16 @@
 <script src="<c:url value="/webjars/jquery/3.1.0/jquery.min.js"/>"></script>
 <!-- 다음 우편번호 api -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-
+<script>
+		
+		$(document).ready(function() {
+			$("#employeeList").removeClass("active");
+			$("#indertingEmployee").addClass("active");
+			$("#employeeSalaryList").removeClass("active");
+			$("#insertingEmployeeSalary").removeClass("active");
+		});
+			
+</script>
 <script>
  		
 	$(document).ready(function() {

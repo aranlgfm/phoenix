@@ -8,6 +8,16 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+		
+		$(document).ready(function() {
+			$("#employeeList").addClass("active");
+			$("#indertingEmployee").removeClass("active");
+			$("#employeeSalaryList").removeClass("active");
+			$("#insertingEmployeeSalary").removeClass("active");
+		});
+			
+</script>
 
 <style>
 	
@@ -51,9 +61,7 @@
 	<br/>
 	<form action="/phoenix/crm/employeeManagement/employeeList" method="GET">
 		<div>
-			<!-- <label>검색어 :</label>
-			<input type="text" name="word"><button type="button" class="btn btn-info">검색</button>
-			 -->
+			
 			<div class="textCenter">
 				<label>직원명</label>
 				<input type="text" name="word" size="10"/>

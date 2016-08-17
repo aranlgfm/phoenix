@@ -28,6 +28,13 @@
 		});
 	});
 
+	$(document).ready(function() {
+		$("#employeeList").removeClass("active");
+		$("#indertingEmployee").removeClass("active");
+		$("#employeeSalaryList").removeClass("active");
+		$("#insertingEmployeeSalary").addClass("active");
+	});
+	
 </script>
 
 <style>
