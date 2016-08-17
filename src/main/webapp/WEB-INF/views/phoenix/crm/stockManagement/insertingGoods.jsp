@@ -18,14 +18,11 @@
 						거래처선택
 					</td>
 					<td>					 
-						<input class="form-control" type="text" name="accountCode">
-						<!--
-						<SELECT NAME=accountCode SIZE=1> 
+						<SELECT class="form-control" NAME=accountCode SIZE=1> 
 				            <OPTION VALUE=1>하나</OPTION> 
 				            <OPTION VALUE=2>둘</OPTION> 
 				            <OPTION VALUE=3 SELECTED>바보</OPTION> 
 				      	</SELECT> 
-				      	-->   	
 					</td>
 				</tr>
 				<tr>

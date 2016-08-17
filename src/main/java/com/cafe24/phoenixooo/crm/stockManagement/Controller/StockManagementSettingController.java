@@ -82,7 +82,7 @@ public class StockManagementSettingController {
 				System.out.println("------------->2"+goods);
 				stockManagementSettingService.insertGoods(goods);
 				System.out.println("------------->3"+goods);
-				return "redirect:/phoenix/crm/form/stockManagementSettingGoods";
+				return "redirect:/phoenix/crm/form/goodsSetting";
 			}
 			
 			//미용용품설정목록화면
