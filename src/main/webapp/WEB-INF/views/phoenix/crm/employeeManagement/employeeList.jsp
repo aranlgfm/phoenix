@@ -70,6 +70,7 @@
 				<th>직원명</th>
 				<th>핸드폰번호</th>
 				<th>입사일</th>
+				<th>기타</th>
 			</tr>
 		</thead>
 		<c:forEach var="list" items="${employeeList}">
@@ -79,6 +80,10 @@
 				<td><a href="/phoenix/crm/employeeManagement/employeeDetail?employeeCode=${list.employeeCode}">${list.employeeName}</a></td>
 				<td>${list.employeeCellPhoneNo}</td>
 				<td>${list.employeeJoinDate}</td>
+				<td>
+					<a class="btn btn-default" href="/phoenix/crm/employeeManagement/updateEmployee?employeeCode=${list.employeeCode}">수정</a>
+					<a class="btn btn-default" href="/phoenix/crm/employeeManagement/deleteEmployee?employeeCode=${list.employeeCode}">삭제</a>
+				</td>
 			</tr>
 		</tbody>	
 		</c:forEach>
