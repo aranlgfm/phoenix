@@ -121,7 +121,7 @@
 				<div class="form-group">
 					<label class="control-label col-sm-3" for="shopPostNumber">우편번호 : </label>
 					<div class="col-sm-9 row">
-						<label class="col-xs-6"><input id="shopPostNumber" class="form-control" type="text" size="7" value="${user.shopPostNumber}" readonly="readonly"/></label>
+						<label class="col-xs-6"><input id="shopPostNumber" class="form-control" type="text" size="7" readonly="readonly"/></label>
 					</div>
 				</div>
 
@@ -144,7 +144,7 @@
 				<div class="form-group">
 					<label class="control-label col-sm-3" for="shopMemo">미용실소개 : </label>
 					<label class="col-sm-8">
-						<textarea rows="5" id="shopMemo" class="form-control" name="shopMemo" readonly="readonly"></textarea>
+						<textarea rows="5" id="shopMemo" class="form-control" readonly="readonly"></textarea>
 					</label>
 				</div>
 				

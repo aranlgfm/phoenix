@@ -22,12 +22,12 @@
 	</select>
 	
 	<!-- 0.샾코드증가 -->
-	<select id="getShopCode" resultType="String">
-		SELECT SHOP_CD 
-		FROM CRM_SHOP_TB
-		order by SHOP_JOIN_DT desc
-		LIMIT 0,1
-	</select>
+<!-- 	<select id="getShopCode" resultType="String"> -->
+<!-- 		SELECT SHOP_CD  -->
+<!-- 		FROM CRM_SHOP_TB -->
+<!-- 		order by SHOP_JOIN_DT desc -->
+<!-- 		LIMIT 0,1 -->
+<!-- 	</select> -->
 
 
 	<!-- 1. 기본 회원가입 -->
@@ -98,6 +98,12 @@
 	
 	<!-- 3. 미용실 회원가입 -->
 	<insert id="insertDirector" parameterType="com.cafe24.phoenixooo.community.Model.UserDirector">
+	<selectKey resultType="hashmap" keyProperty="shopCode" order="BEFORE">
+		SELECT 
+			IF(isnull(SHOP_CD),'CRM_SHOP_1',CONCAT('CRM_SHOP_',MAX(CONVERT(SUBSTRING(SHOP_CD,10),UNSIGNED))+1)) as shopCode
+		FROM 
+			CRM_SHOP_TB
+	</selectKey>
 		INSERT INTO 
 		CRM_SHOP_TB
 		(

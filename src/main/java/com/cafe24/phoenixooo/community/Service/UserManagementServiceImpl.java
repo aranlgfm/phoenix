@@ -48,7 +48,6 @@ public class UserManagementServiceImpl implements UserManagementService {
 	 */
 	@Override
 	public int insertDirector(UserDirector user) {
-		user.setShopCode(userDao.getShopCode());
 		return userDao.insertDirector(user);
 	}
 
