@@ -20,6 +20,18 @@
 		width: 200px;
 		height: 200px;
 	}
+	#imgBox {
+		width : 200px;
+		height : 200px;
+	}
+	#bo {
+		background-color : #000000;
+		color: #ffffff;
+	}
+	#bottomText {
+		margin: 30px;
+		text-align: center;
+	}
 </style>
 </head>
 <body>
@@ -29,47 +41,61 @@
 <div id="all">
 	
 	<h3><span class="label label-default">헤어게시판 최신글</span></h3>	
-	<div class="row">
-	<c:forEach begin="0" end="3" var="art" items="${articleList}">
-		  <div class="col-xs-6 col-md-3">
-			    <a href="/phoenix/com/form/basicArticle?articleCode=${art.articleCode}" class="thumbnail">
-			    	${art.articleDate}
-			      	<img src="${art.imgFileList[0].filePath}" alt="등록된 사진이 없습니다.">
-			      	${art.articleName}
-			    </a>
-		  </div>
-	</c:forEach>
-	<c:forEach begin="4" end="7" var="art" items="${articleList}">
-		  <div class="col-xs-6 col-md-3">
-			    <a href="/phoenix/com/form/basicArticle?articleCode=${art.articleCode}" class="thumbnail">
-			    	${art.articleDate}
-			      	<img src="${art.imgFileList[0].filePath}" alt="등록된 사진이 없습니다.">
-			      	${art.articleName}
-			    </a>
-		  </div>
-	</c:forEach>
-  </div>
+		<div class="row">
+		<c:forEach begin="0" end="3" var="art" items="${articleList}">
+			  <div class="col-xs-6 col-md-3">
+				    <a href="/phoenix/com/form/basicArticle?articleCode=${art.articleCode}" class="thumbnail">
+				    	${art.articleDate}
+				      	<img id="imgBox" src="${art.imgFileList[0].filePath}" alt="등록된 사진이 없습니다.">
+				      	${art.articleName}
+				    </a>
+			  </div>
+		</c:forEach>
+		<c:forEach begin="4" end="7" var="art" items="${articleList}">
+			  <div class="col-xs-6 col-md-3">
+				    <a href="/phoenix/com/form/basicArticle?articleCode=${art.articleCode}" class="thumbnail">
+				    	${art.articleDate}
+				      	<img id="imgBox" src="${art.imgFileList[0].filePath}" alt="등록된 사진이 없습니다.">
+				      	${art.articleName}
+				    </a>
+			  </div>
+		</c:forEach>
+	  </div>
 	
-		<h3><span class="label label-default">자유게시판 최신글</span></h3>	
-			<!-- 자유게시판 -->
-			<div class="basicBoardList">
-				<table class="table table-bordered">
+	<h3><span class="label label-default">자유게시판 최신글</span></h3>	
+		<!-- 자유게시판 -->
+		<div class="basicBoardList">
+			<table class="table table-bordered">
+				<tr>
+					<td class="centerCell">글번호</td>
+					<td class="centerCell">글제목</td>
+					<td class="centerCell">작성시간</td>
+					<td class="centerCell">작성자</td>
+				</tr>
+				<c:forEach begin="0" end="4" var="list" items="${artList}">
 					<tr>
-						<td class="centerCell">글번호</td>
-						<td class="centerCell">글제목</td>
-						<td class="centerCell">작성시간</td>
-						<td class="centerCell">작성자</td>
+						<td class="centerCell">${list.articleNumber}</td>
+						<td><a href="/phoenix/com/form/basicArticle?articleCode=${list.articleCode}">${list.articleName}</a></td>
+						<td class="centerCell">${list.articleDate}</td>
+						<td class="centerCell">${list.userNickName}</td>					
 					</tr>
-					<c:forEach begin="0" end="4" var="list" items="${artList}">
-						<tr>
-							<td class="centerCell">${list.articleNumber}</td>
-							<td><a href="/phoenix/com/form/basicArticle?articleCode=${list.articleCode}">${list.articleName}</a></td>
-							<td class="centerCell">${list.articleDate}</td>
-							<td class="centerCell">${list.userNickName}</td>					
-						</tr>
-					</c:forEach>
-				</table>
+				</c:forEach>
+			</table>
+		</div>
+			
+			<br>
+
+		<div id="bo">
+			<br>
+			<div id="bottomText">
+				<p>팀명 : 불사조</p>
+				<p>팀원 : 구아란, 차이수, 강재욱, 신복기, 김원중, 이승주</p>
+				<p>주제 : 헤어커뮤니티와 미용실CRM을 동시에 가지고 있는 스프링MVC기반의 웹응용프로그램</p>
+				<p>소속 : 한국스마트정보교육원</p>
+				<p>개발환경 : 자바 jsp jquery 이런거 다 쓰기</p>
 			</div>
+			<br>
+		</div>
 	
 </div>
 </body>
