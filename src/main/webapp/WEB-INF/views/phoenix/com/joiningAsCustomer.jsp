@@ -15,7 +15,6 @@
 			$(document).ready(function(){
 				//유효성
 				$('#submitButton').click(function(){
-					
 					//아이디
 					if($("#userId").val() == ""){
 						$("#userIdMsg").html("아이디를입력하세요");
@@ -32,59 +31,56 @@
 								}
 							}//success
 						})
-					//비밀번호
 					}
 					
-					if($("#userPw").val() == ""){
-						$('#userIdMsg').html("");
-						$("#userPwMsg").html("비밀번호 입력하세요");
-		 			}else if($("#userPw").val() != $("#userRepw").val()){
-		 				$("#userPwMsg").html("");
-						$("#userRepwMsg").html("비밀번호가 일치하지 않습니다.");
-		 			}
-		 			//이름
-		 			else if($("#userName").val() == ""){
-		 				$("#userRepwMsg").html("");
-						$("#userNameMsg").html("이름을 입력하세요");
-		 			}
-					//닉네임
-					else if($("#userNickName").val() == ""){
-						$("#userNameMsg").html("");
-						$("#userNickNameMsg").html("별명을 입력하세요");
-		 			}
-					//성별
-					else if(!($(".userSexFlag").is(":checked"))){
-						$("#userNickNameMsg").html("");
-		 				$('#userSexFlagMsg').html("성별을 선택해주세요.");
-		 			}
-					//전화번호
-// 					else if($("#userPhoneNumber1").val() == "" || $("#userPhoneNumber2").val() == "" || $("#userPhoneNumber3").val() == ""){
-// 						$('#userSexFlagMsg').html("");
-// 						$("#userPhoneNumberMsg").html("전화번호를 입력해주세요.");
-// 		 			}
-					//전화번호2
-					else if($("#userCellphoneNumber1").val() == "" || $("#userCellphoneNumber2").val() == "" || $("#userCellphoneNumber3").val() == ""){
-						console.log("나야...");
-						$("#userPhoneNumber").val($("#userPhoneNumber1").val()+"-"+$('#userPhoneNumber2').val()+"-"+$('#userPhoneNumber3').val());
-		 				$("#userPhoneNumberMsg").html("");
-						$("#userCellphoneNumberMsg").html("전화번호를 입력해주세요.");
-		 			}
-					//이메일
-					else if($("#userEmailId").val() == "" || $('#userEmailDomain').val() == ""){
-						$("#userCellphoneNumber").val($("#userCellphoneNumber1").val()+"-"+$('#userCellphoneNumber2').val()+"-"+$('#userCellphoneNumber3').val());
-		 				$("#userCellphoneNumberMsg").html("");
-						$('#userEmailAddressMsg').html('이메일을 입력해주세요.');
-		 				result = 0;
-		 			}
-					//주소
-					else if($("#userPostNumber").val() != ""){
-						$("#userEmailAddress").val($("#userEmailId").val()+"@"+$('#userEmailDomain').val());
-		 				$('#userEmailAddressMsg').html("");
-		 				$("#userAddress").val($("#searchAddress").val()+"^"+$("#userPutAddress").val());
-		 			}else{
-						$("#userForm").submit();
-					}
+					//기본유효성
+					$(".validCheck").each(function(){
+						var name = $(this).attr("id")+"Msg"; 
+						var msg = $(this).attr("valueCheck");
+							if($(this).val() == ""){
+								$("#"+name).html(msg);		
+							}else{
+								$("#"+name).html("");
+								if($(".validCheck").index == $(".validCheck").length-1){
+								}
+							}	
+						
+						});
 					
+					//값이 분리되어있는 것 유효성
+					$(".validGroupCheck").each(function(index){
+						var name = ($(this).attr("id").replace(/[0-9]/g,""))+"Msg";
+						var msg = $(this).attr("valueCheck");
+						
+						if($(this).val() == ""){
+							$("#"+name).html(msg);
+						}else if($(this).prev().val() != ""){
+							$("#"+name).html("");
+							if($(this).index == $(".validGroupCheck").length-1){
+								check += 1;
+							}
+						}
+					
+						if($(this).attr("type") == "radio"){
+							if(!($(".userSexFlag").is(":checked"))){
+								$("#"+name).html(msg);
+							}else{
+								$("#"+name).html("");
+							}
+						}
+					});	
+					
+					//체크 후 서브밋;
+					$(".lastCheck").each(function(){
+						var result = "";
+						console.log($(this).html());
+						result += $(this).html();
+						if(result.length == 0){
+							$("#userCellphoneNumber").val($("#userCellphoneNumber1").val()+$('#userCellphoneNumber2').val()+$('#userCellphoneNumber3').val());
+							$("#userEmailAddress").val($("#userEmailId").val()+$('#userEmailDomain').val());
+							$("#userForm").submit();
+						}
+					});	
 				});
 				
 				
@@ -100,9 +96,10 @@
 				});//우편번호
 				
 				
+				userEmailAddress2
 				//메일선택시~
-				$("#selectEmailDomain").change(function(){
-					$("#userEmailDomain").val($("#selectEmailDomain").val());
+				$("#selectEmail2").change(function(){
+					$("#userEmailAddress2").val($("#selectEmail2").val());
 				});
 			});
 		
@@ -159,50 +156,42 @@
 				<div class="form-group">
 					<label class="control-label col-sm-3" for="userId"><span class="textWarn">* </span>아이디:</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="userId" name="userId" placeholder="6자이상 12자이하" maxlength="12">
+						<input type="text" class="form-control" id="userId" name="userId" placeholder="아이디를 입력하세요" maxlength="12">
 					</div>
-					<span class ="textWarn" id="userIdMsg"></span>
+					<span class ="textWarn lastCheck" id="userIdMsg"></span>
 				</div>
 				  
 				<div class="form-group">
 					<label class="control-label col-sm-3" for="userPw"><span class="textWarn">* </span>비밀번호:</label>
 					<div class="col-sm-4">
-						<input type="password" class="form-control" id="userPw" name="userPw" placeholder="6자이상 12자이하">
+						<input type="password" class="form-control validCheck" id="userPw" name="userPw" placeholder="비밀번호를 입력하세요" valueCheck="비밀번호를 제대로 입력하세요">
 					</div>
-					<span class ="textWarn" id="userPwMsg"></span>
+					<span class ="textWarn lastCheck" id="userPwMsg"></span>
 				</div>
-				 
-				<div class="form-group">
-					<label class="control-label col-sm-3" for="userRePw"><span class="textWarn">* </span>비밀번호확인:</label>
-					<div class="col-sm-4"> 
-						<input type="password" class="form-control"id="userRepw" placeholder="다시입력해">
-					</div>
-					<span class ="textWarn" id="userRepwMsg"></span>
-				</div>
-				 
+
 				<div class="form-group">
 					<label class="control-label col-sm-3" for="userName"><span class="textWarn">* </span>이름:</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="userName" name="userName" placeholder="이름을 입력하세요">
+						<input type="text" class="form-control validCheck" id="userName" name="userName" placeholder="이름을 입력하세요" valueCheck="이름을 제대로 입력하세요">
 					</div>
-					<span class ="textWarn" id="userNameMsg"></span>
+					<span class ="textWarn lastCheck" id="userNameMsg"></span>
 				</div>
 				 
 				<div class="form-group">
 					<label class="control-label col-sm-3" for="userNickName"><span class="textWarn">* </span>닉네임:</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="userNickName" name="userNickName" placeholder="닉네임 입력하세요">
+						<input type="text" class="form-control validCheck" id="userNickName" name="userNickName" placeholder="닉네임 입력하세요" valueCheck="닉네임을 제대로 입력하세요">
 					</div>
-					<span class ="textWarn" id="userNickNameMsg"></span>
+					<span class ="textWarn lastCheck" id="userNickNameMsg"></span>
 				</div>
 				  
 				<div class="form-group">
 				<label class="control-label col-sm-3" for="userSexFlag"><span class="textWarn">* </span>성별:</label>
 					<div class="col-sm-4">
-						  <label class="radio-inline"><input type="radio" class="userSexFlag" name="userSexFlag" value="0">남</label>
-						  <label class="radio-inline"><input type="radio" class="userSexFlag" name="userSexFlag" value="1">여</label>
+						  <label class="radio-inline"><input type="radio" class="validGroupCheck userSexFlag" id="userSexFlag1" name="userSexFlag" value="0" valueCheck="성별을 제대로 입력하세요">남</label>
+						  <label class="radio-inline"><input type="radio" class=" validGroupCheck userSexFlag" id="userSexFlag2" name="userSexFlag" value="1" valueCheck="성별을 제대로 입력하세요">여</label>
 					</div>
-					<span class ="textWarn" id="userSexFlagMsg"></span>
+					<span class ="textWarn lastCheck" id="userSexFlagMsg"></span>
 				</div>
 				  
 				<hr>
@@ -240,32 +229,29 @@
 						<!-- 전체다 넘길 집전화번호 --> 
 						<input type="hidden" id="userPhoneNumber" name="userPhoneNumber"/>
 					</div>
-					
 				</div>
-	
 	
 	
 				<!-- 핸드폰번호 -->
 				<div class="form-inline form-group">
 				<label class="control-label col-sm-3" for="userCellphoneNumber"><span class="textWarn">* </span>핸드폰번호:</label>
 					<div class="col-sm-9">
-							<input type="text" class="form-control" id="userCellphoneNumber1" size="1" maxlength="3">&nbsp;-&nbsp; 
-							<input type="text" class="form-control" id="userCellphoneNumber2" size="1" maxlength="4">&nbsp;-&nbsp; 
-							<input type="text" class="form-control" id="userCellphoneNumber3" size="1" maxlength="4">	
-						<!-- 전체다 넘길 집전화번호 --> 
-							<span class ="textWarn" id="userCellphoneNumberMsg"></span>
-							<input type="hidden" id="userCellphoneNumber" name="userCellphoneNumber"/>
+						<input type="text" class="form-control validGroupCheck userCellphoneNumber" id="userCellphoneNumber1" size="1" maxlength="3" valueCheck="번호를 제대로 입력하세요">&nbsp;-&nbsp; 
+						<input type="text" class="form-control validGroupCheck userCellphoneNumber" id="userCellphoneNumber2" size="1" maxlength="4" valueCheck="번호를 제대로 입력하세요">&nbsp;-&nbsp; 
+						<input type="text" class="form-control validGroupCheck userCellphoneNumber" id="userCellphoneNumber3" size="1" maxlength="4" valueCheck="번호를 제대로 입력하세요">	
+					<!-- 전체다 넘길 핸드폰전화번호 --> 
+						<span class ="textWarn lastCheck" id="userCellphoneNumberMsg"></span>
+						<input type="hidden" class="validGroupCheck" id="userCellphoneNumber" name="userCellphoneNumber" />
 					</div>
 				</div>
-				
 				
 				<!-- 이메일 -->
 				<div class="form-inline form-group">
 				<label class="control-label col-sm-3" for="userEmailAddress"><span class="textWarn">* </span>이메일:</label>
 					<div class="col-sm-9">
-						<input type="text" class="form-control" id="userEmailId" name="userEmailId" placeholder="이메일" size="5">&nbsp;@&nbsp;
-						<input type="text" class="form-control" id="userEmailDomain" name="userEmailDomain" size="7">
-						<select class="form-control" id="selectEmailDomain">
+						<input type="text" class="form-control validGroupCheck userEmailAddress" id="userEmailAddress1" name="userEmailId" placeholder="이메일" size="5" valueCheck="이메일을 제대로 입력하세요">&nbsp;@&nbsp;
+						<input type="text" class="form-control validGroupCheck userEmailAddress" id="userEmailAddress2" name="userEmailDomain" size="7" valueCheck="이메일을 제대로 입력하세요">
+						<select class="form-control" id="selectEmail2">
 							<option value="">::직접입력::</option>
 							<option value="gmail.com">gmail.com</option>
 							<option value="naver.com">naver.com</option>
@@ -275,7 +261,7 @@
 						</select>
 					</div>
 					<label class="control-label col-sm-3" ></label>
-					<span class ="textWarn" id="userEmailAddressMsg"></span>
+					<span class ="textWarn lastCheck" class="validGroupCheck" id="userEmailAddressMsg"></span>
 	<!-- 				유저이메일 -->
 					<input type="hidden" id="userEmailAddress" name="userEmailAddress">
 				</div>
