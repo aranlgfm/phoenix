@@ -67,7 +67,6 @@
 				EMPLOYEE_NM like CONCAT('%',#{word},'%')
 			</if>
 		</where>
-		ORDER BY EMPLOYEE_CD DESC
 		LIMIT #{pageHelper.startRow}, #{pageHelper.linePerPage}
 	</select>
 	

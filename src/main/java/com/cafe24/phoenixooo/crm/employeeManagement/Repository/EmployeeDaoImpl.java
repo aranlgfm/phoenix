@@ -46,7 +46,6 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	 */
 	@Override
 	public Employee employeeDetail(Employee employee) {
-		System.out.println("Dao");
 		return sqlSession.selectOne(NS + ".employeeDetail", employee);	
 	}
 

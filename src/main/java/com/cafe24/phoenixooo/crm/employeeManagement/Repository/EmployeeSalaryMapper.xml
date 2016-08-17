@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cafe24.phoenixooo.crm.employeeManagement.Repository.EmployeeSalaryMapper">
 
+
 	<!-- 1. 급여지급 등록 -->
 	<insert id="insertEmployeeSalary" parameterType="com.cafe24.phoenixooo.crm.employeeManagement.Model.EmployeeSalary">
 	<selectKey resultType="hashmap" keyProperty="salaryCode" order="BEFORE">
@@ -37,7 +38,7 @@
 		SELECT COUNT(*) FROM CRM_SALARY_TB
 	</select>
 	
-	<!-- 3. 직원 리스트 -->
+	<!-- 3. 급여지급 리스트 -->
 	<select id="selectEmployeeSalaryList" parameterType="java.util.Map" resultType="com.cafe24.phoenixooo.crm.employeeManagement.Model.EmployeeSalary">
 		SELECT	
 			SALARY_CD as salaryCode
@@ -54,8 +55,14 @@
 				EMPLOYEE_NM like CONCAT('%',#{word},'%')
 			</if>
 		</where>
-		ORDER BY SALARY_CD DESC
 		LIMIT #{pageHelper.startRow}, #{pageHelper.linePerPage}
 	</select>
 
+	<!-- 4. 급여지급 삭제 -->
+	<delete id="deleteEmployeeSalary" parameterType="com.cafe24.phoenixooo.crm.employeeManagement.Model.EmployeeSalary">
+		DELETE FROM
+			CRM_SALARY_TB
+		WHERE
+			SALARY_CD=#{salaryCode}
+	</delete>
 </mapper>

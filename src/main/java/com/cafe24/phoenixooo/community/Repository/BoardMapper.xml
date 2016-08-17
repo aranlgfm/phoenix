@@ -60,17 +60,22 @@
 	<!-- 먼저 글 1개 가져오는 쿼리 -->
 	<select id="selectArticle" parameterType="String" resultType="com.cafe24.phoenixooo.community.Model.Article">
 		SELECT
-			ARTICLE_CD as articleCode
-			,USER_CD as userCode
-			,BOARDGROUP_CD as boardGroupCode
-			,ARTICLE_NM as articleName
-			,ARTICLE_CTT as articleContent
-			,ARTICLE_DT as articleDate
-			,ARTICLE_IP as articleIp
+				article.ARTICLE_CD as articleCode
+				,article.USER_CD as userCode
+				,article.BOARDGROUP_CD as boardGroupCode
+				,article.ARTICLE_NM as articleName
+				,article.ARTICLE_CTT as articleContent
+				,article.ARTICLE_DT as articleDate
+				,article.ARTICLE_IP as articleIp
+				,user.USER_NICK_NM as userNickName
 		FROM
-			COM_ARTICLE_TB
+			COM_ARTICLE_TB as article
+		INNER JOIN
+			COM_USER_TB as user
+		ON
+			article.USER_CD=user.USER_CD
 		WHERE
-			ARTICLE_CD = #{articleCode}
+			article.ARTICLE_CD = #{articleCode}	
 	</select>
 	
 	
@@ -201,7 +206,7 @@
 			(
 				#{commentCode}
 				, #{articleCode}
-				, 'COM_USER_123'
+				, #{userCode}
 				, #{commentContent}
 				, NOW()
 				, '123.456.789.456'
@@ -210,19 +215,24 @@
 	
 	<select id="selectCommentList" parameterType="java.util.Map"  resultType="com.cafe24.phoenixooo.community.Model.Comment">
 		select
-			COMMENT_CD as commentCode
-			,ARTICLE_CD as articleCode
-			,USER_CD as userCode
-			,COMMENT_CTT as commentContent
-			,COMMENT_DT as commentDate
-			,COMMENT_IP as commentIp
+			comment.COMMENT_CD as commentCode
+			,comment.ARTICLE_CD as articleCode
+			,comment.USER_CD as userCode
+			,comment.COMMENT_CTT as commentContent
+			,comment.COMMENT_DT as commentDate
+			,comment.COMMENT_IP as commentIp
+			,user.USER_NICK_NM as userNickName
 		from
-			COM_COMMENT_TB
-			
+			COM_COMMENT_TB as comment
+		inner join
+			COM_USER_TB as user
+		on
+			comment.USER_CD=user.USER_CD
 		where 
 			ARTICLE_CD=#{articleCode}
 		ORDER BY 
-			COMMENT_DT DESC
+			COMMENT_DT DESC	
+	
 	</select>
 	
 	<delete id="deleteComment" parameterType="com.cafe24.phoenixooo.community.Model.Comment">

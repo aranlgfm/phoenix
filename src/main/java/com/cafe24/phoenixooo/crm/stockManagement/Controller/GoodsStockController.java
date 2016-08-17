@@ -20,7 +20,7 @@ import com.cafe24.phoenixooo.crm.stockManagement.Service.GoodsStockService;
 public class GoodsStockController 
 {
 	@Autowired
-	private GoodsStockService goodsStocdkService;
+	private GoodsStockService goodsStockService;
 	
 	//미용용품 입고등록과 내역 첫 화면
 	@RequestMapping(value = "/phoenix/crm/form/goodsStock", method = RequestMethod.GET)
@@ -29,7 +29,7 @@ public class GoodsStockController
 		goodsStock.setUserCode(((UserCustomer)(session.getAttribute("user"))).getUserCode());
 		goodsStock.setShopCode(((UserCustomer)(session.getAttribute("user"))).getShopCode());
 		
-		List<GoodsStock> goodsStockList=goodsStocdkService.selectGoodsStockList(goodsStock);
+		List<GoodsStock> goodsStockList=goodsStockService.selectGoodsStockList(goodsStock);
 		model.addAttribute("goodsStockList", goodsStockList);
 		return "/phoenix/crm/stockManagement/goodsStock";
 	}
@@ -54,7 +54,7 @@ public class GoodsStockController
 		
 		goodsStock.setUserCode(((UserCustomer)(session.getAttribute("user"))).getUserCode());
 		goodsStock.setShopCode(((UserCustomer)(session.getAttribute("user"))).getShopCode());
-		goodsStocdkService.insertGoodsStock(goodsStock);
+		goodsStockService.insertGoodsStock(goodsStock);
 		return "redirect:/phoenix/crm/form/goodsStock";
 	}
 	
@@ -71,7 +71,7 @@ public class GoodsStockController
 	@RequestMapping(value = "/phoenix/crm/process/insertGoodsPayment", method = RequestMethod.POST)
 	public String insertGoodsPayment(GoodsPayment goodsPayment,Model model) 
 	{ 
-		goodsStocdkService.insertGoodsPayment(goodsPayment);
+		goodsStockService.insertGoodsPayment(goodsPayment);
 		return "redirect:/phoenix/crm/form/goodsStock";
 	}
 	
@@ -87,7 +87,7 @@ public class GoodsStockController
 	@RequestMapping(value = "/phoenix/crm/process/deleteGoodsStock", method = RequestMethod.POST)
 	public String deleteGoodsStock(GoodsStock goodsStock,Model model) 
 	{ 
-		goodsStocdkService.deleteGoodsStock(goodsStock);
+		goodsStockService.deleteGoodsStock(goodsStock);
 		model.addAttribute("goodsStock", goodsStock);
 		return "redirect:/phoenix/crm/form/goodsStock";
 	}
@@ -99,7 +99,7 @@ public class GoodsStockController
 		goodsStock.setUserCode(((UserCustomer)(session.getAttribute("user"))).getUserCode());
 		goodsStock.setShopCode(((UserCustomer)(session.getAttribute("user"))).getShopCode());
 		
-		goodsStocdkService.updateGoodsStock(goodsStock);
+		goodsStockService.updateGoodsStock(goodsStock);
 		model.addAttribute("goodsStock", goodsStock);
 		return "redirect:/phoenix/crm/form/goodsStock";
 	}

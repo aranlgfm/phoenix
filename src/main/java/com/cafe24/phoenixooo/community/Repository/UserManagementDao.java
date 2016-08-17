@@ -27,6 +27,13 @@ public interface UserManagementDao {
 	int insertDesigner(UserDesigner user);
 	
 	/**
+	 * (DAO)디자이너 회원가입시 미용실정보 가져오기
+	 * @param user
+	 * @return
+	 */
+	UserDirector selectUserDirectorList(UserDesigner user);
+	
+	/**
 	 * (DAO)회원가입시 primary키값 증가
 	 * @return
 	 */

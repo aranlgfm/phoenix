@@ -51,7 +51,6 @@ public class EmployeeServiceImpl implements EmployeeService{
 	 */
 	@Override
 	public Employee employeeDetail(Employee employee) {
-		System.out.println("Service");
 		return employeeDao.employeeDetail(employee);
 	}
 

@@ -34,4 +34,10 @@ public class StockManagementSettingDaoImpl implements StockManagementSettingDao{
 		public List<Goods> selectGoodsSetting(Goods goods) {
 			return sqlSession.selectList(NS+".selectGoodsSetting", goods);
 		}
+		
+	//거래처설정 내역 가져오기
+	@Override
+	public List<Account> selectStockManagementSetting(Account account) {
+		return sqlSession.selectList(NS+".selectStockManagementSetting", account);
+	}	
 }

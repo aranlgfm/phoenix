@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.cafe24.phoenixooo.crm.employeeManagement.Model.Employee;
 import com.cafe24.phoenixooo.crm.employeeManagement.Model.EmployeeSalary;
 import com.cafe24.phoenixooo.crm.employeeManagement.Service.EmployeeSalaryService;
 
@@ -53,5 +52,19 @@ public class EmployeeSalaryController {
 		model.addAttribute("page", page);
 		model.addAttribute("lastPage", employeeSalaryService.getLastPage());
 		return "/phoenix/crm/employeeManagement/employeeSalaryList";
+	}
+	
+	/**
+	 * 급여지급 삭제
+	 * @param employeeSalary
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="/phoenix/crm/employeeManagement/deleteEmployeeSalary", method=RequestMethod.GET)
+	public String deleteEmployeeSalary(EmployeeSalary employeeSalary, Model model) {
+		String salaryCode = employeeSalary.getSalaryCode();
+		model.addAttribute("salaryCode", salaryCode);
+		employeeSalaryService.deleteEmployeeSalary(employeeSalary);
+		return "redirect:/phoenix/crm/employeeManagement/employeeSalaryList";
 	}
 }

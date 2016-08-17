@@ -45,4 +45,12 @@ public class EmployeeSalaryServiceImpl implements EmployeeSalaryService {
 		map.put("word", word);
 		return employeeSalaryDao.selectEmployeeSalaryList(map);
 	}
+
+	/**
+	 * (Service) 급여지급 삭제
+	 */
+	@Override
+	public int deleteEmployeeSalary(EmployeeSalary employeeSalary) {
+		return employeeSalaryDao.deleteEmployeeSalary(employeeSalary);
+	}
 }

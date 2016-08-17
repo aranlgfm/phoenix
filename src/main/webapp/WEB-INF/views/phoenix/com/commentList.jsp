@@ -47,7 +47,7 @@
 	<c:forEach var="list" items="${commentList}">
 		<div id="table">
 			<div class="row">
-				<span class="cell col3 cell6">${list.userCode}</span>
+				<span class="cell col3 cell6">${list.userNickName}</span>
 				<span class="cell col4 cell8">${list.commentContent}</span>
 				<span class="cell col5 cell7">${list.commentDate}</span>
 			</div>

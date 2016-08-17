@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.cafe24.phoenixooo.crm.stockManagement.Model.Account;
 import com.cafe24.phoenixooo.crm.stockManagement.Model.Goods;
-import com.cafe24.phoenixooo.crm.stockManagement.Model.GoodsUse;
 import com.cafe24.phoenixooo.crm.stockManagement.Repository.StockManagementSettingDao;
 
 @Service
@@ -35,4 +34,10 @@ public class StockManagementSettingServiceImpl implements StockManagementSetting
 		public List<Goods> selectGoodsSetting(Goods goods) {
 			return stockManagementSettingDao.selectGoodsSetting(goods);
 		}
+		
+	//거래처설정 내역 가져오기
+			@Override
+			public List<Account> selectStockManagementSetting(Account account) {
+				return stockManagementSettingDao.selectStockManagementSetting(account);
+			}
 }

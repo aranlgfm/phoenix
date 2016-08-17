@@ -22,12 +22,12 @@
 	</select>
 	
 	<!-- 0.샾코드증가 -->
-	<select id="getShopCode" resultType="String">
-		SELECT SHOP_CD 
-		FROM CRM_SHOP_TB
-		order by SHOP_JOIN_DT desc
-		LIMIT 0,1
-	</select>
+<!-- 	<select id="getShopCode" resultType="String"> -->
+<!-- 		SELECT SHOP_CD  -->
+<!-- 		FROM CRM_SHOP_TB -->
+<!-- 		order by SHOP_JOIN_DT desc -->
+<!-- 		LIMIT 0,1 -->
+<!-- 	</select> -->
 
 
 	<!-- 1. 기본 회원가입 -->
@@ -80,8 +80,30 @@
 		WHERE USER_CD = #{userCode}
 	</update>
 	
+	<!-- 2. 미용실 셀렉 -->
+	<select id="selectUserDirectorList" parameterType="java.util.Map" resultType="com.cafe24.phoenixooo.community.Model.UserDirector">
+		SELECT
+			USER_CD as userCode
+			,SHOP_CD as shopCode
+			,SHOP_NM as shopName
+			,SHOP_ADDR as shopAddress
+			,SHOP_POST_NO as shopPostNumber
+			,BUSINESS_NO as businessNumber
+			,SHOP_MEMO as shopMemo
+		FROM
+			CRM_SHOP_TB
+		WHERE
+			SHOP_CD = #{shopCode}
+	</select>
+	
 	<!-- 3. 미용실 회원가입 -->
 	<insert id="insertDirector" parameterType="com.cafe24.phoenixooo.community.Model.UserDirector">
+	<selectKey resultType="hashmap" keyProperty="shopCode" order="BEFORE">
+		SELECT 
+			IF(isnull(SHOP_CD),'CRM_SHOP_1',CONCAT('CRM_SHOP_',MAX(CONVERT(SUBSTRING(SHOP_CD,10),UNSIGNED))+1)) as shopCode
+		FROM 
+			CRM_SHOP_TB
+	</selectKey>
 		INSERT INTO 
 		CRM_SHOP_TB
 		(

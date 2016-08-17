@@ -70,7 +70,7 @@ public class UserManagementController {
 			
 			//System.out.println(((UserCustomer)session.getAttribute("user")).getUserCode());
 			
-			pageUrl = "/phoenix";
+			pageUrl = "redirect:/phoenix";
 		}else{
 			session.setAttribute("user", "false");
 			pageUrl = "/phoenix/com/login";
@@ -85,7 +85,7 @@ public class UserManagementController {
 	@RequestMapping(value = "/phoenix/com/process/logout", method = RequestMethod.GET)
 	public String comProcessLogout(HttpSession session) {
 		session.invalidate();
-		return "/phoenix";
+		return "redirect:/phoenix";
 	}
 	
 	
@@ -136,7 +136,7 @@ public class UserManagementController {
 			model.addAttribute("userCode",result);
 			url = "/phoenix/com/joiningAsDesigner";
 		}else{
-			url = "/phoenix";
+			url = "redirect:/phoenix";
 		}
 		return url;
 	}
@@ -148,7 +148,23 @@ public class UserManagementController {
 	@RequestMapping(value = "/phoenix/com/process/joiningAsDesigner", method = RequestMethod.POST)
 	public String comProcessJoiningAsDesigner(UserDesigner user) {
 		userService.insertDesigner(user);
-		return "/phoenix";
+		return "redirect:/phoenix";
+	}
+	
+	/**
+	 * 4. 커뮤니티 디자이너 가입 시 미용실정보 가져오기
+	 * @param data
+	 * @return
+	 */
+	@RequestMapping(value = "/phoenix/com/process/joiningAsDesigner/checkShop", method = RequestMethod.POST)
+	public @ResponseBody Map<String, Object> comProcessJoiningAsDesignerCheckShop(@RequestParam Map<String, Object> data, UserDesigner user) {
+		UserDirector director = new UserDirector();
+		
+		String shopCode = (String)data.get("shopCode");
+		user.setShopCode(shopCode);
+		director = userService.selectUserDirectorList(user);
+		data.put("result", director);
+		return data;
 	}
 	
 	/**
@@ -158,7 +174,7 @@ public class UserManagementController {
 	@RequestMapping(value = "/phoenix/com/process/joiningAsDirector", method = RequestMethod.POST)
 	public String comFormJoiningAsDirector(UserDirector user) {
 		userService.insertDirector(user);
-		return "/phoenix";
+		return "redirect:/phoenix";
 	}
 	
 	/**
@@ -241,7 +257,7 @@ public class UserManagementController {
 	public String comProcessWithdraw(HttpSession session,UserCustomer user) {
 		userService.deleteUser(user);
 		session.invalidate();
-	return "/phoenix/com/userWithdrawalGoodbye";
+	return "redirect:/phoenix";
 	}
 	
 	/**
@@ -270,6 +286,6 @@ public class UserManagementController {
 	@RequestMapping(value = "/phoenix/crm/process/logout", method = RequestMethod.GET)
 	public String crmProcessLogout(HttpSession session) {
 		session.invalidate();
-		return "/phoenix";
+		return "redirect:/phoenix";
 	}
 }

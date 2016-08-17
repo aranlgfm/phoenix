@@ -48,7 +48,6 @@ public class UserManagementServiceImpl implements UserManagementService {
 	 */
 	@Override
 	public int insertDirector(UserDirector user) {
-		user.setShopCode(userDao.getShopCode());
 		return userDao.insertDirector(user);
 	}
 
@@ -59,6 +58,14 @@ public class UserManagementServiceImpl implements UserManagementService {
 	public int insertDesigner(UserDesigner user) {
 		userDao.insertDesigner(user);
 		return 0;
+	}
+	
+	/**
+	 * (서비스) 디자이너 추가정보 입력 시 미용실정보 가져오기
+	 */
+	@Override
+	public UserDirector selectUserDirectorList(UserDesigner user) {
+		return userDao.selectUserDirectorList(user);
 	}
 	
 	/**
@@ -143,4 +150,5 @@ public class UserManagementServiceImpl implements UserManagementService {
 	public int checkUserId(String userId) {
 		return userDao.checkUserId(userId);	
 	}
+
 }

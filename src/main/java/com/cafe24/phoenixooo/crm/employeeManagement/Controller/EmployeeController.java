@@ -62,7 +62,6 @@ public class EmployeeController {
 	 */
 	@RequestMapping(value="/phoenix/crm/employeeManagement/employeeDetail", method=RequestMethod.GET)
 	public String employeeDetail(Employee employee, Model model) {
-		System.out.println("직원 상세보기");
 		Employee employeeo = employeeService.employeeDetail(employee);
 		model.addAttribute("employee", employeeo);
 		return "/phoenix/crm/employeeManagement/employeeDetail";
@@ -76,7 +75,6 @@ public class EmployeeController {
 	 */
 	@RequestMapping(value="/phoenix/crm/employeeManagement/updateEmployee", method=RequestMethod.GET)
 	public String updateEmployee(Employee employee, Model model) {
-		System.out.println("수정화면");
 		employee = employeeService.employeeDetail(employee);
 		model.addAttribute("employee", employee);
 		return "/phoenix/crm/employeeManagement/updateEmployee";
@@ -90,7 +88,6 @@ public class EmployeeController {
 	 */
 	@RequestMapping(value="/phoenix/crm/employeeManagement/updateEmployee", method=RequestMethod.POST)
 	public String updateEmployee(Employee employee) {
-		System.out.println("수정처리");
 		employee.setEmployeeCode(employee.getEmployeeCode());
 		employeeService.updateEmployee(employee);
 		return "redirect:/phoenix/crm/employeeManagement/employeeList";
@@ -99,11 +96,11 @@ public class EmployeeController {
 	/**
 	 * 직원 삭제
 	 * @param employee
+	 * @param model
 	 * @return
 	 */
 	@RequestMapping(value="/phoenix/crm/employeeManagement/deleteEmployee", method=RequestMethod.GET)
 	public String deleteEmployee(Employee employee, Model model) {
-		System.out.println("삭제");
 		String employeeCode = employee.getEmployeeCode();
 		model.addAttribute("employeeCode", employeeCode);
 		employeeService.deleteEmployee(employee);

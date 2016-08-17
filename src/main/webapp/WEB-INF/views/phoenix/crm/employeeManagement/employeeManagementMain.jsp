@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>직원 메인</title>
 <link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="<c:url value="/webjars/jquery/3.1.0/jquery.min.js"/>"></script>
 <style>
@@ -57,10 +57,10 @@
 	
 	<div id="all">
 		<ul class="nav nav-tabs">
-			<li id="employeeList"><a href="/phoenix/crm/employeeManagement/employeeList">직원 리스트</a></li>
-			<li id="indertingEmployee"><a href="/phoenix/crm/employeeManagement/insertingEmployee">직원 입력</a></li>
-			<li id="employeeSalaryList"><a href="/phoenix/crm/employeeManagement/employeeSalaryList">급여지급 리스트</a></li>
-			<li id="insertingEmployeeSalary"><a href="/phoenix/crm/employeeManagement/insertingEmployeeSalary">급여지급 입력</a></li>
+			<li id="employeeList" class="active"><a href="/phoenix/crm/employeeManagement/employeeList">직원 리스트</a></li>
+			<li id="indertingEmployee" class="active"><a href="/phoenix/crm/employeeManagement/insertingEmployee">직원 입력</a></li>
+			<li id="employeeSalaryList" class="active"><a href="/phoenix/crm/employeeManagement/employeeSalaryList">급여지급 리스트</a></li>
+			<li id="insertingEmployeeSalary" class="active"><a href="/phoenix/crm/employeeManagement/insertingEmployeeSalary">급여지급 입력</a></li>
 		</ul>
 </body>
 </html>

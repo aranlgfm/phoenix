@@ -7,7 +7,7 @@ public class Comment {
 	private String commentContent;
 	private String commentDate;
 	private String commentIp;
-	
+	private String userNickName;
 	public String getCommentCode() {
 		return commentCode;
 	}
@@ -43,6 +43,12 @@ public class Comment {
 	}
 	public void setCommentIp(String commentIp) {
 		this.commentIp = commentIp;
+	}
+	public String getUserNickName() {
+		return userNickName;
+	}
+	public void setUserNickName(String userNickName) {
+		this.userNickName = userNickName;
 	}
 	
 	

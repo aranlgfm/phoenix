@@ -28,6 +28,11 @@ public interface UserManagementService {
 	int insertDesigner(UserDesigner user);
 	
 	/**
+	 * (서비스) 디자이너 추가정보 입력 시 미용실정보 가져오기
+	 */
+	UserDirector selectUserDirectorList(UserDesigner user);
+	
+	/**
 	 * (서비스) 아이디 찾기 
 	 * @param user
 	 * @return

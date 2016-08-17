@@ -99,8 +99,7 @@
 									<option>MyPage</option>
 									<option value="/phoenix/com/form/userModification">회원정보수정</option>
 									<option value="/phoenix/com/form/userWithdrawal">회원탈퇴</option>
-									<!-- <option value="/phoenix/com/form/paymentList">주문결제내역</option>
-									<option value="/phoenix/com/form/repaymentList">환불내역</option> -->
+									<option value="/phoenix/com/form/paymentList">주문결제내역</option>
 								</select>
 								<a href="/phoenix/com/process/logout"><input
 									class="btn btn-default" type="button" value="로그아웃" /></a>
