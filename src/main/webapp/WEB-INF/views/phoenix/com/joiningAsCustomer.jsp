@@ -13,31 +13,33 @@
 	<script src="/webjars/jquery/3.1.0/jquery.min.js"></script>
 		<script>
 			$(document).ready(function(){
-				
 				//유효성
 				$('#submitButton').click(function(){
-
+					
 					//아이디
-					if($('#userId').val() == ""){
-						$('#userIdMsg').html('아이디를 입력하세요');
-					}else if($('#userId').val() != ""){
+					if($("#userId").val() == ""){
+						$("#userIdMsg").html("아이디를입력하세요");
+					}else if($("#userId").val() != ""){
 						$.ajax({
 							url : "/phoenix/com/process/joiningAsCustomer/checkId",
 							type: "post",
 							data : {"userId" : $('#userId').val()},
 							success : function(userId){
-								$("#ajax").remove();
 								if(userId.result > 0){
-									$('#userIdMsg').html("중복아이디");
+									$("#userIdMsg").html("중복아이디");
 								}else{
-									$('#userIdMsg').html("");
+									$("#userIdMsg").html("");
 								}
 							}//success
 						})
 					//비밀번호
-					}else if($("#userPw").val() == ""){
+					}
+					
+					if($("#userPw").val() == ""){
+						$('#userIdMsg').html("");
 						$("#userPwMsg").html("비밀번호 입력하세요");
 		 			}else if($("#userPw").val() != $("#userRepw").val()){
+		 				$("#userPwMsg").html("");
 						$("#userRepwMsg").html("비밀번호가 일치하지 않습니다.");
 		 			}
 		 			//이름
@@ -56,15 +58,16 @@
 		 				$('#userSexFlagMsg').html("성별을 선택해주세요.");
 		 			}
 					//전화번호
-					else if($("#userPhoneNumber1").val() == "" || $("#userPhoneNumber2").val() == "" || $("#userPhoneNumber3").val() == ""){
-						$('#userSexFlagMsg').html("");
-						$("#userPhoneNumbermsg").html("전화번호를 입력해주세요.");
-		 			}
+// 					else if($("#userPhoneNumber1").val() == "" || $("#userPhoneNumber2").val() == "" || $("#userPhoneNumber3").val() == ""){
+// 						$('#userSexFlagMsg').html("");
+// 						$("#userPhoneNumberMsg").html("전화번호를 입력해주세요.");
+// 		 			}
 					//전화번호2
 					else if($("#userCellphoneNumber1").val() == "" || $("#userCellphoneNumber2").val() == "" || $("#userCellphoneNumber3").val() == ""){
+						console.log("나야...");
 						$("#userPhoneNumber").val($("#userPhoneNumber1").val()+"-"+$('#userPhoneNumber2').val()+"-"+$('#userPhoneNumber3').val());
 		 				$("#userPhoneNumberMsg").html("");
-						$("#userCellphoneNumber").html("전화번호를 입력해주세요.");
+						$("#userCellphoneNumberMsg").html("전화번호를 입력해주세요.");
 		 			}
 					//이메일
 					else if($("#userEmailId").val() == "" || $('#userEmailDomain').val() == ""){
@@ -237,21 +240,21 @@
 						<!-- 전체다 넘길 집전화번호 --> 
 						<input type="hidden" id="userPhoneNumber" name="userPhoneNumber"/>
 					</div>
-					<span id="userPhoneNumberMsg"></span>
+					
 				</div>
 	
 	
 	
 				<!-- 핸드폰번호 -->
 				<div class="form-inline form-group">
-				<label class="control-label col-sm-3" for="userCellphoneNumber">핸드폰번호:</label>
+				<label class="control-label col-sm-3" for="userCellphoneNumber"><span class="textWarn">* </span>핸드폰번호:</label>
 					<div class="col-sm-9">
 							<input type="text" class="form-control" id="userCellphoneNumber1" size="1" maxlength="3">&nbsp;-&nbsp; 
 							<input type="text" class="form-control" id="userCellphoneNumber2" size="1" maxlength="4">&nbsp;-&nbsp; 
 							<input type="text" class="form-control" id="userCellphoneNumber3" size="1" maxlength="4">	
 						<!-- 전체다 넘길 집전화번호 --> 
-						<input type="hidden" id="userCellphoneNumber" name="userCellphoneNumber"/>
-						<span id="userCellphoneNumberMsg"></span>
+							<span class ="textWarn" id="userCellphoneNumberMsg"></span>
+							<input type="hidden" id="userCellphoneNumber" name="userCellphoneNumber"/>
 					</div>
 				</div>
 				
@@ -271,12 +274,11 @@
 							<option value="nate.com">nate.com</option>
 						</select>
 					</div>
+					<label class="control-label col-sm-3" ></label>
+					<span class ="textWarn" id="userEmailAddressMsg"></span>
 	<!-- 				유저이메일 -->
 					<input type="hidden" id="userEmailAddress" name="userEmailAddress">
-					<span id="userEmailAddressMsg"></span>
 				</div>
-				
-				
 				
 				<!-- 생년월일 -->  
 				<div class="form-group">
