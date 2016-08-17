@@ -152,6 +152,22 @@ public class UserManagementController {
 	}
 	
 	/**
+	 * 4. 커뮤니티 디자이너 가입 시 미용실정보 가져오기
+	 * @param data
+	 * @return
+	 */
+	@RequestMapping(value = "/phoenix/com/process/joiningAsDesigner/checkShop", method = RequestMethod.POST)
+	public @ResponseBody Map<String, Object> comProcessJoiningAsDesignerCheckShop(@RequestParam Map<String, Object> data, UserDesigner user) {
+		UserDirector director = new UserDirector();
+		
+		String shopCode = (String)data.get("shopCode");
+		user.setShopCode(shopCode);
+		director = userService.selectUserDirectorList(user);
+		data.put("result", director);
+		return data;
+	}
+	
+	/**
 	 * 5.커뮤니티 미용실원장 가입처리
 	 * @return
 	 */

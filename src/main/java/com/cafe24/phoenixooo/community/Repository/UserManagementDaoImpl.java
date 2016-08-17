@@ -42,6 +42,14 @@ public class UserManagementDaoImpl implements UserManagementDao {
 	}
 	
 	/**
+	 * (DAO구현)디자이너 추가입력시 미용실정보 가져오기
+	 */
+	@Override
+	public UserDirector selectUserDirectorList(UserDesigner user) {
+		return sqlSession.selectOne(NS+".selectUserDirectorList", user);
+	}
+	
+	/**
 	 * (DAO구현)USERCODE 증가 메서드
 	 */
 
@@ -141,4 +149,5 @@ public class UserManagementDaoImpl implements UserManagementDao {
 	public int checkUserId(String userId) {
 		return sqlSession.selectOne(NS+".checkUserId", userId);
 	}
+
 }

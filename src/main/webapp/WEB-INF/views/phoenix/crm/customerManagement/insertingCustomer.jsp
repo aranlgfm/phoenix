@@ -37,6 +37,10 @@
  	#msg {
  		color : #db4f53;
  	}
+ 	.textWarn {
+		font-weight:bolder;
+		color: red;
+ 	}
 </style>
 <script>
 	$(document).ready(function(){
@@ -125,7 +129,7 @@
 			<br>
 			<br>
 			<div class="form-group">
-				<label class="control-label col-sm-3" for="customerName">* 이름 : </label>
+				<label class="control-label col-sm-3" for="customerName"><span class="textWarn">* </span>이름 : </label>
 				<div class="col-sm-4">
 					<input name="customerName" id="customerName" class="form-control" type="text" placeholder="고객명"/>
 				</div>
@@ -133,7 +137,7 @@
 			</div>
 			<div class="form-inline form-group">
 				<input id="customerCellphoneNumber" name="customerCellphoneNumber" type="hidden"/>
-				<label class="control-label col-sm-3" for="phoneNo1">* 핸드폰번호 : </label>
+				<label class="control-label col-sm-3" for="phoneNo1"><span class="textWarn">* </span>핸드폰번호 : </label>
 				<div class="col-sm-9">
 					<input id="phoneNo1" class="form-control" type="text" size="4"/> -
 					<input id="phoneNo2" class="form-control" type="text" size="4"/> -
@@ -141,7 +145,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-3" for="customerSexFlag">* 성별 : </label>
+				<label class="control-label col-sm-3" for="customerSexFlag"><span class="textWarn">* </span>성별 : </label>
 				<div class="col-sm-4">
 					<label class="radio-inline"><input class="flag" type="radio" name="customerSexFlag" value="0"/>남</label>
 					<label class="radio-inline"><input class="flag" type="radio" name="customerSexFlag" value="1"/>여</label>
