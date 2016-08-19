@@ -71,10 +71,10 @@
 		<nav class="navbar navbar-inverse" style="clear: both;">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="/phoenix">로고</a>
+					<a class="navbar-brand" href="/">phoenix</a>
 				</div>
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="/">Home</a></li>
+					<li class="active"><a href="/phoenix">Home</a></li>
 					<li><a
 						href="/phoenix/com/form/basicBoard?boardGroupCode=COM_BOARDGROUP_3&&limitIndex=0&&currentPageNumber=1">자유게시판</a>
 					</li>
