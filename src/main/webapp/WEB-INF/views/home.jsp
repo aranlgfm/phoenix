@@ -17,14 +17,16 @@
 	#bottomText {
 		margin: 30px;
 		text-align: center;
-	}
-	.homeImg {
-		float: left;
-		margin-right: 50px;
+		font-size: "3";
 	}
 	#homeDiv {
 		margin: 10px 300px;
 	}
+	.solid {
+		border: 1px solid black;
+		
+	}
+	
 </style>
 </head>
 <body>
@@ -40,17 +42,31 @@
 	<br>
 </div>
 
+
+<table id="homeDiv">
+	<tr>
+		<td>
+			<div class="solid">
+				<a href="/phoenix">
+					<img src="/resources/com.JPG"/>
+				</a>
+			</div>
+		</td>
+		<td width="10%"></td>
+		<td>
+			<div class="solid">
+				<a href="/phoenix/crm/form/login">
+					<img src="/resources/crm.JPG"/>
+				</a>
+			</div>
+		</td>
+	</tr>
+</table>
+
+
+
 <div id="homeDiv">
-	<div class="homeImg">
-		<a href="/phoenix">
-			<img src="/resources/com.png"/>
-		</a>
-	</div>
-	<div>
-		<a href="/phoenix/crm/form/login">
-			<img src="/resources/crm.png"/>
-		</a>
-	</div>
+
 </div>
 </body>
 </html>
