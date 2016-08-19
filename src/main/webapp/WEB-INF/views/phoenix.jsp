@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page session="true" %>
 <!DOCTYPE html>
 <html>
@@ -43,25 +44,24 @@
 	<h3><span class="label label-default">헤어게시판 최신글</span></h3>	
 		<div class="row">
 		<c:forEach begin="0" end="3" var="art" items="${articleList}">
-			  <div class="col-xs-6 col-md-3">
+			  <div class="col-xs-6 col-md-3 title">
 				    <a href="/phoenix/com/form/basicArticle?articleCode=${art.articleCode}" class="thumbnail">
-				    	${art.articleDate}
+				    	${fn:substring(art.articleDate,0,10)}
 				      	<img id="imgBox" src="${art.imgFileList[0].filePath}" alt="등록된 사진이 없습니다.">
 				      	${art.articleName}
 				    </a>
 			  </div>
 		</c:forEach>
 		<c:forEach begin="4" end="7" var="art" items="${articleList}">
-			  <div class="col-xs-6 col-md-3">
+			  <div class="col-xs-6 col-md-3 title">
 				    <a href="/phoenix/com/form/basicArticle?articleCode=${art.articleCode}" class="thumbnail">
-				    	${art.articleDate}
+				    	${fn:substring(art.articleDate,0,10)}
 				      	<img id="imgBox" src="${art.imgFileList[0].filePath}" alt="등록된 사진이 없습니다.">
 				      	${art.articleName}
 				    </a>
 			  </div>
 		</c:forEach>
 	  </div>
-	
 	<h3><span class="label label-default">자유게시판 최신글</span></h3>	
 		<!-- 자유게시판 -->
 		<div class="basicBoardList">
