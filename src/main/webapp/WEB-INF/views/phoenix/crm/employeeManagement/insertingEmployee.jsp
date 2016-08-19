@@ -12,7 +12,7 @@
 <!-- 다음 우편번호 api -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
-		
+		//버튼 탭 클릭시 이펙트.
 		$(document).ready(function() {
 			$("#employeeList").removeClass("active");
 			$("#indertingEmployee").addClass("active");
@@ -27,25 +27,31 @@
 		
 		// 유효성 검사
 		$('#submitBtn').click(function() {
-					
+			// 직급 입력 안했을 때
 			if($('#EmployeeLevelName').val() == '') {
 				$('#EmployeeLevelNameMsg').html('직급을 입력해 주세요.');
+			// 이름 입력 안했을 때
 			}else if($('#EmployeeName').val() == '') {
 				$('#EmployeeLevelNameMsg').html('');
 				$('#EmployeeNameMsg').html('직원명을 입력해 주세요.');
+			// 비밀번호 입력 안했을 때
 			}else if($("#EmployeePw").val() == ""){
 				$('#EmployeeNameMsg').html('');
 				$("#EmployeePwMsg").html("비밀번호 입력하세요");
- 			}else if($("#EmployeePw").val() != $("#EmployeePwRepw").val()){
+ 			// 비밀번호가 같지 않을 때
+			}else if($("#EmployeePw").val() != $("#EmployeePwRepw").val()){
  				$("#EmployeePwMsg").html("");
 				$("#EmployeePwRepwMsg").html("비밀번호가 일치하지 않습니다.");
- 			}else if($('#EmployeePhoneNo1').val() == '' || $('#EmployeePhoneNo2').val() == '' || $('#EmployeePhoneNo3').val() == ''){
+ 			// 전화번호를 입력 안했을 때
+			}else if($('#EmployeePhoneNo1').val() == '' || $('#EmployeePhoneNo2').val() == '' || $('#EmployeePhoneNo3').val() == ''){
  				$("#EmployeePwMsg").html("");
  				$("#EmployeePwRepwMsg").html("");
 				$('#EmployeePhoneNoMsg').html('전화번호를 입력해주세요.');
+			// 핸드폰번호를 입력 안했을 때
 			}else if($('#phoneNo1').val() == '' || $('#phoneNo2').val() == '' || $('#phoneNo3').val() == ''){
 				$('#EmployeePhoneNoMsg').html('');
 				$('#EmployeeCellPhoneNoMsg').html('핸드폰번호를 입력해주세요.');
+			// 입사일을 입력 안했을 때
 			}else if($('#EmployeeJoinDate').val() == '') {
 				$('#EmployeeCellPhoneNoMsg').html('');
 				$('#EmployeeJoinDateMsg').html('입사일을 입력해 주세요.');
@@ -149,7 +155,7 @@
 		
 		<form class="form-horizontal" id="employeeForm" role="form" action="/phoenix/crm/employeeManagement/insertingEmployee" method="POST">
 			
-							
+			<!-- 직급 -->				
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="EmployeeLevelName">직급:</label>
 				<div class="col-sm-4">
@@ -230,7 +236,7 @@
 						<input type="text" class="form-control" id="PhoneNo1" size="1" maxlength="3" />&nbsp;-&nbsp; 
 						<input type="text" class="form-control" id="PhoneNo2" size="1" maxlength="4" />&nbsp;-&nbsp; 
 						<input type="text" class="form-control" id="PhoneNo3" size="1" maxlength="4" />	
-					<!-- 전체다 넘길 집전화번호 --> 
+					<!-- 전체다 넘길 핸드폰번호 --> 
 					<input type="hidden" id="EmployeeCellPhoneNo" name="EmployeeCellPhoneNo" />
 					<span id="EmployeeCellPhoneNoMsg"></span>
 				</div>

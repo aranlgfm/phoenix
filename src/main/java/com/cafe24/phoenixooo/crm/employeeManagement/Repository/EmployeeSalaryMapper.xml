@@ -2,12 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cafe24.phoenixooo.crm.employeeManagement.Repository.EmployeeSalaryMapper">
 
+	<!-- 
+		1. 급여지급 등록
+		2. 전체 컬럼수 구하기
+		3. 급여지급 리스트
+		4. 급여지급 삭제
+	 -->
 
 	<!-- 1. 급여지급 등록 -->
 	<insert id="insertEmployeeSalary" parameterType="com.cafe24.phoenixooo.crm.employeeManagement.Model.EmployeeSalary">
-	<selectKey resultType="hashmap" keyProperty="salaryCode" order="BEFORE">
-		select if(isnull(SALARY_CD),'CRM_SALARY_1',concat('CRM_SALARY_',MAX(CONVERT(SUBSTRING(SALARY_CD,12),UNSIGNED))+1)) as salaryCode from CRM_SALARY_TB
-	</selectKey>
+		<!-- Auto_increment -->
+		<selectKey resultType="hashmap" keyProperty="salaryCode" order="BEFORE">
+			select if(isnull(SALARY_CD),'CRM_SALARY_1',concat('CRM_SALARY_',MAX(CONVERT(SUBSTRING(SALARY_CD,12),UNSIGNED))+1)) as salaryCode from CRM_SALARY_TB
+		</selectKey>
 		INSERT INTO
 			CRM_SALARY_TB
 		(
@@ -50,6 +57,7 @@
 			,SALARY_WON as salaryWon
 		FROM
 			CRM_SALARY_TB
+		<!-- 검색을 위한 where문. word가 null이면 넘어간다. -->
 		<where>
 			<if test="word != null">
 				EMPLOYEE_NM like CONCAT('%',#{word},'%')

@@ -1,18 +1,18 @@
 package com.cafe24.phoenixooo.crm.employeeManagement.Model;
 
 public class Employee {
-	private String employeeCode;
-	private String shopCode;
-	private String employeePw;
-	private String employeeLevelName;
-	private String employeeName;
-	private String employeeBirthDate;
-	private String employeePostNo;
-	private String employeeAddr;
-	private String employeePhoneNo;
-	private String employeeCellPhoneNo;
-	private String employeeJoinDate;
-	private String employeeMemo;
+	private String employeeCode;		// 직원 코드
+	private String shopCode;			// 미용실 코드
+	private String employeePw;			// 직원 비밀번호
+	private String employeeLevelName;	// 직원 직급
+	private String employeeName;		// 직원 이름
+	private String employeeBirthDate;	// 직원 생년월일
+	private String employeePostNo;		// 직원 우편번호
+	private String employeeAddr;		// 직원 주소
+	private String employeePhoneNo;		// 직원 전화번호
+	private String employeeCellPhoneNo;	// 직원 휴대폰번호
+	private String employeeJoinDate;	// 직원 입사일
+	private String employeeMemo;		// 직원 메모
 	
 	public String getEmployeeCode() {
 		return employeeCode;
