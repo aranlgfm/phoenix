@@ -19,54 +19,50 @@
 		text-align: center;
 		font-size: "3";
 	}
-	#homeDiv {
-		margin: 10px 300px;
-	}
-	.solid {
-		border: 1px solid black;
-		
+	
+	.paDiv {
+		width: 70%;
+		margin: auto;
+		text-align:center;
 	}
 	
+	#chDiv {
+		float : left;
+		width : 50%;
+	}
 </style>
 </head>
 <body>
-<div id="bo">
+<div id="bo" class="paDiv">
 	<br>
 	<div id="bottomText">
 		<p>팀명 : 불사조</p>
 		<p>팀원 : 구아란, 차이수, 강재욱, 신복기, 김원중, 이승주</p>
 		<p>주제 : 헤어커뮤니티와 미용실CRM을 동시에 가지고 있는 스프링MVC기반의 웹응용프로그램</p>
 		<p>소속 : 한국스마트정보교육원</p>
-		<p>개발환경 : java1.8, HTML5, CSS, jquery, spring</p>
+		<p>개발환경 : java1.8, HTML5, JQuery 3.1.0, SpringFramework4.0.9, Jackson(JSON) 2.4.3, CSS, 
+		<br>
+		bootstrap 3.3.6, Mybatis 3.2.8, mysql 5.1.34, mysql-Workbench 6.3, servlet 3.1.0, jsp 2.2, jstl 1.2,
+		<br>
+		Apache Tomcat 8.0, Spring Tool Suite 3.7.3, JRebel for Eclipse 6.4.7
+		</p>
 	</div>
 	<br>
 </div>
 
 
-<table id="homeDiv">
-	<tr>
-		<td>
-			<div class="solid">
-				<a href="/phoenix">
-					<img src="/resources/com.JPG"/>
-				</a>
-			</div>
-		</td>
-		<td width="10%"></td>
-		<td>
-			<div class="solid">
-				<a href="/phoenix/crm/form/login">
-					<img src="/resources/crm.JPG"/>
-				</a>
-			</div>
-		</td>
-	</tr>
-</table>
-
-
-
-<div id="homeDiv">
-
+<div class="paDiv">
+	<div id="chDiv">
+		<a href="/phoenix">
+			<img src="/resources/com.JPG"/>
+		</a>
+	</div>
+	<div id="chDiv">
+		<a href="/phoenix/crm/form/login">
+			<img src="/resources/crm.JPG"/>
+		</a>
+	</div>
 </div>
+
 </body>
 </html>
