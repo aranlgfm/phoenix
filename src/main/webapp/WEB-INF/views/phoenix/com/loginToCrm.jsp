@@ -67,14 +67,14 @@
 				<div class="form-group">	
 					<label class="control-label col-sm-4">아이디 : </label>
 					<div class="col-sm-8">
-						<input class="form-control" type="text" name="userId" value="111"/>
+						<input class="form-control" type="text" name="userId" value="test"/>
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label class="control-label col-sm-4">비밀번호 : </label>
 					<div class="col-sm-8">
-						<input class="form-control" type="password" name="userPw" value="111"/>
+						<input class="form-control" type="password" name="userPw" value="test"/>
 					</div>
 				</div>
 				
