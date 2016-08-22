@@ -2,8 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cafe24.phoenixooo.crm.employeeManagement.Repository.EmployeeMapper">
 	
+	<!-- 
+		1. 직원 등록
+		2. 전체 컬럼수 구하기
+		3. 직원 리스트
+		4. 직원 상세보기
+		5. 직원 수정
+		6. 직원 삭제
+	 -->
+	
 	<!-- 1. 직원 등록 -->
 	<insert id="insertEmployee" parameterType="com.cafe24.phoenixooo.crm.employeeManagement.Model.Employee">
+		<!-- Auto_increment -->
 		<selectKey resultType="hashmap" keyProperty="employeeCode" order="BEFORE">
 			select if(isnull(EMPLOYEE_CD),'CRM_EMPLOYEE_1',concat('CRM_EMPLOYEE_',MAX(CONVERT(SUBSTRING(EMPLOYEE_CD,14),UNSIGNED))+1)) as employeeCode from CRM_EMPLOYEE_TB
 		</selectKey>
@@ -62,6 +72,7 @@
 			,EMPLOYEE_LEVEL_NM as employeeLevelName
 		FROM
 			CRM_EMPLOYEE_TB
+		<!-- 검색을 위한 where문. word가 null이면 넘어간다. -->
 		<where>
 			<if test="word != null">
 				EMPLOYEE_NM like CONCAT('%',#{word},'%')
@@ -98,6 +109,7 @@
 		SET
 			EMPLOYEE_LEVEL_NM=#{employeeLevelName}
 			,EMPLOYEE_PW=#{employeePw}
+			,EMPLOYEE_POST_NO=#{employeePostNo}
 			,EMPLOYEE_ADDR=#{employeeAddr}
 			,EMPLOYEE_PHONE_NO=#{employeePhoneNo}
 			,EMPLOYEE_CELLPHONE_NO=#{employeeCellPhoneNo}
@@ -106,7 +118,7 @@
 			EMPLOYEE_CD=#{employeeCode}
 	</update>
 	
-	<!-- 6. 직원삭제 -->
+	<!-- 6. 직원 삭제 -->
 	<delete id="deleteEmployee" parameterType="com.cafe24.phoenixooo.crm.employeeManagement.Model.Employee">
 		DELETE FROM
 			CRM_EMPLOYEE_TB

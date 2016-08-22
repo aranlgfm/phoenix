@@ -13,12 +13,16 @@
  		
 	$(document).ready(function() {	
 		
+		// 유효성 검사
 		$('#submitBtn').click(function() {
+			// 근무년월을 입력 안했을 때
 			if($('#SalaryMonthDate').val() == '') {
 				$('#SalaryMonthDateMsg').html('근무년월을 입력해 주세요.');
+			// 직원명을 입력 안했을 때
 			}else if($('#EmployeeName').val() == '') {
 				$('#SalaryMonthDateMsg').html('');
 				$('#EmployeeNameMsg').html('직원명을 입력해 주세요.');
+			// 지급급여를 입력 안했을 때
 			}else if($('#SalaryWon').val() == '') {
 				$('#EmployeeNameMsg').html('');
 				$('#SalaryWonMsg').html('지급급여를 입력해 주세요.');
@@ -27,7 +31,8 @@
 			}
 		});
 	});
-
+	
+	// 버튼 탭 클릭시 이펙트.
 	$(document).ready(function() {
 		$("#employeeList").removeClass("active");
 		$("#indertingEmployee").removeClass("active");
@@ -103,6 +108,7 @@
 				<span id="SalaryMonthDateMsg"></span>
 			</div>
 			
+			<!-- 직원명 -->
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="EmployeeName">직원명:</label>
 				<div class="col-sm-4">
@@ -111,6 +117,7 @@
 				<span id="EmployeeNameMsg"></span>
 			</div>
 			
+			<!-- 지급급여 -->
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="SalaryWon">지급급여:</label>
 				<div class="col-sm-4">

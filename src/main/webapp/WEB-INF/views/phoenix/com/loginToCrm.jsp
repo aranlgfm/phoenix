@@ -40,12 +40,14 @@
  		text-align: center;
 		}
 
+
 </style>
 </head>
 <body>
 <div class="allLeft">
 	<div>
 		<div class="textCenter title">
+			<img src="/resources/scissor.png"/>
 			로그인
 		</div>
 		

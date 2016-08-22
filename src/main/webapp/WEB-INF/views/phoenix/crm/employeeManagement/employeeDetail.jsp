@@ -85,13 +85,5 @@
 		</c:if>
 	</table>
 	
-	<%-- 
-	<div class="form-group"> 
-		<div class="textCenter">
-			<a class="btn btn-default" href="/phoenix/crm/employeeManagement/updateEmployee?employeeCode=${employee.employeeCode}">수정</a>
-			<a class="btn btn-default" href="/phoenix/crm/employeeManagement/deleteEmployee?employeeCode=${employee.employeeCode}">삭제</a>
-		</div>
-	</div>
-	 --%>
 </body>
 </html>

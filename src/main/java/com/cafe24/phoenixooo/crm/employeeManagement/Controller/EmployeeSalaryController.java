@@ -20,7 +20,6 @@ public class EmployeeSalaryController {
 	
 	/**
 	 * 급여 지급 입력 폼
-	 * @param employeeSalary
 	 * @return
 	 */
 	@RequestMapping(value="/phoenix/crm/employeeManagement/insertingEmployeeSalary", method=RequestMethod.GET)
@@ -29,7 +28,7 @@ public class EmployeeSalaryController {
 	}
 	
 	/**
-	 * 급여 지급 입력 처리
+	 * 급여 지급 입력
 	 * @param employeeSalary
 	 * @return
 	 */
@@ -40,7 +39,10 @@ public class EmployeeSalaryController {
 	}
 	
 	/**
-	 * 직원 리스트
+	 * 급여 지급 리스트
+	 * @param model
+	 * @param page
+	 * @param word
 	 * @return
 	 */
 	@RequestMapping(value="/phoenix/crm/employeeManagement/employeeSalaryList", method=RequestMethod.GET)
@@ -55,7 +57,7 @@ public class EmployeeSalaryController {
 	}
 	
 	/**
-	 * 급여지급 삭제
+	 * 급여 지급 삭제
 	 * @param employeeSalary
 	 * @param model
 	 * @return

@@ -20,6 +20,9 @@ public class EmployeeController {
 	
 	/**
 	 * 직원 리스트
+	 * @param model
+	 * @param page
+	 * @param word
 	 * @return
 	 */
 	@RequestMapping(value="/phoenix/crm/employeeManagement/employeeList", method=RequestMethod.GET)
@@ -35,7 +38,6 @@ public class EmployeeController {
 	
 	/**
 	 * 직원 입력 폼
-	 * @param employee
 	 * @return
 	 */
 	@RequestMapping(value="/phoenix/crm/employeeManagement/insertingEmployee", method=RequestMethod.GET)
@@ -101,6 +103,7 @@ public class EmployeeController {
 	 */
 	@RequestMapping(value="/phoenix/crm/employeeManagement/deleteEmployee", method=RequestMethod.GET)
 	public String deleteEmployee(Employee employee, Model model) {
+		// 직원 삭제 시 employeeCode로 구분한다.
 		String employeeCode = employee.getEmployeeCode();
 		model.addAttribute("employeeCode", employeeCode);
 		employeeService.deleteEmployee(employee);

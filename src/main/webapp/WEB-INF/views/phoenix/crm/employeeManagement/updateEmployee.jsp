@@ -18,22 +18,31 @@
 		
 		// 유효성 검사
 		$('#submitBtn').click(function() {
-					
+			// 직급 입력 안했을 때
 			if($('#EmployeeLevelName').val() == '') {
 				$('#EmployeeLevelNameMsg').html('직급을 입력해 주세요.');
-			}else if($("#EmployeePw").val() == ""){
+			// 이름 입력 안했을 때
+			}else if($('#EmployeeName').val() == '') {
 				$('#EmployeeLevelNameMsg').html('');
+				$('#EmployeeNameMsg').html('직원명을 입력해 주세요.');
+			// 비밀번호 입력 안했을 때
+			}else if($("#EmployeePw").val() == ""){
+				$('#EmployeeNameMsg').html('');
 				$("#EmployeePwMsg").html("비밀번호 입력하세요");
-				}else if($("#EmployeePw").val() != $("#EmployeePwRepw").val()){
-					$("#EmployeePwMsg").html("");
+ 			// 비밀번호가 같지 않을 때
+			}else if($("#EmployeePw").val() != $("#EmployeePwRepw").val()){
+ 				$("#EmployeePwMsg").html("");
 				$("#EmployeePwRepwMsg").html("비밀번호가 일치하지 않습니다.");
-				}else if($('#EmployeePhoneNo1').val() == '' || $('#EmployeePhoneNo2').val() == '' || $('#EmployeePhoneNo3').val() == ''){
-					$("#EmployeePwMsg").html("");
-					$("#EmployeePwRepwMsg").html("");
+ 			// 전화번호를 입력 안했을 때
+			}else if($('#EmployeePhoneNo1').val() == '' || $('#EmployeePhoneNo2').val() == '' || $('#EmployeePhoneNo3').val() == ''){
+ 				$("#EmployeePwMsg").html("");
+ 				$("#EmployeePwRepwMsg").html("");
 				$('#EmployeePhoneNoMsg').html('전화번호를 입력해주세요.');
+			// 핸드폰번호를 입력 안했을 때
 			}else if($('#phoneNo1').val() == '' || $('#phoneNo2').val() == '' || $('#phoneNo3').val() == ''){
 				$('#EmployeePhoneNoMsg').html('');
 				$('#EmployeeCellPhoneNoMsg').html('핸드폰번호를 입력해주세요.');
+			// 입사일을 입력 안했을 때
 			}else if($('#EmployeeJoinDate').val() == '') {
 				$('#EmployeeCellPhoneNoMsg').html('');
 				$('#EmployeeJoinDateMsg').html('입사일을 입력해 주세요.');
@@ -48,7 +57,6 @@
 				$('#employeeForm').submit();
 			}
 		});
-	
 	
 		
 		// 우편번호찾기 후에 데이터 입력
@@ -140,7 +148,8 @@
 		
 		<form class="form-horizontal" id="employeeForm" role="form" action="/phoenix/crm/employeeManagement/updateEmployee" method="POST">
 		<input type="hidden" name="employeeCode" value="${employee.employeeCode}" />
-							
+			
+			<!-- 직급 -->			
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="EmployeeLevelName">직급:</label>
 				<div class="col-sm-4">
@@ -148,7 +157,8 @@
 				</div>
 				<span id="EmployeeLevelNameMsg"></span>
 			</div>
-			  
+			
+			<!-- 직원명 -->
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="EmployeeName">직원명:</label>
 				<div class="col-sm-4">
@@ -157,6 +167,7 @@
 				<span id="EmployeeNameMsg"></span>
 			</div>
 			
+			<!-- 비밀번호 -->
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="EmployeePw">비밀번호:</label>
 				<div class="col-sm-4"> 
@@ -173,7 +184,7 @@
 				<span id="EmployeePwRepwMsg"></span>
 			</div>
 
-				<!-- 생년월일 -->  
+			<!-- 생년월일 -->  
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="EmployeeBirthDate">생년월일:</label>
 				<div class="col-sm-4">
@@ -190,6 +201,7 @@
 					<label class="col-sm-2"><input id="daumPostNo" type="button" class="btn btn-default" value="우편번호찾기" /></label>
 				</div>
 			</div>
+			
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="EmployeeName">도로명 주소 : </label>
 				<div class="col-sm-6">
@@ -224,7 +236,7 @@
 				</div>
 			</div>
 			 
-			 
+			<!-- 입사일 -->
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="EmployeeJoinDate">입사일:</label>
 				<div class="col-sm-4">
@@ -241,7 +253,7 @@
 				</div>
 			</div>
 		
-			<!-- 등록취소 -->
+			<!-- 등록&취소 -->
 			<div class="form-group centerT"> 
 				<div class="center col-sm-10">
 					<button type="button" class="btn btn-default" id="submitBtn">등록</button>

@@ -1,13 +1,13 @@
 package com.cafe24.phoenixooo.crm.employeeManagement.Model;
 
 public class EmployeeSalary {
-	private String salaryCode;
-	private String shopCode;
-	private String employeeCode;
-	private String salaryPayDate;
-	private String salaryMonthDate;
-	private String employeeName;
-	private int salaryWon;
+	private String salaryCode;		// 급여지급 코드
+	private String shopCode;		// 미용실 코드
+	private String employeeCode;	// 직원 코드
+	private String salaryPayDate;	// 급여지급일
+	private String salaryMonthDate;	// 근무년월
+	private String employeeName;	// 직원 이름
+	private int salaryWon;			// 지급급여
 	
 	public String getSalaryCode() {
 		return salaryCode;

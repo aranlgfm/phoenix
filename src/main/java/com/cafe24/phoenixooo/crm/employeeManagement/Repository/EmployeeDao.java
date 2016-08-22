@@ -8,6 +8,8 @@ import com.cafe24.phoenixooo.crm.employeeManagement.Model.Employee;
 public interface EmployeeDao {
 	/**
 	 * (Dao) 직원 입력
+	 * @param employee
+	 * @return
 	 */
 	int insertEmployee(Employee employee);
 	
