@@ -50,6 +50,7 @@
 	<br>
 </div>
 
+<br>
 
 <div class="paDiv">
 	<div id="chDiv">
@@ -57,10 +58,27 @@
 			<img src="/resources/com.JPG"/>
 		</a>
 	</div>
-	<div id="chDiv">
+	<div>
 		<a href="/phoenix/crm/form/login">
 			<img src="/resources/crm.JPG"/>
 		</a>
+	</div>
+</div>
+
+<hr style="width:70%;">
+
+<div class="paDiv">
+	<img style="width:90%;" src="/resources/erd.png"/>
+</div>
+
+<hr style="width:70%;">
+
+<div class="paDiv">
+	<div style="float: left;">
+		<img src="/resources/com_flow.png"/>
+	</div>
+	<div>
+		<img src="/resources/crm_flow.png"/>
 	</div>
 </div>
 
