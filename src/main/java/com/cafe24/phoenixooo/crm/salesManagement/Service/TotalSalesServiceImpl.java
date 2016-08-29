@@ -110,7 +110,22 @@ public class TotalSalesServiceImpl implements TotalSalesService {
 	@Override
 	public List<DaySalesInfo> daysList(DaySalesInfo daySalesInfo) {
 		
-		return totalSalesDao.daysList(daySalesInfo);
+		List<DaySalesInfo> list = totalSalesDao.daysList(daySalesInfo);
+		
+		for(int i=0; i<list.size()-1; i++)
+		{	
+			if(list.get(i).getItemDesignName().equals(list.get(i+1).getItemDesignName()))
+			{
+				System.out.println("for문속 if문 아이디 같은때 실행됨");	
+				list.get(i).setTotalCash(list.get(i+1).getTotalCash());
+				list.get(i).setCountCash(list.get(i+1).getCountCash());
+				list.remove(i+1);
+				System.out.println("아이디 같을때 하나지움");
+			}
+			System.out.println("아이디 틀려서 나오거나 / 같은때 하나 지우고 나옴");
+		}
+		
+		return list;
 	}
 	
 	
