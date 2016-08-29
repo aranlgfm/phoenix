@@ -26,14 +26,7 @@
 		
 		$(".dailySales").addClass("active");
 		
-		
-		var ihd = $('td');
-		var al = $.makeArray(ihd);
-		console.log(al);
-		
-		console.log(typeof(al));
-	
-		
+			
 	});
 </script>
 

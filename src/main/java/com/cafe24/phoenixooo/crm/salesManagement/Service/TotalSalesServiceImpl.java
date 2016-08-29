@@ -1,10 +1,10 @@
 package com.cafe24.phoenixooo.crm.salesManagement.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.SystemPropertyUtils;
 
 import com.cafe24.phoenixooo.crm.salesManagement.Model.DaySalesInfo;
 import com.cafe24.phoenixooo.crm.salesManagement.Model.MonthSalesInfo;
@@ -103,6 +103,16 @@ public class TotalSalesServiceImpl implements TotalSalesService {
 		System.out.println("디비갔다 나온 값 (서비스단"+list);
 		return list;
 	}
+	
+
+	//0829
+	//ajax -> 일일매출 리스트 출력하기
+	@Override
+	public List<DaySalesInfo> daysList(DaySalesInfo daySalesInfo) {
+		
+		return totalSalesDao.daysList(daySalesInfo);
+	}
+	
 	
 	
 	

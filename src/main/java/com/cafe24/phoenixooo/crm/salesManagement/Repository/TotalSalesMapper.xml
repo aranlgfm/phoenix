@@ -248,7 +248,25 @@
 	</select>
 
 
-
+	<!-- 0829 ajax ->일일 매출리스트 출력 -->
+	<select id="daysList" parameterType="com.cafe24.phoenixooo.crm.salesManagement.Model.DaySalesInfo" resultType="com.cafe24.phoenixooo.crm.salesManagement.Model.DaySalesInfo">
+	
+		SELECT
+			ITEMDESIGN_NM as itemDesignName
+			,PAYMENT_TYPE_GB as paymentTypeGb
+		    ,if(PAYMENT_TYPE_GB = '현금', sum(PAYMENT_TOTAL_WON),0) as totalCash
+		    ,if(PAYMENT_TYPE_GB = '현금', count(PAYMENT_TOTAL_WON),0) as countCash
+		    
+		    ,if(PAYMENT_TYPE_GB = '카드', sum(PAYMENT_TOTAL_WON),0) as totalCard
+		    ,if(PAYMENT_TYPE_GB = '카드', count(PAYMENT_TOTAL_WON),0) as countCard
+		   ,PAYMENT_DT as paymentDate
+		FROM
+			CRM_PAYMENT_TB
+		WHERE PAYMENT_DT = #{paymentDate}
+		GROUP BY
+			ITEMDESIGN_NM, PAYMENT_TYPE_GB
+	
+	</select>
 
 
 </mapper>

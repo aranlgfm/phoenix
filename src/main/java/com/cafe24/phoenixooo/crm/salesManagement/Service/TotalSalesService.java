@@ -1,5 +1,6 @@
 package com.cafe24.phoenixooo.crm.salesManagement.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.cafe24.phoenixooo.crm.salesManagement.Model.DaySalesInfo;
@@ -15,5 +16,11 @@ public interface TotalSalesService {
 	List<MonthSalesInfo> selectYearlySearch(MonthSalesInfo year);
 	
 	List<MonthSalesInfo> selectPeriodList(MonthSalesInfo period);
+
+
+	List<DaySalesInfo> daysList(DaySalesInfo daySalesInfo);
+
+
+
 	
 }

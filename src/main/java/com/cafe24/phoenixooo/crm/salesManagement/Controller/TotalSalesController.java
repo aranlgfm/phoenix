@@ -2,6 +2,7 @@ package com.cafe24.phoenixooo.crm.salesManagement.Controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cafe24.phoenixooo.community.Model.Payment;
 import com.cafe24.phoenixooo.crm.salesManagement.Model.DaySalesInfo;
 import com.cafe24.phoenixooo.crm.salesManagement.Model.MonthSalesInfo;
 import com.cafe24.phoenixooo.crm.salesManagement.Service.TotalSalesService;
@@ -19,6 +23,7 @@ public class TotalSalesController {
 
 	@Autowired
 	private TotalSalesService totalSalesService;
+	
 	
 	
 	//매출관리 기본 홈
@@ -34,7 +39,7 @@ public class TotalSalesController {
 		List<DaySalesInfo> list = totalSalesService.SelectDailySales(paymentDate);
 		model.addAttribute("list", list);
 		
-		return "/phoenix/crm/salesManagement/dailySalesList";
+		return "/phoenix/crm/salesManagement/ds";
 	}
 	
 	
@@ -214,8 +219,26 @@ public class TotalSalesController {
 		
 		
 		
+		//Ajax -> 일일매출리스트 출력하기
+		@ResponseBody
+		@RequestMapping(value = "/phoenix/crm/salesManagement/ds", method = RequestMethod.POST)
+		public List<DaySalesInfo> daysList(DaySalesInfo daySalesInfo) {
+		   System.out.println("ajax메서드 실행");
+		   System.out.println("----->"+daySalesInfo );
+		    
+		   List<DaySalesInfo> list = totalSalesService.daysList(daySalesInfo);
+		   
+		   System.out.println("list---> "+list);
+		    
+		    return list;
+		}
 		
 		
+		@RequestMapping(value = "/phoenix/crm/salesManagement/ds", method = RequestMethod.GET)
+		public String daysList(){
+			
+			return "/phoenix/crm/salesManagement/ds";
+		}
 		
 		
 		
