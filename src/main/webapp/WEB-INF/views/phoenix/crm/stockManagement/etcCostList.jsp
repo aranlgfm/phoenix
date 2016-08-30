@@ -28,7 +28,7 @@
 		<hr>	
 		<!-- <h1>지출내역등록</h1> -->
 		<form action="/phoenix/crm/process/stockManagement/insertEtcCostItem" method="POST">
-			<input class="btn btn-primary" type="submit" value="지출내역등록"/>
+		<!-- <input class="btn btn-primary" type="submit" value="지출내역등록"/> -->
 			<br><br>
 			<table>
 				<tr>
