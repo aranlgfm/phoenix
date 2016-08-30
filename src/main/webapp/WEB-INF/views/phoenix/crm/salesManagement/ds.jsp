@@ -40,8 +40,8 @@
 	    	yearSuffix: '년'
 		});
 
-	
-		$('.Dsearch').click(function(){
+		
+		$('.dSearch').click(function(){
 			$.ajax({
 			    url : "/phoenix/crm/salesManagement/ds",
 			    type : "post",
@@ -106,7 +106,7 @@
 			    }
 			}); 
 		});
-		
+		$('.dSearch').trigger("click");
 		$(".dailySales").addClass("active");
 		
 	});
@@ -144,10 +144,10 @@
 		<div>
 			<div class="form-group">
 				<div class="col-sm-2">
-					<input id="paymentDate" class="form-control" type="text" value="">
+					<input id="paymentDate" class="form-control" type="text" value="${paymentDate}">
 				</div>
 				<div class="col-sm-1">
-					<input class="Dsearch form-control" type="button" value="검색">
+					<input class="dSearch form-control" type="button" value="검색">
 				</div>
 			</div>
 		</div>

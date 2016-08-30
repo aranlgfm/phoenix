@@ -2,7 +2,6 @@ package com.cafe24.phoenixooo.crm.salesManagement.Controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.cafe24.phoenixooo.community.Model.Payment;
 import com.cafe24.phoenixooo.crm.salesManagement.Model.DaySalesInfo;
 import com.cafe24.phoenixooo.crm.salesManagement.Model.MonthSalesInfo;
 import com.cafe24.phoenixooo.crm.salesManagement.Service.TotalSalesService;
@@ -34,17 +32,113 @@ public class TotalSalesController {
 		Date today = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		String paymentDate = format.format(today);
-		System.out.println("매출관리 메인 요청시 현재 날짜(paymentDate):"+paymentDate); // 
-				
-		List<DaySalesInfo> list = totalSalesService.SelectDailySales(paymentDate);
-		model.addAttribute("list", list);
-		
+		System.out.println("매출관리 메인 요청시 현재 날짜(paymentDate):"+paymentDate); 
+		model.addAttribute("paymentDate", paymentDate);
 		return "/phoenix/crm/salesManagement/ds";
 	}
 	
+	//0829
+	//일일매출리스트 요청
+	@RequestMapping(value = "/phoenix/crm/salesManagement/ds", method = RequestMethod.GET)
+	public String daysList(Model model){
+		Date today = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		String paymentDate = format.format(today);
+		System.out.println("매출관리 메인 요청시 현재 날짜(paymentDate):"+paymentDate); 
+		model.addAttribute("paymentDate", paymentDate);
+		return "/phoenix/crm/salesManagement/ds";
+	}
+	
+	//0829
+	//Ajax -> 일일매출리스트 출력하기
+	@ResponseBody
+	@RequestMapping(value = "/phoenix/crm/salesManagement/ds", method = RequestMethod.POST)
+	public List<DaySalesInfo> daysList(DaySalesInfo daySalesInfo) {
+	   System.out.println("ajax -> 일간매출 리스트 메서드 실행");
+	   System.out.println("----->"+daySalesInfo );
+	    
+	   List<DaySalesInfo> list = totalSalesService.daysList(daySalesInfo);
+	   
+	   System.out.println("list---> "+list);
+	    
+	    return list;
+	}
+	
+	//0830
+	// ajax -> 월간매출리스트 요청
+	@RequestMapping(value="/phoenix/crm/salesManagement/ms", method = RequestMethod.GET)
+	public String monthList(Model model){
+		Date toYear = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy");
+		String paymentYear = format.format(toYear);
+		System.out.println("월간매출 요청페이지에서 넘길 년 :"+paymentYear);
+		
+		Date toMonth = new Date();
+		SimpleDateFormat format1 = new SimpleDateFormat("yyyyMM");
+		String PaymentYearMonth = format1.format(toMonth);
+		System.out.println("가공전 년월 : "+PaymentYearMonth);
+		String paymentMonth = PaymentYearMonth.substring(4, 6);
+		System.out.println("년월에서 가공한 월 : "+paymentMonth);
+		System.out.println("월간매출 요청페이지에서 넘길 월 :"+paymentMonth);
+		
+		model.addAttribute("paymentYear", paymentYear);
+		model.addAttribute("paymentMonth", paymentMonth);
+		return "/phoenix/crm/salesManagement/ms";
+	}
+	
+	//0830
+	// ajax -> 월간매출리스트 출력하기
+	@ResponseBody
+	@RequestMapping(value = "/phoenix/crm/salesManagement/ms", method = RequestMethod.POST)
+	public List<MonthSalesInfo> daysList(MonthSalesInfo monthSalesInfo) {
+	   System.out.println("ajax -> 월간매출 리스트 메서드 실행");
+	   System.out.println("클라이언트에서 가져온 년 : "+monthSalesInfo.getPaymentYear());
+	   System.out.println("클라이언트에서 가져온 월 : "+monthSalesInfo.getPaymentMonth());
+	   String yyyy =  monthSalesInfo.getPaymentYear();
+	   String mm = monthSalesInfo.getPaymentMonth();
+	   monthSalesInfo.setPaymentYearMonth(yyyy+mm);
+	   System.out.println("셋팅한 년월 : "+monthSalesInfo.getPaymentYearMonth());
+	   
+	   
+	   List<MonthSalesInfo> list = totalSalesService.monthList(monthSalesInfo);
+	   
+	   System.out.println("list---> "+list);
+	    
+	    return list;
+	}
 	
 	
-	//일간검색 -> 일간매출내역 처리
+	//0830
+	// ajax -> 년간매출리스트 요청
+	@RequestMapping(value="/phoenix/crm/salesManagement/ys", method = RequestMethod.GET)
+	public String yearList(Model model){
+		Date toYear = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy");
+		String paymentYear = format.format(toYear);
+		System.out.println("년간매출 요청페이지에서 넘길 년 :"+paymentYear);
+		model.addAttribute("paymentYear", paymentYear);
+		return "/phoenix/crm/salesManagement/ys";
+	}
+	
+	//0830
+	// ajax -> 년간매출리스트 출력
+	@ResponseBody
+	@RequestMapping(value = "/phoenix/crm/salesManagement/ys", method = RequestMethod.POST)
+	public List<MonthSalesInfo> yearList(MonthSalesInfo monthSalesInfo) {
+	   System.out.println("ajax -> 년간매출 리스트 메서드 실행");
+	   System.out.println("클라이언트에서 가져온 년 : "+monthSalesInfo.getPaymentYear());
+	   
+	   List<MonthSalesInfo> list = totalSalesService.yearList(monthSalesInfo);
+	   
+	   System.out.println("list---> "+list);
+	    
+	    return list;
+	}
+		
+	/**
+	 * 예전 코드 소스 
+	 */
+/*	//일간검색 -> 일간매출내역 처리
 	@RequestMapping(value = "/phoenix/crm/salesManagement/dailySearch", method = RequestMethod.POST)
 	public String dailySearch(String paymentDate, Model model) {
 		System.out.println("dailySearch에서 넘긴 현재날짜 : "+paymentDate);
@@ -183,14 +277,14 @@ public class TotalSalesController {
 	public String periodSalesList(MonthSalesInfo period, Model model){
 		System.out.println("기간별매출통계 페이지 요청됨");
 		//
-	/*	Date endDay = new Date();
+		Date endDay = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("yyyymmdd");
 		String paymentEndDay = format.format(endDay);
 		period.setPaymentEndDay(paymentEndDay);
 		System.out.println("기간별매출통계리스트에서 첫페이지에 보여줄 오늘날짜 입력값 : "+period);
 		
 		List<MonthSalesInfo> list = totalSalesService.selectPeriodList(period);
-		model.addAttribute("list", list);*/
+		model.addAttribute("list", list);
 		
 		return "/phoenix/crm/salesManagement/periodSalesList";
 	}
@@ -198,99 +292,23 @@ public class TotalSalesController {
 	
 	
 	//기간검색 요청됨
-		@RequestMapping(value = "/phoenix/crm/salesManagement/periodSearch", method = RequestMethod.POST)
-		public String periodSearch(MonthSalesInfo period, Model model) {
-			System.out.println("기간별매출통계 검색 요청됨");
-			System.out.println("기간별매출 시작일 : "+period.getPaymentStartDay());
-			System.out.println("기간별매출 종료일 : "+period.getPaymentEndDay());
-			
-			List<MonthSalesInfo> list =  totalSalesService.selectPeriodList(period);
-			model.addAttribute("list", list);
-			
-			return "/phoenix/crm/salesManagement/periodSalesList";
-		}
+	@RequestMapping(value = "/phoenix/crm/salesManagement/periodSearch", method = RequestMethod.POST)
+	public String periodSearch(MonthSalesInfo period, Model model) {
+		System.out.println("기간별매출통계 검색 요청됨");
+		System.out.println("기간별매출 시작일 : "+period.getPaymentStartDay());
+		System.out.println("기간별매출 종료일 : "+period.getPaymentEndDay());
+		
+		List<MonthSalesInfo> list =  totalSalesService.selectPeriodList(period);
+		model.addAttribute("list", list);
+		
+		return "/phoenix/crm/salesManagement/periodSalesList";
+	}
+
 	
-		
-		// 매출 그래프
-		@RequestMapping(value = "/phoenix/crm/salesManagement/SalesGraph", method = RequestMethod.GET)
-		public String SalesGraph() {
-			return "/phoenix/crm/salesManagement/SalesGraph";
-		}	
-		
-		
-		
-		
-		//0829
-		//일일매출리스트 요청
-		@RequestMapping(value = "/phoenix/crm/salesManagement/ds", method = RequestMethod.GET)
-		public String daysList(){
-			return "/phoenix/crm/salesManagement/ds";
-		}
-		
-		//0829
-		//Ajax -> 일일매출리스트 출력하기
-		@ResponseBody
-		@RequestMapping(value = "/phoenix/crm/salesManagement/ds", method = RequestMethod.POST)
-		public List<DaySalesInfo> daysList(DaySalesInfo daySalesInfo) {
-		   System.out.println("ajax -> 일간매출 리스트 메서드 실행");
-		   System.out.println("----->"+daySalesInfo );
-		    
-		   List<DaySalesInfo> list = totalSalesService.daysList(daySalesInfo);
-		   
-		   System.out.println("list---> "+list);
-		    
-		    return list;
-		}
-		
-		//0830
-		// ajax -> 월간매출리스트 요청
-		@RequestMapping(value="/phoenix/crm/salesManagement/ms", method = RequestMethod.GET)
-		public String monthList(){
-			return "/phoenix/crm/salesManagement/ms";
-		}
-		
-		//0830
-		// ajax -> 월간매출리스트 출력하기
-		@ResponseBody
-		@RequestMapping(value = "/phoenix/crm/salesManagement/ms", method = RequestMethod.POST)
-		public List<MonthSalesInfo> daysList(MonthSalesInfo monthSalesInfo) {
-		   System.out.println("ajax -> 월간매출 리스트 메서드 실행");
-		   System.out.println("클라이언트에서 가져온 년 : "+monthSalesInfo.getPaymentYear());
-		   System.out.println("클라이언트에서 가져온 월 : "+monthSalesInfo.getPaymentMonth());
-		   String yyyy =  monthSalesInfo.getPaymentYear();
-		   String mm = monthSalesInfo.getPaymentMonth();
-		   monthSalesInfo.setPaymentYearMonth(yyyy+mm);
-		   System.out.println("셋팅한 년월 : "+monthSalesInfo.getPaymentYearMonth());
-		   
-		   
-		   List<MonthSalesInfo> list = totalSalesService.monthList(monthSalesInfo);
-		   
-		   System.out.println("list---> "+list);
-		    
-		    return list;
-		}
-		
-		
-		//0830
-		// ajax -> 년간매출리스트 요청
-		@RequestMapping(value="/phoenix/crm/salesManagement/ys", method = RequestMethod.GET)
-		public String yearList(){
-			return "/phoenix/crm/salesManagement/ys";
-		}
-		
-		//0830
-		// ajax -> 년간매출리스트 출력
-		@ResponseBody
-		@RequestMapping(value = "/phoenix/crm/salesManagement/ys", method = RequestMethod.POST)
-		public List<MonthSalesInfo> yearList(MonthSalesInfo monthSalesInfo) {
-		   System.out.println("ajax -> 년간매출 리스트 메서드 실행");
-		   System.out.println("클라이언트에서 가져온 년 : "+monthSalesInfo.getPaymentYear());
-		   
-		   List<MonthSalesInfo> list = totalSalesService.yearList(monthSalesInfo);
-		   
-		   System.out.println("list---> "+list);
-		    
-		    return list;
-		}
-		
+	// 매출 그래프
+	@RequestMapping(value = "/phoenix/crm/salesManagement/SalesGraph", method = RequestMethod.GET)
+	public String SalesGraph() {
+		return "/phoenix/crm/salesManagement/SalesGraph";
+	}	*/
+	
 }

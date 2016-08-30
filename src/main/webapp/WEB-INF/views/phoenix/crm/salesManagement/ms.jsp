@@ -52,7 +52,7 @@
 						cashTotal = cashTotal+item.totalCash*1;
 						cardTotal = cardTotal+item.totalCard*1;
 						selectYm = item.paymentYearMonth;
-						array.push(item.paymentDay);
+						array.push(item.paymentDay+"일");
 						array.push((item.totalCash*1)+(item.totalCard*1));
 						totalArray.push(array);
 						
@@ -89,7 +89,7 @@
 			    }
 			}); 
 		});
-		
+		$('#mSearch').trigger("click");
 		
 		$(".dailySales").removeClass("active");
 		$(".monthlySales").addClass("active");
@@ -126,11 +126,12 @@
 		<br>
 		
 		<!-- 월간검색 시작 -->
+		
 		<div class="form-group">
 			<div class="col-sm-2">
 				<!-- 월간 검색 : 년 -->
 				<select id="paymentYear" class="form-control">
-					<option value="">:::년도:::</option>
+					<option value="${paymentYear}">${paymentYear}</option>
 					<option value="2016">2016년</option>
 					<option value="2015">2015년</option>
 					<option value="2014">2014년</option>
@@ -147,6 +148,7 @@
 			<div class="col-sm-2">
 				<!-- 월간 검색 : 월 -->
 				<select id="paymentMonth" class="form-control">
+					<option value="${paymentMonth}">${paymentMonth}</option>
 					<option value="01">1월</option>
 					<option value="02">2월</option>
 					<option value="03">3월</option>

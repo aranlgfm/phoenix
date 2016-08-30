@@ -52,7 +52,7 @@
 						cashTotal = cashTotal+item.totalCash*1;
 						cardTotal = cardTotal+item.totalCard*1;
 						selectYear = item.paymentYear;
-						array.push(item.paymentMonth);
+						array.push(item.paymentMonth+"월");
 						array.push((item.totalCash*1)+(item.totalCard*1));
 						totalArray.push(array);
 						
@@ -89,7 +89,7 @@
 			    }
 			}); 
 		});
-		
+		$('#ySearch').trigger("click");
 		
 		$('.monthlySales').removeClass("active");
 		$('.yearlySales').addClass("active");
@@ -128,6 +128,7 @@
 			<div class="col-sm-2">
 				<!-- 년간 검색 : 년 -->
 				<select id="paymentYear" class="form-control">
+					<option value="${paymentYear}">${paymentYear}</option>
 					<option value="2016">2016년</option>
 					<option value="2015">2015년</option>
 					<option value="2014">2014년</option>
