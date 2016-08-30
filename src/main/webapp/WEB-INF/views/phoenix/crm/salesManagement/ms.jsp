@@ -131,8 +131,7 @@
 			<div class="col-sm-2">
 				<!-- 월간 검색 : 년 -->
 				<select id="paymentYear" class="form-control">
-					<option value="${paymentYear}">${paymentYear}</option>
-					<option value="2016">2016년</option>
+					<option value="${paymentYear}">${paymentYear}년</option>
 					<option value="2015">2015년</option>
 					<option value="2014">2014년</option>
 					<option value="2013">2013년</option>
@@ -148,7 +147,7 @@
 			<div class="col-sm-2">
 				<!-- 월간 검색 : 월 -->
 				<select id="paymentMonth" class="form-control">
-					<option value="${paymentMonth}">${paymentMonth}</option>
+					<option value="${paymentMonth}">${paymentMonth}월</option>
 					<option value="01">1월</option>
 					<option value="02">2월</option>
 					<option value="03">3월</option>
