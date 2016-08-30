@@ -21,6 +21,12 @@ public interface TotalSalesService {
 	List<DaySalesInfo> daysList(DaySalesInfo daySalesInfo);
 
 
+	List<MonthSalesInfo> monthList(MonthSalesInfo monthSalesInfo);
+
+
+	List<MonthSalesInfo> yearList(MonthSalesInfo monthSalesInfo);
+
+
 
 	
 }

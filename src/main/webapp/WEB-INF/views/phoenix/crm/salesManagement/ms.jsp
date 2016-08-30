@@ -19,73 +19,56 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.categoryAxisRenderer.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.dateAxisRenderer.min.js"></script>
-
-
-
 <script>
 	$(document).ready(function($){
 		
-		//ID : paymentDate인 태그를 누르면 달력 나와서 format방식에 해당하는 data-type(String)을 value값으로 준다.
-
-		$('#paymentDate').datepicker({	
-			dateFormat : "yymmdd",
-	    	prevText: '이전 달',
-	    	nextText: '다음 달',
-	    	monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-	    	monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-	    	dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-	    	dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-	    	dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-	    	showMonthAfterYear: true,
-	    	yearSuffix: '년'
-		});
-
-	
-		$('.Dsearch').click(function(){
+			
+		$('#mSearch').click(function(){
+			console.log("클릭")
 			$.ajax({
-			    url : "/phoenix/crm/salesManagement/ds",
+			    url : "/phoenix/crm/salesManagement/ms",
 			    type : "post",
-			    data : {paymentDate : $('#paymentDate').val()}, 
+			    data : {paymentYear : $('#paymentYear').val(), paymentMonth : $('#paymentMonth').val()}, 
 			    success: function(data) {
 					console.log("성공"+data);
 					
-					$("#itemDesignName").empty();
+					$("#days").empty();
 					$('#cashTotal').empty();
 					$('#cardTotal').empty();
 					$('#total').empty();
 					$('#chart').empty();
-					$('#Rtoday').empty();
+					$('#selectYm').empty();
 					
 					var total=0;
 					var cashTotal = 0;
 					var cardTotal = 0;
-					var today = null;
+					var selectYm = null;
 					var totalArray = [];
 					var array = null;
 					$(data).each(function(index, item){
 						array = [];
-					//	console.log(item.itemDesignName);
-						$("#itemDesignName").append("<tr><td>"+item.itemDesignName+"</td><td>"+item.totalCash+" / "+item.countCash+"</td><td>"+item.totalCard+" / "+item.countCard+"</td></tr>");
-						
+						console.log(item.paymentDay);	
+						$("#days").append("<tr><td>"+item.paymentDay+"일</td><td>"+item.totalCash+" / "+item.countCash+"</td><td>"+item.totalCard+" / "+item.countCard+"</td></tr>");
 						cashTotal = cashTotal+item.totalCash*1;
 						cardTotal = cardTotal+item.totalCard*1;
-						today = item.paymentDate;
-						array.push(item.itemDesignName);
+						selectYm = item.paymentYearMonth;
+						array.push(item.paymentDay);
 						array.push((item.totalCash*1)+(item.totalCard*1));
 						totalArray.push(array);
+						
 					});
 					total = cashTotal+cardTotal;
 					$('#cashTotal').text(cashTotal);
 					$('#cardTotal').text(cardTotal);
-					$('#Rtoday').text(today)
+					$('#selectYm').text(selectYm);
 					$('#total').text(total);
 					
 					console.log(totalArray);
 					var line = totalArray;
 					$('#chart').jqplot([line], {
-				        title:'일일 매출 그래프',
+				        title:'월간 매출 그래프',
 				        // Provide a custom seriesColors array to override the default colors.
-				        seriesColors:['#85802b', '#00749F', '#73C774', '#C7754C', '#17BDB8'],
+				        seriesColors:['#85802b', '#00749F', '#73C774', '#C7754C', '#17BDB8', '#85802b', '#00749F', '#73C774', '#C7754C', '#17BDB8', '#85802b', '#00749F', '#73C774', '#C7754C', '#17BDB8', '#85802b', '#00749F', '#73C774', '#C7754C', '#17BDB8','#85802b', '#00749F', '#73C774', '#C7754C', '#17BDB8', '#85802b', '#00749F', '#73C774', '#C7754C', '#17BDB8', '#C7754C'], 
 				        seriesDefaults:{
 				            renderer:$.jqplot.BarRenderer,
 				            rendererOptions: {
@@ -107,12 +90,13 @@
 			}); 
 		});
 		
-		$(".dailySales").addClass("active");
+		
+		$(".dailySales").removeClass("active");
+		$(".monthlySales").addClass("active");
 		
 	});
 </script>
 <style>
-	
 	#all {
 			width : 70%;
 			margin : auto;
@@ -140,34 +124,66 @@
 		<!-- 매출그래프 -->
 		<div id="chart"></div>
 		<br>
-		<!-- 날짜 선택 -->
-		<div>
-			<div class="form-group">
-				<div class="col-sm-2">
-					<input id="paymentDate" class="form-control" type="text" value="">
-				</div>
-				<div class="col-sm-1">
-					<input class="Dsearch form-control" type="button" value="검색">
-				</div>
+		
+		<!-- 월간검색 시작 -->
+		<div class="form-group">
+			<div class="col-sm-2">
+				<!-- 월간 검색 : 년 -->
+				<select id="paymentYear" class="form-control">
+					<option value="">:::년도:::</option>
+					<option value="2016">2016년</option>
+					<option value="2015">2015년</option>
+					<option value="2014">2014년</option>
+					<option value="2013">2013년</option>
+					<option value="2012">2012년</option>
+					<option value="2011">2011년</option>
+					<option value="2010">2010년</option>
+					<option value="2009">2009년</option>
+					<option value="2008">2008년</option>
+					<option value="2007">2007년</option>
+					<option value="2006">2006년</option>
+				</select>
 			</div>
-		</div>
+			<div class="col-sm-2">
+				<!-- 월간 검색 : 월 -->
+				<select id="paymentMonth" class="form-control">
+					<option value="01">1월</option>
+					<option value="02">2월</option>
+					<option value="03">3월</option>
+					<option value="04">4월</option>
+					<option value="05">5월</option>
+					<option value="06">6월</option>
+					<option value="07">7월</option>
+					<option value="08">8월</option>
+					<option value="09">9월</option>
+					<option value="10">10월</option>
+					<option value="11">11월</option>
+					<option value="12">12월</option>
+				</select>
+			</div>
+			<div class="col-sm-1">
+				<input id="mSearch" class="form-control" type="button" value="검색">
+			</div>
+		</div>		
+
+
 		<br>
 		<br>
 		<br>
-		<!-- 날짜에 대한 일일매출 리스트 -->
+		<!-- 날짜에 대한 월간 매출 리스트 -->
 		<div>
 			
-			<strong><span id="Rtoday"></span>시술 매출 내역</strong>
+			<strong><span id="selectYm"></span>시술 매출 내역</strong>
 			
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th>품목</th>
+						<th>일자</th>
 						<th>현금/(건)</th>
 						<th>카드/(건)</th>
 					</tr>
 				</thead>
-				<tbody id="itemDesignName">
+				<tbody id="days">
 					
 				</tbody>
 				<tr>

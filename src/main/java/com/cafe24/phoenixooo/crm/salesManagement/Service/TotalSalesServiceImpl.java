@@ -1,6 +1,5 @@
 package com.cafe24.phoenixooo.crm.salesManagement.Service;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -128,7 +127,52 @@ public class TotalSalesServiceImpl implements TotalSalesService {
 		return list;
 	}
 	
+	//0830
+	//ajax -> 월간매출 리스트 출력하기
+	@Override
+	public List<MonthSalesInfo> monthList(MonthSalesInfo monthSalesInfo) {
+		List<MonthSalesInfo> list = totalSalesDao.MonthList(monthSalesInfo);
+			
+		System.out.println("월간총매출 서비스단 리턴값 가공시작");
+		for(int i=0; i<list.size()-1; i++)
+		{	
+			if(list.get(i).getPaymentDate().equals(list.get(i+1).getPaymentDate()))
+			{
+				System.out.println("for문속 if문 아이디 같은때 실행됨");	
+				list.get(i).setTotalCash(list.get(i+1).getTotalCash());
+				list.get(i).setCountCash(list.get(i+1).getCountCash());
+				list.remove(i+1);
+				System.out.println("아이디 같을 때 하나지움");
+			}
+			System.out.println("아이디 틀려서 나오거나 / 같은때 하나 지우고 나옴");
+		}
+		
+		return list;
+	}
 	
 	
+	//0830
+	// ajax -> 년간매출 리스트 출력하기
+	@Override
+	public List<MonthSalesInfo> yearList(MonthSalesInfo monthSalesInfo) {
+		
+		List<MonthSalesInfo> list = totalSalesDao.yearList(monthSalesInfo);
+		
+		for(int i=0; i<list.size()-1; i++)
+		{	
+			if(list.get(i).getPaymentYearMonth().equals(list.get(i+1).getPaymentYearMonth()))
+			{
+				System.out.println("for문속 if문 아이디 같은때 실행됨");	
+				list.get(i).setTotalCash(list.get(i+1).getTotalCash());
+				list.get(i).setCountCash(list.get(i+1).getCountCash());
+				list.remove(i+1);
+				System.out.println("아이디 같을때 하나지움");
+			}
+			System.out.println("아이디 틀려서 나오거나 / 같은때 하나 지우고 나옴");
+		}
+		
+		System.out.println("중복아이디 합치고난 후의 리스트 : "+list);
+		return list;
+	}
 	
 }

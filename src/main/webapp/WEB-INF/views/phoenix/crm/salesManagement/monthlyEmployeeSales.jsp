@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <title>Insert title here</title>
@@ -60,13 +61,13 @@
 <div id="all">
 	<ul class="nav nav-tabs">
 		<li>
-			<a href="/phoenix/crm/salesManagement/dailySales">일간총매출</a>
+			<a href="/phoenix/crm/salesManagement/ds">일간총매출</a>
 	 	</li>
 	 	<li>
-	 		<a href="/phoenix/crm/salesManagement/monthlySales">월간총매출</a>
+	 		<a href="/phoenix/crm/salesManagement/ms">월간총매출</a>
 	 	</li>
 	 	<li>
-	 		<a href="/phoenix/crm/salesManagement/yearlySales">연간총매출</a>
+	 		<a href="/phoenix/crm/salesManagement/ys">연간총매출</a>
 	 	</li>
 	 	<li>
 	 		<a href="/phoenix/crm/form/salesManagement/dailyEmployeeSales">일간직원매출</a>

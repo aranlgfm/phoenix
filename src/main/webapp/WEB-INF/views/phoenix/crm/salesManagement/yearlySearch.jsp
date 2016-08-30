@@ -66,9 +66,9 @@
 					</select>
 				</div>
 				
-					<div class="col-sm-1">
-						<input class="form-control" type="submit" value="검색">
-					</div>
+				<div class="col-sm-1">
+					<input class="form-control" type="submit" value="검색">
+				</div>
 			</div>
 		</form>
 		

@@ -22,5 +22,11 @@ public interface TotalSalesDao {
 	List<DaySalesInfo> daysList(DaySalesInfo daySalesInfo);
 
 
+	List<MonthSalesInfo> MonthList(MonthSalesInfo monthSalesInfo);
+
+
+	List<MonthSalesInfo> yearList(MonthSalesInfo monthSalesInfo);
+
+
 	
 }

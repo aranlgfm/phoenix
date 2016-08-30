@@ -219,11 +219,20 @@ public class TotalSalesController {
 		
 		
 		
+		
+		//0829
+		//일일매출리스트 요청
+		@RequestMapping(value = "/phoenix/crm/salesManagement/ds", method = RequestMethod.GET)
+		public String daysList(){
+			return "/phoenix/crm/salesManagement/ds";
+		}
+		
+		//0829
 		//Ajax -> 일일매출리스트 출력하기
 		@ResponseBody
 		@RequestMapping(value = "/phoenix/crm/salesManagement/ds", method = RequestMethod.POST)
 		public List<DaySalesInfo> daysList(DaySalesInfo daySalesInfo) {
-		   System.out.println("ajax메서드 실행");
+		   System.out.println("ajax -> 일간매출 리스트 메서드 실행");
 		   System.out.println("----->"+daySalesInfo );
 		    
 		   List<DaySalesInfo> list = totalSalesService.daysList(daySalesInfo);
@@ -233,20 +242,55 @@ public class TotalSalesController {
 		    return list;
 		}
 		
+		//0830
+		// ajax -> 월간매출리스트 요청
+		@RequestMapping(value="/phoenix/crm/salesManagement/ms", method = RequestMethod.GET)
+		public String monthList(){
+			return "/phoenix/crm/salesManagement/ms";
+		}
 		
-		@RequestMapping(value = "/phoenix/crm/salesManagement/ds", method = RequestMethod.GET)
-		public String daysList(){
-			
-			return "/phoenix/crm/salesManagement/ds";
+		//0830
+		// ajax -> 월간매출리스트 출력하기
+		@ResponseBody
+		@RequestMapping(value = "/phoenix/crm/salesManagement/ms", method = RequestMethod.POST)
+		public List<MonthSalesInfo> daysList(MonthSalesInfo monthSalesInfo) {
+		   System.out.println("ajax -> 월간매출 리스트 메서드 실행");
+		   System.out.println("클라이언트에서 가져온 년 : "+monthSalesInfo.getPaymentYear());
+		   System.out.println("클라이언트에서 가져온 월 : "+monthSalesInfo.getPaymentMonth());
+		   String yyyy =  monthSalesInfo.getPaymentYear();
+		   String mm = monthSalesInfo.getPaymentMonth();
+		   monthSalesInfo.setPaymentYearMonth(yyyy+mm);
+		   System.out.println("셋팅한 년월 : "+monthSalesInfo.getPaymentYearMonth());
+		   
+		   
+		   List<MonthSalesInfo> list = totalSalesService.monthList(monthSalesInfo);
+		   
+		   System.out.println("list---> "+list);
+		    
+		    return list;
 		}
 		
 		
+		//0830
+		// ajax -> 년간매출리스트 요청
+		@RequestMapping(value="/phoenix/crm/salesManagement/ys", method = RequestMethod.GET)
+		public String yearList(){
+			return "/phoenix/crm/salesManagement/ys";
+		}
 		
-		
-		
-		
-		
-		
-		
+		//0830
+		// ajax -> 년간매출리스트 출력
+		@ResponseBody
+		@RequestMapping(value = "/phoenix/crm/salesManagement/ys", method = RequestMethod.POST)
+		public List<MonthSalesInfo> yearList(MonthSalesInfo monthSalesInfo) {
+		   System.out.println("ajax -> 년간매출 리스트 메서드 실행");
+		   System.out.println("클라이언트에서 가져온 년 : "+monthSalesInfo.getPaymentYear());
+		   
+		   List<MonthSalesInfo> list = totalSalesService.yearList(monthSalesInfo);
+		   
+		   System.out.println("list---> "+list);
+		    
+		    return list;
+		}
 		
 }

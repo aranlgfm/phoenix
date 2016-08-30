@@ -223,8 +223,6 @@
 		where PAYMENT_DT between concat(#{paymentYear},'1201') and concat(#{paymentYear},'1231')
 		group by
 			PAYMENT_TYPE_GB	
-	
-	
 	</select>
 
 	<select id="selectPeriodList" parameterType="com.cafe24.phoenixooo.crm.salesManagement.Model.MonthSalesInfo" resultType="com.cafe24.phoenixooo.crm.salesManagement.Model.MonthSalesInfo">
@@ -268,5 +266,209 @@
 	
 	</select>
 
+	<!-- 0830 ajax -> 월간 매출리스트 출력 쿼리 -->
+	<select id="MonthList" parameterType="com.cafe24.phoenixooo.crm.salesManagement.Model.MonthSalesInfo" resultType="com.cafe24.phoenixooo.crm.salesManagement.Model.MonthSalesInfo"> 
+		SELECT
+			PAYMENT_DT as paymentDate
+		    ,substring(PAYMENT_DT, 1, 7) as paymentYearMonth 
+		    ,substring(PAYMENT_DT, 9, 2) as paymentDay
+			,PAYMENT_TYPE_GB as paymentTypeGb
+		    ,if(PAYMENT_TYPE_GB = '현금', sum(PAYMENT_TOTAL_WON),0) as totalCash
+		    ,if(PAYMENT_TYPE_GB = '현금', count(PAYMENT_TOTAL_WON),0) as countCash
+		    ,if(PAYMENT_TYPE_GB = '카드', sum(PAYMENT_TOTAL_WON),0) as totalCard
+		    ,if(PAYMENT_TYPE_GB = '카드', count(PAYMENT_TOTAL_WON),0) as countCard
+		   
+		FROM
+			CRM_PAYMENT_TB
+		WHERE 
+			PAYMENT_DT between concat(#{paymentYearMonth},'01') and concat(#{paymentYearMonth}, '31')
+		group by
+			PAYMENT_DT, PAYMENT_TYPE_GB
+	</select>
+
+	<!-- 0830 ajax -> 년간매출리스트 출력 쿼리 -->
+	<select id="yearList" parameterType="com.cafe24.phoenixooo.crm.salesManagement.Model.MonthSalesInfo" resultType="com.cafe24.phoenixooo.crm.salesManagement.Model.MonthSalesInfo">
+			SELECT 
+			substring(PAYMENT_DT, 1, 4) as paymentYear
+			,substring(PAYMENT_DT, 1, 7) as paymentYearMonth
+			,substring(PAYMENT_DT, 6, 2) as paymentMonth
+			,PAYMENT_TYPE_GB as paymentTypeGb
+			,if(PAYMENT_TYPE_GB = '현금', sum(PAYMENT_TOTAL_WON),0) as totalCash
+		    ,if(PAYMENT_TYPE_GB = '현금', count(PAYMENT_TOTAL_WON),0) as countCash
+		    ,if(PAYMENT_TYPE_GB = '카드', sum(PAYMENT_TOTAL_WON),0) as totalCard
+		    ,if(PAYMENT_TYPE_GB = '카드', count(PAYMENT_TOTAL_WON),0) as countCard
+			FROM 
+				CRM_PAYMENT_TB
+			WHERE 
+				PAYMENT_DT between concat(#{paymentYear},'0101') and concat(#{paymentYear},'0131')
+			group by
+				PAYMENT_TYPE_GB
+			union
+			SELECT 
+				substring(PAYMENT_DT, 1, 4) as paymentYear
+				,substring(PAYMENT_DT, 1, 7) as paymentYearMonth
+				,substring(PAYMENT_DT, 6, 2) as paymentMonth
+				,PAYMENT_TYPE_GB as paymentTypeGb
+				,if(PAYMENT_TYPE_GB='현금', sum(PAYMENT_TOTAL_WON),0 ) as totalCash
+			    ,if(PAYMENT_TYPE_GB='현금', count(PAYMENT_TOTAL_WON),0 ) as countCash
+			    ,if(PAYMENT_TYPE_GB='카드', sum(PAYMENT_TOTAL_WON),0 ) as totalCard
+			    ,if(PAYMENT_TYPE_GB='카드', count(PAYMENT_TOTAL_WON),0 ) as countCard
+			FROM 
+				CRM_PAYMENT_TB
+			where PAYMENT_DT between concat(#{paymentYear},'0201') and concat(#{paymentYear},'0231')
+			group by
+				PAYMENT_TYPE_GB
+			union
+			SELECT 
+				substring(PAYMENT_DT, 1, 4) as paymentYear
+				,substring(PAYMENT_DT, 1, 7) as paymentYearMonth
+				,substring(PAYMENT_DT, 6, 2) as paymentMonth
+				,PAYMENT_TYPE_GB as paymentTypeGb
+				,if(PAYMENT_TYPE_GB='현금', sum(PAYMENT_TOTAL_WON),0 ) as totalCash
+			    ,if(PAYMENT_TYPE_GB='현금', count(PAYMENT_TOTAL_WON),0 ) as countCash
+			    ,if(PAYMENT_TYPE_GB='카드', sum(PAYMENT_TOTAL_WON),0 ) as totalCard
+			    ,if(PAYMENT_TYPE_GB='카드', count(PAYMENT_TOTAL_WON),0 ) as countCard
+			FROM 
+				CRM_PAYMENT_TB
+			where PAYMENT_DT between concat(#{paymentYear},'0301') and concat(#{paymentYear},'0331')
+			group by
+				PAYMENT_TYPE_GB
+			union
+			SELECT 
+				substring(PAYMENT_DT, 1, 4) as paymentYear
+				,substring(PAYMENT_DT, 1, 7) as paymentYearMonth
+				,substring(PAYMENT_DT, 6, 2) as paymentMonth
+				,PAYMENT_TYPE_GB as paymentTypeGb
+				,if(PAYMENT_TYPE_GB='현금', sum(PAYMENT_TOTAL_WON),0 ) as totalCash
+			    ,if(PAYMENT_TYPE_GB='현금', count(PAYMENT_TOTAL_WON),0 ) as countCash
+			    ,if(PAYMENT_TYPE_GB='카드', sum(PAYMENT_TOTAL_WON),0 ) as totalCard
+			    ,if(PAYMENT_TYPE_GB='카드', count(PAYMENT_TOTAL_WON),0 ) as countCard
+			FROM 
+				CRM_PAYMENT_TB
+			where PAYMENT_DT between concat(#{paymentYear},'0401') and concat(#{paymentYear},'0431')
+			group by
+				PAYMENT_TYPE_GB
+			union
+			SELECT 
+				substring(PAYMENT_DT, 1, 4) as paymentYear
+				,substring(PAYMENT_DT, 1, 7) as paymentYearMonth
+				,substring(PAYMENT_DT, 6, 2) as paymentMonth
+				,PAYMENT_TYPE_GB as paymentTypeGb
+				,if(PAYMENT_TYPE_GB='현금', sum(PAYMENT_TOTAL_WON),0 ) as totalCash
+			    ,if(PAYMENT_TYPE_GB='현금', count(PAYMENT_TOTAL_WON),0 ) as countCash
+			    ,if(PAYMENT_TYPE_GB='카드', sum(PAYMENT_TOTAL_WON),0 ) as totalCard
+			    ,if(PAYMENT_TYPE_GB='카드', count(PAYMENT_TOTAL_WON),0 ) as countCard
+			FROM 
+				CRM_PAYMENT_TB
+			where PAYMENT_DT between concat(#{paymentYear},'0501') and concat(#{paymentYear},'0531')
+			group by
+				PAYMENT_TYPE_GB
+			union
+			SELECT 
+				substring(PAYMENT_DT, 1, 4) as paymentYear
+				,substring(PAYMENT_DT, 1, 7) as paymentYearMonth
+				,substring(PAYMENT_DT, 6, 2) as paymentMonth
+				,PAYMENT_TYPE_GB as paymentTypeGb
+				,if(PAYMENT_TYPE_GB='현금', sum(PAYMENT_TOTAL_WON),0 ) as totalCash
+			    ,if(PAYMENT_TYPE_GB='현금', count(PAYMENT_TOTAL_WON),0 ) as countCash
+			    ,if(PAYMENT_TYPE_GB='카드', sum(PAYMENT_TOTAL_WON),0 ) as totalCard
+			    ,if(PAYMENT_TYPE_GB='카드', count(PAYMENT_TOTAL_WON),0 ) as countCard
+			FROM 
+				CRM_PAYMENT_TB
+			where PAYMENT_DT between concat(#{paymentYear},'0601') and concat(#{paymentYear},'0631')
+			group by
+				PAYMENT_TYPE_GB
+			union
+			SELECT 
+				substring(PAYMENT_DT, 1, 4) as paymentYear
+				,substring(PAYMENT_DT, 1, 7) as paymentYearMonth
+				,substring(PAYMENT_DT, 6, 2) as paymentMonth
+				,PAYMENT_TYPE_GB as paymentTypeGb
+				,if(PAYMENT_TYPE_GB='현금', sum(PAYMENT_TOTAL_WON),0 ) as totalCash
+			    ,if(PAYMENT_TYPE_GB='현금', count(PAYMENT_TOTAL_WON),0 ) as countCash
+			    ,if(PAYMENT_TYPE_GB='카드', sum(PAYMENT_TOTAL_WON),0 ) as totalCard
+			    ,if(PAYMENT_TYPE_GB='카드', count(PAYMENT_TOTAL_WON),0 ) as countCard
+			FROM 
+				CRM_PAYMENT_TB
+			where PAYMENT_DT between concat(#{paymentYear},'0701') and concat(#{paymentYear},'0731')
+			group by
+				PAYMENT_TYPE_GB
+			union
+			SELECT 
+				substring(PAYMENT_DT, 1, 4) as paymentYear
+				,substring(PAYMENT_DT, 1, 7) as paymentYearMonth
+				,substring(PAYMENT_DT, 6, 2) as paymentMonth
+				,PAYMENT_TYPE_GB as paymentTypeGb
+				,if(PAYMENT_TYPE_GB='현금', sum(PAYMENT_TOTAL_WON),0 ) as totalCash
+			    ,if(PAYMENT_TYPE_GB='현금', count(PAYMENT_TOTAL_WON),0 ) as countCash
+			    ,if(PAYMENT_TYPE_GB='카드', sum(PAYMENT_TOTAL_WON),0 ) as totalCard
+			    ,if(PAYMENT_TYPE_GB='카드', count(PAYMENT_TOTAL_WON),0 ) as countCard
+			FROM 
+				CRM_PAYMENT_TB
+			where PAYMENT_DT between concat(#{paymentYear},'0801') and concat(#{paymentYear},'0831')
+			group by
+				PAYMENT_TYPE_GB
+			    union
+			SELECT 
+				substring(PAYMENT_DT, 1, 4) as paymentYear
+				,substring(PAYMENT_DT, 1, 7) as paymentYearMonth
+				,substring(PAYMENT_DT, 6, 2) as paymentMonth
+				,PAYMENT_TYPE_GB as paymentTypeGb
+				,if(PAYMENT_TYPE_GB='현금', sum(PAYMENT_TOTAL_WON),0 ) as totalCash
+			    ,if(PAYMENT_TYPE_GB='현금', count(PAYMENT_TOTAL_WON),0 ) as countCash
+			    ,if(PAYMENT_TYPE_GB='카드', sum(PAYMENT_TOTAL_WON),0 ) as totalCard
+			    ,if(PAYMENT_TYPE_GB='카드', count(PAYMENT_TOTAL_WON),0 ) as countCard
+			FROM 
+				CRM_PAYMENT_TB
+			where PAYMENT_DT between concat(#{paymentYear},'0901') and concat(#{paymentYear},'0931')
+				
+			group by
+				PAYMENT_TYPE_GB
+			union
+			SELECT 
+				substring(PAYMENT_DT, 1, 4) as paymentYear
+				,substring(PAYMENT_DT, 1, 7) as paymentYearMonth
+				,substring(PAYMENT_DT, 6, 2) as paymentMonth
+				,PAYMENT_TYPE_GB as paymentTypeGb
+				,if(PAYMENT_TYPE_GB='현금', sum(PAYMENT_TOTAL_WON),0 ) as totalCash
+			    ,if(PAYMENT_TYPE_GB='현금', count(PAYMENT_TOTAL_WON),0 ) as countCash
+			    ,if(PAYMENT_TYPE_GB='카드', sum(PAYMENT_TOTAL_WON),0 ) as totalCard
+			    ,if(PAYMENT_TYPE_GB='카드', count(PAYMENT_TOTAL_WON),0 ) as countCard
+			FROM 
+				CRM_PAYMENT_TB
+			where PAYMENT_DT between concat(#{paymentYear},'1001') and concat(#{paymentYear},'1031')
+			group by
+				PAYMENT_TYPE_GB
+			union
+			SELECT 
+				substring(PAYMENT_DT, 1, 4) as paymentYear
+				,substring(PAYMENT_DT, 1, 7) as paymentYearMonth
+				,substring(PAYMENT_DT, 6, 2) as paymentMonth
+				,PAYMENT_TYPE_GB as paymentTypeGb
+				,if(PAYMENT_TYPE_GB='현금', sum(PAYMENT_TOTAL_WON),0 ) as totalCash
+			    ,if(PAYMENT_TYPE_GB='현금', count(PAYMENT_TOTAL_WON),0 ) as countCash
+			    ,if(PAYMENT_TYPE_GB='카드', sum(PAYMENT_TOTAL_WON),0 ) as totalCard
+			    ,if(PAYMENT_TYPE_GB='카드', count(PAYMENT_TOTAL_WON),0 ) as countCard
+			FROM 
+				CRM_PAYMENT_TB
+			where PAYMENT_DT between concat(#{paymentYear},'1101') and concat(#{paymentYear},'1131')
+			group by
+				PAYMENT_TYPE_GB
+			union
+			SELECT 
+				substring(PAYMENT_DT, 1, 4) as paymentYear
+				,substring(PAYMENT_DT, 1, 7) as paymentYearMonth
+				,substring(PAYMENT_DT, 6, 2) as paymentMonth 
+				,PAYMENT_TYPE_GB as paymentTypeGb
+				,if(PAYMENT_TYPE_GB='현금', sum(PAYMENT_TOTAL_WON),0 ) as totalCash
+			    ,if(PAYMENT_TYPE_GB='현금', count(PAYMENT_TOTAL_WON),0 ) as countCash
+			    ,if(PAYMENT_TYPE_GB='카드', sum(PAYMENT_TOTAL_WON),0 ) as totalCard
+			    ,if(PAYMENT_TYPE_GB='카드', count(PAYMENT_TOTAL_WON),0 ) as countCard
+			FROM 
+				CRM_PAYMENT_TB
+			where PAYMENT_DT between concat(#{paymentYear},'1201') and concat(#{paymentYear},'1231')
+			group by
+				PAYMENT_TYPE_GB	
+	</select>
 
 </mapper>

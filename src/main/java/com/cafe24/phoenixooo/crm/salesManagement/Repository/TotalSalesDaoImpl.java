@@ -1,6 +1,5 @@
 package com.cafe24.phoenixooo.crm.salesManagement.Repository;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -52,5 +51,20 @@ public class TotalSalesDaoImpl implements TotalSalesDao{
 		return sqlSession.selectList(NS+".daysList", daySalesInfo);
 	}
 	
+	
+	//0830
+	//ajax -> 월간매출리스트 출력하기
+	@Override
+	public List<MonthSalesInfo> MonthList(MonthSalesInfo monthSalesInfo) {
+		
+		return sqlSession.selectList(NS+".MonthList", monthSalesInfo);
+	}
+	
+	//0830
+	//ajax -> 년간매출리스트 출력하기
+	@Override
+	public List<MonthSalesInfo> yearList(MonthSalesInfo monthSalesInfo) {
+		return sqlSession.selectList(NS+".yearList", monthSalesInfo);
+	}
 	
 }
