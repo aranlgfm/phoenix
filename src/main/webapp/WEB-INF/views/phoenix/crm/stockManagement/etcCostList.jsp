@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="<c:url value="/webjars/jquery/3.1.0/jquery.min.js"/>"></script>
